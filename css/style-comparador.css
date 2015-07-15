@@ -1,0 +1,70 @@
+div.header {
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 0;
+  margin-top: 1%;
+  height: 10%;
+}
+div.body {
+  height: 90%;
+}
+div.body > div {
+  padding:0;
+}
+.sublead {
+  margin: 0;
+  font-size: 1em;
+}
+.img-responsive {
+  height: 60px;
+}
+.grafica {
+  border:1px dotted; 
+  width: 90%; 
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 10px;
+} 
+.container-full {
+  color: #333;
+} 
+.nombre {
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+.descripcion, .estudios {
+  overflow: auto;
+  border-top: 1px dotted grey;
+  margin: 0px 15px; 
+}
+.estudios {
+  border-bottom: 2px solid grey;
+}
+.principal {
+  color: #cc0000;
+}
+.secundaria {
+  color: #342777;
+}
+.more {
+  cursor: cell;
+}
+
+#container1 {
+  background :rgba(255, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+  height: 380px;
+}
+#info {
+	
+  height: 60%;
+  overflow: auto;
+}
+#slider {
+  background-image: url(../images/slider/img1.jpg);
+  background-repeat: no-repeat; 
+  background-position: center center; 
+  background-size:cover;
+  height: 28%;
+}

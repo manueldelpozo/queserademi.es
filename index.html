@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Language" content="es">
+		<meta charset="UTF-8">
+		<title>Comparador de profesiones</title>
+		<meta name="description" content="Comparador de profesiones queserademi">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Bienvenido a queserademi" />
+	    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
+	    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
+	    <link rel="icon" type="image/x-icon" href="images/logo.png">
+	    <link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
+	    <!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+		<script type="text/javascript" src="js/jquery-2.1.3.js" defer></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" defer></script>
+		<script type="text/javascript" src="js/scripts.js" defer></script>
+		<script type="text/javascript" src="js/video.js" defer></script>
+	</head>
+	<body>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-64706657-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+        <!-- Google Tag Manager -->
+        <noscript>
+            <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5MQKZX"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>  
+        </noscript>
+        <script>
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5MQKZX');
+        </script>
+        <!-- End Google Tag Manager -->
+		<div class="container-full">
+
+			<div class="row header">
+				<div class="col-md-6 col-md-offset-3 col-xs-12 text-center">
+					<a href="">
+						<h1 id="titulo" class="lead"><strong>que</strong>sera<strong>de</strong>mi</h1>
+						<img class="img-responsive" src="images/logo.svg">
+					</a>
+					<h6 class="sublead">Tu comparador de profesiones</h6>
+			    </div>
+			</div>
+
+			<div class="row body">
+			  	<div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
+			  		<div class="dropdown clearfix">
+						<form id="formulario" role="form" action="comparador.php" method="get" onsubmit="return validacion()">
+							<div class="input-group">
+								<input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg"  autocomplete="off" placeholder="Busca una profesión" required>
+								<div class="input-group-btn" style="height:60px;top:-7px;">
+									<button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
+								</div>
+							</div>
+							<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>	
+                        </form>
+					</div>
+				</div>
+			</div>
+
+			<div class="row footer">
+				<div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1" align="center" id="ver-video">
+					<a class="btn btn-default" role="button" href="#">VER VIDEO</a>
+				</div>
+			    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 embed-responsive-16by9"  align="center" id="video">
+			    	<video class="embed-responsive-item" controls>   
+			            <source src="video/videoQsdm.mp4" type="video/mp4">
+			            <source src="video/videoQsdm.webm" type="video/webm">
+			            <source src="video/videoQsdm.ogv" type="video/ogg">
+			            Su navegador no soporta la etiqueta de vídeo.
+					</video>
+			    </div> 
+			</div>
+			
+		</div>
+	</body>
+</html>                                		
