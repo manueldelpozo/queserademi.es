@@ -32,6 +32,7 @@ try {
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
       <link rel="icon" type="image/x-icon" href="images/logo.png">
       <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/slider.css">
       <link rel="stylesheet" href="css/style.css" />
       <link rel="stylesheet" href="css/style-comparador.css" />
       <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
@@ -41,10 +42,14 @@ try {
       <![endif]-->
       <script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
       <script type="text/javascript" src="js/bootstrap.min.js" ></script>
-      <script type="text/javascript" src="js/highcharts.js" ></script>
-      <script type="text/javascript" src="js/highcharts-more.js" ></script>
+      <script type="text/javascript" src="js/bootstrap-slider.js" ></script>
       <script type="text/javascript" src="js/scripts.js" defer></script>   
-      <script type="text/javascript" src="js/graficas.js" ></script>
+      
+      <style type="text/css" media="screen">
+        #ex1Slider .slider-selection {
+          background: #BABABA;
+        }  
+      </style>
   </head>
   <body>
     <script>
@@ -68,6 +73,13 @@ try {
         '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-5MQKZX');
     </script>
+    <script type="text/javascript">
+      $('#ex1').slider({
+        formatter: function(value) {
+          return 'Current value: ' + value;
+        }
+      });
+    </script>
     <!-- End Google Tag Manager -->
     <div class="container-full">
       <form id="formulario" role="form" action="comparador.php" method="get" onsubmit="return validacion()">
@@ -75,15 +87,7 @@ try {
           <div class="row header">
 
             <div class="col-md-4 col-xs-12 text-center">
-              <div class="dropdown clearfix">
-                  <div class="input-group">
-                    <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>           
-                    <div class="input-group-btn" style="height:60px;top:-7px;">
-                       <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
-                    </div>
-                  </div>
-                  <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
-              </div>
+              
             </div>
 
             <div class="col-md-4 hidden-xs text-center">
@@ -108,32 +112,104 @@ try {
           </div> 
 
           <div class="row body">
+
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container" class="grafica"></div>
+              <div class="col-md-8 col-offset-2 col-xs-12">
+                <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>
+                <input name="profesion_uno" type="email" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>
+                <div class="dropdown clearfix profesion">
+                    <div class="input-group">
+                      <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>           
+                      <div class="input-group-btn" style="height:60px;top:-7px;">
+                         <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
+                      </div>
+                    </div>
+                    <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
+                </div>
+                <div class="dropdown clearfix estudios">
+                    <div class="input-group">
+                      <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>           
+                      <div class="input-group-btn" style="height:60px;top:-7px;">
+                         <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
+                      </div>
+                    </div>
+                    <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
+                </div>
+                <textarea name="descripcion"></textarea>
+              </div>
             </div>
+
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container3" class="grafica"></div>
+              <div class="col-md-8 col-offset-2 col-xs-12">
+
+                <div class="col-md-12 col-xs-12 text-center">
+                  <h2>SALARIO APROXIMADO</h2>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Salario en 2010: <strong id="s_past"></strong> euros/mes</div>
+                  <input class="sliders" id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500"/>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Salario en 2015: <strong id="s_present"></strong> euros/mes</div>
+                  <input class="sliders" id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500"/>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Salario en 2020: <strong id="s_future"></strong> euros/mes</div>
+                  <input class="sliders" id="ex3" data-slider-id='ex3Slider' type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500"/>
+                </div>
+
+                <hr>
+
+                <div class="col-md-12 col-xs-12 text-center">
+                  <h2>DESEMPLEO (%)</h2>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Desempleo en 2010: <strong id="p_past"></strong> %</div>
+                  <input class="sliders" id="ex4" data-slider-id='ex4Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Desempleo en 2015: <strong id="p_present"></strong> %</div>
+                  <input class="sliders" id="ex5" data-slider-id='ex5Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Desempleo en 2020: <strong id="p_future"></strong> %</div>
+                  <input class="sliders" id="ex6" data-slider-id='ex6Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
+                </div>
+
+                <hr>
+
+                <div class="col-md-12 col-xs-12 text-center">
+                  <h2>CAPACIDADES PROFESIONALES</h2>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Memoria: <strong id="c_memoria"></strong></div>
+                  <input class="sliders" id="ex7" data-slider-id='ex7Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Logica: <strong id="c_logica"></strong></div>
+                  <input class="sliders" id="ex8" data-slider-id='ex8Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Creatividad: <strong id="c_creatividad"></strong></div>
+                  <input class="sliders" id="ex9" data-slider-id='ex9Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Comunicacion: <strong id="c_comunicacion"></strong></div>
+                  <input class="sliders" id="ex10" data-slider-id='ex10Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="titulo2">Forma Fisica: <strong id="c_formafisica"></strong></div>
+                  <input class="sliders" id="ex11" data-slider-id='ex11Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                </div>
+
+              </div>
             </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container2" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container1" class="grafica"></div>
-            </div>
+    
           </div> 
 
       </form>
     </div>
   </body>
-
-  <script type="text/javascript" async>
-    <?php 
-      include('js/grafica_funcion.js'); 
-      include('js/grafica_info.js'); 
-      include('js/grafica_barras.js'); 
-      include('js/grafica_radar.js'); 
-    ?>
-  </script>
 
 </html>
 
