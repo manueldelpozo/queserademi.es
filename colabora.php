@@ -176,7 +176,7 @@ try {
                   <input class="sliders" id="ex6" data-slider-id='ex6Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
                 </div>
 
-                <hr>
+                
 
                 <div class="col-md-12 col-xs-12 text-center">
                   <h2>CAPACIDADES PROFESIONALES</h2>
