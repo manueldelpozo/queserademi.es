@@ -12,7 +12,7 @@
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
       <link rel="icon" type="image/x-icon" href="images/logo.png">
       <link rel="stylesheet" href="css/bootstrap.min.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/4.10.3/css/bootstrap-slider.min.css">
+      <link rel="stylesheet" href="css/slider.css">
       <link rel="stylesheet" href="css/style.css" />
       <link rel="stylesheet" href="css/style-comparador.css" />
       <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
@@ -22,7 +22,7 @@
       <![endif]-->
       <script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
       <script type="text/javascript" src="js/bootstrap.min.js" ></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/4.10.3/bootstrap-slider.min.js" ></script>
+      <script type="text/javascript" src="js/bootstrap-slider.js" ></script>
       <script type="text/javascript" src="js/scripts.js"></script>   
       <script type="text/javascript">
         $(document).ready(function() {
@@ -31,9 +31,9 @@
               return 'Salario 2010: ' + value;
             }
           });
-          //$("#s_past").on("slide", function(slideEvt) {
-            //$("#s_past_value").text(slideEvt.value);
-          //});
+          $("#s_past").on("slide", function(slideEvt) {
+            $("#s_past_value").text(slideEvt.value);
+          });
         });
       </script>
       <style type="text/css" media="screen">
