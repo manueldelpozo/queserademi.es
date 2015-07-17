@@ -36,7 +36,12 @@
           $(".sliders").on("slide", function(slideEvt) {
             var idname = $(this).attr("id");
             var idvalue = "#" + idname + "_value";
-            $(idvalue).text(slideEvt.value);
+            var unidad = "";
+            if ( $(this).hasClass("salarios") )
+              unidad = " €/mes";
+            else if ( $(this).hasClass("paros") )
+              unidad = " %";
+            $(idvalue).text( slideEvt.value + unidad );
           });
           
           $(".slider").css("width","100%");
@@ -155,20 +160,20 @@
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Salario en 2010: <strong id="s_past_value"></strong> euros/mes</div>
-                    <input class="sliders" id="s_past" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <div class="titulo2">Salario en 2010: <strong id="s_past_value"></strong></div>
+                    <input class="sliders salarios" id="s_past" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Salario en 2015: <strong id="s_present_value"></strong> euros/mes</div>
-                    <input class="sliders" id="s_present" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <div class="titulo2">Salario en 2015: <strong id="s_present_value"></strong></div>
+                    <input class="sliders salarios" id="s_present" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Salario en 2020: <strong id="s_future_value"></strong> euros/mes</div>
-                    <input class="sliders" id="s_future" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <div class="titulo2">Salario en 2020: <strong id="s_future_value"></strong></div>
+                    <input class="sliders salarios" id="s_future" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
                   </div>
                 </div>
 
@@ -179,20 +184,20 @@
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Desempleo en 2010: <strong id="p_past_value"></strong> %</div>
-                    <input class="sliders" id="p_past" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                    <div class="titulo2">Desempleo en 2010: <strong id="p_past_value"></strong></div>
+                    <input class="sliders paros" id="p_past" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Desempleo en 2015: <strong id="p_present_value"></strong> %</div>
-                    <input class="sliders" id="p_present" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                    <div class="titulo2">Desempleo en 2015: <strong id="p_present_value"></strong></div>
+                    <input class="sliders paros" id="p_present" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Desempleo en 2020: <strong id="p_future_value"></strong> %</div>
-                    <input class="sliders" id="p_future" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                    <div class="titulo2">Desempleo en 2020: <strong id="p_future_value"></strong></div>
+                    <input class="sliders paros" id="p_future" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
                   </div>
                 </div>
 
@@ -204,31 +209,31 @@
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Memoria: <strong id="c_memoria_value"></strong></div>
-                    <input class="sliders" id="c_memoria" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                    <input class="sliders capacidades" id="c_memoria" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Logica: <strong id="c_logica_value"></strong></div>
-                    <input class="sliders" id="c_logica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                    <input class="sliders capacidades" id="c_logica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Creatividad: <strong id="c_creatividad_value"></strong></div>
-                    <input class="sliders" id="c_creatividad" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                    <input class="sliders capacidades" id="c_creatividad" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Comunicacion: <strong id="c_comunicacion_value"></strong></div>
-                    <input class="sliders" id="c_comunicacion" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                    <input class="sliders capacidades" id="c_comunicacion" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Forma Fisica: <strong id="c_formafisica_value"></strong></div>
-                    <input class="sliders" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                    <input class="sliders capacidades" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
                   </div>
                 </div>
 
