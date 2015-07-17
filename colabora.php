@@ -34,11 +34,31 @@
           $("#s_past").on("slide", function(slideEvt) {
             $("#s_past_value").text(slideEvt.value);
           });
+          $("#s_present").slider({
+            formatter: function(value) {
+              return 'Salario 2015: ' + value;
+            }
+          });
+          $("#s_present").on("slide", function(slideEvt) {
+            $("#s_present_value").text(slideEvt.value);
+          });
+          $("#s_future").slider({
+            formatter: function(value) {
+              return 'Salario 2020: ' + value;
+            }
+          });
+          $("#s_future").on("slide", function(slideEvt) {
+            $("#s_future_value").text(slideEvt.value);
+          });
+          $(".slider").css("width","100%");
         });
       </script>
       <style type="text/css" media="screen">
-        #ex1Slider .slider-selection {
+        .slider-selection {
           background: #BABABA;
+        }
+        .slider{
+          width: 100%;
         }  
       </style>
   </head>
@@ -75,8 +95,7 @@
 
           <div class="row header">
 
-            <div class="col-md-4 col-xs-12 text-center">
-              
+            <div class="col-md-4 col-xs-12 text-center">    
             </div>
 
             <div class="col-md-4 hidden-xs text-center">
@@ -87,7 +106,6 @@
             </div>
 
             <div class="col-md-4 text-center">
-      
             </div>
 
           </div> 
@@ -124,25 +142,25 @@
               <div class="col-md-8 col-md-offset-2 col-xs-12">
 
                 <div class="col-md-12 col-xs-12 text-center">
-                  <h2>SALARIO APROXIMADO</h2>
+                  <h4>SALARIO APROXIMADO</h4>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="titulo2">Salario en 2010: <strong id="s_past_value"></strong> euros/mes</div>
                   <input class="sliders" id="s_past" type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-handle="square"/>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Salario en 2015: <strong id="s_present"></strong> euros/mes</div>
-                  <input class="sliders" id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-tooltip="hide" data-slider-handle="square"/>
+                  <div class="titulo2">Salario en 2015: <strong id="s_present_value"></strong> euros/mes</div>
+                  <input class="sliders" id="s_present" type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-tooltip="hide" data-slider-handle="square"/>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Salario en 2020: <strong id="s_future"></strong> euros/mes</div>
-                  <input class="sliders" id="ex3" data-slider-id='ex3Slider' type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-tooltip="hide" data-slider-handle="square"/>
+                  <div class="titulo2">Salario en 2020: <strong id="s_future_value"></strong> euros/mes</div>
+                  <input class="sliders" id="s_future" type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-tooltip="hide" data-slider-handle="square"/>
                 </div>
 
                 <hr>
 
                 <div class="col-md-12 col-xs-12 text-center">
-                  <h2>DESEMPLEO (%)</h2>
+                  <h4>DESEMPLEO (%)</h4>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="titulo2">Desempleo en 2010: <strong id="p_past"></strong> %</div>
@@ -160,7 +178,7 @@
                 <hr>
 
                 <div class="col-md-12 col-xs-12 text-center">
-                  <h2>CAPACIDADES PROFESIONALES</h2>
+                  <h4>CAPACIDADES PROFESIONALES</h4>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="titulo2">Memoria: <strong id="c_memoria"></strong></div>
