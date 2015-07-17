@@ -87,7 +87,7 @@
 
             <div class="col-md-6 col-xs-12 text-center">
               <div class="col-md-8 col-offset-2 col-xs-12">
-                <input name="nombre" type="text" id="nombre" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>">
+                <input name="nombre" type="text" id="nombre" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus>
                 <input name="email" type="email" id="email" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>">
                 <div class="dropdown clearfix profesion">
                     <div class="input-group">
@@ -100,14 +100,14 @@
                 </div>
                 <div class="dropdown clearfix estudios">
                     <div class="input-group">
-                      <input name="estudios" type="text" id="estudios" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>" required>           
+                      <input name="estudios" type="text" id="estudios" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>">           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
                     </div>
                     <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
                 </div>
-                <textarea name="descripcion" id="descripcion"></textarea>
+                <textarea name="descripcion" id="descripcion" placeholder="Escribe una corta descripcion de la profesion"></textarea>
               </div>
             </div>
 
