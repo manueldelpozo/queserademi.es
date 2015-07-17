@@ -56,15 +56,20 @@
           f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-5MQKZX');
     </script>
+    <!-- End Google Tag Manager -->
     <script type="text/javascript">
-      $('#ex1').slider({
-        alert("funciona");
+      
+      $("#s_past").slider({
         formatter: function(value) {
-          return 'Current value: ' + value;
+          return 'Salario 2010: ' + value;
         }
       });
+      //$("#s_past").on("slide", function(slideEvt) {
+        //$("#s_past_value").text(slideEvt.value);
+      //});
+
     </script>
-    <!-- End Google Tag Manager -->
+    
     <div class="container-full">
       <form id="formulario" role="form" action="comparador.php" method="get" onsubmit="return validacion()">
 
@@ -122,16 +127,16 @@
                   <h2>SALARIO APROXIMADO</h2>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Salario en 2010: <strong id="s_past"></strong> euros/mes</div>
-                  <input class="sliders" id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500"/>
+                  <div class="titulo2">Salario en 2010: <strong id="s_past_value"></strong> euros/mes</div>
+                  <input class="sliders" id="s_past" type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-handle="square"/>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="titulo2">Salario en 2015: <strong id="s_present"></strong> euros/mes</div>
-                  <input class="sliders" id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500"/>
+                  <input class="sliders" id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-tooltip="hide" data-slider-handle="square"/>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="titulo2">Salario en 2020: <strong id="s_future"></strong> euros/mes</div>
-                  <input class="sliders" id="ex3" data-slider-id='ex3Slider' type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500"/>
+                  <input class="sliders" id="ex3" data-slider-id='ex3Slider' type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-tooltip="hide" data-slider-handle="square"/>
                 </div>
 
                 <hr>
