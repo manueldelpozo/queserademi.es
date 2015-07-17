@@ -1,33 +1,13 @@
-<?php 
-try {
-  require('conexion.php');
-  
-  if( isset( $_GET['profesion_uno']  )  ) {
-    $profesion_uno = $_GET['profesion_uno'];
-    $consulta = "SELECT * FROM profesiones_sanitarias WHERE profesion LIKE '$profesion_uno'";
-    $result = $pdo->prepare($consulta);
-    $result->execute();
-    $registro = $result->fetch();
 
-  }  
-  if( isset( $_GET['profesion_dos'] ) ) { 
-    $profesion_dos = $_GET['profesion_dos'];
-    $consulta_dos = "SELECT * FROM profesiones_sanitarias WHERE profesion LIKE '$profesion_dos'";
-    $result_dos = $pdo->prepare($consulta_dos);
-    $result_dos->execute();
-    $count_dos = $result_dos->rowCount();
-    $registro_dos = $result_dos->fetch();
-  } 
-?>
 <!DOCTYPE html>
 <html>
   <head>
       <meta http-equiv="Content-Language" content="es">
       <meta charset="utf-8">
       <title>Comparador de Profesiones</title>
-      <meta name="description" content="Comparador de profesiones queserademi">
+      <meta name="description" content="Colabora con queserademi">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Bienvenido a queserademi" />
+      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Colabora con queserademi" />
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
       <link rel="icon" type="image/x-icon" href="images/logo.png">
@@ -213,8 +193,3 @@ try {
 
 </html>
 
-<?php
-} catch( Exception $e ) {
-  die('Error: '.$e->GetMessage());
-}
-?>
