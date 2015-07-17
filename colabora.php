@@ -47,9 +47,17 @@
         .slider-selection {
           background: #BABABA;
         }
-        .slider{
+        .colabora {
           width: 100%;
-        }  
+          margin-top: 50px;
+        }
+        .titulo1 {
+          margin-top: 20px;
+          border-top: 1px;
+        }
+        .slider-handle {
+          background-image: linear-gradient(to bottom, red, #c00);
+        }
       </style>
   </head>
   <body>
@@ -104,9 +112,16 @@
 
             <div class="col-md-6 col-xs-12 text-center">
               <div class="col-md-8 col-md-offset-2 col-xs-12">
-                <input name="nombre" type="text" id="nombre" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus>
-                <input name="email" type="email" id="email" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>">
-                <div class="dropdown clearfix profesion">
+                <div class="form-group">
+                  <label for="nombre">Nombre:</label>
+                  <input name="nombre" type="text" id="nombre" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input name="email" type="email" id="email" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>">
+                </div>
+                <div class="form-group dropdown clearfix profesion">
+                  <label for="email">Profesion:</label>
                     <div class="input-group">
                       <input name="profesion" type="text" id="profesion" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php //echo @$profesion_uno; ?>" required>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
@@ -115,7 +130,8 @@
                     </div>
                     <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
                 </div>
-                <div class="dropdown clearfix estudios">
+                <div class="form-group dropdown clearfix estudios">
+                  <label for="email">Estudios asociados:</label>
                     <div class="input-group">
                       <input name="estudios" type="text" id="estudios" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>">           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
@@ -124,71 +140,102 @@
                     </div>
                     <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
                 </div>
-                <textarea name="descripcion" id="descripcion" placeholder="Escribe una corta descripcion de la profesion"></textarea>
+                <div class="form-group">
+                  <label for="descripcion">Descripcion:</label>
+                  <textarea name="descripcion" id="descripcion" class="typeahead principal center-block form-control input-lg form-control" rows="5" placeholder="Escribe una corta descripcion de la profesion"></textarea>
+                </div>
               </div>
             </div>
 
             <div class="col-md-6 col-xs-12 text-center">
               <div class="col-md-8 col-md-offset-2 col-xs-12">
 
-                <div class="col-md-12 col-xs-12 text-center">
+                <div class="col-md-12 col-xs-12 text-center titulo1">
                   <h4>SALARIO APROXIMADO</h4>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Salario en 2010: <strong id="s_past_value"></strong> euros/mes</div>
-                  <input class="sliders" id="s_past" type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-handle="square"/>
+                  <div class="form-group">
+                    <div class="titulo2">Salario en 2010: <strong id="s_past_value"></strong> euros/mes</div>
+                    <input class="sliders" id="s_past" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                  </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Salario en 2015: <strong id="s_present_value"></strong> euros/mes</div>
-                  <input class="sliders" id="s_present" type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-tooltip="hide" data-slider-handle="square"/>
+                  <div class="form-group">
+                    <div class="titulo2">Salario en 2015: <strong id="s_present_value"></strong> euros/mes</div>
+                    <input class="sliders" id="s_present" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                  </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Salario en 2020: <strong id="s_future_value"></strong> euros/mes</div>
-                  <input class="sliders" id="s_future" type="text" data-slider-min="700" data-slider-max="20000" data-slider-step="50" data-slider-value="1500" data-slider-tooltip="hide" data-slider-handle="square"/>
+                  <div class="form-group">
+                    <div class="titulo2">Salario en 2020: <strong id="s_future_value"></strong> euros/mes</div>
+                    <input class="sliders" id="s_future" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                  </div>
                 </div>
 
                 <hr>
 
-                <div class="col-md-12 col-xs-12 text-center">
+                <div class="col-md-12 col-xs-12 text-center titulo1">
                   <h4>DESEMPLEO (%)</h4>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Desempleo en 2010: <strong id="p_past_value"></strong> %</div>
-                  <input class="sliders" id="p_past" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
+                  <div class="form-group">
+                    <div class="titulo2">Desempleo en 2010: <strong id="p_past_value"></strong> %</div>
+                    <input class="sliders" id="p_past" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                  </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Desempleo en 2015: <strong id="p_present_value"></strong> %</div>
-                  <input class="sliders" id="p_present" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
+                  <div class="form-group">
+                    <div class="titulo2">Desempleo en 2015: <strong id="p_present_value"></strong> %</div>
+                    <input class="sliders" id="p_present" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                  </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Desempleo en 2020: <strong id="p_future_value"></strong> %</div>
-                  <input class="sliders" id="p_future" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
+                  <div class="form-group">
+                    <div class="titulo2">Desempleo en 2020: <strong id="p_future_value"></strong> %</div>
+                    <input class="sliders" id="p_future" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                  </div>
                 </div>
 
                 <hr>
 
-                <div class="col-md-12 col-xs-12 text-center">
+                <div class="col-md-12 col-xs-12 text-center titulo1">
                   <h4>CAPACIDADES PROFESIONALES</h4>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Memoria: <strong id="c_memoria_value"></strong></div>
-                  <input class="sliders" id="c_memoria" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                  <div class="form-group">
+                    <div class="titulo2">Memoria: <strong id="c_memoria_value"></strong></div>
+                    <input class="sliders" id="c_memoria" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                  </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Logica: <strong id="c_logica_value"></strong></div>
-                  <input class="sliders" id="c_logica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                  <div class="form-group">
+                    <div class="titulo2">Logica: <strong id="c_logica_value"></strong></div>
+                    <input class="sliders" id="c_logica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                  </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Creatividad: <strong id="c_creatividad_value"></strong></div>
-                  <input class="sliders" id="c_creatividad" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                  <div class="form-group">
+                    <div class="titulo2">Creatividad: <strong id="c_creatividad_value"></strong></div>
+                    <input class="sliders" id="c_creatividad" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                  </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Comunicacion: <strong id="c_comunicacion_value"></strong></div>
-                  <input class="sliders" id="c_comunicacion" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                  <div class="form-group">
+                    <div class="titulo2">Comunicacion: <strong id="c_comunicacion_value"></strong></div>
+                    <input class="sliders" id="c_comunicacion" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                  </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="titulo2">Forma Fisica: <strong id="c_formafisica_value"></strong></div>
-                  <input class="sliders" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                  <div class="form-group">
+                    <div class="titulo2">Forma Fisica: <strong id="c_formafisica_value"></strong></div>
+                    <input class="sliders" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-md-offset-8 col-xs-12">
+                  <div class="form-group"> 
+                    <button type="submit" class="btn btn-default colabora">Colabora</button>
+                  </div>
                 </div>
 
               </div>
