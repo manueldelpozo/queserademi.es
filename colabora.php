@@ -78,15 +78,7 @@
             </div>
 
             <div class="col-md-4 text-center">
-              <div class="dropdown clearfix">
-                  <div class="input-group">
-                    <input name="profesion_dos" type="text" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_dos; ?>" required>
-                    <div class="input-group-btn" style="height:60px;top:-7px;">
-                     <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_dos" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
-                    </div>
-                  </div>
-                  <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id_dos"></ul>  
-              </div>
+      
             </div>
 
           </div> 
@@ -95,11 +87,11 @@
 
             <div class="col-md-6 col-xs-12 text-center">
               <div class="col-md-8 col-offset-2 col-xs-12">
-                <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>
-                <input name="profesion_uno" type="email" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>
+                <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php //echo @$profesion_uno; ?>" required>
+                <input name="profesion_uno" type="email" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php //echo @$profesion_uno; ?>" required>
                 <div class="dropdown clearfix profesion">
                     <div class="input-group">
-                      <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>           
+                      <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php //echo @$profesion_uno; ?>" required>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
@@ -108,7 +100,7 @@
                 </div>
                 <div class="dropdown clearfix estudios">
                     <div class="input-group">
-                      <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>           
+                      <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php //echo @$profesion_uno; ?>" required>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
