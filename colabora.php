@@ -63,6 +63,17 @@
         .slider-handle {
           background-image: linear-gradient(to bottom, red, #c00);
         }
+        .normal-input {
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          background-color: rgba(255, 255, 255, 0.6);
+          /* For IE 5.5 - 7*/
+          filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+          /* For IE 8*/
+          -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+          border-color: black;
+        }
       </style>
   </head>
   <body>
@@ -119,16 +130,16 @@
               <div class="col-md-8 col-md-offset-2 col-xs-12">
                 <div class="form-group">
                   <label for="nombre">Nombre:</label>
-                  <input name="nombre" type="text" id="nombre" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus>
+                  <input name="nombre" type="text" id="nombre" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus>
                 </div>
                 <div class="form-group">
                   <label for="email">Email:</label>
-                  <input name="email" type="email" id="email" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>">
+                  <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>">
                 </div>
                 <div class="form-group dropdown clearfix profesion">
                   <label for="email">Profesion:</label>
                     <div class="input-group">
-                      <input name="profesion" type="text" id="profesion" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php //echo @$profesion_uno; ?>" required>           
+                      <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php //echo @$profesion_uno; ?>" required>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
@@ -138,7 +149,7 @@
                 <div class="form-group dropdown clearfix estudios">
                   <label for="email">Estudios asociados:</label>
                     <div class="input-group">
-                      <input name="estudios" type="text" id="estudios" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>">           
+                      <input name="estudios" type="text" id="estudios" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>">           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_estudios" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
@@ -147,7 +158,7 @@
                 </div>
                 <div class="form-group">
                   <label for="descripcion">Descripcion:</label>
-                  <textarea name="descripcion" id="descripcion" class="typeahead principal center-block form-control input-lg form-control" rows="5" placeholder="Escribe una corta descripcion de la profesion"></textarea>
+                  <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="Escribe una corta descripcion de la profesion"></textarea>
                 </div>
               </div>
             </div>
