@@ -73,6 +73,9 @@
           -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
           border-color: black;
         }
+        .verif{ 
+          display: none; 
+        }
       </style>
   </head>
   <body>
@@ -104,7 +107,7 @@
     
     
     <div class="container-full">
-      <form id="formulario" role="form" action="comparador.php" method="get" onsubmit="return validacion()">
+      <form id="formulario" role="form" action="verificador.php" method="post" onsubmit="return validacion()">
 
           <div class="row header">
 
@@ -248,6 +251,9 @@
                     <input class="sliders capacidades" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
                   </div>
                 </div>
+                
+                <label for="verificacion" class="verif">¡Si ves esto, no llenes el siguiente campo!</label>
+                <input name="verificacion" class="verif" />
 
                 <div class="col-md-4 col-md-offset-8 col-xs-12">
                   <div class="form-group"> 
