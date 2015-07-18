@@ -42,10 +42,19 @@ if ($_POST['verificacion'] != ""){
 	$s_future = $_POST['s_future'];
 
 	if( empty($s_past) )
-		$s_past == $p_present;
+		$s_past == $s_present;
 	if( empty($s_future) )
-		$s_future == $p_present;
+		$s_future == $s_present;
 
+	//CORRECCION DE PAROS
+	$p_past = $_POST['p_past'];
+	$p_present = $_POST['p_present'];
+	$p_future = $_POST['p_future'];
+
+	if( empty($p_past) )
+		$p_past == $p_present;
+	if( empty($p_future) )
+		$p_future == $p_present;
 
 
 }
