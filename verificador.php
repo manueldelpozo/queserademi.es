@@ -56,6 +56,35 @@ if ($_POST['verificacion'] != ""){
 	if( empty($p_future) )
 		$p_future == $p_present;
 
+	//CONCORDANCIA DE DATOS FINALES
+	function diferencia( $valor_antiguo, $valor_nuevo ) {
+		return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
+	}
 
+	if( diferencia( $s_past_db, $s_past ) > 0.5 )
+		$error =+ 0.05;	
+	if( diferencia( $s_present_db, $s_present ) > 0.5 )
+		$error =+ 0.05;
+	if( diferencia( $s_future_db, $s_future ) > 0.5 )
+		$error =+ 0.05;
+
+	if( diferencia( $p_past_db, $p_past ) > 0.5 )
+		$error =+ 0.05;	
+	if( diferencia( $p_present_db, $p_present ) > 0.5 )
+		$error =+ 0.05;
+	if( diferencia( $p_future_db, $p_future ) > 0.5 )
+		$error =+ 0.05;
+
+	if( diferencia( $c_memoria_db, $c_memoria ) > 0.5 )
+		$error =+ 0.05;	
+	if( diferencia( $c_logica_db, $c_logica ) > 0.5 )
+		$error =+ 0.05;
+	if( diferencia( $c_comunicacion_db, $c_comunicacion ) > 0.5 )
+		$error =+ 0.05;
+	if( diferencia( $c_formafisica_db, $c_formafisica ) > 0.5 )
+		$error =+ 0.05;
+	if( diferencia( $c_creatividad_db, $c_creatividad ) > 0.5 )
+		$error =+ 0.05;
+		
 }
 ?>
