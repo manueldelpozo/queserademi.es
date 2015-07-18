@@ -24,14 +24,29 @@ if ($_POST['verificacion'] != ""){
 	$profesion = $_POST['profesion'];
 	$estudios = $_POST['estuios_asoc'];
 	$descripcion = $_POST['descripcion'];
-
-	if( !preg_match("/($profesion|$estudios)/i", $descripcion) ) {
-		//none found
-		$error =+ 0.1;
+	if( !empty($descripcion) ) {
+		if( !empty($estudios) ) {
+			if( !preg_match("/($profesion|$estudios)/i", $descripcion) ) {
+				//none found
+				$error =+ 0.1;
+			}
+		} else {
+			if( !preg_match("/$profesion/i", $descripcion) ) {
+				$error =+ 0.05;
+		}
 	}
 
+	//CORRECCION DE SALARIOS
+	$s_past = $_POST['s_past'];
+	$s_present = $_POST['s_present'];
+	$s_future = $_POST['s_future'];
+
+	if( empty($s_past) )
+		$s_past == $p_present;
+	if( empty($s_future) )
+		$s_future == $p_present;
 
 
-	
+
 }
 ?>
