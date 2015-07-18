@@ -12,12 +12,12 @@ if ($_POST['verificacion'] != ""){
 	$domail = substr( $email, strpos($email,'@') );
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     	// invalid emailaddress
-    	$error =+ 0.3;
-		//Additionally you can check whether the domain defines an MX record:
-		if (!checkdnsrr($domain, 'MX')) {
-		    // domain is not valid
-		    $error =+ 0.2;
-		}
+    	$error =+ 0.1;
+	}
+	//Additionally you can check whether the domain defines an MX record:
+	if (!checkdnsrr($domain, 'MX')) {
+	    // domain is not valid
+	    $error =+ 0.1;
 	}
 
 	//MEDIR CONCORDANCIA DE CONTENIDOS
@@ -93,7 +93,11 @@ if ($_POST['verificacion'] != ""){
 	if( diferencia( $registro['c_creatividad'], $c_creatividad ) > 0.5 )
 		$error =+ 0.05;
 
-
+	//SENTENCIA DE ERROR
+	if( $error > 0.5 )
+		$aceptado = false;
+	else
+		$aceptado = true;
 		
 }
 ?>
