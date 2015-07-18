@@ -134,16 +134,16 @@
               <div class="col-md-8 col-md-offset-2 col-xs-12">
                 <div class="form-group">
                   <label for="nombre">Nombre:</label>
-                  <input name="nombre" type="text" id="nombre" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus>
+                  <input name="nombre" type="text" id="nombre" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus/>
                 </div>
                 <div class="form-group">
                   <label for="email">Email:</label>
-                  <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>">
+                  <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>"/>
                 </div>
                 <div class="form-group dropdown clearfix profesion">
                   <label for="profesion">Profesion:</label>
                     <div class="input-group">
-                      <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php //echo @$profesion_uno; ?>" required>           
+                      <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php //echo @$profesion_uno; ?>" required/>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
@@ -153,7 +153,7 @@
                 <div class="form-group dropdown clearfix estudios">
                   <label for="estudios_asoc">Estudios asociados:</label>
                     <div class="input-group">
-                      <input name="estudios_asoc" type="text" id="estudios_asoc" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>">           
+                      <input name="estudios_asoc" type="text" id="estudios_asoc" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>"/>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_estudios" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
@@ -182,7 +182,7 @@
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Salario en 2015: <strong id="s_present_value"></strong></div>
-                    <input class="sliders salarios" id="s_present" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <input class="sliders salarios" id="s_present" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
@@ -206,7 +206,7 @@
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Desempleo en 2015: <strong id="p_present_value"></strong></div>
-                    <input class="sliders paros" id="p_present" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                    <input class="sliders paros" id="p_present" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
@@ -224,31 +224,31 @@
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Memoria: <strong id="c_memoria_value"></strong></div>
-                    <input class="sliders capacidades" id="c_memoria" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                    <input class="sliders capacidades" id="c_memoria" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Logica: <strong id="c_logica_value"></strong></div>
-                    <input class="sliders capacidades" id="c_logica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                    <input class="sliders capacidades" id="c_logica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Creatividad: <strong id="c_creatividad_value"></strong></div>
-                    <input class="sliders capacidades" id="c_creatividad" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                    <input class="sliders capacidades" id="c_creatividad" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Comunicacion: <strong id="c_comunicacion_value"></strong></div>
-                    <input class="sliders capacidades" id="c_comunicacion" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                    <input class="sliders capacidades" id="c_comunicacion" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <div class="titulo2">Forma Fisica: <strong id="c_formafisica_value"></strong></div>
-                    <input class="sliders capacidades" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                    <input class="sliders capacidades" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 
