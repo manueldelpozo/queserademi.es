@@ -5,6 +5,7 @@ if ($_POST['verificacion'] != ""){
 }else{
     // Es un usuario real, proceder a enviar el formulario.
 
+	$error;
 
 	// VALIDAR EMAIL??
 	$email = $_POST['email'];
@@ -18,6 +19,18 @@ if ($_POST['verificacion'] != ""){
 		    $error =+ 0.2;
 		}
 	}
+
+	//MEDIR CONCORDANCIA DE CONTENIDOS
+	$profesion = $_POST['profesion'];
+	$estudios = $_POST['estuios_asoc'];
+	$descripcion = $_POST['descripcion'];
+
+	if( !preg_match("/($profesion|$estudios)/i", $descripcion) ) {
+		//none found
+		$error =+ 0.1;
+	}
+
+
 
 	
 }
