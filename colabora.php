@@ -14,7 +14,6 @@
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <link rel="stylesheet" href="css/slider.css">
       <link rel="stylesheet" href="css/style.css" />
-      <link rel="stylesheet" href="css/style-comparador.css" />
       <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
       <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -109,7 +108,8 @@
 
           <div class="row header">
 
-            <div class="col-md-4 col-xs-12 text-center">    
+            <div class="col-md-4 col-xs-12">  
+              <h3>Colabora con el proyecto queserademi, son solo 5 minutos...</h3>  
             </div>
 
             <div class="col-md-4 hidden-xs text-center">
@@ -120,6 +120,7 @@
             </div>
 
             <div class="col-md-4 text-center">
+              <h3><a href="">Por que colaborar?</a></h3>
             </div>
 
           </div> 
@@ -137,7 +138,7 @@
                   <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>">
                 </div>
                 <div class="form-group dropdown clearfix profesion">
-                  <label for="email">Profesion:</label>
+                  <label for="profesion">Profesion:</label>
                     <div class="input-group">
                       <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php //echo @$profesion_uno; ?>" required>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
@@ -147,9 +148,9 @@
                     <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
                 </div>
                 <div class="form-group dropdown clearfix estudios">
-                  <label for="email">Estudios asociados:</label>
+                  <label for="estudios_asoc">Estudios asociados:</label>
                     <div class="input-group">
-                      <input name="estudios" type="text" id="estudios" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>">           
+                      <input name="estudios_asoc" type="text" id="estudios_asoc" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>">           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_estudios" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>

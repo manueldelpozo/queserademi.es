@@ -25,9 +25,6 @@ div.body > div {
   margin: 0 auto;
   margin-bottom: 10px;
 } 
-.container-full {
-  color: #333;
-} 
 .nombre {
   font-weight: bolder;
   text-transform: uppercase;
