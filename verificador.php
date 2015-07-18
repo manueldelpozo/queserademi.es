@@ -101,10 +101,12 @@ if ($_POST['verificacion'] != ""){
 		
 	//GUARDAR COLABORACIONES
 	$colaborador = $_POST['colaborador'];
-	$fecha = 
+	$fecha = date_default_timezone_get();
+	//$fecha = date('m/d/Y h:i:s a', time());
 
 	$sql_insert = "INSERT INTO `colaboraciones` ( `colaborador` , `email` , `profesion` , `descripcion` , `estudios_asoc` , `p_past` , `p_present` , `p_future` , `s_past` , `s_present` , `s_future` , `c_memoria` , `c_creatividad` , `c_comunicacion` , `c_forma_fisica` , `c_logica` , `fecha` , `aceptado` ) VALUES ( '$colaborador','$email','$profesion','$descripcion','$estudios_asoc','$p_past','$p_present','$p_future','$s_past','$s_present','$s_future','$c_memoria','$c_creatividad','$c_comunicacion','$c_forma_fisica','$c_logica','$fecha','$aceptado');";
 
+	//AGRADECIMIENTOS
 	if ( $pdo->query($sql_insert) ) {
 		echo "<h1>Colaboracion recibida correctamente. Muchas gracias por su tiempo.</h1>\n";
 		echo "<h2>Muchas gracias por su tiempo.</h2>";
