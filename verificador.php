@@ -60,31 +60,40 @@ if ($_POST['verificacion'] != ""){
 	function diferencia( $valor_antiguo, $valor_nuevo ) {
 		return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
 	}
+	//obtencion de datos guardados
+	require('conexion.php');
+  
+    $consulta = "SELECT * FROM profesiones_sanitarias WHERE profesion LIKE '$profesion'";
+    $result = $pdo->prepare($consulta);
+    $result->execute();
+    $registro = $result->fetch();
 
-	if( diferencia( $s_past_db, $s_past ) > 0.5 )
+	if( diferencia( $registro['s_past'], $s_past ) > 0.5 )
 		$error =+ 0.05;	
-	if( diferencia( $s_present_db, $s_present ) > 0.5 )
+	if( diferencia( $registro['s_present'], $s_present ) > 0.5 )
 		$error =+ 0.05;
-	if( diferencia( $s_future_db, $s_future ) > 0.5 )
+	if( diferencia( $registro['s_future'], $s_future ) > 0.5 )
 		$error =+ 0.05;
 
-	if( diferencia( $p_past_db, $p_past ) > 0.5 )
+	if( diferencia( $registro['p_past'], $p_past ) > 0.5 )
 		$error =+ 0.05;	
-	if( diferencia( $p_present_db, $p_present ) > 0.5 )
+	if( diferencia( $registro['p_present'], $p_present ) > 0.5 )
 		$error =+ 0.05;
-	if( diferencia( $p_future_db, $p_future ) > 0.5 )
+	if( diferencia( $registro['p_future'], $p_future ) > 0.5 )
 		$error =+ 0.05;
 
-	if( diferencia( $c_memoria_db, $c_memoria ) > 0.5 )
+	if( diferencia( $registro['c_memoria'], $c_memoria ) > 0.5 )
 		$error =+ 0.05;	
-	if( diferencia( $c_logica_db, $c_logica ) > 0.5 )
+	if( diferencia( $registro['c_logica'], $c_logica ) > 0.5 )
 		$error =+ 0.05;
-	if( diferencia( $c_comunicacion_db, $c_comunicacion ) > 0.5 )
+	if( diferencia( $registro['c_comunicacion'], $c_comunicacion ) > 0.5 )
 		$error =+ 0.05;
-	if( diferencia( $c_formafisica_db, $c_formafisica ) > 0.5 )
+	if( diferencia( $registro['c_forma_fisica'], $c_formafisica ) > 0.5 )
 		$error =+ 0.05;
-	if( diferencia( $c_creatividad_db, $c_creatividad ) > 0.5 )
+	if( diferencia( $registro['c_creatividad'], $c_creatividad ) > 0.5 )
 		$error =+ 0.05;
+
+
 		
 }
 ?>
