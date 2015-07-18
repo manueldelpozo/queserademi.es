@@ -9,7 +9,7 @@ if ($_POST['verificacion'] != ""){
 
 	// VALIDAR EMAIL??
 	$email = $_POST['email'];
-	$domail = substr( $email, strpos($email,'@') );
+	$domain = substr( $email, strpos($email,'@') );
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     	// invalid emailaddress
     	$error =+ 0.1;
@@ -99,5 +99,19 @@ if ($_POST['verificacion'] != ""){
 	else
 		$aceptado = true;
 		
+	//GUARDAR COLABORACIONES
+	$colaborador = $_POST['colaborador'];
+	$fecha = 
+
+	$sql_insert = "INSERT INTO `colaboraciones` ( `colaborador` , `email` , `profesion` , `descripcion` , `estudios_asoc` , `p_past` , `p_present` , `p_future` , `s_past` , `s_present` , `s_future` , `c_memoria` , `c_creatividad` , `c_comunicacion` , `c_forma_fisica` , `c_logica` , `fecha` , `aceptado` ) VALUES ( '$colaborador','$email','$profesion','$descripcion','$estudios_asoc','$p_past','$p_present','$p_future','$s_past','$s_present','$s_future','$c_memoria','$c_creatividad','$c_comunicacion','$c_forma_fisica','$c_logica','$fecha','$aceptado');";
+
+	if ( $pdo->query($sql_insert) ) {
+		echo "<h1>Colaboracion recibida correctamente. Muchas gracias por su tiempo.</h1>\n";
+		echo "<h2>Muchas gracias por su tiempo.</h2>";
+		//enviar mail
+	} else { 
+		echo "<h1>Tu colaboracion no se ha recibido correctamente.<h1>\n";
+		echo "<h2>Por favor, vuelve a <a href='colabora.php'>intentarlo</a></h2>";
+	}
 }
 ?>
