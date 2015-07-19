@@ -17,7 +17,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		if ( !checkdnsrr( $domain, 'MX' ) )
 			$error += 0.1;
 	}
-	
+
 	//MEDIR CONCORDANCIA DE CONTENIDOS
 	$profesion = $_POST['profesion'];
 	$estudios = $_POST['estuios_asoc'];
@@ -174,9 +174,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		//solo si tenemos el email
 		if( !empty( $email ) ) {
 
-			if( !empty( $nombre ) )
-				$colaborador = $nombre;
-			else
+			if( empty( $colaborador ) )
 				$colaborador = "colaborador";
 			
 			$mensaje = "Estimado ".$colaborador.",\n\n";

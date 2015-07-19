@@ -133,8 +133,8 @@
             <div class="col-md-6 col-xs-12 text-center">
               <div class="col-md-8 col-md-offset-2 col-xs-12">
                 <div class="form-group">
-                  <label for="nombre">Nombre:</label>
-                  <input name="nombre" type="text" id="nombre" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus/>
+                  <label for="colaborador">Nombre:</label>
+                  <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus/>
                 </div>
                 <div class="form-group">
                   <label for="email">Email:</label>
