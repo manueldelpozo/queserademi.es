@@ -8,13 +8,15 @@ if( !empty( $_POST['verificacion'] ) ){
 
 	// VALIDAR EMAIL??
 	$email = $_POST['email'];
-	$domain = substr( $email, strpos($email,'@') );
-	// invalid emailaddress
-    if ( !filter_var( $email, FILTER_VALIDATE_EMAIL ) )
-    	$error += 0.1;
-	//Additionally you can check whether the domain defines an MX record:
-	if ( !checkdnsrr( $domain, 'MX' ) )
-		$error += 0.1;
+	if( !empty( $email ) ) {
+		$domain = substr( $email, strpos($email,'@') );
+		// invalid emailaddress
+	    if ( !filter_var( $email, FILTER_VALIDATE_EMAIL ) )
+	    	$error += 0.1;
+		//Additionally you can check whether the domain defines an MX record:
+		if ( !checkdnsrr( $domain, 'MX' ) )
+			$error += 0.1;
+	}
 	
 	//MEDIR CONCORDANCIA DE CONTENIDOS
 	$profesion = $_POST['profesion'];
@@ -163,7 +165,8 @@ if( !empty( $_POST['verificacion'] ) ){
 <?php
 	//AGRADECIMIENTOS
 	if ( $pdo->query($sql_insert) ) {
-		echo "<h1>Informacion recibida correctamente!</h1>\n";
+
+		echo "<h1>La informacion ha sido recibida correctamente!</h1>\n";
 		echo "<h2>Muchas gracias por colaborar con queserademi.</h2>\n";
 		echo "<h2>[Recibira un mail en breves instantes]</h2>";
 
@@ -192,8 +195,8 @@ if( !empty( $_POST['verificacion'] ) ){
 		}
 
 	} else { 
-		echo "<h1>Lo sentimos, tu colaboracion no se ha recibido correctamente...<h1>\n";
-		echo "<h2>Por favor, vuelve a <a href='colabora.php'>intentarlo</a></h2>";
+		echo "<h1>Lo sentimos, su colaboracion no se ha recibido correctamente...<h1>\n";
+		echo "<h2>Por favor, vuelva a <a href='colabora.php'>intentarlo</a></h2>";
 	}
 }
 ?>
