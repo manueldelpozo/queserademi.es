@@ -29,13 +29,28 @@ if( $count_col > 0 ) {
 				$profesion = $query_prof->fetch();		
 				// generar una media aritmetica con los nuevos valores NUMERICOS
 				//array_sum($array) / count($array);
-				$s_past = ( $profesion['s_past'] + $colaboracion['s_past'] ) / 2;
-				$s_present = ( $profesion['s_present'] + $colaboracion['s_present'] ) / 2;
-				$s_future = ( $profesion['s_future'] + $colaboracion['s_future'] ) / 2;
 				
-				$p_past = ( $profesion['p_past'] + $colaboracion['p_past'] ) / 2;
 				$p_present = ( $profesion['p_present'] + $colaboracion['p_present'] ) / 2;
-				$p_future = ( $profesion['p_future'] + $colaboracion['p_future'] ) / 2;
+				// correccion de paros
+				if( is_null( $profesion['p_past'] ) || is_null( $colaboracion['p_past'] )  )
+					$p_past = $p_present;
+				else
+					$p_past = ( $profesion['p_past'] + $colaboracion['p_past'] ) / 2;
+				if( is_null( $profesion['p_future'] ) || is_null( $colaboracion['p_future'] )  )
+					$p_future = $p_present;
+				else
+					$p_future = ( $profesion['p_future'] + $colaboracion['p_future'] ) / 2;
+
+				$s_present = ( $profesion['s_present'] + $colaboracion['s_present'] ) / 2;
+				// correccion de salarios
+				if( is_null( $profesion['s_past'] ) || is_null( $colaboracion['s_past'] )  )
+					$s_past = $s_present;
+				else
+					$s_past = ( $profesion['s_past'] + $colaboracion['s_past'] ) / 2;
+				if( is_null( $profesion['s_future'] ) || is_null( $colaboracion['s_future'] )  )
+					$s_future = $s_present;
+				else
+					$s_future = ( $profesion['s_future'] + $colaboracion['s_future'] ) / 2;
 				
 				$c_memoria = ( $profesion['c_memoria'] + $colaboracion['c_memoria'] ) / 2;
 				$c_creatividad = ( $profesion['c_creatividad'] + $colaboracion['c_creatividad'] ) / 2;
