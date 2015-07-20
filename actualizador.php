@@ -18,8 +18,6 @@ if( $count_col > 0 ) {
 	foreach ( $colaboraciones as $colaboracion ) {
 		// Comprobar aceptacion. Si aceptado es true procedemos a la actualizacion
 		if( $colaboracion['aceptado'] ) {
-			// obtenemos el momento de la actualizacion
-			$ultima_actualizacion = date_default_timezone_get();
 			// consultamos si exite ya la profesion
 			$sql_prof="SELECT * FROM profesiones WHERE profesion LIKE ".$colaboracion['profesion'] ;
 			$query_prof = $pdo->prepare( $sql_prof );
@@ -60,10 +58,10 @@ if( $count_col > 0 ) {
 				}
 				// guardar valores antiguos y nuevos en otro registro?
 				// Reescribir los nuevos datos en la tabla profesiones
-				$sql_update = "UPDATE profesiones_sanitarias SET descripcion = ".$descripcion" , estudios_asoc = ".$estudios_asoc." , p_past = ".$p_past." , p_present = ".$p_present." , p_future = ".$p_future." , s_past = ".$s_past." , s_present = ".$s_present." , s_future = ".$s_future." , c_memoria = ".$c_memoria." , c_creatividad = ".$c_creatividad." , c_comunicacion = ".$c_comunicacion." , c_forma_fisica = ".$c_forma_fisica." , c_logica = ".$c_logica.", ultima_actualizacion = ".$ultima_actualizacion" WHERE profesion LIKE".$profesion;
+				$sql_update = "UPDATE profesiones_sanitarias SET descripcion = ".$descripcion" , estudios_asoc = ".$estudios_asoc." , p_past = ".$p_past." , p_present = ".$p_present." , p_future = ".$p_future." , s_past = ".$s_past." , s_present = ".$s_present." , s_future = ".$s_future." , c_memoria = ".$c_memoria." , c_creatividad = ".$c_creatividad." , c_comunicacion = ".$c_comunicacion." , c_forma_fisica = ".$c_forma_fisica." , c_logica = ".$c_logica." WHERE profesion LIKE".$profesion;
 			} else {
 				// si no existe, Insertamos nueva profesion
-				$sql_update = "INSERT INTO profesiones_sanitarias ( profesion, descripcion, estudios_asoc, p_past, p_present, p_future, s_past, s_present, s_future, c_memoria, c_creatividad, c_comunicacion, c_forma_fisica, c_logica, ultima_actualizacion ) VALUES ( ".$colaboracion['profesion'].",".$colaboracion['descripcion'].",".$colaboracion['estudios_asoc'].",".$colaboracion['p_past'].",".$colaboracion['p_present'].",".$colaboracion['p_future'].",".$colaboracion['s_past'].",".$colaboracion['s_present'].",".$colaboracion['s_future'].",".$colaboracion['c_memoria'].",".$colaboracion['c_creatividad'].",".$colaboracion['c_comunicacion'].",".$colaboracion['c_forma_fisica'].",".$colaboracion['c_logica'].",".$ultima_actualizacion.");";
+				$sql_update = "INSERT INTO profesiones_sanitarias ( profesion, descripcion, estudios_asoc, p_past, p_present, p_future, s_past, s_present, s_future, c_memoria, c_creatividad, c_comunicacion, c_forma_fisica, c_logica, ultima_actualizacion ) VALUES ( ".$colaboracion['profesion'].",".$colaboracion['descripcion'].",".$colaboracion['estudios_asoc'].",".$colaboracion['p_past'].",".$colaboracion['p_present'].",".$colaboracion['p_future'].",".$colaboracion['s_past'].",".$colaboracion['s_present'].",".$colaboracion['s_future'].",".$colaboracion['c_memoria'].",".$colaboracion['c_creatividad'].",".$colaboracion['c_comunicacion'].",".$colaboracion['c_forma_fisica'].",".$colaboracion['c_logica'].");";
 			}
 			// ejecutar actualizacion sql
 			$updating = $pdo->prepare( $sql_update );
