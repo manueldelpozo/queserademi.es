@@ -91,9 +91,9 @@ if( !empty( $_POST['verificacion'] ) ){
 
 	//SENTENCIA DE ERROR
 	if( $error > 0.5 )
-		$aceptado = false;
+		$aceptado = 0;
 	else
-		$aceptado = true;
+		$aceptado = 1;
 		
 	//GUARDAR COLABORACIONES
 	$colaborador = $_POST['colaborador'];
