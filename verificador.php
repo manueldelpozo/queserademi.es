@@ -32,26 +32,26 @@ if( !empty( $_POST['verificacion'] ) ){
 		}
 	}
 
-	//CORRECCION DE SALARIOS
+	
 	$s_past = $_POST['s_past'];
 	$s_present = $_POST['s_present'];
 	$s_future = $_POST['s_future'];
-
+	/*//CORRECCION DE SALARIOS -- se da la posibilidad que sean nulos
 	if( empty($s_past) )
 		$s_past == $s_present;
 	if( empty($s_future) )
 		$s_future == $s_present;
-
-	//CORRECCION DE PAROS
+	*/
+	
 	$p_past = $_POST['p_past'];
 	$p_present = $_POST['p_present'];
 	$p_future = $_POST['p_future'];
-
+	/*//CORRECCION DE PAROS
 	if( empty($p_past) )
 		$p_past == $p_present;
 	if( empty($p_future) )
 		$p_future == $p_present;
-
+	*/
 	//CONCORDANCIA DE DATOS FINALES
 	function diferencia( $valor_antiguo, $valor_nuevo ) {
 		return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
@@ -59,23 +59,23 @@ if( !empty( $_POST['verificacion'] ) ){
 	//obtencion de datos guardados
 	require('conexion.php');
   
-    $consulta = "SELECT * FROM profesiones_sanitarias WHERE profesion LIKE '$profesion'";
+    $consulta = "SELECT * FROM profesiones WHERE profesion LIKE '$profesion'";
     $result = $pdo->prepare($consulta);
     $result->execute();
     $registro = $result->fetch();
 
-	if( diferencia( $registro['s_past'], $s_past ) > 0.5 )
+	if( !is_null($s_past) && diferencia( $registro['s_past'], $s_past ) > 0.5 )
 		$error += 0.05;	
 	if( diferencia( $registro['s_present'], $s_present ) > 0.5 )
 		$error += 0.05;
-	if( diferencia( $registro['s_future'], $s_future ) > 0.5 )
+	if( !is_null($s_future) && diferencia( $registro['s_future'], $s_future ) > 0.5 )
 		$error += 0.05;
 
-	if( diferencia( $registro['p_past'], $p_past ) > 0.5 )
+	if( !is_null($p_past) && diferencia( $registro['p_past'], $p_past ) > 0.5 )
 		$error += 0.05;	
 	if( diferencia( $registro['p_present'], $p_present ) > 0.5 )
 		$error += 0.05;
-	if( diferencia( $registro['p_future'], $p_future ) > 0.5 )
+	if( !is_null($p_future) && diferencia( $registro['p_future'], $p_future ) > 0.5 )
 		$error += 0.05;
 
 	if( diferencia( $registro['c_memoria'], $c_memoria ) > 0.5 )
