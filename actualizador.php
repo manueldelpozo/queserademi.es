@@ -1,6 +1,7 @@
 <?php
 
 // Activamos automaticamente cada dia a las 23pm
+// Cronjob con piensasolutions
 
 
 // Consultamos valores de la tabla colaboraciones
@@ -10,9 +11,9 @@ $sql_col="SELECT * FROM colaboraciones WHERE DATE(fecha) = DATE(NOW()) " ;
 $query_col = $pdo->prepare( $sql_col );
 $query_col->execute();
 $count_col = $query_col->rowCount();
-// Si hay valores nuevos los recorremos en filas
-if( $count_col > 0 ) {
 
+if( $count_col > 0 ) {
+	// Si hay valores nuevos los recorremos en filas
 	$colaboraciones = $query_col->fetchAll();
 	foreach ( $colaboraciones as $colaboracion ) {
 		// Comprobar aceptacion. Si aceptado es true procedemos a la actualizacion
@@ -65,8 +66,8 @@ if( $count_col > 0 ) {
 				$sql_update = "INSERT INTO profesiones_sanitarias ( profesion, descripcion, estudios_asoc, p_past, p_present, p_future, s_past, s_present, s_future, c_memoria, c_creatividad, c_comunicacion, c_forma_fisica, c_logica, ultima_actualizacion ) VALUES ( ".$colaboracion['profesion'].",".$colaboracion['descripcion'].",".$colaboracion['estudios_asoc'].",".$colaboracion['p_past'].",".$colaboracion['p_present'].",".$colaboracion['p_future'].",".$colaboracion['s_past'].",".$colaboracion['s_present'].",".$colaboracion['s_future'].",".$colaboracion['c_memoria'].",".$colaboracion['c_creatividad'].",".$colaboracion['c_comunicacion'].",".$colaboracion['c_forma_fisica'].",".$colaboracion['c_logica'].",".$ultima_actualizacion.");";
 			}
 			// ejecutar actualizacion sql
-			$result = $pdo->prepare( $sql_update );
-    		$result->execute();
+			$updating = $pdo->prepare( $sql_update );
+    		$updating->execute();
 		}
 		
 		
