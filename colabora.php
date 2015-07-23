@@ -123,7 +123,7 @@
             </div>
 
             <div class="col-md-4 text-center">
-              <h3><a href="">Por que colaborar?</a></h3>
+              <h3><a href="porquecolaborar.html">Por qué colaborar?</a></h3>
             </div>
 
           </div> 
@@ -268,6 +268,23 @@
 
       </form>
     </div>
+
+    <footer>
+      <div class="row">
+        <div class="col-md-3 col-xs-12 text-center">
+          <a href="colabora.php">Colabora con queserademi</a>
+        </div>
+        <div class="col-md-3 col-xs-12 text-center">
+          <a href="porquecolaborar.html">Por qué colaborar</a>
+        </div>
+        <div class="col-md-3 col-xs-12 text-center">
+          <a href="quienessomos.html">Quiénes somos</a>
+        </div>
+        <div class="col-md-3 col-xs-12 text-center">
+          <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Contacta con nosotros</a>
+        </div>
+      </div>
+    </footer>
   </body>
 
 </html>
