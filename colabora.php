@@ -12,6 +12,7 @@
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
       <link rel="icon" type="image/x-icon" href="images/logo.png">
       <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
       <link rel="stylesheet" href="css/slider.css">
       <link rel="stylesheet" href="css/style.css" />
       <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
@@ -40,7 +41,7 @@
               unidad = " €/mes";
             else if ( $(this).hasClass("paros") )
               unidad = " %";
-            $(idvalue).text( slideEvt.value + unidad );
+            $(idvalue).html( "<span style='color:#342777;'>" + slideEvt.value + unidad + "<span>");
           });
           
           $(".slider").css("width","100%");
@@ -76,8 +77,16 @@
         .verif{ 
           display: none; 
         }
-        .obligatorio {
-          color: red; 
+        .form-group.required label:after {
+          content:"*";
+          color:red;
+        }
+        ul.share-buttons{
+          list-style: none;
+          padding: 0;
+        }
+        ul.share-buttons li{
+          display: inline;
         }
       </style>
   </head>
@@ -133,7 +142,7 @@
           <div class="row body">
 
             <div class="col-md-6 col-xs-12 text-center">
-              <div class="col-md-8 col-md-offset-2 col-xs-12">
+              <div class="col-md-10 col-md-offset-1 col-xs-12">
                 <div class="form-group">
                   <label for="colaborador">Nombre:</label>
                   <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus/>
@@ -142,8 +151,8 @@
                   <label for="email">Email:</label>
                   <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>"/>
                 </div>
-                <div class="form-group dropdown clearfix profesion">
-                  <label for="profesion">Profesión:<span class="obligatorio">*</span></label>
+                <div class="form-group dropdown clearfix profesion required">
+                  <label for="profesion">Profesión:</label>
                     <div class="input-group">
                       <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php //echo @$profesion_uno; ?>" required/>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
@@ -170,28 +179,28 @@
             </div>
 
             <div class="col-md-6 col-xs-12 text-center">
-              <div class="col-md-8 col-md-offset-2 col-xs-12">
+              <div class="col-md-10 col-md-offset-1 col-xs-12">
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
                   <h5><strong>SALARIO (€/mes neto aprox.)</strong></h5>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Salario en 2010: </div>
+                    <label class="titulo2">Salario 2010: </label>
                     <input class="sliders salarios" id="s_past" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
                     <strong id="s_past_value"></strong>                  
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="form-group">
-                    <div class="titulo2">Salario en 2015:<span class="obligatorio">*</span> </div>
+                  <div class="form-group required">
+                    <label class="titulo2">Salario 2015:</label>
                     <input class="sliders salarios" id="s_present" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square" required/>
                     <strong id="s_present_value"></strong>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Salario en 2020: </div>
+                    <label class="titulo2">Salario 2020: </label>
                     <input class="sliders salarios" id="s_future" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
                     <strong id="s_future_value"></strong>
                   </div>
@@ -204,21 +213,21 @@
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Desempleo en 2010: </div>
+                    <label class="titulo2">Desempleo 2010: </label>
                     <input class="sliders paros" id="p_past" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
                     <strong id="p_past_value"></strong>                 
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="form-group">
-                    <div class="titulo2">Desempleo en 2015:<span class="obligatorio">*</span> </div>
+                  <div class="form-group required">
+                    <label class="titulo2">Desempleo 2015:</label> 
                     <input class="sliders paros" id="p_present" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square" required/>
                     <strong id="p_present_value"></strong>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Desempleo en 2020: </div>
+                    <label class="titulo2">Desempleo 2020: </label>
                     <input class="sliders paros" id="p_future" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
                     <strong id="p_future_value"></strong>
                   </div>
@@ -227,45 +236,48 @@
                 <hr>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>CAPACIDADES PROFESIONALES</strong></h5>
+                  <h5><strong>CAPACIDADES PROFESIONALES [1-10]</strong></h5>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="form-group">
-                    <div class="titulo2">Memoria:<span class="obligatorio">*</span> <strong id="c_memoria_value"></strong></div>
+                  <div class="form-group required">
+                    <label class="titulo2">Memoria:</label><strong id="c_memoria_value"></strong>
                     <input class="sliders capacidades" id="c_memoria" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="form-group">
-                    <div class="titulo2">Lógica:<span class="obligatorio">*</span> <strong id="c_logica_value"></strong></div>
+                  <div class="form-group required">
+                    <label class="titulo2">Lógica:</label><strong id="c_logica_value"></strong>
                     <input class="sliders capacidades" id="c_logica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="form-group">
-                    <div class="titulo2">Creatividad:<span class="obligatorio">*</span> <strong id="c_creatividad_value"></strong></div>
+                  <div class="form-group required">
+                    <label class="titulo2">Creatividad:</label><strong id="c_creatividad_value"></strong>
                     <input class="sliders capacidades" id="c_creatividad" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="form-group">
-                    <div class="titulo2">Comunicación:<span class="obligatorio">*</span> <strong id="c_comunicacion_value"></strong></div>
+                  <div class="form-group required">
+                    <label class="titulo2">Comunicación:</label><strong id="c_comunicacion_value"></strong>
                     <input class="sliders capacidades" id="c_comunicacion" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
-                  <div class="form-group">
-                    <div class="titulo2">Forma Física:<span class="obligatorio">*</span> <strong id="c_formafisica_value"></strong></div>
+                  <div class="form-group required">
+                    <label class="titulo2">Forma Física:</label><strong id="c_formafisica_value"></strong>
                     <input class="sliders capacidades" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
-                
-                <label for="verificacion" class="verif">¡Si ves esto, no rellenes el siguiente campo!</label>
-                <input name="verificacion" class="verif" />
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="form-group">
+                    <label for="verificacion" class="verif">¡Si ves esto, no rellenes el siguiente campo!</label>
+                    <input name="verificacion" class="verif" />
+                  </div>
+                </div>
 
                 <div class="col-md-4 col-md-offset-8 col-xs-12">
                   <div class="form-group"> 
-                    <button type="submit" class="btn btn-default colabora">Colabora</button>
+                    <button type="submit" class="btn btn-default colabora">COLABORA!</button>
                   </div>
                 </div>
 
@@ -282,14 +294,22 @@
         <div class="col-md-3 col-xs-12 text-center">
           <a href="colabora.php">Colabora con queserademi</a>
         </div>
-        <div class="col-md-3 col-xs-12 text-center">
+        <div class="col-md-2 col-xs-12 text-center">
           <a href="porquecolaborar.html">Por qué colaborar</a>
         </div>
         <div class="col-md-3 col-xs-12 text-center">
           <a href="quienessomos.html">Quiénes somos</a>
         </div>
-        <div class="col-md-3 col-xs-12 text-center">
+        <div class="col-md-2 col-xs-12 text-center">
           <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Contacta con nosotros</a>
+        </div>
+        <div class="col-md-2 col-xs-12 text-center">
+          <ul class="share-buttons">
+            <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.queserademi.es&t=Comparador%20de%20profesiones" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+            <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.es&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+            <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+          </ul>
         </div>
       </div>
     </footer>
