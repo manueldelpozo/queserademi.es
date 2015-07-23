@@ -130,7 +130,7 @@ html,body {
 	-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
 	box-shadow: 0 5px 10px rgba(0,0,0,.2);
 	position: absolute;  
-	z-index: 2;
+	z-index: 99;
 }
 .header {
 	height: 20%;
@@ -168,5 +168,7 @@ footer {
 }
 footer div{
 	margin-top: 5px;
+	font-weight: bolder;
+	color: #555;
 	
 }

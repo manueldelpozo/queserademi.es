@@ -22,7 +22,7 @@
       <script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
       <script type="text/javascript" src="js/bootstrap.min.js" ></script>
       <script type="text/javascript" src="js/bootstrap-slider.js" ></script>
-      <script type="text/javascript" src="js/scripts.js"></script>   
+      <script type="text/javascript" src="js/scripts.js" defer></script>   
       <script type="text/javascript">
         $(document).ready(function() {
           
@@ -76,6 +76,9 @@
         .verif{ 
           display: none; 
         }
+        .obligatorio {
+          color: red; 
+        }
       </style>
   </head>
   <body>
@@ -111,13 +114,12 @@
 
           <div class="row header">
 
-            <div class="col-md-4 col-xs-12">  
-              <h3>Colabora con el proyecto queserademi, son solo 5 minutos...</h3>  
+            <div class="col-md-3 col-md-offset-1 col-xs-12">  
+              <h3>Colabora con queserademi, <br><strong>son solo 2 minutos...</strong></h3>  
             </div>
 
             <div class="col-md-4 hidden-xs text-center">
               <a href="index.html">
-                <h6 class="sublead">Tu comparador de profesiones</h6>
                 <img class="img-responsive" src="images/logo.svg" height="60px"> 
               </a>
             </div>
@@ -141,11 +143,11 @@
                   <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>"/>
                 </div>
                 <div class="form-group dropdown clearfix profesion">
-                  <label for="profesion">Profesion:</label>
+                  <label for="profesion">Profesión:<span class="obligatorio">*</span></label>
                     <div class="input-group">
                       <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php //echo @$profesion_uno; ?>" required/>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
-                         <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
+                         <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
                     </div>
                     <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
@@ -155,14 +157,14 @@
                     <div class="input-group">
                       <input name="estudios_asoc" type="text" id="estudios_asoc" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>"/>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
-                         <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_estudios" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
+                         <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_estudios" style="background-color: rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
                     </div>
                     <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
                 </div>
                 <div class="form-group">
-                  <label for="descripcion">Descripcion:</label>
-                  <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="Escribe una corta descripcion de la profesion"></textarea>
+                  <label for="descripcion">Descripción:</label>
+                  <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="Escribe una breve descripción de la profesion"></textarea>
                 </div>
               </div>
             </div>
@@ -171,88 +173,94 @@
               <div class="col-md-8 col-md-offset-2 col-xs-12">
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h4>SALARIO APROXIMADO</h4>
+                  <h5><strong>SALARIO (€/mes neto aprox.)</strong></h5>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Salario en 2010: <strong id="s_past_value"></strong></div>
+                    <div class="titulo2">Salario en 2010: </div>
                     <input class="sliders salarios" id="s_past" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <strong id="s_past_value"></strong>                  
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Salario en 2015: <strong id="s_present_value"></strong></div>
+                    <div class="titulo2">Salario en 2015:<span class="obligatorio">*</span> </div>
                     <input class="sliders salarios" id="s_present" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square" required/>
+                    <strong id="s_present_value"></strong>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Salario en 2020: <strong id="s_future_value"></strong></div>
+                    <div class="titulo2">Salario en 2020: </div>
                     <input class="sliders salarios" id="s_future" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <strong id="s_future_value"></strong>
                   </div>
                 </div>
 
                 <hr>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h4>DESEMPLEO (%)</h4>
+                  <h5><strong>DESEMPLEO (% aprox.)</strong></h5>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Desempleo en 2010: <strong id="p_past_value"></strong></div>
+                    <div class="titulo2">Desempleo en 2010: </div>
                     <input class="sliders paros" id="p_past" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                    <strong id="p_past_value"></strong>                 
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Desempleo en 2015: <strong id="p_present_value"></strong></div>
+                    <div class="titulo2">Desempleo en 2015:<span class="obligatorio">*</span> </div>
                     <input class="sliders paros" id="p_present" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square" required/>
+                    <strong id="p_present_value"></strong>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Desempleo en 2020: <strong id="p_future_value"></strong></div>
+                    <div class="titulo2">Desempleo en 2020: </div>
                     <input class="sliders paros" id="p_future" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                    <strong id="p_future_value"></strong>
                   </div>
                 </div>
 
                 <hr>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h4>CAPACIDADES PROFESIONALES</h4>
+                  <h5><strong>CAPACIDADES PROFESIONALES</strong></h5>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Memoria: <strong id="c_memoria_value"></strong></div>
+                    <div class="titulo2">Memoria:<span class="obligatorio">*</span> <strong id="c_memoria_value"></strong></div>
                     <input class="sliders capacidades" id="c_memoria" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Logica: <strong id="c_logica_value"></strong></div>
+                    <div class="titulo2">Lógica:<span class="obligatorio">*</span> <strong id="c_logica_value"></strong></div>
                     <input class="sliders capacidades" id="c_logica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Creatividad: <strong id="c_creatividad_value"></strong></div>
+                    <div class="titulo2">Creatividad:<span class="obligatorio">*</span> <strong id="c_creatividad_value"></strong></div>
                     <input class="sliders capacidades" id="c_creatividad" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Comunicacion: <strong id="c_comunicacion_value"></strong></div>
+                    <div class="titulo2">Comunicación:<span class="obligatorio">*</span> <strong id="c_comunicacion_value"></strong></div>
                     <input class="sliders capacidades" id="c_comunicacion" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
-                    <div class="titulo2">Forma Fisica: <strong id="c_formafisica_value"></strong></div>
+                    <div class="titulo2">Forma Física:<span class="obligatorio">*</span> <strong id="c_formafisica_value"></strong></div>
                     <input class="sliders capacidades" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 
-                <label for="verificacion" class="verif">¡Si ves esto, no llenes el siguiente campo!</label>
+                <label for="verificacion" class="verif">¡Si ves esto, no rellenes el siguiente campo!</label>
                 <input name="verificacion" class="verif" />
 
                 <div class="col-md-4 col-md-offset-8 col-xs-12">

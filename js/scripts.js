@@ -147,20 +147,20 @@ function ajaxAutocomplete( keyword, $input ) {
 
 // Cuando escribimos en el input
 $("input").keydown( function(e) {
-		if(e.which == 13) { // ENTER
-			var $lista = $(this).parent().next();
-			var valor1 = $lista.find('li:eq(0)').text();
-			$(this).val( valor1 );
-            $("#formulario").submit();
-		} else if( e.which == 40 ) { // CURSOR ABAJO
-			navegarInit( $(this) );
-		} else { // TEXTO
-			var keyword = $(this).val()
-			if( keyword.length > 0 )
-				ajaxAutocomplete( keyword, $(this) );
-			else
-				ocultarLista( $(this) );
-		}   
+	if(e.which == 13) { // ENTER
+		var $lista = $(this).parent().next();
+		var valor1 = $lista.find('li:eq(0)').text();
+		$(this).val( valor1 );
+        $("#formulario").submit();
+	} else if( e.which == 40 ) { // CURSOR ABAJO
+		navegarInit( $(this) );
+	} else { // TEXTO
+		var keyword = $(this).val()
+		if( keyword.length > 0 )
+			ajaxAutocomplete( keyword, $(this) );
+		else
+			ocultarLista( $(this) );
+	}   
 });
 
 // cuando clikeamos
