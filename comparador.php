@@ -79,7 +79,7 @@ try {
                   <div class="input-group">
                     <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>           
                     <div class="input-group-btn" style="height:60px;top:-7px;">
-                       <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
+                       <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color:rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                     </div>
                   </div>
                   <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
@@ -98,7 +98,7 @@ try {
                   <div class="input-group">
                     <input name="profesion_dos" type="text" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_dos; ?>" required>
                     <div class="input-group-btn" style="height:60px;top:-7px;">
-                     <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_dos" style="background-color: transparent;border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
+                     <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_dos" style="background-color:rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                     </div>
                   </div>
                   <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id_dos"></ul>  
@@ -124,6 +124,24 @@ try {
 
       </form>
     </div>
+
+    <footer>
+      <div class="row">
+        <div class="col-md-3 col-xs-12 text-center">
+          <a href="colabora.php">Colabora con queserademi</a>
+        </div>
+        <div class="col-md-3 col-xs-12 text-center">
+          <a href="porquecolaborar.html">Por qué colaborar</a>
+        </div>
+        <div class="col-md-3 col-xs-12 text-center">
+          <a href="quienessomos.html">Quiénes somos</a>
+        </div>
+        <div class="col-md-3 col-xs-12 text-center">
+          <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Contacta con nosotros</a>
+        </div>
+      </div>
+    </footer>
+    
   </body>
 
   <script type="text/javascript" async>

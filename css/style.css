@@ -31,6 +31,7 @@ html,body {
 	background-size: cover;
 	color:#555;
 	overflow:hidden;
+
 }
 
 .container-full a {
@@ -158,7 +159,7 @@ html,body {
 } 
 
 footer {
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	width: 100%;
 	/* Set the fixed height of the footer here */
