@@ -32,6 +32,7 @@ try {
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
       <link rel="icon" type="image/x-icon" href="images/logo.png">
       <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
       <link rel="stylesheet" href="css/style.css" />
       <link rel="stylesheet" href="css/style-comparador.css" />
       <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
@@ -149,7 +150,7 @@ try {
         </div>
       </div>
     </footer>
-    
+
   </body>
 
   <script type="text/javascript" async>

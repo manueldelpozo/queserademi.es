@@ -81,13 +81,7 @@
           content:"*";
           color:red;
         }
-        ul.share-buttons{
-          list-style: none;
-          padding: 0;
-        }
-        ul.share-buttons li{
-          display: inline;
-        }
+        
       </style>
   </head>
   <body>
