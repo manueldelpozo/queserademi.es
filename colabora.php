@@ -49,6 +49,12 @@
         });
       </script>
       <style type="text/css" media="screen">
+        .header {
+          margin-bottom: 30px;
+        }
+        .control-label {
+          padding-right: 0;
+        }
         .slider-selection {
           background: #BABABA;
         }
@@ -113,7 +119,7 @@
     
     
     <div class="container-full">
-      <form id="formulario" role="form" action="verificador.php" method="post" onsubmit="return validacion()">
+      <form id="formulario" class="form-horizontal" role="form" action="verificador.php" method="post" onsubmit="return validacion()">
 
           <div class="row header">
 
@@ -135,18 +141,23 @@
 
           <div class="row body">
 
-            <div class="col-md-6 col-xs-12 text-center">
+            <div class="col-md-6 col-xs-12">
               <div class="col-md-10 col-md-offset-1 col-xs-12">
                 <div class="form-group">
-                  <label for="colaborador">Nombre:</label>
-                  <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus/>
+                  <label for="colaborador" class="col-sm-2 control-label">Nombre:</label>
+                  <div class="col-sm-10">                 
+                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus/>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="email">Email:</label>
-                  <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>"/>
+                  <label for="email" class="col-sm-2 control-label">Email:</label>
+                  <div class="col-sm-10">
+                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>"/>
+                  </div>
                 </div>
                 <div class="form-group dropdown clearfix profesion required">
-                  <label for="profesion">Profesión:</label>
+                  <label for="profesion" class="col-sm-2 control-label">Profesión:</label>
+                  <div class="col-sm-10">  
                     <div class="input-group">
                       <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php //echo @$profesion_uno; ?>" required/>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
@@ -154,9 +165,11 @@
                       </div>
                     </div>
                     <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
+                  </div>
                 </div>
                 <div class="form-group dropdown clearfix estudios">
-                  <label for="estudios_asoc">Estudios asociados:</label>
+                  <label for="estudios_asoc" class="col-sm-2 control-label">Estudios asociados:</label>
+                  <div class="col-sm-10">
                     <div class="input-group">
                       <input name="estudios_asoc" type="text" id="estudios_asoc" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>"/>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
@@ -164,10 +177,13 @@
                       </div>
                     </div>
                     <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="descripcion">Descripción:</label>
-                  <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="Escribe una breve descripción de la profesion"></textarea>
+                  <label for="descripcion" class="col-sm-2 control-label">Descripción:</label>
+                  <div class="col-sm-10">
+                    <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="Escribe una breve descripción de la profesion"></textarea>
+                  </div>
                 </div>
               </div>
             </div>
@@ -181,21 +197,21 @@
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <label class="titulo2">Salario 2010: </label>
-                    <input class="sliders salarios" id="s_past" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <input class="sliders salarios" id="s_past" type="text" data-slider-min="700" data-slider-max="10000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
                     <strong id="s_past_value"></strong>                  
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label class="titulo2">Salario 2015:</label>
-                    <input class="sliders salarios" id="s_present" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square" required/>
+                    <input class="sliders salarios" id="s_present" type="text" data-slider-min="700" data-slider-max="10000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square" required/>
                     <strong id="s_present_value"></strong>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <label class="titulo2">Salario 2020: </label>
-                    <input class="sliders salarios" id="s_future" type="text" data-slider-min="700" data-slider-max="15000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <input class="sliders salarios" id="s_future" type="text" data-slider-min="700" data-slider-max="10000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
                     <strong id="s_future_value"></strong>
                   </div>
                 </div>
