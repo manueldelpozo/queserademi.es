@@ -45,6 +45,13 @@ html,body {
 	font-family: 'Antic Slab', arial;
 	color:#c00;
 }
+.image-container {
+	    overflow: hidden;
+    height: auto;
+    width: 22%;
+    position: relative;
+    top: -10px;
+}
 
 @media screen and (min-width: 768px) {
 	.lead {

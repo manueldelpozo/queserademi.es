@@ -301,13 +301,18 @@
 
     <footer>
       <div class="row">
-        <div class="col-md-3 col-xs-12 text-center">
-          <a href="colabora.php">Colabora con queserademi</a>
+        <div class="col-md-2 col-xs-12 text-center">
+          <a href="colabora.php">
+            <img class="image-container" src="images/logo.svg">
+          </a>
+        </div>
+        <div class="col-md-2 col-xs-12 text-center">
+          <a href="colabora.php">Colabora con qsdm</a>
         </div>
         <div class="col-md-2 col-xs-12 text-center">
           <a href="porquecolaborar.html">Por qué colaborar</a>
         </div>
-        <div class="col-md-3 col-xs-12 text-center">
+        <div class="col-md-2 col-xs-12 text-center">
           <a href="quienessomos.html">Quiénes somos</a>
         </div>
         <div class="col-md-2 col-xs-12 text-center">
