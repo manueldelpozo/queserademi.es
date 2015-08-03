@@ -4,11 +4,11 @@ if( !empty( $_POST['verificacion'] ) ){
     // Si se ha insertado informacion en el input oculto 'verificacion'.../Es un SPAMbot
     exit();
 } else {
-	$error;
+	$error = 0;
 
 	// VALIDAR EMAIL??
-	$email = $_POST['email'];
-	if( !empty( $email ) ) {
+	if( isset( $_POST['email'] ) ) {
+		$email = $_POST['email'];
 		$domain = substr( $email, strpos($email,'@') );
 		// invalid emailaddress
 	    if ( !filter_var( $email, FILTER_VALIDATE_EMAIL ) )
@@ -16,12 +16,17 @@ if( !empty( $_POST['verificacion'] ) ){
 		//Additionally you can check whether the domain defines an MX record:
 		if ( !checkdnsrr( $domain, 'MX' ) )
 			$error += 0.1;
+	} else {
+		$email = null;
 	}
 
 	//MEDIR CONCORDANCIA DE CONTENIDOS
 	$profesion = $_POST['profesion'];
-	if ( isset( $_POST['estuios_asoc'] ) && isset( $_POST['descripcion'] ) ) {
+	if ( isset( $_POST['estuios_asoc'] ) )
 		$estudios = $_POST['estuios_asoc'];
+	else
+		$estudios = null;
+	if ( isset( $_POST['descripcion'] ) ) {	
 		$descripcion = $_POST['descripcion'];
 		if( !empty($descripcion) ) {
 			if( !empty($estudios) ) {
@@ -32,31 +37,51 @@ if( !empty( $_POST['verificacion'] ) ){
 					$error += 0.05;
 			}
 		}
+	} else {
+		$descripcion = null;
 	}
 	
+	//OBTENER DATOS NUMERICOS
+	//CORRECCION DE SALARIOS -- se da la posibilidad que sean nulos
 	$s_present = $_POST['s_present'];
-	if ( isset( $_POST['s_past'] ) && isset( $_POST['s_future'] ) ) {
+	if ( isset( $_POST['s_past'] ) )
 		$s_past = $_POST['s_past'];
+	else
+		$s_past = null;
+	if ( isset( $_POST['s_future'] ) )
 		$s_future = $_POST['s_future'];
-	}
-	/*//CORRECCION DE SALARIOS -- se da la posibilidad que sean nulos
+	else
+		$s_future = null;
+	/*
 	if( empty($s_past) )
 		$s_past == $s_present;
 	if( empty($s_future) )
 		$s_future == $s_present;
 	*/
-	
+	//CORRECCION DE PAROS
 	$p_present = $_POST['p_present'];
-	if ( isset( $_POST['p_past'] ) && isset( $_POST['p_future'] ) ) {
+	if ( isset( $_POST['p_past'] ) )
 		$p_past = $_POST['p_past'];
+	else
+		$p_past = null;
+	if ( isset( $_POST['p_future'] ) )
 		$p_future = $_POST['p_future'];
-	}
-	/*//CORRECCION DE PAROS
+	else
+		$p_future = null;
+	/*
 	if( empty($p_past) )
 		$p_past == $p_present;
 	if( empty($p_future) )
 		$p_future == $p_present;
 	*/
+
+	//Colectar datos de capacidades
+	$c_memoria = $_POST['c_memoria'];
+	$c_logica = $_POST['c_logica'];
+	$c_comunicacion = $_POST['c_comunicacion'];
+	$c_forma_fisica = $_POST['c_forma_fisica'];
+	$c_creatividad = $_POST['c_creatividad'];
+
 	//CONCORDANCIA DE DATOS FINALES
 	function diferencia( $valor_antiguo, $valor_nuevo ) {
 		return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
@@ -101,7 +126,10 @@ if( !empty( $_POST['verificacion'] ) ){
 		$aceptado = 1;
 		
 	//GUARDAR COLABORACIONES
-	$colaborador = $_POST['colaborador'];
+	if( isset($_POST['colaborador']) )
+		$colaborador = $_POST['colaborador'];
+	else
+		$colaborador = null;
 	//$fecha = date_default_timezone_get(); //Se establece en mySQL
 	//$fecha = date('m/d/Y h:i:s a', time());
 
@@ -173,13 +201,14 @@ if( !empty( $_POST['verificacion'] ) ){
 
 		echo "<h1>La informacion ha sido recibida correctamente!</h1>\n";
 		echo "<h2>Muchas gracias por colaborar con queserademi.</h2>\n";
-		echo "<h2>[Recibira un mail en breves instantes]</h2>";
+		
 
 		//enviar mail de agradecimiento... y concurso?
 		//solo si tenemos el email
-		if( !empty( $email ) ) {
+		if( !is_null( $email ) ) {
+			echo "<h2>[Recibira un mail en breves instantes]</h2>";
 
-			if( empty( $colaborador ) )
+			if( is_null( $colaborador ) )
 				$colaborador = "colaborador";
 			
 			$mensaje = "Estimado ".$colaborador.",\n\n";
