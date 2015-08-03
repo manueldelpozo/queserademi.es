@@ -87,6 +87,9 @@
           content:"*";
           color:red;
         }
+        .scrollable-menu {
+          position: relative;
+        }
         
       </style>
   </head>

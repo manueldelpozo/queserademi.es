@@ -20,22 +20,25 @@ if( !empty( $_POST['verificacion'] ) ){
 
 	//MEDIR CONCORDANCIA DE CONTENIDOS
 	$profesion = $_POST['profesion'];
-	$estudios = $_POST['estuios_asoc'];
-	$descripcion = $_POST['descripcion'];
-	if( !empty($descripcion) ) {
-		if( !empty($estudios) ) {
-			if( !preg_match("/($profesion|$estudios)/i", $descripcion) )
-				$error += 0.1; 
-		} else {
-			if( !preg_match("/$profesion/i", $descripcion) )
-				$error += 0.05;
+	if ( isset( $_POST['estuios_asoc'] ) && isset( $_POST['descripcion'] ) ) {
+		$estudios = $_POST['estuios_asoc'];
+		$descripcion = $_POST['descripcion'];
+		if( !empty($descripcion) ) {
+			if( !empty($estudios) ) {
+				if( !preg_match("/($profesion|$estudios)/i", $descripcion) )
+					$error += 0.1; 
+			} else {
+				if( !preg_match("/$profesion/i", $descripcion) )
+					$error += 0.05;
+			}
 		}
 	}
-
 	
-	$s_past = $_POST['s_past'];
 	$s_present = $_POST['s_present'];
-	$s_future = $_POST['s_future'];
+	if ( isset( $_POST['s_past'] ) && isset( $_POST['s_future'] ) ) {
+		$s_past = $_POST['s_past'];
+		$s_future = $_POST['s_future'];
+	}
 	/*//CORRECCION DE SALARIOS -- se da la posibilidad que sean nulos
 	if( empty($s_past) )
 		$s_past == $s_present;
@@ -43,9 +46,11 @@ if( !empty( $_POST['verificacion'] ) ){
 		$s_future == $s_present;
 	*/
 	
-	$p_past = $_POST['p_past'];
 	$p_present = $_POST['p_present'];
-	$p_future = $_POST['p_future'];
+	if ( isset( $_POST['p_past'] ) && isset( $_POST['p_future'] ) ) {
+		$p_past = $_POST['p_past'];
+		$p_future = $_POST['p_future'];
+	}
 	/*//CORRECCION DE PAROS
 	if( empty($p_past) )
 		$p_past == $p_present;
@@ -183,7 +188,7 @@ if( !empty( $_POST['verificacion'] ) ){
 			$mensaje .= "Cordialmente,"."\n\n";
 			$mensaje .= "El equipo 'queserademi'."."\n\n";
 			$mensaje .= "QUESERADEMI"."\n";
-			$mensaje .= "http://www.queserademi.es/"
+			$mensaje .= "http://www.queserademi.es/";
 			
 			$headers = "From: info@queserademi.es" . "\r\n" . "CC: ".$email;
 			$asunto = 'Gracias por colaborar con queserademi';
