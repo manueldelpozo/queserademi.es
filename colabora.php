@@ -119,7 +119,7 @@
     
     
     <div class="container-full">
-      <form id="formulario" class="form-horizontal" role="form" action="verificador.php" method="post" onsubmit="return validacion()">
+      <form id="formulario-colabora" class="form-horizontal" role="form" action="verificador.php" method="post" onsubmit="return validacion()">
 
           <div class="row header">
 
