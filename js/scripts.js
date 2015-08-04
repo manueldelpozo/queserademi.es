@@ -139,7 +139,7 @@ $(document).click(function(){
 ////*************** AUTOCOMPLETE
 
 function ajaxAutocomplete( keyword, $input ) {
-	var estudios_asoc;
+	var estudios_asoc = 0;
 	if( $input.attr("name") == 'estudios_asoc' )
 		estudios_asoc = 1;	
 	$.ajax({

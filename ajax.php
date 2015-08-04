@@ -2,30 +2,31 @@
 
 require('conexion.php');
 
-if( isset( $_GET['keyword'] ) ) {
+if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) ) {
 
 	$keyword = $_GET['keyword'];
+	$consultar_estudios = $_GET['estudios_asoc'];
 	$keyword = addslashes( $keyword );
 	$keyword = trim( $keyword );
 	$keyword = preg_replace( '/--+/', '-', $keyword );
 
+	$item1 = 'profesion';
+	$item2 = 'estudios_asoc';
+
+	if( $consultar_estudios == 1 ) {
+		$item1 = 'estudios_asoc';
+		$item2 = 'profesion';
+	}
+
 	if( !$keyword == "" ) { 
-
-		$item1 = 'profesion';
-		$item2 = 'estudios_asoc';
-
-		if( isset( $_GET['estudios_asoc'] ) ) {
-			$item1 = 'estudios_asoc';
-			$item2 = 'profesion';
-		}
 
 		$sql="SELECT *
 		FROM profesiones_sanitarias
-		WHERE '$item1' LIKE '$keyword%'
+		WHERE ".$item1." LIKE '$keyword%'
 		UNION distinct SELECT *
 		FROM profesiones_sanitarias
-		WHERE '$item1' LIKE '%$keyword%'
-		OR '$item2' LIKE '%$keyword%'";
+		WHERE ".$item1." LIKE '%$keyword%'
+		OR ".$item2." LIKE '%$keyword%'";
 
 		if( $keyword == '%' ) {
 			$sql.= 'ORDER BY '.$item1.' ASC';	

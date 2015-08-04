@@ -305,7 +305,7 @@
     <footer>
       <div class="row">
         <div class="col-md-2 col-xs-12 text-center">
-          <a href="colabora.php">
+          <a href="index.html">
             <img class="image-container" src="images/logo.svg">
           </a>
         </div>
