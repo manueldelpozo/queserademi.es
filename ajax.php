@@ -21,7 +21,7 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) ) {
 	if( !$keyword == "" ) { 
 
 		$sql="SELECT *
-		FROM profesiones_sanitarias
+		FROM profesiones
 		WHERE ".$item1." LIKE '$keyword%'
 		UNION distinct SELECT *
 		FROM profesiones_sanitarias

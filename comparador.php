@@ -4,7 +4,7 @@ try {
   
   if( isset( $_GET['profesion_uno']  )  ) {
     $profesion_uno = $_GET['profesion_uno'];
-    $consulta = "SELECT * FROM profesiones_sanitarias WHERE profesion LIKE '$profesion_uno'";
+    $consulta = "SELECT * FROM profesiones WHERE profesion LIKE '$profesion_uno'";
     $result = $pdo->prepare($consulta);
     $result->execute();
     $registro = $result->fetch();
@@ -12,7 +12,7 @@ try {
   }  
   if( isset( $_GET['profesion_dos'] ) ) { 
     $profesion_dos = $_GET['profesion_dos'];
-    $consulta_dos = "SELECT * FROM profesiones_sanitarias WHERE profesion LIKE '$profesion_dos'";
+    $consulta_dos = "SELECT * FROM profesiones WHERE profesion LIKE '$profesion_dos'";
     $result_dos = $pdo->prepare($consulta_dos);
     $result_dos->execute();
     $count_dos = $result_dos->rowCount();
