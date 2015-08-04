@@ -65,3 +65,20 @@ div.body > div {
   background-size:cover;
   height: 28%;
 }
+.capa-aviso {
+  z-index: 99; 
+  position: relative; 
+  background-color: rgba(200, 200, 200, 0.7);
+}
+.btn-aviso {
+  width: 100%;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  background-color: rgba(255, 255, 255, 0.6);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  border-color: black;
+}
