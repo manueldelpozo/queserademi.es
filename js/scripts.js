@@ -64,7 +64,7 @@ function avisoValidacion() {
 
 function validacion() {
 	var $inputs = $("input");
-	if( $inputs.eq(0).val() == "Profesion no encontrada" || $inputs.eq(0).val() == "Profesion vacia" || $inputs.eq(1).val() == "Profesion no encontrada" || $inputs.eq(1).val() == "Profesion vacia" ) { 
+	if( $inputs.eq(0).val() == "Elemento no encontrado" || $inputs.eq(0).val() == "Campo sin rellenar" || $inputs.eq(1).val() == "Elemento no encontrado" || $inputs.eq(1).val() == "Campo sin rellenar" ) { 
 		avisoValidacion();
 		return false;	
 	} else {
@@ -138,11 +138,14 @@ $(document).click(function(){
 
 ////*************** AUTOCOMPLETE
 
-function ajaxAutocomplete( keyword, $input ) {	
+function ajaxAutocomplete( keyword, $input ) {
+	var estudios_asoc;
+	if( $input.attr("name") == 'estudios_asoc' )
+		estudios_asoc = 1;	
 	$.ajax({
 		url: 'ajax.php',
 		type: 'GET',
-		data: { keyword: keyword },	
+		data: { keyword: keyword, estudios_asoc: estudios_asoc },	
 		success: function( msg ) { desplegarLista( $input, msg ) } 
 	});			
 }

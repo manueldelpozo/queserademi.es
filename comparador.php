@@ -97,7 +97,7 @@ try {
             <div class="col-md-4 text-center">
               <div class="dropdown clearfix">
                   <div class="input-group">
-                    <input name="profesion_dos" type="text" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_dos; ?>" required>
+                    <input name="profesion_dos" type="text" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_dos; ?>" required autofocus>
                     <div class="input-group-btn" style="height:60px;top:-7px;">
                      <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_dos" style="background-color:rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                     </div>
