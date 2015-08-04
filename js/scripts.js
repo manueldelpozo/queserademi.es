@@ -103,6 +103,7 @@ function navegar($sel){
 		if(e.which == 13 || e.which == 39) { // enter or right
 			$sel.removeClass('sel').addClass( "search-option" );
 			$input.val( $sel.text() );
+			ocultarLista( $input );
 			$("#formulario").submit();
 		}  
 	});
@@ -126,6 +127,7 @@ $("ul").mouseover(function(){
 	$("li").click( function() {
 		var $input = $(this).parent().prev().find("input");
 		$input.val( $(this).find("a").text() );
+		ocultarLista( $input );
 		$("#formulario").submit(); 
 	});
 });
@@ -151,6 +153,7 @@ $("input").keydown( function(e) {
 		var $lista = $(this).parent().next();
 		var valor1 = $lista.find('li:eq(0)').text();
 		$(this).val( valor1 );
+		ocultarLista( $(this) );
         $("#formulario").submit();
 	} else if( e.which == 40 ) { // CURSOR ABAJO
 		navegarInit( $(this) );
