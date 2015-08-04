@@ -1,6 +1,6 @@
 <?php
 
-if( !empty( $_POST['verificacion'] ) ){
+if( isset( $_POST['verificacion'] ) ){
     // Si se ha insertado informacion en el input oculto 'verificacion'.../Es un SPAMbot
     exit();
 } else {
@@ -230,11 +230,13 @@ if( !empty( $_POST['verificacion'] ) ){
 		echo "<h1>Lo sentimos, su colaboracion no se ha recibido correctamente...<h1>\n";
 		echo "<h2>Por favor, vuelva a <a href='colabora.php'>intentarlo</a></h2>";
 	}
-}
 ?>
 				</div>
 			</div>
 			
 		</div>
 	</body>
-</html>                         
+</html>
+<?php                         
+}
+?>
