@@ -126,7 +126,7 @@
 
           <div class="row header">
 
-            <div class="col-md-3 col-md-offset-1 col-xs-12">  
+            <div class="col-md-3 col-md-offset-1 col-xs-11 col-xs-offset-1">  
               <h3>Colabora con queserademi, <br><strong>son solo 2 minutos...</strong></h3>  
             </div>
 
@@ -136,7 +136,7 @@
               </a>
             </div>
 
-            <div class="col-md-3" align="right">
+            <div class="col-md-3 hidden-xs" align="right">
               <h3><a href="porquecolaborar.html">Por qué colaborar?</a></h3>
             </div>
 
