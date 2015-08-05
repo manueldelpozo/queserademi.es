@@ -199,6 +199,17 @@ ul.share-buttons li{
 	padding: 15px;
 	background-color: rgba(255, 255, 255, 0.7);
 	box-shadow: 5px 5px 5px #DDD;
-	
+}
+.sprite {
+	background:url(../images/sprite.png) no-repeat;
+	height: 250px;
+	width: 100px;
+	float: left;
+}
+#sprite-alfonso {
+	background-position: -40px 0px;
+}
+#sprite-manu {
+	background-position: -40px -353px;
 }
 
