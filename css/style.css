@@ -35,7 +35,6 @@ html,body {
 }
 
 .container-full a {
-	color:#efefef;
 	text-decoration:none;
 }
 
@@ -202,6 +201,4 @@ ul.share-buttons li{
 	box-shadow: 5px 5px 5px #DDD;
 	text-transform: uppercase;
 }
-.caja a {
-    color: #337ab7;
-}
+

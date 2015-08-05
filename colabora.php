@@ -136,7 +136,7 @@
               </a>
             </div>
 
-            <div class="col-md-4 text-center">
+            <div class="col-md-3" align="right">
               <h3><a href="porquecolaborar.html">Por qué colaborar?</a></h3>
             </div>
 
