@@ -47,7 +47,7 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) ) {
 				//}
 				// Imprimir solo si tiene contenido
 				if( !empty($item_name) )
-					echo '<li role="presentation"><a class="search-option" role="menuitem" href="#">'.$item_name.'</a></li>';
+					echo '<li role="presentation"><a class="search-option tooltips" role="menuitem" href="#">'.$item_name.'<span>'.$item_name.'</span></a></li>';
 			}			
 		} else {
 			// Si el item no existe en la BBDD
