@@ -24,6 +24,7 @@ div.body > div {
   height: auto;
   margin: 0 auto;
   margin-bottom: 10px;
+  position: relative;
 } 
 .nombre {
   font-weight: bolder;
@@ -66,12 +67,18 @@ div.body > div {
   height: 28%;
 }
 .capa-aviso {
-  z-index: 99; 
-  position: relative; 
+  width: 100%;
+  height: 100%;
+  z-index: 10; 
+  position: absolute; 
+  top: 0;
+  padding-top: 70px;
   background-color: rgba(200, 200, 200, 0.7);
+  font-size: 14px;
 }
 .btn-aviso {
   width: 100%;
+  font-size: 1.2em;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -79,5 +86,7 @@ div.body > div {
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
   /* For IE 8*/
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-  border-color: black;
+  background-color: rgba(200, 200, 200, 0.7);
+  font-weight: bold;
+  margin-bottom: 20px;
 }

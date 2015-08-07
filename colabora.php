@@ -1,3 +1,8 @@
+<?php 
+
+if( isset( $_GET['profesion']  )  )
+  $profesion = $_GET['profesion'];
+?>
 
 <!DOCTYPE html>
 <html>
@@ -149,7 +154,7 @@
                 <div class="form-group">
                   <label for="colaborador" class="col-sm-2 control-label">Nombre:</label>
                   <div class="col-sm-10">                 
-                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion_uno; ?>" autofocus/>
+                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion; ?>" autofocus/>
                   </div>
                 </div>
                 <div class="form-group">
@@ -162,7 +167,7 @@
                   <label for="profesion" class="col-sm-2 control-label">Profesión:</label>
                   <div class="col-sm-10">  
                     <div class="input-group">
-                      <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php //echo @$profesion_uno; ?>" required/>           
+                      <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php echo @$profesion; ?>" required/>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>

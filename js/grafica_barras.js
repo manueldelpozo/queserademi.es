@@ -38,18 +38,18 @@ $('#container2').highcharts({
         <?php $btn_colabora_s_1=0;$btn_colabora_s_2=0;?>
         name: '<?php echo mb_strtoupper($registro["profesion"],"UTF-8" ); ?>',
         data: [
-        <?php if( !is_null($registro['s_past']) ) {echo $registro['s_past'];} else {echo 0;$btn_colabora_s_1+=1;} ?>,
+        <?php if( is_null($registro['s_past']) || $registro['s_past'] == 0 ) {echo 0;$btn_colabora_s_1+=1;} else {echo $registro['s_past'];} ?>,
         <?php echo $registro['s_present'] ?>, 
-        <?php if( !is_null($registro['s_future']) ) {echo $registro['s_future'];} else {echo 0;$btn_colabora_s_1+=2;} ?>
+        <?php if( is_null($registro['s_future']) || $registro['s_future'] == 0 ) {echo 0;$btn_colabora_s_1+=2;} else {echo $registro['s_future'];} ?>
         ],
         stack: '<?php echo $registro["profesion"] ?>'
         <?php	if( isset($profesion_dos) && !empty($registro_dos["profesion"]) ){ ?>
 	}, {
         name: '<?php echo mb_strtoupper($registro_dos["profesion"],"UTF-8" ); ?>',
         data: [
-        <?php if( !is_null($registro_dos['s_past']) ) {echo $registro_dos['s_past'];} else {echo 0;$btn_colabora_s_2+=1;} ?>,
+        <?php if( is_null($registro_dos['s_past']) || $registro_dos['s_past'] == 0 ) {echo 0;$btn_colabora_s_2+=1;} else {echo $registro_dos['s_past'];} ?>,
         <?php echo $registro_dos['s_present'] ?>, 
-        <?php if( !is_null($registro_dos['s_future']) ) {echo $registro_dos['s_future'];} else {echo 0;$btn_colabora_s_2+=2;} ?>
+        <?php if( is_null($registro_dos['s_future']) || $registro_dos['s_future'] == 0 ) {echo 0;$btn_colabora_s_2+=2;} else {echo $registro_dos['s_future'];} ?>
         ],
         stack: '<?php echo $registro_dos["profesion"] ?>'
     	<?php  } else {
@@ -62,18 +62,18 @@ $('#container2').highcharts({
 <?php if( $btn_colabora_s_1 || $btn_colabora_s_2 ) { ?>
     // agregar capa de aviso semitransparente (con opcion a quitar?)
     var capa_aviso = "<div class='capa-aviso'>";
-    capa_aviso += "<div class='col-md-6 col-md-offset-3'>";
+    capa_aviso += "<div class='col-md-8 col-md-offset-2'>";
 
     <?php if( $btn_colabora_s_1 > 0 ) { ?>
         capa_aviso += "<p class='text-center'>Falta informacion sobre el salario de la profesion<br>";
-        capa_aviso += "<strong>"<?php echo mb_strtoupper($registro["profesion"],"UTF-8" ); ?> +"</strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion="+ <?php echo mb_strtoupper($registro["profesion"],"UTF-8" ); ?> +"' class='btn-aviso' style='background-color: rgba(204, 0, 0, 0.6);'>Colabora!</a>";
+        capa_aviso += "<strong><?php echo mb_strtoupper($registro['profesion'],'UTF-8' ); ?></strong></p>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
     <?php } ?>
 
     <?php if( $btn_colabora_s_2 > 0 ) { ?>
         capa_aviso += "<p class='text-center'>Falta informacion sobre el salario de la profesion<br>";
-        capa_aviso += "<strong>"<?php echo mb_strtoupper($registro_dos["profesion"],"UTF-8" ); ?> +"</strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion="+ <?php echo mb_strtoupper($registro_dos["profesion"],"UTF-8" ); ?> +"' class='btn-aviso' style='background-color: rgba(52, 39, 199, 0.6);'>Colabora!</a>";
+        capa_aviso += "<strong><?php echo mb_strtoupper($registro_dos['profesion'],'UTF-8' ); ?></strong></p>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro_dos['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(52, 39, 199); color: rgb(52, 39, 199);'>Colabora!</a>";
     <?php } ?>
 
     capa_aviso += "</div>";
@@ -81,5 +81,6 @@ $('#container2').highcharts({
 
     // debe aparecer despues de 1 segundo
     $('#container2').append(capa_aviso);
+
 
 <?php } ?>
