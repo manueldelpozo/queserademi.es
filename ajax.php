@@ -9,6 +9,7 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) ) {
 	$keyword = addslashes( $keyword );
 	$keyword = trim( $keyword );
 	$keyword = preg_replace( '/--+/', '-', $keyword );
+	$output = "";
 
 	$item1 = 'profesion';
 	$item2 = 'estudios_asoc';
@@ -47,16 +48,17 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) ) {
 				//}
 				// Imprimir solo si tiene contenido
 				if( !empty($item_name) )
-					echo '<li role="presentation"><a class="search-option tooltips" role="menuitem" href="#">'.$item_name.'<span>'.$item_name.'</span></a></li>';
+					$output .= '<li role="presentation"><a class="search-option tooltips" role="menuitem" href="#">'.$item_name.'<span>'.$item_name.'</span></a></li>';
 			}			
 		} else {
 			// Si el item no existe en la BBDD
-			echo '<li style="color:black" role="presentation"><a class="search-option" role="menuitem" href="#">Elemento no encontrado</a></li>';
+			$output .= '<li style="color:black" role="presentation"><a class="search-option" role="menuitem" href="#">Elemento no encontrado</a></li>';
 		}
 	} else {
 		// Si no hay texto en el input
-		echo '<li style="color:black" role="presentation"><a class="search-option" role="menuitem" href="#">Campo sin rellenar</a></li>';
+		$output .= '<li style="color:black" role="presentation"><a class="search-option" role="menuitem" href="#">Campo sin rellenar</a></li>';
 	}
+	echo $output;
 }
 
 ?>
