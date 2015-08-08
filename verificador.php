@@ -215,103 +215,64 @@ if( !empty( $_POST['verificacion'] ) ){
 		//enviar mail de agradecimiento... y concurso?
 		//solo si tenemos el email
 		if( !is_null( $email ) ) {
-			echo "<h2>[Recibirá un mail en breves instantes]</h2>";
+			
 
 			if( is_null( $colaborador ) )
 				$colaborador = "colaborador";
+		
+			$linea1 = "Estimado ".$colaborador.",";
+			$linea2 = "Nos alegra que haya participado en este gran proyecto.\n Gracias a la informacion que ha aportado, podremos seguir desarrollando esta potente herramienta que servira de apoyo orientativo a futuras y presentes generaciones.";
+			$linea3 = "Puede seguir colaborando"; 
+			$linea3b = ",aportando informacion profesional de familiares o cercanos. ";
+			$linea4 = "Cordialmente,";
+			$linea5 = "El equipo 'queserademi'.";
+			$linea6 = "QUESERADEMI";
+			$linea7 = "http://www.queserademi.es/";
 			
-			$mensaje = "Estimado ".$colaborador.",\n\n";
-			$mensaje .= "Nos alegra que haya participado en este gran proyecto. Gracias a la informacion que ha aportado, podremos seguir desarrollando esta potente herramienta que servira de apoyo orientativo a futuras y presentes generaciones."."\n\n";
-			$mensaje .= "Puede seguir colaborando, aportando informacion profesional de familiares o cercanos. "."\n\n";
-			$mensaje .= "Cordialmente,"."\n\n";
-			$mensaje .= "El equipo 'queserademi'."."\n\n";
-			$mensaje .= "QUESERADEMI"."\n";
-			$mensaje .= "http://www.queserademi.es/";
-			
-			$headers = "From: info@queserademi.es" . "\r\n" . "CC: ".$email;
-			$asunto = 'Gracias por colaborar con queserademi';
+			//$headers = "From: info@queserademi.es" . "\r\n" . "CC: ".$email;
+			//$asunto = 'Gracias por colaborar con queserademi';
 
-			mail( $email, $asunto, $mensaje, $headers );
+			//mail( $email, $asunto, $mensaje, $headers );
 			// Tambien se puede usar PHPmailer
+			
+			require 'PHPMailer/PHPMailer-master/PHPMailerAutoload.php';
+
+			$mail = new PHPMailer();                                // defaults to using php "mail()"
+
+			//$mail->SMTPDebug = 3;                               // Enable verbose debug output
 			/*
-			// primero hay que incluir la clase phpmailer para poder instanciar
-			//un objeto de la misma
-			require "includes/class.phpmailer.php";
-
-			//instanciamos un objeto de la clase phpmailer al que llamamos 
-			//por ejemplo mail
-			$mail = new phpmailer();
-
-			//Definimos las propiedades y llamamos a los métodos 
-			//correspondientes del objeto mail
-
-			//Con PluginDir le indicamos a la clase phpmailer donde se 
-			//encuentra la clase smtp que como he comentado al principio de 
-			//este ejemplo va a estar en el subdirectorio includes
-			$mail->PluginDir = "includes/";
-
-			//Con la propiedad Mailer le indicamos que vamos a usar un 
-			//servidor smtp
-			$mail->Mailer = "smtp";
-
-			//Asignamos a Host el nombre de nuestro servidor smtp
-			$mail->Host = "smtp.hotpop.com";
-
-			//Le indicamos que el servidor smtp requiere autenticación
-			$mail->SMTPAuth = true;
-
-			//Le decimos cual es nuestro nombre de usuario y password
-			$mail->Username = "micuenta@HotPOP.com"; 
-			$mail->Password = "mipassword";
-
-			//Indicamos cual es nuestra dirección de correo y el nombre que 
-			//queremos que vea el usuario que lee nuestro correo
-			$mail->From = "micuenta@HotPOP.com";
-			$mail->FromName = "Eduardo Garcia";
-
-			//el valor por defecto 10 de Timeout es un poco escaso dado que voy a usar 
-			//una cuenta gratuita, por tanto lo pongo a 30  
-			$mail->Timeout=30;
-
-			//Indicamos cual es la dirección de destino del correo
-			$mail->AddAddress("direccion@destino.com");
-
-			//Asignamos asunto y cuerpo del mensaje
-			//El cuerpo del mensaje lo ponemos en formato html, haciendo 
-			//que se vea en negrita
-			$mail->Subject = "Prueba de phpmailer";
-			$mail->Body = "<b>Mensaje de prueba mandado con phpmailer en formato html</b>";
-
-			//Definimos AltBody por si el destinatario del correo no admite email con formato html 
-			$mail->AltBody = "Mensaje de prueba mandado con phpmailer en formato solo texto";
-
-			//se envia el mensaje, si no ha habido problemas 
-			//la variable $exito tendra el valor true
-			$exito = $mail->Send();
-
-			//Si el mensaje no ha podido ser enviado se realizaran 4 intentos mas como mucho 
-			//para intentar enviar el mensaje, cada intento se hara 5 segundos despues 
-			//del anterior, para ello se usa la funcion sleep	
-			$intentos=1; 
-			while ((!$exito) && ($intentos < 5)) {
-			sleep(5);
-			 	//echo $mail->ErrorInfo;
-			 	$exito = $mail->Send();
-			 	$intentos=$intentos+1;	
-
-			}
-
-				
-			if(!$exito)
-			{
-			echo "Problemas enviando correo electrónico a ".$valor;
-			echo "<br/>".$mail->ErrorInfo;	
-			}
-			else
-			{
-			echo "Mensaje enviado correctamente";
-			} 
+			$mail->isSMTP();                                      // Set mailer to use SMTP
+			$mail->Host = 'smtp1.example.com;smtp2.example.com';  // Specify main and backup SMTP servers
+			$mail->SMTPAuth = true;                               // Enable SMTP authentication
+			$mail->Username = 'user@example.com';                 // SMTP username
+			$mail->Password = 'secret';                           // SMTP password
+			$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+			$mail->Port = 587;                                    // TCP port to connect to
 			*/
+			$mail->From = 'info@queserademi.es';
+			$mail->FromName = 'queserademi';
+			$mail->addAddress($email, $colaborador );     // Add a recipient
+			//$mail->addAddress('ellen@example.com');               // Name is optional
+			$mail->addReplyTo('info@queserademi.es', 'queserademi');
+			//$mail->addCC('cc@example.com');
+			//$mail->addBCC('bcc@example.com');
+
+			//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+			//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+			$mail->isHTML(true);                                  // Set email format to HTML
+
+			$mail->Subject = 'Gracias por colaborar con queserademi';
+			$mail->Body    = "<strong>".$linea1."</strong><br><p>".$linea2."</p><br><p><a href='http://www.queserademi.es/colabora.php'".$linea3."</a>".$linea3b."</p><br><p>".$linea4."</p><br><p>".$linea5."</p><br><p><strong>".$linea6."</strong><br><a href='http://www.queserademi.es'>".$linea7."</a></p><br><img src='http://www.queserademi.es/images/logo.png' heigh='30px' width='auto'>";
+			//'This is the body in plain text for non-HTML mail clients';
+			$mail->AltBody = $linea1."\n\n".$linea2."\n\n".$linea3.$linea3b."\n\n".$linea4."\n\n".$linea5."\n\n".$linea6."\n".$linea7;
+
+			if(!$mail->send()) {
+			    echo '<h3>Message could not be sent.</h3>';
+			    echo '<h3>Mailer Error: ' . $mail->ErrorInfo . '</h3>';
+			} else {
+			    echo "<h3>[Recibirá un mail en breves instantes]</h3>";
+			}
+			
 		}
 
 	} else { 
