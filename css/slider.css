@@ -14,6 +14,7 @@
 .slider.slider-horizontal {
   width: 210px;
   height: 20px;
+
 }
 .slider.slider-horizontal .slider-track {
   height: 10px;
@@ -135,4 +136,9 @@
 }
 .slider-handle.triangle {
   background: transparent none;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0px; 
+    margin-left: 0px; 
 }

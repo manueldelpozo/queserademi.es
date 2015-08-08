@@ -248,3 +248,19 @@ a:hover.tooltips span {
   margin-left: -76px;
   z-index: 999;
 }
+.colabora {
+  width: 100%;
+  margin-top: 10px;
+  border-color: rgb(52, 39, 199); 
+  color: rgb(52, 39, 199);
+  font-size: 1.2em;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  background-color: rgba(200, 200, 200, 0.7);
+  font-weight: bold;
+}

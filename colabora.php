@@ -63,10 +63,7 @@ if( isset( $_GET['profesion']  )  )
         .slider-selection {
           background: #BABABA;
         }
-        .colabora {
-          width: 100%;
-          margin-top: 50px;
-        }
+        
         .titulo1 {
           margin-top: 20px;
           border-top: 1px;
