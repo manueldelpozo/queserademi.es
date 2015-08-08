@@ -7,7 +7,7 @@ if( !empty( $_POST['verificacion'] ) ){
 	$error = 0;
 
 	// VALIDAR EMAIL??
-	if( isset( $_POST['email'] ) ) {
+	if( !empty( $_POST['email'] ) ) {
 		$email = $_POST['email'];
 		$domain = substr( $email, strpos($email,'@') );
 		// invalid emailaddress
@@ -23,21 +23,24 @@ if( !empty( $_POST['verificacion'] ) ){
 	//MEDIR CONCORDANCIA DE CONTENIDOS
 	$profesion = $_POST['profesion'];
 
-	if ( isset( $_POST['estudios_asoc'] ) )
+	if ( !empty( $_POST['estudios_asoc'] ) ) {
 		$estudios_asoc = $_POST['estudios_asoc'];
-	else
+		similar_text( mb_strtolower($profesion,'UTF-8'), mb_strtolower($estudios_asoc,'UTF-8'), $percent_prof_est );
+		if( $percent_prof_est < 10 )
+			$error += 0.05;
+	} else {
 		$estudios_asoc = null;
+	}
 
-	if ( isset( $_POST['descripcion'] ) ) {	
+	if ( !empty( $_POST['descripcion'] ) ) {	
 		$descripcion = $_POST['descripcion'];
-		if( !empty($descripcion) ) {
-			if( !empty($estudios_asoc) ) {
-				if( !preg_match("/($profesion|$estudios_asoc)/i", $descripcion) )
-					$error += 0.1; 
-			} else {
-				if( !preg_match("/$profesion/i", $descripcion) )
-					$error += 0.05;
-			}
+		similar_text( mb_strtolower($profesion,'UTF-8'), mb_strtolower($descripcion,'UTF-8'), $percent_prof_desc );
+		if( $percent_prof_desc < 5 )
+			$error += 0.05;
+		if( !is_null($estudios_asoc) ) {
+			similar_text( mb_strtolower($estudios_asoc,'UTF-8'), mb_strtolower($descripcion,'UTF-8'), $percent_est_desc ); 
+			if( $percent_est_desc < 5 )
+				$error += 0.05;
 		}
 	} else {
 		$descripcion = null;
@@ -131,14 +134,12 @@ if( !empty( $_POST['verificacion'] ) ){
 		$aceptado = 0;
 	else
 		$aceptado = 1;
-		
+
 	//GUARDAR COLABORACIONES
 	if( isset($_POST['colaborador']) )
 		$colaborador = $_POST['colaborador'];
 	else
 		$colaborador = null;
-	//$fecha = date_default_timezone_get(); //Se establece en mySQL
-	//$fecha = date('m/d/Y h:i:s a', time());
 
 	$sql_insert = "INSERT INTO `colaboraciones` ( `colaborador` , `email` , `profesion` , `descripcion` , `estudios_asoc` , `p_past` , `p_present` , `p_future` , `s_past` , `s_present` , `s_future` , `c_memoria` , `c_creatividad` , `c_comunicacion` , `c_forma_fisica` , `c_logica` , `aceptado` ) VALUES ( '$colaborador','$email','$profesion','$descripcion','$estudios_asoc','$p_past','$p_present','$p_future','$s_past','$s_present','$s_future','$c_memoria','$c_creatividad','$c_comunicacion','$c_forma_fisica','$c_logica','$aceptado');";
 ?>
@@ -232,6 +233,85 @@ if( !empty( $_POST['verificacion'] ) ){
 
 			mail( $email, $asunto, $mensaje, $headers );
 			// Tambien se puede usar PHPmailer
+			/*
+			// primero hay que incluir la clase phpmailer para poder instanciar
+			//un objeto de la misma
+			require "includes/class.phpmailer.php";
+
+			//instanciamos un objeto de la clase phpmailer al que llamamos 
+			//por ejemplo mail
+			$mail = new phpmailer();
+
+			//Definimos las propiedades y llamamos a los métodos 
+			//correspondientes del objeto mail
+
+			//Con PluginDir le indicamos a la clase phpmailer donde se 
+			//encuentra la clase smtp que como he comentado al principio de 
+			//este ejemplo va a estar en el subdirectorio includes
+			$mail->PluginDir = "includes/";
+
+			//Con la propiedad Mailer le indicamos que vamos a usar un 
+			//servidor smtp
+			$mail->Mailer = "smtp";
+
+			//Asignamos a Host el nombre de nuestro servidor smtp
+			$mail->Host = "smtp.hotpop.com";
+
+			//Le indicamos que el servidor smtp requiere autenticación
+			$mail->SMTPAuth = true;
+
+			//Le decimos cual es nuestro nombre de usuario y password
+			$mail->Username = "micuenta@HotPOP.com"; 
+			$mail->Password = "mipassword";
+
+			//Indicamos cual es nuestra dirección de correo y el nombre que 
+			//queremos que vea el usuario que lee nuestro correo
+			$mail->From = "micuenta@HotPOP.com";
+			$mail->FromName = "Eduardo Garcia";
+
+			//el valor por defecto 10 de Timeout es un poco escaso dado que voy a usar 
+			//una cuenta gratuita, por tanto lo pongo a 30  
+			$mail->Timeout=30;
+
+			//Indicamos cual es la dirección de destino del correo
+			$mail->AddAddress("direccion@destino.com");
+
+			//Asignamos asunto y cuerpo del mensaje
+			//El cuerpo del mensaje lo ponemos en formato html, haciendo 
+			//que se vea en negrita
+			$mail->Subject = "Prueba de phpmailer";
+			$mail->Body = "<b>Mensaje de prueba mandado con phpmailer en formato html</b>";
+
+			//Definimos AltBody por si el destinatario del correo no admite email con formato html 
+			$mail->AltBody = "Mensaje de prueba mandado con phpmailer en formato solo texto";
+
+			//se envia el mensaje, si no ha habido problemas 
+			//la variable $exito tendra el valor true
+			$exito = $mail->Send();
+
+			//Si el mensaje no ha podido ser enviado se realizaran 4 intentos mas como mucho 
+			//para intentar enviar el mensaje, cada intento se hara 5 segundos despues 
+			//del anterior, para ello se usa la funcion sleep	
+			$intentos=1; 
+			while ((!$exito) && ($intentos < 5)) {
+			sleep(5);
+			 	//echo $mail->ErrorInfo;
+			 	$exito = $mail->Send();
+			 	$intentos=$intentos+1;	
+
+			}
+
+				
+			if(!$exito)
+			{
+			echo "Problemas enviando correo electrónico a ".$valor;
+			echo "<br/>".$mail->ErrorInfo;	
+			}
+			else
+			{
+			echo "Mensaje enviado correctamente";
+			} 
+			*/
 		}
 
 	} else { 
