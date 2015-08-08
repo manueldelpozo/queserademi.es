@@ -218,16 +218,18 @@ if( !empty( $_POST['verificacion'] ) ){
 			
 
 			if( is_null( $colaborador ) )
-				$colaborador = "colaborador";
+				$colaborador = "colaborador/a";
 		
-			$linea1 = "Estimado ".$colaborador.",";
-			$linea2 = "Nos alegra que haya participado en este gran proyecto.\n Gracias a la informacion que ha aportado, podremos seguir desarrollando esta potente herramienta que servira de apoyo orientativo a futuras y presentes generaciones.";
+			$linea1 = "Estimado/a ".$colaborador.",";
+			$linea2 = "Nos alegra que haya participado en este gran proyecto.";
+			$linea2b = "Gracias a la informacion que ha aportado, podremos seguir desarrollando esta potente herramienta que servira de apoyo orientativo a futuras y presentes generaciones.";
 			$linea3 = "Puede seguir colaborando"; 
 			$linea3b = ",aportando informacion profesional de familiares o cercanos. ";
 			$linea4 = "Cordialmente,";
 			$linea5 = "El equipo 'queserademi'.";
 			$linea6 = "QUESERADEMI";
 			$linea7 = "http://www.queserademi.es/";
+			$linea8 = "info@queserademi.es";
 			
 			//$headers = "From: info@queserademi.es" . "\r\n" . "CC: ".$email;
 			//$asunto = 'Gracias por colaborar con queserademi';
@@ -240,15 +242,15 @@ if( !empty( $_POST['verificacion'] ) ){
 			$mail = new PHPMailer();                                // defaults to using php "mail()"
 
 			//$mail->SMTPDebug = 3;                               // Enable verbose debug output
-			/*
+			
 			$mail->isSMTP();                                      // Set mailer to use SMTP
-			$mail->Host = 'smtp1.example.com;smtp2.example.com';  // Specify main and backup SMTP servers
+			$mail->Host = 'smtp.queserademi.es';  // Specify main and backup SMTP servers
 			$mail->SMTPAuth = true;                               // Enable SMTP authentication
-			$mail->Username = 'user@example.com';                 // SMTP username
-			$mail->Password = 'secret';                           // SMTP password
-			$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+			$mail->Username = 'info@queserademi.es';                 // SMTP username
+			$mail->Password = 'Qsdm2015';                           // SMTP password
+			//$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 			$mail->Port = 587;                                    // TCP port to connect to
-			*/
+			
 			$mail->From = 'info@queserademi.es';
 			$mail->FromName = 'queserademi';
 			$mail->addAddress($email, $colaborador );     // Add a recipient
@@ -259,12 +261,14 @@ if( !empty( $_POST['verificacion'] ) ){
 
 			//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 			//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-			$mail->isHTML(true);                                  // Set email format to HTML
+			$mail->isHTML(true);  
+			//$mail­->CharSet = "UTF­8";
+			//$mail­->Encoding = "quoted­printable";                                // Set email format to HTML
 
 			$mail->Subject = 'Gracias por colaborar con queserademi';
-			$mail->Body    = "<strong>".$linea1."</strong><br><p>".$linea2."</p><br><p><a href='http://www.queserademi.es/colabora.php'".$linea3."</a>".$linea3b."</p><br><p>".$linea4."</p><br><p>".$linea5."</p><br><p><strong>".$linea6."</strong><br><a href='http://www.queserademi.es'>".$linea7."</a></p><br><img src='http://www.queserademi.es/images/logo.png' heigh='30px' width='auto'>";
+			$mail->Body    = "<strong>".$linea1."</strong><br><p>".$linea2."<br>".$linea2b."</p><p><a href='http://www.queserademi.es/colabora.php'>".$linea3."</a>".$linea3b."</p><p>".$linea4."<br>".$linea5."</p><br><p><strong>".$linea6."</strong><br><a href='http://www.queserademi.es'>".$linea7."</a><br><a href='mailto:info@queserademi.es'>".$linea8."</a><br><br><img src='http://www.queserademi.es/images/logo.png' heigh='60px' width='60px'></p>";
 			//'This is the body in plain text for non-HTML mail clients';
-			$mail->AltBody = $linea1."\n\n".$linea2."\n\n".$linea3.$linea3b."\n\n".$linea4."\n\n".$linea5."\n\n".$linea6."\n".$linea7;
+			$mail->AltBody = $linea1."\n\n".$linea2."\n".$linea2b."\n\n".$linea3.$linea3b."\n\n".$linea4."\n\n".$linea5."\n\n".$linea6."\n".$linea7."\n".$linea8;
 
 			if(!$mail->send()) {
 			    echo '<h3>Message could not be sent.</h3>';
