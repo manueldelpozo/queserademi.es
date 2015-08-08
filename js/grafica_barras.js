@@ -65,13 +65,13 @@ $('#container2').highcharts({
     capa_aviso += "<div class='col-md-8 col-md-offset-2'>";
 
     <?php if( $btn_colabora_s_1 > 0 ) { ?>
-        capa_aviso += "<p class='text-center'>Falta informacion sobre el salario de la profesion<br>";
+        capa_aviso += "<p class='text-center'>Falta información sobre el salario de la profesión<br>";
         capa_aviso += "<strong><?php echo mb_strtoupper($registro['profesion'],'UTF-8' ); ?></strong></p>";
         capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
     <?php } ?>
 
     <?php if( $btn_colabora_s_2 > 0 ) { ?>
-        capa_aviso += "<p class='text-center'>Falta informacion sobre el salario de la profesion<br>";
+        capa_aviso += "<p class='text-center'>Falta información sobre el salario de la profesión<br>";
         capa_aviso += "<strong><?php echo mb_strtoupper($registro_dos['profesion'],'UTF-8' ); ?></strong></p>";
         capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro_dos['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(52, 39, 199); color: rgb(52, 39, 199);'>Colabora!</a>";
     <?php } ?>

@@ -222,9 +222,9 @@ if( !empty( $_POST['verificacion'] ) ){
 		
 			$linea1 = "Estimado/a ".$colaborador.",";
 			$linea2 = "Nos alegra que haya participado en este gran proyecto.";
-			$linea2b = "Gracias a la informacion que ha aportado, podremos seguir desarrollando esta potente herramienta que servira de apoyo orientativo a futuras y presentes generaciones.";
+			$linea2b = "Gracias a la información que ha aportado, podremos seguir desarrollando esta potente herramienta que servira de apoyo orientativo a futuras y presentes generaciones.";
 			$linea3 = "Puede seguir colaborando"; 
-			$linea3b = ",aportando informacion profesional de familiares o cercanos. ";
+			$linea3b = ", aportando información profesional de familiares o cercanos. ";
 			$linea4 = "Cordialmente,";
 			$linea5 = "El equipo 'queserademi'.";
 			$linea6 = "QUESERADEMI";
@@ -280,7 +280,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		}
 
 	} else { 
-		echo "<h1>Lo sentimos, su colaboracion no se ha recibido correctamente...<h1>\n";
+		echo "<h1>Lo sentimos, su colaboración no se ha recibido correctamente...<h1>\n";
 		echo "<h2>Por favor, vuelva a <a href='colabora.php'>intentarlo</a></h2>";
 	}
 ?>
