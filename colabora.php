@@ -205,21 +205,21 @@ if( isset( $_GET['profesion']  )  )
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <label class="titulo2">Salario 2010: </label>
-                    <input class="sliders salarios" id="s_past" type="text" data-slider-min="700" data-slider-max="10000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <input name="s_past" class="sliders salarios" id="s_past" type="text" data-slider-min="700" data-slider-max="10000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
                     <strong id="s_past_value"></strong>                  
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label class="titulo2">Salario 2015:</label>
-                    <input class="sliders salarios" id="s_present" type="text" data-slider-min="700" data-slider-max="10000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square" required/>
+                    <input name="s_present" class="sliders salarios" id="s_present" type="text" data-slider-min="700" data-slider-max="10000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square" required/>
                     <strong id="s_present_value"></strong>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <label class="titulo2">Salario 2020: </label>
-                    <input class="sliders salarios" id="s_future" type="text" data-slider-min="700" data-slider-max="10000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <input name="s_future" class="sliders salarios" id="s_future" type="text" data-slider-min="700" data-slider-max="10000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
                     <strong id="s_future_value"></strong>
                   </div>
                 </div>
@@ -232,21 +232,21 @@ if( isset( $_GET['profesion']  )  )
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <label class="titulo2">Desempleo 2010: </label>
-                    <input class="sliders paros" id="p_past" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                    <input name="p_past" class="sliders paros" id="p_past" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
                     <strong id="p_past_value"></strong>                 
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label class="titulo2">Desempleo 2015:</label> 
-                    <input class="sliders paros" id="p_present" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square" required/>
+                    <input name="p_present" class="sliders paros" id="p_present" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square" required/>
                     <strong id="p_present_value"></strong>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group">
                     <label class="titulo2">Desempleo 2020: </label>
-                    <input class="sliders paros" id="p_future" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
+                    <input name="p_future" class="sliders paros" id="p_future" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" data-slider-handle="square"/>
                     <strong id="p_future_value"></strong>
                   </div>
                 </div>
@@ -259,31 +259,31 @@ if( isset( $_GET['profesion']  )  )
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label class="titulo2">Memoria:</label><strong id="c_memoria_value"></strong>
-                    <input class="sliders capacidades" id="c_memoria" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
+                    <input name="c_memoria" class="sliders capacidades" id="c_memoria" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label class="titulo2">Lógica:</label><strong id="c_logica_value"></strong>
-                    <input class="sliders capacidades" id="c_logica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
+                    <input name="c_logica" class="sliders capacidades" id="c_logica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label class="titulo2">Creatividad:</label><strong id="c_creatividad_value"></strong>
-                    <input class="sliders capacidades" id="c_creatividad" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
+                    <input name="c_creatividad" class="sliders capacidades" id="c_creatividad" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label class="titulo2">Comunicación:</label><strong id="c_comunicacion_value"></strong>
-                    <input class="sliders capacidades" id="c_comunicacion" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
+                    <input name="c_comunicacion" class="sliders capacidades" id="c_comunicacion" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label class="titulo2">Forma Física:</label><strong id="c_formafisica_value"></strong>
-                    <input class="sliders capacidades" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
+                    <input name="c_forma_fisica" class="sliders capacidades" id="c_formafisica" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" required/>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">

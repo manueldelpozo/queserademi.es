@@ -1,6 +1,6 @@
 <?php
 
-if( isset( $_POST['verificacion'] ) ){
+if( !empty( $_POST['verificacion'] ) ){
     // Si se ha insertado informacion en el input oculto 'verificacion'.../Es un SPAMbot
     exit();
 } else {
@@ -22,15 +22,17 @@ if( isset( $_POST['verificacion'] ) ){
 
 	//MEDIR CONCORDANCIA DE CONTENIDOS
 	$profesion = $_POST['profesion'];
-	if ( isset( $_POST['estuios_asoc'] ) )
-		$estudios = $_POST['estuios_asoc'];
+
+	if ( isset( $_POST['estudios_asoc'] ) )
+		$estudios_asoc = $_POST['estudios_asoc'];
 	else
-		$estudios = null;
+		$estudios_asoc = null;
+
 	if ( isset( $_POST['descripcion'] ) ) {	
 		$descripcion = $_POST['descripcion'];
 		if( !empty($descripcion) ) {
-			if( !empty($estudios) ) {
-				if( !preg_match("/($profesion|$estudios)/i", $descripcion) )
+			if( !empty($estudios_asoc) ) {
+				if( !preg_match("/($profesion|$estudios_asoc)/i", $descripcion) )
 					$error += 0.1; 
 			} else {
 				if( !preg_match("/$profesion/i", $descripcion) )
@@ -84,7 +86,12 @@ if( isset( $_POST['verificacion'] ) ){
 
 	//CONCORDANCIA DE DATOS FINALES
 	function diferencia( $valor_antiguo, $valor_nuevo ) {
-		return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
+		if( is_null( $valor_nuevo ) || $valor_antiguo == 0 || is_null( $valor_antiguo ) ) {
+			$diff = 0;
+		} else {
+			$diff = 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);
+		}	
+		return $diff;
 	}
 	//obtencion de datos guardados
 	require('conexion.php');
@@ -94,18 +101,18 @@ if( isset( $_POST['verificacion'] ) ){
     $result->execute();
     $registro = $result->fetch();
 
-	if( !is_null($s_past) && diferencia( $registro['s_past'], $s_past ) > 0.5 )
+	if( diferencia( $registro['s_past'], $s_past ) > 0.5 )
 		$error += 0.05;	
 	if( diferencia( $registro['s_present'], $s_present ) > 0.5 )
 		$error += 0.05;
-	if( !is_null($s_future) && diferencia( $registro['s_future'], $s_future ) > 0.5 )
+	if( diferencia( $registro['s_future'], $s_future ) > 0.5 )
 		$error += 0.05;
 
-	if( !is_null($p_past) && diferencia( $registro['p_past'], $p_past ) > 0.5 )
+	if( diferencia( $registro['p_past'], $p_past ) > 0.5 )
 		$error += 0.05;	
 	if( diferencia( $registro['p_present'], $p_present ) > 0.5 )
 		$error += 0.05;
-	if( !is_null($p_future) && diferencia( $registro['p_future'], $p_future ) > 0.5 )
+	if( diferencia( $registro['p_future'], $p_future ) > 0.5 )
 		$error += 0.05;
 
 	if( diferencia( $registro['c_memoria'], $c_memoria ) > 0.5 )
@@ -114,7 +121,7 @@ if( isset( $_POST['verificacion'] ) ){
 		$error += 0.05;
 	if( diferencia( $registro['c_comunicacion'], $c_comunicacion ) > 0.5 )
 		$error += 0.05;
-	if( diferencia( $registro['c_forma_fisica'], $c_formafisica ) > 0.5 )
+	if( diferencia( $registro['c_forma_fisica'], $c_forma_fisica ) > 0.5 )
 		$error += 0.05;
 	if( diferencia( $registro['c_creatividad'], $c_creatividad ) > 0.5 )
 		$error += 0.05;
@@ -148,6 +155,7 @@ if( isset( $_POST['verificacion'] ) ){
 	    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
 	    <link rel="icon" type="image/x-icon" href="images/logo.png">
 	    <link rel="stylesheet" href="css/bootstrap.min.css" />
+	    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/style.css" />
 		<!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
 	    <!--[if lt IE 9]>
@@ -189,7 +197,7 @@ if( isset( $_POST['verificacion'] ) ){
 						<h1 id="titulo" class="lead"><strong>que</strong>sera<strong>de</strong>mi</h1>
 						<img class="img-responsive" src="images/logo.svg">
 					</a>
-					<h6 class="sublead">Tu comparador de profesiones</h6>
+					<h6 class="sublead">Te agradecemos tu colaboración</h6>
 			    </div>
 			</div>
 
@@ -199,14 +207,14 @@ if( isset( $_POST['verificacion'] ) ){
 	//AGRADECIMIENTOS
 	if ( $pdo->query($sql_insert) ) {
 
-		echo "<h1>La informacion ha sido recibida correctamente!</h1>\n";
+		echo "<h1>La información ha sido recibida correctamente!</h1>\n";
 		echo "<h2>Muchas gracias por colaborar con queserademi.</h2>\n";
 		
 
 		//enviar mail de agradecimiento... y concurso?
 		//solo si tenemos el email
 		if( !is_null( $email ) ) {
-			echo "<h2>[Recibira un mail en breves instantes]</h2>";
+			echo "<h2>[Recibirá un mail en breves instantes]</h2>";
 
 			if( is_null( $colaborador ) )
 				$colaborador = "colaborador";
@@ -235,7 +243,38 @@ if( isset( $_POST['verificacion'] ) ){
 			</div>
 			
 		</div>
+
+		<footer>
+	      <div class="row">
+	        <div class="col-md-2 col-xs-12 text-center">
+	          <a href="index.html">
+	            <img class="image-container" src="images/logo.svg">
+	          </a>
+	        </div>
+	        <div class="col-md-2 col-xs-12 text-center">
+	          <a href="colabora.php">Colabora con qsdm</a>
+	        </div>
+	        <div class="col-md-2 col-xs-12 text-center">
+	          <a href="porquecolaborar.html">Por qué colaborar</a>
+	        </div>
+	        <div class="col-md-2 col-xs-12 text-center">
+	          <a href="quienessomos.html">Quiénes somos</a>
+	        </div>
+	        <div class="col-md-2 col-xs-12 text-center">
+	          <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Contacta con nosotros</a>
+	        </div>
+	        <div class="col-md-2 col-xs-12 text-center">
+	          <ul class="share-buttons">
+	            <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.queserademi.es&t=Comparador%20de%20profesiones" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+	            <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+	            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.es&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+	            <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </footer>
 	</body>
+
 </html>
 <?php                         
 }
