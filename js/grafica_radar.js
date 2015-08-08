@@ -39,15 +39,55 @@ $('#container3').highcharts({
          enabled: false
     },
     series: [{
-        name: '<?php echo mb_strtoupper( $registro["profesion"] ,"UTF-8" ); ?>',
-        data: [<?php echo $registro['c_memoria']; ?>,<?php echo $registro['c_creatividad']; ?>,<?php echo $registro['c_comunicacion']; ?>,<?php echo $registro['c_forma_fisica']; ?>,<?php echo $registro['c_logica']; ?>],
-        pointPlacement: 'on'
-		 <?php	if(isset($profesion_dos) && $registro_dos["profesion"] != "" ){ ?>
+        <?php $btn_colabora_c_1=0;$btn_colabora_c_2=0; ?>
+        name: '<?php echo mb_strtoupper($registro["profesion"],"UTF-8" ); ?>',
+        data: [
+        <?php if( is_null($registro['c_memoria']) || $registro['c_memoria'] == 0 ) {echo 0;$btn_colabora_c_1+=1;} else {echo $registro['c_memoria'];} ?>,
+        <?php if( is_null($registro['c_creatividad']) || $registro['c_creatividad'] == 0 ) {echo 0;$btn_colabora_c_1+=2;} else {echo $registro['c_creatividad'];} ?>,
+        <?php if( is_null($registro['c_comunicacion']) || $registro['c_comunicacion'] == 0 ) {echo 0;$btn_colabora_c_1+=4;} else {echo $registro['c_comunicacion'];} ?>,
+        <?php if( is_null($registro['c_forma_fisica']) || $registro['c_forma_fisica'] == 0 ) {echo 0;$btn_colabora_c_1+=8;} else {echo $registro['c_forma_fisica'];} ?>,
+        <?php if( is_null($registro['c_logica']) || $registro['c_logica'] == 0 ) {echo 0;$btn_colabora_c_1+=16;} else {echo $registro['c_logica'];} ?>
+        ],
+        stack: '<?php echo $registro["profesion"] ?>'
+        <?php if( isset($profesion_dos) && !empty($registro_dos["profesion"]) ){ ?>
     }, {
-        name: '<?php echo mb_strtoupper( $registro_dos["profesion"] ,"UTF-8" ); ?>',
-        data: [<?php echo $registro_dos['c_memoria']; ?>,<?php echo $registro_dos['c_creatividad']; ?>,<?php echo $registro_dos['c_comunicacion']; ?>,<?php echo $registro_dos['c_forma_fisica']; ?>,<?php echo $registro_dos['c_logica']; ?>],
-        pointPlacement: 'on'
-		<?php  } ?> 
+        name: '<?php echo mb_strtoupper($registro_dos["profesion"],"UTF-8" ); ?>',
+        data: [
+        <?php if( is_null($registro_dos['c_memoria']) || $registro_dos['c_memoria'] == 0 ) {echo 0;$btn_colabora_c_2+=1;} else {echo $registro_dos['c_memoria'];} ?>,
+        <?php if( is_null($registro_dos['c_creatividad']) || $registro_dos['c_creatividad'] == 0 ) {echo 0;$btn_colabora_c_2+=2;} else {echo $registro_dos['c_creatividad'];} ?>,
+        <?php if( is_null($registro_dos['c_comunicacion']) || $registro_dos['c_comunicacion'] == 0 ) {echo 0;$btn_colabora_c_2+=4;} else {echo $registro_dos['c_comunicacion'];} ?>,
+        <?php if( is_null($registro_dos['c_forma_fisica']) || $registro_dos['c_forma_fisica'] == 0 ) {echo 0;$btn_colabora_c_2+=8;} else {echo $registro_dos['c_forma_fisica'];} ?>,
+        <?php if( is_null($registro_dos['c_logica']) || $registro_dos['c_logica'] == 0 ) {echo 0;$btn_colabora_c_2+=16;} else {echo $registro_dos['c_logica'];} ?> 
+        ],
+        stack: '<?php echo $registro_dos["profesion"] ?>' 
+        <?php  }  ?> 
     }]
 });
 
+// Comprobar si se necesitan botones producido
+<?php if( $btn_colabora_c_1 || $btn_colabora_c_2 ) { ?>
+    // agregar capa de aviso semitransparente (con opcion a quitar?)
+    var capa_aviso = "<div class='capa-aviso'>";
+    capa_aviso += "<div class='col-md-8 col-md-offset-2'>";
+    capa_aviso += "<h3>Disculpe las molestias</h3>";
+
+    <?php if( $btn_colabora_c_1 > 0 ) { ?>
+        capa_aviso += "<p class='text-center'>Falta información sobre <strong>capacidades profesionales</strong> de la profesión<br>";
+        capa_aviso += "<strong><?php echo mb_strtoupper($registro['profesion'],'UTF-8' ); ?></strong></p>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
+    <?php } ?>
+
+    <?php if( $btn_colabora_c_2 > 0 ) { ?>
+        capa_aviso += "<p class='text-center'>Falta información sobre <strong>capacidades profesionales</strong> de la profesión<br>";
+        capa_aviso += "<strong><?php echo mb_strtoupper($registro_dos['profesion'],'UTF-8' ); ?></strong></p>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro_dos['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(52, 39, 199); color: rgb(52, 39, 199);'>Colabora!</a>";
+    <?php } ?>
+
+    capa_aviso += "</div>";
+    capa_aviso += "</div>";
+
+    // debe aparecer despues de 1 segundo
+    $('#container3').append(capa_aviso);
+
+
+<?php } ?>
