@@ -16,23 +16,49 @@ html,body {
 	*overflow-x: hidden;
 	font-family: 'Antic Slab', arial;
 }
+.background-image {
+position: fixed;
+left: 0;
+right: 0;
+z-index: 1;
+
+display: block;
+background-image: url('../images/bg/bg-1.jpg');
+background-size: 150%;
+background-position: left left;
+background-repeat: no-repeat;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+
+width: 100%;
+height: 100%;
+
+opacity: 0.1;
+
+-webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-o-filter: blur(5px);
+-ms-filter: blur(5px);
+filter: blur(5px);
+
+-webkit-filter: grayscale(100%);
+filter: grayscale(100%);
+filter: gray;
+}
 .container-full {
+	position: static;
+	left: 0;
+    right: 0;
+    z-index: 9;
 	margin: 0 auto;
 	padding: 0;
 	margin:0;
 	width: 100%;
-	min-height:100%;
-	background-image: url('../images/fondo.svg');
-	background-size: 150%;
-	background-position: left left;
-	background-repeat: no-repeat;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	min-height:100%;	
 	color:#555;
-	overflow:hidden;
-
+	overflow:hidden;	
 }
 
 .container-full a {
@@ -142,7 +168,7 @@ html,body {
 	-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
 	box-shadow: 0 5px 10px rgba(0,0,0,.2);
 	position: absolute;  
-	z-index: 99;
+	z-index: 999;
 }
 .header {
 	height: 20%;
@@ -274,10 +300,11 @@ li.abuelo {
 }
 li.bisabuelo {
 	background-color: #84afd3;
-	display: none;
+	
 }
 li.tatarabuelo {
 	background-color: #337ab7;
+	display: none;
 }
 li.tatarabuelo a {
 	color: white;

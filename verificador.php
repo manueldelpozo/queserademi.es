@@ -190,6 +190,7 @@ if( !empty( $_POST['verificacion'] ) ){
             })(window,document,'script','dataLayer','GTM-5MQKZX');
         </script>
         <!-- End Google Tag Manager -->
+        <div class="background-image"></div>
 		<div class="container-full">
 
 			<div class="row header">

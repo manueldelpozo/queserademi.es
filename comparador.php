@@ -70,6 +70,7 @@ try {
         })(window,document,'script','dataLayer','GTM-5MQKZX');
     </script>
     <!-- End Google Tag Manager -->
+    <div class="background-image"></div>
     <div class="container-full">
       <form id="formulario" role="form" action="comparador.php" method="get" onsubmit="return validacion()">
 

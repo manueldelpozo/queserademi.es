@@ -122,7 +122,7 @@ if( isset( $_GET['profesion']  )  )
     </script>
     <!-- End Google Tag Manager -->
     
-    
+    <div class="background-image"></div>
     <div class="container-full">
       <form id="formulario-colabora" class="form-horizontal" role="form" action="verificador.php" method="post" onsubmit="return validacion()">
 
