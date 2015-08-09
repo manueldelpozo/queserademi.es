@@ -260,3 +260,25 @@ a:hover.tooltips span {
   background-color: rgba(255, 255, 255, 0.6);
   font-weight: bold;
 }
+
+li.hijo {
+	display: none;
+}
+li.padre {
+	background-color: #eaf1f7;
+	display: none;
+}
+li.abuelo {
+	background-color: #c1d7e9;
+	display: none;
+}
+li.bisabuelo {
+	background-color: #84afd3;
+	display: none;
+}
+li.tatarabuelo {
+	background-color: #337ab7;
+}
+li.tatarabuelo a {
+	color: white;
+}

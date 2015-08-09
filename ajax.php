@@ -21,13 +21,11 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) ) {
 
 	if( !$keyword == "" ) { 
 
-		$sql="SELECT *
-		FROM profesiones
-		WHERE ".$item1." LIKE '$keyword%'
-		UNION distinct SELECT *
-		FROM profesiones
-		WHERE ".$item1." LIKE '%$keyword%'
-		OR ".$item2." LIKE '%$keyword%'";
+		//$sql="SELECT * FROM profesiones WHERE ".$item1." LIKE '$keyword%'
+		//UNION distinct SELECT * FROM profesiones WHERE ".$item1." LIKE '%$keyword%' OR ".$item2." LIKE '%$keyword%'";
+		$sql = " SELECT * FROM profesiones WHERE ".$item1." LIKE '$keyword%'
+		UNION distinct SELECT * FROM profesiones WHERE ".$item1." LIKE '%$keyword%' ";
+		
 
 		if( $keyword == '%' ) {
 			$sql.= 'ORDER BY '.$item1.' ASC';	
@@ -47,8 +45,21 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) ) {
 					//$item_name = mb_strtoupper( mb_substr( $item_name, 0, 1, 'utf-8') ) . mb_substr( $item_name, 1, strlen($item_name)-1, 'utf-8') ;
 				//}
 				// Imprimir solo si tiene contenido
-				if( !empty($item_name) )
-					$output .= '<li role="presentation"><a class="search-option" role="menuitem" href="#">'.$item_name.'</a></li>';
+				if( !empty($item_name) ) {
+					$clase = "hijo";
+					if( $rs['cod'] < 10000 ) {
+						$clase = "padre";
+						if( $rs['cod'] < 1000 ) {
+							$clase = "abuelo";
+							if( $rs['cod'] < 100 ) {
+								$clase = "bisabuelo";
+								if( $rs['cod'] < 10 )
+									$clase = "tatarabuelo";			
+							}
+						}
+					}
+					$output .= '<li role="presentation" class="'.$clase.'"><a class="search-option" role="menuitem" href="#">'.$item_name.'</a></li>';
+				}
 			}			
 		} else {
 			// Si el item no existe en la BBDD

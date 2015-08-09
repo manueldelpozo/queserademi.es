@@ -44,6 +44,8 @@ function desplegarLista( $input, msg ) {
 	var $lista = $input.parent().next();
 	$lista.slideDown( 300 );
 	$lista.html(msg);
+	// solo mostrar tatarabuelos?
+	//$lista.find('.tatarabuelo').show();	
 	// Pausar y ocultar video si hay video
 	if ( $('video').is(":visible") ) {
 		ocultarVideo();
@@ -151,7 +153,7 @@ function ajaxAutocomplete( keyword, $input ) {
 }
 
 // Cuando escribimos en el input
-$("input").keydown( function(e) {
+$("input").keyup( function(e) {
 	if(e.which == 13) { // ENTER
 		var $lista = $(this).parent().next();
 		var valor1 = $lista.find('li:eq(0)').text();
