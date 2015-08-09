@@ -292,7 +292,7 @@ if( isset( $_GET['profesion']  )  )
 
                 <div class="col-md-4 col-md-offset-8 col-xs-12">
                   <div class="form-group"> 
-                    <button type="submit" class="btn btn-default colabora">COLABORA!</button>
+                    <button type="submit" class="btn btn-default btn-qsdm">COLABORA!</button>
                   </div>
                 </div>
 
@@ -307,8 +307,11 @@ if( isset( $_GET['profesion']  )  )
     <footer>
       <div class="row">
         <div class="col-md-2 col-xs-12 text-center">
-          <a href="index.html">
-            <img class="image-container" src="images/logo.svg">
+          <a href="index.html"> 
+            <p id="titulo" style='opacity:1;margin-top:-10px;'>
+              <img class="image-container" src="images/logo.svg">
+              <strong>que</strong>sera<strong>de</strong>mi
+            </p>
           </a>
         </div>
         <div class="col-md-2 col-xs-12 text-center">

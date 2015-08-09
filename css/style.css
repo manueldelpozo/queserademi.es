@@ -14,6 +14,7 @@ html,body {
 	padding:0
 	overflow-y: scroll;
 	*overflow-x: hidden;
+	font-family: 'Antic Slab', arial;
 }
 .container-full {
 	margin: 0 auto;
@@ -44,12 +45,9 @@ html,body {
 	font-family: 'Antic Slab', arial;
 	color:#c00;
 }
-.image-container {
-	    overflow: hidden;
+.image-container {   
     height: auto;
     width: 22%;
-    position: relative;
-    top: -10px;
 }
 
 @media screen and (min-width: 768px) {
@@ -160,9 +158,7 @@ html,body {
 	margin-bottom: 1%
 }
 #ver-video a { 
-	font-size: 15px;
 	padding: 10px 30px;
-	color: #888;
 	text-decoration: none;
 }
 #video {
@@ -248,11 +244,11 @@ a:hover.tooltips span {
   margin-left: -76px;
   z-index: 999;
 }
-.colabora {
+.btn-qsdm {
   width: 100%;
   margin-top: 10px;
-  border-color: rgb(52, 39, 199); 
-  color: rgb(52, 39, 199);
+  border-color: #337ab7; 
+  color: #337ab7;
   font-size: 1.2em;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -261,6 +257,6 @@ a:hover.tooltips span {
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
   /* For IE 8*/
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-  background-color: rgba(200, 200, 200, 0.7);
+  background-color: rgba(255, 255, 255, 0.6);
   font-weight: bold;
 }

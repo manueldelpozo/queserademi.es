@@ -26,7 +26,7 @@ $('#container1').html("<h4 style='margin:15px'>INFORMACIÓN</h4><div id='info'><
     <?php } ?>
 <?php } ?>
 <?php if( isset( $profesion_dos ) && $registro_dos["profesion"] != ""  ) { ?>
-    $('#info').append("<h5 class='secundaria nombre'><?php echo $registro_dos['profesion']; ?></h5>");
+    $('#info').append("<h5 class='secundaria nombre' style='clear:both;'><?php echo $registro_dos['profesion']; ?></h5>");
     <?php if( empty( $registro_dos['descripcion'] ) ) { ?>
         $('#info').append("<p class='descripcion'>Descripcion: Falta informacion. Disculpe las molestias</p>");
     <?php } else { ?>
@@ -37,7 +37,7 @@ $('#container1').html("<h4 style='margin:15px'>INFORMACIÓN</h4><div id='info'><
         $('#info').append("<p class='estudios'>Estudios asociados: <strong><?php echo preg_replace('/[\n\r]/','',$registro_dos['estudios_asoc']); ?></strong></p>");
     <?php } ?>
     <?php if( empty( $registro_dos['descripcion'] ) || empty( $registro_dos['estudios_asoc'] ) ) { ?>
-        $('#info').append("<div class='col-md-8 col-md-offset-2'><a href='colabora.php?profesion=<?php echo $registro_dos['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(52, 39, 199); color: rgb(52, 39, 199);'>Colabora!</a></div>");
+        $('#info').append("<div class='col-md-8 col-md-offset-2'><a href='colabora.php?profesion=<?php echo $registro_dos['profesion']; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a></div>");
     <?php } ?>
 <?php } ?>
 
