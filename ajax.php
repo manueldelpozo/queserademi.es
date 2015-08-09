@@ -2,7 +2,7 @@
 
 require('conexion.php');
 
-if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) ) {
+if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
 
 	$keyword = $_GET['keyword'];
 	$consultar_estudios = $_GET['estudios_asoc'];
