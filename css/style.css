@@ -48,7 +48,7 @@ filter: grayscale(100%);
 filter: gray;
 }
 .container-full {
-	position: static;
+	position: relative;
 	left: 0;
     right: 0;
     z-index: 9;
