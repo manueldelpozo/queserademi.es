@@ -10,6 +10,7 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) && isset($_SERV
 	$keyword = trim( $keyword );
 	$keyword = preg_replace( '/--+/', '-', $keyword );
 	$output = "";
+	$lista = array();
 
 	$item1 = 'profesion';
 	$item2 = 'estudios_asoc';
@@ -44,20 +45,52 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) && isset($_SERV
 				//if( ctype_lower ( mb_substr( $item_name, 0, 1, 'utf-8') ) ) {
 					//$item_name = mb_strtoupper( mb_substr( $item_name, 0, 1, 'utf-8') ) . mb_substr( $item_name, 1, strlen($item_name)-1, 'utf-8') ;
 				//}
+
+				$cod = $rs['cod'];
 				// Imprimir solo si tiene contenido
 				if( !empty($item_name) ) {
 					$clase = "hijo";
-					if( $rs['cod'] < 10000 ) {
+					
+					if( $cod < 10000 ) {
 						$clase = "padre";
-						if( $rs['cod'] < 1000 ) {
+
+						if( $cod < 1000 ) {
 							$clase = "abuelo";
-							if( $rs['cod'] < 100 ) {
+							
+							if( $cod < 100 ) {
 								$clase = "bisabuelo";
-								if( $rs['cod'] < 10 )
-									$clase = "tatarabuelo";			
+								
+								if( $cod < 10 ) {
+									$clase = "tatarabuelo";
+									//$tat = $cod;
+									//$lista[$tat] = $item_name;
+									//continue;
+								}
+								//$tat = intval( $cod / 10 );
+								//$bis = $cod - $tat * 10;
+								//$lista[$tat][$bis] = $item_name;
+								//continue; 		
 							}
+							//$tat = intval( $cod / 100 );
+							//$bis = intval( $cod / 10 ) - $tat * 10;
+							//$abu = $cod - $bis * 10 - $tat * 100 ;
+							//$lista[$tat][$bis][$abu] = $item_name;
+							//continue;
 						}
+						//$tat = intval( $cod / 1000 );
+						//$bis = intval( $cod / 100 ) - $tat * 10;
+						//$abu = intval( $cod / 10 ) - $bis * 10 - $tat * 100;
+						//$pad = $cod - $abu * 10 - $bis * 100 - $tat * 1000;
+						//$lista[$tat][$bis][$abu][$pad] = $item_name;
+						//continue;
 					}
+					//$tat = intval( $cod / 10000000 );
+					//$bis = intval( $cod / 1000000 ) - $tat * 10;
+					//$abu = intval( $cod / 100000 ) - $bis * 10 - $tat * 100;
+					//$pad = intval( $cod / 10000 ) - $abu * 10 - $bis * 100 - $tat * 1000;
+					//////$hij = $cod - $pad * 10000 - $abu * 100000 - $bis * 1000000 - $tat * 10000000;
+					//$lista[$tat][$bis][$abu][$pad][] = $item_name;
+					//continue;
 					$output .= '<li role="presentation" class="'.$clase.'"><a class="search-option" role="menuitem" href="#">'.$item_name.'</a></li>';
 				}
 			}			
@@ -70,6 +103,7 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) && isset($_SERV
 		$output .= '<li style="color:black" role="presentation"><a class="search-option" role="menuitem" href="#">Campo sin rellenar</a></li>';
 	}
 	echo $output;
+	//echo json_encode($lista);
 }
 
 ?>
