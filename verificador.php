@@ -195,7 +195,7 @@ if( !empty( $_POST['verificacion'] ) ){
 
 			<div class="row header">
 				<div class="col-md-6 col-md-offset-3 col-xs-12 text-center">
-					<a href="">
+					<a href="index.html">
 						<h1 id="titulo" class="lead"><strong>que</strong>sera<strong>de</strong>mi</h1>
 						<img class="img-responsive" src="images/logo.svg">
 					</a>

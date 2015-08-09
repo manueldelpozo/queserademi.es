@@ -46,7 +46,7 @@ if( isset( $_GET['profesion']  )  )
               unidad = " €/mes";
             else if ( $(this).hasClass("paros") )
               unidad = " %";
-            $(idvalue).html( "<span style='color:#342777;'>" + slideEvt.value + unidad + "<span>");
+            $(idvalue).html( "<span style='color:#337ab7;'>" + slideEvt.value + unidad + "<span>");
           });
           
           $(".slider").css("width","100%");
@@ -149,22 +149,22 @@ if( isset( $_GET['profesion']  )  )
             <div class="col-md-6 col-xs-12">
               <div class="col-md-10 col-md-offset-1 col-xs-12">
                 <div class="form-group">
-                  <label for="colaborador" class="col-sm-2 control-label">Nombre:</label>
+                  <label for="colaborador" class="col-sm-2 control-label">Nombre:(opcional)</label>
                   <div class="col-sm-10">                 
-                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Tu nombre completo" value="<?php //echo @$profesion; ?>" autofocus/>
+                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Escribe tu nombre completo" value="<?php //echo @$profesion; ?>" autofocus/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="email" class="col-sm-2 control-label">Email:</label>
+                  <label for="email" class="col-sm-2 control-label">Email:(opcional)</label>
                   <div class="col-sm-10">
-                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Tu direccion email" value="<?php //echo @$profesion_uno; ?>"/>
+                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Escribe tu direccion email" value="<?php //echo @$profesion_uno; ?>"/>
                   </div>
                 </div>
                 <div class="form-group dropdown clearfix profesion required">
                   <label for="profesion" class="col-sm-2 control-label">Profesión:</label>
                   <div class="col-sm-10">  
                     <div class="input-group">
-                      <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca la profesión" value="<?php echo @$profesion; ?>" required/>           
+                      <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca o escribe una profesión" value="<?php echo @$profesion; ?>" required/>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
@@ -173,10 +173,10 @@ if( isset( $_GET['profesion']  )  )
                   </div>
                 </div>
                 <div class="form-group dropdown clearfix estudios">
-                  <label for="estudios_asoc" class="col-sm-2 control-label">Estudios asociados:</label>
+                  <label for="estudios_asoc" class="col-sm-2 control-label">Estudios:(opcional)</label>
                   <div class="col-sm-10">
                     <div class="input-group">
-                      <input name="estudios_asoc" type="text" id="estudios_asoc" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Estudios asociados" value="<?php //echo @$profesion_uno; ?>"/>           
+                      <input name="estudios_asoc" type="text" id="estudios_asoc" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca o escribe sus estudios asociados" value="<?php //echo @$profesion_uno; ?>"/>           
                       <div class="input-group-btn" style="height:60px;top:-7px;">
                          <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_estudios" style="background-color: rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
                       </div>
@@ -185,9 +185,9 @@ if( isset( $_GET['profesion']  )  )
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="descripcion" class="col-sm-2 control-label">Descripción:</label>
+                  <label for="descripcion" class="col-sm-2 control-label">Descripción:(opcional)</label>
                   <div class="col-sm-10">
-                    <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="Escribe una breve descripción de la profesion"></textarea>
+                    <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="Escribe una breve descripción de la profesión "></textarea>
                   </div>
                 </div>
               </div>
