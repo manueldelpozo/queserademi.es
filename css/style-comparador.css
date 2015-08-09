@@ -36,7 +36,7 @@ div.body > div {
   margin: 0px 15px; 
 }
 .estudios {
-  border-bottom: 2px solid grey;
+  margin-bottom: 10px;
 }
 .principal {
   color: #cc0000;

@@ -129,8 +129,11 @@ try {
     <footer>
       <div class="row">
         <div class="col-md-2 col-xs-12 text-center">
-          <a href="index.html">
-            <img class="image-container" src="images/logo.svg">
+          <a href="index.html"> 
+            <p id="titulo" style='opacity:1;margin-top:-10px;'>
+              <img class="image-container" src="images/logo.svg">
+              <strong>que</strong>sera<strong>de</strong>mi
+            </p>
           </a>
         </div>
         <div class="col-md-2 col-xs-12 text-center">
