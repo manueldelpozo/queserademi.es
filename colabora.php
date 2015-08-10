@@ -18,8 +18,9 @@ if( isset( $_GET['profesion']  )  )
       <link rel="icon" type="image/x-icon" href="images/logo.png">
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
+      <!--link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"-->
       <link rel="stylesheet" href="css/slider.css">
-      <link rel="stylesheet" href="css/style.css" />
+      <link rel="stylesheet" href="css/style.css">
       <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
       <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -28,6 +29,7 @@ if( isset( $_GET['profesion']  )  )
       <script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
       <script type="text/javascript" src="js/bootstrap.min.js" ></script>
       <script type="text/javascript" src="js/bootstrap-slider.js" ></script>
+      <!--script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script-->
       <script type="text/javascript" src="js/scripts.js" defer></script>   
       <script type="text/javascript">
         $(document).ready(function() {
@@ -203,6 +205,7 @@ if( isset( $_GET['profesion']  )  )
                   <div class="form-group">
                     <label class="titulo2">Salario 2010: </label>
                     <input name="s_past" class="sliders salarios" id="s_past" type="text" data-slider-min="700" data-slider-max="10000" data-slider-step="50" data-slider-value="2000" data-slider-handle="square"/>
+                    <!--input type="range" name="s_past" id="s_past" value="2000" min="700" max="10000"-->
                     <strong id="s_past_value"></strong>                  
                   </div>
                 </div>
