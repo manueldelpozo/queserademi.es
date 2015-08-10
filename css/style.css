@@ -230,7 +230,8 @@ ul.share-buttons li{
 	float: left;
 }
 #sprite-alfonso {
-	background-position: -40px 0px;
+	/*background-position: -40px 0px*/;
+	background: none;
 }
 #sprite-manu {
 	background-position: -40px -353px;
@@ -292,11 +293,11 @@ li.hijo {
 }
 li.padre {
 	background-color: #eaf1f7;
-	display: none;
+	/*display: none;*/
 }
 li.abuelo {
 	background-color: #c1d7e9;
-	display: none;
+	/*display: none;*/
 }
 li.bisabuelo {
 	background-color: #84afd3;
@@ -304,7 +305,7 @@ li.bisabuelo {
 }
 li.tatarabuelo {
 	background-color: #337ab7;
-	display: none;
+	/*display: none;*/
 }
 li.tatarabuelo a {
 	color: white;
