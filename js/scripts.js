@@ -1,5 +1,5 @@
 ////************** ANIMACIONES
-
+/*
 function doBounce(element, times, speed) {
     for(var i = 0; i < times; i++) {
         element.animate({height: '100px'}, speed)
@@ -21,9 +21,9 @@ $( ".img-responsive" ).bind({
     doBounce($(this), 1, 200); 
   }
 });
-
+*/
 /////************* DESPLIEGUE DE LISTA
-
+/*
 var lista = false;	
 
 function ocultarLista( $input ) {
@@ -57,7 +57,7 @@ function desplegarLista( $input, msg ) {
 	if ( $input.next().find('.caret').css('border-bottom') == '0px none rgb(51, 51, 51)' )
 		$input.next().find('.caret').css('border-bottom','4px solid').css('border-top','0');
 }
-
+*/
 /////************** VALIDACION
 
 function avisoValidacion() {
@@ -73,7 +73,7 @@ function validacion() {
 		return true;
 	}
 }
-
+/*
 /////************** NAVEGACION
 
 // Resetear elementos clase .sel
@@ -153,7 +153,7 @@ function ajaxAutocomplete( keyword, $input ) {
 }
 
 // Cuando escribimos en el input
-$("input").keyup( function(e) {
+$("input").keydown( function(e) {
 	if(e.which == 13) { // ENTER
 		var $lista = $(this).parent().next();
 		var valor1 = $lista.find('li:eq(0)').text();
@@ -195,3 +195,83 @@ $("button.buscador").click( function(){
 		ocultarLista( $input );
 	}
 });
+*/
+
+// Seleccionador con click de raton
+$(".tt-dropdown-menu").click( function() {
+	console.log("clcik");
+	$("#formulario").submit(); 
+});
+
+$("button.buscador").click( function(){
+	//$('#scrollable-dropdown-menu .typeahead').typeahead.bind( $("#typeaheadField"), 'lookup' );
+    //add something to ensure the menu will be shown
+    console.log("click");
+    //$input.focus();
+    $('#scrollable-dropdown-menu .typeahead').val('%');
+    $('tt-dropdown-menu').show;
+    //$input.typeahead('lookup').focus();
+    //$input.val('');
+});
+/*
+function todoArray() {	
+	$.ajax({
+		url: 'ajax.php',
+		type: 'GET',
+		data: { query: '%' },	
+		success: function( msg ) { var todo = msg; } 
+	});			
+}
+todoArray();
+
+function obtainer(query, cb) {
+	var fullList = $.grep(todo, function(item,index) {
+		return item.match(query);
+	});
+	mapped = $.map(fullList, function(item) {
+		return {value:item}
+	});
+	cb(mapped);
+}
+*/
+$('#scrollable-dropdown-menu .typeahead').typeahead({
+	minLength: 0,
+    items: 9999,
+    order: "asc",
+	remote: {
+		url : 'ajax.php?query=%QUERY'
+	},
+	limit: 15,
+    //callback: {
+        ///onClickAfter: function (node, a, item, event) {
+ 
+            // href key gets added inside item from options.href configuration
+            //alert(item.href);
+ 
+        //}
+    //}
+});
+// Cuando ENTER
+$("input").keydown( function(e) {
+	if(e.which == 13)
+		$("#formulario").submit(); 
+});
+// Cuando clickamos en el input 
+$("input").click( function(e) {
+	$(this).val('%');
+	$(this).typeahead.bind($(this), 'lookup');
+	$(this).val('');
+});
+/*
+$('#scrollable-dropdown-menu .typeahead').bind('typeahead:selected', function(obj, datum, name) {      
+        alert(JSON.stringify(obj)); // object
+        // outputs, e.g., {"type":"typeahead:selected","timeStamp":1371822938628,"jQuery19105037956037711017":true,"isTrigger":true,"namespace":"","namespace_re":null,"target":{"jQuery19105037956037711017":46},"delegateTarget":{"jQuery19105037956037711017":46},"currentTarget":
+        alert(JSON.stringify(datum)); // contains datum value, tokens and custom fields
+        // outputs, e.g., {"redirect_url":"http://localhost/test/topic/test_topic","image_url":"http://localhost/test/upload/images/t_FWnYhhqd.jpg","description":"A test description","value":"A test value","tokens":["A","test","value"]}
+        // in this case I created custom fields called 'redirect_url', 'image_url', 'description'   
+
+        alert(JSON.stringify(name)); // contains dataset name
+        // outputs, e.g., "my_dataset"
+
+});
+*/

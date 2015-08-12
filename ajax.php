@@ -2,6 +2,31 @@
 
 require('conexion.php');
 
+if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
+
+	$query = $_GET['query'];
+	$sql = " SELECT profesion FROM profesiones WHERE profesion LIKE '$query%' LIMIT 0,15 ";
+	$lista = array();
+
+	if( $query == '%25' ) {
+		$sql = " SELECT profesion FROM profesiones ORDER BY profesion ASC";	
+	}
+
+	$request = $pdo->prepare($sql);
+	$request->execute();
+	$count = $request->rowCount();
+	
+	if( $count > 0 ) {
+		$rows = $request->fetchAll();
+		foreach ( $rows as $row ) {
+			$profesion = ucfirst( mb_strtolower( $row['profesion'], 'UTF-8' ) );
+			$lista[] = $profesion;
+		}
+	}
+	echo json_encode($lista);
+}
+die();
+/*
 if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
 
 	$keyword = $_GET['keyword'];
@@ -26,7 +51,7 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) && isset($_SERV
 		//UNION distinct SELECT * FROM profesiones WHERE ".$item1." LIKE '%$keyword%' OR ".$item2." LIKE '%$keyword%'";
 		$sql = " SELECT * FROM profesiones WHERE ".$item1." LIKE '$keyword%'
 		UNION distinct SELECT * FROM profesiones WHERE ".$item1." LIKE '%$keyword%' ";
-		
+		//$sql = " SELECT * FROM profesiones WHERE ".$item1." LIKE '%$keyword%'";
 
 		if( $keyword == '%' ) {
 			$sql.= 'ORDER BY '.$item1.' ASC';	
@@ -105,5 +130,5 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) && isset($_SERV
 	echo $output;
 	//echo json_encode($lista);
 }
-
+*/
 ?>
