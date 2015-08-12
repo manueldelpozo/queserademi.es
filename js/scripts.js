@@ -275,3 +275,15 @@ $('#scrollable-dropdown-menu .typeahead').bind('typeahead:selected', function(ob
 
 });
 */
+
+// animar footer
+$(".btn-footer").click( function() {
+	console.log("click");
+	if( $(this).attr("id")=="btn-footer-md" ) {
+		$("#btn-footer-md").find("span").removeClass("flecha");
+		$("#btn-footer-md").parents("footer").animate({ height: '100px'}, 200 );
+	} else if ( $(this).attr("id")=="btn-footer-xs" ) {
+		$("#btn-footer-xs").find("span").removeClass("flecha");
+		$("#btn-footer-xs").parents("footer").animate({ height: '200px' }, 200 );
+	}
+});

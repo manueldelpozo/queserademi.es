@@ -42,6 +42,8 @@ try {
       <![endif]-->
       <script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
       <script type="text/javascript" src="js/bootstrap.min.js" ></script>
+      <script type="text/javascript" src="js/typeahead.bundle.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
       <script type="text/javascript" src="js/highcharts.js" ></script>
       <script type="text/javascript" src="js/highcharts-more.js" ></script>
       <script type="text/javascript" src="js/scripts.js" defer></script>   
@@ -78,13 +80,9 @@ try {
 
             <div class="col-md-4 col-xs-12 text-center">
               <div class="dropdown clearfix">
-                  <div class="input-group">
-                    <input name="profesion_uno" type="text" id="buscador" class="typeahead principal center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required>           
-                    <div class="input-group-btn" style="height:60px;top:-7px;">
-                       <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color:rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
-                    </div>
-                  </div>
-                  <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
+                <div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;margin-bottom: 10px;">
+                  <input name="profesion_uno" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required> 
+                </div>
               </div>
             </div>
 
@@ -97,13 +95,9 @@ try {
 
             <div class="col-md-4 text-center">
               <div class="dropdown clearfix">
-                  <div class="input-group">
-                    <input name="profesion_dos" type="text" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" autocomplete="off" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_dos; ?>" required autofocus>
-                    <div class="input-group-btn" style="height:60px;top:-7px;">
-                     <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_dos" style="background-color:rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
-                    </div>
-                  </div>
-                  <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id_dos"></ul>  
+                <div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;margin-bottom: 10px;">
+                  <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_dos; ?>" required autofocus>
+                </div>
               </div>
             </div>
 
@@ -129,7 +123,13 @@ try {
 
     <footer>
       <div class="row">
-        <div class="col-md-2 col-xs-12 text-center">
+        <div class="col-md-12 hidden-xs hidden-sm text-center">
+          <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-md" ><span class="caret flecha"></span></button>
+        </div>
+        <div class="col-md-12 hidden-md hidden-lg text-center">
+          <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-xs" ><span class="caret flecha"></span></button>
+        </div>
+        <div class="col-md-2 col-md-offset-0 col-xs-6 col-xs-offset-3 text-center">
           <a href="index.html"> 
             <p id="titulo" style='opacity:1;margin-top:-10px;'>
               <img class="image-container" src="images/logo.svg">

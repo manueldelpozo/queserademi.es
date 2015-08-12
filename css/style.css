@@ -66,7 +66,7 @@ filter: gray;
 }
 
 #titulo {
-	opacity: 0;
+
 	margin-bottom: 0;
 	font-family: 'Antic Slab', arial;
 	color:#c00;
@@ -148,7 +148,7 @@ filter: gray;
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 	border-color: black;
-	border-right: 0;
+	margin-bottom: 10px;
 }
 .scrollable-menu {
 	display: none;
@@ -200,8 +200,9 @@ footer {
 	bottom: 0;
 	width: 100%;
 	/* Set the fixed height of the footer here */
-	height: 40px;
-	background-color: rgba(255, 255, 255, 0.8);
+	height: 50px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border-top: 1px #999;
 }
 footer div{
 	margin-top: 5px;
@@ -311,4 +312,74 @@ li.tatarabuelo a {
 	color: white;
 }
 
+.btn-footer {
+	width: 100%;
+	height: 10px;
+	position: absolute;
+	top: -20px;
+	left: 0;
+}
+span.flecha {
+	border-bottom: 4px solid;
+	border-top: 0;
+    top: -10px;
+    position: absolute;
+}
 
+
+
+.twitter-typeahead {
+				width: 100%;
+			}
+			.tt-query, .tt-hint {
+			    width: 100%;
+			    height: 50px;
+			    padding: 8px 12px;
+			    line-height: 30px;
+			    border: 2px solid #ccc;
+			    -webkit-border-radius: 8px;
+			    -moz-border-radius: 8px;
+			    border-radius: 8px;
+			    outline: none;
+			}
+
+			.tt-query {
+			    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+			    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+			    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+			}
+
+			.tt-hint {
+			    color: #999;
+			    font-size: 18px;
+			}
+
+			.tt-dropdown-menu {
+				max-height: 150px;
+				overflow-y: auto;
+			    width: 100%;
+			    margin-top: 12px;
+			    padding: 8px 0;
+			    background-color: #fff;
+			    border: 1px solid #ccc;
+			    border: 1px solid rgba(0, 0, 0, 0.2);
+			    -webkit-border-radius: 8px;
+			    -moz-border-radius: 8px;
+			    border-radius: 8px;
+			    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+			    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+			    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+			}
+
+			.tt-suggestion {
+			    padding: 3px 20px;
+			    padding-top: 5px;
+			    line-height: 10px;
+			    font-size: 1em;
+			}
+
+			.tt-suggestion.tt-is-under-cursor {
+			    color: #fff;
+			    background-color: #0097cf;
+
+			}
