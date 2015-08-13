@@ -73,7 +73,7 @@ div.body > div {
   position: absolute; 
   top: 0;
   padding-top: 50px;
-  background-color: rgba(200, 200, 200, 0.7);
+  background-color: rgba(200, 200, 200, 0.9);
   font-size: 14px;
 }
 .btn-aviso {

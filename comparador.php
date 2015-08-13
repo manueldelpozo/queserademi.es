@@ -78,10 +78,13 @@ try {
 
           <div class="row header">
 
-            <div class="col-md-4 col-xs-12 text-center">
+            <div class="col-md-4">
               <div class="dropdown clearfix">
-                <div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;margin-bottom: 10px;">
+                <div class="input-group" id="scrollable-dropdown-menu" style="width: 90%;margin-bottom: 10px;">
                   <input name="profesion_uno" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required> 
+                  <span class="input-group-btn" >
+                    <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
+                  </span>
                 </div>
               </div>
             </div>
@@ -93,10 +96,13 @@ try {
               </a>
             </div>
 
-            <div class="col-md-4 text-center">
+            <div class="col-md-4">
               <div class="dropdown clearfix">
-                <div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;margin-bottom: 10px;">
+                <div class="input-group" id="scrollable-dropdown-menu" style="width: 90%;margin-bottom: 10px;">
                   <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_dos; ?>" required autofocus>
+                  <span class="input-group-btn" >
+                    <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
+                  </span>
                 </div>
               </div>
             </div>

@@ -197,11 +197,7 @@ $("button.buscador").click( function(){
 });
 */
 
-// Seleccionador con click de raton
-$(".tt-dropdown-menu").click( function() {
-	console.log("clcik");
-	$("#formulario").submit(); 
-});
+
 
 $("button.buscador").click( function(){
 	//$('#scrollable-dropdown-menu .typeahead').typeahead.bind( $("#typeaheadField"), 'lookup' );
@@ -275,15 +271,27 @@ $('#scrollable-dropdown-menu .typeahead').bind('typeahead:selected', function(ob
 
 });
 */
+// Seleccionar item con click de raton
+$(".tt-is-under-cursor").click( function() {
+	console.log("click");
+	$("#formulario").submit(); 
+});
 
 // animar footer
 $(".btn-footer").click( function() {
-	console.log("click");
-	if( $(this).attr("id")=="btn-footer-md" ) {
-		$("#btn-footer-md").find("span").removeClass("flecha");
-		$("#btn-footer-md").parents("footer").animate({ height: '100px'}, 200 );
-	} else if ( $(this).attr("id")=="btn-footer-xs" ) {
-		$("#btn-footer-xs").find("span").removeClass("flecha");
-		$("#btn-footer-xs").parents("footer").animate({ height: '200px' }, 200 );
+	if( $(this).attr("id")=="btn-footer-md" ) 
+		$btn = $("#btn-footer-md");
+	else if ( $(this).attr("id")=="btn-footer-xs" )
+		$btn = $("#btn-footer-xs");
+
+	if( $btn.find("span").hasClass("flecha") ) {
+		$btn.find("span").removeClass("flecha");
+		if( $btn.attr("id")=="btn-footer-md" ) 
+			$btn.parents("footer").animate({ height: '100px'}, 200 );
+		else if ( $btn.attr("id")=="btn-footer-xs" )
+			$btn.parents("footer").animate({ height: '200px'}, 200 );		
+	} else {
+		$btn.find("span").addClass("flecha");
+		$btn.parents("footer").animate({ height: '50px'}, 200 );
 	}
 });
