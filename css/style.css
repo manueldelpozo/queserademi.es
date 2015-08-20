@@ -11,43 +11,50 @@ html,body {
 	height:100%;
 	width: 100%;
 	margin:0;
-	padding:0
-	overflow-y: scroll;
+	padding:0;
+
 	*overflow-x: hidden;
 	font-family: 'Antic Slab', arial;
 }
 .background-image {
-position: fixed;
-left: 0;
-right: 0;
-z-index: 1;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top:0px;
+	z-index:-1;
 
-display: block;
-background-image: url('../images/bg/bg-1.jpg');
-background-size: 150%;
-background-position: left left;
-background-repeat: no-repeat;
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
+	display: block;
+	background-image: url('../images/bg/bg-1.jpg');
 
-width: 100%;
-height: 100%;
+	background-attachment:fixed;
+	background-position: center center;
+	background-repeat: no-repeat;
 
-opacity: 0.1;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
 
--webkit-filter: blur(5px);
--moz-filter: blur(5px);
--o-filter: blur(5px);
--ms-filter: blur(5px);
-filter: blur(5px);
+	filter: alpha(opacity=10); /* internet explorer */
+    -khtml-opacity: 0.1;      /* khtml, old safari */
+    -moz-opacity: 0.1;       /* mozilla, netscape */
+    opacity: 0.1;           /* fx, safari, opera */
 
--webkit-filter: grayscale(100%);
-filter: grayscale(100%);
-filter: gray;
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
+
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray;
 }
 .container-full {
+
+	width: 100%;
+	height:110%;
 	position: relative;
 	left: 0;
     right: 0;
@@ -55,10 +62,9 @@ filter: gray;
 	margin: 0 auto;
 	padding: 0;
 	margin:0;
-	width: 100%;
-	min-height:100%;	
+		
 	color:#555;
-	overflow:hidden;	
+	
 }
 
 .container-full a {
@@ -223,8 +229,11 @@ ul.share-buttons li{
 	font-size: 12px;
 	margin: 20px;
 	padding: 15px;
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.8);
 	box-shadow: 5px 5px 5px #DDD;
+	-moz-box-shadow: inset 1px 5px 1px 5px #DDD;
+    -webkit-box-shadow: inset 1px 5px 1px 5px #DDD;
+    box-shadow: inset 1px 5px 1px 5px #DDD;
 }
 .sprite {
 	background:url(../images/sprite.png) no-repeat;
@@ -331,57 +340,57 @@ span.flecha {
 
 
 .twitter-typeahead {
-				width: 100%;
-			}
-			.tt-query, .tt-hint {
-			    width: 100%;
-			    height: 50px;
-			    padding: 8px 12px;
-			    line-height: 30px;
-			    border: 2px solid #ccc;
-			    -webkit-border-radius: 8px;
-			    -moz-border-radius: 8px;
-			    border-radius: 8px;
-			    outline: none;
-			}
+	width: 100%;
+}
+.tt-query, .tt-hint {
+    width: 100%;
+    height: 50px;
+    padding: 8px 12px;
+    line-height: 30px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    outline: none;
+}
 
-			.tt-query {
-			    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-			    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-			    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-			}
+.tt-query {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
 
-			.tt-hint {
-			    color: #999;
-			    font-size: 18px;
-			}
+.tt-hint {
+    color: #999;
+    font-size: 18px;
+}
 
-			.tt-dropdown-menu {
-				max-height: 150px;
-				overflow-y: auto;
-			    width: 100%;
-			    margin-top: 12px;
-			    padding: 8px 0;
-			    background-color: #fff;
-			    border: 1px solid #ccc;
-			    border: 1px solid rgba(0, 0, 0, 0.2);
-			    -webkit-border-radius: 8px;
-			    -moz-border-radius: 8px;
-			    border-radius: 8px;
-			    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-			    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-			    box-shadow: 0 5px 10px rgba(0,0,0,.2);
-			}
+.tt-dropdown-menu {
+	max-height: 150px;
+	overflow-y: auto;
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
 
-			.tt-suggestion {
-			    padding: 3px 20px;
-			    padding-top: 5px;
-			    line-height: 18px;
-			    font-size: 1em;
-			}
+.tt-suggestion {
+    padding: 3px 20px;
+    padding-top: 5px;
+    line-height: 18px;
+    font-size: 1em;
+}
 
-			.tt-suggestion.tt-is-under-cursor {
-			    color: #fff;
-			    background-color: #0097cf;
+.tt-suggestion.tt-is-under-cursor {
+    color: #fff;
+    background-color: #0097cf;
 
-			}
+}

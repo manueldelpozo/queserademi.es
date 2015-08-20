@@ -5,9 +5,7 @@ div.header {
   margin-top: 1%;
   height: 10%;
 }
-div.body {
-  height: 90%;
-}
+
 div.body > div {
   padding:0;
 }

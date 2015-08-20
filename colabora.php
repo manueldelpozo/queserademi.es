@@ -30,6 +30,7 @@ if( isset( $_GET['profesion']  )  )
       <script type="text/javascript" src="js/bootstrap.min.js" ></script>
       <script type="text/javascript" src="js/bootstrap-slider.js" ></script>
       <!--script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script-->
+      <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js" defer></script>
       <script type="text/javascript" src="js/scripts.js" defer></script>   
       <script type="text/javascript">
         $(document).ready(function() {
@@ -82,7 +83,21 @@ if( isset( $_GET['profesion']  )  )
           filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
           /* For IE 8*/
           -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-          border-color: black;
+  
+          border-radius: 0;
+          border: 2px solid #ccc;
+          border-top-color: rgb(204, 204, 204);
+          border-top-style: solid;
+          border-top-width: 2px;
+          border-right-color: rgb(204, 204, 204);
+          border-right-style: solid;
+          border-right-width: 2px;
+          border-bottom-color: rgb(204, 204, 204);
+          border-bottom-style: solid;
+          border-bottom-width: 2px;
+          border-left-color: rgb(204, 204, 204);
+          border-left-style: solid;
+          border-left-width: 2px;
         }
         .verif{ 
           display: none; 
@@ -165,23 +180,16 @@ if( isset( $_GET['profesion']  )  )
                 <div class="form-group dropdown clearfix profesion required">
                   <label for="profesion" class="col-sm-2 control-label">Profesión:</label>
                   <div class="col-sm-10">  
-                    <div class="input-group">
-                      <input name="profesion" type="text" id="profesion" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca o escribe una profesión" value="<?php echo @$profesion; ?>" required/>           
-                      <div class="input-group-btn" style="height:60px;top:-7px;">
-                         <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete" style="background-color: rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
-                      </div>
+                    <div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;">
+                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="text" placeholder="Busca o escribe una profesion" value="<?php echo @$profesion; ?>" required>
                     </div>
-                    <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
                   </div>
                 </div>
                 <div class="form-group dropdown clearfix estudios">
                   <label for="estudios_asoc" class="col-sm-2 control-label">Estudios:(opcional)</label>
                   <div class="col-sm-10">
-                    <div class="input-group">
-                      <input name="estudios_asoc" type="text" id="estudios_asoc" class="typeahead center-block form-control input-lg" autocomplete="off" placeholder="Busca o escribe sus estudios asociados" value="<?php //echo @$profesion_uno; ?>"/>           
-                      <div class="input-group-btn" style="height:60px;top:-7px;">
-                         <button type="button" class="btn btn-default dropdown-toggle buscador" data-toggle="dropdown" aria-expanded="false" id="list_complete_estudios" style="background-color: rgba(255, 255, 255, 0.6);border-color: black;border-left: 0;padding: 12px;"><span class="caret"></span></button>
-                      </div>
+                    <div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;">
+                      <input name="estudios_asoc" type="text" id="estudios_asoc" class="typeahead center-block form-control input-lg" placeholder="Busca o escribe sus estudios asociados" value="<?php //echo @$profesion_uno; ?>"/>           
                     </div>
                     <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
                   </div>
