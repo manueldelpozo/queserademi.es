@@ -8,12 +8,11 @@
 }
 
 html,body {
-	height:100%;
+	height:110%;
 	width: 100%;
 	margin:0;
 	padding:0;
-
-	*overflow-x: hidden;
+	
 	font-family: 'Antic Slab', arial;
 }
 .background-image {
@@ -64,7 +63,7 @@ html,body {
 	margin:0;
 		
 	color:#555;
-	
+	overflow: hidden;
 }
 
 .container-full a {
@@ -179,14 +178,9 @@ html,body {
 	z-index: 999;
 }
 .header {
-	height: 20%;
+	height: 50px;
 }
-.body {
-	height: 20%;
-}
-.footer {
-	height: 60%;
-}
+
 #ver-video {
 	margin-top: 130px;
 	margin-bottom: 1%
@@ -231,15 +225,16 @@ ul.share-buttons li{
 	padding: 15px;
 	background-color: rgba(255, 255, 255, 0.8);
 	box-shadow: 5px 5px 5px #DDD;
-	-moz-box-shadow: inset 1px 5px 1px 5px #DDD;
+	/*-moz-box-shadow: inset 1px 5px 1px 5px #DDD;
     -webkit-box-shadow: inset 1px 5px 1px 5px #DDD;
-    box-shadow: inset 1px 5px 1px 5px #DDD;
+    box-shadow: inset 1px 5px 1px 5px #DDD;*/
 }
 .sprite {
 	background:url(../images/sprite.png) no-repeat;
 	height: 250px;
 	width: 100px;
 	float: left;
+	margin-right: 15px;
 }
 #sprite-alfonso {
 	/*background-position: -40px 0px*/;

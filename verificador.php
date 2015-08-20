@@ -299,14 +299,14 @@ if( !empty( $_POST['verificacion'] ) ){
 		    <div class="col-md-12 hidden-md hidden-lg text-center">
 				<button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-xs" ><span class="caret flecha"></span></button>
 		    </div>
-	        <div class="col-md-2 col-xs-12 text-center">
-	          <a href="index.html"> 
-	            <p id="titulo" style='opacity:1;margin-top:-10px;'>
-	              <img class="image-container" src="images/logo.svg">
-	              <strong>que</strong>sera<strong>de</strong>mi
-	            </p>
-	          </a>
-	        </div>
+	        <div class="col-md-2 col-md-offset-0 col-xs-6 col-xs-offset-3 text-center">
+		        <a href="index.html">	
+		          	<p id="titulo" style='opacity:1;margin-top:-10px;'>
+			          	<img class="image-container" src="images/logo.svg">
+			          	<strong>que</strong>sera<strong>de</strong>mi
+		          	</p>
+		        </a>
+		    </div>
 	        <div class="col-md-2 col-xs-12 text-center">
 	          <a href="colabora.php">Colabora con qsdm</a>
 	        </div>

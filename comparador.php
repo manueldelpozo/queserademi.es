@@ -109,7 +109,7 @@ try {
 
           </div> 
 
-          <div class="row body">
+          <div class="row">
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container" class="grafica"></div>
             </div>
