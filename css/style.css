@@ -63,7 +63,7 @@ html,body {
 	margin:0;
 		
 	color:#555;
-	overflow: hidden;
+	
 }
 
 .container-full a {
@@ -180,7 +180,6 @@ html,body {
 .header {
 	height: 50px;
 }
-
 #ver-video {
 	margin-top: 130px;
 	margin-bottom: 1%

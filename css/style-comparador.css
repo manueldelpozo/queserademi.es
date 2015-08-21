@@ -3,9 +3,8 @@ div.header {
   margin-right: 2%;
   margin-bottom: 0;
   margin-top: 1%;
-  
+  height: 140px;
 }
-
 div.body > div {
   padding:0;
 }
