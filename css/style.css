@@ -12,7 +12,7 @@ html,body {
 	width: 100%;
 	margin:0;
 	padding:0;
-    overflow-y: visible;
+    overflow-y: inherit;
 	font-family: 'Antic Slab', arial;
 }
 .background-image {
@@ -114,6 +114,10 @@ html,body {
 		max-width: 150px;
 		max-height: 150px;		    
 	}
+	.img-menu {
+		width: 70%;
+    	margin-top: -10px;		    
+	}
 	.sublead {
 		font-size:1.2em;
 		color:#c00;
@@ -125,25 +129,18 @@ html,body {
 		width: 80%;
 		height: auto;
 	} 
-}
-
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-	html,body {
-		height:100%;
-		margin:0;
-		padding:0
-		overflow-y: scroll;
-		*overflow-x: hidden;
-	}
 	footer {
 		position: fixed;
-		bottom: 0;
+		top: 0;
 		width: 100%;
 		/* Set the fixed height of the footer here */
-		height: 60px;
-		background-color: rgba(255, 255, 255, 0.8);
+		height: 0px;
+		background-color: rgba(230, 230, 230, 0.8);
 	}
+
 }
+
+
 
 .typeahead {
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -194,7 +191,9 @@ html,body {
 	padding: 0;
 	margin: 0;
 } 
-
+.margen {
+	height: 50px;
+}
 footer {
 	position: fixed;
 	z-index: 99;
@@ -325,8 +324,11 @@ li.tatarabuelo a {
     background-color: ghostwhite;
 }
 #btn-footer-xs {
-	height: 30px;
+	font-size: 3em;
+	position: static;
 	margin-bottom: 5px;
+	border: 0;
+	background-color: transparent;
 }
 span.flecha {
 	border-bottom: 4px solid;

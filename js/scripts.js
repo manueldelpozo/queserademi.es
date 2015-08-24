@@ -286,14 +286,21 @@ $(".btn-footer").click( function() {
 
 	if( $btn.find("span.caret").hasClass("flecha") || $btn.find("span.glyphicon").hasClass("glyphicon-menu-hamburger") ) {
 		$btn.find("span.caret").removeClass("flecha");
-		$btn.find("span.glyphicon").removeClass("glyphicon-menu-hamburger").addClass('glyphicon-menu-down');
-		if( $btn.attr("id")=="btn-footer-md" ) 
-			$btn.parents("footer").animate({ height: '100px'}, 200 );
-		else if ( $btn.attr("id")=="btn-footer-xs" )
-			$btn.parents("footer").animate({ height: '400px'}, 200 );		
+		$btn.find("span.glyphicon").removeClass("glyphicon-menu-hamburger").addClass('glyphicon-menu-up');
+
+		$footer = $btn.parents("footer");
+		if( $btn.attr("id")=="btn-footer-md" ) {
+			$footer.animate({ height: '100px'}, 200 );
+		} else if ( $btn.attr("id")=="btn-footer-xs" ) {
+			$footer.animate({ height: '500px'}, 200 );
+			$('mobile-menu').each(function() {
+			  $( this ).removeClass('hidden-xs');
+			  console.log('hace algo');
+			});
+		}		
 	} else {
 		$btn.find("span.caret").addClass("flecha");
-		$btn.find("span.glyphicon").removeClass("glyphicon-menu-down").addClass('glyphicon-menu-hamburger');
+		$btn.find("span.glyphicon").removeClass("glyphicon-menu-up").addClass('glyphicon-menu-hamburger');
 		$btn.parents("footer").animate({ height: '50px'}, 200 );
 	}
 });
