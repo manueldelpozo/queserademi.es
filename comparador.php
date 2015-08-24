@@ -131,18 +131,23 @@ try {
       <div class="row">
         <div class="col-md-12 hidden-xs hidden-sm text-center">
           <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-md" ><span class="caret flecha"></span></button>
-        </div>
-        <div class="col-md-12 hidden-md hidden-lg text-center">
-          <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-xs" ><span class="caret flecha"></span></button>
-        </div>
-        <div class="col-md-2 col-md-offset-0 col-xs-6 col-xs-offset-3 text-center">
-          <a href="index.html"> 
-            <p id="titulo" style='opacity:1;margin-top:-10px;'>
-              <img class="image-container" src="images/logo.svg">
-              <strong>que</strong>sera<strong>de</strong>mi
-            </p>
-          </a>
-        </div>
+            </div>
+            <div class="col-md-12 hidden-md hidden-lg text-center">
+          <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-xs" ><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
+            </div>
+        <div class="col-md-2 col-md-offset-0 hidden-xs hidden-sm col-xs-6 col-xs-offset-3 text-center">
+              <a href="index.html"> 
+                  <p id="titulo" style='opacity:1;margin-top:-10px;'>
+                    <img class="image-container" src="images/logo.svg">
+                    <strong>que</strong>sera<strong>de</strong>mi
+                  </p>
+              </a>
+            </div>
+            <div class="col-md-2 col-md-offset-0 hidden-md hidden-lg col-xs-6 col-xs-offset-3 text-center">
+                <a href="index.html"> 
+                <img class="image-container" src="images/logo.svg">               
+                </a>
+            </div>
         <div class="col-md-2 col-xs-12 text-center">
           <a href="colabora.php">Colabora con qsdm</a>
         </div>
@@ -163,6 +168,12 @@ try {
             <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
           </ul>
         </div>
+        <div class="col-md-2 col-md-offset-4 col-xs-12 text-center">
+              <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Terminos de uso</a>
+            </div>
+            <div class="col-md-2 col-xs-12 text-center">
+              <small>&copy; 2015 queserademi.es</small>
+            </div>
       </div>
     </footer>
 
