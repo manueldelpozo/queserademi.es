@@ -309,7 +309,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		        </div>
 		        <div class="col-md-2 col-md-offset-0 hidden-md hidden-lg col-xs-6 col-xs-offset-3 text-center">
 	          		<a href="index.html">	
-			        	<img class="image-container" src="images/logo.svg">		          	
+			        	<img class="image-container" src="images/logo.svg" style="margin-top:20px;"> 		          	
 		          	</a>
 		        </div>
 	        <div class="col-md-2 col-xs-12 text-center">
