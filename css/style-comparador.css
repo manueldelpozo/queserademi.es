@@ -2,8 +2,8 @@ div.header {
   margin-left: 2%;
   margin-right: 2%;
   margin-bottom: 0;
-  margin-top: 1%;
-  height: 140px;
+  margin-top: 2%;
+  height: 120px;
 }
 div.body > div {
   padding:0;
@@ -86,4 +86,12 @@ div.body > div {
   background-color: rgba(255, 255, 255, 0.6);
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+/* Smartphones and tablets (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-width: 768px) {
+  div.header {
+    margin-top: 4%;
+    height: 183px;
+  }
 }

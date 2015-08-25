@@ -8,11 +8,12 @@
 }
 
 html,body {
-	height:120%;
+	height:100%;
 	width: 100%;
 	margin:0;
 	padding:0;
     overflow-y: inherit;
+    overflow-x: hidden;
 	font-family: 'Antic Slab', arial;
 }
 .background-image {
@@ -80,8 +81,8 @@ html,body {
     height: auto;
     width: 22%;
 }
-
-@media screen and (min-width: 768px) {
+/* Computer screens----------- */
+@media only screen and (min-width: 768px) {
 	.lead {
 		font-size:5em;
 		color:#c00;
@@ -102,17 +103,26 @@ html,body {
 		width: 35%;
 		height: auto;
 	} 
+	footer {
+		background-color: rgba(255, 255, 255, 0.8);
+	}
 }
-
-@media screen and (max-width: 768px) {
+/* Smartphones and tablets (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-width: 768px) {
+	html,body {
+		background-color: rgba(255, 255, 255, 0.5);
+	}
+	.background-image {
+		
+	}
 	.lead {
 		font-size:3em;
 		color:#c00;
 	}
 	.img-responsive {
 		display: inline-block;
-		max-width: 150px;
-		max-height: 150px;		    
+		max-width: 110px;
+		max-height: 110px;		    
 	}
 	.img-menu {
 		width: 70%;
@@ -130,16 +140,16 @@ html,body {
 		height: auto;
 	} 
 	footer {
-		position: fixed;
 		top: 0;
-		width: 100%;
-		/* Set the fixed height of the footer here */
-		height: 0px;
-		background-color: rgba(230, 230, 230, 0.8);
+		background-color: rgba(230, 230, 230, 0.85);
+		font-size: 1.5em;
 	}
 
 }
-
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+   
+}
 
 
 .typeahead {
@@ -201,7 +211,6 @@ footer {
 	width: 100%;
 	/* Set the fixed height of the footer here */
 	height: 50px;
-	background-color: rgba(255, 255, 255, 0.9);
 	border-top: 1px #999;
 }
 footer div{
@@ -324,7 +333,7 @@ li.tatarabuelo a {
     background-color: ghostwhite;
 }
 #btn-footer-xs {
-	font-size: 3em;
+	
 	position: static;
 	margin-bottom: 5px;
 	border: 0;
@@ -335,6 +344,10 @@ span.flecha {
 	border-top: 0;
     top: -10px;
     position: absolute;
+}
+.sel-menu {
+	border-bottom: 3px;
+	text-decoration: overline;
 }
 
 

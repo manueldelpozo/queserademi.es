@@ -284,23 +284,28 @@ $(".btn-footer").click( function() {
 	else if ( $(this).attr("id")=="btn-footer-xs" )
 		$btn = $("#btn-footer-xs");
 
+	$footer = $btn.parents("footer");
+
 	if( $btn.find("span.caret").hasClass("flecha") || $btn.find("span.glyphicon").hasClass("glyphicon-menu-hamburger") ) {
 		$btn.find("span.caret").removeClass("flecha");
 		$btn.find("span.glyphicon").removeClass("glyphicon-menu-hamburger").addClass('glyphicon-menu-up');
 
-		$footer = $btn.parents("footer");
 		if( $btn.attr("id")=="btn-footer-md" ) {
 			$footer.animate({ height: '100px'}, 200 );
 		} else if ( $btn.attr("id")=="btn-footer-xs" ) {
 			$footer.animate({ height: '500px'}, 200 );
-			$('mobile-menu').each(function() {
-			  $( this ).removeClass('hidden-xs');
-			  console.log('hace algo');
+			$footer.children().children().each(function() {
+				if( $(this).hasClass('mobile-menu'))
+					$(this).removeClass('hidden-xs');
 			});
 		}		
 	} else {
 		$btn.find("span.caret").addClass("flecha");
 		$btn.find("span.glyphicon").removeClass("glyphicon-menu-up").addClass('glyphicon-menu-hamburger');
-		$btn.parents("footer").animate({ height: '50px'}, 200 );
+		$footer.animate({ height: '50px'}, 200 );
+		$footer.children().children().each(function() {
+			if( $(this).hasClass('mobile-menu'))
+				$(this).addClass('hidden-xs');
+		});
 	}
 });

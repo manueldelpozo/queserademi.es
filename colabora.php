@@ -144,6 +144,7 @@ if( isset( $_GET['profesion']  )  )
       <form id="formulario-colabora" class="form-horizontal" role="form" action="verificador.php" method="post" onsubmit="return validacion()">
 
           <div class="row header">
+            <div class="col-xs-12 hidden-sm hidden-md hidden-lg margen"></div>
 
             <div class="col-md-3 col-md-offset-1 col-xs-11 col-xs-offset-1">  
               <h3>Colabora con queserademi, <br><strong>son solo 2 minutos...</strong></h3>  
@@ -320,8 +321,15 @@ if( isset( $_GET['profesion']  )  )
         <div class="col-md-12 hidden-xs hidden-sm text-center">
           <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-md" ><span class="caret flecha"></span></button>
             </div>
-            <div class="col-md-12 hidden-md hidden-lg text-center">
-          <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-xs" ><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
+            <div class="col-xs-12 hidden-md hidden-lg">
+              <div class="col-xs-3">
+                <a href="index.html"> 
+                  <img class="img-menu" src="images/logo.svg">        
+                  </a>
+              </div>
+              <div class="col-xs-3 col-xs-offset-6">
+            <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-xs" ><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
+          </div>
             </div>
         <div class="col-md-2 col-md-offset-0 hidden-xs hidden-sm col-xs-6 col-xs-offset-3 text-center">
               <a href="index.html"> 
@@ -331,39 +339,35 @@ if( isset( $_GET['profesion']  )  )
                   </p>
               </a>
             </div>
-            <div class="col-md-2 col-md-offset-0 hidden-md hidden-lg col-xs-6 col-xs-offset-3 text-center">
-                <a href="index.html"> 
-                <img class="image-container" src="images/logo.svg" style="margin-top:20px;">                
-                </a>
+        
+            <div class="col-md-2 col-xs-12 hidden-xs mobile-menu sel-menu text-center">
+              <a href="colabora.php">Colabora con qsdm</a>
             </div>
-        <div class="col-md-2 col-xs-12 text-center">
-          <a href="colabora.php">Colabora con qsdm</a>
-        </div>
-        <div class="col-md-2 col-xs-12 text-center">
-          <a href="porquecolaborar.html">Por qué colaborar</a>
-        </div>
-        <div class="col-md-2 col-xs-12 text-center">
-          <a href="quienessomos.html">Quiénes somos</a>
-        </div>
-        <div class="col-md-2 col-xs-12 text-center">
-          <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Contacta con nosotros</a>
-        </div>
-        <div class="col-md-2 col-xs-12 text-center">
-          <ul class="share-buttons">
-            <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.queserademi.es&t=Comparador%20de%20profesiones" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-            <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.es&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-            <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
-          </ul>
-        </div>
-        <div class="col-md-2 col-md-offset-4 col-xs-12 text-center">
+            <div class="col-md-2 col-xs-12 hidden-xs mobile-menu text-center">
+              <a href="porquecolaborar.html">Por qué colaborar</a>
+            </div>
+            <div class="col-md-2 col-xs-12 hidden-xs mobile-menu text-center">
+              <a href="quienessomos.html">Quiénes somos</a>
+            </div>
+            <div class="col-md-2 col-xs-12 hidden-xs mobile-menu text-center">
+              <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Contacta con nosotros</a>
+            </div>
+            <div class="col-md-2 col-xs-12 hidden-xs mobile-menu text-center">
+              <ul class="share-buttons">
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.queserademi.es&t=Comparador%20de%20profesiones" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+                <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+                <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.es&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+                <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+              </ul>
+            </div>
+            <div class="col-md-2 col-md-offset-4 col-xs-12 hidden-xs mobile-menu text-center">
               <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Terminos de uso</a>
             </div>
-            <div class="col-md-2 col-xs-12 text-center">
+            <div class="col-md-2 col-xs-12 hidden-xs mobile-menu text-center">
               <small>&copy; 2015 queserademi.es</small>
             </div>
       </div>
-    </footer>
+      </footer>
   </body>
 
 </html>
