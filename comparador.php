@@ -26,7 +26,9 @@ try {
       <meta charset="utf-8">
       <title>Comparador de Profesiones</title>
       <meta name="description" content="Comparador de profesiones queserademi">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
       <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Bienvenido a queserademi" />
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
@@ -78,7 +80,7 @@ try {
 
           <div class="row header">
             <div class="col-xs-12 hidden-sm hidden-md hidden-lg margen"></div>
-            
+
             <div class="col-md-4">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu" style="width: 90%;margin-bottom: 10px;">

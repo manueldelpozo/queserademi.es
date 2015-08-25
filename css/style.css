@@ -125,7 +125,7 @@ html,body {
 		max-height: 110px;		    
 	}
 	.img-menu {
-		width: 70%;
+		width: 45px;
     	margin-top: -10px;		    
 	}
 	.sublead {
@@ -185,7 +185,11 @@ html,body {
 	z-index: 999;
 }
 .header {
-	height: 50px;
+	height: 100px;
+}
+.header h4 {
+    font-size: 20px;
+    line-height: 1.5;
 }
 #ver-video {
 	margin-top: 130px;
@@ -335,7 +339,7 @@ li.tatarabuelo a {
 #btn-footer-xs {
 	
 	position: static;
-	margin-bottom: 5px;
+    margin-top: -2px;
 	border: 0;
 	background-color: transparent;
 }

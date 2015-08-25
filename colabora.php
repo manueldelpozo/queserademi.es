@@ -11,7 +11,9 @@ if( isset( $_GET['profesion']  )  )
       <meta charset="utf-8">
       <title>Comparador de Profesiones</title>
       <meta name="description" content="Colabora con queserademi">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
       <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Colabora con queserademi" />
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
@@ -147,7 +149,7 @@ if( isset( $_GET['profesion']  )  )
             <div class="col-xs-12 hidden-sm hidden-md hidden-lg margen"></div>
 
             <div class="col-md-3 col-md-offset-1 col-xs-11 col-xs-offset-1">  
-              <h3>Colabora con queserademi, <br><strong>son solo 2 minutos...</strong></h3>  
+              <h4>Colabora con queserademi, <br><strong>son solo 2 minutos...</strong></h4>  
             </div>
 
             <div class="col-md-4 hidden-xs text-center">
@@ -157,7 +159,7 @@ if( isset( $_GET['profesion']  )  )
             </div>
 
             <div class="col-md-3 hidden-xs" align="right">
-              <h3><a href="porquecolaborar.html">Por qué colaborar?</a></h3>
+              <h4><a href="porquecolaborar.html">Por qué colaborar?</a></h4>
             </div>
 
           </div> 
@@ -165,7 +167,7 @@ if( isset( $_GET['profesion']  )  )
           <div class="row body">
 
             <div class="col-md-6 col-xs-12">
-              <div class="col-md-10 col-md-offset-1 col-xs-12">
+              
                 <div class="form-group">
                   <label for="colaborador" class="col-sm-2 control-label">Nombre:(opcional)</label>
                   <div class="col-sm-10">                 
@@ -201,11 +203,10 @@ if( isset( $_GET['profesion']  )  )
                     <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="Escribe una breve descripción de la profesión "></textarea>
                   </div>
                 </div>
-              </div>
+              
             </div>
 
             <div class="col-md-6 col-xs-12 text-center">
-              <div class="col-md-10 col-md-offset-1 col-xs-12">
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
                   <h5><strong>SALARIO (€/mes neto aprox.)</strong></h5>
@@ -308,7 +309,7 @@ if( isset( $_GET['profesion']  )  )
                   </div>
                 </div>
 
-              </div>
+             
             </div>
     
           </div> 
