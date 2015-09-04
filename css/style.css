@@ -1,12 +1,18 @@
-@import url(http://fonts.googleapis.com/css?family=Antic+Slab);
-
+@font-face {
+  font-family: 'Antic Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Antic Slab'), local('AnticSlab-Regular'), url(http://fonts.gstatic.com/s/anticslab/v4/8c9q46CAcsp9TiRX9KLgZPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/*
 * {
 	-moz-box-sizing: border-box; 
 }
 *:before, *:after {
 	-moz-box-sizing: border-box; 
 }
-
+*/
 html,body {
 	height:100%;
 	width: 100%;
@@ -81,8 +87,8 @@ html,body {
     height: auto;
     width: 22%;
 }
-/* Computer screens----------- */
-@media only screen and (min-width: 768px) {
+/* Tablets (portrait and landscape) ----------- */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait) {
 	.lead {
 		font-size:5em;
 		color:#c00;
@@ -107,8 +113,35 @@ html,body {
 		background-color: rgba(255, 255, 255, 0.8);
 	}
 }
-/* Smartphones and tablets (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-width: 768px) {
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
+	.lead {
+		font-size:5em;
+		color:#c00;
+	}
+	.img-responsive {
+		display: inline-block;
+		max-width: 100px;
+		max-height: 100px;
+	}
+	.sublead {
+		font-size:1.5em;
+		color:#c00;
+		margin-top: 0;
+		margin-bottom: 25px;
+	}
+	video {
+		margin: 0;
+		width: 35%;
+		height: auto;
+	} 
+	footer {
+		background-color: rgba(255, 255, 255, 0.8);
+		font-size: 0.7em;
+	}
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media screen and (max-device-width: 400px) and (orientation:portrait) {
 	html,body {
 		background-color: rgba(255, 255, 255, 0.5);
 	}
@@ -141,14 +174,54 @@ html,body {
 	} 
 	footer {
 		top: 0;
-		background-color: rgba(230, 230, 230, 0.85);
-		font-size: 1.5em;
+		background-color: rgba(230, 230, 230, 0.9);
+		font-size: 1.6em;
+	}
+	.mobile-menu {
+		margin-bottom: 5px;
 	}
 
 }
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-   
+
+@media screen and (max-device-width: 768px) and (orientation:landscape) {
+   html,body {
+		background-color: rgba(255, 255, 255, 0.5);
+	}
+	.background-image {
+		
+	}
+	.lead {
+		font-size:3em;
+		color:#c00;
+	}
+	.img-responsive {
+		display: inline-block;
+		max-width: 110px;
+		max-height: 110px;		    
+	}
+	.img-menu {
+		width: 45px;
+    	margin-top: -10px;		    
+	}
+	.sublead {
+		font-size:1.2em;
+		color:#c00;
+		margin-top: 0;
+		margin-bottom: 20px;
+	}
+	video {
+		margin: 0;
+		width: 80%;
+		height: auto;
+	} 
+	footer {
+		top: 0;
+		background-color: rgba(230, 230, 230, 0.9);
+		font-size: 1.6em;
+	}
+	.mobile-menu {
+		margin-bottom: 5px;
+	}
 }
 
 
@@ -221,7 +294,17 @@ footer div{
 	margin-top: 5px;
 	font-weight: bolder;
 	color: #555;
-	
+}
+.mobile-menu {
+	padding: 0;
+	margin-top: 1px;
+}
+.social {
+	margin-top: -3px;
+    padding-right: 10px;
+}
+.terminos {
+	margin-top: -12px;
 }
 ul.share-buttons{
 	list-style: none;
@@ -334,7 +417,8 @@ li.tatarabuelo a {
 	position: absolute;
 	top: -18px;
 	left: 0;
-    background-color: ghostwhite;
+    background-color: rgba(240, 240, 240, 1);
+    border-bottom-color: transparent;
 }
 #btn-footer-xs {
 	

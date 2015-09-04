@@ -294,8 +294,7 @@ $(".btn-footer").click( function() {
 			$footer.animate({ height: '100px'}, 200 );
 		} else if ( $btn.attr("id")=="btn-footer-xs" ) {
 			$footer.animate({ height: '500px'}, 200 );
-			$footer.children().children().each(function() {
-				if( $(this).hasClass('mobile-menu'))
+			$footer.find('.mobile-menu').each(function() {
 					$(this).removeClass('hidden-xs');
 			});
 		}		
@@ -303,8 +302,7 @@ $(".btn-footer").click( function() {
 		$btn.find("span.caret").addClass("flecha");
 		$btn.find("span.glyphicon").removeClass("glyphicon-menu-up").addClass('glyphicon-menu-hamburger');
 		$footer.animate({ height: '50px'}, 200 );
-		$footer.children().children().each(function() {
-			if( $(this).hasClass('mobile-menu'))
+		$footer.find('.mobile-menu').each(function() {
 				$(this).addClass('hidden-xs');
 		});
 	}
