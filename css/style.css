@@ -18,7 +18,7 @@ html,body {
 	width: 100%;
 	margin:0;
 	padding:0;
-    overflow-y: inherit;
+    overflow-y: auto;
     overflow-x: hidden;
 	font-family: 'Antic Slab', arial;
 }
@@ -27,8 +27,8 @@ html,body {
 	height: 100%;
 	position: fixed;
 	left: 0;
-	top:0px;
-	z-index:-1;
+	top: 0;
+	z-index: -1;
 
 	display: block;
 	background-image: url('../images/bg/bg-1.jpg');
@@ -52,10 +52,26 @@ html,body {
 	-o-filter: blur(5px);
 	-ms-filter: blur(5px);
 	filter: blur(5px);
-
-	-webkit-filter: grayscale(100%);
-	filter: grayscale(100%);
-	filter: gray;
+}
+.fullscreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.grayscale {
+    filter: grayscale(100%);
+    filter: url(grayscale.svg);  /* Firefox 4+ */
+    filter:gray;  /* IE6-9 */
+    -webkit-filter:grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
 }
 .container-full {
 
@@ -76,9 +92,14 @@ html,body {
 .container-full a {
 	text-decoration:none;
 }
-
+.header {
+	height: 100px;
+}
+.header h4 {
+    font-size: 20px;
+    line-height: 1.5;
+}
 #titulo {
-	margin-bottom: 20px;
 	font-family: 'Antic Slab', arial;
 	color:#c00;
 }
@@ -89,6 +110,10 @@ html,body {
 .lead {
 	font-size:5em;
 	color:#c00;
+}
+h6.sublead {
+    color: #c00;
+    font-size: 1.5em;
 }
 .img-responsive {
 	display: inline-block;
@@ -130,16 +155,12 @@ html,body {
 	position: absolute;  
 	z-index: 999;
 }
-.header {
-	height: 100px;
-}
-.header h4 {
-    font-size: 20px;
-    line-height: 1.5;
+
+#scrollable-dropdown-menu {
+	width: 95%;
 }
 #ver-video {
-	margin-top: 130px;
-	margin-bottom: 1%
+	margin-top: 50px;
 }
 #ver-video a { 
 	padding: 10px 30px;
@@ -151,6 +172,38 @@ html,body {
 	padding: 0;
 	margin: 0;
 } 
+.control-video {
+    position: absolute;
+    top: 2%;
+    right: 12%;
+    z-index: 1000;
+    font-size: 1em;
+    display: none;
+}
+#close-fullvid, #arrow-down {
+    color: #fff;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    padding-top: 9px;
+    background-color: #1d1d1b;
+}
+#close-fullvid:hover, #close-fullvid:active, #close-fullvid:link, #arrow-down:hover, #arrow-down:active, #arrow-down:link {
+    background-color: #000;
+    text-decoration: none;
+}
+#fullvid {
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
 .margen {
 	height: 50px;
 }
@@ -429,12 +482,15 @@ span.flecha {
 	html,body {
 		background-color: rgba(255, 255, 255, 0.5);
 	}
-	.background-image {
-		
+	#scrollable-dropdown-menu {
+		width: 90%;
 	}
 	.lead {
 		font-size:3em;
 		color:#c00;
+	}
+	#titulo {
+		margin-bottom: 0;
 	}
 	.img-responsive {
 		display: inline-block;
@@ -455,7 +511,13 @@ span.flecha {
 		margin: 0;
 		width: 80%;
 		height: auto;
+	}
+	#ver-video {
+		margin-top: 100px;
 	} 
+	.control-video {
+        right: 1%;
+    }
 	footer {
 		top: 0;
 		background-color: rgba(230, 230, 230, 0.9);
@@ -469,19 +531,19 @@ span.flecha {
 
 @media only screen and (max-device-width: 768px) and (orientation:landscape) {
    html,body {
-		background-color: rgba(255, 255, 255, 0.5);
-	}
-	.background-image {
-		
+		/*background-color: rgba(255, 255, 255, 0.5);*/
 	}
 	.lead {
 		font-size:3em;
 		color:#c00;
 	}
+	#titulo {
+		margin: 0;
+	}
 	.img-responsive {
 		display: inline-block;
-		max-width: 110px;
-		max-height: 110px;		    
+		max-width: 80px;
+		max-height: 80px;		    
 	}
 	.img-menu {
 		width: 45px;
@@ -493,11 +555,24 @@ span.flecha {
 		margin-top: 0;
 		margin-bottom: 20px;
 	}
+	form#formulario {
+		width: 103%;
+	}
 	video {
 		margin: 0;
 		width: 80%;
 		height: auto;
+	}
+	#ver-video {
+		margin-top: 10px;
 	} 
+	#fullvid-link {
+        padding: 10px 30px;
+        font-size: 0.8em;
+    }
+    .control-video {
+        right: 1%;
+    }
 	footer {
 		top: 0;
 		background-color: rgba(230, 230, 230, 0.9);

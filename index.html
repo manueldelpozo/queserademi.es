@@ -26,7 +26,7 @@
 		<script type="text/javascript" src="js/typeahead.bundle.js" defer></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js" defer></script>
 		<script type="text/javascript" src="js/scripts.js" defer></script>
-		<script type="text/javascript" src="js/video.js" defer></script>
+		<!--script type="text/javascript" src="js/video.js" defer></script-->
 
 	</head>
 	<body>
@@ -52,8 +52,8 @@
             })(window,document,'script','dataLayer','GTM-5MQKZX');
         </script>
         <!-- End Google Tag Manager -->
-
-        <div class="background-image"></div>
+		<div class="control-video text-center"><a id="close-fullvid" href="#"><img class="icon" src="images/cross.svg"></img></a></div>
+        <div class="background-image grayscale"></div>
 		<div class="container-full">
 
 			<div class="row header">
@@ -71,7 +71,7 @@
 			  	<div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
 			  		<div class="dropdown clearfix">
 						<form id="formulario" role="form" action="comparador.php" method="get" onsubmit="return validacion()">
-							<div class="input-group" id="scrollable-dropdown-menu" style="width: 90%;">
+							<div class="input-group" id="scrollable-dropdown-menu" style="width: 92%;">
 								<input name="profesion_uno" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" placeholder="Busca o escribe una profesion" autofocus required>
 								<span class="input-group-btn" >
 						        	<button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>

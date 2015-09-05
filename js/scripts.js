@@ -202,7 +202,6 @@ $("button.buscador").click( function(){
 $("button.buscador").click( function(){
 	//$('#scrollable-dropdown-menu .typeahead').typeahead.bind( $("#typeaheadField"), 'lookup' );
     //add something to ensure the menu will be shown
-    console.log("click");
     //$input.focus();
     $('#scrollable-dropdown-menu .typeahead').val('%');
     $('tt-dropdown-menu').show;
@@ -230,6 +229,8 @@ function obtainer(query, cb) {
 	cb(mapped);
 }
 */
+
+// TYPEAHEAD
 $('#scrollable-dropdown-menu .typeahead').typeahead({
 	minLength: 0,
     items: 9999,
@@ -273,7 +274,6 @@ $('#scrollable-dropdown-menu .typeahead').bind('typeahead:selected', function(ob
 */
 // Seleccionar item con click de raton
 $(".tt-is-under-cursor").click( function() {
-	console.log("click");
 	$("#formulario").submit(); 
 });
 
@@ -306,4 +306,23 @@ $(".btn-footer").click( function() {
 				$(this).addClass('hidden-xs');
 		});
 	}
+});
+
+// para ver el video promocional
+$('#ver-video a').click( function(event) {
+	event.preventDefault ? event.preventDefault(event) : event.returnValue = false; // supported by IE
+	// create video element
+	var videosource = 'src="https://www.youtube.com/embed/OgnkL3EqBII?';
+	var videoparam = 'version=3&vq=hd720&autoplay=1&autohide=1&controls=0&modestBranding=1&rel=0&showinfo=0&autoplay=1&loop=1"';
+	var videoattr = ' id="fullvid" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen'
+
+	$("body").append('<iframe '+ videosource + videoparam + videoattr +'></iframe>');
+	// show x button slower
+	$(".control-video").show('4000');
+	
+	$('#close-fullvid').click( function() {
+		event.preventDefault ? event.preventDefault(event) : event.returnValue = false;
+		$(this).parent().siblings("#fullvid").remove();
+		$(this).parent().hide();
+	});
 });

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+
+	<path id="cross" d="M0 0 L20 20" stroke="white" stroke-width="2"></path>
+	<path id="cross" d="M0 20 L20 0" stroke="white" stroke-width="2"></path>
+
+</svg>
