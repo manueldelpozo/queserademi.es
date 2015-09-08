@@ -242,7 +242,7 @@ if( !empty( $_POST['verificacion'] ) ){
 			//mail( $email, $asunto, $mensaje, $headers );
 			// Tambien se puede usar PHPmailer
 			
-			require 'PHPMailer/PHPMailer-master/PHPMailerAutoload.php';
+			include 'vendor/autoload.php';
 
 			$mail = new PHPMailer();                                // defaults to using php "mail()"
 
