@@ -31,7 +31,7 @@ html,body {
 	z-index: -1;
 
 	display: block;
-	background-image: url('../images/bg/bg-1.jpg');
+	background-image: url('../images/bg/bg-5.png');
 
 	background-attachment:fixed;
 	background-position: center center;
@@ -42,16 +42,10 @@ html,body {
     -o-background-size: cover;
     background-size: cover; 
 
-	filter: alpha(opacity=10); /* internet explorer */
-    -khtml-opacity: 0.1;      /* khtml, old safari */
-    -moz-opacity: 0.1;       /* mozilla, netscape */
-    opacity: 0.1;           /* fx, safari, opera */
-
-	-webkit-filter: blur(5px);
-	-moz-filter: blur(5px);
-	-o-filter: blur(5px);
-	-ms-filter: blur(5px);
-	filter: blur(5px);
+	filter: alpha(opacity=18); /* internet explorer */
+    -khtml-opacity: 0.18;      /* khtml, old safari */
+    -moz-opacity: 0.18;       /* mozilla, netscape */
+    opacity: 0.18;           /* fx, safari, opera */
 }
 .fullscreen {
     position: absolute;
@@ -63,6 +57,13 @@ html,body {
     height: auto;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+}
+.blur {
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
 }
 .grayscale {
     filter: grayscale(100%);
@@ -223,6 +224,11 @@ footer div{
 	font-weight: bolder;
 	color: #555;
 }
+.separador {
+    position: absolute;
+    right: 0;
+    color: #337ab7;
+}
 .mobile-menu {
 	padding: 0;
 	margin-top: 1px;
@@ -363,7 +369,7 @@ span.flecha {
 }
 
 
-
+/* TYPEAHEAD STYLES */
 .twitter-typeahead {
 	width: 100%;
 }
@@ -378,18 +384,15 @@ span.flecha {
     border-radius: 8px;
     outline: none;
 }
-
 .tt-query {
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
-
 .tt-hint {
     color: #999;
     font-size: 18px;
 }
-
 .tt-dropdown-menu {
 	max-height: 150px;
 	overflow-y: auto;
@@ -406,14 +409,12 @@ span.flecha {
     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
-
 .tt-suggestion {
     padding: 3px 20px;
     padding-top: 5px;
     line-height: 18px;
     font-size: 1em;
 }
-
 .tt-suggestion.tt-is-under-cursor {
     color: #fff;
     background-color: #0097cf;
@@ -511,6 +512,9 @@ span.flecha {
 	}
 	#ver-video {
 		margin-top: 100px;
+	} 
+	#ver-video a {
+		font-size: 0.95em
 	} 
 	.control-video {
         right: 1%;
