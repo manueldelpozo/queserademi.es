@@ -31,7 +31,7 @@ html,body {
 	z-index: -1;
 
 	display: block;
-	background-image: url('../images/bg/bg-5.png');
+	background-image: url('../images/bg/bg-5.jpg');
 
 	background-attachment:fixed;
 	background-position: center center;
@@ -75,19 +75,16 @@ html,body {
     -o-filter: grayscale(100%);
 }
 .container-full {
-
 	width: 100%;
-	height:100%;
-	position: relative;
-	left: 0;
-    right: 0;
+	height:120%;
+	position: absolute;
+	/*left: 0;*/
+    /*right: 0;*/
     z-index: 9;
-	margin: 0 auto;
-	padding: 0;
-	margin:0;
-		
-	color:#555;
-	
+	/*margin: 0 auto;*/
+	/*padding: 0;*/
+	/*margin:0;	*/
+	/*color:#555;*/
 }
 
 .container-full a {
@@ -505,6 +502,13 @@ span.flecha {
 		margin-top: 0;
 		margin-bottom: 20px;
 	}
+	#formulario {
+		width: 90%;
+	}
+	#formulario:after {
+		content: "(ejemplo: Médico)";
+		color: #c00;
+	}
 	video {
 		margin: 0;
 		width: 80%;
@@ -514,7 +518,7 @@ span.flecha {
 		margin-top: 100px;
 	} 
 	#ver-video a {
-		font-size: 0.95em
+		font-size: 0.9em
 	} 
 	.control-video {
         right: 1%;
@@ -526,6 +530,9 @@ span.flecha {
 	}
 	.mobile-menu {
 		margin-bottom: 5px;
+	}
+	.social {
+	    margin-top: 14px;
 	}
 
 }
@@ -557,7 +564,7 @@ span.flecha {
 		margin-bottom: 20px;
 	}
 	form#formulario {
-		width: 103%;
+		width: 95%;
 	}
 	video {
 		margin: 0;
@@ -577,9 +584,12 @@ span.flecha {
 	footer {
 		top: 0;
 		background-color: rgba(230, 230, 230, 0.9);
-		font-size: 1.6em;
+		font-size: 1.15em;
 	}
 	.mobile-menu {
 		margin-bottom: 5px;
+	}
+	.social {
+	    margin-top: 10px;
 	}
 }

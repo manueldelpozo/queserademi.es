@@ -112,7 +112,7 @@ try {
 
           </div> 
 
-          <div class="row body" style="margin-top: 5px;">
+          <div class="row body" style="margin-top:5px;height:120%;">
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container" class="grafica"></div>
             </div>
