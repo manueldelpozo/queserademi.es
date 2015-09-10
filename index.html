@@ -11,9 +11,10 @@
 	    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Bienvenido a queserademi" />
 	    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
 	    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
-	    <link rel="icon" type="image/x-icon" href="images/logo.png">
+	    <link rel="icon" type="image/x-icon" href="images/logo.png"/>
 	    <link rel="stylesheet" href="css/bootstrap.min.css" />
-	    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
+	    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css"/>
+	    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.css"/>
 		<link rel="stylesheet" href="css/style.css" />
 		
 		<!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
@@ -22,6 +23,7 @@
 	      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 		<script type="text/javascript" src="js/jquery-2.1.3.js" defer></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.js" defer></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" defer></script>
 		<script type="text/javascript" src="js/typeahead.bundle.js" defer></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js" defer></script>
@@ -61,7 +63,7 @@
 				<div class="col-md-6 col-md-offset-3 col-xs-12 text-center">
 					<a href="">
 						<h1 id="titulo" class="lead"><strong>que</strong>sera<strong>de</strong>mi</h1>
-						<img class="img-responsive" src="images/logo.svg">
+						<img class="img-responsive" alt="queserademi" src="images/logo.svg">
 					</a>
 					<h6 class="sublead">Tu comparador de profesiones</h6>
 			    </div>
@@ -72,7 +74,7 @@
 			  		<div class="dropdown clearfix">
 						<form id="formulario" role="form" action="comparador.php" method="get" onsubmit="return validacion()">
 							<div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;">
-								<input name="profesion_uno" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" placeholder="Busca una profesión (ejemplo: Médico)" autofocus required>
+								<input name="profesion_uno" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" placeholder="Busca una profesión (ejemplo: Médico)" data-clear-btn="true" autofocus required>
 								<span class="input-group-btn" >
 						        	<button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
 						      	</span>
@@ -106,7 +108,7 @@
 		        <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
 		        	<div class="col-sm-3 col-xs-3 text-center">
 		        		<a href="index.html">	
-			        		<img class="img-menu" src="images/logo.svg" width='35px' height="auto">      	
+			        		<img class="img-menu" alt="queserademi" src="images/logo.svg" width='35px' height="auto">      	
 		          		</a>
 		        	</div>
 		        	<div class="col-sm-3 col-sm-offset-6 col-xs-3 col-xs-offset-6">
@@ -116,7 +118,7 @@
 				<div class="col-md-2 col-md-offset-0 hidden-sm hidden-xs col-xs-6 col-xs-offset-3 text-center">
 			        <a href="index.html">	
 			          	<p id="titulo" style='opacity:1;margin-top:-10px;'>
-				          	<img class="image-container" src="images/logo.svg">
+				          	<img class="image-container" alt="queserademi" src="images/logo.svg">
 				          	<strong>que</strong>sera<strong>de</strong>mi
 			          	</p>
 			        </a>

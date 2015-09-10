@@ -20,7 +20,7 @@ if( isset( $_GET['profesion']  )  )
       <link rel="icon" type="image/x-icon" href="images/logo.png">
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
-      <!--link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"-->
+      <link rel="stylesheet" href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css"/>
       <link rel="stylesheet" href="css/slider.css">
       <link rel="stylesheet" href="css/style.css">
       <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
@@ -29,9 +29,9 @@ if( isset( $_GET['profesion']  )  )
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
       <script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
+      <script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
       <script type="text/javascript" src="js/bootstrap.min.js" ></script>
-      <script type="text/javascript" src="js/bootstrap-slider.js" ></script>
-      <!--script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script-->
+      <!--script type="text/javascript" src="js/bootstrap-slider.js" ></script-->
       <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js" defer></script>
       <script type="text/javascript" src="js/scripts.js" defer></script>   
       <script type="text/javascript">
@@ -55,7 +55,12 @@ if( isset( $_GET['profesion']  )  )
           });
           
           $(".slider").css("width","100%");
-          
+
+          //$('.ui-input-clear').text('x').css({'position':'absolute','right':'30px','top':'0','font-size':'2em','font-family':'monospace'});
+          $('.ui-input-clear').click( function() {
+            console.log('yee');
+            $('.tt-dropdown-menu').css('display','none');
+          });
         });
       </script>
       <style type="text/css" media="screen">
@@ -142,7 +147,10 @@ if( isset( $_GET['profesion']  )  )
     <!-- End Google Tag Manager -->
     
     <div class="background-image grayscale"></div>
-    <div class="container-full">
+    <div data-role="page">
+      
+    
+    <div data-role="main" class="container-full ui-content">
       <form id="formulario-colabora" class="form-horizontal" role="form" action="verificador.php" method="post" onsubmit="return validacion()">
 
           <div class="row header">
@@ -171,20 +179,20 @@ if( isset( $_GET['profesion']  )  )
                 <div class="form-group">
                   <label for="colaborador" class="col-sm-2 control-label">Nombre:(opcional)</label>
                   <div class="col-sm-10">                 
-                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Escribe tu nombre completo" value="<?php //echo @$profesion; ?>" autofocus/>
+                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Escribe tu nombre completo" data-clear-btn="true" value="<?php //echo @$profesion; ?>" autofocus/>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="email" class="col-sm-2 control-label">Email:(opcional)</label>
                   <div class="col-sm-10">
-                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Escribe tu direccion email" value="<?php //echo @$profesion_uno; ?>"/>
+                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Escribe tu direccion email" data-clear-btn="true" value="<?php //echo @$profesion_uno; ?>"/>
                   </div>
                 </div>
                 <div class="form-group dropdown clearfix profesion required">
                   <label for="profesion" class="col-sm-2 control-label">Profesión:</label>
                   <div class="col-sm-10">  
                     <div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;">
-                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="text" placeholder="Busca o escribe una profesion" value="<?php echo @$profesion; ?>" required>
+                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="search" placeholder="Busca o escribe una profesion" data-clear-btn="true" value="<?php echo @$profesion; ?>" required>
                     </div>
                   </div>
                 </div>
@@ -192,7 +200,7 @@ if( isset( $_GET['profesion']  )  )
                   <label for="estudios_asoc" class="col-sm-2 control-label">Estudios:(opcional)</label>
                   <div class="col-sm-10">
                     <div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;">
-                      <input name="estudios_asoc" type="text" id="estudios_asoc" class="typeahead center-block form-control input-lg" placeholder="Busca o escribe sus estudios asociados" value="<?php //echo @$profesion_uno; ?>"/>           
+                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" placeholder="Busca o escribe sus estudios asociados" data-clear-btn="true" value="<?php //echo @$profesion_uno; ?>"/>           
                     </div>
                     <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1" id="medicos_list_id"></ul>
                   </div>
@@ -207,6 +215,61 @@ if( isset( $_GET['profesion']  )  )
             </div>
 
             <div class="col-md-6 col-xs-12 text-center">
+
+                <div class="form-group">
+                  <label for="estudios_asoc" class="col-sm-4 control-label">Trabajas actualmente?:</label>
+                  <div class="col-md-8 col-xs-12 text-center">
+                     <input type="checkbox" data-role="flipswitch" name="switch" id="switch" data-on-text="Si" data-off-text="No">                  
+                  </div>
+                </div>      
+
+                <div class="form-group">
+                  <label for="estudios_asoc" class="col-sm-4 control-label">Tipo de sector:</label>
+                  <div class="col-md-8 col-xs-12 text-center">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                      <label for="male">Publico</label>
+                      <input type="radio" name="gender" id="male" value="male">
+                      <label for="female">Privado</label>
+                      <input type="radio" name="gender" id="female" value="female">
+                    </fieldset>                  
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="estudios_asoc" class="col-sm-4 control-label">Tiempo trabajado:</label>
+                  <div class="col-md-8 col-xs-12 text-center">
+                    <input type="range" name="tiempo-trabajo" id="tiempo-trabajo" value="5" min="0" max="40" data-highlight="true" data-popup-enabled="true">                 
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="estudios_asoc" class="col-sm-4 control-label">Donde trabajas:</label>
+                  <div class="col-md-8 col-xs-12 text-center">
+                    <fieldset class="ui-field-contain">
+                      <select name="comunidad-autonoma" id="comunidad-autonoma" data-native-menu="false">
+                        <option>Selecciona tu región</option>
+                        <option value="and">Andalucía</option>
+                        <option value="ara">Aragón</option>
+                        <option value="ast">Principado de Asturias</option>
+                        <option value="bal">Baleares</option>
+                        <option value="can">Canarias</option>
+                        <option value="cat">Cantabria</option>
+                        <option value="man">Castilla-La Mancha</option>
+                        <option value="leo">Castilla y León</option>
+                        <option value="cat">Cataluña</option>
+                        <option value="cym">Ceuta y Melilla</option>
+                        <option value="ext">Extremadura</option>
+                        <option value="gal">Galicia</option>
+                        <option value="rio">La Rioja</option>
+                        <option value="mad">Comunidad de Madrid</option>
+                        <option value="mur">Región de Murcia</option>
+                        <option value="nav">Comunidad Foral de Navarra</option>
+                        <option value="vas">País Vasco</option>
+                        <option value="val">Comunidad Valenciana</option>
+                      </select>
+                    </fieldset>                 
+                  </div>
+                </div>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
                   <h5><strong>SALARIO (€/mes neto aprox.)</strong></h5>
@@ -316,7 +379,7 @@ if( isset( $_GET['profesion']  )  )
 
       </form>
     </div>
-
+    </div>
     <footer>
       <div class="row">
         <div class="col-lg-12 col-md-12 hidden-sm hidden-xs text-center">
