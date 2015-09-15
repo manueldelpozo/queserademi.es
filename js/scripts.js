@@ -279,12 +279,13 @@ $(".tt-is-under-cursor").click( function() {
 
 // animar footer
 $(".btn-footer").click( function() {
+	var $btn;
 	if( $(this).attr("id")=="btn-footer-md" ) 
 		$btn = $("#btn-footer-md");
 	else if ( $(this).attr("id")=="btn-footer-xs" )
 		$btn = $("#btn-footer-xs");
 
-	$footer = $btn.parents("footer");
+	var $footer = $btn.parents("footer");
 
 	if( $btn.find("span.caret").hasClass("flecha") || $btn.find("span.glyphicon").hasClass("glyphicon-menu-hamburger") ) {
 		$btn.find("span.caret").removeClass("flecha");
@@ -308,6 +309,14 @@ $(".btn-footer").click( function() {
 	}
 });
 
+// ocultar footer si hacemos scroll hasta el fondo
+$(window).scroll(function() {
+    if( $(window).scrollTop() + $(window).height() > $(document).height() - 100 )
+    	$('footer').slideUp('slow');
+    else 
+    	$('footer').slideDown('slow');
+});
+
 // para ver el video promocional
 $('#ver-video a').click( function(event) {
 	event.preventDefault ? event.preventDefault(event) : event.returnValue = false; // supported by IE
@@ -326,3 +335,4 @@ $('#ver-video a').click( function(event) {
 		$(this).parent().hide();
 	});
 });
+
