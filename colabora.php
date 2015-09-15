@@ -21,106 +21,8 @@ if( isset( $_GET['profesion']  )  )
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
       <link rel="stylesheet" href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css"/>
-      <link rel="stylesheet" href="css/slider.css">
       <link rel="stylesheet" href="css/style.css">
-      <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
-      <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-      <script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
-      <script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
-      <script type="text/javascript" src="js/bootstrap.min.js" ></script>
-      <!--script type="text/javascript" src="js/bootstrap-slider.js" ></script-->
-      <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js" defer></script>
-      <script type="text/javascript" src="js/scripts.js" defer></script>   
-      <script type="text/javascript">
-        $(document).ready(function() {
-          /*
-          $(".sliders").slider({
-            formatter: function(value) {
-              return value;
-            }
-          });
-          
-          $(".sliders").on("slide", function(slideEvt) {
-            var idname = $(this).attr("id");
-            var idvalue = "#" + idname + "_value";
-            var unidad = "";
-            if ( $(this).hasClass("salarios") )
-              unidad = " €/mes";
-            else if ( $(this).hasClass("paros") )
-              unidad = " %";
-            $(idvalue).html( "<span style='color:#337ab7;'>" + slideEvt.value + unidad + "<span>");
-          });
-          
-          $(".slider").css("width","100%");
-          */
-          // setting default styles
-          $('.btn-qsdm').removeClass('ui-btn ui-shadow ui-corner-all');
-          $('.verif').parent().css('visibility','hidden');
-
-          // ocultar lista si limpiamos input
-          $('.ui-input-clear').click( function() {
-            if ( $('.tt-dropdown-menu').css('display') == 'block' )
-              $('.tt-dropdown-menu').css('display','none');
-          });
-          
-          // radio input para otro
-          var $otro = $('.ui-controlgroup-controls').children().find('.otro-label')
-          $otro.parent().prop('contentEditable','true');
-          $otro.on("click",function(){
-            $(this).text('escribe otro');
-          });
-          var click_otro = false;
-          $('.ui-controlgroup-controls').on('touchstart',function(e){
-            var $otro = $(this).children().find('.otro-label');
-            // if the target of the click isn't the container... nor a descendant of the container
-            if ( !$otro.is(e.target) ) {
-              $otro_input = $(this).find('.otro-input');
-                if( $otro_input ) {
-                  $otro_input.replaceWith('<div class="ui-radio"><label for="otro-contrato" class="otro-label ui-btn ui-corner-all ui-btn-inherit ui-radio-off ui-last-child">Otro</label><input type="radio" class="otro" name="contrato" id="otro-contrato" value="otro"></div>');
-                  click_otro = false;
-                }
-            } else {
-                $otro.parent().replaceWith('<input type="text" class="otro-input" placeholder="escribe aqui">');
-                //click_otro = true;
-            }
-          });
-
-          // desbloquear input segun el tiempo de trabajo
-          $('.s_senior, .s_intermedio').slider( "disable" );
-          $( '#tiempo-trabajo' ).slider({
-            stop: function( event, ui ) {
-              var tiempo_trabajo = $(this).slider().val();
-              if( tiempo_trabajo < 3 ) {
-                $( '.s_senior, .s_intermedio' ).slider( "disable" );
-              } else if( tiempo_trabajo >= 3 && tiempo_trabajo < 8 ) {
-                $( '.s_intermedio' ).slider( "enable" );
-                $( '.s_senior' ).slider( "disable" );
-              } else if( tiempo_trabajo >= 8 ) {
-                $( '.s_senior, .s_intermedio' ).slider( "enable" );
-              }
-            }
-          });
-
-          // star rating grado de satisfaccion
-          $('.stars').on("touchstart click",function(e){
-            var $checked_star = e.target;
-            var $stars = $(this).find('.ui-checkbox label');
-            var checked_index = $stars.length;
-            $stars.addClass('ui-checkbox-on ui-btn-active').removeClass('ui-checkbox-off');
-            $stars.each( function(index,$star){
-              if ( $star == $checked_star )
-                checked_index = index;
-              if ( index>checked_index )
-                $stars.eq(index).removeClass('ui-checkbox-on ui-btn-active').addClass('ui-checkbox-off');
-            });
-          });
-           
-  
-        });
-      </script>
+      
       <style type="text/css" media="screen">
         .header {
           margin-bottom: 30px;
@@ -206,6 +108,12 @@ if( isset( $_GET['profesion']  )  )
         .ui-radio {
           width: 50%;
         }
+        .ui-input-text input {
+          padding: 15px;
+        }
+        body, input, select, textarea, button, .ui-btn {
+          font-family: 'Antic Slab', arial;
+        }
         .otro-input {
           width: 50%;
           height: 44px;
@@ -218,6 +126,7 @@ if( isset( $_GET['profesion']  )  )
         .btn-qsdm {
           margin-top: 50px;
         }
+
         
       </style>
   </head>
@@ -248,7 +157,7 @@ if( isset( $_GET['profesion']  )  )
     </script>
     <!-- End Google Tag Manager -->
     
-    <div class="background-image grayscale"></div>
+    <div class="background-image grayscale blur"></div>
     <div data-role="page">
       
     
@@ -431,7 +340,7 @@ if( isset( $_GET['profesion']  )  )
               
             </div>
 
-            <div class="col-md-6 col-xs-12 text-center">
+            <div class="col-md-6 col-xs-12 borde-separador">
 
                 
 
@@ -548,7 +457,7 @@ if( isset( $_GET['profesion']  )  )
                 <div class="col-md-6 col-xs-12 text-center">
                   <div class="form-group">
                     <label for="c_formafisica" class="titulo2" style="display:inline-flex;">Otro:
-                      <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="height: 30px;width: 100px;margin-left: 20px;margin-top: -10px;"><input type="text"></div>
+                      <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"><input type="text" style="height: 30px;width: 100px;margin-left: 20px;margin-top: -10px;"></div>
                     </label>
                     <input type="range" name="c_formafisica" id="c_formafisica" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
@@ -581,7 +490,7 @@ if( isset( $_GET['profesion']  )  )
 
                 <div class="col-md-6 col-xs-12 text-center">
                   <div class="form-group"> 
-                    <button type="submit" class="btn btn-default btn-qsdm">COLABORA!</button>
+                    <button type="submit" class="btn btn-default btn-qsdm" data-role='none' data-enhance="false">COLABORA!</button>
                   </div>
                 </div>
 
@@ -655,6 +564,100 @@ if( isset( $_GET['profesion']  )  )
             </div>
       </div>
       </footer>
+      <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
+      <script>
+            $(document).on('mobileinit', function () {
+                $.mobile.ignoreContentEnabled = true;
+            });
+      </script>
+      <script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
+      <script type="text/javascript" src="js/scripts.js"></script>   
+      <script type="text/javascript">
+        $(document).ready(function() {
+
+          // setting default styles
+          //$('.btn-qsdm').removeClass('ui-btn ui-shadow ui-corner-all');
+          $('.verif').parent().css('visibility','hidden');
+
+          // ocultar lista si limpiamos input
+          $('.ui-input-clear').click( function() {
+            if ( $('.tt-dropdown-menu').css('display') == 'block' )
+              $('.tt-dropdown-menu').css('display','none');
+          });
+          
+          // radio input para otro
+          var $otro = $('.ui-controlgroup-controls').children().find('.otro-label')
+          $otro.parent().prop('contentEditable','true');
+          $otro.on("click",function(){
+            $(this).text('escribe otro');
+          });
+          var click_otro = false;
+          $('.ui-controlgroup-controls').on('touchstart',function(e){
+            var $otro = $(this).children().find('.otro-label');
+            // if the target of the click isn't the container... nor a descendant of the container
+            if ( !$otro.is(e.target) ) {
+              $otro_input = $(this).find('.otro-input');
+                if( $otro_input ) {
+                  $otro_input.replaceWith('<div class="ui-radio"><label for="otro-contrato" class="otro-label ui-btn ui-corner-all ui-btn-inherit ui-radio-off ui-last-child">Otro</label><input type="radio" class="otro" name="contrato" id="otro-contrato" value="otro"></div>');
+                  click_otro = false;
+                }
+            } else {
+                $otro.parent().replaceWith('<input type="text" class="otro-input" placeholder="escribe aqui">');
+                //click_otro = true;
+            }
+          });
+
+          // desbloquear input segun el tiempo de trabajo
+          $('.s_senior, .s_intermedio').slider( "disable" );
+          $( '#tiempo-trabajo' ).slider({
+            stop: function( event, ui ) {
+              var tiempo_trabajo = $(this).slider().val();
+              if( tiempo_trabajo < 3 ) {
+                $( '.s_senior, .s_intermedio' ).slider( "disable" );
+              } else if( tiempo_trabajo >= 3 && tiempo_trabajo < 8 ) {
+                $( '.s_intermedio' ).slider( "enable" );
+                $( '.s_senior' ).slider( "disable" );
+              } else if( tiempo_trabajo >= 8 ) {
+                $( '.s_senior, .s_intermedio' ).slider( "enable" );
+              }
+            }
+          });
+
+          // star rating grado de satisfaccion
+          $('.stars').on("touchstart click",function(e){
+            var $checked_star = e.target;
+            var $stars = $(this).find('.ui-checkbox label');
+            var checked_index = $stars.length;
+            $stars.addClass('ui-checkbox-on ui-btn-active').removeClass('ui-checkbox-off');
+            $stars.each( function(index,$star){
+              if ( $star == $checked_star )
+                checked_index = index;
+              if ( index>checked_index )
+                $stars.eq(index).removeClass('ui-checkbox-on ui-btn-active').addClass('ui-checkbox-off');
+            });
+          });
+
+          // ocultar footer si hacemos scroll hasta el fondo
+          $('.ui-page').scroll(function() {
+            console.log('works');
+            console.log($('.ui-page').scrollTop() + $('.ui-page').height());
+            console.log($('.ui-content').height() - 100);
+              if( $('.ui-page').scrollTop() + $('.ui-page').height() > $('.ui-content').height() - 100 )
+                $('footer').slideUp('slow');
+              else 
+                $('footer').slideDown('slow');
+          });
+           
+  
+        });
+      </script>
   </body>
 
 </html>
