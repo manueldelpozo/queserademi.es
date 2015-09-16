@@ -155,7 +155,7 @@ try {
             </div>
           <div class="col-md-10 col-sm-12 col-xs-12 text-center">
               <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="colabora.php">Colabora con qsdm</a>
+                <a href="colabora.php">Puedes colaborar</a>
                 <span class='hidden-sm hidden-xs separador'>|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
@@ -167,7 +167,7 @@ try {
                 <span class='hidden-sm hidden-xs separador'>|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Contacta con nosotros</a>
+                <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Qué nos sugieres</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
@@ -180,7 +180,7 @@ try {
             </div>
             <div class="col-md-10 col-md-offset-2 col-sm-12 col-xs-12 terminos text-center">
               <div class="col-md-2 col-md-offset-6 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Privacidad de datos</a>
+                <a rel="license" href="http://ec.europa.eu/justice/data-protection/index_es.htm">Privacidad de datos</a>
                 <span class='hidden-sm hidden-xs separador'>|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
