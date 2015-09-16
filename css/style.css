@@ -27,6 +27,16 @@ html,body {
     overflow-x: hidden;
 	font-family: 'Antic Slab', arial;
 }
+#preloader {
+	position: fixed; 
+	left: 0; 
+	top: 0; 
+	z-index: 99999; 
+	width: 100%; 
+	height: 100%; 
+	overflow: visible; 
+	background: #FFF url(../images/preloader.gif) no-repeat center center; 
+}
 .background-image {
 	width: 100%;
 	height: 100%;

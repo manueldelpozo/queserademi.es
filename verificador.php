@@ -193,6 +193,7 @@ if( !empty( $_POST['verificacion'] ) ){
             })(window,document,'script','dataLayer','GTM-5MQKZX');
         </script>
         <!-- End Google Tag Manager -->
+        <div id="preloader"></div>
         <div class="background-image grayscale"></div>
 		<div class="container-full">
 

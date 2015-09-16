@@ -156,7 +156,7 @@ if( isset( $_GET['profesion']  )  )
         })(window,document,'script','dataLayer','GTM-5MQKZX');
     </script>
     <!-- End Google Tag Manager -->
-    
+    <div id="preloader"></div>
     <div class="background-image grayscale blur"></div>
     <div data-role="page">
       
