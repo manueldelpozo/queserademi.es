@@ -12,7 +12,8 @@ if( isset( $_GET['profesion']  )  )
       <title>Comparador de Profesiones</title>
       <meta name="description" content="Colabora con queserademi">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes" />
 
       <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Colabora con queserademi" />
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
@@ -82,22 +83,25 @@ if( isset( $_GET['profesion']  )  )
           
         }
         .ui-page-theme-a {
-            background: none;
+          background: none;
         }
         .ui-body-inherit {
-            background-color: rgba(204, 204, 204, 0.8);
+          background-color: rgba(204, 204, 204, 0.8);
         }
         .ui-mobile,.ui-page-active {
-            overflow-y: inherit;
+          overflow-y: inherit;
         }
         .ui-input-text, .ui-input-search {
-            margin: 0; 
-            border-width: 0px; 
-            /* border-style: solid; */
+          margin: 0; 
+          border-width: 0px; 
+          /* border-style: solid; */
+        }
+        .ui-field-contain, .ui-mobile fieldset.ui-field-contain {
+          padding: 0;
         }
         .ui-corner-all {
-            -webkit-border-radius: 0; 
-            border-radius: 0;
+          -webkit-border-radius: 0; 
+          border-radius: 0;
         }
         .ui-controlgroup-controls {
           width: 100%;
@@ -113,6 +117,8 @@ if( isset( $_GET['profesion']  )  )
         }
         body, input, select, textarea, button, .ui-btn {
           font-family: 'Antic Slab', arial;
+          font-size: 14px;
+          line-height: 1.42857143; 
         }
         .otro-input {
           width: 50%;
@@ -124,7 +130,11 @@ if( isset( $_GET['profesion']  )  )
           font-size: 1.1em;
         }
         .btn-qsdm {
-          margin-top: 50px;
+          /*margin-top: 50px;*/
+        }
+        a {
+          -webkit-user-select: none; /* disable selection/Copy of UIWebView */
+          -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
         }
 
         
@@ -172,13 +182,13 @@ if( isset( $_GET['profesion']  )  )
             </div>
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
-              <a href="index.html">
+              <a data-role="none" href="index.html">
                 <img class="img-responsive" src="images/logo.svg" height="60px"> 
               </a>
             </div>
 
             <div class="col-md-3 hidden-sm hidden-xs" align="right">
-              <h4><a href="porquecolaborar.html">Por qué colaborar?</a></h4>
+              <h4><a data-role="none" href="porquecolaborar.html">Por qué colaborar?</a></h4>
             </div>
 
           </div> 
@@ -246,7 +256,8 @@ if( isset( $_GET['profesion']  )  )
                         <option value="nav">Comunidad Foral de Navarra</option>
                         <option value="vas">País Vasco</option>
                         <option value="val">Comunidad Valenciana</option>
-                        <option value="val">En el extranjero</option>
+                        <option value="for">En el extranjero</option>
+                        <option value=""><hr></option>
                       </select>
                     </fieldset>                 
                   </div>
@@ -502,7 +513,7 @@ if( isset( $_GET['profesion']  )  )
       </form>
     </div>
     </div>
-    <footer>
+    <footer data-role="none" data-enhance="false">
       <div class="row">
         <div class="col-lg-12 col-md-12 hidden-sm hidden-xs text-center">
           <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-md" ><span class="caret flecha"></span></button>
@@ -527,36 +538,36 @@ if( isset( $_GET['profesion']  )  )
             </div>
           <div class="col-md-10 col-sm-12 col-xs-12 text-center">
               <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu sel-menu">
-                <a href="colabora.php">Puedes colaborar</a>
+                <a data-role="none" href="colabora.php">Puedes colaborar</a>
                 <span class='hidden-sm hidden-xs separador'>|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="porquecolaborar.html">Por qué colaborar</a>
+                <a data-role="none" href="porquecolaborar.html">Por qué colaborar</a>
                 <span class='hidden-sm hidden-xs separador'>|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="quienessomos.html">Quiénes somos</a>
+                <a data-role="none" href="quienessomos.html">Quiénes somos</a>
                 <span class='hidden-sm hidden-xs separador'>|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Qué nos sugieres</a>
+                <a data-role="none" href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Qué nos sugieres</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
-                  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.queserademi.es&t=Comparador%20de%20profesiones" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-                  <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-                  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.es&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-                  <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+                  <li><a data-role="none" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.queserademi.es&t=Comparador%20de%20profesiones" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+                  <li><a data-role="none" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+                  <li><a data-role="none" href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.es&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+                  <li><a data-role="none" href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
                 </ul>
               </div>
             </div>
             <div class="col-md-10 col-md-offset-2 col-sm-12 col-xs-12 terminos text-center">
               <div class="col-md-2 col-md-offset-6 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a rel="license" href="http://ec.europa.eu/justice/data-protection/index_es.htm">Privacidad de datos</a>
+                <a data-role="none" rel="data-protection" href="http://ec.europa.eu/justice/data-protection/index_es.htm">Privacidad de datos</a>
                 <span class='hidden-sm hidden-xs separador'>|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Terminos de uso</a>
+                <a data-role="none" rel="license" href="https://creativecommons.org/licenses/by/4.0/">Terminos de uso</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
                 <small>&copy; 2015 queserademi.es</small>
@@ -571,9 +582,10 @@ if( isset( $_GET['profesion']  )  )
       <![endif]-->
       <script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
       <script>
-            $(document).on('mobileinit', function () {
-                $.mobile.ignoreContentEnabled = true;
-            });
+        $(document).on('mobileinit', function () {
+            $.mobile.ignoreContentEnabled = true;
+            $.mobile.ajaxEnabled = false; // no jqm for links
+        });
       </script>
       <script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
