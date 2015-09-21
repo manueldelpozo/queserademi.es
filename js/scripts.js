@@ -340,3 +340,8 @@ $('#ver-video a').click( function(event) {
 	});
 });
 
+// ocultar avisos
+$('.cerrar-aviso').click( function() {
+	$(this).parent().hide();
+});
+

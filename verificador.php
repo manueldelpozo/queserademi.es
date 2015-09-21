@@ -151,7 +151,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		<title>Verificador de colaboraciones</title>
 		<meta name="description" content="Gracias por colaborar con queserademi">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 
 	    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Bienvenido a queserademi" />

@@ -61,19 +61,20 @@ $('#container').highcharts({
 <?php if( $btn_colabora_p_1 || $btn_colabora_p_2 ) { ?>
     // agregar capa de aviso semitransparente (con opcion a quitar?)
     var capa_aviso = "<div class='capa-aviso'>";
-    capa_aviso += "<div class='col-md-8 col-md-offset-2'>";
-    capa_aviso += "<h3>Disculpe las molestias</h3>";
+    capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="images/cross.svg"></img></a></div>';
+    capa_aviso += "<div class='col-md-10 col-md-offset-1'>";
+    capa_aviso += "<h3>Aún no tenemos imformación suficiente!</h3>";
 
     <?php if( $btn_colabora_p_1 > 0 ) { ?>
-        capa_aviso += "<p class='text-center'>Falta información sobre el <strong>desempleo</strong> de la profesión<br>";
+        capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>desempleo</strong> de la profesión<br>";
         capa_aviso += "<strong><?php echo mb_strtoupper($registro['profesion'],'UTF-8' ); ?></strong></p>";
         capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
     <?php } ?>
 
     <?php if( $btn_colabora_p_2 > 0 ) { ?>
-        capa_aviso += "<p class='text-center'>Falta información sobre el <strong>desempleo</strong> de la profesión<br>";
+        capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>desempleo</strong> de la profesión<br>";
         capa_aviso += "<strong><?php echo mb_strtoupper($registro_dos['profesion'],'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro_dos['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(52, 39, 199); color: rgb(52, 39, 199);'>Colabora!</a>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro_dos['profesion']; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a>";
     <?php } ?>
 
     capa_aviso += "</div>";

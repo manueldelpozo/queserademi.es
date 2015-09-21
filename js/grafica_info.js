@@ -13,11 +13,11 @@ $('#container1').html("<h4 style='margin:15px'>INFORMACIÓN</h4><div id='info'><
 <?php if( isset( $profesion_uno ) ) { ?>  
     $('#info').append("<h5 class='principal nombre'><?php echo $registro['profesion']; ?></h5>");
     <?php if( empty( $registro['descripcion'] ) ) { ?>
-        $('#info').append("<p class='descripcion' id='desc1'>Descripcion: Falta informacion. Disculpe las molestias</p>");
+        $('#info').append("<p class='descripcion' id='desc1'>Descripcion: Falta información! Ayúdanos a conseguirla.</p>");
     <?php } else { ?>
         $('#info').append("<p class='descripcion'><?php createExcerpts( $registro['descripcion'] , 150 , ' [ + ]' ); ?></p>");
     <?php } if( empty( $registro['estudios_asoc'] ) ) { ?>
-        $('#info').append("<p class='estudios'>Estudios asociados: Falta informacion. Disculpe las molestias</p>");
+        $('#info').append("<p class='estudios'>Estudios asociados: Falta información! Ayúdanos a conseguirla.</p>");
     <?php } else { ?>
         $('#info').append("<p class='estudios'>Estudios asociados: <strong><?php echo preg_replace('/[\"]/','/[\']/',$registro['estudios_asoc']); ?></strong></p>");
     <?php } ?>
@@ -28,11 +28,11 @@ $('#container1').html("<h4 style='margin:15px'>INFORMACIÓN</h4><div id='info'><
 <?php if( isset( $profesion_dos ) && $registro_dos["profesion"] != ""  ) { ?>
     $('#info').append("<h5 class='secundaria nombre' style='clear:both;'><?php echo $registro_dos['profesion']; ?></h5>");
     <?php if( empty( $registro_dos['descripcion'] ) ) { ?>
-        $('#info').append("<p class='descripcion'>Descripcion: Falta informacion. Disculpe las molestias</p>");
+        $('#info').append("<p class='descripcion'>Descripcion: Falta información! Ayúdanos a conseguirla.</p>");
     <?php } else { ?>
         $('#info').append("<p class='descripcion'><?php createExcerpts( $registro_dos['descripcion'] , 150 , ' [ + ]' ); ?></p>");
     <?php } if( empty( $registro_dos['estudios_asoc'] ) ) { ?>
-        $('#info').append("<p class='estudios'>Estudios asociados: Falta informacion. Disculpe las molestias</p>");
+        $('#info').append("<p class='estudios'>Estudios asociados: Falta información! Ayúdanos a conseguirla.</p>");
     <?php } else { ?>
         $('#info').append("<p class='estudios'>Estudios asociados: <strong><?php echo preg_replace('/[\n\r]/','',$registro_dos['estudios_asoc']); ?></strong></p>");
     <?php } ?>
