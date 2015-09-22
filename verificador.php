@@ -4,6 +4,7 @@ if( !empty( $_POST['verificacion'] ) ){
     // Si se ha insertado informacion en el input oculto 'verificacion'.../Es un SPAMbot
     exit();
 } else {
+	require('conexion.php');
 
 	// define variables and set to empty values
 	$error = $tiempo_estudios = $jornada_laboral_min = $jornada_laboral_max = $horas_semana = $horas_real = $edad_jubilacion = $tiempo_trabajo = 0;
@@ -61,43 +62,43 @@ if( !empty( $_POST['verificacion'] ) ){
 	}
 
 	echo $colaborador.' - colaborador<br>';
-	  echo $email." - email<br>";
-	  echo $profesion.' - profesion<br>';
-	  echo $descripcion.' - descripcion<br>';
-	  echo $trabajas.' - trabajas<br>';
-	  echo $comunidad_autonoma.' - comunidad_autonoma<br>';
-	  echo $estudios_asoc.' - estudios_asoc<br>';
-	  echo $tiempo_estudios.' - tiempo_estudios<br>';
-	  echo $acceso.' - acceso<br>';
-	  echo $sector.' - sector<br>';
-	  echo $contrato.' - contrato<br>';
-	  echo $jornada_laboral_min.' - jornada_laboral_min<br>';
-	  echo $jornada_laboral_max.' - jornada_laboral_max<br>';
-	  echo $movilidad.' - movilidad<br>';
-	  echo $horas_semana.' - horas_semana<br>';
-	  echo $horas_real.' - horas_real<br>';
-	  echo $puesto.' - puesto<br>';
-	  echo $edad_jubilacion.' - edad_jubilacion<br>';
-	  echo $tiempo_trabajo.' - tiempo_trabajo<br>';
-	  echo $s_junior_min.' - s_junior_min<br>';
-	  echo $s_junior_max.' - s_junior_max<br>';
-	  echo $s_intermedio_min.' - s_intermedio_min<br>';
-	  echo $s_intermedio_max .' - s_intermedio_max<br>';
-	  echo $s_senior_min.' - s_senior_min<br>';
-	  echo $s_senior_max.' - s_senior_max<br>';
-	  echo $c_equipo.' - c_equipo<br>';
-	  echo $c_analisis.' - c_analisis<br>';
-	  echo $c_organizacion.' - c_organizacion<br>';
-	  echo $c_comunicacion.' - c_comunicacion<br>';
-	  echo $c_forma_fisica.' - c_forma_fisica<br>';
-	  echo $i_ingles.' - i_ingles<br>';
-	  echo $i_frances.' - i_frances<br>';
-	  echo $i_aleman.' - i_aleman<br>';
-	  echo $i_otro.' - i_otro<br>';
-	  echo $i_otro_val.' - i_otro_val<br>';
-	  echo $satisfaccion.' - satisfaccion<br>';
+	echo $email." - email<br>";
+	echo $profesion.' - profesion<br>';
+	echo $descripcion.' - descripcion<br>';
+	echo $trabajas.' - trabajas<br>';
+	echo $comunidad_autonoma.' - comunidad_autonoma<br>';
+	echo $estudios_asoc.' - estudios_asoc<br>';
+	echo $tiempo_estudios.' - tiempo_estudios<br>';
+	echo $acceso.' - acceso<br>';
+	echo $sector.' - sector<br>';
+	echo $contrato.' - contrato<br>';
+	echo $jornada_laboral_min.' - jornada_laboral_min<br>';
+	echo $jornada_laboral_max.' - jornada_laboral_max<br>';
+	echo $movilidad.' - movilidad<br>';
+	echo $horas_semana.' - horas_semana<br>';
+	echo $horas_real.' - horas_real<br>';
+	echo $puesto.' - puesto<br>';
+	echo $edad_jubilacion.' - edad_jubilacion<br>';
+	echo $tiempo_trabajo.' - tiempo_trabajo<br>';
+	echo $s_junior_min.' - s_junior_min<br>';
+	echo $s_junior_max.' - s_junior_max<br>';
+	echo $s_intermedio_min.' - s_intermedio_min<br>';
+	echo $s_intermedio_max .' - s_intermedio_max<br>';
+	echo $s_senior_min.' - s_senior_min<br>';
+	echo $s_senior_max.' - s_senior_max<br>';
+	echo $c_equipo.' - c_equipo<br>';
+	echo $c_analisis.' - c_analisis<br>';
+	echo $c_organizacion.' - c_organizacion<br>';
+	echo $c_comunicacion.' - c_comunicacion<br>';
+	echo $c_forma_fisica.' - c_forma_fisica<br>';
+	echo $i_ingles.' - i_ingles<br>';
+	echo $i_frances.' - i_frances<br>';
+	echo $i_aleman.' - i_aleman<br>';
+	echo $i_otro.' - i_otro<br>';
+	echo $i_otro_val.' - i_otro_val<br>';
+	echo $satisfaccion.' - satisfaccion<br>';
 	
-/*
+
 	// VALIDAR EMAIL??
 	if( !empty( $email ) ) {
 		$domain = substr( $email, strpos($email,'@') );
@@ -135,6 +136,7 @@ if( !empty( $_POST['verificacion'] ) ){
 	
 	//OBTENER DATOS NUMERICOS
 	//CORRECCION DE SALARIOS -- se da la posibilidad que sean nulos
+	/*
 	$s_present = $_POST['s_present'];
 	if ( isset( $_POST['s_past'] ) )
 		$s_past = $_POST['s_past'];
@@ -144,6 +146,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		$s_future = $_POST['s_future'];
 	else
 		$s_future = null;
+		*/
 	/*
 	if( empty($s_past) )
 		$s_past == $s_present;
@@ -162,24 +165,15 @@ if( !empty( $_POST['verificacion'] ) ){
 	else
 		$p_future = null;
 
-	//Colectar datos de capacidades
-	$c_memoria = $_POST['c_memoria'];
-	$c_logica = $_POST['c_logica'];
-	$c_comunicacion = $_POST['c_comunicacion'];
-	$c_forma_fisica = $_POST['c_forma_fisica'];
-	$c_creatividad = $_POST['c_creatividad'];
 
 	//CONCORDANCIA DE DATOS FINALES
 	function diferencia( $valor_antiguo, $valor_nuevo ) {
-		if( is_null( $valor_nuevo ) || $valor_antiguo == 0 || is_null( $valor_antiguo ) ) {
-			$diff = 0;
-		} else {
-			$diff = 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);
-		}	
-		return $diff;
+		if( is_null( $valor_nuevo ) || $valor_antiguo == 0 || is_null( $valor_antiguo ) )
+			return 0;
+		else
+			return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
 	}
 	//obtencion de datos guardados
-	require('conexion.php');
   
     $consulta = "SELECT * FROM profesiones WHERE profesion LIKE '$profesion'";
     $result = $pdo->prepare($consulta);
@@ -210,7 +204,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		$error += 0.05;
 	if( diferencia( $registro['c_creatividad'], $c_creatividad ) > 0.5 )
 		$error += 0.05;
-
+*/
 	//SENTENCIA DE ERROR
 	if( $error > 0.5 )
 		$aceptado = 0;
@@ -222,7 +216,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		$colaborador = null;
 
 	$sql_insert = "INSERT INTO `colaboraciones` ( `colaborador` , `email` , `profesion` , `descripcion` , `estudios_asoc` , `p_past` , `p_present` , `p_future` , `s_past` , `s_present` , `s_future` , `c_memoria` , `c_creatividad` , `c_comunicacion` , `c_forma_fisica` , `c_logica` , `aceptado` ) VALUES ( '$colaborador','$email','$profesion','$descripcion','$estudios_asoc','$p_past','$p_present','$p_future','$s_past','$s_present','$s_future','$c_memoria','$c_creatividad','$c_comunicacion','$c_forma_fisica','$c_logica','$aceptado');";
-*/
+
 ?>
 
 <!DOCTYPE html>
@@ -286,7 +280,7 @@ if( !empty( $_POST['verificacion'] ) ){
 			<div class="row body">
 			  	<div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 text-center">
 <?php
-/*
+
 	//AGRADECIMIENTOS
 	if ( $pdo->query($sql_insert) ) {
 
@@ -365,7 +359,6 @@ if( !empty( $_POST['verificacion'] ) ){
 		echo "<h1>Lo sentimos, su colaboración no se ha recibido correctamente...<h1>\n";
 		echo "<h2>Por favor, vuelva a <a href='colabora.php'>intentarlo</a></h2>";
 	}
-	*/
 ?>
 				</div>
 			</div>
