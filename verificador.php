@@ -4,11 +4,102 @@ if( !empty( $_POST['verificacion'] ) ){
     // Si se ha insertado informacion en el input oculto 'verificacion'.../Es un SPAMbot
     exit();
 } else {
-	$error = 0;
 
+	// define variables and set to empty values
+	$error = $tiempo_estudios = $jornada_laboral_min = $jornada_laboral_max = $horas_semana = $horas_real = $edad_jubilacion = $tiempo_trabajo = 0;
+	$s_junior_min = $s_junior_max = $s_intermedio_min = $s_intermedio_max = $s_senior_min = $s_senior_max = 0;
+	$c_equipo = $c_analisis = $c_organizacion = $c_comunicacion = $c_forma_fisica = 0;
+	$i_ingles = $i_frances = $i_aleman = $i_otro = $satisfaccion = 0;
+	$colaborador = $email = $profesion =  $descripcion = $trabajas = $comunidad_autonoma = $estudios_asoc = "";
+	$acceso = $sector = $contrato = $movilidad = $puesto = $i_otro_val = "";
+
+	// filtrar valores introducidos por seguridad
+	function test_input($data) {
+	  $data = trim($data);
+	  $data = stripslashes($data);
+	  $data = htmlspecialchars($data);
+	  return $data;
+	}
+
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	  $colaborador = test_input($_POST["colaborador"]);
+	  $email = test_input($_POST["email"]);
+	  $profesion = test_input($_POST['profesion']);
+	  $descripcion = test_input($_POST['descripcion']);
+	  $trabajas = $_POST['trabajas'];
+	  $comunidad_autonoma = $_POST['comunidad_autonoma'];
+	  $estudios_asoc = test_input($_POST['estudios_asoc']);
+	  $tiempo_estudios = $_POST['tiempo_estudios'];
+	  $acceso = $_POST['acceso'];
+	  $sector = $_POST['sector'];
+	  $contrato = $_POST['contrato'];
+	  $jornada_laboral_min = $_POST['jornada_laboral_min'];
+	  $jornada_laboral_max = $_POST['jornada_laboral_max'];
+	  $movilidad = $_POST['movilidad'];
+	  $horas_semana = $_POST['horas_semana'];
+	  $horas_real = $_POST['horas_real'];
+	  $puesto = $_POST['puesto'];
+	  $edad_jubilacion = $_POST['edad_jubilacion'];
+	  $tiempo_trabajo = $_POST['tiempo_trabajo'];
+	  $s_junior_min = $_POST['s_junior_min'];
+	  $s_junior_max = $_POST['s_junior_max'];
+	  $s_intermedio_min = $_POST['s_intermedio_min'];
+	  $s_intermedio_max = $_POST['s_intermedio_max'];
+	  $s_senior_min = $_POST['s_senior_min'];
+	  $s_senior_max = $_POST['s_senior_max'];
+	  $c_equipo = $_POST['c_equipo'];
+	  $c_analisis = $_POST['c_analisis'];
+	  $c_organizacion = $_POST['c_organizacion'];
+	  $c_comunicacion = $_POST['c_comunicacion'];
+	  $c_forma_fisica = $_POST['c_forma_fisica'];
+	  $i_ingles = $_POST['i_ingles'];
+	  $i_frances = $_POST['i_frances'];
+	  $i_aleman = $_POST['i_aleman'];
+	  $i_otro = $_POST['i_otro'];
+	  $i_otro_val = $_POST['i_otro_val'];
+	  $satisfaccion = count($_POST['stars']);
+	}
+
+	echo $colaborador.' - colaborador<br>';
+	  echo $email." - email<br>";
+	  echo $profesion.' - profesion<br>';
+	  echo $descripcion.' - descripcion<br>';
+	  echo $trabajas.' - trabajas<br>';
+	  echo $comunidad_autonoma.' - comunidad_autonoma<br>';
+	  echo $estudios_asoc.' - estudios_asoc<br>';
+	  echo $tiempo_estudios.' - tiempo_estudios<br>';
+	  echo $acceso.' - acceso<br>';
+	  echo $sector.' - sector<br>';
+	  echo $contrato.' - contrato<br>';
+	  echo $jornada_laboral_min.' - jornada_laboral_min<br>';
+	  echo $jornada_laboral_max.' - jornada_laboral_max<br>';
+	  echo $movilidad.' - movilidad<br>';
+	  echo $horas_semana.' - horas_semana<br>';
+	  echo $horas_real.' - horas_real<br>';
+	  echo $puesto.' - puesto<br>';
+	  echo $edad_jubilacion.' - edad_jubilacion<br>';
+	  echo $tiempo_trabajo.' - tiempo_trabajo<br>';
+	  echo $s_junior_min.' - s_junior_min<br>';
+	  echo $s_junior_max.' - s_junior_max<br>';
+	  echo $s_intermedio_min.' - s_intermedio_min<br>';
+	  echo $s_intermedio_max .' - s_intermedio_max<br>';
+	  echo $s_senior_min.' - s_senior_min<br>';
+	  echo $s_senior_max.' - s_senior_max<br>';
+	  echo $c_equipo.' - c_equipo<br>';
+	  echo $c_analisis.' - c_analisis<br>';
+	  echo $c_organizacion.' - c_organizacion<br>';
+	  echo $c_comunicacion.' - c_comunicacion<br>';
+	  echo $c_forma_fisica.' - c_forma_fisica<br>';
+	  echo $i_ingles.' - i_ingles<br>';
+	  echo $i_frances.' - i_frances<br>';
+	  echo $i_aleman.' - i_aleman<br>';
+	  echo $i_otro.' - i_otro<br>';
+	  echo $i_otro_val.' - i_otro_val<br>';
+	  echo $satisfaccion.' - satisfaccion<br>';
+	
+/*
 	// VALIDAR EMAIL??
-	if( !empty( $_POST['email'] ) ) {
-		$email = $_POST['email'];
+	if( !empty( $email ) ) {
 		$domain = substr( $email, strpos($email,'@') );
 		// invalid emailaddress
 	    if ( !filter_var( $email, FILTER_VALIDATE_EMAIL ) )
@@ -21,10 +112,7 @@ if( !empty( $_POST['verificacion'] ) ){
 	}
 
 	//MEDIR CONCORDANCIA DE CONTENIDOS
-	$profesion = $_POST['profesion'];
-
-	if ( !empty( $_POST['estudios_asoc'] ) ) {
-		$estudios_asoc = $_POST['estudios_asoc'];
+	if ( !empty( $estudios_asoc ) ) {
 		similar_text( mb_strtolower($profesion,'UTF-8'), mb_strtolower($estudios_asoc,'UTF-8'), $percent_prof_est );
 		if( $percent_prof_est < 10 )
 			$error += 0.05;
@@ -32,8 +120,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		$estudios_asoc = null;
 	}
 
-	if ( !empty( $_POST['descripcion'] ) ) {	
-		$descripcion = $_POST['descripcion'];
+	if ( !empty( $descripcion ) ) {	
 		similar_text( mb_strtolower($profesion,'UTF-8'), mb_strtolower($descripcion,'UTF-8'), $percent_prof_desc );
 		if( $percent_prof_desc < 5 )
 			$error += 0.05;
@@ -63,6 +150,7 @@ if( !empty( $_POST['verificacion'] ) ){
 	if( empty($s_future) )
 		$s_future == $s_present;
 	*/
+/*	
 	//CORRECCION DE PAROS
 	$p_present = $_POST['p_present'];
 	if ( isset( $_POST['p_past'] ) )
@@ -73,12 +161,6 @@ if( !empty( $_POST['verificacion'] ) ){
 		$p_future = $_POST['p_future'];
 	else
 		$p_future = null;
-	/*
-	if( empty($p_past) )
-		$p_past == $p_present;
-	if( empty($p_future) )
-		$p_future == $p_present;
-	*/
 
 	//Colectar datos de capacidades
 	$c_memoria = $_POST['c_memoria'];
@@ -136,18 +218,18 @@ if( !empty( $_POST['verificacion'] ) ){
 		$aceptado = 1;
 
 	//GUARDAR COLABORACIONES
-	if( isset($_POST['colaborador']) )
-		$colaborador = $_POST['colaborador'];
-	else
+	if( !isset($colaborador) )
 		$colaborador = null;
 
 	$sql_insert = "INSERT INTO `colaboraciones` ( `colaborador` , `email` , `profesion` , `descripcion` , `estudios_asoc` , `p_past` , `p_present` , `p_future` , `s_past` , `s_present` , `s_future` , `c_memoria` , `c_creatividad` , `c_comunicacion` , `c_forma_fisica` , `c_logica` , `aceptado` ) VALUES ( '$colaborador','$email','$profesion','$descripcion','$estudios_asoc','$p_past','$p_present','$p_future','$s_past','$s_present','$s_future','$c_memoria','$c_creatividad','$c_comunicacion','$c_forma_fisica','$c_logica','$aceptado');";
+*/
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Language" content="es">
-		<meta charset="UTF-8">
+		<meta charset="utf-8">
 		<title>Verificador de colaboraciones</title>
 		<meta name="description" content="Gracias por colaborar con queserademi">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -204,6 +286,7 @@ if( !empty( $_POST['verificacion'] ) ){
 			<div class="row body">
 			  	<div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 text-center">
 <?php
+/*
 	//AGRADECIMIENTOS
 	if ( $pdo->query($sql_insert) ) {
 
@@ -282,6 +365,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		echo "<h1>Lo sentimos, su colaboración no se ha recibido correctamente...<h1>\n";
 		echo "<h2>Por favor, vuelva a <a href='colabora.php'>intentarlo</a></h2>";
 	}
+	*/
 ?>
 				</div>
 			</div>

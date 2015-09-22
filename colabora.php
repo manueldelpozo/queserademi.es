@@ -9,7 +9,7 @@ if( isset( $_GET['profesion']  )  )
   <head>
       <meta http-equiv="Content-Language" content="es">
       <meta charset="utf-8">
-      <title>Comparador de Profesiones</title>
+      <title>Colabora con queserademi</title>
       <meta name="description" content="Colabora con queserademi">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -118,11 +118,11 @@ if( isset( $_GET['profesion']  )  )
                 </div>      
 
                 <div class="form-group">
-                  <label for="comunidad-autonomac" class="col-sm-3 control-label">Donde?:</label>
+                  <label for="comunidad-autonoma" class="col-sm-3 control-label">Donde?:</label>
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="ui-field-contain">
-                      <select name="comunidad-autonoma" id="comunidad-autonoma" data-native-menu="false">
-                        <option>Selecciona tu región</option>
+                      <select name="comunidad_autonoma" id="comunidad-autonoma" data-native-menu="false">
+                        <option value="">Selecciona tu región</option>
                         <option value="and">Andalucía</option>
                         <option value="ara">Aragón</option>
                         <option value="ast">Principado de Asturias</option>
@@ -142,7 +142,7 @@ if( isset( $_GET['profesion']  )  )
                         <option value="vas">País Vasco</option>
                         <option value="val">Comunidad Valenciana</option>
                         <option value="for">En el extranjero</option>
-                        <option value=""><hr></option>
+                        <option><hr></option>
                       </select>
                     </fieldset>                 
                   </div>
@@ -158,9 +158,9 @@ if( isset( $_GET['profesion']  )  )
                 </div>
 
                 <div class="form-group">
-                  <label for="anos-real" class="col-sm-3 control-label">Años dedicados a esos estudios:</label>
+                  <label for="tiempo-estudios" class="col-sm-3 control-label">Años dedicados a esos estudios:</label>
                   <div class="col-md-9 col-xs-12">
-                    <input type="range" name="anos-real" id="anos-real" value="5" min="1" max="15" data-highlight="true" data-popup-enabled="true">                 
+                    <input type="range" name="tiempo_estudios" id="tiempo-estudios" value="5" min="1" max="15" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
 
@@ -169,11 +169,11 @@ if( isset( $_GET['profesion']  )  )
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="con-otro" data-role="controlgroup" data-type="horizontal">
                       <label for="entrevista">Entrevista</label>
-                      <input type="radio" name="Entrevista" id="entrevista" value="entrevista">
+                      <input type="radio" name="acceso" id="entrevista" value="entrevista">
                       <label for="oposiciones">Oposiciones</label>
-                      <input type="radio" name="Oposiciones" id="oposiciones" value="oposiciones">
+                      <input type="radio" name="acceso" id="oposiciones" value="oposiciones">
                       <label for="otro-acceso" class="otro-label">Otro</label>
-                      <input type="radio" class="otro" name="Otro" id="otro-acceso" value="otro">
+                      <input type="radio" class="otro" name="acceso" id="otro-acceso" value="otro">
                     </fieldset>                  
                   </div>
                 </div>
@@ -209,8 +209,8 @@ if( isset( $_GET['profesion']  )  )
                 <div class="form-group">
                   <label for="jornada-laboral" class="col-sm-3 control-label">Jornada laboral (Ejemplo: 9h - 18h): </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
-                    <input type="range" name="jornada-laboral" id="jornada-laboral-min" value="9" min="0" max="23" step="1" data-highlight="true" data-popup-enabled="true">
-                    <input type="range" name="jornada-laboral" id="jornada-laboral-max" value="18" min="0" max="23" step="1" data-highlight="true" data-popup-enabled="true">                                  
+                    <input type="range" name="jornada_laboral_min" id="jornada-laboral-min" value="9" min="0" max="23" step="1" data-highlight="true" data-popup-enabled="true">
+                    <input type="range" name="jornada_laboral_max" id="jornada-laboral-max" value="18" min="0" max="23" step="1" data-highlight="true" data-popup-enabled="true">                                  
                   </div>
                 </div>
 
@@ -224,13 +224,13 @@ if( isset( $_GET['profesion']  )  )
                 <div class="form-group">
                   <label for="horas-semana" class="col-sm-3 control-label">Horas semanales totales:</label>
                   <div class="col-md-9 col-xs-12">
-                    <input type="range" name="horas-semana" id="horas-semana" value="38" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
+                    <input type="range" name="horas_semana" id="horas-semana" value="38" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="horas-semana-real" class="col-sm-3 control-label">Horas semanales dedicadas (horas reales):</label>
+                  <label for="horas-real" class="col-sm-3 control-label">Horas semanales dedicadas (horas reales):</label>
                   <div class="col-md-9 col-xs-12">
-                    <input type="range" name="horas-semana-real" id="horas-semana-real" value="30" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
+                    <input type="range" name="horas_real" id="horas-real" value="30" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
               
@@ -259,14 +259,14 @@ if( isset( $_GET['profesion']  )  )
                 <div class="form-group">
                   <label for="edad-jubilacion" class="col-sm-3 control-label">Edad de jubilación estimada:</label>
                   <div class="col-md-9 col-xs-12">
-                    <input type="range" name="edad-jubilacion" id="edad-jubilacion" value="60" min="50" max="70" step="1" data-popup-enabled="true">                 
+                    <input type="range" name="edad_jubilacion" id="edad-jubilacion" value="60" min="50" max="70" step="1" data-popup-enabled="true">                 
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="tiempo-trabajo" class="col-sm-3 control-label">Años trabajados en esta profesión (experiencia):</label>
                   <div class="col-md-9 col-xs-12">
-                    <input type="range" name="tiempo-trabajo" id="tiempo-trabajo" value="2" min="0" max="40" data-highlight="true" data-popup-enabled="true">                 
+                    <input type="range" name="tiempo_trabajo" id="tiempo-trabajo" value="2" min="0" max="40" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
 
@@ -324,8 +324,8 @@ if( isset( $_GET['profesion']  )  )
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_formafisica" class="titulo2">Forma Física:</label>
-                    <input type="range" name="c_formafisica" id="c_formafisica" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <label for="c_forma_fisica" class="titulo2">Forma Física:</label>
+                    <input type="range" name="c_forma_fisica" id="c_forma_fisica" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
 
@@ -334,45 +334,45 @@ if( isset( $_GET['profesion']  )  )
                 </div>
                 <div class="col-md-6 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_analisis" class="titulo2">Inglés:</label>
-                    <input type="range" name="c_analisis" id="c_analisis" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <label for="i_ingles" class="titulo2">Inglés:</label>
+                    <input type="range" name="i_ingles" id="i_ingles" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-6 col-xs-12 text-center">
                   <div class="form-group">
-                    <label for="c_organizacion" class="titulo2">Francés:</label>
-                    <input type="range" name="c_organizacion" id="c_organizacion" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <label for="i_frances" class="titulo2">Francés:</label>
+                    <input type="range" name="i_frances" id="i_frances" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-6 col-xs-12 text-center">
                   <div class="form-group">
-                    <label for="c_comunicacion" class="titulo2">Alemán:</label>
-                    <input type="range" name="c_comunicacion" id="c_comunicacion" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <label for="i_aleman" class="titulo2">Alemán:</label>
+                    <input type="range" name="i_aleman" id="i_aleman" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-6 col-xs-12 text-center">
                   <div class="form-group">
-                    <label for="c_formafisica" class="titulo2" style="display:inline-flex;">Otro:
-                      <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"><input type="text" style="height: 30px;width: 100px;margin-left: 20px;margin-top: -10px;"></div>
+                    <label for="i_otro" class="titulo2" style="display:inline-flex;">Otro:
+                      <div class="ui-input-text ui-body-inherit"><input type="text" name="i_otro_val" style="height: 30px;width: 100px;margin-left: 20px;margin-top: -10px;"></div>
                     </label>
-                    <input type="range" name="c_formafisica" id="c_formafisica" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <input type="range" name="i_otro" id="i_otro" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="grado-satisfaccion" class="col-sm-3 control-label">Grado de satisfacción en esta profesión:</label>
+                  <label for="satisfaccion" class="col-sm-3 control-label">Grado de satisfacción en esta profesión:</label>
                   <div class="col-md-9 col-xs-12 stars">
                     <fieldset data-role="controlgroup" data-type="horizontal">
                       <label for="star-1">&#9733;</label>
-                      <input type="checkbox" name="star-1" id="star-1" value="1">
+                      <input type="checkbox" name="stars[]" id="star-1" value="1">
                       <label for="star-2">&#9733;</label>
-                      <input type="checkbox" name="star-2" id="star-2" value="1">
+                      <input type="checkbox" name="stars[]" id="star-2" value="2">
                       <label for="star-3">&#9733;</label>
-                      <input type="checkbox" name="star-3" id="star-3" value="1">
+                      <input type="checkbox" name="stars[]" id="star-3" value="3">
                       <label for="star-4">&#9733;</label>
-                      <input type="checkbox" name="star-4" id="star-4" value="1">
+                      <input type="checkbox" name="stars[]" id="star-4" value="4">
                       <label for="star-5">&#9733;</label>
-                      <input type="checkbox" name="star-5" id="star-5" value="1">
+                      <input type="checkbox" name="stars[]" id="star-5" value="5">
                     </fieldset>
                   </div>
                 </div>
@@ -501,25 +501,33 @@ if( isset( $_GET['profesion']  )  )
           // darle a todos los otros la propiedad de editarse
           $('.otro-label').prop('contentEditable','true');
           */
+          //asegurar que se chequea el valor
+          $('.ui-radio input').on("click", function () { 
+            $(this).prop('checked',true).val($(this).prop('id')); 
+            $(this).parent().siblings('.ui-radio').children('input').prop('checked',false); ;
+            $(this).checkboxradio( "refresh" ); 
+          });
   
           $('#formulario-colabora').on( 'touchstart click', function(e){
             var $fieldset = $(e.target).parents('fieldset.con-otro');
             var $otro_label = $fieldset.children().find('.otro-label');
- 
+            
             if( $fieldset.length>0 && $(e.target).hasClass('otro-label') ) {
-              var tema = $otro_label.attr('for');
-              $otro_label.parent('.ui-radio').replaceWith('<input type="text" class="otro-input" id='+tema+' placeholder="escribe otro valor">'); 
+              var tema = $otro_label.next().attr('name');
+              $otro_label.parent('.ui-radio').replaceWith('<input type="text" class="otro-input" id="'+tema+'" placeholder="escribe otro valor">'); 
               $(this).children().find('.otro-input').focus();
               return false;             
             } else {
               var $otro_input = $('.otro-input');
-              var valor = $otro_input.val();
-              if( !valor )
-                valor = 'Otro';
               var tema = $otro_input.attr('id');
-              $otro_input.replaceWith('<div class="ui-radio"><label for="'+tema+'" class="otro-label ui-btn ui-corner-all ui-btn-inherit ui-btn-active ui-radio-on ui-last-child">'+valor+'</label><input type="radio" class="otro" name="'+valor+'" id="'+tema+'" value></div>');
-              if(valor!='Otro')
-                $('#'+tema).parent().siblings().children('input').attr( "checked", false ).checkboxradio( "refresh" );           
+              var valor = $otro_input.val();
+              if( !valor ) 
+                valor = 'Otro';
+              $otro_input.replaceWith('<div class="ui-radio"><label for="'+tema+'" class="otro-label ui-btn ui-corner-all ui-btn-inherit ui-btn-active ui-radio-on ui-last-child">'+valor+'</label><input type="radio" class="otro" name="'+tema+'" id="'+valor+'" value="'+valor+'" data-cacheval="true"></div>');
+              if(valor!='Otro') {
+                $('#'+valor).prop('checked', true);
+                $('#'+valor).parent().siblings().children('input').prop('checked', false).checkboxradio("refresh");         
+              }
             }
             $fieldset.children("input[type='radio']").checkboxradio("refresh");
           });
@@ -544,14 +552,19 @@ if( isset( $_GET['profesion']  )  )
           $('.stars').on("touchstart click",function(e){
             var $checked_star = e.target;
             var $stars = $(this).find('.ui-checkbox label');
+            var $stars_input = $(this).find('.ui-checkbox input');
             var checked_index = $stars.length;
             $stars.addClass('ui-checkbox-on ui-btn-active').removeClass('ui-checkbox-off');
+            $stars_input.prop('checked', true);
             $stars.each( function(index,$star){
               if ( $star == $checked_star )
                 checked_index = index;
-              if ( index>checked_index )
+              if ( index>=checked_index ) {
                 $stars.eq(index).removeClass('ui-checkbox-on ui-btn-active').addClass('ui-checkbox-off');
-            });
+                $stars_input.eq(index).prop( "checked", false );
+              }
+            });    
+            $stars_input.checkboxradio("refresh");
           });
 
           // ocultar footer si hacemos scroll hasta el fondo
