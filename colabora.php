@@ -23,122 +23,7 @@ if( isset( $_GET['profesion']  )  )
       <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
       <link rel="stylesheet" href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css"/>
       <link rel="stylesheet" href="css/style.css">
-      
-      <style type="text/css" media="screen">
-        .header {
-          margin-bottom: 30px;
-        }
-        .control-label {
-          padding-right: 0;
-        }
-        .slider-selection {
-          background: #BABABA;
-        }
-        
-        .titulo1 {
-          margin-top: 20px;
-          border-top: 1px;
-        }
-        .slider-handle {
-          background-image: linear-gradient(to bottom, red, #c00);
-        }
-        .normal-input {
-          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          background-color: rgba(255, 255, 255, 0.6);
-          /* For IE 5.5 - 7*/
-          filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-          /* For IE 8*/
-          -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-  
-          border-radius: 0;
-          border: 2px solid #ccc;
-          border-top-color: rgb(204, 204, 204);
-          border-top-style: solid;
-          border-top-width: 2px;
-          border-right-color: rgb(204, 204, 204);
-          border-right-style: solid;
-          border-right-width: 2px;
-          border-bottom-color: rgb(204, 204, 204);
-          border-bottom-style: solid;
-          border-bottom-width: 2px;
-          border-left-color: rgb(204, 204, 204);
-          border-left-style: solid;
-          border-left-width: 2px;
-        }
-        .verif{ 
-          display: none; 
-        }
-        .form-group.required label:after {
-          content:"*";
-          color:red;
-        }
-        .scrollable-menu {
-          position: relative;
-        }
-
-        /* editar jquery-mobile styles */
-        .ui-page {
-          
-        }
-        .ui-page-theme-a {
-          background: none;
-        }
-        .ui-body-inherit {
-          background-color: rgba(204, 204, 204, 0.8);
-        }
-        .ui-mobile,.ui-page-active {
-          overflow-y: inherit;
-        }
-        .ui-input-text, .ui-input-search {
-          margin: 0; 
-          border-width: 0px; 
-          /* border-style: solid; */
-        }
-        .ui-field-contain, .ui-mobile fieldset.ui-field-contain {
-          padding: 0;
-        }
-        .ui-corner-all {
-          -webkit-border-radius: 0; 
-          border-radius: 0;
-        }
-        .ui-controlgroup-controls {
-          width: 100%;
-        }
-        .ui-controlgroup-controls .ui-btn {
-          text-align: center;
-        }
-        .ui-radio {
-          width: 50%;
-        }
-        .ui-input-text input {
-          padding: 15px;
-        }
-        body, input, select, textarea, button, .ui-btn {
-          font-family: 'Antic Slab', arial;
-          font-size: 14px;
-          line-height: 1.42857143; 
-        }
-        .otro-input {
-          width: 50%;
-          height: 44px;
-          padding-left: 10px;
-        }
-        .ui-checkbox{
-          width: 20%;
-          font-size: 1.1em;
-        }
-        .btn-qsdm {
-          /*margin-top: 50px;*/
-        }
-        a {
-          -webkit-user-select: none; /* disable selection/Copy of UIWebView */
-          -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
-        }
-
-        
-      </style>
+      <link rel="stylesheet" href="css/style-colabora.css">
   </head>
   <body>
     <script>
@@ -379,14 +264,14 @@ if( isset( $_GET['profesion']  )  )
                 </div>
 
                 <div class="form-group">
-                  <label for="tiempo-trabajo" class="col-sm-3 control-label">Años trabajados en esa profesión (experiencia):</label>
+                  <label for="tiempo-trabajo" class="col-sm-3 control-label">Años trabajados en esta profesión (experiencia):</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="tiempo-trabajo" id="tiempo-trabajo" value="2" min="0" max="40" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>Indica el rango salarial aproximado según experiencia en esa profesión (€/mes neto)</strong></h5>
+                  <h5><strong>Indica el rango salarial aproximado según experiencia en esta profesión (€/mes neto)</strong></h5>
                 </div>
                 <div class="form-group">
                   <label for="s_junior" class="col-sm-3 control-label">Principiante [Menos de 3 años]: </label>
@@ -445,7 +330,7 @@ if( isset( $_GET['profesion']  )  )
                 </div>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>Evalua el nivel de idiomas que se necesitaría en esa profesión [1-5]</strong></h5>
+                  <h5><strong>Evalua el nivel de idiomas que se necesitaría en esta profesión [1-5]</strong></h5>
                 </div>
                 <div class="col-md-6 col-xs-12 text-center">
                   <div class="form-group required">
@@ -475,7 +360,7 @@ if( isset( $_GET['profesion']  )  )
                 </div>
 
                 <div class="form-group">
-                  <label for="grado-satisfaccion" class="col-sm-3 control-label">Grado de satisfacción en esa profesión:</label>
+                  <label for="grado-satisfaccion" class="col-sm-3 control-label">Grado de satisfacción en esta profesión:</label>
                   <div class="col-md-9 col-xs-12 stars">
                     <fieldset data-role="controlgroup" data-type="horizontal">
                       <label for="star-1">&#9733;</label>
@@ -596,6 +481,8 @@ if( isset( $_GET['profesion']  )  )
 
           // setting default styles
           $('.verif').parent().css('visibility','hidden');
+          $('.ui-input-text').removeClass('ui-corner-all ui-shadow-inset');
+          $('.typeahead').css('background-color','#FFF');
 
           // ocultar lista si limpiamos input - we dont need it
           /*
