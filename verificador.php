@@ -15,50 +15,61 @@ if( !empty( $_POST['verificacion'] ) ){
 	$acceso = $sector = $contrato = $movilidad = $puesto = $i_otro_val = "";
 
 	// filtrar valores introducidos por seguridad
-	function test_input($data) {
-	  $data = trim($data);
-	  $data = stripslashes($data);
-	  $data = htmlspecialchars($data);
-	  return $data;
+	function test_input( $data ) {
+	  	$data = trim($data);
+	  	$data = stripslashes($data);
+	  	$data = htmlspecialchars($data);
+	  	return $data;
+	}
+	function is_this_exist( $valor ) {
+		if ( !isset( $valor ) || empty( $valor ) || is_null($valor) )
+			$valor = null;
+		return $valor;
+	}
+	function is_this_on( $valor ) {
+		if ( $valor == 'on' )
+			return true;
+		else
+			return false;
 	}
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	  $colaborador = test_input($_POST["colaborador"]);
-	  $email = test_input($_POST["email"]);
-	  $profesion = test_input($_POST['profesion']);
-	  $descripcion = test_input($_POST['descripcion']);
-	  $trabajas = $_POST['trabajas'];
-	  $comunidad_autonoma = $_POST['comunidad_autonoma'];
-	  $estudios_asoc = test_input($_POST['estudios_asoc']);
-	  $tiempo_estudios = $_POST['tiempo_estudios'];
-	  $acceso = $_POST['acceso'];
-	  $sector = $_POST['sector'];
-	  $contrato = $_POST['contrato'];
-	  $jornada_laboral_min = $_POST['jornada_laboral_min'];
-	  $jornada_laboral_max = $_POST['jornada_laboral_max'];
-	  $movilidad = $_POST['movilidad'];
-	  $horas_semana = $_POST['horas_semana'];
-	  $horas_real = $_POST['horas_real'];
-	  $puesto = $_POST['puesto'];
-	  $edad_jubilacion = $_POST['edad_jubilacion'];
-	  $tiempo_trabajo = $_POST['tiempo_trabajo'];
-	  $s_junior_min = $_POST['s_junior_min'];
-	  $s_junior_max = $_POST['s_junior_max'];
-	  $s_intermedio_min = $_POST['s_intermedio_min'];
-	  $s_intermedio_max = $_POST['s_intermedio_max'];
-	  $s_senior_min = $_POST['s_senior_min'];
-	  $s_senior_max = $_POST['s_senior_max'];
-	  $c_equipo = $_POST['c_equipo'];
-	  $c_analisis = $_POST['c_analisis'];
-	  $c_organizacion = $_POST['c_organizacion'];
-	  $c_comunicacion = $_POST['c_comunicacion'];
-	  $c_forma_fisica = $_POST['c_forma_fisica'];
-	  $i_ingles = $_POST['i_ingles'];
-	  $i_frances = $_POST['i_frances'];
-	  $i_aleman = $_POST['i_aleman'];
-	  $i_otro = $_POST['i_otro'];
-	  $i_otro_val = $_POST['i_otro_val'];
-	  $satisfaccion = count($_POST['stars']);
+	  $colaborador = is_this_exist( test_input($_POST["colaborador"]) );
+	  $email = is_this_exist( test_input($_POST["email"]) );
+	  $profesion = is_this_exist( test_input($_POST['profesion']) );
+	  $descripcion = is_this_exist( test_input($_POST['descripcion']) );
+	  $trabajas = is_this_on( $_POST['trabajas'] );
+	  $comunidad_autonoma = is_this_exist( $_POST['comunidad_autonoma'] );
+	  $estudios_asoc = is_this_exist( test_input($_POST['estudios_asoc']) );
+	  $tiempo_estudios = is_this_exist( $_POST['tiempo_estudios'] );
+	  $acceso = is_this_exist( $_POST['acceso'] );
+	  $sector = is_this_exist( $_POST['sector'] );
+	  $contrato = is_this_exist( $_POST['contrato'] );
+	  $jornada_laboral_min = is_this_exist( $_POST['jornada_laboral_min'] );
+	  $jornada_laboral_max = is_this_exist( $_POST['jornada_laboral_max'] );
+	  $movilidad = is_this_on( $_POST['movilidad'] );
+	  $horas_semana = is_this_exist( $_POST['horas_semana'] );
+	  $horas_real = is_this_exist( $_POST['horas_real'] );
+	  $puesto = is_this_exist( $_POST['puesto'] );
+	  $edad_jubilacion = is_this_exist( $_POST['edad_jubilacion'] );
+	  $tiempo_trabajo = is_this_exist( $_POST['tiempo_trabajo'] );
+	  $s_junior_min = is_this_exist( $_POST['s_junior_min'] );
+	  $s_junior_max = is_this_exist( $_POST['s_junior_max'] );
+	  $s_intermedio_min = is_this_exist( $_POST['s_intermedio_min'] );
+	  $s_intermedio_max = is_this_exist( $_POST['s_intermedio_max'] );
+	  $s_senior_min = is_this_exist( $_POST['s_senior_min'] );
+	  $s_senior_max = is_this_exist( $_POST['s_senior_max'] );
+	  $c_equipo = is_this_exist( $_POST['c_equipo'] );
+	  $c_analisis = is_this_exist( $_POST['c_analisis'] );
+	  $c_organizacion = is_this_exist( $_POST['c_organizacion'] );
+	  $c_comunicacion = is_this_exist( $_POST['c_comunicacion'] );
+	  $c_forma_fisica = is_this_exist( $_POST['c_forma_fisica'] );
+	  $i_ingles = is_this_exist( $_POST['i_ingles'] );
+	  $i_frances = is_this_exist( $_POST['i_frances'] );
+	  $i_aleman = is_this_exist( $_POST['i_aleman'] );
+	  $i_otro = is_this_exist( $_POST['i_otro'] );
+	  $i_otro_val = is_this_exist( $_POST['i_otro_val'] );
+	  $satisfaccion = is_this_exist( count($_POST['stars']) );
 	}
 
 	echo $colaborador.' - colaborador<br>';
@@ -98,6 +109,9 @@ if( !empty( $_POST['verificacion'] ) ){
 	echo $i_otro_val.' - i_otro_val<br>';
 	echo $satisfaccion.' - satisfaccion<br>';
 	
+	//GUARDAR COLABORACIONES
+	if( !isset($colaborador) )
+		$colaborador = null;
 
 	// VALIDAR EMAIL??
 	if( !empty( $email ) ) {
@@ -211,11 +225,9 @@ if( !empty( $_POST['verificacion'] ) ){
 	else
 		$aceptado = 1;
 
-	//GUARDAR COLABORACIONES
-	if( !isset($colaborador) )
-		$colaborador = null;
-
-	$sql_insert = "INSERT INTO `colaboraciones` ( `colaborador` , `email` , `profesion` , `descripcion` , `estudios_asoc` , `p_past` , `p_present` , `p_future` , `s_past` , `s_present` , `s_future` , `c_memoria` , `c_creatividad` , `c_comunicacion` , `c_forma_fisica` , `c_logica` , `aceptado` ) VALUES ( '$colaborador','$email','$profesion','$descripcion','$estudios_asoc','$p_past','$p_present','$p_future','$s_past','$s_present','$s_future','$c_memoria','$c_creatividad','$c_comunicacion','$c_forma_fisica','$c_logica','$aceptado');";
+	//GENERAR INSERT
+	$sql_insert = "INSERT INTO `colaboraciones` ( `colaborador` , `email` , `profesion` , `descripcion` , `trabajas` , `comunidad_autonoma` , `estudios_asoc` , `tiempo_estudios` , `acceso` , `sector` , `contrato` , `jornada_laboral_min` , `jornada_laboral_max` , `movilidad` , `horas_semana` , `horas_real` , `puesto` , `edad_jubilacion` , `tiempo_trabajo` , `s_junior_min` , `s_junior_max` , `s_intermedio_min` , `s_intermedio_max` , `s_senior_min` , `s_senior_max` , `c_equipo` , `c_analisis` , `c_organizacion` , `c_comunicacion` , `c_forma_fisica` , `i_ingles` , `i_frances` , `i_aleman` , `i_otro` , `i_otro_val` , `satisfaccion` ) ";
+	$sql_insert = "VALUES ( '$colaborador','$email','$profesion','$descripcion','$trabajas','$comunidad_autonoma','$estudios_asoc','$tiempo_estudios','$acceso','$sector','$contrato','$jornada_laboral_min','$jornada_laboral_max','$movilidad','$horas_semana','$horas_real','$puesto','$edad_jubilacion','$tiempo_trabajo','$edad_jubilacion','$s_junior_min','$s_junior_max','$s_intermedio_min','$s_intermedio_max','$s_senior_min','$s_senior_max','$c_equipo','$c_analisis','$c_organizacion','$c_comunicacion','$c_forma_fisica','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_val','$satisfaccion');";
 
 ?>
 
@@ -230,9 +242,9 @@ if( !empty( $_POST['verificacion'] ) ){
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 
-	    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Bienvenido a queserademi" />
+	    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Gracias por colaborar con queserademi" />
 	    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
-	    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
+	    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/verificador.php" />
 	    <link rel="icon" type="image/x-icon" href="images/logo.png">
 	    <link rel="stylesheet" href="css/bootstrap.min.css" />
 	    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">

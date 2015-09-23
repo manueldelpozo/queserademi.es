@@ -30,9 +30,9 @@ try {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="apple-mobile-web-app-capable" content="yes" />
 
-      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Bienvenido a queserademi" />
+      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Comparador de profesiones queserademi" />
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/" />
+      <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/comparador.php" />
       <link rel="icon" type="image/x-icon" href="images/logo.png">
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
