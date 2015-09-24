@@ -202,7 +202,7 @@ $("button.buscador").click( function(){
 */
 
 
-
+/* REVISAR COMO SACAR LA LISTA AUTOMATICAMENTE
 $("button.buscador").click( function(){
 	//$('#scrollable-dropdown-menu .typeahead').typeahead.bind( $("#typeaheadField"), 'lookup' );
     //add something to ensure the menu will be shown
@@ -212,6 +212,7 @@ $("button.buscador").click( function(){
     //$input.typeahead('lookup').focus();
     //$input.val('');
 });
+*/
 /*
 function todoArray() {	
 	$.ajax({

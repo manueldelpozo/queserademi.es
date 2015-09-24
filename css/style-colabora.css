@@ -40,7 +40,7 @@
   border-left-style: solid;
   border-left-width: 2px;
 }
-.verif{ 
+.inputs-ocultos { 
   display: none; 
 }
 .form-group.required label:after {

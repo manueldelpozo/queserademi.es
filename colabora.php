@@ -377,10 +377,17 @@ if( isset( $_GET['profesion']  )  )
                   </div>
                 </div>
 
-                <div class="col-md-6 col-xs-12">
+                <div class="col-md-6 col-xs-12 inputs-ocultos">
                   <div class="form-group">
-                    <label for="verificacion" class="verif">¡Si ves esto, no rellenes el siguiente campo!</label>
-                    <input name="verificacion" class="verif" />
+                    <label for="verificacion">¡Si ves esto, no rellenes el siguiente campo!</label>
+                    <input type="text" name="verificacion" id="verif" />
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-xs-12 inputs-ocultos">
+                  <div class="form-group">
+                    <label for="codigo-gen">¡Si ves esto, no rellenes el siguiente campo!</label>
+                    <input type="text" name="codigo_gen" id="codigo-gen" />
                   </div>
                 </div>
 
@@ -572,6 +579,16 @@ if( isset( $_GET['profesion']  )  )
             });    
             $stars_input.checkboxradio("refresh");
           });
+
+          // generar codigo aleatorio e introducirlo en el input oculto
+          function generateKey(length) {
+            var ret = "";
+            while (ret.length < length) {
+              ret += Math.random().toString(16).substring(2);
+            }
+            return ret.substring(0,length);
+          }
+          $('#codigo-gen').val( generateKey(10) );
 
           // ocultar footer si hacemos scroll hasta el fondo
           $('.ui-page').scroll(function() {
