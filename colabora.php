@@ -301,31 +301,31 @@ if( isset( $_GET['profesion']  )  )
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_equipo" class="titulo2">Trabajo en equipo:</label>
-                    <input type="range" name="c_equipo" id="c_equipo" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <input type="range" name="c_equipo" id="c_equipo" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_analisis" class="titulo2">Análisis:</label>
-                    <input type="range" name="c_analisis" id="c_analisis" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <input type="range" name="c_analisis" id="c_analisis" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_organizacion" class="titulo2">Organización:</label>
-                    <input type="range" name="c_organizacion" id="c_organizacion" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <input type="range" name="c_organizacion" id="c_organizacion" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_comunicacion" class="titulo2">Comunicación:</label>
-                    <input type="range" name="c_comunicacion" id="c_comunicacion" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <input type="range" name="c_comunicacion" id="c_comunicacion" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_forma_fisica" class="titulo2">Forma Física:</label>
-                    <input type="range" name="c_forma_fisica" id="c_forma_fisica" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <input type="range" name="c_forma_fisica" id="c_forma_fisica" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
 
@@ -335,27 +335,27 @@ if( isset( $_GET['profesion']  )  )
                 <div class="col-md-6 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="i_ingles" class="titulo2">Inglés:</label>
-                    <input type="range" name="i_ingles" id="i_ingles" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <input type="range" name="i_ingles" id="i_ingles" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-6 col-xs-12 text-center">
+                <div class="col-md-6 col-xs-12 text-center i-bloqueado">
                   <div class="form-group">
                     <label for="i_frances" class="titulo2">Francés:</label>
-                    <input type="range" name="i_frances" id="i_frances" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <input type="range" name="i_frances" id="i_frances" value="1" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-6 col-xs-12 text-center">
+                <div class="col-md-6 col-xs-12 text-center i-bloqueado">
                   <div class="form-group">
                     <label for="i_aleman" class="titulo2">Alemán:</label>
-                    <input type="range" name="i_aleman" id="i_aleman" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <input type="range" name="i_aleman" id="i_aleman" value="1" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-6 col-xs-12 text-center">
+                <div class="col-md-6 col-xs-12 text-center i-bloqueado">
                   <div class="form-group">
                     <label for="i_otro" class="titulo2" style="display:inline-flex;">Otro:
-                      <div class="ui-input-text ui-body-inherit"><input type="text" name="i_otro_val" style="height: 30px;width: 100px;margin-left: 20px;margin-top: -10px;"></div>
+                      <input type="text" data-role='none' data-enhance="false" name="i_otro_val" style="height: 30px;width: 100px;margin-left: 20px;margin-top: -10px;">
                     </label>
-                    <input type="range" name="i_otro" id="i_otro" value="2" min="1" max="5" step="1" data-popup-enabled="true" required>
+                    <input type="range" name="i_otro" id="i_otro" value="1" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
 
@@ -532,8 +532,10 @@ if( isset( $_GET['profesion']  )  )
             $fieldset.children("input[type='radio']").checkboxradio("refresh");
           });
 
-          // desbloquear input segun el tiempo de trabajo
-          $('.s_senior, .s_intermedio').slider( "disable" );
+          // campos bloqueados por defecto
+          $('.s_senior, .s_intermedio, #i_frances, #i_aleman, #i_otro').slider( "disable" );
+
+          // desbloquear rangos de salario segun el tiempo de trabajo
           $( '#tiempo-trabajo' ).slider({
             stop: function( event, ui ) {
               var tiempo_trabajo = $(this).slider().val();
@@ -546,6 +548,10 @@ if( isset( $_GET['profesion']  )  )
                 $( '.s_senior, .s_intermedio' ).slider( "enable" );
               }
             }
+          });
+          // desbloquear rangos de idiomas si click on them
+          $( '.i-bloqueado' ).on("touchstart click",function(e){
+            $(this).find("input[type='number']").slider( "enable" );
           });
 
           // star rating grado de satisfaccion
