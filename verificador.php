@@ -22,16 +22,16 @@ if( !empty( $_POST['verificacion'] ) ){
 		return $valor;
 	}
 	function is_this_number( $number ) {
-		if ( is_nan( $number ) || empty( $number ) )
-			return null;
+		if ( is_nan( $number ) || empty( $number ) || !isset( $number ) || is_null($number) )
+			return 0;
 		else
 			return $number;
 	}
 	function is_this_on( $valor ) {
-		if ( $valor == 'on' )
-			return true;
+		if ( $valor == 'off' || !isset( $valor ) || empty( $valor ) || is_null($valor) )
+			return 0;
 		else
-			return false;
+			return 1;
 	}
 	function test_input( $data ) {
 		if ( !is_null($data) ) {
@@ -227,21 +227,26 @@ if( !empty( $_POST['verificacion'] ) ){
 		$aceptado = 1;
 
 	//COMPROBAR SI YA HAY DATOS INTRODUCIDOS DE LA MISMA COLABORACION
-    $rs_colaboraciones = $pdo->prepare("SELECT * FROM colaboraciones WHERE codigo_genn LIKE '$codigo_gen'");
+    $rs_colaboraciones = $pdo->prepare("SELECT * FROM colaboraciones WHERE codigo_gen LIKE '$codigo_gen'");
     $rs_colaboraciones->execute();
     $ya_existe = $rs_colaboraciones->rowCount();
+    echo $ya_existe;
+    $colaboracion = "";
 	if ( $ya_existe > 0 ) {
+		echo 'actualizar';
 		//SI EXISTE GENERAR UPDATE
-		$colaboracion = "UPDATE colaboraciones SET colaborador = ".$colaborador." , email = ".$email." , profesion = ".$profesion." , descripcion = ".$descripcion." , trabajas = ".$trabajas." , comunidad_autonoma = ".$comunidad_autonoma." , estudios_asoc = ".$estudios_asoc." , tiempo_estudios = ".$tiempo_estudios." , ";
+		$colaboracion .= "UPDATE colaboraciones SET colaborador = ".$colaborador." , email = ".$email." , profesion = ".$profesion." , descripcion = ".$descripcion." , trabajas = ".$trabajas." , comunidad_autonoma = ".$comunidad_autonoma." , estudios_asoc = ".$estudios_asoc." , tiempo_estudios = ".$tiempo_estudios." , ";
 		$coalboracion .= "acceso = ".$acceso." , sector = ".$sector." , contrato = ".$contrato." , jornada_laboral_min = ".$jornada_laboral_min." , jornada_laboral_max = ".$jornada_laboral_max." , movilidad = ".$movilidad." , horas_semana = ".$horas_semana." , horas_real = ".$horas_real." , puesto = ".$puesto." , edad_jubilacion = ".$edad_jubilacion." , ";
 		$colaboracion .= "tiempo_trabajo = ".$tiempo_trabajo." , edad_jubilacion = ".$edad_jubilacion." , s_junior_min = ".$s_junior_min." , s_junior_max = ".$s_junior_max." , s_intermedio_min = ".$s_intermedio_min." , s_intermedio_max = ".$s_intermedio_max." , s_senior_min = ".$s_senior_min." , ";
-		$colaboracion .= "c_equipo = ".$c_equipo." , c_analisis = ".$c_analisis." , c_comunicacion = ".$c_comunicacion." , c_forma_fisica = ".$c_forma_fisica." , c_organizacion = ".$c_organizacion." , i_ingles = ".$i_ingles." , i_frances = ".$i_frances." , i_aleman = ".$i_aleman." , i_otro = ".$i_otro." , i_otro_val = ".$i_otro_val." , satisfaccion = ".$satisfaccion." ";
+		$colaboracion .= "c_equipo = ".$c_equipo." , c_analisis = ".$c_analisis." , c_comunicacion = ".$c_comunicacion." , c_forma_fisica = ".$c_forma_fisica." , c_organizacion = ".$c_organizacion." , i_ingles = ".$i_ingles." , i_frances = ".$i_frances." , i_aleman = ".$i_aleman." , i_otro = ".$i_otro." , i_otro_val = ".$i_otro_val." , satisfaccion = ".$satisfaccion." , aceptado = ".$aceptado." ";
 		$coalboracion .= "WHERE codigo_gen LIKE".$codigo_gen;
 	} else {
+		echo 'insertar';
 		//SI NO EXISTE GENERAR INSERT
-		$colaboracion = "INSERT INTO `colaboraciones` ( `colaborador` , `email` , `profesion` , `descripcion` , `trabajas` , `comunidad_autonoma` , `estudios_asoc` , `tiempo_estudios` , `acceso` , `sector` , `contrato` , `jornada_laboral_min` , `jornada_laboral_max` , `movilidad` , `horas_semana` , `horas_real` , `puesto` , `edad_jubilacion` , `tiempo_trabajo` , `s_junior_min` , `s_junior_max` , `s_intermedio_min` , `s_intermedio_max` , `s_senior_min` , `s_senior_max` , `c_equipo` , `c_analisis` , `c_organizacion` , `c_comunicacion` , `c_forma_fisica` , `i_ingles` , `i_frances` , `i_aleman` , `i_otro` , `i_otro_val` , `satisfaccion` , `codigo-gen` ) ";
-		$colaboracion .= "VALUES ( '$colaborador','$email','$profesion','$descripcion','$trabajas','$comunidad_autonoma','$estudios_asoc','$tiempo_estudios','$acceso','$sector','$contrato','$jornada_laboral_min','$jornada_laboral_max','$movilidad','$horas_semana','$horas_real','$puesto','$edad_jubilacion','$tiempo_trabajo','$edad_jubilacion','$s_junior_min','$s_junior_max','$s_intermedio_min','$s_intermedio_max','$s_senior_min','$s_senior_max','$c_equipo','$c_analisis','$c_organizacion','$c_comunicacion','$c_forma_fisica','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_val','$satisfaccion','$codigo_gen');";
+		$colaboracion .= "INSERT INTO `colaboraciones`(`id`, `colaborador`, `email`, `profesion`, `descripcion`, `trabajas`, `comunidad_autonoma`, `estudios_asoc`, `tiempo_estudios`, `acceso`, `sector`, `contrato`, `jornada_laboral_min`, `jornada_laboral_max`, `movilidad`, `horas_semana`, `horas_real`, `puesto`, `edad_jubilacion`, `tiempo_trabajo`, `s_junior_min`, `s_junior_max`, `s_intermedio_min`, `s_intermedio_max`, `s_senior_min`, `s_senior_max`, `c_equipo`, `c_organizacion`, `c_comunicacion`, `c_forma_fisica`, `c_analisis`, `i_ingles`, `i_frances`, `i_aleman`, `i_otro`, `i_otro_val`, `satisfaccion`, `codigo_gen`, `aceptado`) ";
+		$colaboracion .= "VALUES ( '$colaborador', '$email', '$profesion', '$descripcion', $trabajas, '$comunidad_autonoma', '$estudios_asoc', $tiempo_estudios, '$acceso', '$sector', '$contrato', $jornada_laboral_min, $jornada_laboral_max, $movilidad, $horas_semana, $horas_real, '$puesto', $edad_jubilacion, $tiempo_trabajo, $edad_jubilacion, $s_junior_min, $s_junior_max, $s_intermedio_min, $s_intermedio_max, $s_senior_min, $s_senior_max, $c_equipo, $c_analisis, $c_organizacion, $c_comunicacion, $c_forma_fisica, $i_ingles, $i_frances, $i_aleman, $i_otro, '$i_otro_val', $satisfaccion, '$codigo_gen', $aceptado);";
 	}
+	echo $colaboracion;
 
 	
 ?>
@@ -294,9 +299,12 @@ if( !empty( $_POST['verificacion'] ) ){
 			<div class="row body">
 			  	<div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 text-center">
 <?php
+//AGRADECIMIENTOS
 
-	//AGRADECIMIENTOS
-	if ( $pdo->query($colaboracion) ) {
+	// ejecutar actualizacion sql
+	$updating = $pdo->prepare( $colaboracion );
+	$updating->execute();
+	if ( $updating ) {
 
 		echo "<h1>La información ha sido recibida correctamente!</h1>\n";
 		echo "<h2>Muchas gracias por colaborar con queserademi.</h2>\n";

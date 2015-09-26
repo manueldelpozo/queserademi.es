@@ -391,7 +391,7 @@ if( isset( $_GET['profesion']  )  )
                   </div>
                 </div>
 
-                <div class="col-md-6 col-xs-12 text-center">
+                <div class="col-md-6 col-md-offset-6 col-xs-12 text-center">
                   <div class="form-group"> 
                     <button type="submit" class="btn btn-default btn-qsdm" data-role='none' data-enhance="false">COLABORA!</button>
                   </div>
