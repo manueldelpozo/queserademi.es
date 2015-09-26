@@ -78,7 +78,7 @@ if( !empty( $_POST['verificacion'] ) ){
 	  $i_aleman 			= is_this_number( $_POST['i_aleman'] );
 	  $i_otro 				= is_this_number( $_POST['i_otro'] );
 	  $i_otro_val 			= is_this_exist( $_POST['i_otro_val'] );
-	  $satisfaccion 		= is_this_exist( count($_POST['stars']) );
+	  $satisfaccion 		= is_this_number( count($_POST['stars']) );
 	  $codigo_gen 			= $_POST['codigo_gen'];
 	}
 
@@ -230,21 +230,25 @@ if( !empty( $_POST['verificacion'] ) ){
     $rs_colaboraciones = $pdo->prepare("SELECT * FROM colaboraciones WHERE codigo_gen LIKE '$codigo_gen'");
     $rs_colaboraciones->execute();
     $ya_existe = $rs_colaboraciones->rowCount();
-    echo $ya_existe;
+
     $colaboracion = "";
+    $no_enviar_mail;
+
 	if ( $ya_existe > 0 ) {
-		echo 'actualizar';
 		//SI EXISTE GENERAR UPDATE
-		$colaboracion .= "UPDATE colaboraciones SET colaborador = ".$colaborador." , email = ".$email." , profesion = ".$profesion." , descripcion = ".$descripcion." , trabajas = ".$trabajas." , comunidad_autonoma = ".$comunidad_autonoma." , estudios_asoc = ".$estudios_asoc." , tiempo_estudios = ".$tiempo_estudios." , ";
-		$coalboracion .= "acceso = ".$acceso." , sector = ".$sector." , contrato = ".$contrato." , jornada_laboral_min = ".$jornada_laboral_min." , jornada_laboral_max = ".$jornada_laboral_max." , movilidad = ".$movilidad." , horas_semana = ".$horas_semana." , horas_real = ".$horas_real." , puesto = ".$puesto." , edad_jubilacion = ".$edad_jubilacion." , ";
-		$colaboracion .= "tiempo_trabajo = ".$tiempo_trabajo." , edad_jubilacion = ".$edad_jubilacion." , s_junior_min = ".$s_junior_min." , s_junior_max = ".$s_junior_max." , s_intermedio_min = ".$s_intermedio_min." , s_intermedio_max = ".$s_intermedio_max." , s_senior_min = ".$s_senior_min." , ";
-		$colaboracion .= "c_equipo = ".$c_equipo." , c_analisis = ".$c_analisis." , c_comunicacion = ".$c_comunicacion." , c_forma_fisica = ".$c_forma_fisica." , c_organizacion = ".$c_organizacion." , i_ingles = ".$i_ingles." , i_frances = ".$i_frances." , i_aleman = ".$i_aleman." , i_otro = ".$i_otro." , i_otro_val = ".$i_otro_val." , satisfaccion = ".$satisfaccion." , aceptado = ".$aceptado." ";
-		$coalboracion .= "WHERE codigo_gen LIKE".$codigo_gen;
+		$colaboracion .= "UPDATE colaboraciones SET colaborador = '$colaborador' , email = '$email' , profesion = '$profesion' , descripcion = '$descripcion' , trabajas = '$trabajas' , comunidad_autonoma = '$comunidad_autonoma' , estudios_asoc = '$estudios_asoc' , tiempo_estudios = '$tiempo_estudios' , ";
+		$colaboracion .= "acceso = '$acceso' , sector = '$sector' , contrato = '$contrato' , jornada_laboral_min = '$jornada_laboral_min' , jornada_laboral_max = '$jornada_laboral_max' , movilidad = '$movilidad' , horas_semana = '$horas_semana' , horas_real = '$horas_real' , puesto = '$puesto' , edad_jubilacion = '$edad_jubilacion' , ";
+		$colaboracion .= "tiempo_trabajo = '$tiempo_trabajo' , s_junior_min = '$s_junior_min' , s_junior_max = '$s_junior_max' , s_intermedio_min = '$s_intermedio_min' , s_intermedio_max = '$s_intermedio_max' , s_senior_min = '$s_senior_min' , ";
+		$colaboracion .= "c_equipo = '$c_equipo' , c_analisis = '$c_analisis' , c_comunicacion = '$c_comunicacion' , c_forma_fisica = '$c_forma_fisica' , c_organizacion = '$c_organizacion' , i_ingles = '$i_ingles' , i_frances = '$i_frances' , i_aleman = '$i_aleman' , i_otro = '$i_otro' , i_otro_val = '$i_otro_val' , satisfaccion = '$satisfaccion' , aceptado = '$aceptado' ";
+		$coalboracion .= "WHERE codigo_gen LIKE '$codigo_gen'";
+
+		$no_enviar_mail = true;
 	} else {
-		echo 'insertar';
 		//SI NO EXISTE GENERAR INSERT
 		$colaboracion .= "INSERT INTO `colaboraciones`(`id`, `colaborador`, `email`, `profesion`, `descripcion`, `trabajas`, `comunidad_autonoma`, `estudios_asoc`, `tiempo_estudios`, `acceso`, `sector`, `contrato`, `jornada_laboral_min`, `jornada_laboral_max`, `movilidad`, `horas_semana`, `horas_real`, `puesto`, `edad_jubilacion`, `tiempo_trabajo`, `s_junior_min`, `s_junior_max`, `s_intermedio_min`, `s_intermedio_max`, `s_senior_min`, `s_senior_max`, `c_equipo`, `c_organizacion`, `c_comunicacion`, `c_forma_fisica`, `c_analisis`, `i_ingles`, `i_frances`, `i_aleman`, `i_otro`, `i_otro_val`, `satisfaccion`, `codigo_gen`, `aceptado`) ";
 		$colaboracion .= "VALUES ( '$colaborador', '$email', '$profesion', '$descripcion', $trabajas, '$comunidad_autonoma', '$estudios_asoc', $tiempo_estudios, '$acceso', '$sector', '$contrato', $jornada_laboral_min, $jornada_laboral_max, $movilidad, $horas_semana, $horas_real, '$puesto', $edad_jubilacion, $tiempo_trabajo, $edad_jubilacion, $s_junior_min, $s_junior_max, $s_intermedio_min, $s_intermedio_max, $s_senior_min, $s_senior_max, $c_equipo, $c_analisis, $c_organizacion, $c_comunicacion, $c_forma_fisica, $i_ingles, $i_frances, $i_aleman, $i_otro, '$i_otro_val', $satisfaccion, '$codigo_gen', $aceptado);";
+		
+		$no_enviar_mail = false;
 	}
 	echo $colaboracion;
 
@@ -304,15 +308,15 @@ if( !empty( $_POST['verificacion'] ) ){
 	// ejecutar actualizacion sql
 	$updating = $pdo->prepare( $colaboracion );
 	$updating->execute();
+
 	if ( $updating ) {
 
 		echo "<h1>La información ha sido recibida correctamente!</h1>\n";
-		echo "<h2>Muchas gracias por colaborar con queserademi.</h2>\n";
-		
+		echo "<h2>Muchas gracias por colaborar con queserademi.</h2>\n";	
 
 		//enviar mail de agradecimiento... y concurso?
 		//solo si tenemos el email
-		if( !is_null( $email ) ) {
+		if( !is_null( $email ) || $no_enviar_mail == false ) {
 			
 
 			if( is_null( $colaborador ) )
@@ -369,12 +373,11 @@ if( !empty( $_POST['verificacion'] ) ){
 			$mail->AltBody 		= $linea1."\n\n".$linea2."\n".$linea2b."\n\n".$linea3.$linea3b."\n\n".$linea4."\n\n".$linea5."\n\n".$linea6."\n".$linea7."\n".$linea8;
 
 			if(!$mail->send()) {
-			    echo '<h3>Message could not be sent.</h3>';
+			    echo '<h3>El mail no ha podido enviarse.</h3><br>';
 			    echo '<h3>Mailer Error: ' . $mail->ErrorInfo . '</h3>';
 			} else {
 			    echo "<h3>[Recibirá un mail en breves instantes]</h3>";
 			}
-			
 		}
 
 	} else { 

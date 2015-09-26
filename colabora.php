@@ -384,7 +384,7 @@ if( isset( $_GET['profesion']  )  )
                   </div>
                 </div>
 
-                <div class="col-md-6 col-xs-12 inputs-ocultos">
+                <div class="col-md-6 col-xs-12 ">
                   <div class="form-group">
                     <label for="codigo-gen">¡Si ves esto, no rellenes el siguiente campo!</label>
                     <input type="text" name="codigo_gen" id="codigo-gen" />
@@ -597,8 +597,23 @@ if( isset( $_GET['profesion']  )  )
               else 
                 $('footer').slideDown('slow');
           });
-           
-  
+
+          // lanzar ajax cada 5 segundos
+          /*
+          $.ajax({
+            url: 'verificador.php',
+            type: 'POST',
+            data: { keyword: keyword, estudios_asoc: estudios_asoc }, 
+            success: function( msg ) { desplegarLista( $input, msg ) } 
+          });  */
+          var actualizador = setInterval( function() {
+            $.post( "verificador.php", $( "#formulario-colabora" ).serialize() );
+          }, 5000);
+
+          /*$('#formulario-colabora').submit( function() {
+            clear(actualizador)
+          });*/
+
         });
       </script>
   </body>
