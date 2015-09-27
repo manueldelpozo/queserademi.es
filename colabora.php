@@ -384,7 +384,7 @@ if( isset( $_GET['profesion']  )  )
                   </div>
                 </div>
 
-                <div class="col-md-6 col-xs-12 ">
+                <div class="col-md-6 col-xs-12 inputs-ocultos">
                   <div class="form-group">
                     <label for="codigo-gen">¡Si ves esto, no rellenes el siguiente campo!</label>
                     <input type="text" name="codigo_gen" id="codigo-gen" />
