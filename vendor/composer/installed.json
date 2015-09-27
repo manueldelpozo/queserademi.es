@@ -1,23 +1,23 @@
 [
     {
-        "name": "tecnick.com/tcpdf",
-        "version": "6.2.11",
-        "version_normalized": "6.2.11.0",
+        "name": "tecnickcom/tcpdf",
+        "version": "6.2.12",
+        "version_normalized": "6.2.12.0",
         "source": {
             "type": "git",
             "url": "https://github.com/tecnickcom/TCPDF.git",
-            "reference": "354433a33946ae7497c3eab291eaaf814bccbfab"
+            "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/354433a33946ae7497c3eab291eaaf814bccbfab",
-            "reference": "354433a33946ae7497c3eab291eaaf814bccbfab",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/2f732eaa91b5665274689b1d40b285a7bacdc37f",
+            "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2015-08-02 12:30:27",
+        "time": "2015-09-12 10:08:34",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -66,27 +66,27 @@
     },
     {
         "name": "smalot/pdfparser",
-        "version": "v0.9.24",
-        "version_normalized": "0.9.24.0",
+        "version": "v0.9.25",
+        "version_normalized": "0.9.25.0",
         "source": {
             "type": "git",
             "url": "https://github.com/smalot/pdfparser.git",
-            "reference": "613d00cde8d91825bc3ed8b41411aaf9c75c1d6e"
+            "reference": "31590f7938a22f1c7fc4fb292611e3742a62ebaa"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/smalot/pdfparser/zipball/613d00cde8d91825bc3ed8b41411aaf9c75c1d6e",
-            "reference": "613d00cde8d91825bc3ed8b41411aaf9c75c1d6e",
+            "url": "https://api.github.com/repos/smalot/pdfparser/zipball/31590f7938a22f1c7fc4fb292611e3742a62ebaa",
+            "reference": "31590f7938a22f1c7fc4fb292611e3742a62ebaa",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0",
-            "tecnick.com/tcpdf": ">=6.0.050"
+            "tecnickcom/tcpdf": ">=6.0.050"
         },
         "require-dev": {
             "atoum/atoum": "dev-master"
         },
-        "time": "2015-05-26 08:06:39",
+        "time": "2015-09-18 08:29:33",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -111,17 +111,17 @@
     },
     {
         "name": "phpmailer/phpmailer",
-        "version": "v5.2.12",
-        "version_normalized": "5.2.12.0",
+        "version": "v5.2.13",
+        "version_normalized": "5.2.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/PHPMailer/PHPMailer.git",
-            "reference": "5dd754112d07ab7480824c2916689ce06f83a842"
+            "reference": "45df3a88f7f46071e10d0b600f228d19f95911b3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/5dd754112d07ab7480824c2916689ce06f83a842",
-            "reference": "5dd754112d07ab7480824c2916689ce06f83a842",
+            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/45df3a88f7f46071e10d0b600f228d19f95911b3",
+            "reference": "45df3a88f7f46071e10d0b600f228d19f95911b3",
             "shasum": ""
         },
         "require": {
@@ -129,19 +129,19 @@
         },
         "require-dev": {
             "phpdocumentor/phpdocumentor": "*",
-            "phpunit/phpunit": "4.3.*"
+            "phpunit/phpunit": "4.7.*"
         },
         "suggest": {
             "league/oauth2-client": "Needed for Gmail's XOAUTH2 authentication system"
         },
-        "time": "2015-09-02 10:40:37",
+        "time": "2015-09-14 09:18:12",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "classmap": [
                 "class.phpmailer.php",
                 "class.phpmaileroauth.php",
-                "class.oauth.php",
+                "class.phpmaileroauthgoogle.php",
                 "class.smtp.php",
                 "class.pop3.php",
                 "extras/EasyPeasyICS.php",
@@ -170,5 +170,64 @@
             }
         ],
         "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
+    },
+    {
+        "name": "phpoffice/phpexcel",
+        "version": "1.8.1",
+        "version_normalized": "1.8.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPOffice/PHPExcel.git",
+            "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+            "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+            "shasum": ""
+        },
+        "require": {
+            "ext-xml": "*",
+            "ext-xmlwriter": "*",
+            "php": ">=5.2.0"
+        },
+        "time": "2015-05-01 07:00:55",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "PHPExcel": "Classes/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL"
+        ],
+        "authors": [
+            {
+                "name": "Maarten Balliauw",
+                "homepage": "http://blog.maartenballiauw.be"
+            },
+            {
+                "name": "Mark Baker"
+            },
+            {
+                "name": "Franck Lefevre",
+                "homepage": "http://blog.rootslabs.net"
+            },
+            {
+                "name": "Erik Tilt"
+            }
+        ],
+        "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+        "homepage": "http://phpexcel.codeplex.com",
+        "keywords": [
+            "OpenXML",
+            "excel",
+            "php",
+            "spreadsheet",
+            "xls",
+            "xlsx"
+        ]
     }
 ]
