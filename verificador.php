@@ -17,9 +17,10 @@ if( !empty( $_POST['verificacion'] ) ){
 	// filtrar valores introducidos 
 
 	function is_this_exist( $valor ) {
-		if ( !isset( $valor ) || empty( $valor ) || is_null($valor) )
-			$valor = null;
-		return $valor;
+		if( isset( $_POST[$valor] ) )
+			return $_POST[$valor];
+		else
+			return null;
 	}
 	function is_this_number( $number ) {
 		if ( is_nan( $number ) || empty( $number ) || !isset( $number ) || is_null($number) )
@@ -43,43 +44,43 @@ if( !empty( $_POST['verificacion'] ) ){
 	}
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	  $colaborador 			= test_input( is_this_exist( $_POST["colaborador"]) );
-	  $email 				= test_input( is_this_exist( $_POST["email"]) );
-	  $profesion 			= test_input( is_this_exist( $_POST['profesion']) );
-	  $descripcion 			= test_input( is_this_exist( $_POST['descripcion']) );
-	  $trabajas 			= is_this_on( $_POST['trabajas'] );
-	  $comunidad_autonoma 	= is_this_exist( $_POST['comunidad_autonoma'] );
-	  $estudios_asoc 		= test_input( is_this_exist( $_POST['estudios_asoc']) );
-	  $tiempo_estudios 		= is_this_number( $_POST['tiempo_estudios'] );
-	  $acceso 				= is_this_exist( $_POST['acceso'] );
-	  $sector 				= is_this_exist( $_POST['sector'] );
-	  $contrato 			= is_this_exist( $_POST['contrato'] );
-	  $jornada_laboral_min 	= is_this_exist( $_POST['jornada_laboral_min'] );
-	  $jornada_laboral_max 	= is_this_exist( $_POST['jornada_laboral_max'] );
-	  $movilidad 			= is_this_on( $_POST['movilidad'] );
-	  $horas_semana 		= is_this_number( $_POST['horas_semana'] );
-	  $horas_real 			= is_this_number( $_POST['horas_real'] );
-	  $puesto 				= is_this_exist( $_POST['puesto'] );
-	  $edad_jubilacion		= is_this_number( $_POST['edad_jubilacion'] );
-	  $tiempo_trabajo 		= is_this_number( $_POST['tiempo_trabajo'] );
-	  $s_junior_min 		= is_this_number( $_POST['s_junior_min'] );
-	  $s_junior_max 		= is_this_number( $_POST['s_junior_max'] );
-	  $s_intermedio_min 	= is_this_number( $_POST['s_intermedio_min'] );
-	  $s_intermedio_max 	= is_this_number( $_POST['s_intermedio_max'] );
-	  $s_senior_min 		= is_this_number( $_POST['s_senior_min'] );
-	  $s_senior_max 		= is_this_number( $_POST['s_senior_max'] );
-	  $c_equipo 			= is_this_number( $_POST['c_equipo'] );
-	  $c_analisis 			= is_this_number( $_POST['c_analisis'] );
-	  $c_organizacion 		= is_this_number( $_POST['c_organizacion'] );
-	  $c_comunicacion 		= is_this_number( $_POST['c_comunicacion'] );
-	  $c_forma_fisica 		= is_this_number( $_POST['c_forma_fisica'] );
-	  $i_ingles 			= is_this_number( $_POST['i_ingles'] );
-	  $i_frances 			= is_this_number( $_POST['i_frances'] );
-	  $i_aleman 			= is_this_number( $_POST['i_aleman'] );
-	  $i_otro 				= is_this_number( $_POST['i_otro'] );
-	  $i_otro_val 			= is_this_exist( $_POST['i_otro_val'] );
-	  $satisfaccion 		= is_this_number( count($_POST['stars']) );
-	  $codigo_gen 			= $_POST['codigo_gen'];
+	  $colaborador 			= test_input( is_this_exist( "colaborador" ) );
+	  $email 				= test_input( is_this_exist( "email" ) );
+	  $profesion 			= test_input( is_this_exist( 'profesion' ) );
+	  $descripcion 			= test_input( is_this_exist( 'descripcion' ) );
+	  $trabajas 			= is_this_on( is_this_exist( 'trabajas' ) );
+	  $comunidad_autonoma 	= is_this_exist( 'comunidad_autonoma' );
+	  $estudios_asoc 		= test_input( is_this_exist( 'estudios_asoc' ) );
+	  $tiempo_estudios 		= is_this_number( is_this_exist( 'tiempo_estudios' ) );
+	  $acceso 				= is_this_exist( 'acceso' );
+	  $sector 				= is_this_exist( 'sector' );
+	  $contrato 			= is_this_exist( 'contrato' );
+	  $jornada_laboral_min 	= is_this_exist( 'jornada_laboral_min' );
+	  $jornada_laboral_max 	= is_this_exist( 'jornada_laboral_max' );
+	  $movilidad 			= is_this_on( is_this_exist( 'movilidad' ) );
+	  $horas_semana 		= is_this_number( is_this_exist( 'horas_semana' ) );
+	  $horas_real 			= is_this_number( is_this_exist( 'horas_real' ) );
+	  $puesto 				= is_this_exist( 'puesto' );
+	  $edad_jubilacion		= is_this_number( is_this_exist( 'edad_jubilacion' ) );
+	  $tiempo_trabajo 		= is_this_number( is_this_exist( 'tiempo_trabajo' ) );
+	  $s_junior_min 		= is_this_number( is_this_exist( 's_junior_min' ) );
+	  $s_junior_max 		= is_this_number( is_this_exist( 's_junior_max' ) );
+	  $s_intermedio_min 	= is_this_number( is_this_exist( 's_intermedio_min' ) );
+	  $s_intermedio_max 	= is_this_number( is_this_exist( 's_intermedio_max' ) );
+	  $s_senior_min 		= is_this_number( is_this_exist( 's_senior_min' ) );
+	  $s_senior_max 		= is_this_number( is_this_exist( 's_senior_max' ) );
+	  $c_equipo 			= is_this_number( is_this_exist( 'c_equipo' ) );
+	  $c_analisis 			= is_this_number( is_this_exist( 'c_analisis' ) );
+	  $c_organizacion 		= is_this_number( is_this_exist( 'c_organizacion' ) );
+	  $c_comunicacion 		= is_this_number( is_this_exist( 'c_comunicacion' ) );
+	  $c_forma_fisica 		= is_this_number( is_this_exist( 'c_forma_fisica' ) );
+	  $i_ingles 			= is_this_number( is_this_exist( 'i_ingles' ) );
+	  $i_frances 			= is_this_number( is_this_exist( 'i_frances' ) );
+	  $i_aleman 			= is_this_number( is_this_exist( 'i_aleman' ) );
+	  $i_otro 				= is_this_number( is_this_exist( 'i_otro' ) );
+	  $i_otro_val 			= is_this_exist( 'i_otro_val' );
+	  $satisfaccion 		= is_this_number( count( is_this_exist( 'stars' ) ) );
+	  $codigo_gen 			= is_this_exist( 'codigo_gen' );
 	}
 
 	/*
@@ -123,11 +124,14 @@ if( !empty( $_POST['verificacion'] ) ){
 	*/
 
 	//MEDIR VERACIDAD EMAIL??
-	if( !is_null( $email ) || empty( $email ) ) {
+	$email_valido = false;
+	if( !is_null( $email ) && !empty( $email ) ) {
 		$domain = substr( $email, strpos($email,'@') );
 		// invalid emailaddress
 	    if ( !filter_var( $email, FILTER_VALIDATE_EMAIL ) )
 	    	$error += 0.1;
+	    else
+	    	$email_valido = true;
 		//Additionally you can check whether the domain defines an MX record:
 		if ( !checkdnsrr( $domain, 'MX' ) )
 			$error += 0.1;
@@ -150,40 +154,8 @@ if( !empty( $_POST['verificacion'] ) ){
 				$error += 0.05;
 		}
 	} 
-	
-	//OBTENER DATOS NUMERICOS
-	//CORRECCION DE SALARIOS -- se da la posibilidad que sean nulos
-	/*
-	$s_present = $_POST['s_present'];
-	if ( isset( $_POST['s_past'] ) )
-		$s_past = $_POST['s_past'];
-	else
-		$s_past = null;
-	if ( isset( $_POST['s_future'] ) )
-		$s_future = $_POST['s_future'];
-	else
-		$s_future = null;
-		*/
-	/*
-	if( empty($s_past) )
-		$s_past == $s_present;
-	if( empty($s_future) )
-		$s_future == $s_present;
-	*/
-/*	
-	//CORRECCION DE PAROS
-	$p_present = $_POST['p_present'];
-	if ( isset( $_POST['p_past'] ) )
-		$p_past = $_POST['p_past'];
-	else
-		$p_past = null;
-	if ( isset( $_POST['p_future'] ) )
-		$p_future = $_POST['p_future'];
-	else
-		$p_future = null;
 
-
-	//CONCORDANCIA DE DATOS FINALES
+	//CONCORDANCIA DE DATOS NUMERICOS
 	function diferencia( $valor_antiguo, $valor_nuevo ) {
 		if( is_null( $valor_nuevo ) || $valor_antiguo == 0 || is_null( $valor_antiguo ) )
 			return 0;
@@ -191,37 +163,28 @@ if( !empty( $_POST['verificacion'] ) ){
 			return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
 	}
 	//obtencion de datos guardados
-  
-    $consulta = "SELECT * FROM profesiones WHERE profesion LIKE '$profesion'";
-    $result = $pdo->prepare($consulta);
-    $result->execute();
-    $registro = $result->fetch();
+    $rs_registro = $pdo->prepare("SELECT * FROM profesiones WHERE nombre_ppal LIKE '$profesion'");
+    $rs_registro->execute();
+    $registro = $rs_registro->fetch(PDO::FETCH_ASSOC);
 
-	if( diferencia( $registro['s_past'], $s_past ) > 0.5 )
+	if( diferencia( $registro['s_junior_max'], $s_junior_max ) > 0.5 )
 		$error += 0.05;	
-	if( diferencia( $registro['s_present'], $s_present ) > 0.5 )
+	if( diferencia( $registro['s_intermedio_max'], $s_intermedio_max ) > 0.5 )
 		$error += 0.05;
-	if( diferencia( $registro['s_future'], $s_future ) > 0.5 )
+	if( diferencia( $registro['s_senior_max'], $s_senior_max ) > 0.5 )
 		$error += 0.05;
 
-	if( diferencia( $registro['p_past'], $p_past ) > 0.5 )
-		$error += 0.05;	
-	if( diferencia( $registro['p_present'], $p_present ) > 0.5 )
-		$error += 0.05;
-	if( diferencia( $registro['p_future'], $p_future ) > 0.5 )
-		$error += 0.05;
-
-	if( diferencia( $registro['c_memoria'], $c_memoria ) > 0.5 )
-		$error += 0.05;	
-	if( diferencia( $registro['c_logica'], $c_logica ) > 0.5 )
-		$error += 0.05;
+	if( diferencia( $registro['c_equipo'], $c_equipo ) > 0.5 )
+		$error += 0.03;	
+	if( diferencia( $registro['c_analisis'], $c_analisis ) > 0.5 )
+		$error += 0.03;
 	if( diferencia( $registro['c_comunicacion'], $c_comunicacion ) > 0.5 )
-		$error += 0.05;
+		$error += 0.03;
 	if( diferencia( $registro['c_forma_fisica'], $c_forma_fisica ) > 0.5 )
-		$error += 0.05;
-	if( diferencia( $registro['c_creatividad'], $c_creatividad ) > 0.5 )
-		$error += 0.05;
-*/
+		$error += 0.03;
+	if( diferencia( $registro['c_organizacion'], $c_organizacion ) > 0.5 )
+		$error += 0.03;
+
 	// SENTENCIA DE ERROR
 	if( $error > 0.5 )
 		$aceptado = 0;
@@ -313,11 +276,10 @@ if( !empty( $_POST['verificacion'] ) ){
 		echo "<h1>La información ha sido recibida correctamente!</h1>\n";
 		echo "<h2>Muchas gracias por colaborar con queserademi.</h2>\n";	
 
-		//enviar mail de agradecimiento... y concurso?
-		//solo si tenemos el email y aun no se ha enviado
-		if( !is_null( $email ) && !$email_enviado ) {
+		//enviar mail de agradecimiento... 
+		//solo si tenemos el email, es valido y aun no se ha enviado
+		if( !is_null( $email ) && !$email_enviado && $email_valido ) {
 			
-
 			if( is_null( $colaborador ) )
 				$colaborador = "colaborador/a";
 		
