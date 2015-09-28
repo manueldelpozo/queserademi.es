@@ -36,22 +36,22 @@ $('#container2').highcharts({
     }, 
     series: [{
         <?php $btn_colabora_s_1=0;$btn_colabora_s_2=0;?>
-        name: '<?php echo mb_strtoupper($registro["profesion"],"UTF-8" ); ?>',
+        name: '<?php echo mb_strtoupper($registro["nombre_ppal"],"UTF-8" ); ?>',
         data: [
         <?php if( is_null($registro['s_past']) || $registro['s_past'] == 0 ) {echo 0;$btn_colabora_s_1+=1;} else {echo $registro['s_past'];} ?>,
         <?php echo $registro['s_present'] ?>, 
         <?php if( is_null($registro['s_future']) || $registro['s_future'] == 0 ) {echo 0;$btn_colabora_s_1+=2;} else {echo $registro['s_future'];} ?>
         ],
-        stack: '<?php echo $registro["profesion"] ?>'
-        <?php	if( isset($profesion_dos) && !empty($registro_dos["profesion"]) ){ ?>
+        stack: '<?php echo $registro["nombre_ppal"] ?>'
+        <?php	if( isset($profesion_dos) && !empty($registro_dos["nombre_ppal"]) ){ ?>
 	}, {
-        name: '<?php echo mb_strtoupper($registro_dos["profesion"],"UTF-8" ); ?>',
+        name: '<?php echo mb_strtoupper($registro_dos["nombre_ppal"],"UTF-8" ); ?>',
         data: [
         <?php if( is_null($registro_dos['s_past']) || $registro_dos['s_past'] == 0 ) {echo 0;$btn_colabora_s_2+=1;} else {echo $registro_dos['s_past'];} ?>,
         <?php echo $registro_dos['s_present'] ?>, 
         <?php if( is_null($registro_dos['s_future']) || $registro_dos['s_future'] == 0 ) {echo 0;$btn_colabora_s_2+=2;} else {echo $registro_dos['s_future'];} ?>
         ],
-        stack: '<?php echo $registro_dos["profesion"] ?>'
+        stack: '<?php echo $registro_dos["nombre_ppal"] ?>'
     	<?php  }  ?> 
 	}]
 });
@@ -66,14 +66,14 @@ $('#container2').highcharts({
 
     <?php if( $btn_colabora_s_1 > 0 ) { ?>
         capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>";
-        capa_aviso += "<strong><?php echo mb_strtoupper($registro['profesion'],'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
+        capa_aviso += "<strong><?php echo mb_strtoupper($registro['nombre_ppal'],'UTF-8' ); ?></strong></p>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro['nombre_ppal']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
     <?php } ?>
 
     <?php if( $btn_colabora_s_2 > 0 ) { ?>
         capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>";
-        capa_aviso += "<strong><?php echo mb_strtoupper($registro_dos['profesion'],'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro_dos['profesion']; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a>";
+        capa_aviso += "<strong><?php echo mb_strtoupper($registro_dos['nombre_ppal'],'UTF-8' ); ?></strong></p>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro_dos['nombre_ppal']; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a>";
     <?php } ?>
 
     capa_aviso += "</div>";

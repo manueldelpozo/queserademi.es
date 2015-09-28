@@ -277,7 +277,7 @@ $('.typeahead[data-tipo="formaciones"]').typeahead({
 $(".typeahead").click( function(e) {
 	$(this).val('%');
 	$(this).typeahead.bind($(this), 'lookup'); //No hace nada
-	(this).val('');
+	$(this).val('');
 });
 // Cuando presionamos ENTER
 $(".typeahead").keydown( function(e) {

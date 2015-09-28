@@ -4,7 +4,7 @@ try {
   
   if( isset( $_GET['profesion_uno']  )  ) {
     $profesion_uno = $_GET['profesion_uno'];
-    $consulta = "SELECT * FROM profesiones WHERE profesion LIKE '$profesion_uno'";
+    $consulta = "SELECT * FROM profesiones WHERE nombre_ppal LIKE '$profesion_uno'";
     $result = $pdo->prepare($consulta);
     $result->execute();
     $registro = $result->fetch();
@@ -12,10 +12,9 @@ try {
   }  
   if( isset( $_GET['profesion_dos'] ) ) { 
     $profesion_dos = $_GET['profesion_dos'];
-    $consulta_dos = "SELECT * FROM profesiones WHERE profesion LIKE '$profesion_dos'";
+    $consulta_dos = "SELECT * FROM profesiones WHERE nombre_ppal LIKE '$profesion_dos'";
     $result_dos = $pdo->prepare($consulta_dos);
     $result_dos->execute();
-    $count_dos = $result_dos->rowCount();
     $registro_dos = $result_dos->fetch();
   } 
 ?>
@@ -85,7 +84,7 @@ try {
 
             <div class="col-md-4">
               <div class="dropdown clearfix">
-                <div class="input-group">
+                <div class="input-group" id="scrollable-dropdown-menu">
                   <input name="profesion_uno" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required> 
                   <span class="input-group-btn" >
                     <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
@@ -103,7 +102,7 @@ try {
 
             <div class="col-md-4">
               <div class="dropdown clearfix">
-                <div class="input-group">
+                <div class="input-group" id="scrollable-dropdown-menu">
                   <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_dos; ?>" required autofocus>
                   <span class="input-group-btn" >
                     <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>

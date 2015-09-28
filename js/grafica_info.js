@@ -11,7 +11,7 @@ function createExcerpts($text,$length,$more_txt) {
 $('#container1').html("<h4 style='margin:15px'>INFORMACIÓN</h4><div id='info'></div><div id='slider'></div>");
 
 <?php if( isset( $profesion_uno ) ) { ?>  
-    $('#info').append("<h5 class='principal nombre'><?php echo $registro['profesion']; ?></h5>");
+    $('#info').append("<h5 class='principal nombre'><?php echo $registro['nombre_ppal']; ?></h5>");
     <?php if( empty( $registro['descripcion'] ) ) { ?>
         $('#info').append("<p class='descripcion' id='desc1'>Descripcion: Falta información! Ayúdanos a conseguirla.</p>");
     <?php } else { ?>
@@ -22,11 +22,11 @@ $('#container1').html("<h4 style='margin:15px'>INFORMACIÓN</h4><div id='info'><
         $('#info').append("<p class='estudios'>Estudios asociados: <strong><?php echo preg_replace('/[\"]/','/[\']/',$registro['estudios_asoc']); ?></strong></p>");
     <?php } ?>
     <?php if( empty( $registro['descripcion'] ) || empty( $registro['estudios_asoc'] ) ) { ?>
-        $('#info').append("<div class='col-md-8 col-md-offset-2'><a href='colabora.php?profesion=<?php echo $registro['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a></div>");
+        $('#info').append("<div class='col-md-8 col-md-offset-2'><a href='colabora.php?profesion=<?php echo $registro['nombre_ppal']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a></div>");
     <?php } ?>
 <?php } ?>
-<?php if( isset( $profesion_dos ) && $registro_dos["profesion"] != ""  ) { ?>
-    $('#info').append("<h5 class='secundaria nombre' style='clear:both;'><?php echo $registro_dos['profesion']; ?></h5>");
+<?php if( isset( $profesion_dos ) && $registro_dos["nombre_ppal"] != ""  ) { ?>
+    $('#info').append("<h5 class='secundaria nombre' style='clear:both;'><?php echo $registro_dos['nombre_ppal']; ?></h5>");
     <?php if( empty( $registro_dos['descripcion'] ) ) { ?>
         $('#info').append("<p class='descripcion'>Descripcion: Falta información! Ayúdanos a conseguirla.</p>");
     <?php } else { ?>
@@ -37,7 +37,7 @@ $('#container1').html("<h4 style='margin:15px'>INFORMACIÓN</h4><div id='info'><
         $('#info').append("<p class='estudios'>Estudios asociados: <strong><?php echo preg_replace('/[\n\r]/','',$registro_dos['estudios_asoc']); ?></strong></p>");
     <?php } ?>
     <?php if( empty( $registro_dos['descripcion'] ) || empty( $registro_dos['estudios_asoc'] ) ) { ?>
-        $('#info').append("<div class='col-md-8 col-md-offset-2'><a href='colabora.php?profesion=<?php echo $registro_dos['profesion']; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a></div>");
+        $('#info').append("<div class='col-md-8 col-md-offset-2'><a href='colabora.php?profesion=<?php echo $registro_dos['nombre_ppal']; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a></div>");
     <?php } ?>
 <?php } ?>
 

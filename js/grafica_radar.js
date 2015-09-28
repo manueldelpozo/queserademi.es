@@ -40,7 +40,7 @@ $('#container3').highcharts({
     },
     series: [{
         <?php $btn_colabora_c_1=0;$btn_colabora_c_2=0; ?>
-        name: '<?php echo mb_strtoupper($registro["profesion"],"UTF-8" ); ?>',
+        name: '<?php echo mb_strtoupper($registro["nombre_ppal"],"UTF-8" ); ?>',
         data: [
         <?php if( is_null($registro['c_memoria']) || $registro['c_memoria'] == 0 ) {echo 0;$btn_colabora_c_1+=1;} else {echo $registro['c_memoria'];} ?>,
         <?php if( is_null($registro['c_creatividad']) || $registro['c_creatividad'] == 0 ) {echo 0;$btn_colabora_c_1+=2;} else {echo $registro['c_creatividad'];} ?>,
@@ -48,10 +48,10 @@ $('#container3').highcharts({
         <?php if( is_null($registro['c_forma_fisica']) || $registro['c_forma_fisica'] == 0 ) {echo 0;$btn_colabora_c_1+=8;} else {echo $registro['c_forma_fisica'];} ?>,
         <?php if( is_null($registro['c_logica']) || $registro['c_logica'] == 0 ) {echo 0;$btn_colabora_c_1+=16;} else {echo $registro['c_logica'];} ?>
         ],
-        stack: '<?php echo $registro["profesion"] ?>'
-        <?php if( isset($profesion_dos) && !empty($registro_dos["profesion"]) ){ ?>
+        stack: '<?php echo $registro["nombre_ppal"] ?>'
+        <?php if( isset($profesion_dos) && !empty($registro_dos["nombre_ppal"]) ){ ?>
     }, {
-        name: '<?php echo mb_strtoupper($registro_dos["profesion"],"UTF-8" ); ?>',
+        name: '<?php echo mb_strtoupper($registro_dos["nombre_ppal"],"UTF-8" ); ?>',
         data: [
         <?php if( is_null($registro_dos['c_memoria']) || $registro_dos['c_memoria'] == 0 ) {echo 0;$btn_colabora_c_2+=1;} else {echo $registro_dos['c_memoria'];} ?>,
         <?php if( is_null($registro_dos['c_creatividad']) || $registro_dos['c_creatividad'] == 0 ) {echo 0;$btn_colabora_c_2+=2;} else {echo $registro_dos['c_creatividad'];} ?>,
@@ -59,7 +59,7 @@ $('#container3').highcharts({
         <?php if( is_null($registro_dos['c_forma_fisica']) || $registro_dos['c_forma_fisica'] == 0 ) {echo 0;$btn_colabora_c_2+=8;} else {echo $registro_dos['c_forma_fisica'];} ?>,
         <?php if( is_null($registro_dos['c_logica']) || $registro_dos['c_logica'] == 0 ) {echo 0;$btn_colabora_c_2+=16;} else {echo $registro_dos['c_logica'];} ?> 
         ],
-        stack: '<?php echo $registro_dos["profesion"] ?>' 
+        stack: '<?php echo $registro_dos["nombre_ppal"] ?>' 
         <?php  }  ?> 
     }]
 });
@@ -74,14 +74,14 @@ $('#container3').highcharts({
 
     <?php if( $btn_colabora_c_1 > 0 ) { ?>
         capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>";
-        capa_aviso += "<strong><?php echo mb_strtoupper($registro['profesion'],'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro['profesion']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
+        capa_aviso += "<strong><?php echo mb_strtoupper($registro['nombre_ppal'],'UTF-8' ); ?></strong></p>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro['nombre_ppal']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
     <?php } ?>
 
     <?php if( $btn_colabora_c_2 > 0 ) { ?>
         capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>";
-        capa_aviso += "<strong><?php echo mb_strtoupper($registro_dos['profesion'],'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro_dos['profesion']; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a>";
+        capa_aviso += "<strong><?php echo mb_strtoupper($registro_dos['nombre_ppal'],'UTF-8' ); ?></strong></p>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $registro_dos['nombre_ppal']; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a>";
     <?php } ?>
 
     capa_aviso += "</div>";
