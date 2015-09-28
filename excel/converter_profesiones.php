@@ -16,7 +16,7 @@ try {
 	$sql="CREATE TABLE IF NOT EXISTS `profesiones` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`cod` int(11),
-	`profesion` varchar(100) NOT NULL,
+	`nombre_ppal` varchar(100) NOT NULL,
 	`descripcion` varchar(500),
 	`estudios_asoc` varchar(500),
 	`p_past` float,
@@ -40,7 +40,8 @@ try {
 } 
 
 //usar PHPExcel_IOFactory
-include 'phpexcel-master/Classes/PHPExcel/IOFactory.php';
+//include 'phpexcel-master/Classes/PHPExcel/IOFactory.php';
+include '../vendor/autoload.php';
 //coger excel
 $inputFileName = 'tabla_profesiones.xls';
 
@@ -63,13 +64,13 @@ $highestColumn = $sheet->getHighestColumn();
 try{
 	$sql_insert="";
 	for ($row = 8; $row <= $highestRow; $row++) { 
-		$sql_insert.= "INSERT INTO `profesiones` ( `cod` , `profesion` , `descripcion` , `estudios_asoc` , `p_past` , `p_present` , `p_future` , `s_past` , `s_present` , `s_future` , `c_memoria` , `c_creatividad` , `c_comunicacion` , `c_forma_fisica` , `c_logica` ) VALUES (";
+		$sql_insert.= "INSERT INTO `profesiones` ( `cod` , `nombre_ppal` , `descripcion` , `estudios_asoc` , `p_past` , `p_present` , `p_future` , `s_past` , `s_present` , `s_future` , `c_memoria` , `c_creatividad` , `c_comunicacion` , `c_forma_fisica` , `c_logica` ) VALUES (";
 	    //poner los datos de cada fila en el array rowData
 	    $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
 	    //recoger datos del array rowData
 		$cod = $rowData[0][0];
 		
-	    $profesion = $rowData[0][1];
+	    $nombre_ppal= $rowData[0][1];
 	    $descripcion = $rowData[0][2];
 		$estudios_asoc = $rowData[0][3];
 	    
@@ -86,17 +87,17 @@ try{
 		$c_logica = str_replace(',', '.', $rowData[0][14]);
 	   
 	    //insertar datos en el VALUE
-	    $sql_insert .= "'$cod','$profesion','$descripcion','$estudios_asoc','$p_past','$p_present','$p_future','$s_past','$s_present','$s_future','$c_memoria','$c_creatividad','$c_comunicacion','$c_forma_fisica','$c_logica');";  
+	    $sql_insert .= "'$cod','$nombre_ppal','$descripcion','$estudios_asoc','$p_past','$p_present','$p_future','$s_past','$s_present','$s_future','$c_memoria','$c_creatividad','$c_comunicacion','$c_forma_fisica','$c_logica');";  
 	}
 	//cerrar sentencia INSERT
 	if ($pdo->query($sql_insert)) {
 	    print "<p>Registro creado correctamente.</p>\n";
-		echo "<table border='2px solid'><tr><td>id</td><td>cod</td><td>profesion</td><td>descripcion</td><td>estudios_asoc</td><td>p_past</td><td>p_present</td><td>p_future</td><td>s_past</td><td>s_present</td><td>s_future</td><td>c_memoria</td><td>c_creatividad</td><td>c_comunicacion</td><td>c_forma_fisica</td><td>c_logica</td><td>ultima_actualizacion</td></tr>";
+		echo "<table border='2px solid'><tr><td>id</td><td>cod</td><td>nombre_ppal</td><td>descripcion</td><td>estudios_asoc</td><td>p_past</td><td>p_present</td><td>p_future</td><td>s_past</td><td>s_present</td><td>s_future</td><td>c_memoria</td><td>c_creatividad</td><td>c_comunicacion</td><td>c_forma_fisica</td><td>c_logica</td><td>ultima_actualizacion</td></tr>";
 		$sql = 'SELECT * FROM profesiones';
 	    foreach ($pdo->query($sql) as $row) {
 			print "<td>".$row['id'] . "</td>";
 			print "<td>".$row['cod'] . "</td>";
-			print "<td>".$row['profesion'] . "</td>";
+			print "<td>".$row['nombre_ppal'] . "</td>";
 			print "<td>".$row['descripcion'] . "</td>";
 			print "<td>".$row['estudios_asoc'] . "</td>";
 			print "<td>".$row['p_past'] . "</td>";

@@ -236,6 +236,7 @@ function obtainer(query, cb) {
 */
 
 // TYPEAHEAD
+/*
 $('#scrollable-dropdown-menu .typeahead').typeahead({
 	minLength: 0,
     items: 9999,
@@ -253,35 +254,44 @@ $('#scrollable-dropdown-menu .typeahead').typeahead({
         //}
     //}
 });
-// Cuando ENTER
-$("input").keydown( function(e) {
+*/
+$('.typeahead[data-tipo="profesiones"]').typeahead({
+	minLength: 0,
+    items: 9999,
+    order: "asc",
+	remote: {
+		url : 'ajax.php?query=%QUERY&tipo=profesiones'
+	},
+	limit: 15
+});
+$('.typeahead[data-tipo="formaciones"]').typeahead({
+	minLength: 0,
+    items: 9999,
+    order: "asc",
+	remote: {
+		url : 'ajax.php?query=%QUERY&tipo=formaciones'
+	},
+	limit: 15
+});
+// Cuando clickamos en el input 
+$(".typeahead").click( function(e) {
+	$(this).val('%');
+	$(this).typeahead.bind($(this), 'lookup'); //No hace nada
+	(this).val('');
+});
+// Cuando presionamos ENTER
+$(".typeahead").keydown( function(e) {
 	if(e.which == 13)
 		$("#formulario").submit(); 
 });
-// Cuando clickamos en el input 
-$("input").click( function(e) {
-	$(this).val('%');
-	$(this).typeahead.bind($(this), 'lookup');
-	$(this).val('');
-});
-/*
-$('#scrollable-dropdown-menu .typeahead').bind('typeahead:selected', function(obj, datum, name) {      
-        alert(JSON.stringify(obj)); // object
-        // outputs, e.g., {"type":"typeahead:selected","timeStamp":1371822938628,"jQuery19105037956037711017":true,"isTrigger":true,"namespace":"","namespace_re":null,"target":{"jQuery19105037956037711017":46},"delegateTarget":{"jQuery19105037956037711017":46},"currentTarget":
-        alert(JSON.stringify(datum)); // contains datum value, tokens and custom fields
-        // outputs, e.g., {"redirect_url":"http://localhost/test/topic/test_topic","image_url":"http://localhost/test/upload/images/t_FWnYhhqd.jpg","description":"A test description","value":"A test value","tokens":["A","test","value"]}
-        // in this case I created custom fields called 'redirect_url', 'image_url', 'description'   
 
-        alert(JSON.stringify(name)); // contains dataset name
-        // outputs, e.g., "my_dataset"
-
-});
-*/
+// LISTA
 // Seleccionar item con click de raton
 $(".tt-is-under-cursor").click( function() {
 	$("#formulario").submit(); 
 });
 
+// FOOTER
 // animar footer
 $(".btn-footer").click( function() {
 	var $btn;
@@ -322,6 +332,7 @@ $(window).scroll(function() {
     	$('footer').slideDown('slow');
 });
 
+// VIDEO
 // para ver el video promocional
 $('#ver-video a').click( function(event) {
 	event.preventDefault ? event.preventDefault(event) : event.returnValue = false; // supported by IE
@@ -341,6 +352,7 @@ $('#ver-video a').click( function(event) {
 	});
 });
 
+// AVISOS
 // ocultar avisos
 $('.cerrar-aviso').click( function() {
 	$(this).parent().hide();

@@ -97,8 +97,8 @@ if( isset( $_GET['profesion']  )  )
                 <div class="form-group dropdown clearfix profesion required">
                   <label for="profesion" class="col-sm-3 control-label">Profesión:</label>
                   <div class="col-sm-9">  
-                    <div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;">
-                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="search" data-role='none' data-enhance="false" placeholder="Busca una profesión" data-clear-btn="true" value="<?php echo @$profesion; ?>" required>
+                    <div class="input-group" style="width: 100%;">
+                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="search" data-tipo='profesiones' data-role='none' data-enhance="false" placeholder="Busca una profesión" data-clear-btn="true" value="<?php echo @$profesion; ?>" required>
                     </div>
                   </div>
                 </div>
@@ -151,8 +151,8 @@ if( isset( $_GET['profesion']  )  )
                 <div class="form-group dropdown clearfix estudios">
                   <label for="estudios_asoc" class="col-sm-3 control-label">Estudios asociados a la profesión:</label>
                   <div class="col-sm-9">
-                    <div class="input-group" id="scrollable-dropdown-menu" style="width: 100%;">
-                      <input name="estudios_asoc" type="search" data-role='none' data-enhance="false" id="estudios_asoc" class="typeahead center-block form-control input-lg" placeholder="Busca sus estudios asociados" data-clear-btn="true" value="<?php //echo @$profesion_uno; ?>"/>           
+                    <div class="input-group" style="width: 100%;">
+                      <input name="estudios_asoc" type="search"  id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo='formaciones' data-role='none' data-enhance="false" placeholder="Busca sus estudios asociados" data-clear-btn="true" value="<?php //echo @$profesion_uno; ?>"/>           
                     </div>
                   </div>
                 </div>

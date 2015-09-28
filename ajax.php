@@ -5,12 +5,14 @@ require('conexion.php');
 if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
 
 	$query = $_GET['query'];
-	$sql = " SELECT profesion FROM profesiones WHERE profesion LIKE '$query%' LIMIT 0,15 ";
+	$tipo = $_GET['tipo'];
+	$sql = "SELECT nombre_ppal FROM $tipo ";
 	$lista = array();
 
-	if( $query == '%25' ) {
-		$sql = " SELECT profesion FROM profesiones ORDER BY profesion ASC";	
-	}
+	if( $query != '%25' )
+		$sql .= "WHERE nombre_ppal LIKE '$query%' LIMIT 0,15";	
+	else
+		$sql .= "ORDER BY nombre_ppal ASC";
 
 	$request = $pdo->prepare($sql);
 	$request->execute();
@@ -19,8 +21,8 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 	if( $count > 0 ) {
 		$rows = $request->fetchAll();
 		foreach ( $rows as $row ) {
-			$profesion = ucfirst( mb_strtolower( $row['profesion'], 'UTF-8' ) );
-			$lista[] = $profesion;
+			$nombre_ppal = ucfirst( mb_strtolower( $row['nombre_ppal'], 'UTF-8' ) );
+			$lista[] = $nombre_ppal;
 		}
 	}
 	echo json_encode($lista);
