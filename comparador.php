@@ -1,21 +1,55 @@
 <?php 
 try {
   require('conexion.php');
+
+  $campos = { 
+    'salarios': ['s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'],
+    'empleabilidad': ['parados', 'contratados', 'mes', 'anyo'],
+    'capacidades': ['c_memoria', 'c_comunicacion', 'c_analisis', 'c_forma_fisica', 'c_equipo'],
+    'info': ['descripcion','satisfaccion']
+  };
+
+  function consulta( $profesion, $tabla ) {
+    $consulta = "SELECT nombre_ppal ";
+    foreach ( $campos[$tabla] as $tabla) {
+      $consulta .= $campo;
+    }
+    $tabla_ref = $tabla[0];
+    if ($tabla == 'info')
+      $where = "WHERE ";
+    else
+      $where = "p, '$tabla' '$tabla_ref' WHERE p.id = '$tabla_ref'.id_profesion AND ";
+    $consulta .= " FROM profesiones ".$where."p.nombre_ppal LIKE '$profesion'";
+    $rs = $pdo->prepare($consulta);
+    $rs->execute();
+    return $rs->fetch();
+  }
   
   if( isset( $_GET['profesion_uno']  )  ) {
     $profesion_uno = $_GET['profesion_uno'];
+/*
     $consulta = "SELECT * FROM profesiones WHERE nombre_ppal LIKE '$profesion_uno'";
     $result = $pdo->prepare($consulta);
     $result->execute();
     $registro = $result->fetch();
+*/
+    $filas_salario = consulta( $profesion_uno, 'salarios');
+    $filas_empleabilidad = consulta( $profesion_uno, 'empleabilidad');
+    $filas_capacidades = consulta( $profesion_uno, 'capacidades');
+    $filas_info = consulta( $profesion_uno, 'info');
 
   }  
   if( isset( $_GET['profesion_dos'] ) ) { 
     $profesion_dos = $_GET['profesion_dos'];
+    /*
     $consulta_dos = "SELECT * FROM profesiones WHERE nombre_ppal LIKE '$profesion_dos'";
     $result_dos = $pdo->prepare($consulta_dos);
     $result_dos->execute();
     $registro_dos = $result_dos->fetch();
+*/
+    $filas_salario_dos = consulta( $profesion_dos, 'salarios');
+    $filas_empleabilidad_dos = consulta( $profesion_dos, 'empleabilidad');
+    $filas_capacidades_dos = consulta( $profesion_dos, 'capacidades');
   } 
 ?>
 <!DOCTYPE html>
@@ -105,16 +139,16 @@ try {
 
           <div class="row body" style="margin-top:5px;height:120%;">
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container" class="grafica"></div>
+              <div id="container_salarios" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container3" class="grafica"></div>
+              <div id="container_capacidades" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container2" class="grafica"></div>
+              <div id="container_empleabilidad" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container1" class="grafica"></div>
+              <div id="container_info" class="grafica"></div>
             </div>
           </div> 
 
@@ -188,10 +222,10 @@ try {
 
   <script type="text/javascript" async>
     <?php 
-      include('js/grafica_funcion.js'); 
+      include('js/grafica_salarios.js'); 
       include('js/grafica_info.js'); 
-      include('js/grafica_barras.js'); 
-      include('js/grafica_radar.js'); 
+      include('js/grafica_empleabilidad.js'); 
+      include('js/grafica_capacidades.js'); 
     ?>
   </script>
 
