@@ -6,20 +6,24 @@ try {
     'salarios': ['s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'],
     'empleabilidad': ['parados', 'contratados', 'mes', 'anyo'],
     'capacidades': ['c_memoria', 'c_comunicacion', 'c_analisis', 'c_forma_fisica', 'c_equipo'],
-    'info': ['descripcion','satisfaccion']
+    'info': ['descripcion'],
+    'satisfaccion': ['experiencia','grado_satisfaccion'],
+    'formaciones': ['nombre_ppal','nombre_alt','duracion_academica','duracion_real','acceso','nivel']
   };
 
   function consulta( $profesion, $tabla ) {
-    $consulta = "SELECT nombre_ppal ";
-    foreach ( $campos[$tabla] as $tabla) {
+    $consulta = "SELECT * ";
+    foreach ( $campos[$tabla] as $campo) {
       $consulta .= $campo;
     }
     $tabla_ref = $tabla[0];
     if ($tabla == 'info')
       $where = "WHERE ";
+    else if ($tabla == 'formaciones')
+      $where = "p INNER JOIN profesiones_formaciones pf ON p.id = pf.id_profesion INNER JOIN formaciones f ON f.id = pf.id_formaciones ";
     else
       $where = "p, '$tabla' '$tabla_ref' WHERE p.id = '$tabla_ref'.id_profesion AND ";
-    $consulta .= " FROM profesiones ".$where."p.nombre_ppal LIKE '$profesion'";
+    $consulta .= " FROM profesiones_test ".$where."p.nombre_ppal LIKE '$profesion'";
     $rs = $pdo->prepare($consulta);
     $rs->execute();
     return $rs->fetch();
@@ -37,6 +41,8 @@ try {
     $filas_empleabilidad = consulta( $profesion_uno, 'empleabilidad');
     $filas_capacidades = consulta( $profesion_uno, 'capacidades');
     $filas_info = consulta( $profesion_uno, 'info');
+    $filas_satisfaccion = consulta( $profesion_uno, 'satisfaccion');
+    $filas_formaciones = consulta( $profesion_uno, 'formaciones');
 
   }  
   if( isset( $_GET['profesion_dos'] ) ) { 
@@ -50,6 +56,9 @@ try {
     $filas_salario_dos = consulta( $profesion_dos, 'salarios');
     $filas_empleabilidad_dos = consulta( $profesion_dos, 'empleabilidad');
     $filas_capacidades_dos = consulta( $profesion_dos, 'capacidades');
+    $filas_info_dos = consulta( $profesion_dos, 'info');
+    $filas_satisfaccion_dos = consulta( $profesion_dos, 'satisfaccion');
+    $filas_formaciones_dos = consulta( $profesion_dos, 'formaciones');
   } 
 ?>
 <!DOCTYPE html>
