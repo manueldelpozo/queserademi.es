@@ -57,11 +57,11 @@ try {
 
 	$campos = array( 
 		'profesiones_test'		=> array('cod', 'nombre_ppal', 'descripcion'),
-		'nombres_alt'			=> array('nombre_alt_1', 'nombre_alt_2', 'nombre_alt_3'),
+		'nombres_alt'			=> array('nombre_alt'),
 		'salarios'      		=> array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
 		'empleabilidad' 		=> array('parados', 'contratados', 'mes', 'anyo'),
 		'capacidades'   		=> array('c_memoria', 'c_comunicacion', 'c_analisis', 'c_forma_fisica', 'c_equipo'),
-		'profesion_formacion'	=> array('nombre_ppal')
+		'profesion_formacion'	=> array('id_formacion')
 	);
 
 	function insertar( $tabla, $campos ) {
@@ -139,22 +139,33 @@ try {
 		$contratados_abril_2015 	= str_replace(',', '.', $rowData[0][36]);
 		$parados_julio_2015 		= str_replace(',', '.', $rowData[0][37]);
 		$contratados_julio_2015 	= str_replace(',', '.', $rowData[0][38]);
-		
+
 		//inseratar el resto
 		//consulta a las tablas profesion y formacion y obtener ids creados
 		$sql_profesiones = "SELECT id, nombre_ppal FROM profesiones_test WHERE cod LIKE '$cod'";
-		$sql_formaciones = "SELECT id FROM formaciones";
-		foreach ($pdo->query($sql) as $row) {
-			$id_profesion 					= $row['id'];
-			$insert_nombres_alt 			.= "'$nombre_alt_1','$nombre_alt_2','$nombre_alt_3')";
-			$insert_salarios 				.= "'$id_profesion','$s_junior_min','$s_junior_max','$s_intermedio_min','$s_intermedio_max','$s_senior_min','$s_senior_max')";
-			$insert_empleabilidad 			.= "'$id_profesion','$parados_enero_2014','$contratados_enero_2014','$parados_abril_2014','$contratados_abril_2014','$parados_julio_2014','$contratados_julio_2014','$parados_octubre_2014','$contratados_octubre_2014','$parados_enero_2015','$contratados_enero_2015','$parados_abril_2015','$contratados_abril_2015','$parados_julio_2015','$contratados_julio_2015')";
-			$insert_capacidades 			.= "'$id_profesion','$c_analisis','$c_comunicacion','$c_equipo','$c_forma_fisica','$c_organizacion','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_nombre')";
-			$insert_profesion_formacion 	.= "'$id_profesion','$id_formacion_1','$id_formacion_2','$id_formacion_2')"; // necesito las ids // primero consultar // o usar cods
-			$inserts = array($insert_salarios,$insert_empleabilidad,$insert_capacidades,$insert_profesion_formacion);
+		foreach ($pdo->query($sql_profesiones) as $row) {
+			$id_profesion 						= $row['id'];
+			$insert_nombres_alt_1 				= $insert_nombres_alt."'$id_profesion','$nombre_alt_1')";
+			$insert_nombres_alt_2 				= $insert_nombres_alt."'$id_profesion','$nombre_alt_2')";
+			$insert_nombres_alt_3 				= $insert_nombres_alt."'$id_profesion','$nombre_alt_3')";
+			$insert_salarios 					.= "'$id_profesion','$s_junior_min','$s_junior_max','$s_intermedio_min','$s_intermedio_max','$s_senior_min','$s_senior_max')";
+			$insert_empleabilidad_enero_2014 	= $insert_empleabilidad."'$id_profesion','$parados_enero_2014','$contratados_enero_2014','enero','2014')";
+			$insert_empleabilidad_abril_2014 	= $insert_empleabilidad."'$id_profesion','$parados_abril_2014','$contratados_abril_2014','abril','2014')";
+			$insert_empleabilidad_julio_2014 	= $insert_empleabilidad."'$id_profesion','$parados_julio_2014','$contratados_julio_2014','julio','2014')";
+			$insert_empleabilidad_octubre_2014 	= $insert_empleabilidad."'$id_profesion','$parados_octubre_2014','$contratados_octubre_2014','octubre','2014')";
+			$insert_empleabilidad_enero_2015 	= $insert_empleabilidad."'$id_profesion','$parados_enero_2015','$contratados_enero_2015','enero','2015')";
+			$insert_empleabilidad_abril_2015 	= $insert_empleabilidad."'$id_profesion','$parados_abril_2015','$contratados_abril_2015','abril','2015')";
+			$insert_empleabilidad_julio_2015 	= $insert_empleabilidad."'$id_profesion','$parados_julio_2015','$contratados_julio_2015','julio','2015')";
+			$insert_capacidades 				.= "'$id_profesion','$c_analisis','$c_comunicacion','$c_equipo','$c_forma_fisica','$c_organizacion','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_nombre')";
+			$insert_profesion_formacion_1 		= $insert_profesion_formacion."'$id_profesion','$id_formacion_1')"; 
+			$insert_profesion_formacion_2 		= $insert_profesion_formacion."'$id_profesion','$id_formacion_2')";
+			$insert_profesion_formacion_3 		= $insert_profesion_formacion."'$id_profesion','$id_formacion_3')";
+			$inserts = array($insert_nombres_alt_1, $insert_nombres_alt_2, $insert_nombres_alt_3, $insert_salarios, $insert_empleabilidad_enero_2014, $insert_empleabilidad_abril_2014, $insert_empleabilidad_julio_2014, $insert_empleabilidad_octubre_2014, $insert_empleabilidad_enero_2015, $insert_empleabilidad_abril_2015, $insert_empleabilidad_julio_2015, $insert_capacidades, $insert_profesion_formacion_1, $insert_profesion_formacion_2, $insert_profesion_formacion_3);
 			foreach ( $inserts as $insert) {
 				if ($pdo->query($insert))
-				    echo "<p>Registro insertado correctamente.</p>\n";	
+					echo "<p>Registro insertado correctamente.</p>\n";
+			    else
+			    	echo "<p>Error en la insercion</p>"	
 			}
 		}
 

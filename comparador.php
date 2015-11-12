@@ -37,12 +37,12 @@ try {
     $result->execute();
     $registro = $result->fetch();
 */
-    $filas_salario = consulta( $profesion_uno, 'salarios', $campos, $pdo);
-    $filas_empleabilidad = consulta( $profesion_uno, 'empleabilidad', $campos, $pdo);
-    $filas_capacidades = consulta( $profesion_uno, 'capacidades', $campos, $pdo);
-    $filas_info = consulta( $profesion_uno, 'info', $campos, $pdo);
-    $filas_satisfaccion = consulta( $profesion_uno, 'satisfaccion', $campos, $pdo);
-    $filas_formaciones = consulta( $profesion_uno, 'formaciones', $campos, $pdo);
+    $filas_salario        = consulta( $profesion_uno, 'salarios', $campos, $pdo);
+    $filas_empleabilidad  = consulta( $profesion_uno, 'empleabilidad', $campos, $pdo);
+    $filas_capacidades    = consulta( $profesion_uno, 'capacidades', $campos, $pdo);
+    $filas_info           = consulta( $profesion_uno, 'info', $campos, $pdo);
+    $filas_satisfaccion   = consulta( $profesion_uno, 'satisfaccion', $campos, $pdo);
+    $filas_formaciones    = consulta( $profesion_uno, 'formaciones', $campos, $pdo);
 
   }  
   if( isset( $_GET['profesion_dos'] ) ) { 
@@ -53,12 +53,12 @@ try {
     $result_dos->execute();
     $registro_dos = $result_dos->fetch();
 */
-    $filas_salario_dos = consulta( $profesion_dos, 'salarios', $campos, $pdo);
-    $filas_empleabilidad_dos = consulta( $profesion_dos, 'empleabilidad', $campos, $pdo);
-    $filas_capacidades_dos = consulta( $profesion_dos, 'capacidades', $campos, $pdo);
-    $filas_info_dos = consulta( $profesion_dos, 'info', $campos, $pdo);
-    $filas_satisfaccion_dos = consulta( $profesion_dos, 'satisfaccion', $campos, $pdo);
-    $filas_formaciones_dos = consulta( $profesion_dos, 'formaciones', $campos, $pdo);
+    $filas_salario_dos        = consulta( $profesion_dos, 'salarios', $campos, $pdo);
+    $filas_empleabilidad_dos  = consulta( $profesion_dos, 'empleabilidad', $campos, $pdo);
+    $filas_capacidades_dos    = consulta( $profesion_dos, 'capacidades', $campos, $pdo);
+    $filas_info_dos           = consulta( $profesion_dos, 'info', $campos, $pdo);
+    $filas_satisfaccion_dos   = consulta( $profesion_dos, 'satisfaccion', $campos, $pdo);
+    $filas_formaciones_dos    = consulta( $profesion_dos, 'formaciones', $campos, $pdo);
   } 
 ?>
 <!DOCTYPE html>
@@ -157,6 +157,12 @@ try {
               <div id="container_empleabilidad" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
+              <div id="container_formacion" class="grafica"></div>
+            </div>
+            <div class="col-md-6 col-xs-12 text-center">
+              <div id="container_satisfaccion" class="grafica"></div>
+            </div>
+            <div class="col-md-6 col-xs-12 text-center">
               <div id="container_info" class="grafica"></div>
             </div>
           </div> 
@@ -232,9 +238,11 @@ try {
   <script type="text/javascript" async>
     <?php 
       include('js/grafica_salarios.js'); 
-      include('js/grafica_info.js'); 
+      include('js/grafica_capacidades.js');
       include('js/grafica_empleabilidad.js'); 
-      include('js/grafica_capacidades.js'); 
+      include('js/grafica_formacion.js');
+      include('js/grafica_satisfaccion.js');
+      include('js/grafica_info.js'); 
     ?>
   </script>
 
