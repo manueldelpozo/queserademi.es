@@ -64,7 +64,7 @@ $('#container_empleabilidad').highcharts({
         data: [
         <?php foreach ($filas_empleabilidad_dos as $fila_emp_dos) { ?>
         <?php $emp = empleabilidad($fila_emp_dos['contratados'], $fila_emp_dos['parados']); ?>
-        <?php if( is_null($emp) || $emp == 0 ) {echo 0;$btn_colabora_e_1+=1;} else {echo $emp;} ?>,
+        <?php if( is_null($emp) || $emp == 0 ) {echo 0;$btn_colabora_e_2+=1;} else {echo $emp;} ?>,
         <?php } ?>
         ],
         stack: '<?php echo $filas_empleabilidad_dos[0]["nombre_ppal"] ?>'

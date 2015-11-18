@@ -2,40 +2,11 @@
 
 //conectar
 require('../conexion.php');
-/*	
-try{
-	$sql ="DROP TABLE IF EXISTS formaciones";
-	if ($pdo->query($sql))
-		echo "<p>Tabla borrada correctamente.</p>\n";
-} catch(PDOException $Exception) {
-	echo "<p>Error al borrar la tabla.<p>\n";
-	exit;
-}
 
-try {
-	$sql="CREATE TABLE IF NOT EXISTS `formaciones` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`cod` int(11),
-	`nombre_ppal` varchar(100) NOT NULL,
-	`nombre_alt` varchar(100),
-	`descripcion` varchar(500),
-	`duracion_academica` float,
-	`duracion_real` float,
-	`acceso` float,
-	`nivel` float,
-	`ultima_actualizacion` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (`id`) ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=92101051 ;" ;
-	if ($pdo->query($sql))
-		print "<p>Tabla creada correctamente.</p>\n";
-} catch(PDOException $Exception) {
-	echo "<p>Error al crear la tabla.<p>\n";
-	exit;
-} 
-*/
 //usar PHPExcel_IOFactory
 include '../vendor/autoload.php';
 //coger excel
-$inputFileName = 'tabla_general.xls';
+$inputFileName = 'profesiones_test.xls';
 
 //leer Excel 
 try {
@@ -51,25 +22,23 @@ $sheet 			= $objPHPExcel->getSheet(0);
 $highestRow 	= $sheet->getHighestRow(); 
 $highestColumn 	= $sheet->getHighestColumn();
 
-//preparar sentencia INSERT
-//bucle de cada fila
 try {
 
 	$campos = array( 
-		'profesiones_test'		=> array('cod', 'nombre_ppal', 'descripcion'),
-		'nombres_alt'			=> array('nombre_alt'),
-		'salarios'      		=> array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
-		'empleabilidad' 		=> array('parados', 'contratados', 'mes', 'anyo'),
-		'capacidades'   		=> array('c_memoria', 'c_comunicacion', 'c_analisis', 'c_forma_fisica', 'c_equipo'),
-		'profesion_formacion'	=> array('id_formacion')
+		'profesiones_test'			=> array('cod', 'nombre_ppal', 'descripcion'),
+		'nombres_alt'				=> array('nombre_alt'),
+		'salarios'      			=> array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
+		'empleabilidad' 			=> array('parados', 'contratados', 'mes', 'anyo'),
+		'capacidades'   			=> array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_organizacion', 'i_ingles', 'i_frances', 'i_aleman', 'i_otro', 'i_otro_nombre'),
+		'profesiones_formaciones'	=> array('id_formacion')
 	);
 
 	function insertar( $tabla, $campos ) {
-	    $insercion = "INSERT INTO '$tabla' (";
-    	if ( $table != 'profesiones_test')
-    		$insercion .= "id_profeion, ";
+	    $insercion = "INSERT INTO ".$tabla." (";
+    	if ( $tabla != 'profesiones_test')
+    		$insercion .= "id_profesion, ";
 	    foreach ( $campos[$tabla] as $campo) {
-	      $insercion .= " ".$campo.",";
+			$insercion .= $campo.",";
 	    }
 	    $insercion = substr($insercion, 0, -1) . ") VALUES (";
 	    return $insercion;
@@ -77,8 +46,7 @@ try {
 
 	// desde la fila 2 del archivo excel
 	for ($row = 2; $row <= $highestRow; $row++) { 
-		$insert_profesiones = insertar('profesiones', $campos);
-	    
+		$insert_profesiones = insertar('profesiones_test', $campos);
 	    //poner los datos de cada fila en el array rowData
 	    $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
 	    //recoger datos del array rowData
@@ -88,8 +56,11 @@ try {
 	   
 	    //insertar profesiones
 	    $insert_profesiones .= "'$cod','$nombre_ppal','$descripcion')";
+		echo $insert_profesiones . "<br>";
 		if ($pdo->query($insert_profesiones))
-		    echo "<p>Porfesiones insertadas correctamente.</p>\n";	
+			echo "<p>Porfesiones insertadas correctamente.</p>\n";
+		else
+			echo "<p>Error en la insercion</p>";	
 	}
 	// desde la fila 2 del archivo excel
 	for ($row = 2; $row <= $highestRow; $row++) { 
@@ -97,7 +68,7 @@ try {
 		$insert_nombres_alt				= insertar('nombres_alt', $campos);
 		$insert_empleabilidad 			= insertar('empleabilidad', $campos);
 		$insert_capacidades				= insertar('capacidades', $campos);
-		$insert_profesion_formacion 	= insertar('profesion_formacion', $campos);
+		$insert_profesiones_formaciones = insertar('profesiones_formaciones', $campos);
 
 		//poner los datos de cada fila en el array rowData
 	    $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
@@ -143,56 +114,36 @@ try {
 		//inseratar el resto
 		//consulta a las tablas profesion y formacion y obtener ids creados
 		$sql_profesiones = "SELECT id, nombre_ppal FROM profesiones_test WHERE cod LIKE '$cod'";
-		foreach ($pdo->query($sql_profesiones) as $row) {
-			$id_profesion 						= $row['id'];
-			$insert_nombres_alt_1 				= $insert_nombres_alt."'$id_profesion','$nombre_alt_1')";
-			$insert_nombres_alt_2 				= $insert_nombres_alt."'$id_profesion','$nombre_alt_2')";
-			$insert_nombres_alt_3 				= $insert_nombres_alt."'$id_profesion','$nombre_alt_3')";
-			$insert_salarios 					.= "'$id_profesion','$s_junior_min','$s_junior_max','$s_intermedio_min','$s_intermedio_max','$s_senior_min','$s_senior_max')";
-			$insert_empleabilidad_enero_2014 	= $insert_empleabilidad."'$id_profesion','$parados_enero_2014','$contratados_enero_2014','enero','2014')";
-			$insert_empleabilidad_abril_2014 	= $insert_empleabilidad."'$id_profesion','$parados_abril_2014','$contratados_abril_2014','abril','2014')";
-			$insert_empleabilidad_julio_2014 	= $insert_empleabilidad."'$id_profesion','$parados_julio_2014','$contratados_julio_2014','julio','2014')";
-			$insert_empleabilidad_octubre_2014 	= $insert_empleabilidad."'$id_profesion','$parados_octubre_2014','$contratados_octubre_2014','octubre','2014')";
-			$insert_empleabilidad_enero_2015 	= $insert_empleabilidad."'$id_profesion','$parados_enero_2015','$contratados_enero_2015','enero','2015')";
-			$insert_empleabilidad_abril_2015 	= $insert_empleabilidad."'$id_profesion','$parados_abril_2015','$contratados_abril_2015','abril','2015')";
-			$insert_empleabilidad_julio_2015 	= $insert_empleabilidad."'$id_profesion','$parados_julio_2015','$contratados_julio_2015','julio','2015')";
-			$insert_capacidades 				.= "'$id_profesion','$c_analisis','$c_comunicacion','$c_equipo','$c_forma_fisica','$c_organizacion','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_nombre')";
-			$insert_profesion_formacion_1 		= $insert_profesion_formacion."'$id_profesion','$id_formacion_1')"; 
-			$insert_profesion_formacion_2 		= $insert_profesion_formacion."'$id_profesion','$id_formacion_2')";
-			$insert_profesion_formacion_3 		= $insert_profesion_formacion."'$id_profesion','$id_formacion_3')";
-			$inserts = array($insert_nombres_alt_1, $insert_nombres_alt_2, $insert_nombres_alt_3, $insert_salarios, $insert_empleabilidad_enero_2014, $insert_empleabilidad_abril_2014, $insert_empleabilidad_julio_2014, $insert_empleabilidad_octubre_2014, $insert_empleabilidad_enero_2015, $insert_empleabilidad_abril_2015, $insert_empleabilidad_julio_2015, $insert_capacidades, $insert_profesion_formacion_1, $insert_profesion_formacion_2, $insert_profesion_formacion_3);
+		$rs_profesiones = $pdo->prepare($sql_profesiones);
+		$rs_profesiones->execute();
+		$filas_profesiones = $rs_profesiones->fetchAll();
+		foreach ($filas_profesiones as $fila) {
+			$id_profesion 						= $fila['id'];
+			$insert_nombres_alt_1 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_1')";
+			$insert_nombres_alt_2 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_2')";
+			$insert_nombres_alt_3 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_3')";
+			$insert_salarios_total 				= $insert_salarios.$id_profesion.",'$s_junior_min','$s_junior_max','$s_intermedio_min','$s_intermedio_max','$s_senior_min','$s_senior_max')";
+			$insert_empleabilidad_enero_2014 	= $insert_empleabilidad.$id_profesion.",'$parados_enero_2014','$contratados_enero_2014','enero',2014)";
+			$insert_empleabilidad_abril_2014 	= $insert_empleabilidad.$id_profesion.",'$parados_abril_2014','$contratados_abril_2014','abril',2014)";
+			$insert_empleabilidad_julio_2014 	= $insert_empleabilidad.$id_profesion.",'$parados_julio_2014','$contratados_julio_2014','julio',2014)";
+			$insert_empleabilidad_octubre_2014 	= $insert_empleabilidad.$id_profesion.",'$parados_octubre_2014','$contratados_octubre_2014','octubre',2014)";
+			$insert_empleabilidad_enero_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_enero_2015','$contratados_enero_2015','enero',2015)";
+			$insert_empleabilidad_abril_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_abril_2015','$contratados_abril_2015','abril',2015)";
+			$insert_empleabilidad_julio_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_julio_2015','$contratados_julio_2015','julio',2015)";
+			$insert_capacidades_total 			= $insert_capacidades.$id_profesion.",'$c_analisis','$c_comunicacion','$c_equipo','$c_forma_fisica','$c_organizacion','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_nombre')";
+			$insert_profesiones_formaciones_1 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_1')"; 
+			$insert_profesiones_formaciones_2 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_2')";
+			$insert_profesiones_formaciones_3 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_3')";
+			$inserts = array($insert_nombres_alt_1, $insert_nombres_alt_2, $insert_nombres_alt_3, $insert_salarios_total, $insert_empleabilidad_enero_2014, $insert_empleabilidad_abril_2014, $insert_empleabilidad_julio_2014, $insert_empleabilidad_octubre_2014, $insert_empleabilidad_enero_2015, $insert_empleabilidad_abril_2015, $insert_empleabilidad_julio_2015, $insert_capacidades_total, $insert_profesiones_formaciones_1, $insert_profesiones_formaciones_2, $insert_profesiones_formaciones_3);
 			foreach ( $inserts as $insert) {
+				echo $insert . "<br>";
 				if ($pdo->query($insert))
 					echo "<p>Registro insertado correctamente.</p>\n";
 			    else
-			    	echo "<p>Error en la insercion</p>"	
+			    	echo "<p>Error en la insercion</p>";			
 			}
-		}
-
-	    /*
-	    echo "<table border='1px solid'><th>";
-	    foreach ($campos[i] as $campo) {
-	    	echo "<td>".$campo."</td>";
-	    }
-	    echo "<th>";9
-		$sql = 'SELECT * FROM formaciones';
-	    foreach ($pdo->query($sql) as $row) {
-			echo "<td>".$row['id'] . "</td>";
-			echo "<td>".$row['cod'] . "</td>";
-			echo "<td>".$row['nombre_ppal'] . "</td>";
-			echo "<td>".$row['nombre_alt'] . "</td>";
-			echo "<td>".$row['descripcion'] . "</td>";
-			echo "<td>".$row['duracion_academica'] . "</td>";
-			echo "<td>".$row['duracion_real'] . "</td>";
-			print "<td>".$row['acceso'] . "</td>";
-			print "<td>".$row['nivel'] . "</td></tr>";   
-	    }
-		echo "</table>";
-		*/
-		
+		}		
 	}
-	
-	
 	
 } catch(PDOException $Exception) {
 	echo "<p>Error al insertar los datos de la tabla.<p>\n";

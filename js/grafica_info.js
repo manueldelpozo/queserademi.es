@@ -8,7 +8,7 @@ function createExcerpts($text,$length,$more_txt) {
 }
 ?>
 
-$('#container1').html("<h4 style='margin:15px'>INFORMACIÓN</h4><div id='info'></div><div id='slider'></div>");
+$('#container_info').html("<h4 style='margin:15px'>INFORMACIÓN</h4><div id='info'></div><div id='slider'></div>");
 
 <?php if( isset( $profesion_uno ) ) { ?>  
     $('#info').append("<h5 class='principal nombre'><?php echo $registro['nombre_ppal']; ?></h5>");

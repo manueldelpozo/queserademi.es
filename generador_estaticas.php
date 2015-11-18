@@ -1,98 +1,83 @@
 <?php 
-try {
-  require('conexion.php');
 
-  $tablas = array( 
-    'salarios'      => array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
-    //'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
-    //'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_organizacion'),
-    //'info'          => array('descripcion'),
-    //'satisfaccion'  => array('experiencia','grado_satisfaccion'),
-    //'formaciones'   => array('f_nombre_ppal','f_nombre_alt','duracion_academica','duracion_real','acceso','nivel')
-  );
+require('conexion.php');
 
-  function consulta( $profesion, $tabla, $tablas, $pdo ) {
-    $consulta = "SELECT ";
-    foreach ($tablas[$tabla] as $campo) {
-      $consulta .= $campo . ",";
-    }
-    $consulta = substr($consulta, 0, -1);
-    $tabla_ref = $tabla[0];
-    if ($tabla == 'info')
-      $where = "WHERE ";
-    else if ($tabla == 'formaciones')
-      $where = "INNER JOIN profesiones_formaciones pf ON p.id = pf.id_profesion INNER JOIN formaciones f ON f.id = pf.id_formacion WHERE ";
-    else
-      $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND ";
+// consulta de nombres principales y alternativos
+$consulta_nombres = "SELECT id_profesion, nombre_ppal, nombre_alt FROM profesiones_test p, nombres_alt n WHERE p.id = n.id_profesiones";
+$rs_nombres = $pdo->prepare($consulta_nombres);
+$rs_nombres->execute();
+$nombres = $rs_nombres->fetchAll();
 
-    $consulta .= " FROM profesiones_test p ".$where."p.nombre_ppal LIKE '$profesion'";
-    $rs = $pdo->prepare($consulta);
-    $rs->execute();
-    $filas = $rs->fetchAll();
-    return $filas;
-  }
+$nombres_usados = array();
+
+// bucle de todos los nombres
+foreach ($nombres as $nombre) {
+
+  $nombre_alt = $nombre['nombre_alt'];
+  $id_profesion = $nombre['id_profesion'];
+  // coger el nombre ppal si el nombre aun no ha sido usado
+  if ( !in_array($id_profesion, $nombres_usados, TRUE) ) {
+    $nombre_ppal = $nombre['nombre_ppal'];
+  } 
   
-  //if( isset( $_GET['profesion_uno']  )  ) {
-    //$profesion_uno = $_GET['profesion_uno'];
-    $profesion = "Ocupaciones militares";
+  array_push($nombres_usados, $id_profesion);
 
-    $filas_salarios       = consulta( $profesion, 'salarios', $tablas, $pdo);
-    /*$filas_empleabilidad  = consulta( $profesion, 'empleabilidad', $tablas, $pdo);
-    $filas_capacidades    = consulta( $profesion, 'capacidades', $tablas, $pdo);
-    $filas_info           = consulta( $profesion, 'info', $tablas, $pdo);
-    $filas_satisfaccion   = consulta( $profesion, 'satisfaccion', $tablas, $pdo);
-    $filas_formaciones    = consulta( $profesion, 'formaciones', $tablas, $pdo);*/
-  //}  
-  //if( isset( $_GET['profesion_dos'] ) ) { 
-    //$profesion_dos = $_GET['profesion_dos'];
-    $profesion_dos = "Oficiales y suboficiales de las fuerzas armadas";
+  try { 
 
-    $filas_salarios_dos       = consulta( $profesion_dos, 'salarios', $tablas, $pdo);
-    /*$filas_empleabilidad_dos  = consulta( $profesion_dos, 'empleabilidad', $tablas, $pdo);
-    $filas_capacidades_dos    = consulta( $profesion_dos, 'capacidades', $tablas, $pdo);
-    $filas_info_dos           = consulta( $profesion_dos, 'info', $tablas, $pdo);
-    $filas_satisfaccion_dos   = consulta( $profesion_dos, 'satisfaccion', $tablas, $pdo);
-    $filas_formaciones_dos    = consulta( $profesion_dos, 'formaciones', $tablas, $pdo);*/
-  //} 
-/*
-  foreach ($tablas as $tabla => $campos) {
-    foreach ($campos as $campo) {
-      $filtab = 'filas_'.$tabla;
-      foreach ($$filtab as $fila) {
-        echo $campo.": ".$fila[$campo]."<br>";
+    $campos = array( 
+      'salarios'      => array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
+      'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
+      'capacidades'   => array('c_memoria', 'c_comunicacion', 'c_analisis', 'c_forma_fisica', 'c_equipo'),
+      'info'          => array('nombre_ppal', 'descripcion'),
+      'satisfaccion'  => array('experiencia','grado_satisfaccion'),
+      'formaciones'   => array('nombre_ppal', 'nombre_alt', 'duracion_academica', 'duracion_real', 'acceso', 'nivel')
+    );
+
+    function consulta( $id_profesion, $tabla, $campos, $pdo ) {
+      $consulta = "SELECT ";
+      $tabla_ref = $tabla[0];
+      foreach ( $campos[$tabla] as $campo) {
+        $consulta .= $campo." AS ".$tabla_ref."_".$campo.", ";
       }
+      $id_profesion = "id_profesion = ".$id_profesion;
+      if ($tabla == 'info') {
+        $tabla = "profesiones_test";
+        str_replace("id_profesion", "id", $id_profesion);
+      }
+      $consulta .= "FROM ".$tabla." WHERE ".$id_profesion;
+      $rs = $pdo->prepare($consulta);
+      $rs->execute();
+      return $rs->fetch();
     }
-  }
-
-  var_dump($filas_salarios[0]);
-  $s_junior_min       = $filas_salarios[0]['s_junior_min'];
-  $s_junior_max       = $filas_salarios[0]['s_junior_max'];
-  $s_intermedio_min   = $filas_salarios[0]['s_intermedio_min'];
-  $s_intermedio_max   = $filas_salarios[0]['s_intermedio_max'];
-  $s_senior_min       = $filas_salarios[0]['s_senior_min'];
-  $s_senior_max       = $filas_salarios[0]['s_senior_max'];
-  echo $s_junior_min;
-  echo $s_junior_max;
-  echo $s_intermedio_min;
-  echo $s_intermedio_max;
-  echo $s_senior_min;
-  echo $s_senior_max;
- */ 
+  
+  /*
+      $consulta = "SELECT * FROM profesiones WHERE nombre_ppal LIKE '$profesion_uno'";
+      $result = $pdo->prepare($consulta);
+      $result->execute();
+      $registro = $result->fetch();
+  */
+    $filas_salario        = consulta( $id_profesion, 'salarios', $campos, $pdo);
+    $filas_empleabilidad  = consulta( $id_profesion, 'empleabilidad', $campos, $pdo);
+    $filas_capacidades    = consulta( $id_profesion, 'capacidades', $campos, $pdo);
+    $filas_info           = consulta( $id_profesion, 'info', $campos, $pdo);
+    $filas_satisfaccion   = consulta( $id_profesion, 'satisfaccion', $campos, $pdo);
+    $filas_formaciones    = consulta( $id_profesion, 'formaciones', $campos, $pdo);
+    
 ?>
 <!DOCTYPE html>
 <html>
   <head>
       <meta http-equiv="Content-Language" content="es">
       <meta charset="utf-8">
-      <title>Comparador de Profesiones</title>
-      <meta name="description" content="Comparador de profesiones queserademi">
+      <title><?php echo $nombre; ?></title>
+      <meta name="description" content="<?php echo $nombre; ?>">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="apple-mobile-web-app-capable" content="yes" />
 
-      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Comparador de profesiones queserademi" />
+      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="<?php echo $nombre; ?>" />
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/comparador.php" />
+      <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/profesiones/<?php echo $nombre; ?>" />
       <link rel="icon" type="image/x-icon" href="images/logo.png">
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
@@ -136,7 +121,7 @@ try {
             <div class="col-md-4">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion_uno" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="Busca otra profesión y compara" value="<?php echo @$profesion; ?>" required> 
+                  <input name="profesion_uno" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_uno; ?>" required> 
                   <span class="input-group-btn" >
                     <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
                   </span>
@@ -168,7 +153,7 @@ try {
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_salarios" class="grafica"></div>
             </div>
-            <!--div class="col-md-6 col-xs-12 text-center">
+            <div class="col-md-6 col-xs-12 text-center">
               <div id="container_capacidades" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
@@ -182,7 +167,7 @@ try {
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_info" class="grafica"></div>
-            </div-->
+            </div>
           </div> 
 
       </form>
@@ -256,18 +241,22 @@ try {
   <script type="text/javascript" async>
     <?php 
       include('js/grafica_salarios.js'); 
-      //include('js/grafica_capacidades.js');
-      //include('js/grafica_empleabilidad.js'); 
-      //include('js/grafica_formacion.js');
-      //include('js/grafica_satisfaccion.js');
-      //include('js/grafica_info.js'); 
+      include('js/grafica_capacidades.js');
+      include('js/grafica_empleabilidad.js'); 
+      include('js/grafica_formacion.js');
+      include('js/grafica_satisfaccion.js');
+      include('js/grafica_info.js'); 
     ?>
   </script>
 
 </html>
 
 <?php
-} catch( Exception $e ) {
-  die('Error: '.$e->GetMessage());
-}
+  } catch( Exception $e ) {
+    die('Error: '.$e->GetMessage());
+  }
+
+
+
+} // end bucle
 ?>
