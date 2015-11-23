@@ -4,11 +4,11 @@ try {
 
   $tablas = array( 
     'salarios'      => array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
-    //'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
-    //'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_organizacion'),
-    //'info'          => array('descripcion'),
-    //'satisfaccion'  => array('experiencia','grado_satisfaccion'),
-    //'formaciones'   => array('f_nombre_ppal','f_nombre_alt','duracion_academica','duracion_real','acceso','nivel')
+    'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
+    'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_organizacion'),
+    'info'          => array('descripcion'),
+    'satisfaccion'  => array('experiencia','grado_satisfaccion'),
+    'formaciones'   => array('f_nombre_ppal','f_nombre_alt','duracion_academica','duracion_real','acceso','nivel')
   );
 
   function consulta( $profesion, $tabla, $tablas, $pdo ) {
@@ -37,23 +37,23 @@ try {
     $profesion = "Ocupaciones militares";
 
     $filas_salarios       = consulta( $profesion, 'salarios', $tablas, $pdo);
-    /*$filas_empleabilidad  = consulta( $profesion, 'empleabilidad', $tablas, $pdo);
+    $filas_empleabilidad  = consulta( $profesion, 'empleabilidad', $tablas, $pdo);
     $filas_capacidades    = consulta( $profesion, 'capacidades', $tablas, $pdo);
     $filas_info           = consulta( $profesion, 'info', $tablas, $pdo);
     $filas_satisfaccion   = consulta( $profesion, 'satisfaccion', $tablas, $pdo);
-    $filas_formaciones    = consulta( $profesion, 'formaciones', $tablas, $pdo);*/
+    $filas_formaciones    = consulta( $profesion, 'formaciones', $tablas, $pdo);
   //}  
   //if( isset( $_GET['profesion_dos'] ) ) { 
     //$profesion_dos = $_GET['profesion_dos'];
     $profesion_dos = "Oficiales y suboficiales de las fuerzas armadas";
 
     $filas_salarios_dos       = consulta( $profesion_dos, 'salarios', $tablas, $pdo);
-    /*$filas_empleabilidad_dos  = consulta( $profesion_dos, 'empleabilidad', $tablas, $pdo);
+    $filas_empleabilidad_dos  = consulta( $profesion_dos, 'empleabilidad', $tablas, $pdo);
     $filas_capacidades_dos    = consulta( $profesion_dos, 'capacidades', $tablas, $pdo);
     $filas_info_dos           = consulta( $profesion_dos, 'info', $tablas, $pdo);
     $filas_satisfaccion_dos   = consulta( $profesion_dos, 'satisfaccion', $tablas, $pdo);
-    $filas_formaciones_dos    = consulta( $profesion_dos, 'formaciones', $tablas, $pdo);*/
-  //} 
+    $filas_formaciones_dos    = consulta( $profesion_dos, 'formaciones', $tablas, $pdo);
+  //}
 /*
   foreach ($tablas as $tabla => $campos) {
     foreach ($campos as $campo) {
@@ -168,7 +168,10 @@ try {
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_salarios" class="grafica"></div>
             </div>
-            <!--div class="col-md-6 col-xs-12 text-center">
+            <div class="col-md-6 col-xs-12 text-center">
+              <div id="container_noticias" class="grafica"></div>
+            </div>
+            <div class="col-md-6 col-xs-12 text-center">
               <div id="container_capacidades" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
@@ -182,7 +185,7 @@ try {
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_info" class="grafica"></div>
-            </div-->
+            </div>
           </div> 
 
       </form>
@@ -256,11 +259,11 @@ try {
   <script type="text/javascript" async>
     <?php 
       include('js/grafica_salarios.js'); 
-      //include('js/grafica_capacidades.js');
-      //include('js/grafica_empleabilidad.js'); 
-      //include('js/grafica_formacion.js');
-      //include('js/grafica_satisfaccion.js');
-      //include('js/grafica_info.js'); 
+      include('js/grafica_capacidades.js');
+      include('js/grafica_empleabilidad.js'); 
+      include('js/grafica_formacion.js');
+      include('js/grafica_satisfaccion.js');
+      include('js/grafica_info.js'); 
     ?>
   </script>
 

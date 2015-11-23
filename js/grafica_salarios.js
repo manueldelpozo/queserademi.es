@@ -80,7 +80,7 @@ var salarios_dos = [
 $('#container_salarios').highcharts({
 
     chart: {
-        backgroundColor:'rgba(255, 255, 255, 0.5)',
+        backgroundColor:'rgba(255, 255, 255, 0)',
         spacingBottom: 20,
         spacingTop: 20,
         spacingLeft: 20,
@@ -112,6 +112,8 @@ $('#container_salarios').highcharts({
     },
 
     tooltip: {
+        headerFormat: '<b>{point.x} años de experiencia</b><br>',
+        //pointFormat: '{point.x} años de experiencia',
         crosshairs: true,
         shared: true,
         valueSuffix: ' €'

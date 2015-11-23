@@ -2,7 +2,7 @@ $('#container_capacidades').highcharts({
     chart: {
         polar: true,
         type: 'line',
-        backgroundColor:'rgba(255, 255, 255, 0.5)',
+        backgroundColor:'rgba(255, 255, 255, 0)',
         // Edit chart size
         spacingBottom: 20,
         spacingTop: 20,
@@ -20,7 +20,7 @@ $('#container_capacidades').highcharts({
         size: '80%'
     },
     xAxis: {
-        categories: ['Memoria', 'Creatividad', 'Comunicación', 'Forma física', 'Lógica','Otro'],
+        categories: ['Analisis', 'Trabajo en equipo', 'Comunicación', 'Forma física', 'Organizacion','Otro'],
         tickmarkPlacement: 'on',
         lineWidth: 0,
         gridLineColor: '#999999'
@@ -40,26 +40,28 @@ $('#container_capacidades').highcharts({
     },
     series: [{
         <?php $btn_colabora_c_1=0;$btn_colabora_c_2=0; ?>
-        name: '<?php echo mb_strtoupper($filas_capacidades[0]["nombre_ppal"],"UTF-8" ); ?>',
+        name: '<?php echo mb_strtoupper($profesion,"UTF-8"); ?>',
         data: [
-        <?php if( is_null($filas_capacidades['c_memoria']) || $filas_capacidades['c_memoria'] == 0 ) {echo 0;$btn_colabora_c_1+=1;} else {echo $filas_capacidades['c_memoria'];} ?>,
-        <?php if( is_null($filas_capacidades['c_creatividad']) || $filas_capacidades['c_creatividad'] == 0 ) {echo 0;$btn_colabora_c_1+=2;} else {echo $filas_capacidades['c_creatividad'];} ?>,
-        <?php if( is_null($filas_capacidades['c_comunicacion']) || $filas_capacidades['c_comunicacion'] == 0 ) {echo 0;$btn_colabora_c_1+=4;} else {echo $filas_capacidades['c_comunicacion'];} ?>,
-        <?php if( is_null($filas_capacidades['c_forma_fisica']) || $filas_capacidades['c_forma_fisica'] == 0 ) {echo 0;$btn_colabora_c_1+=8;} else {echo $filas_capacidades['c_forma_fisica'];} ?>,
-        <?php if( is_null($filas_capacidades['c_logica']) || $filas_capacidades['c_logica'] == 0 ) {echo 0;$btn_colabora_c_1+=16;} else {echo $filas_capacidades['c_logica'];} ?>
+        <?php if( is_null($filas_capacidades[0]['c_analisis']) || $filas_capacidades[0]['c_analisis'] == 0 ) {echo 0;$btn_colabora_c_1+=1;} else {echo $filas_capacidades[0]['c_analisis'];} ?>,
+        <?php if( is_null($filas_capacidades[0]['c_equipo']) || $filas_capacidades[0]['c_equipo'] == 0 ) {echo 0;$btn_colabora_c_1+=2;} else {echo $filas_capacidades[0]['c_equipo'];} ?>,
+        <?php if( is_null($filas_capacidades[0]['c_comunicacion']) || $filas_capacidades[0]['c_comunicacion'] == 0 ) {echo 0;$btn_colabora_c_1+=4;} else {echo $filas_capacidades[0]['c_comunicacion'];} ?>,
+        <?php if( is_null($filas_capacidades[0]['c_forma_fisica']) || $filas_capacidades[0]['c_forma_fisica'] == 0 ) {echo 0;$btn_colabora_c_1+=8;} else {echo $filas_capacidades[0]['c_forma_fisica'];} ?>,
+        <?php if( is_null($filas_capacidades[0]['c_organizacion']) || $filas_capacidades[0]['c_organizacion'] == 0 ) {echo 0;$btn_colabora_c_1+=16;} else {echo $filas_capacidades[0]['c_organizacion'];} ?>,
+        0
         ],
-        stack: '<?php echo $filas_capacidades[0]["nombre_ppal"] ?>'
-        <?php if( isset($profesion_dos) && !empty($filas_capacidades_dos[0]["nombre_ppal"]) ){ ?>
+        stack: '<?php echo $profesion ?>'
+        <?php if( isset($profesion_dos) && !empty($profesion_dos) ) { ?>
     }, {
-        name: '<?php echo mb_strtoupper($filas_capacidades_dos[0]["nombre_ppal"],"UTF-8" ); ?>',
+        name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?>',
         data: [
-        <?php if( is_null($filas_capacidades_dos['c_memoria']) || $filas_capacidades_dos['c_memoria'] == 0 ) {echo 0;$btn_colabora_c_2+=1;} else {echo $filas_capacidades_dos['c_memoria'];} ?>,
-        <?php if( is_null($filas_capacidades_dos['c_creatividad']) || $filas_capacidades_dos['c_creatividad'] == 0 ) {echo 0;$btn_colabora_c_2+=2;} else {echo $filas_capacidades_dos['c_creatividad'];} ?>,
-        <?php if( is_null($filas_capacidades_dos['c_comunicacion']) || $filas_capacidades_dos['c_comunicacion'] == 0 ) {echo 0;$btn_colabora_c_2+=4;} else {echo $filas_capacidades_dos['c_comunicacion'];} ?>,
-        <?php if( is_null($filas_capacidades_dos['c_forma_fisica']) || $filas_capacidades_dos['c_forma_fisica'] == 0 ) {echo 0;$btn_colabora_c_2+=8;} else {echo $filas_capacidades_dos['c_forma_fisica'];} ?>,
-        <?php if( is_null($filas_capacidades_dos['c_logica']) || $filas_capacidades_dos['c_logica'] == 0 ) {echo 0;$btn_colabora_c_2+=16;} else {echo $filas_capacidades_dos['c_logica'];} ?> 
+        <?php if( is_null($filas_capacidades_dos[0]['c_analisis']) || $filas_capacidades_dos[0]['c_analisis'] == 0 ) {echo 0;$btn_colabora_c_2+=1;} else {echo $filas_capacidades_dos[0]['c_analisis'];} ?>,
+        <?php if( is_null($filas_capacidades_dos[0]['c_equipo']) || $filas_capacidades_dos[0]['c_equipo'] == 0 ) {echo 0;$btn_colabora_c_2+=2;} else {echo $filas_capacidades_dos[0]['c_equipo'];} ?>,
+        <?php if( is_null($filas_capacidades_dos[0]['c_comunicacion']) || $filas_capacidades_dos[0]['c_comunicacion'] == 0 ) {echo 0;$btn_colabora_c_2+=4;} else {echo $filas_capacidades_dos[0]['c_comunicacion'];} ?>,
+        <?php if( is_null($filas_capacidades_dos[0]['c_forma_fisica']) || $filas_capacidades_dos[0]['c_forma_fisica'] == 0 ) {echo 0;$btn_colabora_c_2+=8;} else {echo $filas_capacidades_dos[0]['c_forma_fisica'];} ?>,
+        <?php if( is_null($filas_capacidades_dos[0]['c_organizacion']) || $filas_capacidades_dos[0]['c_organizacion'] == 0 ) {echo 0;$btn_colabora_c_2+=16;} else {echo $filas_capacidades_dos[0]['c_organizacion'];} ?>,
+        0 
         ],
-        stack: '<?php echo $filas_capacidades_dos[0]["nombre_ppal"] ?>' 
+        stack: '<?php echo $profesion_dos ?>' 
         <?php  }  ?> 
     }]
 });

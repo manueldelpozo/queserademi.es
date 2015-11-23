@@ -3,7 +3,7 @@ $('#container_empleabilidad').highcharts({
         type: 'column',
         marginTop: 80,
         marginRight: 40,
-        backgroundColor:'rgba(255, 255, 255, 0.5)',
+        backgroundColor:'rgba(255, 255, 255, 0)',
         // Edit chart size
         spacingBottom: 20,
         spacingTop: 20,
@@ -13,18 +13,18 @@ $('#container_empleabilidad').highcharts({
         height: 380
     },
     title: {
-        text: 'EMPLEABILIDAD (facilidad de ser contratado) ',
+        text: 'PARO (dificultad de conseguir trabajo) ',
         align: "center"
     },
     legend: { enable: false },
     xAxis: {
         categories: [
         <?php 
-        $meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+        $meses = ['enero','abril','julio','octubre'];
         $meses = array_merge($meses,$meses); // concatenar meses
         foreach ($meses as $n_mes => $mes) { 
-            $year = ( $n_mes > 11 )?'2015':'2014';
-            echo ucfirst($mes)." ".$year.",";
+            $year = ( $n_mes > count($meses)/2 - 1 )?'2015':'2014';
+            echo "'".ucfirst($mes)." ".$year."',";
         }
         ?>
         ]
@@ -33,7 +33,7 @@ $('#container_empleabilidad').highcharts({
         allowDecimals: true,
         min: 0,
         title: {
-            text: 'Aprox. salario neto en €'
+            text: 'Dificultad de conseguir trabajo %'
         }
     },
     tooltip: {
@@ -50,24 +50,24 @@ $('#container_empleabilidad').highcharts({
             return 100 - ( $contratados * 100 / ($parados + $contratados) );
         }
         ?>
-        name: '<?php echo mb_strtoupper($filas_empleabilidad[0]["nombre_ppal"],"UTF-8" ); ?>',
+        name: '<?php echo mb_strtoupper($profesion,"UTF-8" ); ?>',
         data: [
         <?php foreach ($filas_empleabilidad as $fila_emp) { ?>
         <?php $emp = empleabilidad($fila_emp['contratados'], $fila_emp['parados']); ?>
         <?php if( is_null($emp) || $emp == 0 ) {echo 0;$btn_colabora_e_1+=1;} else {echo $emp;} ?>,
         <?php } ?>
         ],
-        stack: '<?php echo $filas_empleabilidad[0]["nombre_ppal"] ?>'
-        <?php	if( isset($profesion_dos) && !empty($filas_empleabilidad_dos["nombre_ppal"]) ){ ?>
+        stack: '<?php echo $profesion ?>'
+        <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 	}, {
-        name: '<?php echo mb_strtoupper($filas_empleabilidad_dos[0]["nombre_ppal"],"UTF-8" ); ?>',
+        name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8" ); ?>',
         data: [
         <?php foreach ($filas_empleabilidad_dos as $fila_emp_dos) { ?>
         <?php $emp = empleabilidad($fila_emp_dos['contratados'], $fila_emp_dos['parados']); ?>
         <?php if( is_null($emp) || $emp == 0 ) {echo 0;$btn_colabora_e_2+=1;} else {echo $emp;} ?>,
         <?php } ?>
         ],
-        stack: '<?php echo $filas_empleabilidad_dos[0]["nombre_ppal"] ?>'
+        stack: '<?php echo $profesion_dos ?>'
     	<?php  }  ?> 
 	}]
 });
@@ -82,14 +82,14 @@ $('#container_empleabilidad').highcharts({
 
     <?php if( $btn_colabora_e_1 > 0 ) { ?>
         capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>empleabilidad</strong> de la profesión<br>";
-        capa_aviso += "<strong><?php echo mb_strtoupper($filas_empleabilidad[0]['nombre_ppal'],'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $filas_empleabilidad[0]['nombre_ppal']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
+        capa_aviso += "<strong><?php echo mb_strtoupper($profesion,'UTF-8'); ?></strong></p>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $profesion; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
     <?php } ?>
 
     <?php if( $btn_colabora_e_2 > 0 ) { ?>
         capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>empleabilidad</strong> de la profesión<br>";
-        capa_aviso += "<strong><?php echo mb_strtoupper($filas_empleabilidad_dos[0]['nombre_ppal'],'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $filas_empleabilidad_dos[0]['nombre_ppal']; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a>";
+        capa_aviso += "<strong><?php echo mb_strtoupper($profesion_dos,'UTF-8'); ?></strong></p>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $profesion_dos; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a>";
     <?php } ?>
 
     capa_aviso += "</div>";
