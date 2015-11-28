@@ -64,20 +64,8 @@ try {
     }
   }
 
-  var_dump($filas_salarios[0]);
-  $s_junior_min       = $filas_salarios[0]['s_junior_min'];
-  $s_junior_max       = $filas_salarios[0]['s_junior_max'];
-  $s_intermedio_min   = $filas_salarios[0]['s_intermedio_min'];
-  $s_intermedio_max   = $filas_salarios[0]['s_intermedio_max'];
-  $s_senior_min       = $filas_salarios[0]['s_senior_min'];
-  $s_senior_max       = $filas_salarios[0]['s_senior_max'];
-  echo $s_junior_min;
-  echo $s_junior_max;
-  echo $s_intermedio_min;
-  echo $s_intermedio_max;
-  echo $s_senior_min;
-  echo $s_senior_max;
  */ 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -109,6 +97,7 @@ try {
       <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
       <script type="text/javascript" src="js/highcharts.js" ></script>
       <script type="text/javascript" src="js/highcharts-more.js" ></script>
+      <script type="text/javascript" src="js/modules/exporting.js"></script>
       <script type="text/javascript" src="js/scripts.js" defer></script>   
       <script type="text/javascript" src="js/graficas.js" ></script>
   </head>
@@ -169,7 +158,7 @@ try {
               <div id="container_salarios" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_noticias" class="grafica"></div>
+              <div id="container_info" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_capacidades" class="grafica"></div>
@@ -182,10 +171,7 @@ try {
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_satisfaccion" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_info" class="grafica"></div>
-            </div>
+            </div> 
           </div> 
 
       </form>
@@ -258,12 +244,12 @@ try {
 
   <script type="text/javascript" async>
     <?php 
-      include('js/grafica_salarios.js'); 
+      include('js/grafica_salarios.js');
+      include('js/grafica_info.js');  
       include('js/grafica_capacidades.js');
       include('js/grafica_empleabilidad.js'); 
       include('js/grafica_formacion.js');
       include('js/grafica_satisfaccion.js');
-      include('js/grafica_info.js'); 
     ?>
   </script>
 

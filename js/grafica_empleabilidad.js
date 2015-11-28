@@ -47,7 +47,7 @@ $('#container_empleabilidad').highcharts({
         <?php 
         $btn_colabora_e_1=$btn_colabora_e_2=0;
         function empleabilidad($contratados, $parados) {
-            return 100 - ( $contratados * 100 / ($parados + $contratados) );
+            return round( 100 - ( $contratados * 100 / ($parados + $contratados) ), 2 );
         }
         ?>
         name: '<?php echo mb_strtoupper($profesion,"UTF-8" ); ?>',

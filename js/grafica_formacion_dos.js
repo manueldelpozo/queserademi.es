@@ -1,20 +1,7 @@
-<?php
-$i = 0;
 
-$formacion          = $filas_formaciones[$i]['f_nombre_ppal'];
-$duracion           = $filas_formaciones[$i]['duracion_academica'];
-$duracion_real      = $filas_formaciones[$i]['duracion_real'];
-$nivel              = $filas_formaciones[$i]['nivel'];
-
-$formacion_dos      = $filas_formaciones_dos[$i]['f_nombre_ppal'];
-$duracion_dos       = $filas_formaciones_dos[$i]['duracion_academica'];
-$duracion_real_dos  = $filas_formaciones_dos[$i]['duracion_real'];
-$nivel_dos          = $filas_formaciones_dos[$i]['nivel'];
-?>
 
 $(function () {
-    
-    $('#container_formacion').highcharts({
+    $('#container_formacion_dos').highcharts({
         chart: {
             type: 'bar',
             backgroundColor:'rgba(255, 255, 255, 0)',
@@ -23,25 +10,25 @@ $(function () {
             spacingLeft: 20,
             spacingRight: 20,
             width: null,
-            height: 380
+            height: 190
         },
-        title: {
-            text: 'FORMACION'
-        },
+        //title: {
+            //text: 'FORMACION'
+        //},
         xAxis: {
             categories: [
-            '<?php echo mb_strtoupper($profesion, "UTF-8")."<br><strong>".$formacion." &gt;&gt;</strong>"; ?>'
-            , '(Duracion real estimada) <?php echo "<br><strong>".$formacion." &gt;&gt;</strong>"; ?>'
+            '<?php echo $profesion; ?>'
+            , 'Duracion real'
             <?php if( isset($profesion_dos) && !empty($profesion_dos) ) { ?>
-            , '<?php echo mb_strtoupper($profesion_dos, "UTF-8")."<br><strong>".$formacion_dos." &gt;&gt;</strong>"; ?>'
-            , '(Duracion real estimada) <?php echo "<br><strong>".$formacion_dos." &gt;&gt;</strong>"; ?>'
+            , '<?php echo $profesion_dos; ?>'
+            , 'Duracion real'
             <?php } ?>
             ]
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'Duracion de estudios (años)'
+                text: 'Duracion (años)'
             }
         },
         legend: {
@@ -55,69 +42,28 @@ $(function () {
         plotOptions: {
             series: {
                 stacking: 'normal',
-            },
-            scatter: {
-                tooltip: {
-                    pointFormat: '{point.x} años de estudios'
-                }
             }
         },
-        exporting: {
-            buttons: {
-                /*customButton: {
-                    text: '+',
-                    onclick: function () {
-                        <?php 
-                        if ($i < 3) {                             
-                            $i++;  
-                        } else { 
-                            $i = 0;
-                        } 
-                        ?>
-                    }
-                },*/
-               anotherButton: {
-                    text: 'Donde estudiar?',
-                    onclick: function () {
-                        alert('Donde estudiar? En desarrollo... Disculpe las molestias');
-                    }
-                }
-            }
-        },
-        <?php
-        $btn_colabora_f_1 = $btn_colabora_f_2 = 0; 
+        series: [
+            <?php
+            $btn_colabora_f_1 = $btn_colabora_f_2 = 0; 
 
-        
-        $formacion          = $filas_formaciones[$i]['f_nombre_ppal'];
-        $duracion           = $filas_formaciones[$i]['duracion_academica'];
-        $duracion_real      = $filas_formaciones[$i]['duracion_real'];
-        $nivel              = $filas_formaciones[$i]['nivel'];
-        //$formacion_b        = $filas_formaciones[1]['f_nombre_ppal'];
-        //$duracion_b         = $filas_formaciones[1]['duracion_academica'];
-        //$nivel_b            = $filas_formaciones[1]['nivel'];
-
-        $formacion_dos      = $filas_formaciones_dos[$i]['f_nombre_ppal'];
-        $duracion_dos       = $filas_formaciones_dos[$i]['duracion_academica'];
-        $duracion_real_dos  = $filas_formaciones_dos[$i]['duracion_real'];
-        $nivel_dos          = $filas_formaciones_dos[$i]['nivel'];
-        //$formacion_b_dos    = $filas_formaciones_dos[1]['f_nombre_ppal'];
-        //$duracion_b_dos     = $filas_formaciones_dos[1]['duracion_academica'];
-        //$nivel_b_dos        = $filas_formaciones_dos[1]['nivel'];
-
-        $doctorado = $master = $universidad = $fp_superior = false;
-        $doctorado_dos = $master_dos = $universidad_dos = $fp_superior_dos = false;
-        ?>
-        series: [         
-            <?php if( ($duracion > 16 && $nivel == 11) || ($duracion_dos > 16 && $nivel_dos == 11) ) { ?>
+            $duracion       = $filas_formaciones[1]['duracion_academica'];
+            $nivel          = $filas_formaciones[1]['nivel'];
+            $duracion_dos   = $filas_formaciones_dos[1]['duracion_academica'];
+            $nivel_dos      = $filas_formaciones_dos[1]['nivel'];
+            ?>
+            
+            <?php if( ($duracion > 16 && $nivel == 11) || ($duracion_dos > 16 && $nivel_dos == 10) ) { ?>
             {
                 name: 'Doctorado',
                 data: [
-                <?php if( isset($duracion) && $duracion > 16 ) { $doctorado = true; ?>
+                <?php if( isset($duracion) && $duracion > 16 ) { ?>
                 <?php if($duracion > 18) {echo ($duracion - 18);} else {echo 2;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_1 = 9; echo "0, 0";} ?>
-                <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 16 ) { $doctorado_dos = true; ?>
-                ,<?php if($duracion_dos > 18) {echo ($duracion_dos - 18);} else {echo 2;} ?>
+                <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 16 ) { ?>
+                ,<?php if($filas_formaciones_dos[1]['duracion_academica'] > 18) {echo ($filas_formaciones_dos[1]['duracion_academica'] - 18);} else {echo 2;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_2 = 9;} ?>
                 ]
@@ -126,12 +72,12 @@ $(function () {
             {
                 name: 'Master',
                 data: [
-                <?php if( isset($duracion) && $duracion > 16 ) { $master = true; ?>
+                <?php if( isset($duracion) && $duracion > 16 ) { ?>
                 <?php if($duracion < 19) {echo ($duracion - 16);} else {echo 2;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_1 = 8; echo "0, 0";} ?>
-                <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 16 ) { $master_dos = true; ?>
-                ,<?php if($duracion_dos < 19) {echo ($duracion_dos - 16);} else {echo 2;} ?>
+                <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 16 ) { ?>
+                ,<?php if($filas_formaciones_dos[1]['duracion_academica'] < 19) {echo ($filas_formaciones_dos[1]['duracion_academica'] - 16);} else {echo 2;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_2 = 8;} ?>
                 ]
@@ -146,22 +92,22 @@ $(function () {
                 , 0
                 <?php } else { $btn_colabora_f_1 = 7; echo "0, 0";} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 12 ) { ?>
-                ,<?php if($duracion_dos > 16) {echo ($duracion_dos - 16);} 
-                else if($duracion_dos < 17) {echo ($duracion_dos - 12);} else {echo 2;} ?>
+                ,<?php if($filas_formaciones_dos[1]['duracion_academica'] > 16) {echo ($filas_formaciones_dos[1]['duracion_academica'] - 16);} 
+                else if($filas_formaciones_dos[1]['duracion_academica'] < 17) {echo ($filas_formaciones_dos[1]['duracion_academica'] - 12);} else {echo 2;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_2 = 7;} ?>
                 ]
             }, 
-            <?php } if( ($duracion > 12 || $nivel == 8) || ($duracion_dos > 12 && $nivel_dos == 8) || $master || $master_dos || $doctorado || $doctorado_dos ) { ?>
+            <?php } if( ($duracion > 12 && $nivel == 8) || ($duracion_dos > 12 && $nivel_dos == 8) ) { ?>
             {
                 name: 'Grado Universitario',
                 data: [
-                <?php if( isset($duracion) && $duracion > 12 ) { $universidad = true; ?>
+                <?php if( isset($duracion) && $duracion > 12 ) { ?>
                 <?php if($duracion < 17) {echo ($duracion - 12);} else {echo 4;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_1 = 6; echo "0, 0";} ?>
-                <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 12 ) { $universidad_dos = true; ?>
-                ,<?php if($duracion_dos < 17) {echo ($duracion_dos - 12);} else {echo 4;} ?>
+                <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 12 ) { ?>
+                ,<?php if($filas_formaciones_dos[1]['duracion_academica'] < 17) {echo ($filas_formaciones_dos[1]['duracion_academica'] - 12);} else {echo 4;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_2 = 6;} ?>
                 ]
@@ -170,17 +116,17 @@ $(function () {
             {
                 name: 'F.P. Superior',
                 data: [
-                <?php if( isset($duracion) && $duracion > 12 ) { $fp_superior = true; ?>
+                <?php if( isset($duracion) && $duracion > 12 ) { ?>
                 <?php if($duracion < 15) {echo ($duracion - 12);} else {echo 2;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_1 = 5; echo "0, 0";} ?>
-                <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 12 ) { $fp_superior_dos = true; ?>
-                ,<?php if($duracion_dos < 15) {echo ($duracion_dos - 12);} else {echo 2;} ?>
+                <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 12 ) { ?>
+                ,<?php if($filas_formaciones_dos[1]['duracion_academica'] < 15) {echo ($filas_formaciones_dos[1]['duracion_academica'] - 12);} else {echo 2;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_2 = 5;} ?>
                 ]
             }, 
-            <?php } if( ($duracion > 10 && $nivel == 6) || ($duracion_dos > 10 && $nivel_dos == 6) || $universidad || $universidad_dos || $fp_superior || $fp_superior_dos ) { ?>
+            <?php } if( ($duracion > 10 && $nivel == 6) || ($duracion_dos > 10 && $nivel_dos == 6) ) { ?>
             {
                 name: 'Bachillerato',
                 data: [
@@ -189,7 +135,7 @@ $(function () {
                 , 0
                 <?php } else { $btn_colabora_f_1 = 4; echo "0, 0";} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 10 ) { ?>
-                ,<?php if($duracion_dos < 13) {echo ($duracion_dos - 10);} else {echo 2;} ?>
+                ,<?php if($filas_formaciones_dos[1]['duracion_academica'] < 13) {echo ($filas_formaciones_dos[1]['duracion_academica'] - 10);} else {echo 2;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_2 = 4;} ?>
                 ]
@@ -203,7 +149,7 @@ $(function () {
                 , 0
                 <?php } else { $btn_colabora_f_1 = 3; echo "0, 0";} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 10 ) { ?>
-                ,<?php if($duracion_dos < 13) {echo ($duracion_dos - 10);} else {echo 2;} ?>
+                ,<?php if($filas_formaciones_dos[1]['duracion_academica'] < 13) {echo ($filas_formaciones_dos[1]['duracion_academica'] - 10);} else {echo 2;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_2 = 3;} ?>
                 ]
@@ -217,7 +163,7 @@ $(function () {
                 , 0
                 <?php } else { $btn_colabora_f_1 = 2; echo "0, 0";} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 6 ) { ?>
-                ,<?php if($duracion_dos < 11) {echo ($duracion_dos - 6);} else {echo 4;} ?>
+                ,<?php if($filas_formaciones_dos[1]['duracion_academica'] < 11) {echo ($filas_formaciones_dos[1]['duracion_academica'] - 6);} else {echo 4;} ?>
                 , 0
                 <?php } else { $btn_colabora_f_2 = 2;} ?>
                 ]
@@ -236,17 +182,17 @@ $(function () {
                 <?php } else { $btn_colabora_f_2 = 1;} ?>
                 ]
             }, 
-            <?php } if( isset($duracion_real) || isset($duracion_real_dos) ) { ?>
+            <?php } if( isset($filas_formaciones[1]['duracion_real']) || isset($filas_formaciones_dos[1]['duracion_real']) ) { ?>
             {
-                name: 'Duracion real estimada',
+                name: 'Duracion real',
                 data: [
-                <?php if( isset($duracion_real) && $duracion_real_dos > 0 ) { ?>
+                <?php if( isset($filas_formaciones[1]['duracion_real']) && $filas_formaciones[1]['duracion_real'] > 0 ) { ?>
                 0
-                ,<?php echo $duracion_real; ?>
+                ,<?php echo $filas_formaciones[1]['duracion_real']; ?>
                 <?php } else { $btn_colabora_f_1 = 10;  echo "0, 0";} ?>
-                <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_real_dos) && $duracion_real_dos > 0 ) { ?>
+                <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($filas_formaciones_dos[1]['duracion_real']) && $filas_formaciones_dos[1]['duracion_real'] > 0 ) { ?>
                 , 0
-                ,<?php echo $duracion_real_dos; ?>
+                ,<?php echo $filas_formaciones_dos[1]['duracion_real']; ?>
                 <?php } else { $btn_colabora_f_2 = 10;} ?>
                 ]
             }

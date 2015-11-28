@@ -1,8 +1,42 @@
 
 <?php
 $btn_colabora_s_1 = $btn_colabora_s_2 = 0;
+//$s_junior_min = $s_junior_max = $s_intermedio_min = $s_intermedio_max = $s_senior_min = $s_senior_max = 0;
 
-$s_junior_min = $s_junior_max = $s_intermedio_min = $s_intermedio_max = $s_senior_min = $s_senior_max = 0;
+function imprimirSeriesSal($filas, $var, $btn, $btn_colabora) {
+    if( !is_null($filas[$var]) && !$filas[$var] == 0 )
+        return $filas[$var];
+    else
+        $btn_colabora = $btn + 1;
+}
+
+foreach( $tablas['salarios'] as $n => $rango) {
+    $$rango = imprimirSeriesSal($filas_salarios[0], $rango, $n, $btn_colabora_s_1);
+    if( isset($profesion_dos) && !empty($profesion_dos) ){
+        $rango .= '_dos';
+        $$rango = imprimirSeriesSal($filas_salarios_dos[0], $rango, $n, $btn_colabora_s_2);
+    }
+}
+/*
+foreach( $tablas['salarios'] as $n => $rango) {
+    $$rango = imprimirSeriesSal($filas_salarios[0], $rango, $n, $btn_colabora_s_1);
+}
+if( isset($profesion_dos) && !empty($profesion_dos) ){
+    foreach( $tablas['salarios'] as $n => $rango) {
+        $rango .= '_dos';
+        $$rango = imprimirSeriesSal($filas_salarios_dos[0], $rango, $n, $btn_colabora_s_2);
+    }
+}
+*/
+/*
+imprimirSeriesSal($filas_salarios[0], 's_junior_min', $btn_colabora_s_1);
+imprimirSeriesSal($filas_salarios[0], 's_junior_max', $btn_colabora_s_1);
+imprimirSeriesSal($filas_salarios[0], 's_intermedio_min', $btn_colabora_s_1);
+imprimirSeriesSal($filas_salarios[0], 's_intermedio_max', $btn_colabora_s_1);
+imprimirSeriesSal($filas_salarios[0], 's_senior_min', $btn_colabora_s_1);
+imprimirSeriesSal($filas_salarios[0], 's_senior_max', $btn_colabora_s_1);
+*/
+/*
 if( !is_null($filas_salarios[0]['s_junior_min']) && !$filas_salarios[0]['s_junior_min'] == 0 )
     $s_junior_min = $filas_salarios[0]['s_junior_min'];
 else
@@ -27,8 +61,8 @@ if( !is_null($filas_salarios[0]['s_senior_max']) && !$filas_salarios[0]['s_senio
     $s_senior_max = $filas_salarios[0]['s_senior_max'];
 else
     $btn_colabora_s_1 = 6;
-
-$s_junior_min_dos = $s_junior_max_dos = $s_intermedio_min_dos = $s_intermedio_max_dos = $s_senior_min_dos = $s_senior_max_dos = 0;
+*/
+/*$s_junior_min_dos = $s_junior_max_dos = $s_intermedio_min_dos = $s_intermedio_max_dos = $s_senior_min_dos = $s_senior_max_dos = 0;
 if( !is_null($filas_salarios_dos[0]['s_junior_min']) && !$filas_salarios_dos[0]['s_junior_min'] == 0 )
     $s_junior_min_dos = $filas_salarios_dos[0]['s_junior_min'];
 else
@@ -52,7 +86,7 @@ else
 if( !is_null($filas_salarios_dos[0]['s_senior_max']) && !$filas_salarios_dos[0]['s_senior_max'] == 0 )
     $s_senior_max_dos = $filas_salarios_dos[0]['s_senior_max'];
 else
-    $btn_colabora_s_2 = 6;
+    $btn_colabora_s_2 = 6;*/
 ?>
 
 var salarios = [
@@ -66,6 +100,8 @@ var salarios = [
     [5, <?php echo ($s_intermedio_min + $s_intermedio_max) / 2 ; ?>], 
     [20, <?php echo ($s_senior_min + $s_senior_max) / 2 ; ?>]
 ];
+
+<?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 var salarios_dos = [
     [0, <?php echo $s_junior_min_dos; ?>, <?php echo $s_junior_max_dos; ?>],
     [2, <?php echo $s_junior_min_dos; ?>, <?php echo $s_junior_max_dos; ?>],
@@ -77,6 +113,8 @@ var salarios_dos = [
     [5, <?php echo ($s_intermedio_min_dos + $s_intermedio_max_dos) / 2 ; ?>], 
     [20, <?php echo ($s_senior_min_dos + $s_senior_max_dos) / 2 ; ?>]
 ];
+<?php } ?>
+
 $('#container_salarios').highcharts({
 
     chart: {
@@ -112,7 +150,7 @@ $('#container_salarios').highcharts({
     },
 
     tooltip: {
-        headerFormat: '<b>{point.x} años de experiencia</b><br>',
+        headerFormat: '<strong>{point.x} años de experiencia</strong><br>',
         //pointFormat: '{point.x} años de experiencia',
         crosshairs: true,
         shared: true,
@@ -148,7 +186,7 @@ $('#container_salarios').highcharts({
                 lineWidth: 2,
                 lineColor: Highcharts.getOptions().colors[1]
             }
-        <?php if( isset($profesion_dos) && !empty($profesion) ){ ?>
+        <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
         }, {
             name: 'Rango salarial',
             data: salarios,

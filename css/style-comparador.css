@@ -64,7 +64,7 @@ div.body > div {
   background-size:cover;
   height: 28%;
 }
-.capa-aviso {
+.capa-aviso, .capa-glosario {
   width: 100%;
   height: 100%;
   z-index: 10; 
@@ -88,10 +88,11 @@ div.body > div {
   font-weight: bold;
   margin-bottom: 20px;
 }
-.cerrar-aviso {
+.cerrar-aviso, .cerrar-glosario {
   position: absolute;
   top: 5px;
   right: 5px;
+  cursor: pointer;
 }
 
 /* Smartphones (portrait and landscape) ----------- */

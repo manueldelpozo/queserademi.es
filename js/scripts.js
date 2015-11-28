@@ -355,6 +355,6 @@ $('#ver-video a').click( function(event) {
 // AVISOS
 // ocultar avisos
 $('.cerrar-aviso').click( function() {
-	$(this).parent().hide();
+	$(this).parent().remove();
 });
 

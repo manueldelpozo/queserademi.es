@@ -1,67 +1,68 @@
 <?php 
+try { 
+  require('conexion.php');
 
-require('conexion.php');
+  $tablas = array( 
+    'salarios'      => array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
+    'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
+    'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
+    'info'          => array('nombre_ppal', 'descripcion'),
+    'satisfaccion'  => array('experiencia','grado_satisfaccion'),
+    'formaciones'   => array('nombre_ppal', 'nombre_alt', 'duracion_academica', 'duracion_real', 'acceso', 'nivel')
+  );
 
-// consulta de nombres principales y alternativos
-$consulta_nombres = "SELECT id_profesion, nombre_ppal, nombre_alt FROM profesiones_test p, nombres_alt n WHERE p.id = n.id_profesiones";
-$rs_nombres = $pdo->prepare($consulta_nombres);
-$rs_nombres->execute();
-$nombres = $rs_nombres->fetchAll();
-
-$nombres_usados = array();
-
-// bucle de todos los nombres
-foreach ($nombres as $nombre) {
-
-  $nombre_alt = $nombre['nombre_alt'];
-  $id_profesion = $nombre['id_profesion'];
-  // coger el nombre ppal si el nombre aun no ha sido usado
-  if ( !in_array($id_profesion, $nombres_usados, TRUE) ) {
-    $nombre_ppal = $nombre['nombre_ppal'];
-  } 
-  
-  array_push($nombres_usados, $id_profesion);
-
-  try { 
-
-    $campos = array( 
-      'salarios'      => array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
-      'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
-      'capacidades'   => array('c_memoria', 'c_comunicacion', 'c_analisis', 'c_forma_fisica', 'c_equipo'),
-      'info'          => array('nombre_ppal', 'descripcion'),
-      'satisfaccion'  => array('experiencia','grado_satisfaccion'),
-      'formaciones'   => array('nombre_ppal', 'nombre_alt', 'duracion_academica', 'duracion_real', 'acceso', 'nivel')
-    );
-
-    function consulta( $id_profesion, $tabla, $campos, $pdo ) {
-      $consulta = "SELECT ";
-      $tabla_ref = $tabla[0];
-      foreach ( $campos[$tabla] as $campo) {
-        $consulta .= $campo." AS ".$tabla_ref."_".$campo.", ";
-      }
-      $id_profesion = "id_profesion = ".$id_profesion;
-      if ($tabla == 'info') {
-        $tabla = "profesiones_test";
-        str_replace("id_profesion", "id", $id_profesion);
-      }
-      $consulta .= "FROM ".$tabla." WHERE ".$id_profesion;
-      $rs = $pdo->prepare($consulta);
-      $rs->execute();
-      return $rs->fetch();
+  function consulta( $id_profesion, $tabla, $tablas, $pdo ) {
+    $consulta = "SELECT ";
+    $tabla_ref = $tabla[0];
+    foreach ( $tablas[$tabla] as $campo) {
+      $consulta .= $campo." AS ".$tabla_ref."_".$campo.", ";
     }
-  
-  /*
-      $consulta = "SELECT * FROM profesiones WHERE nombre_ppal LIKE '$profesion_uno'";
-      $result = $pdo->prepare($consulta);
-      $result->execute();
-      $registro = $result->fetch();
-  */
-    $filas_salario        = consulta( $id_profesion, 'salarios', $campos, $pdo);
-    $filas_empleabilidad  = consulta( $id_profesion, 'empleabilidad', $campos, $pdo);
-    $filas_capacidades    = consulta( $id_profesion, 'capacidades', $campos, $pdo);
-    $filas_info           = consulta( $id_profesion, 'info', $campos, $pdo);
-    $filas_satisfaccion   = consulta( $id_profesion, 'satisfaccion', $campos, $pdo);
-    $filas_formaciones    = consulta( $id_profesion, 'formaciones', $campos, $pdo);
+    $id_profesion = "id_profesion = ".$id_profesion;
+    if ($tabla == 'info') {
+      $tabla = "profesiones_test";
+      str_replace("id_profesion", "id", $id_profesion);
+    }
+    $consulta .= "FROM ".$tabla." WHERE ".$id_profesion;
+    $rs = $pdo->prepare($consulta);
+    $rs->execute();
+    $filas = $rs->fetchAll();
+    return $filas;
+  }
+
+  // Primero, consulta de nombres principales y alternativos
+  $consulta_nombres = "SELECT id_profesion, nombre_ppal, nombre_alt FROM profesiones_test p, nombres_alt n WHERE p.id = n.id_profesion";
+  $rs_nombres = $pdo->prepare($consulta_nombres);
+  $rs_nombres->execute();
+  $nombres = $rs_nombres->fetchAll();
+
+  $nombres_usados = array();
+
+  // bucle de todos los nombres
+  foreach ($nombres as $nombre) {
+    
+    $repetir = true; // entra la primera vez
+    while($repetir && true) { // (false && true) no entra (true && true) entra. mientras haya un nombre ppal se repetira este bucle
+      
+      $nombre_ppal = null; // por defecto no se da valor al nombre ppal
+      $nombre_alt = $nombre['nombre_alt'];
+      $id_profesion = $nombre['id_profesion'];
+      $repetir = false;  //niega la repeticion 
+      $profesion = $nombre_alt;
+      // coger el nombre ppal si el nombre aun no ha sido usado
+      if ( !in_array($id_profesion, $nombres_usados, TRUE) ) {
+        $nombre_ppal = $nombre['nombre_ppal']; 
+        $repetir = true; // repetimos while en este caso
+        $profesion = $nombre_ppal; // en este caso $profesion sera el nombre_ppal en lugar del alternativo
+      } 
+      // incluir profesion en nombres usados
+      array_push($nombres_usados, $id_profesion);
+
+      $filas_salarios       = consulta( $id_profesion, 'salarios', $tablas, $pdo);
+      $filas_empleabilidad  = consulta( $id_profesion, 'empleabilidad', $tablas, $pdo);
+      $filas_capacidades    = consulta( $id_profesion, 'capacidades', $tablas, $pdo);
+      $filas_info           = consulta( $id_profesion, 'info', $tablas, $pdo);
+      $filas_satisfaccion   = consulta( $id_profesion, 'satisfaccion', $tablas, $pdo);
+      $filas_formaciones    = consulta( $id_profesion, 'formaciones', $tablas, $pdo);
     
 ?>
 <!DOCTYPE html>
@@ -252,11 +253,13 @@ foreach ($nombres as $nombre) {
 </html>
 
 <?php
-  } catch( Exception $e ) {
-    die('Error: '.$e->GetMessage());
-  }
+    // crear html estatico
+    // guardar html
 
+    } // end while
+  } // end foreach
 
-
-} // end bucle
+} catch( Exception $e ) {
+  die('Error: '.$e->GetMessage());
+}
 ?>
