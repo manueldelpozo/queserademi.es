@@ -29,7 +29,7 @@ try {
 		'nombres_alt'				=> array('nombre_alt'),
 		'salarios'      			=> array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
 		'empleabilidad' 			=> array('parados', 'contratados', 'mes', 'anyo'),
-		'capacidades'   			=> array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_organizacion', 'i_ingles', 'i_frances', 'i_aleman', 'i_otro', 'i_otro_nombre'),
+		'capacidades'   			=> array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion', 'i_ingles', 'i_frances', 'i_aleman', 'i_otro', 'i_otro_nombre'),
 		'profesiones_formaciones'	=> array('id_formacion')
 	);
 
@@ -87,7 +87,8 @@ try {
 		$c_comunicacion 			= str_replace(',', '.', $rowData[0][13]);
 		$c_equipo 					= str_replace(',', '.', $rowData[0][14]);
 		$c_forma_fisica 			= str_replace(',', '.', $rowData[0][15]);
-		$c_organizacion 			= str_replace(',', '.', $rowData[0][16]);
+		$c_objetivos 				= str_replace(',', '.', $rowData[0][16]);
+		$c_persuasion 				= str_replace(',', '.', $rowData[0][16]);
 		$i_ingles 					= str_replace(',', '.', $rowData[0][17]);
 		$i_frances 					= str_replace(',', '.', $rowData[0][18]);
 		$i_aleman 					= str_replace(',', '.', $rowData[0][19]);
@@ -130,7 +131,7 @@ try {
 			$insert_empleabilidad_enero_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_enero_2015','$contratados_enero_2015','enero',2015)";
 			$insert_empleabilidad_abril_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_abril_2015','$contratados_abril_2015','abril',2015)";
 			$insert_empleabilidad_julio_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_julio_2015','$contratados_julio_2015','julio',2015)";
-			$insert_capacidades_total 			= $insert_capacidades.$id_profesion.",'$c_analisis','$c_comunicacion','$c_equipo','$c_forma_fisica','$c_organizacion','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_nombre')";
+			$insert_capacidades_total 			= $insert_capacidades.$id_profesion.",'$c_analisis','$c_comunicacion','$c_equipo','$c_forma_fisica','$c_objetivos','$c_persuasion','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_nombre')";
 			$insert_profesiones_formaciones_1 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_1')"; 
 			$insert_profesiones_formaciones_2 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_2')";
 			$insert_profesiones_formaciones_3 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_3')";

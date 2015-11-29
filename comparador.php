@@ -5,7 +5,7 @@ try {
   $tablas = array( 
     'salarios'      => array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
     'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
-    'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_organizacion'),
+    'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
     'info'          => array('descripcion'),
     'satisfaccion'  => array('experiencia','grado_satisfaccion'),
     'formaciones'   => array('f_nombre_ppal','f_nombre_alt','duracion_academica','duracion_real','acceso','nivel')
@@ -17,7 +17,9 @@ try {
       $consulta .= $campo . ",";
     }
     $consulta = substr($consulta, 0, -1);
+    
     $tabla_ref = $tabla[0];
+
     if ($tabla == 'info')
       $where = "WHERE ";
     else if ($tabla == 'formaciones')
@@ -36,23 +38,47 @@ try {
     //$profesion_uno = $_GET['profesion_uno'];
     $profesion = "Ocupaciones militares";
 
-    $filas_salarios       = consulta( $profesion, 'salarios', $tablas, $pdo);
+    /*$filas_salarios       = consulta( $profesion, 'salarios', $tablas, $pdo);
     $filas_empleabilidad  = consulta( $profesion, 'empleabilidad', $tablas, $pdo);
     $filas_capacidades    = consulta( $profesion, 'capacidades', $tablas, $pdo);
     $filas_info           = consulta( $profesion, 'info', $tablas, $pdo);
     $filas_satisfaccion   = consulta( $profesion, 'satisfaccion', $tablas, $pdo);
-    $filas_formaciones    = consulta( $profesion, 'formaciones', $tablas, $pdo);
+    $filas_formaciones    = consulta( $profesion, 'formaciones', $tablas, $pdo);*/
+    /*foreach ($tablas as $tabla => $value) {
+      $filas = 'filas_'.$tabla;
+      $$filas = consulta( $profesion, $tabla, $tablas, $pdo);
+    }*/
   //}  
   //if( isset( $_GET['profesion_dos'] ) ) { 
     //$profesion_dos = $_GET['profesion_dos'];
     $profesion_dos = "Oficiales y suboficiales de las fuerzas armadas";
 
-    $filas_salarios_dos       = consulta( $profesion_dos, 'salarios', $tablas, $pdo);
+    /*$filas_salarios_dos       = consulta( $profesion_dos, 'salarios', $tablas, $pdo);
     $filas_empleabilidad_dos  = consulta( $profesion_dos, 'empleabilidad', $tablas, $pdo);
     $filas_capacidades_dos    = consulta( $profesion_dos, 'capacidades', $tablas, $pdo);
     $filas_info_dos           = consulta( $profesion_dos, 'info', $tablas, $pdo);
     $filas_satisfaccion_dos   = consulta( $profesion_dos, 'satisfaccion', $tablas, $pdo);
-    $filas_formaciones_dos    = consulta( $profesion_dos, 'formaciones', $tablas, $pdo);
+    $filas_formaciones_dos    = consulta( $profesion_dos, 'formaciones', $tablas, $pdo);*/
+    /*foreach ($tablas as $tabla => $value) {
+      $filas = 'filas_'.$tabla.'_dos';
+      $$filas = consulta( $profesion_dos, $tabla, $tablas, $pdo);
+    }*/
+
+    foreach ($tablas as $tabla => $value) {
+      if( isset($profesion) ) {
+      //if( isset($_GET['profesion']) ) {  // restablecer para despues de test
+        //$profesion = $_GET['profesion']; 
+        $filas = 'filas_'.$tabla;
+        $$filas = consulta($profesion, $tabla, $tablas, $pdo);
+      }
+      if( isset($profesion_dos) ) {
+      //if( isset($_GET['profesion_dos']) ) { 
+        //$profesion_dos = $_GET['profesion_dos']; 
+        $filas_dos = 'filas_'.$tabla.'_dos';
+        $$filas_dos = consulta($profesion_dos, $tabla, $tablas, $pdo);
+      }
+    }
+
   //}
 /*
   foreach ($tablas as $tabla => $campos) {

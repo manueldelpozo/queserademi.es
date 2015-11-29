@@ -87,7 +87,6 @@ $(function () {
         <?php
         $btn_colabora_f_1 = $btn_colabora_f_2 = 0; 
 
-        
         $formacion          = $filas_formaciones[$i]['f_nombre_ppal'];
         $duracion           = $filas_formaciones[$i]['duracion_academica'];
         $duracion_real      = $filas_formaciones[$i]['duracion_real'];

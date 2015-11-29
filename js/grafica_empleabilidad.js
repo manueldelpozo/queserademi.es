@@ -1,3 +1,21 @@
+<?php 
+$btn_colabora_e_1=$btn_colabora_e_2=0;
+function empleabilidad($contratados, $parados) {
+    return round( 100 - ( $contratados * 100 / ($parados + $contratados) ), 2 );
+}
+function imprimirSeriesEmp($filas, $btn_colabora) {
+    foreach ($filas as $fila) { 
+        $emp = empleabilidad($fila['contratados'], $fila['parados']); 
+        if( is_null($emp) || $emp == 0 ) {
+            $btn_colabora = $key + 1;
+            return "0,";
+        } else {
+            return $emp.",";
+        } 
+    }
+}
+?>
+
 $('#container_empleabilidad').highcharts({
     chart: {
         type: 'column',
@@ -44,28 +62,22 @@ $('#container_empleabilidad').highcharts({
         enabled: false
     }, 
     series: [{
-        <?php 
-        $btn_colabora_e_1=$btn_colabora_e_2=0;
-        function empleabilidad($contratados, $parados) {
-            return round( 100 - ( $contratados * 100 / ($parados + $contratados) ), 2 );
-        }
-        ?>
         name: '<?php echo mb_strtoupper($profesion,"UTF-8" ); ?>',
-        data: [
-        <?php foreach ($filas_empleabilidad as $fila_emp) { ?>
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad, $btn_colabora_e_1); ?>
+        /*<?php foreach ($filas_empleabilidad as $fila_emp) { ?>
         <?php $emp = empleabilidad($fila_emp['contratados'], $fila_emp['parados']); ?>
         <?php if( is_null($emp) || $emp == 0 ) {echo 0;$btn_colabora_e_1+=1;} else {echo $emp;} ?>,
-        <?php } ?>
+        <?php } ?>*/
         ],
         stack: '<?php echo $profesion ?>'
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 	}, {
         name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8" ); ?>',
-        data: [
-        <?php foreach ($filas_empleabilidad_dos as $fila_emp_dos) { ?>
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, $btn_colabora_e_2); ?>
+        /*<?php foreach ($filas_empleabilidad_dos as $fila_emp_dos) { ?>
         <?php $emp = empleabilidad($fila_emp_dos['contratados'], $fila_emp_dos['parados']); ?>
         <?php if( is_null($emp) || $emp == 0 ) {echo 0;$btn_colabora_e_2+=1;} else {echo $emp;} ?>,
-        <?php } ?>
+        <?php } ?>*/
         ],
         stack: '<?php echo $profesion_dos ?>'
     	<?php  }  ?> 
