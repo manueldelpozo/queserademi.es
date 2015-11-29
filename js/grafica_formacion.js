@@ -114,7 +114,7 @@ $(function () {
                 <?php if( isset($duracion) && $duracion > 16 ) { $doctorado = true; ?>
                 <?php if($duracion > 18) {echo ($duracion - 18);} else {echo 2;} ?>
                 , 0
-                <?php } else { $btn_colabora_f_1 = 9; echo "0, 0";} ?>
+                <?php } else { $btn_colabora_f_1 = 9; echo '0, 0';} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 16 ) { $doctorado_dos = true; ?>
                 ,<?php if($duracion_dos > 18) {echo ($duracion_dos - 18);} else {echo 2;} ?>
                 , 0
@@ -128,7 +128,7 @@ $(function () {
                 <?php if( isset($duracion) && $duracion > 16 ) { $master = true; ?>
                 <?php if($duracion < 19) {echo ($duracion - 16);} else {echo 2;} ?>
                 , 0
-                <?php } else { $btn_colabora_f_1 = 8; echo "0, 0";} ?>
+                <?php } else { $btn_colabora_f_1 = 8; echo '0, 0';} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 16 ) { $master_dos = true; ?>
                 ,<?php if($duracion_dos < 19) {echo ($duracion_dos - 16);} else {echo 2;} ?>
                 , 0
@@ -143,7 +143,7 @@ $(function () {
                 <?php if($duracion > 16) {echo ($duracion - 16);} 
                 else if($duracion < 17) {echo ($duracion - 12);} else {echo 2;} ?>
                 , 0
-                <?php } else { $btn_colabora_f_1 = 7; echo "0, 0";} ?>
+                <?php } else { $btn_colabora_f_1 = 7; echo '0, 0';} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 12 ) { ?>
                 ,<?php if($duracion_dos > 16) {echo ($duracion_dos - 16);} 
                 else if($duracion_dos < 17) {echo ($duracion_dos - 12);} else {echo 2;} ?>
@@ -158,7 +158,7 @@ $(function () {
                 <?php if( isset($duracion) && $duracion > 12 ) { $universidad = true; ?>
                 <?php if($duracion < 17) {echo ($duracion - 12);} else {echo 4;} ?>
                 , 0
-                <?php } else { $btn_colabora_f_1 = 6; echo "0, 0";} ?>
+                <?php } else { $btn_colabora_f_1 = 6; echo '0, 0';} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 12 ) { $universidad_dos = true; ?>
                 ,<?php if($duracion_dos < 17) {echo ($duracion_dos - 12);} else {echo 4;} ?>
                 , 0
@@ -172,7 +172,7 @@ $(function () {
                 <?php if( isset($duracion) && $duracion > 12 ) { $fp_superior = true; ?>
                 <?php if($duracion < 15) {echo ($duracion - 12);} else {echo 2;} ?>
                 , 0
-                <?php } else { $btn_colabora_f_1 = 5; echo "0, 0";} ?>
+                <?php } else { $btn_colabora_f_1 = 5; echo '0, 0';} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 12 ) { $fp_superior_dos = true; ?>
                 ,<?php if($duracion_dos < 15) {echo ($duracion_dos - 12);} else {echo 2;} ?>
                 , 0
@@ -186,7 +186,7 @@ $(function () {
                 <?php if( isset($duracion) && $duracion > 10 ) { ?>
                 <?php if($duracion < 13) {echo ($duracion - 10);} else {echo 2;} ?>
                 , 0
-                <?php } else { $btn_colabora_f_1 = 4; echo "0, 0";} ?>
+                <?php } else { $btn_colabora_f_1 = 4; echo '0, 0';} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 10 ) { ?>
                 ,<?php if($duracion_dos < 13) {echo ($duracion_dos - 10);} else {echo 2;} ?>
                 , 0
@@ -200,7 +200,7 @@ $(function () {
                 <?php if( isset($duracion) && $duracion > 10 ) { ?>
                 <?php if($duracion < 13) {echo ($duracion - 10);} else {echo 2;} ?>
                 , 0
-                <?php } else { $btn_colabora_f_1 = 3; echo "0, 0";} ?>
+                <?php } else { $btn_colabora_f_1 = 3; echo '0, 0';} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 10 ) { ?>
                 ,<?php if($duracion_dos < 13) {echo ($duracion_dos - 10);} else {echo 2;} ?>
                 , 0
@@ -214,7 +214,7 @@ $(function () {
                 <?php if( isset($duracion) && $duracion > 6 ) { ?>
                 <?php if($duracion < 11) {echo ($duracion - 6);} else {echo 4;} ?>
                 , 0
-                <?php } else { $btn_colabora_f_1 = 2; echo "0, 0";} ?>
+                <?php } else { $btn_colabora_f_1 = 2; echo '0, 0';} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 6 ) { ?>
                 ,<?php if($duracion_dos < 11) {echo ($duracion_dos - 6);} else {echo 4;} ?>
                 , 0
@@ -228,7 +228,7 @@ $(function () {
                 <?php if( isset($duracion) && $duracion > 0 ) { ?>
                 <?php if($duracion < 7) {echo $duracion;} else {echo 6;} ?>
                 , 0 
-                <?php } else { $btn_colabora_f_1 = 1; echo "0, 0";} ?>
+                <?php } else { $btn_colabora_f_1 = 1; echo '0, 0';} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_dos) && $duracion_dos > 0 ) { ?>
                 ,<?php if($duracion_dos < 7) {echo $duracion_dos;} else {echo 6;} ?>
                 , 0
@@ -242,7 +242,7 @@ $(function () {
                 <?php if( isset($duracion_real) && $duracion_real_dos > 0 ) { ?>
                 0
                 ,<?php echo $duracion_real; ?>
-                <?php } else { $btn_colabora_f_1 = 10;  echo "0, 0";} ?>
+                <?php } else { $btn_colabora_f_1 = 10;  echo '0, 0';} ?>
                 <?php if( isset($profesion_dos) && !empty($profesion_dos) && isset($duracion_real_dos) && $duracion_real_dos > 0 ) { ?>
                 , 0
                 ,<?php echo $duracion_real_dos; ?>
@@ -257,26 +257,25 @@ $(function () {
 // Comprobar si se necesitan botones producido
 <?php if( $btn_colabora_f_1 || $btn_colabora_f_2 ) { ?>
     // agregar capa de aviso semitransparente (con opcion a quitar?)
-    var capa_aviso = "<div class='capa-aviso'>";
+    var capa_aviso = '<div class="capa-aviso">';
     capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="images/cross.svg"></img></a></div>';
-    capa_aviso += "<div class='col-md-10 col-md-offset-1'>";
-    capa_aviso += "<h3>Aún no tenemos imformación suficiente!</h3>";
+    capa_aviso += '<div class="col-md-10 col-md-offset-1">';
+    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
 
     <?php if( $btn_colabora_f_1 > 0 ) { ?>
-        capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>";
-        capa_aviso += "<strong><?php echo mb_strtoupper($profesion,'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $profesion; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
+        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>formacion</strong> de la profesión<br>';
+        capa_aviso += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
+        capa_aviso += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
     <?php } ?>
 
     <?php if( $btn_colabora_f_2 > 0 ) { ?>
-        capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>";
-        capa_aviso += "<strong><?php echo mb_strtoupper($profesion_dos,'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $profesion_dos; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a>";
+        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>formacion</strong> de la profesión<br>';
+        capa_aviso += '<strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
+        capa_aviso += '<a href="colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a>';
     <?php } ?>
 
-    capa_aviso += "</div>";
-    capa_aviso += "</div>";
+    capa_aviso += '</div>';
+    capa_aviso += '</div>';
 
     // debe aparecer despues de 1 segundo
-    $('#container_formacion').append(capa_aviso);
-<?php } ?>
+    $('#container_capacidades').append(capa_aviso);<?php } ?>

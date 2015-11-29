@@ -45,7 +45,7 @@ $('#container_capacidades').highcharts({
         categories: [
         <?php 
         foreach($descripciones as $nombre => $descripcion) { 
-            echo "'$nombre',"; 
+            echo '"'.$nombre.',"'; // puede ser un punto negro!!
         } 
         ?>
         ],
@@ -65,19 +65,19 @@ $('#container_capacidades').highcharts({
                     text: '?? No entiendo!',
                     onclick: function () {
                         // agregar capa de glosario semitransparente (con opcion a quitar)
-                        var capa_glosario = "<div class='capa-glosario'>";
+                        var capa_glosario = '<div class="capa-glosario">';
                         capa_glosario += '<div class="cerrar-glosario"><img class="icon" src="images/cross.svg"></img></div>';
-                        capa_glosario += "<div class='col-md-10 col-md-offset-1'>";
+                        capa_glosario += '<div class="col-md-10 col-md-offset-1">';
                        
-                        capa_glosario += "<h3>No te preocupes, te lo aclaramos aqui</h3>";
-                        capa_glosario += "<dl class='dl-horizontal'>";
+                        capa_glosario += '<h3>No te preocupes, te lo aclaramos aqui</h3>';
+                        capa_glosario += '<dl class="dl-horizontal">';
                         <?php foreach ($descripciones as $nombre => $descripcion) { ?>
-                            capa_glosario += "<dt><?php echo $nombre; ?>:</dt><dd><?php echo $descripcion; ?>:</dd>";
+                            capa_glosario += '<dt><?php echo $nombre; ?>:</dt><dd><?php echo $descripcion; ?>:</dd>';
                         <?php } ?>
-                        capa_glosario += "</dl>";
+                        capa_glosario += '</dl>';
 
-                        capa_glosario += "</div>";
-                        capa_glosario += "</div>";
+                        capa_glosario += '</div>';
+                        capa_glosario += '</div>';
 
                         $('#container_capacidades').append(capa_glosario);
 
@@ -151,25 +151,25 @@ $('#container_capacidades').highcharts({
 // Comprobar si se necesitan botones producido
 <?php if( $btn_colabora_c_1 || $btn_colabora_c_2 ) { ?>
     // agregar capa de aviso semitransparente (con opcion a quitar?)
-    var capa_aviso = "<div class='capa-aviso'>";
-    capa_aviso += '<div class="cerrar-aviso"><img class="icon" src="images/cross.svg"></img></div>';
-    capa_aviso += "<div class='col-md-10 col-md-offset-1'>";
-    capa_aviso += "<h3>Aún no tenemos imformación suficiente!</h3>";
+    var capa_aviso = '<div class="capa-aviso">';
+    capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="images/cross.svg"></img></a></div>';
+    capa_aviso += '<div class="col-md-10 col-md-offset-1">';
+    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
 
     <?php if( $btn_colabora_c_1 > 0 ) { ?>
-        capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>";
-        capa_aviso += "<strong><?php echo mb_strtoupper($filas_capacidades[0]['nombre_ppal'],'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $filas_capacidades[0]['nombre_ppal']; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
+        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>';
+        capa_aviso += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
+        capa_aviso += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
     <?php } ?>
 
     <?php if( $btn_colabora_c_2 > 0 ) { ?>
-        capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>";
-        capa_aviso += "<strong><?php echo mb_strtoupper($filas_capacidades_dos[0]['nombre_ppal'],'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $filas_capacidades_dos[0]['nombre_ppal']; ?>' class='btn btn-aviso' style='border-color: #337ab7; color: #337ab7;'>Colabora!</a>";
+        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>';
+        capa_aviso += '<strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
+        capa_aviso += '<a href="colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a>';
     <?php } ?>
 
-    capa_aviso += "</div>";
-    capa_aviso += "</div>";
+    capa_aviso += '</div>';
+    capa_aviso += '</div>';
 
     // debe aparecer despues de 1 segundo
     $('#container_capacidades').append(capa_aviso);

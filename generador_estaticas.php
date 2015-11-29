@@ -248,22 +248,23 @@ $html = '
 
   <script type="text/javascript" async>\n
     '; 
-      include('js/grafica_salarios.js'); 
-      include('js/grafica_capacidades.js');
-      include('js/grafica_empleabilidad.js'); 
-      include('js/grafica_formacion.js');
-      include('js/grafica_satisfaccion.js');
-      include('js/grafica_info.js'); 
+      $html .= '"' . include('js/grafica_salarios.js') . '"\n';
+      $html .= '"' . include('js/grafica_capacidades.js') . '"\n';
+      $html .= '"' . include('js/grafica_empleabilidad.js') . '"\n'; 
+      $html .= '"' . include('js/grafica_formacion.js') . '"\n';
+      $html .= '"' . include('js/grafica_satisfaccion.js') . '"\n';
+      $html .= '"' . include('js/grafica_info.js') . '"\n'; 
     $html .= '
   </script>
 </html>';
    
-    // darle nombre al html estatico
+    // darle url al html estatico
+    // setlocale(LC_ALL, 'en_GB'); esta configuracion evitara tambien las ene espanola
     $nombre = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', mb_strtolower($nombre, 'UTF-8')); // eliminar acentos y transformar en minusculas
     $nombre = str_replace(' ', '_', $nombre); // remplazar espacios en blanco por underscore
-    $nombre_html = $nombre . ".html"; // darle extension al html estatico
+    $url_html = "profesiones/" . $nombre . ".html"; // agregar path y extension 
     // crear html estatico
-    $pagina_html = fopen($nombre_html, "w+") or die("No se puede crear este documento");
+    $pagina_html = fopen($url_html, "w+") or die("No se puede crear este documento");
     // guardar html
     fwrite($pagina_html, $html);
     fclose($pagina_html);

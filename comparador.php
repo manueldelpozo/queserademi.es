@@ -64,20 +64,20 @@ try {
       $$filas = consulta( $profesion_dos, $tabla, $tablas, $pdo);
     }*/
 
-    foreach ($tablas as $tabla => $value) {
-      if( isset($profesion) ) {
-      //if( isset($_GET['profesion']) ) {  // restablecer para despues de test
-        //$profesion = $_GET['profesion']; 
-        $filas = 'filas_'.$tabla;
-        $$filas = consulta($profesion, $tabla, $tablas, $pdo);
-      }
-      if( isset($profesion_dos) ) {
-      //if( isset($_GET['profesion_dos']) ) { 
-        //$profesion_dos = $_GET['profesion_dos']; 
-        $filas_dos = 'filas_'.$tabla.'_dos';
-        $$filas_dos = consulta($profesion_dos, $tabla, $tablas, $pdo);
-      }
+  foreach ($tablas as $tabla => $value) {
+    if( isset($profesion) ) {
+    //if( isset($_GET['profesion']) ) {  // restablecer para despues de test
+      //$profesion = $_GET['profesion']; 
+      $filas = 'filas_'.$tabla;
+      $$filas = consulta($profesion, $tabla, $tablas, $pdo);
     }
+    if( isset($profesion_dos) ) {
+    //if( isset($_GET['profesion_dos']) ) { 
+      //$profesion_dos = $_GET['profesion_dos']; 
+      $filas_dos = 'filas_'.$tabla.'_dos';
+      $$filas_dos = consulta($profesion_dos, $tabla, $tablas, $pdo);
+    }
+  }
 
   //}
 /*
