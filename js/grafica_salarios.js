@@ -108,6 +108,7 @@ $('#container_salarios').highcharts({
                 lineWidth: 2,
                 lineColor: Highcharts.getOptions().colors[0]
             }
+        <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
         }, {
             name: '<?php echo $profesion_dos; ?>',
             data: medias_dos,
@@ -117,7 +118,7 @@ $('#container_salarios').highcharts({
                 lineWidth: 2,
                 lineColor: Highcharts.getOptions().colors[1]
             }
-        <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
+        <?php } ?>
         }, {
             name: 'Rango salarial',
             data: salarios,
@@ -126,6 +127,7 @@ $('#container_salarios').highcharts({
             linkedTo: '<?php echo $profesion; ?>',
             fillOpacity: 0.3,
             zIndex: 0
+        <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
         }, {
             name: 'Rango salarial',
             data: salarios_dos,
