@@ -18,7 +18,7 @@ div.body > div {
 .grafica {
   border:1px dotted; 
   width: 90%; 
-  height: auto;
+  height: 380px;
   margin: 0 auto;
   margin-bottom: 60px;
   position: relative;

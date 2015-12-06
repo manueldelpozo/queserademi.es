@@ -239,7 +239,7 @@ $(function () {
             {
                 name: 'Duracion real estimada',
                 data: [
-                <?php if( isset($duracion_real) && $duracion_real_dos > 0 ) { ?>
+                <?php if( isset($duracion_real) && $duracion_real > 0 ) { ?>
                 0
                 ,<?php echo $duracion_real; ?>
                 <?php } else { $btn_colabora_f_1 = 10;  echo '0, 0';} ?>
@@ -278,4 +278,4 @@ $(function () {
     capa_aviso += '</div>';
 
     // debe aparecer despues de 1 segundo
-    $('#container_capacidades').append(capa_aviso);<?php } ?>
+    $('#container_formacion').append(capa_aviso);<?php } ?>

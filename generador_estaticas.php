@@ -29,7 +29,6 @@ try {
     }
 
     $consulta .= " FROM ".$tabla.$where_id_profesion.$id_profesion.";";
-    echo $consulta.'<br>';
     $rs = $pdo->prepare($consulta);
     $rs->execute();
     $filas = $rs->fetchAll();
@@ -44,37 +43,65 @@ try {
 
   $nombres_usados = array();
 
+  //funciones para scripts
+  function imprimirSeriesSal($fila, $btn, $btn_colabora) {
+    if( !is_null($fila) && !$fila == 0 )
+        return $fila;
+    else
+        $btn_colabora = $btn + 1;
+  }
+  function createExcerpts($text, $length, $more_txt, $script_info) { 
+    $text = preg_replace('/[\n\r]/','',$text);
+    $text = str_replace('"','',$text);
+    $content = substr( $text, 0 , $length ); 
+    $excerpt = substr( $text,  $length , strlen($text) );
+    $script_info .= $content . '<span class="excerpt"><span style="display:none;">' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></span>'; 
+  }
+  function imprimirSeriesCap($fila, $btn, $btn_colabora) {
+    if( !is_null($fila) && !$fila == 0 )
+        return $fila;
+    else
+        $btn_colabora = $btn + 1;
+  }
+  function empleabilidad($contratados, $parados) {
+    return round( 100 - ( $contratados * 100 / ($parados + $contratados) ), 2 );
+  }
+  function imprimirSeriesEmp($filas, $btn_colabora) {
+      $series = '';
+      foreach ($filas as $fila) { 
+          $emp = empleabilidad($fila['contratados'], $fila['parados']); 
+          if( is_null($emp) || $emp == 0 ) {
+              $btn_colabora++;
+              $series .= "0,";
+          } else {
+              $series .= $emp.",";
+          } 
+      }
+      return $series;
+  }
+
   // bucle de todos los nombres
   foreach ($nombres as $nombre) {
     
     $repetir = true; // accede para cada iteracion del foreach
+    $profesion = $nombre_ppal = $nombre_alt = $id_profesion = '';
+    $nombre_ppal = $nombre['nombre_ppal']; // por defecto no se da valor al nombre ppal
+    $nombre_alt = $nombre['nombre_alt'];
+    $id_profesion = $nombre['id_profesion'];
+
     while($repetir) { // mientras haya un nombre ppal se repetira este bucle
-      $profesion = $nombre_ppal = $nombre_alt = $id_profesion = '';
-      $nombre_ppal    = $nombre['nombre_ppal']; // por defecto no se da valor al nombre ppal
-      $nombre_alt     = $nombre['nombre_alt'];
-      $id_profesion   = $nombre['id_profesion'];
-      echo '<ul><li>'.$nombre_ppal.'</li><li>'.$nombre_alt.'</li><li>'.$id_profesion.'</li></ul>';
 
       $repetir = false;  //niega la repeticion 
       $profesion = $nombre_alt;
-      echo '<h1>alt: '.$profesion.'</h1>';
       // coger el nombre ppal si el nombre aun no ha sido usado
       if ( !in_array($id_profesion, $nombres_usados, TRUE) ) { // solo una vez!!!
         //$nombre_ppal = $nombre['nombre_ppal']; 
         $repetir = true; // repetimos while en este caso
         $profesion = $nombre_ppal; // en este caso $nombre sera el nombre_ppal en lugar del alternativo
-        echo '<h1>ppal: '.$profesion.'</h1>';
+        echo '<h3>Hay ppal</h3>';
       } 
       // incluir profesion en nombres usados
       array_push($nombres_usados, $id_profesion);
-
-      /*$filas_salarios       = consulta( $id_profesion, 'salarios', $tablas, $pdo);
-      $filas_empleabilidad  = consulta( $id_profesion, 'empleabilidad', $tablas, $pdo);
-      $filas_capacidades    = consulta( $id_profesion, 'capacidades', $tablas, $pdo);
-      $filas_info           = consulta( $id_profesion, 'info', $tablas, $pdo);
-      $filas_satisfaccion   = consulta( $id_profesion, 'satisfaccion', $tablas, $pdo);
-      $filas_formaciones    = consulta( $id_profesion, 'formaciones', $tablas, $pdo);*/
-      echo '<h1>nombre: '.$profesion.'</h1>';
 
       foreach ($tablas as $tabla => $value) {
         $filas = 'filas_'.$tabla;
@@ -88,6 +115,7 @@ try {
       $url_html = "profesiones/" . $profesion_underscore . ".html"; // agregar path y extension 
       // crear html estatico
       $pagina_html = fopen($url_html, "w+") or die("No se puede crear este documento");
+      echo '<h1>pagina creada: '.$url_html.'</h1>';
 
 // comenzamos a generar el html como string
 $html = '
@@ -160,7 +188,7 @@ $html = '
             </div>
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
-              <a href="index.html">
+              <a href="../index.html">
                 <h6 class="sublead">Tu comparador de profesiones</h6>
                 <img class="img-responsive" src="../images/logo.svg" height="60px"> 
               </a>
@@ -209,7 +237,7 @@ $html = '
             </div>
             <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
               <div class="col-sm-3 col-xs-3 text-center">
-                <a href="index.html"> 
+                <a href="../index.html"> 
                   <img class="img-menu" src="../images/logo.svg" width="35px" height="auto">       
                   </a>
               </div>
@@ -218,7 +246,7 @@ $html = '
           </div>
             </div>
         <div class="col-md-2 col-md-offset-0 hidden-sm hidden-xs col-xs-6 col-xs-offset-3 text-center">
-              <a href="index.html"> 
+              <a href="../index.html"> 
                   <p id="titulo" style="opacity:1;margin-top:-10px;">
                     <img class="image-container" src="../images/logo.svg">
                     <strong>que</strong>sera<strong>de</strong>mi
@@ -227,15 +255,15 @@ $html = '
             </div>
           <div class="col-md-10 col-sm-12 col-xs-12 text-center">
               <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="colabora.php">Puedes colaborar</a>
+                <a href="../colabora.php">Puedes colaborar</a>
                 <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="porquecolaborar.html">Por qué colaborar</a>
+                <a href="../porquecolaborar.html">Por qué colaborar</a>
                 <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="quienessomos.html">Quiénes somos</a>
+                <a href="../quienessomos.html">Quiénes somos</a>
                 <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
@@ -275,12 +303,7 @@ $html = '
 $btn_colabora_s_1 = 0;
 $s_junior_min = $s_junior_max = $s_intermedio_min = $s_intermedio_max = $s_senior_min = $s_senior_max = 0;
 
-function imprimirSeriesSal($fila, $btn, $btn_colabora) {
-    if( !is_null($fila) && !$fila == 0 )
-        return $fila;
-    else
-        $btn_colabora = $btn + 1;
-}
+
 
 foreach( $tablas['salarios'] as $n => $rango) {
     $$rango = imprimirSeriesSal($filas_salarios[0][$rango], $n, $btn_colabora_s_1);
@@ -359,7 +382,7 @@ $script_salarios .= "$('#container_salarios').highcharts({
             data: salarios,
             type: 'arearange',
             lineWidth: 0,
-            linkedTo: '<?php echo $profesion; ?>',
+            linkedTo: '". $profesion ."',
             fillOpacity: 0.3,
             zIndex: 0
         }
@@ -374,12 +397,34 @@ if( $btn_colabora_s_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
 
     capa_aviso += '</div></div>';
 
     $('#container_salarios').append(capa_aviso);";
 } 
+
+/** INFO **/
+$script_info = "";
+
+$script_info .= "$('#container_info').html('<h4 style=\"margin:15px\">INFORMACIÓN</h4><div id=\"info\"></div>');";
+
+if( isset( $profesion ) ) {  
+    $script_info .= "$('#info').append('<h5 class=\"principal nombre\">". $profesion ."</h5>');";
+    if( empty( $filas_info[0]['descripcion'] ) ) { 
+        $script_info .= "$('#info').append('<p class=\"descripcion\" id=\"desc1\">Descripcion: Falta información! Ayúdanos a conseguirla.</p>');
+        $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a></div>');";
+    } else { 
+        $script_info .= "$('#info').append('<p class=\"descripcion\">". createExcerpts($filas_info[0]["descripcion"] , 150 , " [ + ]", $script_info) ."</p>');";
+    } 
+} 
+
+$script_info .= "// Excerpt
+$('.more').click( function() {
+    $(this).prev().fadeToggle();
+    var text = $(this).text();
+    $(this).text(text == ' [ + ]' ? ' [ - ]' : ' [ + ]');
+});";
 
 /**CAPACIDADES**/
 
@@ -395,12 +440,7 @@ $descripciones = array(
 $btn_colabora_c_1 = 0;
 $c_analisis = $c_comunicacion = $c_equipo = $c_forma_fisica = $c_objetivos = $c_persuasion = 0;
 
-function imprimirSeriesCap($fila, $btn, $btn_colabora) {
-    if( !is_null($fila) && !$fila == 0 )
-        return $fila;
-    else
-        $btn_colabora = $btn + 1;
-}
+
 
 foreach( $tablas['capacidades'] as $n => $campo) {
     $$campo = imprimirSeriesCap($filas_capacidades[0][$campo], $n, $btn_colabora_c_1);
@@ -518,7 +558,7 @@ if( $btn_colabora_c_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -526,16 +566,459 @@ if( $btn_colabora_c_1 > 0 ) {
     $('#container_capacidades').append(capa_aviso);";
 }
 
-      /*$html .=*/  //include('../js/grafica_salarios.js');
-      //$html .= include("js/grafica_capacidades.js");
-      /*$html .= '"' .*/ //include('../js/grafica_empleabilidad.js'); 
-      /*$html .= '"' .*/ //include('../js/grafica_formacion.js');
-      //$script = include('js/grafica_satisfaccion.js');
-      /*$html .= '"' .*/ //include('../js/grafica_info.js'); 
-    $html .= $script_salarios . $script_capacidades .'
+/** EMPLEABILIDAD **/
+
+$btn_colabora_e_1 = 0;
+
+$script_empleabilidad = "$('#container_empleabilidad').highcharts({
+    chart: {
+        type: 'column',
+        marginTop: 80,
+        marginRight: 40,
+        backgroundColor:'rgba(255, 255, 255, 0)',
+        // Edit chart size
+        spacingBottom: 20,
+        spacingTop: 20,
+        spacingLeft: 20,
+        spacingRight: 20,
+        width: null,
+        height: 380
+    },
+    title: {
+        text: 'PARO (dificultad de conseguir trabajo) ',
+        align: 'center'
+    },
+    legend: { enable: false },
+    xAxis: {
+        categories: [";
+        
+        $meses = ['enero','abril','julio','octubre'];
+        $meses = array_merge($meses,$meses); // concatenar meses
+        foreach ($meses as $n_mes => $mes) { 
+            $year = ( $n_mes > count($meses)/2 - 1 )?'2015':'2014';
+            $script_empleabilidad .= "'".ucfirst($mes)." ".$year."',";
+        }
+        
+        $script_empleabilidad .= "]
+    },
+    yAxis: {
+        allowDecimals: true,
+        min: 0,
+        title: {
+            text: 'Dificultad de conseguir trabajo %'
+        }
+    },
+    tooltip: {
+        headerFormat: '<b>{point.key}</b><br>',
+        pointFormat: '<span style=\"color:{series.color}\">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+    },
+    credits: {
+        enabled: false
+    }, 
+    series: [{
+        name: '". mb_strtoupper($profesion,"UTF-8" ) ."',
+        data: [ ". imprimirSeriesEmp($filas_empleabilidad, $btn_colabora_e_1) ." ],
+        stack: '". $profesion ."'
+  }]
+});";
+
+if( $btn_colabora_e_1 > 0 ) { 
+    $script_empleabilidad .= "var capa_aviso = '<div class=\"capa-aviso\">';
+    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
+    capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
+    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
+
+        capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>desempleo</strong> de la profesión<br>';
+        capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+
+    capa_aviso += '</div>';
+    capa_aviso += '</div>';
+
+    $('#container_empleabilidad').append(capa_aviso);";
+} 
+
+/** FORMACION **/
+
+$i = 0;
+
+$formacion          = $filas_formaciones[$i]['f_nombre_ppal'];
+$duracion           = $filas_formaciones[$i]['duracion_academica'];
+$duracion_real      = $filas_formaciones[$i]['duracion_real'];
+$nivel              = $filas_formaciones[$i]['nivel'];
+
+$script_formacion = "$('#container_formacion').highcharts({
+        chart: {
+            type: 'bar',
+            backgroundColor:'rgba(255, 255, 255, 0)',
+            spacingBottom: 20,
+            spacingTop: 20,
+            spacingLeft: 20,
+            spacingRight: 20,
+            width: null,
+            height: 380
+        },
+        title: {
+            text: 'FORMACION'
+        },
+        xAxis: {
+            categories: [
+            '". mb_strtoupper($profesion, "UTF-8") ."<br><strong>". $formacion ." &gt;&gt;</strong>'
+            , '(Duracion real estimada) <br><strong>". $formacion ." &gt;&gt;</strong>'
+            ]
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Duracion de estudios (años)'
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        credits: {
+             enabled: false
+        },
+        colorBypoint: true,
+        colors: [ '#ede2e8', '#dcc6d1', '#ba8da4', '#975577', '#751c4a', '#58002e', '#420022', '#2c0017', '#210011', '#160000' ],
+        plotOptions: {
+            series: {
+                stacking: 'normal',
+            },
+            scatter: {
+                tooltip: {
+                    pointFormat: '{point.x} años de estudios'
+                }
+            }
+        },
+        exporting: {
+            buttons: {
+               anotherButton: {
+                    text: 'Donde estudiar?',
+                    onclick: function () {
+                        alert('Donde estudiar? En desarrollo... Disculpe las molestias');
+                    }
+                }
+            }
+        },";
+       
+        $btn_colabora_f_1 = 0; 
+
+        $formacion          = $filas_formaciones[$i]['f_nombre_ppal'];
+        $duracion           = $filas_formaciones[$i]['duracion_academica'];
+        $duracion_real      = $filas_formaciones[$i]['duracion_real'];
+        $nivel              = $filas_formaciones[$i]['nivel'];
+     
+        $doctorado = $master = $universidad = $fp_superior = false;
+        
+        $script_formacion .= "series: [";         
+            if( $duracion > 16 && $nivel == 11 ) {
+              $script_formacion .= "{
+                  name: 'Doctorado',
+                  data: [";
+                  if( isset($duracion) && $duracion > 16 ) { 
+                    $doctorado = true; 
+                    if($duracion > 18) {
+                      $script_formacion .= ($duracion - 18);
+                    } else {
+                      $script_formacion .= 2;
+                    } 
+                    $script_formacion .= ", 0";
+                  } else { 
+                    $btn_colabora_f_1 = 9; 
+                    $script_formacion .= '0, 0';
+                  } 
+                  $script_formacion .= "]
+              },";
+            } 
+            if( $duracion > 16 && $nivel == 10 ) { 
+              $script_formacion .= "{
+                  name: 'Master',
+                  data: [";
+                  if( isset($duracion) && $duracion > 16 ) { 
+                    $master = true; 
+                    if($duracion < 19) {
+                      $script_formacion .= ($duracion - 16);
+                    } else {
+                      $script_formacion .= 2;
+                    }
+                  $script_formacion .= ", 0";
+                  } else { 
+                    $btn_colabora_f_1 = 8; 
+                    $script_formacion .= '0, 0';
+                  } 
+                  $script_formacion .= "]
+              },"; 
+            } 
+            if( $nivel == 9 ) { 
+              $script_formacion .= "{
+                  name: 'Oposiciones',
+                  data: [";
+                  if( isset($duracion) && $duracion > 12 ) { 
+                    if($duracion > 16) {
+                      $script_formacion .= ($duracion - 16);
+                    } else if($duracion < 17) {
+                      $script_formacion .= ($duracion - 12);
+                    } else {
+                      $script_formacion .= 2;
+                    } 
+                  $script_formacion .= ", 0";
+                  } else { 
+                    $btn_colabora_f_1 = 7; 
+                    $script_formacion .= '0, 0';
+                  } 
+                
+                  $script_formacion .= "]
+              },";
+            } 
+            if( ($duracion > 12 || $nivel == 8) || $master || $doctorado ) { 
+              $script_formacion .= "{
+                  name: 'Grado Universitario',
+                  data: [";
+                  if( isset($duracion) && $duracion > 12 ) { 
+                    $universidad = true; 
+                    if($duracion < 17) {
+                      $script_formacion .= ($duracion - 12);
+                    } else {
+                      $script_formacion .= 4;
+                    } 
+                    $script_formacion .= ", 0";
+                  } else { 
+                    $btn_colabora_f_1 = 6; 
+                    $script_formacion .= '0, 0';
+                  }
+            
+                  $script_formacion .= "]
+              },"; 
+            } 
+            if( $duracion > 12 && $nivel == 7 ) { 
+              $script_formacion .= "{
+                  name: 'F.P. Superior',
+                  data: [";
+                  if( isset($duracion) && $duracion > 12 ) { 
+                    $fp_superior = true; 
+                    if($duracion < 15) {
+                      $script_formacion .= ($duracion - 12);
+                    } else {
+                      $script_formacion .= 2;
+                    } 
+                    $script_formacion .= ", 0";
+                  } else { 
+                    $btn_colabora_f_1 = 5; 
+                    $script_formacion .= '0, 0';
+                  } 
+                
+                  $script_formacion .= "]
+              },"; 
+            } 
+            if( ($duracion > 10 && $nivel == 6) || $universidad || $fp_superior ) { 
+              $script_formacion .= "{
+                  name: 'Bachillerato',
+                  data: [";
+                  if( isset($duracion) && $duracion > 10 ) {
+                    if($duracion < 13) {
+                      $script_formacion .= ($duracion - 10);
+                    } 
+                    else {
+                      $script_formacion .= 2;
+                    } 
+                    $script_formacion .= ", 0";
+                  } else { 
+                    $btn_colabora_f_1 = 4; 
+                    $script_formacion .= '0, 0';
+                  } 
+                  $script_formacion .= "]
+              },";
+            } 
+            if( $duracion > 10 && $nivel == 5 ) { 
+              $script_formacion .= "{
+                  name: 'F.P. Medio',
+                  data: [";
+                  if( isset($duracion) && $duracion > 10 ) { 
+                    if($duracion < 13) {
+                      $script_formacion .= ($duracion - 10);
+                    } else {
+                      $script_formacion .= 2;
+                    } 
+                    $script_formacion .= ", 0";
+                  } else { 
+                    $btn_colabora_f_1 = 3; 
+                    $script_formacion .= '0, 0';
+                  } 
+                  $script_formacion .= "]
+              },";
+            } 
+            if( $duracion > 6 ) { 
+              $script_formacion .= "{
+                  name: 'E.S.O.',
+                  data: [";
+                  if( isset($duracion) && $duracion > 6 ) { 
+                    if($duracion < 11) {
+                      $script_formacion .= ($duracion - 6);
+                    } else {
+                      $script_formacion .= 4;
+                    } 
+                    $script_formacion .= ", 0";
+                  } else { 
+                    $btn_colabora_f_1 = 2; 
+                    $script_formacion .= '0, 0';
+                  } 
+                  $script_formacion .= "]
+              },";
+            } 
+            if( $duracion > 0 ) { 
+              $script_formacion .= "{
+                  name: 'Primaria',
+                  data: [";
+                  if( isset($duracion) && $duracion > 0 ) { 
+                    if($duracion < 7) {
+                      $script_formacion .= $duracion;
+                    } else {
+                      $script_formacion .= 6;
+                    } 
+                    $script_formacion .= ", 0"; 
+                  } else { 
+                    $btn_colabora_f_1 = 1; 
+                    $script_formacion .= '0, 0';
+                  } 
+                  $script_formacion .= "]
+              },"; 
+            } 
+            if( isset($duracion_real) ) { 
+              $script_formacion .= "{
+                  name: 'Duracion real estimada',
+                  data: [";
+                  if( isset($duracion_real) && $duracion_real > 0 ) { 
+                    $script_formacion .= "0, ".$duracion_real;
+                  } else { 
+                    $btn_colabora_f_1 = 10;  
+                    $script_formacion .= '0, 0';
+                  } 
+                  $script_formacion .= "]
+              }";
+            } 
+        $script_formacion .= "]
+    });";
+
+if( $btn_colabora_f_1 > 0 ) { 
+    $script_formacion .= "var capa_aviso = '<div class=\"capa-aviso\">';
+    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
+    capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
+    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
+
+        capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>formacion</strong> de la profesión<br>';
+        capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+
+    capa_aviso += '</div>';
+    capa_aviso += '</div>';
+
+    $('#container_formacion').append(capa_aviso);";
+} 
+
+/** SATISFACCION **/
+$btn_colabora_sat_1 = 0;
+$script_satisfaccion = "$('#container_satisfaccion').highcharts({
+    chart: {
+        type: 'scatter',
+        zoomType: 'xy',
+        backgroundColor:'rgba(255, 255, 255, 0)',
+        // Edit chart size
+        spacingBottom: 20,
+        spacingTop: 20,
+        spacingLeft: 20,
+        spacingRight: 20,
+        width: null,
+        height: 380
+    },
+    title: {
+        text: 'GRADO DE SATISFACCIÓN'
+    },
+    xAxis: {
+        title: {
+            text: 'EXPERIENCIA ' + '(años)'.toUpperCase()
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'SATISFACCIÓN'
+        }
+    },
+    legend: { enable: false },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        scatter: {
+            marker: {
+                radius: 5,
+                states: {
+                    hover: {
+                        enabled: true,
+                        lineColor: 'rgb(100,100,100)'
+                    }
+                }
+            },
+            states: {
+                hover: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            },
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br>',
+                pointFormat: '{point.x} años de experiencia'
+            }
+        }
+    },
+    series: [{
+        name: '". mb_strtoupper($profesion,"UTF-8" ) ."',
+        data: [";
+        foreach ($filas_satisfaccion as $fila_sat) { 
+            $script_satisfaccion .= "["; 
+            if( is_null($fila_sat['experiencia']) || $fila_sat['experiencia'] == 0 ) {
+              $script_satisfaccion .=  0;
+              $btn_colabora_sat_1+=1;
+            } else {
+              $script_satisfaccion .=  $fila_sat['experiencia'];
+            } 
+            $script_satisfaccion .= ",";
+            if( is_null($fila_sat['grado_satisfaccion']) || $fila_sat['grado_satisfaccion'] == 0 ) {
+              $script_satisfaccion .=  0;
+              $btn_colabora_sat_1+=1;
+            } else {
+              $script_satisfaccion .=  $fila_sat['grado_satisfaccion'];
+            } 
+            $script_satisfaccion .= "],";
+        } 
+        $script_satisfaccion .= "],
+        stack: '". $profesion ."'
+    }]
+});";
+
+if( $btn_colabora_sat_1 > 0 ) { 
+    $script_satisfaccion .= "var capa_aviso = '<div class=\"capa-aviso\">';
+    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
+    capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
+    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
+
+        capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>satisfaccion</strong> de la profesión<br>';
+        capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+
+    capa_aviso += '</div>';
+    capa_aviso += '</div>';
+
+    $('#container_satisfaccion').append(capa_aviso);";
+  }
+
+  // incluir scripts y cerrar html 
+
+    $html .= $script_salarios . $script_info . $script_capacidades . $script_empleabilidad . $script_formacion . $script_satisfaccion .'
   </script>
 </html>';
-    echo $script;
+    
     // guardar html
     fwrite($pagina_html, $html);
     fclose($pagina_html);

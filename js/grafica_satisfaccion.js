@@ -124,7 +124,7 @@ $('#container_satisfaccion').highcharts({
     capa_aviso += '</div>';
 
     // debe aparecer despues de 1 segundo
-    $('#container_capacidades').append(capa_aviso);
+    $('#container_satisfaccion').append(capa_aviso);
 
 
 <?php } ?>

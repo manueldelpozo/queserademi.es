@@ -11,21 +11,21 @@ function createExcerpts($text,$length,$more_txt) {
 $('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div><div id="slider"></div>');
 
 <?php if( isset( $profesion ) ) { ?>  
-    $('#container_info').append('<h5 class="principal nombre"><?php echo $profesion; ?></h5>');
+    $('#info').append('<h5 class="principal nombre"><?php echo $profesion; ?></h5>');
     <?php if( empty( $filas_info[0]['descripcion'] ) ) { ?>
-        $('#container_info').append('<p class="descripcion" id="desc1">Descripcion: Falta información! Ayúdanos a conseguirla.</p>');
-        $('#container_info').append('<div class="col-md-8 col-md-offset-2"><a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');
+        $('#info').append('<p class="descripcion" id="desc1">Descripcion: Falta información! Ayúdanos a conseguirla.</p>');
+        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');
     <?php } else { ?>
-        $('#container_info').append('<p class="descripcion"><?php createExcerpts( $filas_info[0]["descripcion"] , 150 , " [ + ]" ); ?></p>');
+        $('#info').append('<p class="descripcion"><?php createExcerpts( $filas_info[0]["descripcion"] , 150 , " [ + ]" ); ?></p>');
     <?php } ?>
 <?php } ?>
 <?php if( isset( $profesion_dos ) && $profesion_dos != ''  ) { ?>
-    $('#container_info').append('<h5 class="secundaria nombre" style="clear:both;"><?php echo $profesion_dos; ?></h5>');
+    $('#info').append('<h5 class="secundaria nombre" style="clear:both;"><?php echo $profesion_dos; ?></h5>');
     <?php if( empty( $filas_info_dos[0]['descripcion'] ) ) { ?>
-        $('#container_info').append('<p class="descripcion">Descripcion: Falta información! Ayúdanos a conseguirla.</p>');
-        $('#container_info').append('<div class="col-md-8 col-md-offset-2"><a href="colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a></div>');
+        $('#info').append('<p class="descripcion">Descripcion: Falta información! Ayúdanos a conseguirla.</p>');
+        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a></div>');
     <?php } else { ?>
-        $('#container_info').append('<p class="descripcion"><?php createExcerpts( $filas_info_dos[0]["descripcion"] , 150 , " [ + ]" ); ?></p>');
+        $('#info').append('<p class="descripcion"><?php createExcerpts( $filas_info_dos[0]["descripcion"] , 150 , " [ + ]" ); ?></p>');
     <?php } ?>
 <?php } ?>
 
