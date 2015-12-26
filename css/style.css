@@ -118,6 +118,12 @@ html,body {
 	font-family: 'Antic Slab', arial;
 	color:#c00;
 }
+#beta {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 100px;
+}
 .image-container {   
     height: auto;
     width: 22%;

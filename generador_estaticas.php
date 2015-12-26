@@ -333,7 +333,7 @@ $script_salarios .= "$('#container_salarios').highcharts({
         height: 380
     },
     title: {
-        text: 'SALARIO',
+        text: 'SALARIO ANUAL (€/año)',
         align: 'center'
     },
     legend: { 
@@ -347,7 +347,7 @@ $script_salarios .= "$('#container_salarios').highcharts({
     },
     yAxis: {
         title: {
-            text: 'SALARIO NETO (€/mes)'
+            text: 'SALARIO BRUTO ANUAL'
         }
     },
     tooltip: {
