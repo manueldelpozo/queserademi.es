@@ -10,7 +10,7 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 	$lista = array();
 
 	if( $query != '%25' )
-		$sql .= "WHERE nombre_ppal LIKE '$query%' LIMIT 0,15";	
+		$sql .= "WHERE nombre_ppal LIKE '%$query%' LIMIT 0,15";	
 	else
 		$sql .= "ORDER BY nombre_ppal ASC";
 
