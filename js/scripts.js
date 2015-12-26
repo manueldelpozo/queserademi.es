@@ -279,10 +279,16 @@ $(".typeahead").click( function(e) {
 	$(this).typeahead.bind($(this), 'lookup'); //No hace nada
 	$(this).val('');
 });
-// Cuando presionamos ENTER
+// Cuando presionamos ENTER coger el primero si no hemos eleccionado ninguno
 $(".typeahead").keydown( function(e) {
-	if(e.which == 13)
+	if(e.which == 13) {
+		if( $(this).is(":focus") ) {
+			// si input tiene focus coger el primero de la lista
+			$(this).siblings('.tt-hint').val('');
+			$(this).val($(this).siblings('.tt-dropdown-menu').find('.tt-suggestion:first-child').text());
+		}
 		$("#formulario").submit(); 
+	}
 });
 
 // LISTA
