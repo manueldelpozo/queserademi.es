@@ -8,7 +8,8 @@ function createExcerpts($text,$length,$more_txt) {
 }
 ?>
 
-$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div><div id="slider"></div>');
+$('#container_info').html('<h4 style="margin:15px; font-family: sans-serif;">INFORMACIÓN</h4><div id="info"></div>');
+//$('#container_info').append('<div id="slider"></div>'); eliminar slider
 
 <?php if( isset( $profesion ) ) { ?>  
     $('#info').append('<h5 class="principal nombre"><?php echo $profesion; ?></h5>');

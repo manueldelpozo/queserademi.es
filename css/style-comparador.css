@@ -45,6 +45,9 @@ div.body > div {
 .more {
   cursor: cell;
 }
+.highcharts-container {
+  font-family: inherit;
+}
 
 #container1 {
   background :rgba(255, 255, 255, 0.5);
@@ -87,6 +90,7 @@ div.body > div {
   background-color: rgba(255, 255, 255, 0.6);
   font-weight: bold;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 .cerrar-aviso, .cerrar-glosario {
   position: absolute;

@@ -3,7 +3,7 @@ try {
   require('conexion.php');
 
   $tablas = array( 
-    'salarios'      => array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
+    'salarios'      => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
     'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
     'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
     'info'          => array('descripcion'),
@@ -33,64 +33,57 @@ try {
     $filas = $rs->fetchAll();
     return $filas;
   }
-  
-  //if( isset( $_GET['profesion_uno']  )  ) {
-    //$profesion_uno = $_GET['profesion_uno'];
-    $profesion = "Ocupaciones militares";
 
-    /*$filas_salarios       = consulta( $profesion, 'salarios', $tablas, $pdo);
-    $filas_empleabilidad  = consulta( $profesion, 'empleabilidad', $tablas, $pdo);
-    $filas_capacidades    = consulta( $profesion, 'capacidades', $tablas, $pdo);
-    $filas_info           = consulta( $profesion, 'info', $tablas, $pdo);
-    $filas_satisfaccion   = consulta( $profesion, 'satisfaccion', $tablas, $pdo);
-    $filas_formaciones    = consulta( $profesion, 'formaciones', $tablas, $pdo);*/
+  //$filas_salarios = $fila_empleabilidad = $filas_capacidades = $filas_info = $filas_satisfaccion = $filas_formaciones = 0;
+  //$profesion = $_GET['profesion'];
+  //$profesion_dos = $_GET['profesion_dos'];
+
+  if (isset($_GET['profesion'])) {
+    $profesion = $_GET['profesion'];
+    /*$filas_salarios = consulta($profesion, 'salarios', $tablas, $pdo);
+    $filas_empleabilidad = consulta($profesion, 'empleabilidad', $tablas, $pdo);
+    $filas_capacidades = consulta($profesion, 'capacidades', $tablas, $pdo);
+    $filas_info = consulta($profesion, 'info', $tablas, $pdo);
+    $filas_satisfaccion = consulta($profesion, 'satisfaccion', $tablas, $pdo);
+    $filas_formaciones = consulta($profesion, 'formaciones', $tablas, $pdo);*/
     /*foreach ($tablas as $tabla => $value) {
       $filas = 'filas_'.$tabla;
-      $$filas = consulta( $profesion, $tabla, $tablas, $pdo);
+      $$filas = consulta($profesion, $tabla, $tablas, $pdo);
     }*/
-  //}  
-  //if( isset( $_GET['profesion_dos'] ) ) { 
-    //$profesion_dos = $_GET['profesion_dos'];
-    $profesion_dos = "Oficiales y suboficiales de las fuerzas armadas";
-
-    /*$filas_salarios_dos       = consulta( $profesion_dos, 'salarios', $tablas, $pdo);
-    $filas_empleabilidad_dos  = consulta( $profesion_dos, 'empleabilidad', $tablas, $pdo);
-    $filas_capacidades_dos    = consulta( $profesion_dos, 'capacidades', $tablas, $pdo);
-    $filas_info_dos           = consulta( $profesion_dos, 'info', $tablas, $pdo);
-    $filas_satisfaccion_dos   = consulta( $profesion_dos, 'satisfaccion', $tablas, $pdo);
-    $filas_formaciones_dos    = consulta( $profesion_dos, 'formaciones', $tablas, $pdo);*/
+  }  
+  if (isset($_GET['profesion_dos'])) { 
+    $profesion_dos = $_GET['profesion_dos'];
+    /*$filas_salarios_dos = consulta($profesion_dos, 'salarios', $tablas, $pdo);
+    $filas_empleabilidad_dos = consulta($profesion_dos, 'empleabilidad', $tablas, $pdo);
+    $filas_capacidades_dos = consulta($profesion_dos, 'capacidades', $tablas, $pdo);
+    $filas_info_dos = consulta($profesion_dos, 'info', $tablas, $pdo);
+    $filas_satisfaccion_dos = consulta($profesion_dos, 'satisfaccion', $tablas, $pdo);
+    $filas_formaciones_dos = consulta($profesion_dos, 'formaciones', $tablas, $pdo);*/
     /*foreach ($tablas as $tabla => $value) {
-      $filas = 'filas_'.$tabla.'_dos';
-      $$filas = consulta( $profesion_dos, $tabla, $tablas, $pdo);
+      $filas_dos = 'filas_'.$tabla.'_dos';
+      $$filas_dos = consulta($profesion_dos, $tabla, $tablas, $pdo);
     }*/
+  }
 
   foreach ($tablas as $tabla => $value) {
     if( isset($profesion) ) {
-    //if( isset($_GET['profesion']) ) {  // restablecer para despues de test
-      //$profesion = $_GET['profesion']; 
       $filas = 'filas_'.$tabla;
       $$filas = consulta($profesion, $tabla, $tablas, $pdo);
     }
-    if( isset($profesion_dos) ) {
-    //if( isset($_GET['profesion_dos']) ) { 
-      //$profesion_dos = $_GET['profesion_dos']; 
+    if( isset($profesion_dos) ) { 
       $filas_dos = 'filas_'.$tabla.'_dos';
       $$filas_dos = consulta($profesion_dos, $tabla, $tablas, $pdo);
     }
   }
 
-  //}
-/*
-  foreach ($tablas as $tabla => $campos) {
+  /*foreach ($tablas as $tabla => $campos) {
     foreach ($campos as $campo) {
       $filtab = 'filas_'.$tabla;
       foreach ($$filtab as $fila) {
         echo $campo.": ".$fila[$campo]."<br>";
       }
     }
-  }
-
- */ 
+  }*/
 
 ?>
 <!DOCTYPE html>
@@ -151,7 +144,7 @@ try {
             <div class="col-md-4">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion_uno" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="Busca otra profesión y compara" value="<?php echo @$profesion; ?>" required> 
+                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="Busca otra profesión y compara" value="<?php echo @$profesion; ?>" required> 
                   <span class="input-group-btn" >
                     <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
                   </span>
@@ -192,12 +185,12 @@ try {
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_empleabilidad" class="grafica"></div>
             </div>
-            <div class="col-md-6 col-xs-12 text-center">
+            <!--div class="col-md-6 col-xs-12 text-center">
               <div id="container_formacion" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_satisfaccion" class="grafica"></div>
-            </div> 
+            </div--> 
           </div> 
 
       </form>
@@ -274,8 +267,8 @@ try {
       include('js/grafica_info.js');  
       include('js/grafica_capacidades.js');
       include('js/grafica_empleabilidad.js'); 
-      include('js/grafica_formacion.js');
-      include('js/grafica_satisfaccion.js');
+      //include('js/grafica_formacion.js');
+      //include('js/grafica_satisfaccion.js');
     ?>
   </script>
 

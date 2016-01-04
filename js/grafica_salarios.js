@@ -1,8 +1,8 @@
 
 <?php
 $btn_colabora_s_1 = $btn_colabora_s_2 = 0;
-$s_junior_min = $s_junior_max = $s_intermedio_min = $s_intermedio_max = $s_senior_min = $s_senior_max = 0;
-$s_junior_min_dos = $s_junior_max_dos = $s_intermedio_min_dos = $s_intermedio_max_dos = $s_senior_min_dos = $s_senior_max_dos = 0;
+$s_princ_min = $s_princ_med = $s_princ_max = $s_junior_min = $s_junior_med = $s_junior_max = $s_intermedio_min = $s_intermedio_med = $s_intermedio_max = $s_senior_min = $s_senior_med = $s_senior_max = 0;
+$s_princ_min_dos = $s_princ_med_dos = $s_princ_max_dos = $s_junior_min_dos = $s_junior_med_dos = $s_junior_max_dos = $s_intermedio_min_dos = $s_intermedio_med_dos = $s_intermedio_max_dos = $s_senior_min_dos = $s_senior_med_dos = $s_senior_max_dos = 0;
 
 function imprimirSeriesSal($fila, $btn, $btn_colabora) {
     if( !is_null($fila) && !$fila == 0 )
@@ -11,38 +11,80 @@ function imprimirSeriesSal($fila, $btn, $btn_colabora) {
         $btn_colabora = $btn + 1;
 }
 
-foreach( $tablas['salarios'] as $n => $rango) {
+/*foreach( $tablas['salarios'] as $n => $rango) {
     $$rango = imprimirSeriesSal($filas_salarios[0][$rango], $n, $btn_colabora_s_1);
     if( isset($profesion_dos) && !empty($profesion_dos) ){
         $rango_dos = $rango . '_dos';
         $$rango_dos = imprimirSeriesSal($filas_salarios_dos[0][$rango], $n, $btn_colabora_s_2);
     }
+}*/
+
+$s_princ_min = $filas_salarios[0]['s_princ_min'];
+$s_princ_med = $filas_salarios[0]['s_princ_med'];
+$s_princ_max = $filas_salarios[0]['s_princ_max'];
+$s_junior_min = $filas_salarios[0]['s_junior_min'];
+$s_junior_med = $filas_salarios[0]['s_junior_med'];
+$s_junior_max = $filas_salarios[0]['s_junior_max'];
+$s_intermedio_min = $filas_salarios[0]['s_intermedio_min'];
+$s_intermedio_med = $filas_salarios[0]['s_intermedio_med'];
+$s_intermedio_max = $filas_salarios[0]['s_intermedio_max'];
+$s_senior_min = $filas_salarios[0]['s_senior_min'];
+$s_senior_med = $filas_salarios[0]['s_senior_med'];
+$s_senior_max = $filas_salarios[0]['s_senior_max'];
+
+if( isset($profesion_dos) && !empty($profesion_dos) ) {
+    $s_princ_min_dos = $filas_salarios_dos[0]['s_princ_min'];
+    $s_princ_med_dos = $filas_salarios_dos[0]['s_princ_med'];
+    $s_princ_max_dos = $filas_salarios_dos[0]['s_princ_max'];
+    $s_junior_min_dos = $filas_salarios_dos[0]['s_junior_min'];
+    $s_junior_med_dos = $filas_salarios_dos[0]['s_junior_med'];
+    $s_junior_max_dos = $filas_salarios_dos[0]['s_junior_max'];
+    $s_intermedio_min_dos = $filas_salarios_dos[0]['s_intermedio_min'];
+    $s_intermedio_med_dos = $filas_salarios_dos[0]['s_intermedio_med'];
+    $s_intermedio_max_dos = $filas_salarios_dos[0]['s_intermedio_max'];
+    $s_senior_min_dos = $filas_salarios_dos[0]['s_senior_min'];
+    $s_senior_med_dos = $filas_salarios_dos[0]['s_senior_med'];
+    $s_senior_max_dos = $filas_salarios_dos[0]['s_senior_max'];
 }
+
+function val($s_valor, $btn_colabora) {
+    $r;
+    $btn_colabora = 'btn_colabora_' . $btn_colabora;
+    if( !is_null($s_valor) && !empty($s_valor) ) {
+        $r = $s_valor;
+        $$btn_colabora = 0;
+    } else {
+        $r = 0;
+        $$btn_colabora = 1;
+    }
+    echo $r;  
+}
+
 ?>
 
 var salarios = [
-    [0, <?php echo $s_junior_min; ?>, <?php echo $s_junior_max; ?>],
-    [2, <?php echo $s_junior_min; ?>, <?php echo $s_junior_max; ?>],
-    [5, <?php echo $s_intermedio_min; ?>, <?php echo $s_intermedio_max; ?>], 
-    [20, <?php echo $s_senior_min; ?>, <?php echo $s_senior_max; ?>]
+    [0, <?php val($s_princ_min, 's_1'); ?>, <?php val($s_princ_max, 's_1'); ?>],
+    [5, <?php val($s_junior_min, 's_1'); ?>, <?php val($s_junior_max, 's_1'); ?>],
+    [10, <?php val($s_intermedio_min, 's_1'); ?>, <?php val($s_intermedio_max, 's_1'); ?>], 
+    [15, <?php val($s_senior_min, 's_1'); ?>, <?php val($s_senior_max, 's_1'); ?>]
 ], medias = [
-    [0, <?php echo ($s_junior_min + $s_junior_max) / 2 ; ?>],
-    [2, <?php echo ($s_junior_min + $s_junior_max) / 2 ; ?>],
-    [5, <?php echo ($s_intermedio_min + $s_intermedio_max) / 2 ; ?>], 
-    [20, <?php echo ($s_senior_min + $s_senior_max) / 2 ; ?>]
+    [0, <?php val($s_princ_med, 's_1'); ?>],
+    [5, <?php val($s_junior_med, 's_1'); ?>],
+    [10, <?php val($s_intermedio_med, 's_1'); ?>], 
+    [15, <?php val($s_senior_med, 's_1'); ?>]
 ];
 
 <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 var salarios_dos = [
-    [0, <?php echo $s_junior_min_dos; ?>, <?php echo $s_junior_max_dos; ?>],
-    [2, <?php echo $s_junior_min_dos; ?>, <?php echo $s_junior_max_dos; ?>],
-    [5, <?php echo $s_intermedio_min_dos; ?>, <?php echo $s_intermedio_max_dos; ?>], 
-    [20, <?php echo $s_senior_min_dos; ?>, <?php echo $s_senior_max_dos; ?>]
+    [0, <?php val($s_princ_min_dos, 's_2'); ?>, <?php val($s_princ_max_dos, 's_2'); ?>],
+    [5, <?php val($s_junior_min_dos, 's_2'); ?>, <?php val($s_junior_max_dos, 's_2'); ?>],
+    [10, <?php val($s_intermedio_min_dos, 's_2'); ?>, <?php val($s_intermedio_max_dos, 's_2'); ?>], 
+    [15, <?php val($s_senior_min_dos, 's_2'); ?>, <?php val($s_senior_max_dos, 's_2'); ?>]
 ], medias_dos = [
-    [0, <?php echo ($s_junior_min_dos + $s_junior_max_dos) / 2 ; ?>],
-    [2, <?php echo ($s_junior_min_dos + $s_junior_max_dos) / 2 ; ?>],
-    [5, <?php echo ($s_intermedio_min_dos + $s_intermedio_max_dos) / 2 ; ?>], 
-    [20, <?php echo ($s_senior_min_dos + $s_senior_max_dos) / 2 ; ?>]
+    [0, <?php val($s_princ_med_dos, 's_2'); ?>],
+    [5, <?php val($s_junior_med_dos, 's_2'); ?>],
+    [10, <?php val($s_intermedio_med_dos, 's_2'); ?>], 
+    [15, <?php val($s_senior_med_dos, 's_2'); ?>]
 ];
 <?php } ?>
 
@@ -59,7 +101,7 @@ $('#container_salarios').highcharts({
     },
 
     title: {
-        text: 'SALARIO',
+        text: 'SALARIO BRUTO ANUAL (€/año)',
         align: 'center'
     },
 
@@ -76,7 +118,7 @@ $('#container_salarios').highcharts({
 
     yAxis: {
         title: {
-            text: 'SALARIO NETO (€/mes)'
+            text: 'SALARIO BRUTO ANUAL'
         }
     },
 
@@ -91,6 +133,9 @@ $('#container_salarios').highcharts({
     credits: {
         enabled: false
     },
+
+    //colorBypoint: true,
+    //colors: [ '#cc0000', '#cc0000', '#337ab7', '#337ab7' ],
 
     plotOptions: {
         arearange: {

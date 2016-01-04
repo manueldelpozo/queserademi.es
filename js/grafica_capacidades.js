@@ -107,10 +107,13 @@ $('#container_capacidades').highcharts({
             String.prototype.latinise=function(){return this.replace(/[^A-Za-z0-9\[\] ]/g,function(a){return Latinise.latin_map[a]||a})};
             String.prototype.latinize=String.prototype.latinise;
             String.prototype.isLatin=function(){return this==this.latinise()}
+
+            var points = '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': <strong>'+this.points[0].y+'</strong><br/>';
+            if (this.points[1]) {
+                points += '<span style="color:'+this.points[1].series.color+'">'+this.points[1].series.name+': <strong>'+this.points[1].y+'</strong><br/>';
+            }
             
-            return '<strong>'+ descripciones[this.x.replace(/ /g,"_").latinize()] +'</strong><br/>'+
-            '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': <strong>'+this.points[0].y+'</strong><br/>'+
-            '<span style="color:'+this.points[1].series.color+'">'+this.points[1].series.name+': <strong>'+this.points[1].y+'</strong><br/>';
+            return '<strong>'+ descripciones[this.x.replace(/ /g,"_").latinize()] +'</strong><br/>'+ points   
         },
         headerFormat: '<strong>{point.key}</strong><br>'      
     },

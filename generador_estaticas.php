@@ -3,7 +3,7 @@ try {
   require('conexion.php');
 
   $tablas = array( 
-    'salarios'      => array('s_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'),
+    'salarios'      => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
     'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
     'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
     'info'          => array('nombre_ppal', 'descripcion'),
@@ -301,7 +301,7 @@ $html = '
 /**SALARIOS**/ 
 
 $btn_colabora_s_1 = 0;
-$s_junior_min = $s_junior_max = $s_intermedio_min = $s_intermedio_max = $s_senior_min = $s_senior_max = 0;
+$s_princ_min = $s_princ_med = $s_princ_max = $s_junior_min = $s_junior_med = $s_junior_max = $s_intermedio_min = $s_intermedio_med = $s_intermedio_max = $s_senior_min = $s_senior_med = $s_senior_max = 0;
 
 
 
@@ -310,15 +310,15 @@ foreach( $tablas['salarios'] as $n => $rango) {
 }
 
 $script_salarios = 'var salarios = ['.
-    '[0, '. $s_junior_min .','. $s_junior_max .'],'.
-    '[2, '. $s_junior_min .','. $s_junior_max .'],'.
-    '[5, '. $s_intermedio_min .','. $s_intermedio_max .'],'. 
-    '[20, '. $s_senior_min .','. $s_senior_max .']'.
+    '[0, '. $s_princ_min .','. $s_princ_max .'],'.
+    '[5, '. $s_junior_min .','. $s_junior_max .'],'.
+    '[10, '. $s_intermedio_min .','. $s_intermedio_max .'],'. 
+    '[15, '. $s_senior_min .','. $s_senior_max .']'.
 '], medias = ['.
-    '[0,'. ($s_junior_min + $s_junior_max) / 2 .'],'.
-    '[2,'. ($s_junior_min + $s_junior_max) / 2 .'],'.
-    '[5,'. ($s_intermedio_min + $s_intermedio_max) / 2 .'],'. 
-    '[20,'. ($s_senior_min + $s_senior_max) / 2 .']'.
+    '[0,'. $s_princ_med .'],'.
+    '[5,'. $s_junior_med .'],'.
+    '[10,'. $s_intermedio_med .'],'. 
+    '[15,'. $s_senior_med .']'.
 '];';
 
 
