@@ -62,21 +62,7 @@ function desplegarLista( $input, msg ) {
 		$input.next().find('.caret').css('border-bottom','4px solid').css('border-top','0');
 }
 */
-/////************** VALIDACION
 
-function avisoValidacion() {
-	alert("Por favor, introduce un valor de la lista");
-}
-
-function validacion() {
-	var $inputs = $("input");
-	if( $inputs.eq(0).val() == "Elemento no encontrado" || $inputs.eq(0).val() == "Campo sin rellenar" || $inputs.eq(1).val() == "Elemento no encontrado" || $inputs.eq(1).val() == "Campo sin rellenar" ) { 
-		avisoValidacion();
-		return false;	
-	} else {
-		return true;
-	}
-}
 /*
 /////************** NAVEGACION
 
@@ -279,22 +265,57 @@ $(".typeahead").click( function(e) {
 	$(this).typeahead.bind($(this), 'lookup'); //No hace nada
 	$(this).val('');
 });
+
+
+/////************** VALIDACION
+
+function submitar($form) {
+	$.ajax({
+		url: "ajax.php?query=" + $(".typeahead").val() + "&tipo=profesiones&validar=true", 
+		success: function(result) {
+			if (result == '[]' || result == '[""]') {
+				alert('Por favor, introduce un valor de la lista');
+				return false;
+			} else {
+
+				$form.submit();
+			}
+    	},
+    	error: function(xhr, textStatus, errorThrown){
+			alert('request failed');
+			return false;
+	    }
+    });
+}
+
 // Cuando presionamos ENTER coger el primero si no hemos eleccionado ninguno
 $(".typeahead").keydown( function(e) {
 	if(e.which == 13) {
+		$lista = $(this).siblings('.tt-dropdown-menu');
+		// si input tiene focus 
 		if( $(this).is(":focus") ) {
-			// si input tiene focus coger el primero de la lista
+			// si no hat lista paramos la funcion
+			if ($lista.css('display') == 'none')
+				return false;
+
 			$(this).siblings('.tt-hint').val('');
 			$(this).val($(this).siblings('.tt-dropdown-menu').find('.tt-suggestion:first-child').text());
+			submitar($('#formulario')); 
 		}
-		$("#formulario").submit(); 
 	}
 });
 
+// Cuando clickamos boton submit
+$('.btn-submit').click( function(e) {
+	e.preventDefault();
+	submitar($('#formulario')); 
+});
+
 // LISTA
-// Seleccionar item con click de raton
-$(".tt-is-under-cursor").click( function() {
-	$("#formulario").submit(); 
+// Submit despues de seleccionar item de la lista
+$(".tt-dropdown-menu").click( function(e) {
+	if( $(this).siblings('.typeahead').val() == $(e.target).text() )
+		submitar($('#formulario')); 
 });
 
 // FOOTER

@@ -4,15 +4,21 @@ require('conexion.php');
 
 if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
 
-	$query = $_GET['query'];
-	$tipo = $_GET['tipo'];
-	$sql = "SELECT nombre_ppal FROM $tipo ";
+	$query 	= $_GET['query'];
+	$tipo 	= $_GET['tipo'];
+
+	$sql = "";
 	$lista = array();
 
-	if( $query != '%25' )
-		$sql .= "WHERE nombre_ppal LIKE '%$query%' LIMIT 0,15";	
-	else
-		$sql .= "ORDER BY nombre_ppal ASC";
+	if (isset($_GET['validar'])) {
+		$sql = "SELECT * FROM $tipo WHERE nombre_ppal LIKE '$query'";
+	} else {
+		$sql = "SELECT nombre_ppal FROM $tipo ";
+		if( $query != '%25' )
+			$sql .= "WHERE nombre_ppal LIKE '%$query%' LIMIT 0,15";	
+		else
+			$sql .= "ORDER BY nombre_ppal ASC";
+	}
 
 	$request = $pdo->prepare($sql);
 	$request->execute();
@@ -24,7 +30,10 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 			$nombre_ppal = ucfirst( mb_strtolower( $row['nombre_ppal'], 'UTF-8' ) );
 			$lista[] = $nombre_ppal;
 		}
-	}
+	} /*else {
+		$lista = null
+	}*/
+
 	echo json_encode($lista);
 }
 die();

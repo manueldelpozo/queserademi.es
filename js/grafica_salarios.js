@@ -4,14 +4,14 @@ $btn_colabora_s_1 = $btn_colabora_s_2 = 0;
 $s_princ_min = $s_princ_med = $s_princ_max = $s_junior_min = $s_junior_med = $s_junior_max = $s_intermedio_min = $s_intermedio_med = $s_intermedio_max = $s_senior_min = $s_senior_med = $s_senior_max = 0;
 $s_princ_min_dos = $s_princ_med_dos = $s_princ_max_dos = $s_junior_min_dos = $s_junior_med_dos = $s_junior_max_dos = $s_intermedio_min_dos = $s_intermedio_med_dos = $s_intermedio_max_dos = $s_senior_min_dos = $s_senior_med_dos = $s_senior_max_dos = 0;
 
-function imprimirSeriesSal($fila, $btn, $btn_colabora) {
+/*function imprimirSeriesSal($fila, $n, $btn_colabora) {
     if( !is_null($fila) && !$fila == 0 )
         return $fila;
     else
-        $btn_colabora = $btn + 1;
+        $btn_colabora = $n + 1;
 }
 
-/*foreach( $tablas['salarios'] as $n => $rango) {
+foreach( $tablas['salarios'] as $n => $rango) {
     $$rango = imprimirSeriesSal($filas_salarios[0][$rango], $n, $btn_colabora_s_1);
     if( isset($profesion_dos) && !empty($profesion_dos) ){
         $rango_dos = $rango . '_dos';
@@ -47,44 +47,48 @@ if( isset($profesion_dos) && !empty($profesion_dos) ) {
     $s_senior_max_dos = $filas_salarios_dos[0]['s_senior_max'];
 }
 
-function val($s_valor, $btn_colabora) {
-    $r;
-    $btn_colabora = 'btn_colabora_' . $btn_colabora;
-    if( !is_null($s_valor) && !empty($s_valor) ) {
-        $r = $s_valor;
-        $$btn_colabora = 0;
-    } else {
-        $r = 0;
-        $$btn_colabora = 1;
-    }
+function val($s_valor) {
+    $r = 0;
+    if( !is_null($s_valor) && !empty($s_valor) )
+        $r = round($s_valor);
     echo $r;  
+}
+
+// busqueda de nulos
+foreach( $tablas['salarios'] as $rango) {  
+    if( is_null($filas_salarios[0][$rango]) || $filas_salarios[0][$rango] == 0 )
+        $btn_colabora_s_1++; 
+    if( isset($profesion_dos) && !empty($profesion_dos) ){
+        if( is_null($filas_salarios_dos[0][$rango]) || $filas_salarios_dos[0][$rango] == 0 )
+            $btn_colabora_s_2++; 
+    }
 }
 
 ?>
 
 var salarios = [
-    [0, <?php val($s_princ_min, 's_1'); ?>, <?php val($s_princ_max, 's_1'); ?>],
-    [5, <?php val($s_junior_min, 's_1'); ?>, <?php val($s_junior_max, 's_1'); ?>],
-    [10, <?php val($s_intermedio_min, 's_1'); ?>, <?php val($s_intermedio_max, 's_1'); ?>], 
-    [15, <?php val($s_senior_min, 's_1'); ?>, <?php val($s_senior_max, 's_1'); ?>]
+    [0, <?php val($s_princ_min); ?>, <?php val($s_princ_max); ?>],
+    [5, <?php val($s_junior_min); ?>, <?php val($s_junior_max); ?>],
+    [10, <?php val($s_intermedio_min); ?>, <?php val($s_intermedio_max); ?>], 
+    [15, <?php val($s_senior_min); ?>, <?php val($s_senior_max); ?>]
 ], medias = [
-    [0, <?php val($s_princ_med, 's_1'); ?>],
-    [5, <?php val($s_junior_med, 's_1'); ?>],
-    [10, <?php val($s_intermedio_med, 's_1'); ?>], 
-    [15, <?php val($s_senior_med, 's_1'); ?>]
+    [0, <?php val($s_princ_med); ?>],
+    [5, <?php val($s_junior_med); ?>],
+    [10, <?php val($s_intermedio_med); ?>], 
+    [15, <?php val($s_senior_med); ?>]
 ];
 
 <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 var salarios_dos = [
-    [0, <?php val($s_princ_min_dos, 's_2'); ?>, <?php val($s_princ_max_dos, 's_2'); ?>],
-    [5, <?php val($s_junior_min_dos, 's_2'); ?>, <?php val($s_junior_max_dos, 's_2'); ?>],
-    [10, <?php val($s_intermedio_min_dos, 's_2'); ?>, <?php val($s_intermedio_max_dos, 's_2'); ?>], 
-    [15, <?php val($s_senior_min_dos, 's_2'); ?>, <?php val($s_senior_max_dos, 's_2'); ?>]
+    [0, <?php val($s_princ_min_dos); ?>, <?php val($s_princ_max_dos); ?>],
+    [5, <?php val($s_junior_min_dos); ?>, <?php val($s_junior_max_dos); ?>],
+    [10, <?php val($s_intermedio_min_dos); ?>, <?php val($s_intermedio_max_dos); ?>], 
+    [15, <?php val($s_senior_min_dos); ?>, <?php val($s_senior_max_dos); ?>]
 ], medias_dos = [
-    [0, <?php val($s_princ_med_dos, 's_2'); ?>],
-    [5, <?php val($s_junior_med_dos, 's_2'); ?>],
-    [10, <?php val($s_intermedio_med_dos, 's_2'); ?>], 
-    [15, <?php val($s_senior_med_dos, 's_2'); ?>]
+    [0, <?php val($s_princ_med_dos); ?>],
+    [5, <?php val($s_junior_med_dos); ?>],
+    [10, <?php val($s_intermedio_med_dos); ?>], 
+    [15, <?php val($s_senior_med_dos); ?>]
 ];
 <?php } ?>
 
@@ -134,12 +138,12 @@ $('#container_salarios').highcharts({
         enabled: false
     },
 
-    //colorBypoint: true,
-    //colors: [ '#cc0000', '#cc0000', '#337ab7', '#337ab7' ],
-
     plotOptions: {
         arearange: {
             fillOpacity: 0.5
+        },
+        series: {
+            allowPointSelect: true
         }
     },
 
@@ -147,6 +151,7 @@ $('#container_salarios').highcharts({
         {
             name: '<?php echo $profesion; ?>',
             data: medias,
+            color: Highcharts.getOptions().colors[0],
             zIndex: 1,
             marker: {
                 fillColor: 'white',
@@ -157,6 +162,7 @@ $('#container_salarios').highcharts({
         }, {
             name: '<?php echo $profesion_dos; ?>',
             data: medias_dos,
+            color: Highcharts.getOptions().colors[1],
             zIndex: 1,
             marker: {
                 fillColor: 'white',
@@ -170,6 +176,7 @@ $('#container_salarios').highcharts({
             type: 'arearange',
             lineWidth: 0,
             linkedTo: '<?php echo $profesion; ?>',
+            color: Highcharts.getOptions().colors[0],
             fillOpacity: 0.3,
             zIndex: 0
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
@@ -179,13 +186,14 @@ $('#container_salarios').highcharts({
             type: 'arearange',
             lineWidth: 0,
             linkedTo: '<?php echo $profesion_dos; ?>',
+            color: Highcharts.getOptions().colors[1],
             fillOpacity: 0.3,
             zIndex: 0
         <?php } ?>
         }
     ]
 });
-
+<?php echo $btn_colabora_s_1; ?>
 // Comprobar si se necesitan botones producido
 <?php if( $btn_colabora_s_1 || $btn_colabora_s_2 ) { ?>
     // agregar capa de aviso semitransparente (con opcion a quitar?)

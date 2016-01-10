@@ -8,15 +8,29 @@ function empleabilidad($contratados, $parados) {
     return $aver;
 }
 
-function imprimirSeriesEmp($filas, $btn_colabora) {
+function imprimirSeriesEmp($filas, $btn_colabora, $btn_colabora_e_1, $btn_colabora_e_2) {
     foreach ($filas as $fila) { 
         $emp = empleabilidad($fila['contratados'], $fila['parados']); 
         if( is_null($emp) || $emp == 0 ) {
-            $btn_colabora++;
+            $$btn_colabora = 1;
             echo "0,";
         } else {
             echo $emp.",";
         } 
+    }
+}
+
+// busqueda de nulos
+foreach ($filas_empleabilidad as $fila_empleabilidad) { 
+    $empleabilidad = empleabilidad($fila_empleabilidad['contratados'], $fila_empleabilidad['parados']); 
+    if( is_null($empleabilidad) || $empleabilidad == 0 )
+        $btn_colabora_e_1++;
+}
+if( isset($profesion_dos) && !empty($profesion_dos) ){
+    foreach ($filas_empleabilidad_dos as $fila_empleabilidad_dos) { 
+        $empleabilidad_dos = empleabilidad($fila_empleabilidad_dos['contratados'], $fila_empleabilidad_dos['parados']); 
+        if( is_null($empleabilidad_dos) || $empleabilidad_dos == 0 )
+            $btn_colabora_e_2++;
     }
 }
 ?>
@@ -68,12 +82,12 @@ $('#container_empleabilidad').highcharts({
     }, 
     series: [{
         name: '<?php echo mb_strtoupper($profesion,"UTF-8" ); ?>',
-        data: [ <?php imprimirSeriesEmp($filas_empleabilidad, $btn_colabora_e_1); ?> ],
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad, 'btn_colabora_e_1', $btn_colabora_e_1, $btn_colabora_e_2); ?> ],
         stack: '<?php echo $profesion ?>'
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 	}, {
         name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8" ); ?>',
-        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, $btn_colabora_e_2); ?> ],
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, 'btn_colabora_e_2', $btn_colabora_e_1, $btn_colabora_e_2); ?> ],
         stack: '<?php echo $profesion_dos ?>'
     	<?php  }  ?> 
 	}]
@@ -104,6 +118,5 @@ $('#container_empleabilidad').highcharts({
 
     // debe aparecer despues de 1 segundo
     $('#container_empleabilidad').append(capa_aviso);
-
 
 <?php } ?>

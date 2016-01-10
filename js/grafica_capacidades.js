@@ -10,13 +10,13 @@ $descripciones = array(
 
 $btn_colabora_c_1 = $btn_colabora_c_2 = 0;
 
-function imprimirSeriesCap($filas, $btn_colabora, $tablas) {
+function imprimirSeriesCap($filas, $btn_colabora, $tablas, $btn_colabora_c_1, $btn_colabora_c_2) {
     foreach ($tablas['capacidades'] as $campo) {
         if( is_null($filas[$campo]) || $filas[$campo] == 0 ) {
             $btn_colabora++;
-            echo "0,";
+            echo "2,";
         } else {
-            echo $filas[$campo].",";
+            echo round($filas[$campo]) . ",";
         }
     }
 }
@@ -71,7 +71,7 @@ $('#container_capacidades').highcharts({
                         capa_glosario += '<div class="cerrar-glosario"><img class="icon" src="images/cross.svg"></img></div>';
                         capa_glosario += '<div class="col-md-10 col-md-offset-1">';
                        
-                        capa_glosario += '<h3>No te preocupes, te lo aclaramos aqui</h3>';
+                        capa_glosario += '<h3>No te preocupes, te lo aclaramos aquí!</h3>';
                         capa_glosario += '<dl class="dl-horizontal">';
                         <?php foreach ($descripciones as $nombre => $descripcion) { ?>
                             capa_glosario += '<dt><?php echo $nombre; ?>:</dt><dd><?php echo $descripcion; ?>:</dd>';
@@ -123,12 +123,12 @@ $('#container_capacidades').highcharts({
 
     series: [{  
         name: '<?php echo mb_strtoupper($profesion,"UTF-8"); ?>',
-        data: [ <?php imprimirSeriesCap($filas_capacidades[0], $btn_colabora_c_1, $tablas); ?> ],
+        data: [ <?php imprimirSeriesCap($filas_capacidades[0], $btn_colabora_c_1, $tablas, $btn_colabora_c_1, $btn_colabora_c_2); ?> ],
         stack: '<?php echo $profesion ?>'
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ) { ?>
     }, {
         name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?>',
-        data: [ <?php imprimirSeriesCap($filas_capacidades_dos[0], $btn_colabora_c_2, $tablas); ?> ],
+        data: [ <?php imprimirSeriesCap($filas_capacidades_dos[0], $btn_colabora_c_2, $tablas, $btn_colabora_c_1, $btn_colabora_c_2); ?> ],
         stack: '<?php echo $profesion_dos ?>' 
         <?php  }  ?> 
     }]

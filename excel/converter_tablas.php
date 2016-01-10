@@ -8,7 +8,7 @@ require('../conexion.php');
 //usar PHPExcel_IOFactory
 include '../vendor/autoload.php';
 //coger excel
-$inputFileName = 'Libro1.xls';
+$inputFileName = 'profesiones_completo.xls';
 
 //leer Excel 
 try {
@@ -23,8 +23,6 @@ try {
 $sheet 			= $objPHPExcel->getSheet(0); 
 $highestRow 	= $sheet->getHighestRow(); 
 $highestColumn 	= $sheet->getHighestColumn();
-echo $highestRow;
-echo $highestColumn;
 $highestRow = 2932;
 $highestColumn = 'AT';
 try {
@@ -120,8 +118,8 @@ try {
 		$contratados_enero_2015 	= str_replace(',', '.', $rowData[0][41]);
 		$parados_abril_2015 		= str_replace(',', '.', $rowData[0][42]);
 		$contratados_abril_2015 	= str_replace(',', '.', $rowData[0][43]);
-		$parados_julio_2015 		= str_replace(',', '.', $rowData[0][45]);
-		$contratados_julio_2015 	= str_replace(',', '.', $rowData[0][46]);
+		$parados_julio_2015 		= str_replace(',', '.', $rowData[0][44]);
+		$contratados_julio_2015 	= str_replace(',', '.', $rowData[0][45]);
 
 		//inseratar el resto
 		//consulta a las tablas profesion y formacion y obtener ids creados
