@@ -8,22 +8,23 @@ function createExcerpts($text,$length,$more_txt) {
 }
 ?>
 
-$('#container_info').html('<h4 style="margin:15px; font-family: sans-serif;">INFORMACIÓN</h4><div id="info"></div>');
+$('#container_info').html('<h5 style="margin:15px; font-family: sans-serif; font-weight: bold;">INFORMACIÓN</h5><div id="info"></div>');
 //$('#container_info').append('<div id="slider"></div>'); eliminar slider
 
 <?php if( isset( $profesion ) ) { ?>  
-    $('#info').append('<h5 class="principal nombre"><?php echo $profesion; ?></h5>');
+    $('#info').append('<h4 class="principal nombre"><?php echo $profesion; ?></h4>');
     <?php if( empty( $filas_info[0]['descripcion'] ) ) { ?>
-        $('#info').append('<p class="descripcion" id="desc1">Descripcion: Falta información! Ayúdanos a conseguirla.</p>');
+        $('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');
     <?php } else { ?>
         $('#info').append('<p class="descripcion"><?php createExcerpts( $filas_info[0]["descripcion"] , 150 , " [ + ]" ); ?></p>');
     <?php } ?>
 <?php } ?>
 <?php if( isset( $profesion_dos ) && $profesion_dos != ''  ) { ?>
-    $('#info').append('<h5 class="secundaria nombre" style="clear:both;"><?php echo $profesion_dos; ?></h5>');
+    $('#info').append('<h1 class="secundaria nombre" style="clear:both; color:#555; margin:10px;">VS</h1>');
+    $('#info').append('<h4 class="secundaria nombre"><?php echo $profesion_dos; ?></h4>');
     <?php if( empty( $filas_info_dos[0]['descripcion'] ) ) { ?>
-        $('#info').append('<p class="descripcion">Descripcion: Falta información! Ayúdanos a conseguirla.</p>');
+        $('#info').append('<p class="descripcion">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a></div>');
     <?php } else { ?>
         $('#info').append('<p class="descripcion"><?php createExcerpts( $filas_info_dos[0]["descripcion"] , 150 , " [ + ]" ); ?></p>');

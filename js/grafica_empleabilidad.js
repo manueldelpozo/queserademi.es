@@ -1,5 +1,7 @@
 <?php 
 $btn_colabora_e_1 = $btn_colabora_e_2 = 0;
+$meses = ['enero','abril','julio','octubre'];
+$meses = array_pop(array_merge($meses,$meses)); // concatenar meses y eliminar el ultimo elemento
 
 function empleabilidad($contratados, $parados) {
     $aver = 0;
@@ -8,15 +10,17 @@ function empleabilidad($contratados, $parados) {
     return $aver;
 }
 
-function imprimirSeriesEmp($filas, $btn_colabora, $btn_colabora_e_1, $btn_colabora_e_2) {
-    foreach ($filas as $fila) { 
-        $emp = empleabilidad($fila['contratados'], $fila['parados']); 
-        if( is_null($emp) || $emp == 0 ) {
-            $$btn_colabora = 1;
-            echo "0,";
-        } else {
-            echo $emp.",";
-        } 
+function imprimirSeriesEmp($filas, $meses) {
+    $counter = 0;
+    foreach ($filas as $fila) {
+        if(!empty($meses[$counter]))  {
+            $emp = empleabilidad(round($fila['contratados']), round($fila['parados']));
+            if( is_null($emp) || $emp == 0 )
+                echo "0,";
+            else
+                echo $emp.",";
+        }
+        $counter++;
     }
 }
 
@@ -49,22 +53,31 @@ $('#container_empleabilidad').highcharts({
         width: null,
         height: 380
     },
+
     title: {
-        text: 'PARO (dificultad de conseguir trabajo) ',
-        align: "center"
+        text: 'PARO',
+        align: "center",
+        style: { 
+            'color': '#555',
+            'fontSize': '14px',
+            'fontWeight': 'bold'
+        }
     },
+    subtitle: {
+        text: '- DIFICULTAD DE CONSEGUIR TRABAJO -'
+    },
+
     legend: { enable: false },
     xAxis: {
-        categories: [ 'Enero 2014', 'Abril 2014', 'Julio 2014', 'Octubre 2014', 'Enero 2015', 'Abril 2015', 'Julio 2015' 
+        categories: [ 'Enero 2014', 'Abril 2014', 'Julio 2014', 'Octubre 2014', 'Enero 2015', 'Abril 2015', 'Julio 2015' ]
         /*<?php 
-        $meses = ['enero','abril','julio','octubre'];
-        $meses = array_merge($meses,$meses); // concatenar meses
+        //$meses = ['enero','abril','julio','octubre'];
+        //$meses = array_merge($meses,$meses); // concatenar meses
         foreach ($meses as $n_mes => $mes) { 
             $year = ( $n_mes > count($meses)/2 - 1 )?'2015':'2014';
             echo "'".ucfirst($mes)." ".$year."',";
         }
         ?>*/
-        ]
     },
     yAxis: {
         allowDecimals: true,
@@ -82,12 +95,12 @@ $('#container_empleabilidad').highcharts({
     }, 
     series: [{
         name: '<?php echo mb_strtoupper($profesion,"UTF-8" ); ?>',
-        data: [ <?php imprimirSeriesEmp($filas_empleabilidad, 'btn_colabora_e_1', $btn_colabora_e_1, $btn_colabora_e_2); ?> ],
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad, $meses); ?> ],
         stack: '<?php echo $profesion ?>'
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 	}, {
         name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8" ); ?>',
-        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, 'btn_colabora_e_2', $btn_colabora_e_1, $btn_colabora_e_2); ?> ],
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, $meses); ?> ],
         stack: '<?php echo $profesion_dos ?>'
     	<?php  }  ?> 
 	}]

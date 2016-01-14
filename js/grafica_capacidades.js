@@ -35,10 +35,17 @@ $('#container_capacidades').highcharts({
         width: null,
         height: 380
     },
+
     title: {
         text: 'CUALIDADES PROFESIONALES',
-        align: "center"
+        align: "center",
+        style: { 
+            'color': '#555',
+            'fontSize': '14px',
+            'fontWeight': 'bold'
+        }
     },
+
     legend: { enable: false },
     pane: {
         size: '80%'
@@ -64,7 +71,7 @@ $('#container_capacidades').highcharts({
     exporting: {
             buttons: {
                anotherButton: {
-                    text: '?? No entiendo!',
+                    text: '???',
                     onclick: function () {
                         // agregar capa de glosario semitransparente (con opcion a quitar)
                         var capa_glosario = '<div class="capa-glosario">';
