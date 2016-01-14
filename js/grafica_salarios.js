@@ -4,48 +4,13 @@ $btn_colabora_s_1 = $btn_colabora_s_2 = 0;
 $s_princ_min = $s_princ_med = $s_princ_max = $s_junior_min = $s_junior_med = $s_junior_max = $s_intermedio_min = $s_intermedio_med = $s_intermedio_max = $s_senior_min = $s_senior_med = $s_senior_max = 0;
 $s_princ_min_dos = $s_princ_med_dos = $s_princ_max_dos = $s_junior_min_dos = $s_junior_med_dos = $s_junior_max_dos = $s_intermedio_min_dos = $s_intermedio_med_dos = $s_intermedio_max_dos = $s_senior_min_dos = $s_senior_med_dos = $s_senior_max_dos = 0;
 
-/*function imprimirSeriesSal($fila, $n, $btn_colabora) {
-    if( !is_null($fila) && !$fila == 0 )
-        return $fila;
-    else
-        $btn_colabora = $n + 1;
-}
-
-foreach( $tablas['salarios'] as $n => $rango) {
-    $$rango = imprimirSeriesSal($filas_salarios[0][$rango], $n, $btn_colabora_s_1);
+/*foreach( $tablas['salarios'] as $rango) {
+    $$rango = $filas_salarios[0][$rango];
     if( isset($profesion_dos) && !empty($profesion_dos) ){
         $rango_dos = $rango . '_dos';
-        $$rango_dos = imprimirSeriesSal($filas_salarios_dos[0][$rango], $n, $btn_colabora_s_2);
+        $$rango_dos = $filas_salarios_dos[0][$rango];
     }
 }*/
-
-$s_princ_min = $filas_salarios[0]['s_princ_min'];
-$s_princ_med = $filas_salarios[0]['s_princ_med'];
-$s_princ_max = $filas_salarios[0]['s_princ_max'];
-$s_junior_min = $filas_salarios[0]['s_junior_min'];
-$s_junior_med = $filas_salarios[0]['s_junior_med'];
-$s_junior_max = $filas_salarios[0]['s_junior_max'];
-$s_intermedio_min = $filas_salarios[0]['s_intermedio_min'];
-$s_intermedio_med = $filas_salarios[0]['s_intermedio_med'];
-$s_intermedio_max = $filas_salarios[0]['s_intermedio_max'];
-$s_senior_min = $filas_salarios[0]['s_senior_min'];
-$s_senior_med = $filas_salarios[0]['s_senior_med'];
-$s_senior_max = $filas_salarios[0]['s_senior_max'];
-
-if( isset($profesion_dos) && !empty($profesion_dos) ) {
-    $s_princ_min_dos = $filas_salarios_dos[0]['s_princ_min'];
-    $s_princ_med_dos = $filas_salarios_dos[0]['s_princ_med'];
-    $s_princ_max_dos = $filas_salarios_dos[0]['s_princ_max'];
-    $s_junior_min_dos = $filas_salarios_dos[0]['s_junior_min'];
-    $s_junior_med_dos = $filas_salarios_dos[0]['s_junior_med'];
-    $s_junior_max_dos = $filas_salarios_dos[0]['s_junior_max'];
-    $s_intermedio_min_dos = $filas_salarios_dos[0]['s_intermedio_min'];
-    $s_intermedio_med_dos = $filas_salarios_dos[0]['s_intermedio_med'];
-    $s_intermedio_max_dos = $filas_salarios_dos[0]['s_intermedio_max'];
-    $s_senior_min_dos = $filas_salarios_dos[0]['s_senior_min'];
-    $s_senior_med_dos = $filas_salarios_dos[0]['s_senior_med'];
-    $s_senior_max_dos = $filas_salarios_dos[0]['s_senior_max'];
-}
 
 function val($s_valor) {
     $r = 0;
@@ -55,10 +20,13 @@ function val($s_valor) {
 }
 
 // busqueda de nulos
-foreach( $tablas['salarios'] as $rango) {  
+foreach( $tablas['salarios'] as $rango) { 
+    $$rango = $filas_salarios[0][$rango]; 
     if( is_null($filas_salarios[0][$rango]) || $filas_salarios[0][$rango] == 0 )
         $btn_colabora_s_1++; 
     if( isset($profesion_dos) && !empty($profesion_dos) ){
+        $rango_dos = $rango . '_dos';
+        $$rango_dos = $filas_salarios_dos[0][$rango];
         if( is_null($filas_salarios_dos[0][$rango]) || $filas_salarios_dos[0][$rango] == 0 )
             $btn_colabora_s_2++; 
     }

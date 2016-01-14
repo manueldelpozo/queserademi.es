@@ -25,8 +25,17 @@ $highestRow 	= $sheet->getHighestRow();
 $highestColumn 	= $sheet->getHighestColumn();
 $highestRow = 2932;
 $highestColumn = 'AT';
-try {
 
+//eliminar tabla de profesiones de la bbdd 
+try {
+    $delete_sql = 'DELETE FROM profesiones_test;';
+    $delete = $pdo->prepare( $delete_sql );
+	$delete->execute();
+} catch(PDOException $e) {
+    die('Error deleting table');
+}
+
+try {
 	$campos = array( 
 		'profesiones_test'			=> array('cod', 'nombre_ppal', 'descripcion'),
 		'nombres_alt'				=> array('nombre_alt'),

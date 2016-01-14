@@ -22,13 +22,13 @@ function imprimirSeriesEmp($filas, $btn_colabora, $btn_colabora_e_1, $btn_colabo
 
 // busqueda de nulos
 foreach ($filas_empleabilidad as $fila_empleabilidad) { 
-    $empleabilidad = empleabilidad($fila_empleabilidad['contratados'], $fila_empleabilidad['parados']); 
+    $empleabilidad = empleabilidad(round($fila_empleabilidad['contratados']), round($fila_empleabilidad['parados'])); 
     if( is_null($empleabilidad) || $empleabilidad == 0 )
         $btn_colabora_e_1++;
 }
 if( isset($profesion_dos) && !empty($profesion_dos) ){
     foreach ($filas_empleabilidad_dos as $fila_empleabilidad_dos) { 
-        $empleabilidad_dos = empleabilidad($fila_empleabilidad_dos['contratados'], $fila_empleabilidad_dos['parados']); 
+        $empleabilidad_dos = empleabilidad(round($fila_empleabilidad_dos['contratados']), round($fila_empleabilidad_dos['parados'])); 
         if( is_null($empleabilidad_dos) || $empleabilidad_dos == 0 )
             $btn_colabora_e_2++;
     }
