@@ -14,7 +14,8 @@ $sitemap = new Sitemap;
 //Loop de todas las url creadas
 foreach(glob('profesiones/*.html') as $filename) {
 	$url = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $filename;
-	//TEST//$url = 'http://' . $_SERVER['HTTP_HOST'] . '/queserademi/queserademi/' . $filename;
+	if ($_SERVER['HTTP_HOST'] === 'localhost')
+		$url = 'http://' . $_SERVER['HTTP_HOST'] . '/queserademi/queserademi/' . $filename;
 	echo $url.'<br>';
 	$sitemap->addItem($url);
 	$sitemap->addItem($url, '0.7', ChangeFreq::MONTHLY, new \DateTime()); //You can add some optional params
