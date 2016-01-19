@@ -3,6 +3,7 @@
         "smalot/pdfparser": "*",
         "phpmailer/phpmailer": "5.2.*",
         "PHPOffice/PHPExcel": "1.8.*",
-        "php-xpdf/php-xpdf": "*"
+        "php-xpdf/php-xpdf": "*",
+        "asika/sitemap": "1.*"
     }
 }

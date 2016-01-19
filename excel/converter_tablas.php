@@ -23,8 +23,8 @@ try {
 $sheet 			= $objPHPExcel->getSheet(0); 
 $highestRow 	= $sheet->getHighestRow(); 
 $highestColumn 	= $sheet->getHighestColumn();
-$highestRow = 2932;
-$highestColumn = 'AT';
+//$highestRow = 2932;
+//$highestColumn = 'AT';
 
 //eliminar tabla de profesiones de la bbdd 
 try {
@@ -138,9 +138,9 @@ try {
 		$filas_profesiones = $rs_profesiones->fetchAll();
 		foreach ($filas_profesiones as $fila) {
 			$id_profesion 						= $fila['id'];
-			//$insert_nombres_alt_1 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_1')";
-			//$insert_nombres_alt_2 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_2')";
-			//$insert_nombres_alt_3 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_3')";
+			$insert_nombres_alt_1 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_1')";
+			$insert_nombres_alt_2 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_2')";
+			$insert_nombres_alt_3 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_3')";
 			$insert_salarios_total 				= $insert_salarios.$id_profesion.",'$s_princ_min','$s_princ_med','$s_princ_max','$s_junior_min','$s_junior_med','$s_junior_max','$s_intermedio_min','$s_intermedio_med','$s_intermedio_max','$s_senior_min','$s_senior_med','$s_senior_max')";
 			$insert_empleabilidad_enero_2014 	= $insert_empleabilidad.$id_profesion.",'$parados_enero_2014','$contratados_enero_2014','enero',2014)";
 			$insert_empleabilidad_abril_2014 	= $insert_empleabilidad.$id_profesion.",'$parados_abril_2014','$contratados_abril_2014','abril',2014)";
@@ -154,9 +154,9 @@ try {
 			//$insert_profesiones_formaciones_2 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_2')";
 			//$insert_profesiones_formaciones_3 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_3')";
 			$inserts = array(
-				//$insert_nombres_alt_1, 
-				//$insert_nombres_alt_2, 
-				//$insert_nombres_alt_3, 
+				$insert_nombres_alt_1, 
+				$insert_nombres_alt_2, 
+				$insert_nombres_alt_3, 
 				$insert_salarios_total, 
 				$insert_empleabilidad_enero_2014, 
 				$insert_empleabilidad_abril_2014, 

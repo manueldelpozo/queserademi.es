@@ -10,14 +10,21 @@ $descripciones = array(
 
 $btn_colabora_c_1 = $btn_colabora_c_2 = 0;
 
-function imprimirSeriesCap($filas, $btn_colabora, $tablas, $btn_colabora_c_1, $btn_colabora_c_2) {
+function imprimirSeriesCap($filas, $tablas) {
     foreach ($tablas['capacidades'] as $campo) {
-        if( is_null($filas[$campo]) || $filas[$campo] == 0 ) {
-            $btn_colabora++;
-            echo "2,";
-        } else {
-            echo round($filas[$campo]) . ",";
-        }
+        echo (is_null($filas[$campo]) || $filas[$campo] == 0) ? "2," : round($filas[$campo]) . ",";
+    }
+}
+
+// busqueda de nulos
+foreach ($filas_capacidades as $fila_capacidad) { 
+    if( is_null($fila_capacidad) || $fila_capacidad == 0 )
+        $btn_colabora_c_1++;
+}
+if( isset($profesion_dos) && !empty($profesion_dos) ){
+    foreach ($filas_capacidades_dos as $fila_capacidad_dos) { 
+        if( is_null($fila_capacidad_dos) || $fila_capacidad_dos == 0 )
+            $btn_colabora_c_2++;
     }
 }
 ?>
@@ -78,7 +85,7 @@ $('#container_capacidades').highcharts({
                         capa_glosario += '<div class="cerrar-glosario"><img class="icon" src="images/cross.svg"></img></div>';
                         capa_glosario += '<div class="col-md-10 col-md-offset-1">';
                        
-                        capa_glosario += '<h3>No te preocupes, te lo aclaramos aquí!</h3>';
+                        capa_glosario += '<h3>No te preocupes, te lo aclaramos aquí!</h3><br>';
                         capa_glosario += '<dl class="dl-horizontal">';
                         <?php foreach ($descripciones as $nombre => $descripcion) { ?>
                             capa_glosario += '<dt><?php echo $nombre; ?>:</dt><dd><?php echo $descripcion; ?>:</dd>';
@@ -120,7 +127,7 @@ $('#container_capacidades').highcharts({
                 points += '<span style="color:'+this.points[1].series.color+'">'+this.points[1].series.name+': <strong>'+this.points[1].y+'</strong><br/>';
             }
             
-            return '<strong>'+ descripciones[this.x.replace(/ /g,"_").latinize()] +'</strong><br/>'+ points   
+            return '<strong>'+ descripciones[this.x.replace(/ /g,"_").latinize()] +'</strong><br/>'+ points;   
         },
         headerFormat: '<strong>{point.key}</strong><br>'      
     },
@@ -130,12 +137,12 @@ $('#container_capacidades').highcharts({
 
     series: [{  
         name: '<?php echo mb_strtoupper($profesion,"UTF-8"); ?>',
-        data: [ <?php imprimirSeriesCap($filas_capacidades[0], $btn_colabora_c_1, $tablas, $btn_colabora_c_1, $btn_colabora_c_2); ?> ],
+        data: [ <?php imprimirSeriesCap($filas_capacidades[0], $tablas); ?> ],
         stack: '<?php echo $profesion ?>'
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ) { ?>
     }, {
         name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?>',
-        data: [ <?php imprimirSeriesCap($filas_capacidades_dos[0], $btn_colabora_c_2, $tablas, $btn_colabora_c_1, $btn_colabora_c_2); ?> ],
+        data: [ <?php imprimirSeriesCap($filas_capacidades_dos[0], $tablas); ?> ],
         stack: '<?php echo $profesion_dos ?>' 
         <?php  }  ?> 
     }]

@@ -125,8 +125,8 @@ html,body {
     width: 100px;
 }
 .image-container {   
-    height: auto;
-    width: 22%;
+    height: 44px;
+    width: 44px;
 }
 .lead {
 	font-size:5em;

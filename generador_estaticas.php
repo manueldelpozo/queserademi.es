@@ -1,34 +1,37 @@
 <?php 
-try { 
-  require('conexion.php');
+//eliminar el limite de ejecucion
+set_time_limit(0);
 
+require('conexion.php');
+
+try { 
   $tablas = array( 
     'salarios'      => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
     'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
     'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
-    'info'          => array('nombre_ppal', 'descripcion'),
+    'info'          => array('descripcion'),
     'satisfaccion'  => array('experiencia','grado_satisfaccion'),
     'formaciones'   => array('f_nombre_ppal', 'f_nombre_alt', 'f_descripcion', 'duracion_academica', 'duracion_real', 'acceso', 'nivel')
   );
 
-  function consulta( $id_profesion, $tabla, $tablas, $pdo ) {
-    $consulta = "SELECT";
-    $tabla_ref = $tabla[0];
-    foreach ( $tablas[$tabla] as $campo) {
-      //$consulta .= $campo." AS ".$tabla_ref."_".$campo.", ";
-      $consulta .= " ".$campo.",";
+  function consulta($id_profesion, $tabla, $tablas, $pdo ) {
+    $consulta = "SELECT ";
+    foreach ($tablas[$tabla] as $campo) {
+      $consulta .= $campo . ",";
     }
     $consulta = substr($consulta, 0, -1);
+    
+    $tabla_ref = $tabla[0];
 
-    $where_id_profesion = " WHERE id_profesion = ";
-    if ($tabla == 'info') {
-      $tabla = "profesiones_test";
-      $where_id_profesion = " WHERE id = ";
-    } else if ($tabla == 'formaciones') {
-      $where_id_profesion = " f INNER JOIN profesiones_formaciones pf ON f.id = pf.id_formacion INNER JOIN profesiones_test p ON p.id = pf.id_profesion WHERE p.id = ";
-    }
+    if ($tabla == 'info')
+      $where = "WHERE";
+    else if ($tabla == 'formaciones')
+      $where = "INNER JOIN profesiones_formaciones pf ON p.id = pf.id_profesion INNER JOIN formaciones f ON f.id = pf.id_formacion WHERE";
+    else
+      $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND";
 
-    $consulta .= " FROM ".$tabla.$where_id_profesion.$id_profesion.";";
+    $consulta .= " FROM profesiones_test p ".$where." p.id = ".$id_profesion;
+    echo $consulta . '<br>';
     $rs = $pdo->prepare($consulta);
     $rs->execute();
     $filas = $rs->fetchAll();
@@ -36,20 +39,25 @@ try {
   }
 
   // Primero, consulta de nombres principales y alternativos
-  $consulta_nombres = "SELECT id_profesion, nombre_ppal, nombre_alt FROM profesiones_test p, nombres_alt n WHERE p.id = n.id_profesion";
+  $consulta_nombres = "SELECT id_profesion, nombre_ppal, nombre_alt FROM profesiones_test p INNER JOIN nombres_alt n ON p.id = n.id_profesion;";
   $rs_nombres = $pdo->prepare($consulta_nombres);
   $rs_nombres->execute();
   $nombres = $rs_nombres->fetchAll();
-
   $nombres_usados = array();
+  $nombres_usados_alt = array();
 
   //funciones para scripts
-  function imprimirSeriesSal($fila, $btn, $btn_colabora) {
-    if( !is_null($fila) && !$fila == 0 )
-        return $fila;
-    else
-        $btn_colabora = $btn + 1;
+
+  function imprimirSeriesSal($filas, $exp) {
+    $rangos = array('min', 'med', 'max');
+    $seriesSal = array();
+    foreach ($rangos as $rango) {
+      $campo = 's_' . $exp . '_' . $rango;
+      array_push($seriesSal, (is_null($filas[$campo]) || $filas[$campo] == 0) ? 0 : round($filas[$campo]));
+    }
+    return $seriesSal;
   }
+
   function createExcerpts($text, $length, $more_txt, $script_info) { 
     $text = preg_replace('/[\n\r]/','',$text);
     $text = str_replace('"','',$text);
@@ -57,28 +65,33 @@ try {
     $excerpt = substr( $text,  $length , strlen($text) );
     $script_info .= $content . '<span class="excerpt"><span style="display:none;">' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></span>'; 
   }
-  function imprimirSeriesCap($fila, $btn, $btn_colabora) {
-    if( !is_null($fila) && !$fila == 0 )
-        return $fila;
-    else
-        $btn_colabora = $btn + 1;
+
+  function imprimirSeriesCap($filas, $tablas) {
+    $seriesCap = array();
+    foreach ($tablas['capacidades'] as $campo) {
+      //return (is_null($filas[$campo]) || $filas[$campo] == 0) ? "2," : round($filas[$campo]) . ",";
+      array_push($seriesCap, (is_null($filas[$campo]) || $filas[$campo] == 0) ? "2" : round($filas[$campo]));
+    }
+    return $seriesCap;
   }
+
   function empleabilidad($contratados, $parados) {
-    return round( 100 - ( $contratados * 100 / ($parados + $contratados) ), 2 );
+    return (!is_null($parados) && $parados > 0) ? round( 100 - ( $contratados * 100 / ($parados + $contratados) ), 2 ) : 0;
   }
-  function imprimirSeriesEmp($filas, $btn_colabora) {
-      $series = '';
-      foreach ($filas as $fila) { 
-          $emp = empleabilidad($fila['contratados'], $fila['parados']); 
-          if( is_null($emp) || $emp == 0 ) {
-              $btn_colabora++;
-              $series .= "0,";
-          } else {
-              $series .= $emp.",";
-          } 
+
+  function imprimirSeriesEmp($filas, $meses) {
+    $counter = 0;
+    $seriesEmp = array();
+    foreach ($filas as $fila) {
+      if(!empty($meses[$counter]))  {
+          $emp = empleabilidad(round($fila['contratados']), round($fila['parados']));
+          array_push($seriesEmp, (is_null($emp) || $emp == 0) ? "0" : $emp); 
       }
-      return $series;
+      $counter++;
+    }
+    return $seriesEmp;
   }
+
 
   // bucle de todos los nombres
   foreach ($nombres as $nombre) {
@@ -91,32 +104,43 @@ try {
 
     while($repetir) { // mientras haya un nombre ppal se repetira este bucle
 
-      $repetir = false;  //niega la repeticion 
-      $profesion = $nombre_alt;
-      // coger el nombre ppal si el nombre aun no ha sido usado
+      $repetir = false;  //niega la repeticion para que solo haya un bucle
+      
+      // coger el nombre ppal si la id aun no ha sido usada
       if ( !in_array($id_profesion, $nombres_usados, TRUE) ) { // solo una vez!!!
-        //$nombre_ppal = $nombre['nombre_ppal']; 
-        $repetir = true; // repetimos while en este caso
+        $repetir = true; // repetimos while en este caso para buscar un nombre alternativo
         $profesion = $nombre_ppal; // en este caso $nombre sera el nombre_ppal en lugar del alternativo
         echo '<h3>Hay ppal</h3>';
-      } 
-      // incluir profesion en nombres usados
+      } else { // en le caso de que haya sido usado buscamos nombre alternativo
+        if (empty($nombre_alt) || is_null($nombre_alt) || $nombre_alt == 'test' || in_array($nombre_alt, $nombres_usados_alt, TRUE)) {
+          break; //romper el bucle si el nombre alternativo esta vacio, nulo o repetido
+        } else {
+          $repetir = true; // repetimos while en este caso para buscar mas nombres alternativo
+          $profesion = $nombre_alt; // profesion pasa a ser el nombre alternativo
+          array_push($nombres_usados_alt, $profesion); // y lo incluimos en nombres alternativos usados
+          echo '<h2>Hay alt</h2>';
+        }
+      }
+      // incluir id_profesion en nombres usados
       array_push($nombres_usados, $id_profesion);
 
       foreach ($tablas as $tabla => $value) {
         $filas = 'filas_'.$tabla;
-        $$filas = consulta( $id_profesion, $tabla, $tablas, $pdo);
+        $$filas = consulta($id_profesion, $tabla, $tablas, $pdo);
       }
 
-      // darle url al html estatico
-      // setlocale(LC_ALL, 'en_GB'); esta configuracion evitara tambien las ene espanola
-      $profesion_noacentos = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', mb_strtolower($profesion, 'UTF-8')); // eliminar acentos y transformar en minusculas
-      $profesion_underscore = str_replace(' ', '_', $profesion_noacentos); // remplazar espacios en blanco por underscore
-      $url_html = "profesiones/" . $profesion_underscore . ".html"; // agregar path y extension 
-      // crear html estatico
-      $pagina_html = fopen($url_html, "w+") or die("No se puede crear este documento");
-      echo '<h1>pagina creada: '.$url_html.'</h1>';
-
+      if (!empty($profesion)) {
+        // darle url al html estatico
+        // setlocale(LC_ALL, 'en_GB'); esta configuracion evitara tambien las ene espanola
+        $profesion_noacentos  = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', mb_strtolower($profesion, 'UTF-8')); // eliminar acentos y transformar en minusculas
+        $profesion_nosignos   = str_replace(array("'",'"',",",";","(",")","/","~","+"), '', $profesion_noacentos); // eliminar signos gramaticales
+        $profesion_underscore = str_replace(' ', '-', $profesion_nosignos); // remplazar espacios en blanco por underscore
+        $url_html = "profesiones/" . $profesion_underscore . ".html"; // agregar path y extension 
+        // crear html estatico o reescribirlo si ya existe!!
+        $pagina_html = fopen($url_html, "w+") or die("No se puede crear este documento");
+        echo '<h1>pagina creada: '.$url_html.'</h1>';
+      }
+      
 // comenzamos a generar el html como string
 $html = '
 <!DOCTYPE html>
@@ -124,12 +148,12 @@ $html = '
   <head>
       <meta http-equiv="Content-Language" content="es">
       <meta charset="utf-8">
-      <title>'; $html .= $profesion . '</title>
-      <meta name="description" content="'; $html .= $profesion . '">
+      <title>'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '</title>
+      <meta name="description" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="'; $html .= $profesion . '" />
+      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '" />
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="../images/logo.png" />
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/'; $html .= $url_html . '" />   
       <link rel="icon" type="image/x-icon" href="../images/logo.png">
@@ -179,7 +203,7 @@ $html = '
             <div class="col-md-4">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion_uno" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" value="'; $html .= $profesion . '" required>
+                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" value="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '" required>
                   <span class="input-group-btn" >
                     <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
                   </span>
@@ -212,20 +236,20 @@ $html = '
               <div id="container_salarios" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
+              <div id="container_info" class="grafica"></div>
+            </div>
+            <div class="col-md-6 col-xs-12 text-center">
               <div id="container_capacidades" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_empleabilidad" class="grafica"></div>
             </div>
-            <div class="col-md-6 col-xs-12 text-center">
+            <!--div class="col-md-6 col-xs-12 text-center">
               <div id="container_formacion" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_satisfaccion" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_info" class="grafica"></div>
-            </div>
+            </div-->
           </div>
       </form>
     </div>
@@ -303,24 +327,37 @@ $html = '
 $btn_colabora_s_1 = 0;
 $s_princ_min = $s_princ_med = $s_princ_max = $s_junior_min = $s_junior_med = $s_junior_max = $s_intermedio_min = $s_intermedio_med = $s_intermedio_max = $s_senior_min = $s_senior_med = $s_senior_max = 0;
 
+$experiencias = array('princ', 'junior', 'intermedio', 'senior');
+$rangos = array('min', 'med', 'max');
 
-
-foreach( $tablas['salarios'] as $n => $rango) {
-    $$rango = imprimirSeriesSal($filas_salarios[0][$rango], $n, $btn_colabora_s_1);
+// busqueda de nulos en salarios
+foreach ($experiencias as $exp) {
+  foreach ($rangos as $rango) {
+    $campo = 's_' . $exp . '_' . $rango;
+    if (is_null($filas_salarios[0][$campo]) || $filas_salarios[0][$campo] == 0) {
+      $btn_colabora_s_1++;
+    }
+  }
 }
 
-$script_salarios = 'var salarios = ['.
-    '[0, '. $s_princ_min .','. $s_princ_max .'],'.
-    '[5, '. $s_junior_min .','. $s_junior_max .'],'.
-    '[10, '. $s_intermedio_min .','. $s_intermedio_max .'],'. 
-    '[15, '. $s_senior_min .','. $s_senior_max .']'.
-'], medias = ['.
-    '[0,'. $s_princ_med .'],'.
-    '[5,'. $s_junior_med .'],'.
-    '[10,'. $s_intermedio_med .'],'. 
-    '[15,'. $s_senior_med .']'.
-'];';
+$script_salarios = '
+var seriesSalPrinc      = ['. join(', ', imprimirSeriesSal($filas_salarios[0], $experiencias[0])) .'];
+var seriesSalJunior     = ['. join(', ', imprimirSeriesSal($filas_salarios[0], $experiencias[1])) .'];
+var seriesSalIntermedio = ['. join(', ', imprimirSeriesSal($filas_salarios[0], $experiencias[2])) .'];
+var seriesSalSenior     = ['. join(', ', imprimirSeriesSal($filas_salarios[0], $experiencias[3])) .'];
+';
 
+$script_salarios .= 'var salarios = [
+    [0,   seriesSalPrinc[0],      seriesSalPrinc[2]],
+    [5,   seriesSalJunior[0],     seriesSalJunior[2]],
+    [10,  seriesSalIntermedio[0], seriesSalIntermedio[2]],
+    [15,  seriesSalSenior[0],     seriesSalSenior[2]]
+], medias = [
+    [0,   seriesSalPrinc[1]],
+    [5,   seriesSalJunior[1]],
+    [10,  seriesSalIntermedio[1]], 
+    [15,  seriesSalSenior[1]]
+];';
 
 $script_salarios .= "$('#container_salarios').highcharts({
     chart: {
@@ -333,14 +370,21 @@ $script_salarios .= "$('#container_salarios').highcharts({
         height: 380
     },
     title: {
-        text: 'SALARIO ANUAL (€/año)',
-        align: 'center'
+        text: 'SALARIO BRUTO ANUAL',
+        align: 'center',
+        style: { 
+            'color': '#555',
+            'fontSize': '14px',
+            'fontWeight': 'bold'
+        } 
+    },
+    subtitle: {
+        text: '- € / año -'
     },
     legend: { 
         enable: false 
     },
     xAxis: {
-        //categories: ['JUNIOR','INTERMEDIO','SENIOR']
         title: {
             text: 'EXPERIENCIA ' + '(años)'.toUpperCase()
         }
@@ -360,17 +404,19 @@ $script_salarios .= "$('#container_salarios').highcharts({
     credits: {
         enabled: false
     },
-    colorBypoint: true,
-    colors: [ '#cc0000', '#cc0000' ],
     plotOptions: {
         arearange: {
             fillOpacity: 0.5
+        },
+        series: {
+            allowPointSelect: true
         }
     },
     series: [
         {
             name: '". $profesion ."',
             data: medias,
+            color: Highcharts.getOptions().colors[0],
             zIndex: 1,
             marker: {
                 fillColor: 'white',
@@ -383,6 +429,7 @@ $script_salarios .= "$('#container_salarios').highcharts({
             type: 'arearange',
             lineWidth: 0,
             linkedTo: '". $profesion ."',
+            color: Highcharts.getOptions().colors[0],
             fillOpacity: 0.3,
             zIndex: 0
         }
@@ -405,14 +452,13 @@ if( $btn_colabora_s_1 > 0 ) {
 } 
 
 /** INFO **/
-$script_info = "";
 
-$script_info .= "$('#container_info').html('<h4 style=\"margin:15px\">INFORMACIÓN</h4><div id=\"info\"></div>');";
+$script_info = "$('#container_info').html('<h4 style=\"margin:15px\">INFORMACIÓN</h4><div id=\"info\"></div>');";
 
 if( isset( $profesion ) ) {  
-    $script_info .= "$('#info').append('<h5 class=\"principal nombre\">". $profesion ."</h5>');";
+    $script_info .= "$('#info').append('<h4 class=\"principal nombre\">". $profesion ."</h4>');";
     if( empty( $filas_info[0]['descripcion'] ) ) { 
-        $script_info .= "$('#info').append('<p class=\"descripcion\" id=\"desc1\">Descripcion: Falta información! Ayúdanos a conseguirla.</p>');
+        $script_info .= "$('#info').append('<p class=\"descripcion\" id=\"desc1\">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a></div>');";
     } else { 
         $script_info .= "$('#info').append('<p class=\"descripcion\">". createExcerpts($filas_info[0]["descripcion"] , 150 , " [ + ]", $script_info) ."</p>');";
@@ -440,13 +486,13 @@ $descripciones = array(
 $btn_colabora_c_1 = 0;
 $c_analisis = $c_comunicacion = $c_equipo = $c_forma_fisica = $c_objetivos = $c_persuasion = 0;
 
-
-
-foreach( $tablas['capacidades'] as $n => $campo) {
-    $$campo = imprimirSeriesCap($filas_capacidades[0][$campo], $n, $btn_colabora_c_1);
+// busqueda de nulos en capacidades
+foreach ($filas_capacidades as $fila_capacidad) { 
+  if( is_null($fila_capacidad) || $fila_capacidad == 0 )
+    $btn_colabora_c_1++;
 }
 
-$script_capacidades = 'var capacidades = ['.$c_analisis .','. $c_comunicacion .','. $c_equipo .','. $c_forma_fisica .','. $c_objetivos .','. $c_persuasion .'];';
+$script_capacidades = 'var seriesCap = ['. join(', ', imprimirSeriesCap($filas_capacidades[0], $tablas)) .'];';
 
 $script_capacidades .= "$('#container_capacidades').highcharts({
     chart: {
@@ -463,7 +509,12 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
     },
     title: {
         text: 'CUALIDADES PROFESIONALES',
-        align: 'center'
+        align: 'center',
+        style: { 
+            'color': '#555',
+            'fontSize': '14px',
+            'fontWeight': 'bold'
+        }
     },
     legend: { enable: false },
     pane: {
@@ -471,11 +522,9 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
     },
     xAxis: {
         categories: [";
-       
         foreach($descripciones as $nombre => $descripcion) { 
             $script_capacidades .= '"'.$nombre.'",'; 
         } 
-   
         $script_capacidades .= "],
         tickmarkPlacement: 'on',
         lineWidth: 0,
@@ -487,35 +536,6 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
         min: 0,
         gridLineColor: '#999999'
     },
-    exporting: {
-            buttons: {
-               anotherButton: {
-                    text: '?? No entiendo!',
-                    onclick: function () {
-                        var capa_glosario = '<div class=\"capa-glosario\">';
-                        capa_glosario += '<div class=\"cerrar-glosario\"><img class=\"icon\" src=\"../images/cross.svg\"></img></div>';
-                        capa_glosario += '<div class=\"col-md-10 col-md-offset-1\">';
-                       
-                        capa_glosario += '<h3>No te preocupes, te lo aclaramos aquí</h3>';
-                        capa_glosario += '<dl class=\"dl-horizontal\">';";
-                        foreach ($descripciones as $nombre => $descripcion) { 
-                            $script_capacidades .= "capa_glosario += '<dt>". $nombre .":</dt><dd>". $descripcion .":</dd>';";
-                        }
-                        $script_capacidades .= "capa_glosario += '</dl>';
-
-                        capa_glosario += '</div>';
-                        capa_glosario += '</div>';
-
-                        $('#container_capacidades').append(capa_glosario);
-
-                        // cerrar glosario
-                        $('.cerrar-glosario').click( function() {
-                            $(this).parent().remove();
-                        });
-                    }
-                }
-            }
-        },
     tooltip: {
         shared: true,
         formatter: function() {
@@ -538,13 +558,43 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
         },
         headerFormat: '<strong>{point.key}</strong><br>'      
     },
+    exporting: {
+        buttons: {
+           anotherButton: {
+                text: '???',
+                onclick: function () {
+                    var capa_glosario = '<div class=\"capa-glosario\">';
+                    capa_glosario += '<div class=\"cerrar-glosario\"><img class=\"icon\" src=\"../images/cross.svg\"></img></div>';
+                    capa_glosario += '<div class=\"col-md-10 col-md-offset-1\">';
+                   
+                    capa_glosario += '<h3>No te preocupes, te lo aclaramos aquí</h3><br>';
+                    capa_glosario += '<dl class=\"dl-horizontal\">';";
+                    foreach ($descripciones as $nombre => $descripcion) { 
+                        $script_capacidades .= "capa_glosario += '<dt>". $nombre .":</dt><dd>". $descripcion .":</dd>';";
+                    }
+                    $script_capacidades .= "capa_glosario += '</dl>';
+
+                    capa_glosario += '</div>';
+                    capa_glosario += '</div>';
+
+                    $('#container_capacidades').append(capa_glosario);
+
+                    // cerrar glosario
+                    $('.cerrar-glosario').click( function() {
+                        $(this).parent().remove();
+                    });
+                }
+            }
+        }
+    },
+    
     credits: {
          enabled: false
     },
 
     series: [{  
         name: '". mb_strtoupper($profesion,"UTF-8") ."',
-        data: capacidades,
+        data: seriesCap,
         stack: '". $profesion ."'
     }]
 });";
@@ -569,8 +619,19 @@ if( $btn_colabora_c_1 > 0 ) {
 /** EMPLEABILIDAD **/
 
 $btn_colabora_e_1 = 0;
+$meses = ['enero','abril','julio','octubre'];
+$meses = array_pop(array_merge($meses,$meses)); // concatenar meses y eliminar el ultimo elemento
 
-$script_empleabilidad = "$('#container_empleabilidad').highcharts({
+// busqueda de nulos en empleabilidad
+foreach ($filas_empleabilidad as $fila_empleabilidad) { 
+  $empleabilidad = empleabilidad(round($fila_empleabilidad['contratados']), round($fila_empleabilidad['parados'])); 
+  if( is_null($empleabilidad) || $empleabilidad == 0 )
+    $btn_colabora_e_1++;
+}
+
+$script_empleabilidad = "var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad, $meses)) . "];";
+
+$script_empleabilidad .= "$('#container_empleabilidad').highcharts({
     chart: {
         type: 'column',
         marginTop: 80,
@@ -585,21 +646,20 @@ $script_empleabilidad = "$('#container_empleabilidad').highcharts({
         height: 380
     },
     title: {
-        text: 'PARO (dificultad de conseguir trabajo) ',
-        align: 'center'
+        text: 'PARO',
+        align: 'center',
+        style: { 
+            'color': '#555',
+            'fontSize': '14px',
+            'fontWeight': 'bold'
+        }
+    },
+    subtitle: {
+        text: '- DIFICULTAD DE CONSEGUIR TRABAJO -'
     },
     legend: { enable: false },
     xAxis: {
-        categories: [";
-        
-        $meses = ['enero','abril','julio','octubre'];
-        $meses = array_merge($meses,$meses); // concatenar meses
-        foreach ($meses as $n_mes => $mes) { 
-            $year = ( $n_mes > count($meses)/2 - 1 )?'2015':'2014';
-            $script_empleabilidad .= "'".ucfirst($mes)." ".$year."',";
-        }
-        
-        $script_empleabilidad .= "]
+        categories: [ 'Enero 2014', 'Abril 2014', 'Julio 2014', 'Octubre 2014', 'Enero 2015', 'Abril 2015', 'Julio 2015' ]
     },
     yAxis: {
         allowDecimals: true,
@@ -617,7 +677,7 @@ $script_empleabilidad = "$('#container_empleabilidad').highcharts({
     }, 
     series: [{
         name: '". mb_strtoupper($profesion,"UTF-8" ) ."',
-        data: [ ". imprimirSeriesEmp($filas_empleabilidad, $btn_colabora_e_1) ." ],
+        data: seriesEmp,
         stack: '". $profesion ."'
   }]
 });";
@@ -639,7 +699,7 @@ if( $btn_colabora_e_1 > 0 ) {
 } 
 
 /** FORMACION **/
-
+/*
 $i = 0;
 
 $formacion          = $filas_formaciones[$i]['f_nombre_ppal'];
@@ -915,9 +975,9 @@ if( $btn_colabora_f_1 > 0 ) {
 
     $('#container_formacion').append(capa_aviso);";
 } 
-
+*/
 /** SATISFACCION **/
-$btn_colabora_sat_1 = 0;
+/*$btn_colabora_sat_1 = 0;
 $script_satisfaccion = "$('#container_satisfaccion').highcharts({
     chart: {
         type: 'scatter',
@@ -1012,10 +1072,12 @@ if( $btn_colabora_sat_1 > 0 ) {
 
     $('#container_satisfaccion').append(capa_aviso);";
   }
-
+*/
   // incluir scripts y cerrar html 
 
-    $html .= $script_salarios . $script_info . $script_capacidades . $script_empleabilidad . $script_formacion . $script_satisfaccion .'
+    $html .= $script_salarios . $script_info . $script_capacidades . $script_empleabilidad; 
+    //$html .= $script_formacion . $script_satisfaccion;
+    $html .= '
   </script>
 </html>';
     
@@ -1024,6 +1086,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     fclose($pagina_html);
 
     } // end while
+    //TEST////break;  solo en test
   } // end foreach
 
 } catch( Exception $e ) {

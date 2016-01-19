@@ -4,10 +4,7 @@ $meses = ['enero','abril','julio','octubre'];
 $meses = array_pop(array_merge($meses,$meses)); // concatenar meses y eliminar el ultimo elemento
 
 function empleabilidad($contratados, $parados) {
-    $aver = 0;
-    if( !is_null($parados) && $parados > 0 )
-        $aver = round( 100 - ( $contratados * 100 / ($parados + $contratados) ), 2 );
-    return $aver;
+    return (!is_null($parados) && $parados > 0) ? round( 100 - ( $contratados * 100 / ($parados + $contratados) ), 2 ) : 0;
 }
 
 function imprimirSeriesEmp($filas, $meses) {
@@ -15,10 +12,7 @@ function imprimirSeriesEmp($filas, $meses) {
     foreach ($filas as $fila) {
         if(!empty($meses[$counter]))  {
             $emp = empleabilidad(round($fila['contratados']), round($fila['parados']));
-            if( is_null($emp) || $emp == 0 )
-                echo "0,";
-            else
-                echo $emp.",";
+            echo (is_null($emp) || $emp == 0) ? "0," : $emp.",";
         }
         $counter++;
     }
@@ -71,9 +65,7 @@ $('#container_empleabilidad').highcharts({
     xAxis: {
         categories: [ 'Enero 2014', 'Abril 2014', 'Julio 2014', 'Octubre 2014', 'Enero 2015', 'Abril 2015', 'Julio 2015' ]
         /*<?php 
-        //$meses = ['enero','abril','julio','octubre'];
-        //$meses = array_merge($meses,$meses); // concatenar meses
-        foreach ($meses as $n_mes => $mes) { 
+         foreach ($meses as $n_mes => $mes) { 
             $year = ( $n_mes > count($meses)/2 - 1 )?'2015':'2014';
             echo "'".ucfirst($mes)." ".$year."',";
         }
