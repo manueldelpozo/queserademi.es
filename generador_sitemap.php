@@ -7,27 +7,18 @@ include 'vendor/autoload.php';
 
 //Create a sitemap object
 use Asika\Sitemap\Sitemap;
-
+use Asika\Sitemap\ChangeFreq;
 $sitemap = new Sitemap;
 
 //Add items to sitemap:
 //Loop de todas las url creadas
-
 foreach(glob('profesiones/*.html') as $filename) {
 	//TEST//$url = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $filename;
 	$url = 'http://' . $_SERVER['HTTP_HOST'] . '/queserademi/queserademi/' . $filename;
+	echo $url.'<br>';
 	$sitemap->addItem($url);
-    echo $url.'<br>';
+	$sitemap->addItem($url, '0.7', ChangeFreq::MONTHLY, new \DateTime()); //You can add some optional params
 }
-
-//You can add some optional params.
-
-/*use Asika\Sitemap\ChangeFreq;
-
-$sitemap->addItem($url, '1.0', ChangeFreq::DAILY, '2015-06-07 10:51:20');
-$sitemap->addItem($url, '0.7', ChangeFreq::WEEKLY, new \DateTime('2015-06-03 11:24:20'));*/
-
-//The arguments are loc, priority, changefreq and lastmod
 
 //Render it to XML:
 header('Content-Type: application/xml');
@@ -40,5 +31,4 @@ fwrite($pagina_xml, $sitemap);
 fclose($pagina_xml);
 
 exit();
-
 ?>
