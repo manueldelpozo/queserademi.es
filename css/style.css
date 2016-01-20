@@ -46,21 +46,21 @@ html,body {
 	z-index: -1;
 
 	display: block;
-	background-image: url('../images/bg/bg-5.jpg');
+	background-image: url('../images/bg/bg-bl-15.jpg');
 
 	background-attachment:fixed;
-	background-position: center center;
-	background-repeat: no-repeat;
-
-	-webkit-background-size: cover;
+	background-position: top center;
+	background-repeat: repeat;
+	background-size: 33.33%;
+	/*-webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover; 
+    background-size: cover; */
 
-	filter: alpha(opacity=10); /* internet explorer */
-    -khtml-opacity: 0.1;      /* khtml, old safari */
-    -moz-opacity: 0.1;       /* mozilla, netscape */
-    opacity: 0.1;           /* fx, safari, opera */
+	/*filter: alpha(opacity=10); /* internet explorer */
+    /*-khtml-opacity: 0.1;      /* khtml, old safari */
+    /*-moz-opacity: 0.1;       /* mozilla, netscape */
+    /*opacity: 0.1;           /* fx, safari, opera */
 }
 .fullscreen {
     position: absolute;
@@ -506,6 +506,9 @@ span.flecha {
        	-moz-box-sizing: border-box;
         box-sizing: border-box;
 	}
+	.background-image {
+		background-size: 50%;
+	}
 	#scrollable-dropdown-menu {
 		width: 90%;
 	}
@@ -576,6 +579,9 @@ span.flecha {
     	-webkit-box-sizing: border-box;
        	-moz-box-sizing: border-box;
         box-sizing: border-box;
+	}
+	.background-image {
+		background-size: 50%;
 	}
 	.lead {
 		font-size:3em;
