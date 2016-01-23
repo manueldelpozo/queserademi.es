@@ -11,24 +11,39 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 	$lista = array();
 
 	if (isset($_GET['validar'])) {
-		$sql = "SELECT * FROM $tipo WHERE nombre_ppal LIKE '$query'";
+		$sql = "SELECT * FROM $tipo ";
+		if ($tipo == 'profesiones_test')
+			$sql .= "p INNER JOIN nombres_alt n ON p.id = n.id_profesion WHERE nombre_ppal LIKE '$query' OR nombre_alt LIKE '$query'";
+		else
+			$sql .= "WHERE nombre_ppal LIKE '$query'";
 	} else {
-		$sql = "SELECT nombre_ppal FROM $tipo ";
-		if( $query != '%25' )
-			$sql .= "WHERE nombre_ppal LIKE '%$query%' LIMIT 0,15";	
+		$sql = "SELECT nombre_ppal, nombre_alt FROM $tipo ";
+		if ($tipo == 'profesiones_test')
+			$sql .= "p INNER JOIN nombres_alt n ON p.id = n.id_profesion ";
+
+		if ($query != '%25')
+			$sql .= "WHERE nombre_ppal LIKE '%$query%' OR nombre_alt LIKE '%$query%' LIMIT 0,15";	
 		else
 			$sql .= "ORDER BY nombre_ppal ASC";
 	}
+	//echo $sql;
+	
 
 	$request = $pdo->prepare($sql);
 	$request->execute();
 	$count = $request->rowCount();
 	
-	if( $count > 0 ) {
+	if ($count > 0) {
 		$rows = $request->fetchAll();
 		foreach ( $rows as $row ) {
 			$nombre_ppal = ucfirst( mb_strtolower( $row['nombre_ppal'], 'UTF-8' ) );
 			$lista[] = $nombre_ppal;
+			if (!empty($row['nombre_alt']) && !is_null($row['nombre_alt'])) {
+				$nombre_alt = ucfirst( mb_strtolower( $row['nombre_alt'], 'UTF-8' ) );
+				if (strlen($row['nombre_alt']) < 5 && mb_strtoupper($row['nombre_alt'], 'UTF-8') == $row['nombre_alt'])
+					$nombre_alt = $row['nombre_alt']; // solo si son siglas
+				$lista[] = $nombre_alt;
+			}
 		}
 	} /*else {
 		$lista = null

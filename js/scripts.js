@@ -246,7 +246,7 @@ $('.typeahead[data-tipo="profesiones"]').typeahead({
     items: 9999,
     order: "asc",
 	remote: {
-		url : 'ajax.php?query=%QUERY&tipo=profesiones'
+		url : 'ajax.php?query=%QUERY&tipo=profesiones_test'
 	},
 	limit: 15
 });
@@ -266,18 +266,16 @@ $(".typeahead").click( function(e) {
 	$(this).val('');
 });
 
-
 /////************** VALIDACION
 
 function submitar($form) {
 	$.ajax({
-		url: "ajax.php?query=" + $(".typeahead").val() + "&tipo=profesiones&validar=true", 
+		url: "ajax.php?query=" + $(".typeahead").val() + "&tipo=profesiones_test&validar=true", 
 		success: function(result) {
 			if (result == '[]' || result == '[""]') {
 				alert('Por favor, introduce un valor de la lista');
 				return false;
 			} else {
-
 				$form.submit();
 			}
     	},
