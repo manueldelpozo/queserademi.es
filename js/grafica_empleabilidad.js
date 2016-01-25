@@ -3,15 +3,37 @@ $btn_colabora_e_1 = $btn_colabora_e_2 = 0;
 $meses = ['enero','abril','julio','octubre'];
 $meses = array_pop(array_merge($meses,$meses)); // concatenar meses y eliminar el ultimo elemento
 
-function empleabilidad($contratados, $parados) {
-    return (!is_null($parados) && $parados > 0) ? round( 100 - ( $contratados * 100 / ($parados + $contratados) ), 2 ) : 0;
+function minificar($parados) {
+    $output = $parados;
+    $n = 15000;
+    $m = 0.95;
+    while ($n >= 1000) {
+        if ($parados < $n)
+            $output = $parados * $m;
+        $n -= 1000;
+        $m -= 0.05;
+    }
+    if ($parados < 100)
+        $output = $parados * 0.1;
+    return $output;
 }
 
-function imprimirSeriesEmp($filas, $meses) {
+function empleabilidad($contratados, $parados) {
+    return (!is_null($parados) && $parados > 0) ? round( 100 - ($contratados * 100 / (minificar($parados) + $contratados)), 2 ) : 0;
+}
+
+function imprimirSeriesEmp($filas) {
     $counter = 0;
+    $counter_rect = 0;
+    $no_duplicado = true;
+    $memo = [];
     foreach ($filas as $fila) {
-        if(!empty($meses[$counter]))  {
-            $emp = empleabilidad(round($fila['contratados']), round($fila['parados']));
+        $memo[$counter] = $fila;
+        if (count($memo) > 1)
+            $no_duplicado = ($memo[$counter - 1]['mes'] !== $memo[$counter]['mes']);
+        if ($no_duplicado && $counter_rect < 7) {
+            $counter_rect++;
+            $emp = empleabilidad($fila['contratados'], $fila['parados']);
             echo (is_null($emp) || $emp == 0) ? "0," : $emp.",";
         }
         $counter++;
@@ -20,13 +42,13 @@ function imprimirSeriesEmp($filas, $meses) {
 
 // busqueda de nulos
 foreach ($filas_empleabilidad as $fila_empleabilidad) { 
-    $empleabilidad = empleabilidad(round($fila_empleabilidad['contratados']), round($fila_empleabilidad['parados'])); 
+    $empleabilidad = empleabilidad($fila_empleabilidad['contratados'], $fila_empleabilidad['parados']); 
     if( is_null($empleabilidad) || $empleabilidad == 0 )
         $btn_colabora_e_1++;
 }
 if( isset($profesion_dos) && !empty($profesion_dos) ){
     foreach ($filas_empleabilidad_dos as $fila_empleabilidad_dos) { 
-        $empleabilidad_dos = empleabilidad(round($fila_empleabilidad_dos['contratados']), round($fila_empleabilidad_dos['parados'])); 
+        $empleabilidad_dos = empleabilidad($fila_empleabilidad_dos['contratados'], $fila_empleabilidad_dos['parados']); 
         if( is_null($empleabilidad_dos) || $empleabilidad_dos == 0 )
             $btn_colabora_e_2++;
     }
@@ -87,12 +109,12 @@ $('#container_empleabilidad').highcharts({
     }, 
     series: [{
         name: '<?php echo mb_strtoupper($profesion,"UTF-8" ); ?>',
-        data: [ <?php imprimirSeriesEmp($filas_empleabilidad, $meses); ?> ],
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad); ?> ],
         stack: '<?php echo $profesion ?>'
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 	}, {
         name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8" ); ?>',
-        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, $meses); ?> ],
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos); ?> ],
         stack: '<?php echo $profesion_dos ?>'
     	<?php  }  ?> 
 	}]

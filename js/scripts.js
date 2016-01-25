@@ -380,6 +380,7 @@ $('#ver-video a').click( function(event) {
 // AVISOS
 // ocultar avisos
 $('.cerrar-aviso').click( function() {
+	event.preventDefault ? event.preventDefault(event) : event.returnValue = false;
 	$(this).parent().remove();
 });
 
