@@ -52,14 +52,16 @@ try {
     }
   }
 
-  /*foreach ($tablas as $tabla => $campos) {
-    foreach ($campos as $campo) {
-      $filtab = 'filas_'.$tabla;
-      foreach ($$filtab as $fila) {
-        echo $campo.": ".$fila[$campo]."<br>";
+  function verDatos($tablas) {
+    foreach ($tablas as $tabla => $campos) {
+      foreach ($campos as $campo) {
+        $filtab = 'filas_'.$tabla;
+        foreach ($$filtab as $fila) {
+          echo $campo.": ".$fila[$campo]."<br>";
+        }
       }
     }
-  }*/
+  }
 
 ?>
 <!DOCTYPE html>

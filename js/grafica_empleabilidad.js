@@ -3,23 +3,23 @@ $btn_colabora_e_1 = $btn_colabora_e_2 = 0;
 $meses = ['enero','abril','julio','octubre'];
 $meses = array_pop(array_merge($meses,$meses)); // concatenar meses y eliminar el ultimo elemento
 
-function minificar($parados) {
-    $output = $parados;
+function coefMin($parados) {
+    $output = 1;
     $n = 15000;
     $m = 0.95;
     while ($n >= 1000) {
         if ($parados < $n)
-            $output = $parados * $m;
+            $output = $m;
         $n -= 1000;
         $m -= 0.05;
     }
     if ($parados < 100)
-        $output = $parados * 0.1;
+        $output = 0.1;
     return $output;
 }
 
 function empleabilidad($contratados, $parados) {
-    return (!is_null($parados) && $parados > 0) ? round( 100 - ($contratados * 100 / (minificar($parados) + $contratados)), 2 ) : 0;
+    return (!is_null($parados) && $parados > 0) ?  round(coefMin($parados) * round(100 - ($contratados * 100 / ($parados + $contratados)), 2), 2) : 0;
 }
 
 function imprimirSeriesEmp($filas) {
