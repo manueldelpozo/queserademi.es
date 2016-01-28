@@ -75,17 +75,39 @@ try {
     return $seriesCap;
   }
 
-  function empleabilidad($contratados, $parados) {
-    return (!is_null($parados) && $parados > 0) ? round( 100 - ( $contratados * 100 / ($parados + $contratados) ), 2 ) : 0;
+  function coefMin($parados) {
+    $output = 1;
+    $n = 15000;
+    $m = 0.95;
+    while ($n >= 1000) {
+        if ($parados < $n)
+            $output = $m;
+        $n -= 1000;
+        $m -= 0.05;
+    }
+    if ($parados < 100)
+        $output = 0.1;
+    return $output;
   }
 
-  function imprimirSeriesEmp($filas, $meses) {
+  function empleabilidad($contratados, $parados) {
+    return (!is_null($parados) && $parados > 0) ?  round(coefMin($parados) * round(100 - ($contratados * 100 / ($parados + $contratados)), 2), 2) : 0;
+  }
+
+  function imprimirSeriesEmp($filas) {
     $counter = 0;
+    $counter_rect = 0;
+    $no_duplicado = true;
+    $memo = [];
     $seriesEmp = array();
     foreach ($filas as $fila) {
-      if(!empty($meses[$counter]))  {
-          $emp = empleabilidad(round($fila['contratados']), round($fila['parados']));
-          array_push($seriesEmp, (is_null($emp) || $emp == 0) ? "0" : $emp); 
+      $memo[$counter] = $fila;
+      if (count($memo) > 1)
+        $no_duplicado = ($memo[$counter - 1]['mes'] !== $memo[$counter]['mes']);
+      if ($no_duplicado && $counter_rect < 7) {
+        $counter_rect++;
+        $emp = empleabilidad($fila['contratados'], $fila['parados']);
+        array_push($seriesEmp, (is_null($emp) || $emp == 0) ? "0" : $emp); 
       }
       $counter++;
     }
@@ -624,12 +646,12 @@ $meses = array_pop(array_merge($meses,$meses)); // concatenar meses y eliminar e
 
 // busqueda de nulos en empleabilidad
 foreach ($filas_empleabilidad as $fila_empleabilidad) { 
-  $empleabilidad = empleabilidad(round($fila_empleabilidad['contratados']), round($fila_empleabilidad['parados'])); 
+  $empleabilidad = empleabilidad($fila_empleabilidad['contratados'], $fila_empleabilidad['parados']); 
   if( is_null($empleabilidad) || $empleabilidad == 0 )
     $btn_colabora_e_1++;
 }
 
-$script_empleabilidad = "var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad, $meses)) . "];";
+$script_empleabilidad = "var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad)) . "];";
 
 $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
     chart: {
