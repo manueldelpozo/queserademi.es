@@ -4,8 +4,16 @@ $descripciones = array(
     'Comunicación'              => 'Comunicación, hablar en público, escucha activa.',
     'Destreza y físico'         => 'Destreza técnica, apariciencia física, etc.',
     'Cooperación'               => 'Empatía, sensibilidad, colaboración, trabajo en equipo, escucha.',
-    'Consecución de objetivos'  => 'Orientado a objetivos, resultados, etc.',
+    'Logro de objetivos'        => 'Orientado a objetivos, resultados, etc.',
     'Persuasión'                => 'Influencia, negociación, habilidades comerciales, etc.'
+);
+$iconos = array(
+    'Análisis'                  => 'line-chart',
+    'Comunicación'              => 'comments-o',
+    'Destreza y físico'         => 'wrench',
+    'Cooperación'               => 'users',
+    'Logro de objetivos'        => 'trophy',
+    'Persuasión'                => 'briefcase'
 );
 
 $btn_colabora_c_1 = $btn_colabora_c_2 = 0;
@@ -76,12 +84,17 @@ $('#container_capacidades').highcharts({
             useHTML: true,
             formatter: function () {
                 return [
-                '<i class="fa fa-line-chart fa-lg"></i>'+
-                '<i class="fa fa-comments-o fa-lg"></i>'+
-                '<i class="fa fa-wrench fa-lg"></i>'+
-                '<i class="fa fa-users fa-lg"></i>'+
-                '<i class="fa fa-trophy fa-lg"></i>'+
-                '<i class="fa fa-briefcase fa-lg"></i>'
+                <?php 
+                $numItems = count($iconos);
+                $i = 0;
+                foreach($iconos as $nombre => $icono) { 
+                    echo "'";
+                    echo '<i class="fa fa-'.$icono.' fa-lg"></i>';
+                    echo "'";
+                    if(++$i !== $numItems)
+                        echo '+';
+                } 
+                ?>
                 ];
             }
         }
@@ -112,9 +125,9 @@ $('#container_capacidades').highcharts({
                         capa_glosario += '<dl class="dl-horizontal">';
                         <?php foreach ($descripciones as $nombre => $descripcion) { ?>
                             capa_glosario += '<dt>';
-                            capa_glosario += '<i class="fa fa-line-chart fa-lg"></i><br>';
                             capa_glosario += '<?php echo $nombre; ?>:';
-                            capa_glosario += '</dt><dd><?php echo $descripcion; ?>:</dd>';
+                            capa_glosario += '&nbsp;<i class="fa fa-<?php echo $iconos[$nombre]; ?> fa-lg"></i><br>';
+                            capa_glosario += '</dt><dd>&gt;&gt;<?php echo $descripcion; ?></dd>';
                         <?php } ?>
                         capa_glosario += '</dl>';
 
@@ -139,7 +152,7 @@ $('#container_capacidades').highcharts({
                 Comunicacion:               "<?php echo $descripciones['Comunicación']; ?>",
                 Destreza_y_fisico:          "<?php echo $descripciones['Destreza y físico']; ?>",
                 Cooperacion:                "<?php echo $descripciones['Cooperación']; ?>",
-                Consecucion_de_objetivos:   "<?php echo $descripciones['Consecución de objetivos']; ?>",
+                Logro_de_objetivos:         "<?php echo $descripciones['Logro de objetivos']; ?>",
                 Persuasion:                 "<?php echo $descripciones['Persuasión']; ?>"
             };
 

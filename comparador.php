@@ -152,16 +152,16 @@ try {
 
           <div class="row body" style="margin-top:5px;height:120%;">
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_salarios" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_info" class="grafica"></div>
+              <div id="container_empleabilidad" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_capacidades" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_empleabilidad" class="grafica"></div>
+              <div id="container_salarios" class="grafica"></div>
+            </div>
+            <div class="col-md-6 col-xs-12 text-center">
+              <div id="container_info" class="grafica"></div>
             </div>
             <!--div class="col-md-6 col-xs-12 text-center">
               <div id="container_formacion" class="grafica"></div>
