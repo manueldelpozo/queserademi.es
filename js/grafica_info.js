@@ -21,7 +21,7 @@ $('#container_info').html('<h5 style="margin:15px; font-family: sans-serif; font
     <?php } ?>
 <?php } ?>
 <?php if( isset( $profesion_dos ) && $profesion_dos != ''  ) { ?>
-    $('#info').append('<h1 class="secundaria nombre" style="clear:both; color:#555; margin:10px;">VS</h1>');
+    $('#info').append('<h1 class="secundaria nombre" style="clear:both; color:#555; margin:10px;">~ VS ~</h1>');
     $('#info').append('<h4 class="secundaria nombre"><?php echo $profesion_dos; ?></h4>');
     <?php if( empty( $filas_info_dos[0]['descripcion'] ) ) { ?>
         $('#info').append('<p class="descripcion">Falta información! Ayúdanos a conseguirla.</p>');

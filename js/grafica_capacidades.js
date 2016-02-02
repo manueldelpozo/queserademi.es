@@ -2,7 +2,7 @@
 $descripciones = array(
     'Análisis'                  => 'Razonamiento lógico, toma de decisiones, organización, gestión, etc.',
     'Comunicación'              => 'Comunicación, hablar en público, escucha activa.',
-    'Capacidad física'          => 'Destreza técnica, apariciencia física, etc.',
+    'Destreza y físico'         => 'Destreza técnica, apariciencia física, etc.',
     'Cooperación'               => 'Empatía, sensibilidad, colaboración, trabajo en equipo, escucha.',
     'Consecución de objetivos'  => 'Orientado a objetivos, resultados, etc.',
     'Persuasión'                => 'Influencia, negociación, habilidades comerciales, etc.'
@@ -67,13 +67,36 @@ $('#container_capacidades').highcharts({
         ],
         tickmarkPlacement: 'on',
         lineWidth: 0,
-        gridLineColor: '#999999'
+        gridLineColor: '#999999',
+        labels: {
+            style: {
+                fontSize: '12px',
+                zIndex: '-1'
+            },
+            useHTML: true,
+            formatter: function () {
+                return [
+                '<i class="fa fa-line-chart fa-lg"></i>'+
+                '<i class="fa fa-comments-o fa-lg"></i>'+
+                '<i class="fa fa-wrench fa-lg"></i>'+
+                '<i class="fa fa-users fa-lg"></i>'+
+                '<i class="fa fa-trophy fa-lg"></i>'+
+                '<i class="fa fa-briefcase fa-lg"></i>'
+                ];
+            }
+        }
     },
     yAxis: {
         gridLineInterpolation: 'polygon',
         lineWidth: 0,
         min: 0,
-        gridLineColor: '#999999'
+        minorTickInterval: 'auto',
+        gridLineColor: '#999999',
+        labels: {
+            style: {
+                fontSize: '0px'
+            }
+        }
     },
     exporting: {
             buttons: {
@@ -88,7 +111,10 @@ $('#container_capacidades').highcharts({
                         capa_glosario += '<h3>No te preocupes, te lo aclaramos aquí!</h3><br>';
                         capa_glosario += '<dl class="dl-horizontal">';
                         <?php foreach ($descripciones as $nombre => $descripcion) { ?>
-                            capa_glosario += '<dt><?php echo $nombre; ?>:</dt><dd><?php echo $descripcion; ?>:</dd>';
+                            capa_glosario += '<dt>';
+                            capa_glosario += '<i class="fa fa-line-chart fa-lg"></i><br>';
+                            capa_glosario += '<?php echo $nombre; ?>:';
+                            capa_glosario += '</dt><dd><?php echo $descripcion; ?>:</dd>';
                         <?php } ?>
                         capa_glosario += '</dl>';
 
@@ -111,7 +137,7 @@ $('#container_capacidades').highcharts({
             var descripciones = {
                 Analisis:                   "<?php echo $descripciones['Análisis']; ?>",
                 Comunicacion:               "<?php echo $descripciones['Comunicación']; ?>",
-                Capacidad_fisica:           "<?php echo $descripciones['Capacidad física']; ?>",
+                Destreza_y_fisico:          "<?php echo $descripciones['Destreza y físico']; ?>",
                 Cooperacion:                "<?php echo $descripciones['Cooperación']; ?>",
                 Consecucion_de_objetivos:   "<?php echo $descripciones['Consecución de objetivos']; ?>",
                 Persuasion:                 "<?php echo $descripciones['Persuasión']; ?>"
@@ -122,7 +148,7 @@ $('#container_capacidades').highcharts({
                 points += '<span style="color:'+this.points[1].series.color+'">'+this.points[1].series.name+': <strong>'+this.points[1].y+'</strong><br/>';
             }
             
-            return '<strong>'+ descripciones[this.x.replace(/ /g,"_").latinize()] +'</strong><br/>'+ points;   
+            return '<strong style="font-size:17px;color:rgb(0,0,0);">'+ this.x +'</strong><br/>'+'<span>'+ descripciones[this.x.replace(/ /g,"_").latinize()] +'</span><br/>'+ points;   
         },
         headerFormat: '<strong>{point.key}</strong><br>'      
     },
