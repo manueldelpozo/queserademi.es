@@ -141,6 +141,7 @@ div.body > div {
   .grafica {
     margin-bottom: 10px;
   }
+  .capa-aviso h3, .capa-glosario h3 {
     font-size: 18px;
     margin-top: 10px;
   } 
@@ -159,7 +160,7 @@ div.body > div {
   .grafica {
     margin-bottom: 10px;
   }
-  .capa-aviso, .capa-glosario h3 {
+  .capa-aviso h3, .capa-glosario h3 {
     font-size: 18px;
     margin-top: 10px;
   } 
