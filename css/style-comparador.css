@@ -75,6 +75,7 @@ div.body > div {
   padding-top: 20px;
   background-color: rgba(200, 200, 200, 0.9);
   font-size: 14px;
+  overflow: auto;
 }
 .btn-aviso {
   width: 50%;
@@ -96,7 +97,6 @@ div.body > div {
   top: 5px;
   right: 5px;
   cursor: pointer;
-  overflow: auto;
 }
 .capa-glosario dd {
   margin-bottom: 10px;
@@ -141,8 +141,14 @@ div.body > div {
   .grafica {
     margin-bottom: 10px;
   }
+    font-size: 18px;
+    margin-top: 10px;
+  } 
   .capa-glosario dd {
     margin-bottom: 3px;
+  }
+  .highcharts-container svg > g.highcharts-button:nth-child(2) {
+    display: none;
   }
 }
 @media only screen and (max-device-width: 768px) and (orientation:landscape) {
@@ -153,6 +159,10 @@ div.body > div {
   .grafica {
     margin-bottom: 10px;
   }
+  .capa-aviso, .capa-glosario h3 {
+    font-size: 18px;
+    margin-top: 10px;
+  } 
   .capa-glosario dd {
     margin-bottom: 3px;
   }
