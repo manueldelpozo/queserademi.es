@@ -94,6 +94,20 @@ try {
     return (!is_null($parados) && $parados > 0) ?  round(coefMin($parados) * round(100 - ($contratados * 100 / ($parados + $contratados)), 2), 2) : 0;
   }
 
+  function mediaEmpleabilidad($pdo, $meses) {
+    $medias = array();
+    foreach ($meses as $n_mes => $mes) {
+        $anyo = ( $n_mes - 1 > count($meses)/2 - 1 ) ? '2015' : '2014';
+        $consulta = "SELECT AVG(parados) AS media_parados, AVG(contratados) AS media_contratados FROM empleabilidad WHERE mes LIKE '". $mes ."' AND anyo LIKE ". $anyo;
+        $rs = $pdo->prepare($consulta);
+        $rs->execute();
+        $fila = $rs->fetchAll();
+        $media = empleabilidad($fila[0]['media_parados'], $fila[0]['media_contratados']);
+        $medias[] = $media;
+    }
+    return join(", ",$medias);
+  }
+
   function imprimirSeriesEmp($filas) {
     $counter = 0;
     $counter_rect = 0;
@@ -673,7 +687,8 @@ if( $btn_colabora_c_1 > 0 ) {
 
 $btn_colabora_e_1 = 0;
 $meses = ['enero','abril','julio','octubre'];
-$meses = array_pop(array_merge($meses,$meses)); // concatenar meses y eliminar el ultimo elemento
+$meses = array_merge($meses,$meses); // concatenar meses 
+array_pop($meses); // y eliminar el ultimo elemento
 
 // busqueda de nulos en empleabilidad
 foreach ($filas_empleabilidad as $fila_empleabilidad) { 
@@ -683,6 +698,7 @@ foreach ($filas_empleabilidad as $fila_empleabilidad) {
 }
 
 $script_empleabilidad = "var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad)) . "];";
+$script_empleabilidad = "var seriesEmpMedia = [". mediaEmpleabilidad($pdo, $meses) . "];";
 
 $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
     chart: {
@@ -712,7 +728,14 @@ $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
     },
     legend: { enable: false },
     xAxis: {
-        categories: [ 'Enero 2014', 'Abril 2014', 'Julio 2014', 'Octubre 2014', 'Enero 2015', 'Abril 2015', 'Julio 2015' ]
+        categories: [ ";
+          foreach ($meses as $n_mes => $mes) { 
+            $year = ( $n_mes - 1 > count($meses)/2 - 1 ) ? '2015' : '2014';
+            $script_empleabilidad .= "'".ucfirst($mes)." ".$year."'";
+            if ($n_mes + 1 < count($meses))
+              $script_empleabilidad .= ',';
+          }
+        $script_empleabilidad .= " ]
     },
     yAxis: {
         allowDecimals: true,
@@ -728,11 +751,19 @@ $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
     credits: {
         enabled: false
     }, 
-    series: [{
+    series: [
+      {
         name: '". mb_strtoupper($profesion,"UTF-8" ) ."',
         data: seriesEmp,
         stack: '". $profesion ."'
-  }]
+      },{
+        name: 'Media de paro',
+        type: 'spline',
+        data: seriesEmpMedia,
+        stack: 'Media de paro',
+        color: 'rgb(0, 0, 0)'
+      }
+    ]
 });";
 
 if( $btn_colabora_e_1 > 0 ) { 

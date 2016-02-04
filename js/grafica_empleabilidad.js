@@ -1,7 +1,22 @@
 <?php 
 $btn_colabora_e_1 = $btn_colabora_e_2 = 0;
 $meses = ['enero','abril','julio','octubre'];
-$meses = array_pop(array_merge($meses,$meses)); // concatenar meses y eliminar el ultimo elemento
+$meses = array_merge($meses,$meses); // concatenar meses 
+array_pop($meses); // y eliminar el ultimo elemento
+
+function mediaEmpleabilidad($pdo, $meses) {
+    $medias = array();
+    foreach ($meses as $n_mes => $mes) {
+        $anyo = ( $n_mes - 1 > count($meses)/2 - 1 ) ? '2015' : '2014';
+        $consulta = "SELECT AVG(parados) AS media_parados, AVG(contratados) AS media_contratados FROM empleabilidad WHERE mes LIKE '". $mes ."' AND anyo LIKE ". $anyo;
+        $rs = $pdo->prepare($consulta);
+        $rs->execute();
+        $fila = $rs->fetchAll();
+        $media = empleabilidad($fila[0]['media_parados'], $fila[0]['media_contratados']);
+        $medias[] = $media;
+    }
+    echo join(", ",$medias);
+}
 
 function coefMin($parados) {
     $output = 1;
@@ -85,13 +100,16 @@ $('#container_empleabilidad').highcharts({
 
     legend: { enable: false },
     xAxis: {
-        categories: [ 'Enero 2014', 'Abril 2014', 'Julio 2014', 'Octubre 2014', 'Enero 2015', 'Abril 2015', 'Julio 2015' ]
-        /*<?php 
+        categories: [ 
+        <?php 
          foreach ($meses as $n_mes => $mes) { 
-            $year = ( $n_mes > count($meses)/2 - 1 )?'2015':'2014';
-            echo "'".ucfirst($mes)." ".$year."',";
+            $year = ( $n_mes - 1 > count($meses)/2 - 1 ) ? '2015' : '2014';
+            echo "'".ucfirst($mes)." ".$year."'";
+            if ($n_mes + 1 < count($meses))
+                echo ',';
         }
-        ?>*/
+        ?>
+        ]
     },
     yAxis: {
         allowDecimals: true,
@@ -107,7 +125,8 @@ $('#container_empleabilidad').highcharts({
     credits: {
         enabled: false
     }, 
-    series: [{
+    series: [
+    {
         name: '<?php echo mb_strtoupper($profesion,"UTF-8" ); ?>',
         data: [ <?php imprimirSeriesEmp($filas_empleabilidad); ?> ],
         stack: '<?php echo $profesion ?>'
@@ -117,7 +136,14 @@ $('#container_empleabilidad').highcharts({
         data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos); ?> ],
         stack: '<?php echo $profesion_dos ?>'
     	<?php  }  ?> 
-	}]
+	},{
+        name: 'Media de paro',
+        type: 'spline',
+        data: [ <?php mediaEmpleabilidad($pdo, $meses); ?> ],
+        stack: 'Media de paro',
+        color: 'rgb(0, 0, 0)'
+    }
+    ]
 });
 
 // Comprobar si se necesitan botones producido

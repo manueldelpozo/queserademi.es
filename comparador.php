@@ -1,4 +1,7 @@
 <?php 
+//eliminar el limite de ejecucion
+set_time_limit(0);
+
 try {
   require('conexion.php');
 
@@ -241,10 +244,10 @@ try {
 
   <script type="text/javascript" async>
     <?php 
-      include('js/grafica_salarios.js');
-      include('js/grafica_info.js');  
+      include('js/grafica_empleabilidad.js');  
       include('js/grafica_capacidades.js');
-      include('js/grafica_empleabilidad.js'); 
+      include('js/grafica_salarios.js');
+      include('js/grafica_info.js'); 
       //include('js/grafica_formacion.js');
       //include('js/grafica_satisfaccion.js');
     ?>

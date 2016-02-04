@@ -96,6 +96,7 @@ div.body > div {
   top: 5px;
   right: 5px;
   cursor: pointer;
+  overflow: auto;
 }
 .capa-glosario dd {
   margin-bottom: 10px;
@@ -140,6 +141,9 @@ div.body > div {
   .grafica {
     margin-bottom: 10px;
   }
+  .capa-glosario dd {
+    margin-bottom: 3px;
+  }
 }
 @media only screen and (max-device-width: 768px) and (orientation:landscape) {
   div.header {
@@ -148,5 +152,8 @@ div.body > div {
   }
   .grafica {
     margin-bottom: 10px;
+  }
+  .capa-glosario dd {
+    margin-bottom: 3px;
   }
 }
