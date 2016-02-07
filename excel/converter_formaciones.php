@@ -17,9 +17,9 @@ try {
 try {
 	$sql="CREATE TABLE IF NOT EXISTS `formaciones` (
 	`cod` int(11) NOT NULL,
-	`f_nombre_ppal` varchar(100) NOT NULL,
+	`f_nombre_ppal` varchar(500) NOT NULL,
 	`f_nombre_alt` varchar(100),
-	`f_descripcion` varchar(1000),
+	`f_descripcion` varchar(2000),
 	`duracion_academica` float,
 	`duracion_real` float NULL,
 	`acceso` float NULL,
@@ -83,9 +83,9 @@ try{
 	    //recoger datos del array rowData
 		$cod = $rowData[0][0];
 		
-	    $f_nombre_ppal = $rowData[0][1];
-	    $f_nombre_alt = $rowData[0][2];
-	    $f_descripcion = $rowData[0][3];
+	    $f_nombre_ppal = str_replace("'", "\'", $rowData[0][1]);
+	    $f_nombre_alt = str_replace("'", "\'", $rowData[0][2]);
+	    $f_descripcion = str_replace("'", "\'", $rowData[0][3]);
 	    $duracion_academica = str_replace(',', '.', $rowData[0][4]); // convertir las comas en puntos
 		$duracion_real = str_replace(',', '.', $rowData[0][5]);
 		$acceso = $rowData[0][6];
@@ -94,6 +94,7 @@ try{
 	    //insertar datos en el VALUE
 	    $sql_insert .= "'$cod','$f_nombre_ppal','$f_nombre_alt','$f_descripcion','$duracion_academica','$duracion_real','$acceso','$nivel');";  
 	}
+	//echo $sql_insert;
 	//cerrar sentencia INSERT e insertar en mysql
 	if ($pdo->query($sql_insert)) {
 	    print "<p>Registro creado correctamente.</p>\n";
