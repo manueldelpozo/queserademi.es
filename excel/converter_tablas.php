@@ -150,9 +150,9 @@ try {
 			$insert_empleabilidad_abril_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_abril_2015','$contratados_abril_2015','abril',2015)";
 			$insert_empleabilidad_julio_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_julio_2015','$contratados_julio_2015','julio',2015)";
 			$insert_capacidades_total 			= $insert_capacidades.$id_profesion.",'$c_analisis','$c_comunicacion','$c_equipo','$c_forma_fisica','$c_objetivos','$c_persuasion','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_nombre')";
-			//$insert_profesiones_formaciones_1 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_1')"; 
-			//$insert_profesiones_formaciones_2 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_2')";
-			//$insert_profesiones_formaciones_3 	= $insert_profesiones_formaciones.$id_profesion.",'$id_formacion_3')";
+			$insert_profesiones_formaciones_1 	= $id_formacion_1 > 0 ? $insert_profesiones_formaciones . $id_profesion . ",$id_formacion_1)" : null; 
+			$insert_profesiones_formaciones_2 	= $id_formacion_2 > 0 ? $insert_profesiones_formaciones . $id_profesion . ",$id_formacion_2)" : null;
+			$insert_profesiones_formaciones_3 	= $id_formacion_3 > 0 ? $insert_profesiones_formaciones . $id_profesion . ",$id_formacion_3)" : null;
 			$inserts = array(
 				$insert_nombres_alt_1, 
 				$insert_nombres_alt_2, 
@@ -166,16 +166,14 @@ try {
 				$insert_empleabilidad_abril_2015, 
 				$insert_empleabilidad_julio_2015, 
 				$insert_capacidades_total, 
-				//$insert_profesiones_formaciones_1, 
-				//$insert_profesiones_formaciones_2, 
-				//$insert_profesiones_formaciones_3
+				$insert_profesiones_formaciones_1, 
+				$insert_profesiones_formaciones_2, 
+				$insert_profesiones_formaciones_3
 			);
-			foreach ( $inserts as $insert) {
+			foreach ($inserts as $insert) {
 				echo $insert . "<br>";
-				if ($pdo->query($insert))
-					echo "<p>Registro insertado correctamente.</p>\n";
-			    else
-			    	echo "<p>Error en la insercion</p>";			
+				if (!is_null($insert))
+					echo $pdo->query($insert) ? "<p>Registro insertado correctamente.</p>\n" : "<p>Error en la insercion</p>";
 			}
 		}		
 	}
