@@ -102,7 +102,7 @@ try {
         $rs = $pdo->prepare($consulta);
         $rs->execute();
         $fila = $rs->fetchAll();
-        $media = empleabilidad($fila[0]['media_parados'], $fila[0]['media_contratados']);
+        $media = empleabilidad($fila[0]['media_contratados'], $fila[0]['media_parados']);
         $medias[] = $media;
     }
     return join(", ",$medias);
@@ -761,7 +761,13 @@ $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
         type: 'spline',
         data: seriesEmpMedia,
         stack: 'Media de paro',
-        color: 'rgb(0, 0, 0)'
+        color: 'rgb(0, 0, 0)',
+        dashStyle: 'shortdot',
+        marker: {
+            fillColor: 'white',
+            lineWidth: 2,
+            lineColor: 'rgb(0, 0, 0)',
+        }
       }
     ]
 });";

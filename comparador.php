@@ -26,7 +26,7 @@ try {
     if ($tabla == 'info')
       $where = "WHERE ";
     else if ($tabla == 'formaciones')
-      $where = "INNER JOIN profesiones_formaciones pf ON p.id = pf.id_profesion INNER JOIN formaciones f ON f.id = pf.id_formacion WHERE ";
+      $where = "INNER JOIN profesiones_formaciones pf ON p.id = pf.id_profesion INNER JOIN formaciones f ON f.cod = pf.id_formacion WHERE ";
     else
       $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND ";
 

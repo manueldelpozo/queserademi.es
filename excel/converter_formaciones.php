@@ -94,7 +94,6 @@ try{
 	    //insertar datos en el VALUE
 	    $sql_insert .= "'$cod','$f_nombre_ppal','$f_nombre_alt','$f_descripcion','$duracion_academica','$duracion_real','$acceso','$nivel');";  
 	}
-	//echo $sql_insert;
 	//cerrar sentencia INSERT e insertar en mysql
 	if ($pdo->query($sql_insert)) {
 	    print "<p>Registro creado correctamente.</p>\n";
