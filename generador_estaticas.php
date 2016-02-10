@@ -26,7 +26,7 @@ try {
     if ($tabla == 'info')
       $where = "WHERE";
     else if ($tabla == 'formaciones')
-      $where = "INNER JOIN profesiones_formaciones pf ON p.id = pf.id_profesion INNER JOIN formaciones f ON f.id = pf.id_formacion WHERE";
+      $where = "INNER JOIN profesiones_formaciones pf ON p.id = pf.id_profesion INNER JOIN formaciones f ON f.cod = pf.id_formacion WHERE";
     else
       $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND";
 
@@ -97,13 +97,16 @@ try {
   function mediaEmpleabilidad($pdo, $meses) {
     $medias = array();
     foreach ($meses as $n_mes => $mes) {
+        $media = array();
         $anyo = ( $n_mes - 1 > count($meses)/2 - 1 ) ? '2015' : '2014';
-        $consulta = "SELECT AVG(parados) AS media_parados, AVG(contratados) AS media_contratados FROM empleabilidad WHERE mes LIKE '". $mes ."' AND anyo LIKE ". $anyo;
+        $consulta = "SELECT parados, contratados FROM empleabilidad WHERE mes LIKE '". $mes ."' AND anyo LIKE ". $anyo;
         $rs = $pdo->prepare($consulta);
         $rs->execute();
-        $fila = $rs->fetchAll();
-        $media = empleabilidad($fila[0]['media_contratados'], $fila[0]['media_parados']);
-        $medias[] = $media;
+        $filas = $rs->fetchAll();
+        foreach ($filas as $fila) {
+            $media[] = empleabilidad($fila['contratados'], $fila['parados']);
+        }
+        $medias[] = array_sum($media) / count($media);
     }
     return join(", ",$medias);
   }

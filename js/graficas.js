@@ -6,7 +6,10 @@ Highcharts.setOptions({
 		style: {
 			fontFamily: 'Arial'
 		}
-	}
+	},
+	lang: {
+        numericSymbols: ['.000', '.000.000', '.000.000.000', '.000.000.000.000', '.000.000.000.000.000', '.000.000.000.000.000.000'] //otherwise by default ['k', 'M', 'G', 'T', 'P', 'E']
+    }
 });
 
 var Latinise = {};

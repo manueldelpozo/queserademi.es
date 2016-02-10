@@ -91,7 +91,7 @@ $('#container_salarios').highcharts({
 
     yAxis: {
         title: {
-            text: 'SALARIO BRUTO ANUAL'
+            text: 'Salario bruto anual - € / año'
         }
     },
 
