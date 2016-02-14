@@ -22,18 +22,17 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 			$sql .= "p INNER JOIN nombres_alt n ON p.id = n.id_profesion ";
 
 		if ($query != '%25')
-			$sql .= "WHERE nombre_ppal LIKE '%$query%' OR nombre_alt LIKE '%$query%' LIMIT 0,15";	
+			$sql .= "WHERE nombre_ppal LIKE '%$query%' OR nombre_alt LIKE '%$query%'";	
 		else
 			$sql .= "ORDER BY nombre_ppal ASC";
 	}
-	//echo $sql;
-	
 
 	$request = $pdo->prepare($sql);
 	$request->execute();
 	$count = $request->rowCount();
 	
 	if ($count > 0) {
+		$mas_btn = '<strong id="masLista">Más...</strong>';
 		$rows = $request->fetchAll();
 		foreach ( $rows as $row ) {
 			$nombre_ppal = ucfirst( mb_strtolower( $row['nombre_ppal'], 'UTF-8' ) );
@@ -45,9 +44,8 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 				$lista[] = $nombre_alt;
 			}
 		}
-	} /*else {
-		$lista = null
-	}*/
+		//$lista[] = $mas_btn; // Por el momento no usar boton Mas
+	} 
 
 	echo json_encode($lista);
 }

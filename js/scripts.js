@@ -248,7 +248,7 @@ $('.typeahead[data-tipo="profesiones"]').typeahead({
 	remote: {
 		url : 'ajax.php?query=%QUERY&tipo=profesiones_test'
 	},
-	limit: 15
+	limit: 80
 });
 $('.typeahead[data-tipo="formaciones"]').typeahead({
 	minLength: 0,
@@ -257,23 +257,25 @@ $('.typeahead[data-tipo="formaciones"]').typeahead({
 	remote: {
 		url : 'ajax.php?query=%QUERY&tipo=formaciones'
 	},
-	limit: 15
+	limit: 80
 });
-// Cuando clickamos en el input 
-$(".typeahead").click( function(e) {
+// Cuando clickamos en el input // NO FUNCIONAA 
+/*$(".typeahead").click( function(e) {
 	$(this).val('%');
 	$(this).typeahead.bind($(this), 'lookup'); //No hace nada
 	$(this).val('');
-});
+});*/
 
 /////************** VALIDACION
 
-function submitar($form) {
+function submitar($input) {
+	$form = $input.parents("#formulario");
+	console.log($form);
 	$.ajax({
-		url: "ajax.php?query=" + $(".typeahead").val() + "&tipo=profesiones_test&validar=true", 
+		url: "ajax.php?query=" + $input.val() + "&tipo=profesiones_test&validar=true", 
 		success: function(result) {
 			if (result == '[]' || result == '[""]') {
-				alert('Por favor, introduce un valor de la lista');
+				alert('Por favor, introduce un valor de la lista'); // usar POPUP aqui
 				return false;
 			} else {
 				$form.submit();
@@ -298,7 +300,7 @@ $(".typeahead").keydown( function(e) {
 
 			$(this).siblings('.tt-hint').val('');
 			$(this).val($(this).siblings('.tt-dropdown-menu').find('.tt-suggestion:first-child').text());
-			submitar($('#formulario')); 
+			submitar($(this)); 
 		}
 	}
 });
@@ -306,15 +308,47 @@ $(".typeahead").keydown( function(e) {
 // Cuando clickamos boton submit
 $('.btn-submit').click( function(e) {
 	e.preventDefault();
-	submitar($('#formulario')); 
+	submitar($(this).parent('#scrollable-dropdown-menu').find('.typeahead')); 
 });
 
 // LISTA
 // Submit despues de seleccionar item de la lista
 $(".tt-dropdown-menu").click( function(e) {
-	if( $(this).siblings('.typeahead').val() == $(e.target).text() )
-		submitar($('#formulario')); 
+	var $textItem = $(e.target).text();
+	var $input = $(this).siblings('.typeahead');
+	var $consulta = $input.val();
+	if ($consulta == $textItem && $textItem != 'Más...') {
+		submitar($input); 
+	} 
+	// No usar opcion Mas por el momento
+	/*else if ($textItem == 'Más...') {
+		// no ocultar lista
+		$(this).show();
+		// no mostrar mas en input
+		$input.val('');
+		// eliminar mas
+		$(e.target).parent('.tt-suggestion').remove();
+		mostrarMasLista($input);
+	}*/
 });
+
+function mostrarMasLista($input) {
+	// consultar todos los elementos de la lista
+	$.ajax({
+		url: "ajax.php?query=%&tipo=profesiones_test", 
+		success: function(result) {
+			$input.typeahead({
+				source: result,
+			});
+			// remplazar nueva lista
+			return false;
+    	},
+    	error: function(xhr, textStatus, errorThrown){
+			alert('request failed');
+			return false;
+	    }
+    });
+}
 
 // FOOTER
 // animar footer
