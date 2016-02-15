@@ -106,7 +106,7 @@ try {
         foreach ($filas as $fila) {
             $media[] = empleabilidad($fila['contratados'], $fila['parados']);
         }
-        $medias[] = array_sum($media) / count($media);
+        $medias[] = round(array_sum($media) / count($media), 2);
     }
     return join(", ",$medias);
   }
@@ -760,7 +760,7 @@ $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
         data: seriesEmp,
         stack: '". $profesion ."'
       },{
-        name: 'Media de paro',
+        name: 'Media de paro de todas las profesiones',
         type: 'spline',
         data: seriesEmpMedia,
         stack: 'Media de paro',

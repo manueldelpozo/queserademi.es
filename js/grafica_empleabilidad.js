@@ -16,7 +16,7 @@ function mediaEmpleabilidad($pdo, $meses) {
         foreach ($filas as $fila) {
             $media[] = empleabilidad($fila['contratados'], $fila['parados']);
         }
-        $medias[] = array_sum($media) / count($media);
+        $medias[] = round(array_sum($media) / count($media), 2);
     }
     echo join(", ",$medias);
 }
@@ -140,7 +140,7 @@ $('#container_empleabilidad').highcharts({
         stack: '<?php echo $profesion_dos ?>'
     	<?php  }  ?> 
 	},{
-        name: 'Media de paro',
+        name: 'Media de paro de todas las profesiones',
         type: 'spline',
         data: [ <?php mediaEmpleabilidad($pdo, $meses); ?> ],
         stack: 'Media de paro',
