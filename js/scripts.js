@@ -269,23 +269,24 @@ $('.typeahead[data-tipo="formaciones"]').typeahead({
 /////************** VALIDACION
 
 function submitar($input) {
-	$form = $input.parents("#formulario");
-	console.log($form);
-	$.ajax({
-		url: "ajax.php?query=" + $input.val() + "&tipo=profesiones_test&validar=true", 
-		success: function(result) {
-			if (result == '[]' || result == '[""]') {
-				alert('Por favor, introduce un valor de la lista'); // usar POPUP aqui
+	if ($input.val()) {
+		$.ajax({
+			url: "ajax.php?query=" + $input.val() + "&tipo=profesiones_test&validar=true", 
+			success: function(result) {
+				$form = $input.parents("#formulario");
+				if (result == '[]' || result == '[""]') {
+					alert('Por favor, introduce un valor de la lista'); // usar POPUP aqui
+					return false;
+				} else {
+					$form.submit();
+				}
+	    	},
+	    	error: function(xhr, textStatus, errorThrown){
+				alert('request failed');
 				return false;
-			} else {
-				$form.submit();
-			}
-    	},
-    	error: function(xhr, textStatus, errorThrown){
-			alert('request failed');
-			return false;
-	    }
-    });
+		    }
+	    });
+	}
 }
 
 // Cuando presionamos ENTER coger el primero si no hemos eleccionado ninguno
