@@ -601,6 +601,7 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
         gridLineInterpolation: 'polygon',
         lineWidth: 0,
         min: 0,
+        minorTickInterval: 'auto',
         gridLineColor: '#999999',
         labels: {
             style: {
@@ -614,7 +615,7 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             var descripciones = {
                 Analisis:                   '". $descripciones['Análisis'] ."',
                 Comunicacion:               '". $descripciones['Comunicación'] ."',
-                Capacidad_fisica:           '". $descripciones['Capacidad física'] ."',
+                Destreza_y_fisico:          '". $descripciones['Destreza y físico'] ."',
                 Cooperacion:                '". $descripciones['Cooperación'] ."',
                 Logro_de_objetivos:         '". $descripciones['Logro de objetivos'] ."',
                 Persuasion:                 '". $descripciones['Persuasión'] ."'
@@ -700,8 +701,9 @@ foreach ($filas_empleabilidad as $fila_empleabilidad) {
     $btn_colabora_e_1++;
 }
 
-$script_empleabilidad = "var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad)) . "];";
-$script_empleabilidad = "var seriesEmpMedia = [". mediaEmpleabilidad($pdo, $meses) . "];";
+$script_empleabilidad = "
+var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad)) . "];
+var seriesEmpMedia = [". mediaEmpleabilidad($pdo, $meses) . "];";
 
 $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
     chart: {
@@ -1179,7 +1181,8 @@ if( $btn_colabora_sat_1 > 0 ) {
     fclose($pagina_html);
 
     } // end while
-    //TEST////break;  solo en test
+    //TEST//
+    //break;  
   } // end foreach
 
 } catch( Exception $e ) {
