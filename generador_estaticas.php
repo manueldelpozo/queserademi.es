@@ -238,7 +238,7 @@ $html = '
     <div class="background-image grayscale"></div>
 
     <div class="container-full">
-      <form id="formulario" role="form" action="comparador.php" method="get" onsubmit="return validacion()">
+      <form id="formulario" role="form" action="../comparador.php" method="get">
           <div class="row header">
             <div class="col-xs-12 hidden-sm hidden-md hidden-lg margen"></div>
 
