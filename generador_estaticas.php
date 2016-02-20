@@ -151,13 +151,16 @@ try {
         $profesion = $nombre_ppal; // en este caso $nombre sera el nombre_ppal en lugar del alternativo
         echo '<h3>Hay ppal</h3>';
       } else { // en le caso de que haya sido usado buscamos nombre alternativo
+        echo '<p>buscando nombre alternativo...</p>';
         if (empty($nombre_alt) || is_null($nombre_alt) || $nombre_alt == 'test' || in_array($nombre_alt, $nombres_usados_alt, TRUE)) {
-          break; //romper el bucle si el nombre alternativo esta vacio, nulo o repetido
+          $repetir = false; //romper el bucle si el nombre alternativo esta vacio, nulo o repetido
+          echo '<h3>No hay alt</h3>';
+          continue;        
         } else {
           $repetir = true; // repetimos while en este caso para buscar mas nombres alternativo
           $profesion = $nombre_alt; // profesion pasa a ser el nombre alternativo
           array_push($nombres_usados_alt, $profesion); // y lo incluimos en nombres alternativos usados
-          echo '<h2>Hay alt</h2>';
+          echo '<h3>Hay alt</h3>';
         }
       }
       // incluir id_profesion en nombres usados
