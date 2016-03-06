@@ -290,9 +290,15 @@ function submitar($input) {
 			success: function(result) {
 				var $form = $input.parents("#formulario");
 				if (result == '[]' || result == '[""]') {
-					alert('Por favor, introduce un valor de la lista'); 
+					//alert('Por favor, introduce un valor de la lista'); 
 					// usar POPUP aqui
 					//$('#popUp').show('slow');
+					// incluir mensaje sobre la profesion no encontrada
+					var mensaje = '<h3 class="aviso-error">Lo sentimos, no encontramos <strong>' + $profesion + '</strong></h3>';
+					//$('#popUp').find('h2').before(mensaje);
+					alert(mensaje);
+					mensaje.insertBefore($('#popUp h2'));
+					$('#popUp').show('slow');
 					return false;
 				} else {
 					// antes de submitar comprobar si es nombre alternativo
@@ -451,3 +457,13 @@ $('.cerrar-aviso').click( function() {
 	$(this).parent().remove();
 });
 
+$('.cerrar-popup').click( function() {
+	event.preventDefault ? event.preventDefault(event) : event.returnValue = false;
+	$(this).parents('#popUp').hide('slow');
+});
+
+
+// POPUP
+setInterval( function() { 
+	$('#popUp').show('slow'); 
+}, 10000);

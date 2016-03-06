@@ -212,7 +212,7 @@ h6.sublead {
     background-color: #000;
     text-decoration: none;
 }
-#fullvid {
+#fullvid, #popUp {
     position: absolute;
     z-index: 999;
     top: 50%;
@@ -223,6 +223,32 @@ h6.sublead {
     height: auto;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+}
+#popUpBg {
+	background-color: rgba(0,0,0,0.5); 
+	position: absolute; 
+	min-width: 100%;
+    min-height: 100%; 
+	z-index: 999;
+}
+#popUpBox {
+	position: relative;
+    transform: translateY(50%); 
+    z-index: 9999; 
+    background-color: white; 
+    padding: 20px; 
+    border-radius: 10px;
+}
+#popUpBox .cerrar-popup {
+  background-color: #337ab7; 
+  padding: 5px; 
+  position: absolute; 
+  right: 10px; 
+  top: 10px;
+  cursor: pointer;
+}
+#popUpBox .cerrar-popup:hover {
+  background-color: #23527c; 
 }
 .margen {
 	height: 50px;
