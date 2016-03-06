@@ -115,6 +115,22 @@ try {
     </script>
     <!-- End Google Tag Manager -->
     <div id="preloader"></div>
+    <div id="popUp" class="text-center" hidden>
+        <div id="popUpBox" class="col-md-6 col-md-offset-3 col-xs-12">
+            <div class="cerrar-popup">
+                <a href="#"><img class="icon" src="images/cross.svg"></img>
+                </a>
+            </div>
+            <div class="col-md-10 col-md-offset-1">
+                <h2>Te gustaría colaborar?</h2>
+                <h3>Con tu ayuda podremos mejorar <span id="titulo"><strong>que</strong>sera<strong>de</strong>mi</span></h3>
+                <br>
+                <a href="colabora.php" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>
+                <a href="porquecolaborar.html" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Por qué colaborar?</a>
+            </div>
+        </div>
+        <div id="popUpBg"></div>
+    </div>
     <div class="background-image grayscale"></div>
     <div class="container-full">
       <form id="formulario" role="form" action="comparador.php" method="get">

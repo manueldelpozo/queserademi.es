@@ -45,7 +45,16 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 			}
 		}
 		//$lista[] = $mas_btn; // Por el momento no usar boton Mas
-	} 
+	} else if (isset($_GET['validar'])) {
+		// si no existe la consulta, guardarla como profesiones_desconocidas
+		$insert = "INSERT INTO profesiones_desconocidas (profesion_desconocida) VALUES ('$query');";
+		try {
+			$updating = $pdo->prepare( $insert );
+			$updating->execute();
+		} catch( Exception $e ) {
+			die('Error al guardar consulta: '.$e->GetMessage());
+		}
+	}
 
 	echo json_encode($lista);
 }
