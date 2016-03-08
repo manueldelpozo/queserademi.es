@@ -8,4 +8,8 @@
 $output = shell_exec('php excel/converter_tablas.php');
 echo "<pre>$output</pre>";
 
+
+//$currentdir = getcwd();
+//$target = $currentdir .'/profesiones/' . basename($_FILES['photo']['name']);
+//move_uploaded_file($_FILES['photo']['tmp_name'], $target);
 ?>
