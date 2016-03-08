@@ -2,7 +2,7 @@
 $btn_colabora_e_1 = $btn_colabora_e_2 = 0;
 $meses = ['enero','abril','julio','octubre'];
 $meses = array_merge($meses,$meses); // concatenar meses 
-array_pop($meses); // y eliminar el ultimo elemento
+//array_pop($meses); // y eliminar el ultimo elemento
 
 function mediaEmpleabilidad($pdo, $meses) {
     $medias = array();

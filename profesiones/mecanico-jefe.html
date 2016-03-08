@@ -246,7 +246,7 @@ var salarios = [
     },
     series: [
         {
-            name: 'mecánico jefe',
+            name: 'Mecánico jefe',
             data: medias,
             color: Highcharts.getOptions().colors[0],
             zIndex: 1,
@@ -260,7 +260,7 @@ var salarios = [
             data: salarios,
             type: 'arearange',
             lineWidth: 0,
-            linkedTo: 'mecánico jefe',
+            linkedTo: 'Mecánico jefe',
             color: Highcharts.getOptions().colors[0],
             fillOpacity: 0.3,
             zIndex: 0
@@ -273,12 +273,12 @@ var salarios = [
 
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
         capa_aviso += '<strong>MECÁNICO JEFE</strong></p>';
-        capa_aviso += '<a href="../colabora.php?profesion=mecánico jefe" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
+        capa_aviso += '<a href="../colabora.php?profesion=Mecánico jefe" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">mecánico jefe</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
-        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=mecánico jefe" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">Mecánico jefe</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
+        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=Mecánico jefe" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -407,11 +407,11 @@ $('.more').click( function() {
     series: [{  
         name: 'MECÁNICO JEFE',
         data: seriesCap,
-        stack: 'mecánico jefe'
+        stack: 'Mecánico jefe'
     }]
 });
 var seriesEmp = [28.51, 28.54, 28.1, 28.59, 28.2, 28.88, 28];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27];$('#container_empleabilidad').highcharts({
+var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('#container_empleabilidad').highcharts({
     chart: {
         type: 'column',
         marginTop: 80,
@@ -439,7 +439,7 @@ var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27];$('#conta
     },
     legend: { enable: false },
     xAxis: {
-        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2015','Abril 2015','Julio 2015' ]
+        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2014','Abril 2015','Julio 2015','Octubre 2015' ]
     },
     yAxis: {
         allowDecimals: true,
@@ -459,7 +459,7 @@ var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27];$('#conta
       {
         name: 'MECÁNICO JEFE',
         data: seriesEmp,
-        stack: 'mecánico jefe'
+        stack: 'Mecánico jefe'
       },{
         name: 'Media de paro de todas las profesiones',
         type: 'spline',

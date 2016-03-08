@@ -3,12 +3,12 @@
 set_time_limit(0);
 
 //conectar
-require('../conexion.php');
+require('C:\xampp\htdocs\queserademi\queserademi\conexion.php');
 
 //usar PHPExcel_IOFactory
-include '../vendor/autoload.php';
+include 'C:\xampp\htdocs\queserademi\queserademi\vendor\autoload.php';
 //coger excel
-$inputFileName = 'profesiones_completo.xls';
+$inputFileName = 'C:\xampp\htdocs\queserademi\queserademi\excel\profesiones_completo.xls';
 
 //leer Excel 
 try {
@@ -129,6 +129,8 @@ try {
 		$contratados_abril_2015 	= str_replace(',', '.', $rowData[0][43]);
 		$parados_julio_2015 		= str_replace(',', '.', $rowData[0][44]);
 		$contratados_julio_2015 	= str_replace(',', '.', $rowData[0][45]);
+		$parados_octubre_2015	 	= str_replace(',', '.', $rowData[0][46]);
+		$contratados_octubre_2015 	= str_replace(',', '.', $rowData[0][47]);
 
 		//inseratar el resto
 		//consulta a las tablas profesion y formacion y obtener ids creados
@@ -149,6 +151,7 @@ try {
 			$insert_empleabilidad_enero_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_enero_2015','$contratados_enero_2015','enero',2015)";
 			$insert_empleabilidad_abril_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_abril_2015','$contratados_abril_2015','abril',2015)";
 			$insert_empleabilidad_julio_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_julio_2015','$contratados_julio_2015','julio',2015)";
+			$insert_empleabilidad_octubre_2015 	= $insert_empleabilidad.$id_profesion.",'$parados_octubre_2015','$contratados_octubre_2015','octubre',2015)";
 			$insert_capacidades_total 			= $insert_capacidades.$id_profesion.",'$c_analisis','$c_comunicacion','$c_equipo','$c_forma_fisica','$c_objetivos','$c_persuasion','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_nombre')";
 			$insert_profesiones_formaciones_1 	= $id_formacion_1 > 0 ? $insert_profesiones_formaciones . $id_profesion . ",$id_formacion_1)" : null; 
 			$insert_profesiones_formaciones_2 	= $id_formacion_2 > 0 ? $insert_profesiones_formaciones . $id_profesion . ",$id_formacion_2)" : null;
@@ -164,7 +167,8 @@ try {
 				$insert_empleabilidad_octubre_2014, 
 				$insert_empleabilidad_enero_2015, 
 				$insert_empleabilidad_abril_2015, 
-				$insert_empleabilidad_julio_2015, 
+				$insert_empleabilidad_julio_2015,
+				$insert_empleabilidad_octubre_2015, 
 				$insert_capacidades_total, 
 				$insert_profesiones_formaciones_1, 
 				$insert_profesiones_formaciones_2, 

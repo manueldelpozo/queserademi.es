@@ -695,7 +695,7 @@ if( $btn_colabora_c_1 > 0 ) {
 $btn_colabora_e_1 = 0;
 $meses = ['enero','abril','julio','octubre'];
 $meses = array_merge($meses,$meses); // concatenar meses 
-array_pop($meses); // y eliminar el ultimo elemento
+//array_pop($meses); // y eliminar el ultimo elemento
 
 // busqueda de nulos en empleabilidad
 foreach ($filas_empleabilidad as $fila_empleabilidad) { 
