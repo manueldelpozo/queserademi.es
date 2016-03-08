@@ -111,7 +111,7 @@ try {
     return join(", ",$medias);
   }
 
-  function imprimirSeriesEmp($filas) {
+  function imprimirSeriesEmp($filas, $n_meses) {
     $counter = 0;
     $counter_rect = 0;
     $no_duplicado = true;
@@ -121,7 +121,7 @@ try {
       $memo[$counter] = $fila;
       if (count($memo) > 1)
         $no_duplicado = ($memo[$counter - 1]['mes'] !== $memo[$counter]['mes']);
-      if ($no_duplicado && $counter_rect < 7) {
+      if ($no_duplicado && $counter_rect < $n_meses) {
         $counter_rect++;
         $emp = empleabilidad($fila['contratados'], $fila['parados']);
         array_push($seriesEmp, (is_null($emp) || $emp == 0) ? "0" : $emp); 
@@ -694,7 +694,7 @@ if( $btn_colabora_c_1 > 0 ) {
 
 $btn_colabora_e_1 = 0;
 $meses = ['enero','abril','julio','octubre'];
-$meses = array_merge($meses,$meses); // concatenar meses 
+$meses = array_merge($meses, $meses); // concatenar meses 
 //array_pop($meses); // y eliminar el ultimo elemento
 
 // busqueda de nulos en empleabilidad
@@ -705,7 +705,7 @@ foreach ($filas_empleabilidad as $fila_empleabilidad) {
 }
 
 $script_empleabilidad = "
-var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad)) . "];
+var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad, count($meses))) . "];
 var seriesEmpMedia = [". mediaEmpleabilidad($pdo, $meses) . "];";
 
 $script_empleabilidad .= "$('#container_empleabilidad').highcharts({

@@ -40,7 +40,7 @@ function empleabilidad($contratados, $parados) {
     return (!is_null($parados) && $parados > 0) ?  round(coefMin($parados) * round(100 - ($contratados * 100 / ($parados + $contratados)), 2), 2) : 0;
 }
 
-function imprimirSeriesEmp($filas) {
+function imprimirSeriesEmp($filas, $n_meses) {
     $counter = 0;
     $counter_rect = 0;
     $no_duplicado = true;
@@ -49,7 +49,7 @@ function imprimirSeriesEmp($filas) {
         $memo[$counter] = $fila;
         if (count($memo) > 1)
             $no_duplicado = ($memo[$counter - 1]['mes'] !== $memo[$counter]['mes']);
-        if ($no_duplicado && $counter_rect < 7) {
+        if ($no_duplicado && $counter_rect < $n_meses) {
             $counter_rect++;
             $emp = empleabilidad($fila['contratados'], $fila['parados']);
             echo (is_null($emp) || $emp == 0) ? "0," : $emp.",";
@@ -131,12 +131,12 @@ $('#container_empleabilidad').highcharts({
     series: [
     {
         name: '<?php echo mb_strtoupper($profesion,"UTF-8" ); ?>',
-        data: [ <?php imprimirSeriesEmp($filas_empleabilidad); ?> ],
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad, count($meses)); ?> ],
         stack: '<?php echo $profesion ?>'
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 	}, {
         name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8" ); ?>',
-        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos); ?> ],
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, count($meses)); ?> ],
         stack: '<?php echo $profesion_dos ?>'
     	<?php  }  ?> 
 	},{
