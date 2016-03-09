@@ -42,7 +42,6 @@ if( isset( $_GET['profesion']  )  )
     <div class="background-image grayscale blur"></div>
     <div data-role="page">
       
-    
     <div data-role="main" class="container-full ui-content">
       <form id="formulario-colabora" class="form-horizontal" role="form" action="verificador.php" method="post" onsubmit="return validacion()">
 
@@ -253,7 +252,7 @@ if( isset( $_GET['profesion']  )  )
                 <div class="form-group">
                   <label for="tiempo-trabajo" class="col-sm-3 control-label">Años trabajados en esta profesión (experiencia):</label>
                   <div class="col-md-9 col-xs-12">
-                    <input type="range" name="tiempo_trabajo" id="tiempo-trabajo" value="2" min="0" max="40" data-highlight="true" data-popup-enabled="true">                 
+                    <input type="range" name="tiempo_trabajo" id="tiempo-trabajo" value="6" min="0" max="40" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
 
@@ -261,21 +260,28 @@ if( isset( $_GET['profesion']  )  )
                   <h5><strong>Indica el rango salarial aproximado según experiencia en esta profesión (€/mes neto)</strong></h5>
                 </div>
                 <div class="form-group">
-                  <label for="s_junior" class="col-sm-3 control-label">Principiante [Menos de 3 años]: </label>
+                  <label for="s_principiante" class="col-sm-3 control-label">Principiante [Menos de 5 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
-                    <input type="range" class='s_junior' name="s_junior_min" id="s_junior_min" value="1000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">
-                    <input type="range" class='s_junior' name="s_junior_max" id="s_junior_max" value="3000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">                                  
+                    <input type="range" class='s_principiante' name="s_principiante_min" id="s_principiante_min" value="650" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">
+                    <input type="range" class='s_principiante' name="s_principiante_max" id="s_principiante_max" value="2000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">                                
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="s_intermedio" class="col-sm-3 control-label">Intermedio [De 3 a 7 años]: </label>
+                  <label for="s_junior" class="col-sm-3 control-label">Junior [De 5 a 10 años]: </label>
+                  <div class="col-md-9 col-xs-12 " data-role="rangeslider">
+                    <input type="range" class='s_junior' name="s_junior_min" id="s_junior_min" value="1000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">
+                    <input type="range" class='s_junior' name="s_junior_max" id="s_junior_max" value="3000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">                                
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="s_intermedio" class="col-sm-3 control-label">Intermedio [De 10 a 15 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" class='s_intermedio' name="s_intermedio_min" id="s_intermedio_min" value="1500" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">
                     <input type="range" class='s_intermedio' name="s_intermedio_max" id="s_intermedio_max" value="3500" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">                                  
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="s_senior" class="col-sm-3 control-label">Senior [Más de 7 años]: </label>
+                  <label for="s_senior" class="col-sm-3 control-label">Senior [Más de 15 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" class='s_senior' name="s_senior_min" id="s_senior_min" value="2000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">
                     <input type="range" class='s_senior' name="s_senior_max" id="s_senior_max" value="4000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">                                  
@@ -287,7 +293,7 @@ if( isset( $_GET['profesion']  )  )
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_equipo" class="titulo2">Trabajo en equipo:</label>
+                    <label for="c_equipo" class="titulo2">Cooperación:</label>
                     <input type="range" name="c_equipo" id="c_equipo" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
@@ -299,7 +305,7 @@ if( isset( $_GET['profesion']  )  )
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_organizacion" class="titulo2">Organización:</label>
+                    <label for="c_objetivos" class="titulo2">Logro de objetivos:</label>
                     <input type="range" name="c_organizacion" id="c_organizacion" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
@@ -311,7 +317,13 @@ if( isset( $_GET['profesion']  )  )
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_forma_fisica" class="titulo2">Forma Física:</label>
+                    <label for="c_forma_fisica" class="titulo2">Destreza y físico:</label>
+                    <input type="range" name="c_forma_fisica" id="c_forma_fisica" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
+                  </div>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center">
+                  <div class="form-group required">
+                    <label for="c_persuasion" class="titulo2">Persuasión:</label>
                     <input type="range" name="c_forma_fisica" id="c_forma_fisica" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
@@ -383,7 +395,6 @@ if( isset( $_GET['profesion']  )  )
                     <button type="submit" class="btn btn-default btn-qsdm" data-role='none' data-enhance="false">COLABORA!</button>
                   </div>
                 </div>
-
              
             </div>
     
@@ -533,12 +544,15 @@ if( isset( $_GET['profesion']  )  )
           $( '#tiempo-trabajo' ).slider({
             stop: function( event, ui ) {
               var tiempo_trabajo = $(this).slider().val();
-              if( tiempo_trabajo < 3 ) {
+              if( tiempo_trabajo < 5 ) {
+                $( '.s_junior, .s_senior, .s_intermedio' ).slider( "disable" );
+              } else if( tiempo_trabajo >= 5 && tiempo_trabajo < 10 ) {
+                $( '.s_junior' ).slider( "enable" );
                 $( '.s_senior, .s_intermedio' ).slider( "disable" );
-              } else if( tiempo_trabajo >= 3 && tiempo_trabajo < 8 ) {
-                $( '.s_intermedio' ).slider( "enable" );
+              } else if( tiempo_trabajo >= 10 && tiempo_trabajo < 15 ) {
+                $( '.s_junior, .s_intermedio' ).slider( "enable" );
                 $( '.s_senior' ).slider( "disable" );
-              } else if( tiempo_trabajo >= 8 ) {
+              } else if( tiempo_trabajo >= 15 ) {
                 $( '.s_senior, .s_intermedio' ).slider( "enable" );
               }
             }
