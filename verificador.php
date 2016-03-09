@@ -8,8 +8,8 @@ if( !empty( $_POST['verificacion'] ) ){
 
 	// resetear variables
 	$error = $trabajas = $tiempo_estudios = $jornada_laboral_min = $jornada_laboral_max = $horas_semana = $horas_real = $movilidad = $edad_jubilacion = $tiempo_trabajo = 0;
-	$s_junior_min = $s_junior_max = $s_intermedio_min = $s_intermedio_max = $s_senior_min = $s_senior_max = 0;
-	$c_equipo = $c_analisis = $c_organizacion = $c_comunicacion = $c_forma_fisica = 0;
+	$s_principiante_min = $s_principiante_max = $s_junior_min = $s_junior_max = $s_intermedio_min = $s_intermedio_max = $s_senior_min = $s_senior_max = 0;
+	$c_equipo = $c_analisis = $c_objetivos = $c_comunicacion = $c_forma_fisica = $persuasion = 0;
 	$i_ingles = $i_frances = $i_aleman = $i_otro = $satisfaccion = $aceptado = $email_enviado = 0;
 	$colaborador = $email = $profesion =  $descripcion = $comunidad_autonoma = $estudios_asoc = "";
 	$acceso = $sector = $contrato = $puesto = $i_otro_val = $codigo_gen = $colaboracion = ""; 
@@ -17,24 +17,15 @@ if( !empty( $_POST['verificacion'] ) ){
 	// filtrar valores introducidos 
 
 	function is_this_exist( $valor ) {
-		if( isset( $_POST[$valor] ) )
-			return $_POST[$valor];
-		else
-			return null;
+		return isset($_POST[$valor]) ? $_POST[$valor] : null;
 	}
-	function is_this_number( $number ) {
-		if ( is_nan( $number ) || empty( $number ) || !isset( $number ) || is_null($number) )
-			return 0;
-		else
-			return $number;
+	function is_this_number($number) {
+		return (is_nan($number) || empty($number) || !isset($number) || is_null($number)) ? 0 : $number;
 	}
-	function is_this_on( $valor ) {
-		if ( $valor == 'off' || !isset( $valor ) || empty( $valor ) || is_null($valor) )
-			return 0;
-		else
-			return 1;
+	function is_this_on($valor) {
+		return ($valor == 'off' || !isset($valor) || empty($valor) || is_null($valor)) ? 0 : 1;
 	}
-	function test_input( $data ) {
+	function test_input($data) {
 		if ( !is_null($data) ) {
 		  	$data = trim($data);
 		  	$data = stripslashes($data);
@@ -63,6 +54,8 @@ if( !empty( $_POST['verificacion'] ) ){
 	  $puesto 				= is_this_exist( 'puesto' );
 	  $edad_jubilacion		= is_this_number( is_this_exist( 'edad_jubilacion' ) );
 	  $tiempo_trabajo 		= is_this_number( is_this_exist( 'tiempo_trabajo' ) );
+	  $s_principiante_min 	= is_this_number( is_this_exist( 's_principiante_min' ) );
+	  $s_principiante_max 	= is_this_number( is_this_exist( 's_principiante_max' ) );
 	  $s_junior_min 		= is_this_number( is_this_exist( 's_junior_min' ) );
 	  $s_junior_max 		= is_this_number( is_this_exist( 's_junior_max' ) );
 	  $s_intermedio_min 	= is_this_number( is_this_exist( 's_intermedio_min' ) );
@@ -71,9 +64,10 @@ if( !empty( $_POST['verificacion'] ) ){
 	  $s_senior_max 		= is_this_number( is_this_exist( 's_senior_max' ) );
 	  $c_equipo 			= is_this_number( is_this_exist( 'c_equipo' ) );
 	  $c_analisis 			= is_this_number( is_this_exist( 'c_analisis' ) );
-	  $c_organizacion 		= is_this_number( is_this_exist( 'c_organizacion' ) );
+	  $c_objetivos	 		= is_this_number( is_this_exist( 'c_objetivos' ) );
 	  $c_comunicacion 		= is_this_number( is_this_exist( 'c_comunicacion' ) );
 	  $c_forma_fisica 		= is_this_number( is_this_exist( 'c_forma_fisica' ) );
+	  $c_persuasion			= is_this_number( is_this_exist( 'c_persuasion' ) );
 	  $i_ingles 			= is_this_number( is_this_exist( 'i_ingles' ) );
 	  $i_frances 			= is_this_number( is_this_exist( 'i_frances' ) );
 	  $i_aleman 			= is_this_number( is_this_exist( 'i_aleman' ) );
@@ -156,8 +150,8 @@ if( !empty( $_POST['verificacion'] ) ){
 	} 
 
 	//CONCORDANCIA DE DATOS NUMERICOS
-	function diferencia( $valor_antiguo, $valor_nuevo ) {
-		if( is_null( $valor_nuevo ) || $valor_antiguo == 0 || is_null( $valor_antiguo ) )
+	function diferencia($valor_antiguo, $valor_nuevo) {
+		if(is_null($valor_nuevo) || $valor_antiguo == 0 || is_null($valor_antiguo))
 			return 0;
 		else
 			return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
@@ -167,6 +161,8 @@ if( !empty( $_POST['verificacion'] ) ){
     $rs_registro->execute();
     $registro = $rs_registro->fetch(PDO::FETCH_ASSOC);
 
+	if( diferencia( $registro['s_principiante_max'], $s_junior_max ) > 0.5 )
+		$error += 0.05;	
 	if( diferencia( $registro['s_junior_max'], $s_junior_max ) > 0.5 )
 		$error += 0.05;	
 	if( diferencia( $registro['s_intermedio_max'], $s_intermedio_max ) > 0.5 )
@@ -182,14 +178,13 @@ if( !empty( $_POST['verificacion'] ) ){
 		$error += 0.03;
 	if( diferencia( $registro['c_forma_fisica'], $c_forma_fisica ) > 0.5 )
 		$error += 0.03;
-	if( diferencia( $registro['c_organizacion'], $c_organizacion ) > 0.5 )
+	if( diferencia( $registro['c_objetivos'], $c_organizacion ) > 0.5 )
+		$error += 0.03;
+	if( diferencia( $registro['c_persuasion'], $c_organizacion ) > 0.5 )
 		$error += 0.03;
 
 	// SENTENCIA DE ERROR
-	if( $error > 0.5 )
-		$aceptado = 0;
-	else
-		$aceptado = 1;
+	$aceptado = $error > 0.5 ? 0 : 1;
 
 	// COMPROBAR SI YA HAY DATOS INTRODUCIDOS DE LA MISMA COLABORACION
     $rs_colaboraciones = $pdo->prepare("SELECT * FROM colaboraciones WHERE codigo_gen LIKE '$codigo_gen'");
@@ -202,17 +197,17 @@ if( !empty( $_POST['verificacion'] ) ){
     $email_enviado = $datos_recogidos['email_enviado'];
     
 	// GENERAR SENTENCIA SQL PARA INTRODUCIR DATOS EN LA BBDD
-	if ( $ya_existe > 0 ) {
+	if ($ya_existe > 0) {
 		// SI EXISTE GENERAR UPDATE
 		$colaboracion .= "UPDATE colaboraciones SET colaborador = '$colaborador' , email = '$email' , profesion = '$profesion' , descripcion = '$descripcion' , trabajas = '$trabajas' , comunidad_autonoma = '$comunidad_autonoma' , estudios_asoc = '$estudios_asoc' , tiempo_estudios = '$tiempo_estudios' , ";
 		$colaboracion .= "acceso = '$acceso' , sector = '$sector' , contrato = '$contrato' , jornada_laboral_min = '$jornada_laboral_min' , jornada_laboral_max = '$jornada_laboral_max' , movilidad = '$movilidad' , horas_semana = '$horas_semana' , horas_real = '$horas_real' , puesto = '$puesto' , edad_jubilacion = '$edad_jubilacion' , ";
-		$colaboracion .= "tiempo_trabajo = '$tiempo_trabajo' , s_junior_min = '$s_junior_min' , s_junior_max = '$s_junior_max' , s_intermedio_min = '$s_intermedio_min' , s_intermedio_max = '$s_intermedio_max' , s_senior_min = '$s_senior_min' , ";
-		$colaboracion .= "c_equipo = '$c_equipo' , c_analisis = '$c_analisis' , c_comunicacion = '$c_comunicacion' , c_forma_fisica = '$c_forma_fisica' , c_organizacion = '$c_organizacion' , i_ingles = '$i_ingles' , i_frances = '$i_frances' , i_aleman = '$i_aleman' , i_otro = '$i_otro' , i_otro_val = '$i_otro_val' , satisfaccion = '$satisfaccion' , aceptado = '$aceptado' ";
+		$colaboracion .= "tiempo_trabajo = '$tiempo_trabajo' , s_principiante_min = '$s_principiante_min' , s_principiante_max = '$s_principiante_max' ,s_junior_min = '$s_junior_min' , s_junior_max = '$s_junior_max' , s_intermedio_min = '$s_intermedio_min' , s_intermedio_max = '$s_intermedio_max' , s_senior_min = '$s_senior_min' , ";
+		$colaboracion .= "c_equipo = '$c_equipo' , c_analisis = '$c_analisis' , c_comunicacion = '$c_comunicacion' , c_forma_fisica = '$c_forma_fisica' , c_objetivos = '$c_objetivos' , c_persuasion = '$persuasion' , i_ingles = '$i_ingles' , i_frances = '$i_frances' , i_aleman = '$i_aleman' , i_otro = '$i_otro' , i_otro_val = '$i_otro_val' , satisfaccion = '$satisfaccion' , aceptado = '$aceptado' ";
 		$colaboracion .= "WHERE codigo_gen LIKE '$codigo_gen'";
 	} else {
 		// SI NO EXISTE GENERAR INSERT
-		$colaboracion .= "INSERT INTO `colaboraciones`(`id`, `colaborador`, `email`, `profesion`, `descripcion`, `trabajas`, `comunidad_autonoma`, `estudios_asoc`, `tiempo_estudios`, `acceso`, `sector`, `contrato`, `jornada_laboral_min`, `jornada_laboral_max`, `movilidad`, `horas_semana`, `horas_real`, `puesto`, `edad_jubilacion`, `tiempo_trabajo`, `s_junior_min`, `s_junior_max`, `s_intermedio_min`, `s_intermedio_max`, `s_senior_min`, `s_senior_max`, `c_equipo`, `c_organizacion`, `c_comunicacion`, `c_forma_fisica`, `c_analisis`, `i_ingles`, `i_frances`, `i_aleman`, `i_otro`, `i_otro_val`, `satisfaccion`, `codigo_gen`, `aceptado`) ";
-		$colaboracion .= "VALUES ( '$colaborador', '$email', '$profesion', '$descripcion', $trabajas, '$comunidad_autonoma', '$estudios_asoc', $tiempo_estudios, '$acceso', '$sector', '$contrato', $jornada_laboral_min, $jornada_laboral_max, $movilidad, $horas_semana, $horas_real, '$puesto', $edad_jubilacion, $tiempo_trabajo, $edad_jubilacion, $s_junior_min, $s_junior_max, $s_intermedio_min, $s_intermedio_max, $s_senior_min, $s_senior_max, $c_equipo, $c_analisis, $c_organizacion, $c_comunicacion, $c_forma_fisica, $i_ingles, $i_frances, $i_aleman, $i_otro, '$i_otro_val', $satisfaccion, '$codigo_gen', $aceptado);";
+		$colaboracion .= "INSERT INTO `colaboraciones`(`colaborador`, `email`, `profesion`, `descripcion`, `trabajas`, `comunidad_autonoma`, `estudios_asoc`, `tiempo_estudios`, `acceso`, `sector`, `contrato`, `jornada_laboral_min`, `jornada_laboral_max`, `movilidad`, `horas_semana`, `horas_real`, `puesto`, `edad_jubilacion`, `tiempo_trabajo`, `s_principiante_min`, `s_principiante_max`, `s_junior_min`, `s_junior_max`, `s_intermedio_min`, `s_intermedio_max`, `s_senior_min`, `s_senior_max`, `c_equipo`, `c_analisis`, `c_objetivos`, `c_comunicacion`, `c_forma_fisica`, `c_persuasion`, `i_ingles`, `i_frances`, `i_aleman`, `i_otro`, `i_otro_val`, `satisfaccion`, `codigo_gen`, `aceptado`) ";
+		$colaboracion .= "VALUES ( '$colaborador', '$email', '$profesion', '$descripcion', $trabajas, '$comunidad_autonoma', '$estudios_asoc', $tiempo_estudios, '$acceso', '$sector', '$contrato', $jornada_laboral_min, $jornada_laboral_max, $movilidad, $horas_semana, $horas_real, '$puesto', $edad_jubilacion, $tiempo_trabajo, $edad_jubilacion, $s_principiante_min, $s_principiante_max, $s_junior_min, $s_junior_max, $s_intermedio_min, $s_intermedio_max, $s_senior_min, $s_senior_max, $c_equipo, $c_analisis, $c_objetivos, $c_comunicacion, $c_forma_fisica, $persuasion, $i_ingles, $i_frances, $i_aleman, $i_otro, '$i_otro_val', $satisfaccion, '$codigo_gen', $aceptado);";
 	}
 	
 ?>
@@ -268,7 +263,7 @@ if( !empty( $_POST['verificacion'] ) ){
 //AGRADECIMIENTOS
 
 	// ejecutar actualizacion sql
-	$updating = $pdo->prepare( $colaboracion );
+	$updating = $pdo->prepare($colaboracion);
 	$updating->execute();
 
 	if ( $updating ) {
@@ -285,7 +280,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		
 			$linea1 		= "Estimado/a ".$colaborador.",";
 			$linea2 		= "Nos alegra que haya participado en este gran proyecto.";
-			$linea2b 		= "Gracias a la información que ha aportado, podremos seguir desarrollando esta potente herramienta que servira de apoyo orientativo a futuras y presentes generaciones.";
+			$linea2b 		= "Gracias a la información que ha aportado, podremos seguir desarrollando esta potente herramienta que servirá de apoyo orientativo a futuras y presentes generaciones.";
 			$linea3 		= "Puede seguir colaborando"; 
 			$linea3b 		= ", aportando información profesional de familiares o cercanos. ";
 			$linea4 		= "Cordialmente,";
