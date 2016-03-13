@@ -58,12 +58,14 @@ try {
     return $seriesSal;
   }
 
-  function createExcerpts($text, $length, $more_txt, $script_info) { 
+  function createExcerpts($text, $length, $more_txt) { 
     $text = preg_replace('/[\n\r]/','',$text);
     $text = str_replace('"','',$text);
+    // primer letra en mayuscula
+    $text = ucfirst($text);
     $content = substr( $text, 0 , $length ); 
     $excerpt = substr( $text,  $length , strlen($text) );
-    $script_info .= $content . '<span class="excerpt"><span style="display:none;">' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></span>'; 
+    return $content . '<span class="excerpt"><span style="display:none;">' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></span>'; 
   }
 
   function imprimirSeriesCap($filas, $tablas) {
@@ -503,7 +505,7 @@ if( isset( $profesion ) ) {
         $script_info .= "$('#info').append('<p class=\"descripcion\" id=\"desc1\">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a></div>');";
     } else { 
-        $script_info .= "$('#info').append('<p class=\"descripcion\">". createExcerpts($filas_info[0]["descripcion"] , 150 , " [ + ]", $script_info) ."</p>');";
+        $script_info .= "$('#info').append('<p class=\"descripcion\">". createExcerpts($filas_info[0]["descripcion"], 150, " [ + ]") . "</p>');";
     } 
 } 
 

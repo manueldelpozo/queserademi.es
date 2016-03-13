@@ -2,6 +2,8 @@
 function createExcerpts($text,$length,$more_txt) { 
     $text = preg_replace('/[\n\r]/','',$text);
 	$text = str_replace('"','',$text);
+    // primer letra en mayuscula
+    $text = ucfirst($text);
     $content = substr( $text, 0 , $length ); 
     $excerpt = substr( $text,  $length , strlen($text) );
     echo $content . '<span class="excerpt"><span style="display:none;">' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></span>'; 
