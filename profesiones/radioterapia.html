@@ -177,10 +177,10 @@
 
   <script type="text/javascript" async>
     
-var seriesSalPrinc      = [0, 0, 0];
-var seriesSalJunior     = [0, 0, 0];
-var seriesSalIntermedio = [0, 0, 0];
-var seriesSalSenior     = [0, 0, 0];
+var seriesSalPrinc      = [13284, 16356, 18492];
+var seriesSalJunior     = [15276, 18708, 21120];
+var seriesSalIntermedio = [16680, 20292, 22824];
+var seriesSalSenior     = [18084, 21732, 24300];
 var salarios = [
     [0,   seriesSalPrinc[0],      seriesSalPrinc[2]],
     [5,   seriesSalJunior[0],     seriesSalJunior[2]],
@@ -266,18 +266,7 @@ var salarios = [
             zIndex: 0
         }
     ]
-});var capa_aviso = '<div class="capa-aviso">';
-    capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="../images/cross.svg"></img></a></div>';
-    capa_aviso += '<div class="col-md-10 col-md-offset-1">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
-
-        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
-        capa_aviso += '<strong>RADIOTERAPIA</strong></p>';
-        capa_aviso += '<a href="../colabora.php?profesion=RADIOTERAPIA" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
-
-    capa_aviso += '</div></div>';
-
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">RADIOTERAPIA</h4>');$('#info').append('<p class="descripcion"></p>');// Excerpt
+});$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">RADIOTERAPIA</h4>');$('#info').append('<p class="descripcion">Este profesional aplica tratamientos de teleterapia: cobaltoterapia, acelerador de partículas y RX de baja y media energía, bajo supervisión facult<span class="excerpt"><span style="display:none;">ativa y colabora con el facultativo en la preparación y aplicación de los tratamientos con braquiterapia.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();

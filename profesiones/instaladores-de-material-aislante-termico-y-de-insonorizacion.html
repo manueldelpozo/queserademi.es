@@ -177,10 +177,10 @@
 
   <script type="text/javascript" async>
     
-var seriesSalPrinc      = [0, 0, 0];
-var seriesSalJunior     = [0, 0, 0];
-var seriesSalIntermedio = [0, 0, 0];
-var seriesSalSenior     = [0, 0, 0];
+var seriesSalPrinc      = [13008, 15288, 16872];
+var seriesSalJunior     = [14964, 17484, 19248];
+var seriesSalIntermedio = [16104, 18708, 20532];
+var seriesSalSenior     = [17508, 20100, 21912];
 var salarios = [
     [0,   seriesSalPrinc[0],      seriesSalPrinc[2]],
     [5,   seriesSalJunior[0],     seriesSalJunior[2]],
@@ -266,18 +266,7 @@ var salarios = [
             zIndex: 0
         }
     ]
-});var capa_aviso = '<div class="capa-aviso">';
-    capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="../images/cross.svg"></img></a></div>';
-    capa_aviso += '<div class="col-md-10 col-md-offset-1">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
-
-        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
-        capa_aviso += '<strong>INSTALADORES DE MATERIAL AISLANTE TÉRMICO Y DE INSONORIZACIÓN</strong></p>';
-        capa_aviso += '<a href="../colabora.php?profesion=Instaladores de material aislante térmico y de insonorización" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
-
-    capa_aviso += '</div></div>';
-
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">Instaladores de material aislante térmico y de insonorización</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
+});$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">Instaladores de material aislante térmico y de insonorización</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=Instaladores de material aislante térmico y de insonorización" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
@@ -410,7 +399,7 @@ $('.more').click( function() {
         stack: 'Instaladores de material aislante térmico y de insonorización'
     }]
 });
-var seriesEmp = [28.61, 24.05, 22.8, 22.1, 22.92, 22.19, 21.92];
+var seriesEmp = [28.61, 24.05, 22.8, 22.1, 22.92, 22.19, 21.92, 21.99];
 var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('#container_empleabilidad').highcharts({
     chart: {
         type: 'column',

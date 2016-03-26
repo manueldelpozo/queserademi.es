@@ -177,10 +177,10 @@
 
   <script type="text/javascript" async>
     
-var seriesSalPrinc      = [0, 0, 0];
-var seriesSalJunior     = [0, 0, 0];
-var seriesSalIntermedio = [0, 0, 0];
-var seriesSalSenior     = [0, 0, 0];
+var seriesSalPrinc      = [12408, 16284, 18984];
+var seriesSalJunior     = [14136, 18444, 21480];
+var seriesSalIntermedio = [15456, 20028, 23232];
+var seriesSalSenior     = [16752, 21468, 24756];
 var salarios = [
     [0,   seriesSalPrinc[0],      seriesSalPrinc[2]],
     [5,   seriesSalJunior[0],     seriesSalJunior[2]],
@@ -266,18 +266,7 @@ var salarios = [
             zIndex: 0
         }
     ]
-});var capa_aviso = '<div class="capa-aviso">';
-    capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="../images/cross.svg"></img></a></div>';
-    capa_aviso += '<div class="col-md-10 col-md-offset-1">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
-
-        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
-        capa_aviso += '<strong>CANTEROS DE CONSTRUCCIÓN</strong></p>';
-        capa_aviso += '<a href="../colabora.php?profesion=CANTEROS DE CONSTRUCCIÓN" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
-
-    capa_aviso += '</div></div>';
-
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CANTEROS DE CONSTRUCCIÓN</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
+});$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CANTEROS DE CONSTRUCCIÓN</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=CANTEROS DE CONSTRUCCIÓN" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
@@ -410,7 +399,7 @@ $('.more').click( function() {
         stack: 'CANTEROS DE CONSTRUCCIÓN'
     }]
 });
-var seriesEmp = [31.91, 32.33, 31.5, 31.46, 31.69, 31.62, 26.4];
+var seriesEmp = [31.91, 32.33, 31.5, 31.46, 31.69, 31.62, 26.4, 31.02];
 var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('#container_empleabilidad').highcharts({
     chart: {
         type: 'column',
