@@ -84,6 +84,7 @@ try{
 		$cod = $rowData[0][0];
 		
 	    $f_nombre_ppal = str_replace("'", "\'", $rowData[0][1]);
+	    $f_nombre_ppal = ucfirst(trim(str_replace("_", " ", $f_nombre_ppal)));
 	    $f_nombre_alt = str_replace("'", "\'", $rowData[0][2]);
 	    $f_descripcion = str_replace("'", "\'", $rowData[0][3]);
 	    $duracion_academica = str_replace(',', '.', $rowData[0][4]); // convertir las comas en puntos

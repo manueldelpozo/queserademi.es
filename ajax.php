@@ -10,6 +10,9 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 	$sql = "";
 	$lista = array();
 
+	$n_ppal = ($tipo == 'formaciones') ? 'f_nombre_ppal' : 'nombre_ppal';
+	$n_alt = ($tipo == 'formaciones') ? 'f_nombre_alt' : 'nombre_alt';
+
 	if (isset($_GET['validar'])) {
 		$sql = "SELECT * FROM $tipo ";
 		if ($tipo == 'profesiones_test')
@@ -17,14 +20,15 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 		else
 			$sql .= "WHERE nombre_ppal LIKE '$query'";
 	} else {
-		$sql = "SELECT nombre_ppal, nombre_alt FROM $tipo ";
+		// consulta typeahead
+		$sql = "SELECT $n_ppal, $n_alt FROM $tipo ";
 		if ($tipo == 'profesiones_test')
 			$sql .= "p INNER JOIN nombres_alt n ON p.id = n.id_profesion ";
 
 		if ($query != '%25')
-			$sql .= "WHERE nombre_ppal LIKE '%$query%' OR nombre_alt LIKE '%$query%'";	
+			$sql .= "WHERE $n_ppal LIKE '%$query%' OR $n_alt LIKE '%$query%'";	
 		else
-			$sql .= "ORDER BY nombre_ppal ASC";
+			$sql .= "ORDER BY $n_ppal ASC";
 	}
 
 	$request = $pdo->prepare($sql);
@@ -33,14 +37,15 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 	
 	if ($count > 0) {
 		$mas_btn = '<strong id="masLista">Más...</strong>';
+
 		$rows = $request->fetchAll();
 		foreach ( $rows as $row ) {
-			$nombre_ppal = ucfirst( mb_strtolower( $row['nombre_ppal'], 'UTF-8' ) );
+			$nombre_ppal = ucfirst( mb_strtolower( $row[$n_ppal], 'UTF-8' ) );
 			$lista[] = $nombre_ppal;
-			if (!empty($row['nombre_alt']) && !is_null($row['nombre_alt'])) {
-				$nombre_alt = ucfirst( mb_strtolower( $row['nombre_alt'], 'UTF-8' ) );
-				if (strlen($row['nombre_alt']) < 5 && mb_strtoupper($row['nombre_alt'], 'UTF-8') == $row['nombre_alt'])
-					$nombre_alt = $row['nombre_alt']; // solo si son siglas
+			if (!empty($row[$n_alt]) && !is_null($row[$n_alt])) {
+				$nombre_alt = ucfirst( mb_strtolower( $row[$n_alt], 'UTF-8' ) );
+				if (strlen($row[$n_alt]) < 5 && mb_strtoupper($row[$n_alt], 'UTF-8') == $row[$n_alt])
+					$nombre_alt = $row[$n_alt]; // solo si son siglas
 				$lista[] = $nombre_alt;
 			}
 		}

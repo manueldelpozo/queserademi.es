@@ -31,9 +31,16 @@ try {
       $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND ";
 
     $consulta .= " FROM profesiones_test p INNER JOIN nombres_alt n ON p.id = n.id_profesion ".$where."p.nombre_ppal LIKE '$profesion' OR n.nombre_alt LIKE '$profesion'";
-    $rs = $pdo->prepare($consulta);
-    $rs->execute();
-    $filas = $rs->fetchAll();
+
+    try {
+      $rs = $pdo->prepare($consulta);
+      $rs->execute();
+      $filas = $rs->fetchAll();
+    } catch( Exception $e ) {
+      echo 'falla';
+      die('Error: '.$e->GetMessage());
+    }
+    
     return $filas;
   }
 

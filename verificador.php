@@ -157,11 +157,16 @@ if( !empty( $_POST['verificacion'] ) ){
 			return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
 	}
 	//obtencion de datos guardados
-    $rs_registro = $pdo->prepare("SELECT * FROM profesiones WHERE nombre_ppal LIKE '$profesion'");
+	$consulta = "SELECT * FROM profesiones_test p 
+	INNER JOIN nombres_alt n ON p.id = n.id_profesion 
+	INNER JOIN salarios s ON p.id = s.id_profesion 
+	INNER JOIN capacidades c ON p.id = c.id_profesion 
+	WHERE p.nombre_ppal LIKE '$profesion' OR n.nombre_alt LIKE '$profesion' ";
+    $rs_registro = $pdo->prepare($consulta);
     $rs_registro->execute();
     $registro = $rs_registro->fetch(PDO::FETCH_ASSOC);
 
-	if( diferencia( $registro['s_principiante_max'], $s_junior_max ) > 0.5 )
+	if( diferencia( $registro['s_princ_max'], $s_principiante_max ) > 0.5 )
 		$error += 0.05;	
 	if( diferencia( $registro['s_junior_max'], $s_junior_max ) > 0.5 )
 		$error += 0.05;	
@@ -178,9 +183,9 @@ if( !empty( $_POST['verificacion'] ) ){
 		$error += 0.03;
 	if( diferencia( $registro['c_forma_fisica'], $c_forma_fisica ) > 0.5 )
 		$error += 0.03;
-	if( diferencia( $registro['c_objetivos'], $c_organizacion ) > 0.5 )
+	if( diferencia( $registro['c_objetivos'], $c_objetivos ) > 0.5 )
 		$error += 0.03;
-	if( diferencia( $registro['c_persuasion'], $c_organizacion ) > 0.5 )
+	if( diferencia( $registro['c_persuasion'], $c_persuasion ) > 0.5 )
 		$error += 0.03;
 
 	// SENTENCIA DE ERROR
@@ -201,13 +206,13 @@ if( !empty( $_POST['verificacion'] ) ){
 		// SI EXISTE GENERAR UPDATE
 		$colaboracion .= "UPDATE colaboraciones SET colaborador = '$colaborador' , email = '$email' , profesion = '$profesion' , descripcion = '$descripcion' , trabajas = '$trabajas' , comunidad_autonoma = '$comunidad_autonoma' , estudios_asoc = '$estudios_asoc' , tiempo_estudios = '$tiempo_estudios' , ";
 		$colaboracion .= "acceso = '$acceso' , sector = '$sector' , contrato = '$contrato' , jornada_laboral_min = '$jornada_laboral_min' , jornada_laboral_max = '$jornada_laboral_max' , movilidad = '$movilidad' , horas_semana = '$horas_semana' , horas_real = '$horas_real' , puesto = '$puesto' , edad_jubilacion = '$edad_jubilacion' , ";
-		$colaboracion .= "tiempo_trabajo = '$tiempo_trabajo' , s_principiante_min = '$s_principiante_min' , s_principiante_max = '$s_principiante_max' ,s_junior_min = '$s_junior_min' , s_junior_max = '$s_junior_max' , s_intermedio_min = '$s_intermedio_min' , s_intermedio_max = '$s_intermedio_max' , s_senior_min = '$s_senior_min' , ";
-		$colaboracion .= "c_equipo = '$c_equipo' , c_analisis = '$c_analisis' , c_comunicacion = '$c_comunicacion' , c_forma_fisica = '$c_forma_fisica' , c_objetivos = '$c_objetivos' , c_persuasion = '$persuasion' , i_ingles = '$i_ingles' , i_frances = '$i_frances' , i_aleman = '$i_aleman' , i_otro = '$i_otro' , i_otro_val = '$i_otro_val' , satisfaccion = '$satisfaccion' , aceptado = '$aceptado' ";
+		$colaboracion .= "tiempo_trabajo = '$tiempo_trabajo' , s_principiante_min = '$s_principiante_min' , s_principiante_max = '$s_principiante_max' ,s_junior_min = '$s_junior_min' , s_junior_max = '$s_junior_max' , s_intermedio_min = '$s_intermedio_min' , s_intermedio_max = '$s_intermedio_max' , s_senior_min = '$s_senior_min' , s_senior_max = '$s_senior_max' , ";
+		$colaboracion .= "c_equipo = '$c_equipo' , c_analisis = '$c_analisis' , c_comunicacion = '$c_comunicacion' , c_forma_fisica = '$c_forma_fisica' , c_objetivos = '$c_objetivos' , c_persuasion = '$c_persuasion' , i_ingles = '$i_ingles' , i_frances = '$i_frances' , i_aleman = '$i_aleman' , i_otro = '$i_otro' , i_otro_val = '$i_otro_val' , satisfaccion = '$satisfaccion' , aceptado = '$aceptado' ";
 		$colaboracion .= "WHERE codigo_gen LIKE '$codigo_gen'";
 	} else {
 		// SI NO EXISTE GENERAR INSERT
 		$colaboracion .= "INSERT INTO `colaboraciones`(`colaborador`, `email`, `profesion`, `descripcion`, `trabajas`, `comunidad_autonoma`, `estudios_asoc`, `tiempo_estudios`, `acceso`, `sector`, `contrato`, `jornada_laboral_min`, `jornada_laboral_max`, `movilidad`, `horas_semana`, `horas_real`, `puesto`, `edad_jubilacion`, `tiempo_trabajo`, `s_principiante_min`, `s_principiante_max`, `s_junior_min`, `s_junior_max`, `s_intermedio_min`, `s_intermedio_max`, `s_senior_min`, `s_senior_max`, `c_equipo`, `c_analisis`, `c_objetivos`, `c_comunicacion`, `c_forma_fisica`, `c_persuasion`, `i_ingles`, `i_frances`, `i_aleman`, `i_otro`, `i_otro_val`, `satisfaccion`, `codigo_gen`, `aceptado`) ";
-		$colaboracion .= "VALUES ( '$colaborador', '$email', '$profesion', '$descripcion', $trabajas, '$comunidad_autonoma', '$estudios_asoc', $tiempo_estudios, '$acceso', '$sector', '$contrato', $jornada_laboral_min, $jornada_laboral_max, $movilidad, $horas_semana, $horas_real, '$puesto', $edad_jubilacion, $tiempo_trabajo, $edad_jubilacion, $s_principiante_min, $s_principiante_max, $s_junior_min, $s_junior_max, $s_intermedio_min, $s_intermedio_max, $s_senior_min, $s_senior_max, $c_equipo, $c_analisis, $c_objetivos, $c_comunicacion, $c_forma_fisica, $persuasion, $i_ingles, $i_frances, $i_aleman, $i_otro, '$i_otro_val', $satisfaccion, '$codigo_gen', $aceptado);";
+		$colaboracion .= "VALUES ( '$colaborador', '$email', '$profesion', '$descripcion', $trabajas, '$comunidad_autonoma', '$estudios_asoc', $tiempo_estudios, '$acceso', '$sector', '$contrato', $jornada_laboral_min, $jornada_laboral_max, $movilidad, $horas_semana, $horas_real, '$puesto', $edad_jubilacion, $tiempo_trabajo, $s_principiante_min, $s_principiante_max, $s_junior_min, $s_junior_max, $s_intermedio_min, $s_intermedio_max, $s_senior_min, $s_senior_max, $c_equipo, $c_analisis, $c_objetivos, $c_comunicacion, $c_forma_fisica, $c_persuasion, $i_ingles, $i_frances, $i_aleman, $i_otro, '$i_otro_val', $satisfaccion, '$codigo_gen', $aceptado);";
 	}
 	
 ?>
@@ -261,7 +266,6 @@ if( !empty( $_POST['verificacion'] ) ){
 			  	<div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 text-center">
 <?php
 //AGRADECIMIENTOS
-
 	// ejecutar actualizacion sql
 	$updating = $pdo->prepare($colaboracion);
 	$updating->execute();
@@ -275,7 +279,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		//solo si tenemos el email, es valido y aun no se ha enviado
 		if( !is_null( $email ) && !$email_enviado && $email_valido ) {
 			
-			if( is_null( $colaborador ) )
+			if( is_null($colaborador) || empty($colaborador) )
 				$colaborador = "colaborador/a";
 		
 			$linea1 		= "Estimado/a ".$colaborador.",";
@@ -305,7 +309,7 @@ if( !empty( $_POST['verificacion'] ) ){
 			$mail->Host 		= 'smtp.queserademi.es';  // Specify main and backup SMTP servers
 			$mail->SMTPAuth 	= true;                               // Enable SMTP authentication
 			$mail->Username 	= 'info@queserademi.es';                 // SMTP username
-			$mail->Password 	= 'Qsdm2015';                           // SMTP password
+			$mail->Password 	= 'Qsdm2016';                           // SMTP password
 			//$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 			$mail->Port 		= 587;                                    // TCP port to connect to
 			
@@ -324,13 +328,13 @@ if( !empty( $_POST['verificacion'] ) ){
 			//$mail­->Encoding = "quoted­printable";                                // Set email format to HTML
 
 			$mail->Subject 		= 'Gracias por colaborar con queserademi';
-			$mail->Body    		= "<strong>".$linea1."</strong><br><p>".$linea2."<br>".$linea2b."</p><p><a href='http://www.queserademi.es/colabora.php'>".$linea3."</a>".$linea3b."</p><p>".$linea4."<br>".$linea5."</p><br><p><strong>".$linea6."</strong><br><a href='http://www.queserademi.es'>".$linea7."</a><br><a href='mailto:info@queserademi.es'>".$linea8."</a><br><br><img src='http://www.queserademi.es/images/logo.png' heigh='60px' width='60px'></p>";
+			$mail->Body    		= "<p><strong>".$linea1."</strong></p><br><p>".$linea2."<br>".$linea2b."</p><p><a href='http://www.queserademi.es/colabora.php'>".$linea3."</a>".$linea3b."</p><p>".$linea4."<br>".$linea5."</p><br><p><strong>".$linea6."</strong><br><a href='http://www.queserademi.es'>".$linea7."</a><br><a href='mailto:info@queserademi.es'>".$linea8."</a><br><br><img src='http://www.queserademi.es/images/logo.png' heigh='60px' width='60px'></p>";
 			//'This is the body in plain text for non-HTML mail clients';
 			$mail->AltBody 		= $linea1."\n\n".$linea2."\n".$linea2b."\n\n".$linea3.$linea3b."\n\n".$linea4."\n\n".$linea5."\n\n".$linea6."\n".$linea7."\n".$linea8;
 
 			if(!$mail->send()) {
 			    echo '<h3>[El mail no ha podido enviarse]</h3><br>';
-			    echo '<h3>Mailer Error: ' . $mail->ErrorInfo . '</h3>'; 
+			    //echo '<h3>Mailer Error: ' . $mail->ErrorInfo . '</h3>'; 
 			} else {
 				// confirmar envio del mail actualizando el booleano en la bbdd
 				$enviar_email = $pdo->prepare("UPDATE colaboraciones SET email_enviado = '1' WHERE codigo_gen LIKE '$codigo_gen'");
