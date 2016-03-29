@@ -303,20 +303,20 @@ function submitar($input) {
                     // proponer mejora de busqueda... por filtros con select
                     return false;
                 } else {
-                    // antes de submitar comprobar si es nombre alternativo
-                    if (result.substring(result.length - $profesion.length - 2, result.length - 2) == $profesion) {
+                    // antes de submitar comprobar si es nombre alternativo y redireccionarlo a la estatica
+                    /*if (result.substring(result.length - $profesion.length - 2, result.length - 2) == $profesion) {
                         window.location = 'http://www.queserademi.es/profesiones/' + $profesion.replace(/ /g, "-").latinize().toLowerCase() + '.html';
                         return false;
-                    }
+                    }*/
                     $form.submit();
                 }
             },
             error: function(xhr, textStatus, errorThrown) {
             	alert(xhr);
                 // y cambiar el redireccionamiento a la pagina estatica si es necesario (status 500)
-                if (xhr.status == 500) {
+                /*if (xhr.status == 500) {
                     window.location = 'http://www.queserademi.es/profesiones/' + $profesion.replace(/ /g, "-").latinize().toLowerCase() + '.html';
-                }
+                }*/
                 alert('Fallo en la consulta');
                 return false;
             }
