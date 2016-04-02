@@ -2,7 +2,7 @@
 //eliminar el limite de ejecucion
 set_time_limit(0);
 
-try {
+//try {
   require('conexion.php');
 
   $tablas = array( 
@@ -32,23 +32,26 @@ try {
 
     $consulta .= " FROM profesiones_test p INNER JOIN nombres_alt n ON p.id = n.id_profesion ".$where."p.nombre_ppal LIKE '$profesion' OR n.nombre_alt LIKE '$profesion'";
 
-    try {
+    //try {
       $rs = $pdo->prepare($consulta);
       $rs->execute();
       $filas = $rs->fetchAll();
-    } catch( Exception $e ) {
-      echo 'falla';
-      die('Error: '.$e->GetMessage());
-    }
+    //} catch( Exception $e ) {
+      //die('Error: '.$e->GetMessage());
+    //}
     
     return $filas;
   }
 
   if (isset($_GET['profesion'])) {
     $profesion = $_GET['profesion'];
-  }  
+  } else if (isset($_GET['profesion_alt'])) {
+    $profesion = $_GET['profesion_alt'];
+  }
   if (isset($_GET['profesion_dos'])) { 
     $profesion_dos = $_GET['profesion_dos'];
+  } else if (isset($_GET['profesion_dos_alt'])) {
+    $profesion_dos = $_GET['profesion_dos_alt'];
   }
 
   foreach ($tablas as $tabla => $value) {
@@ -279,7 +282,7 @@ try {
 </html>
 
 <?php
-} catch( Exception $e ) {
+/*} catch( Exception $e ) {
   die('Error: '.$e->GetMessage());
-}
+}*/
 ?>
