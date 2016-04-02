@@ -12,7 +12,7 @@ use Asika\Sitemap\ChangeFreq;
 $sitemap = new Sitemap;
 //Add items to sitemap:
 //Loop de todas las url creadas
-$limite = 1506;
+$limite = 5862;
 $num = 1;
 foreach(glob('profesiones/*.html') as $n => $filename) {
 	$url = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $filename;
