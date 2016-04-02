@@ -36,7 +36,7 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 	$count = $request->rowCount();
 	
 	if ($count > 0) {
-		$mas_btn = '<strong id="masLista">Más...</strong>';
+		//$mas_btn = '<strong id="masLista">Más...</strong>'; // Por el momento no usar boton Mas
 
 		$rows = $request->fetchAll();
 		foreach ( $rows as $row ) {

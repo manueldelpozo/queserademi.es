@@ -702,7 +702,7 @@ $meses = array_merge($meses, $meses); // concatenar meses
 // busqueda de nulos en empleabilidad
 foreach ($filas_empleabilidad as $fila_empleabilidad) { 
   $empleabilidad = empleabilidad($fila_empleabilidad['contratados'], $fila_empleabilidad['parados']); 
-  if( is_null($empleabilidad) || $empleabilidad == 0 )
+  if(is_null($empleabilidad))
     $btn_colabora_e_1++;
 }
 
