@@ -51,6 +51,6 @@ function iniciarSlider( nImages ) {
     }, 4000);
 }
 
-iniciarSlider(3);
+//iniciarSlider(3);
 
 

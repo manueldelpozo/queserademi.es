@@ -14,7 +14,7 @@ set_time_limit(0);
     'formaciones'   => array('f_nombre_ppal','f_nombre_alt','duracion_academica','duracion_real','acceso','nivel')
   );
 
-  function consulta( $profesion, $tabla, $tablas, $pdo ) {
+  function consulta($profesion, $tabla, $tablas, $pdo) {
     $consulta = "SELECT ";
     foreach ($tablas[$tabla] as $campo) {
       $consulta .= $campo . ",";
@@ -30,29 +30,34 @@ set_time_limit(0);
     else
       $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND ";
 
-    $consulta .= " FROM profesiones_test p INNER JOIN nombres_alt n ON p.id = n.id_profesion ".$where."p.nombre_ppal LIKE '$profesion' OR n.nombre_alt LIKE '$profesion'";
+    $consulta .= " FROM profesiones_test p ".$where."p.nombre_ppal LIKE '$profesion'";
 
-    //try {
-      $rs = $pdo->prepare($consulta);
-      $rs->execute();
-      $filas = $rs->fetchAll();
-    //} catch( Exception $e ) {
-      //die('Error: '.$e->GetMessage());
-    //}
+    $rs = $pdo->prepare($consulta);
+    $rs->execute();
+    $filas = $rs->fetchAll();
     
     return $filas;
   }
 
+  function getNombrePpal($nombre_alt, $pdo) {
+    $consulta_alt = "SELECT nombre_ppal FROM profesiones_test WHERE id = (
+                        SELECT id_profesion FROM nombres_alt WHERE nombre_alt LIKE '$nombre_alt'
+                      ) ";
+    $rs_alt = $pdo->prepare($consulta_alt);
+    $rs_alt->execute();
+    $count = $rs_alt->rowCount();
+    $row_nombre_ppal =  $rs_alt->fetchAll();
+    return ($count > 0) ? $row_nombre_ppal[0]['nombre_ppal'] : false;
+  }
+
   if (isset($_GET['profesion'])) {
-    $profesion = $_GET['profesion'];
-  } else if (isset($_GET['profesion_alt'])) {
-    $profesion = $_GET['profesion_alt'];
+    $n_alt = ucfirst(mb_strtolower(getNombrePpal($_GET['profesion'], $pdo)));
+    $profesion = $n_alt ? $n_alt : $_GET['profesion'];
   }
   if (isset($_GET['profesion_dos'])) { 
-    $profesion_dos = $_GET['profesion_dos'];
-  } else if (isset($_GET['profesion_dos_alt'])) {
-    $profesion_dos = $_GET['profesion_dos_alt'];
-  }
+    $n_alt_dos = ucfirst(mb_strtolower(getNombrePpal($_GET['profesion_dos'], $pdo)));
+    $profesion_dos = $n_alt_dos ? $n_alt_dos : $_GET['profesion_dos'];
+  } 
 
   foreach ($tablas as $tabla => $value) {
     if( isset($profesion) ) {

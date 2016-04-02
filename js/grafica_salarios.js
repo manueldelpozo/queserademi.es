@@ -162,7 +162,7 @@ $('#container_salarios').highcharts({
         }
     ]
 });
-<?php echo $btn_colabora_s_1; ?>
+
 // Comprobar si se necesitan botones producido
 <?php if( $btn_colabora_s_1 || $btn_colabora_s_2 ) { ?>
     // agregar capa de aviso semitransparente (con opcion a quitar?)
