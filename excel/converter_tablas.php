@@ -63,8 +63,8 @@ try {
 	    $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
 	    //recoger datos del array rowData
 		$cod 			= $rowData[0][0];
-	    $nombre_ppal 	= $rowData[0][1];
-	    $descripcion 	= $rowData[0][5];
+	    $nombre_ppal 	= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][1]);
+	    $descripcion 	= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][5]);
 	   
 	    //insertar profesiones
 	    $insert_profesiones .= "'$cod','$nombre_ppal','$descripcion')";
@@ -86,9 +86,9 @@ try {
 	    $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
 	    //recoger datos del array rowData
 	    $cod 						= $rowData[0][0];
-	    $nombre_alt_1				= trim($rowData[0][2]);
-	    $nombre_alt_2				= trim($rowData[0][3]);
-	    $nombre_alt_3				= trim($rowData[0][4]);
+	    $nombre_alt_1				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][2]);
+	    $nombre_alt_2				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][3]);
+	    $nombre_alt_3				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][4]);
 	    $s_princ_min 				= str_replace(',', '.', $rowData[0][6]); 
 	    $s_princ_med 				= str_replace(',', '.', $rowData[0][7]); 
 	    $s_princ_max 				= str_replace(',', '.', $rowData[0][8]); 
