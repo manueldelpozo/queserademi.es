@@ -44,6 +44,7 @@ div.body > div {
 }
 .more {
   cursor: cell;
+  white-space: nowrap;
 }
 .highcharts-container {
   font-family: inherit;
