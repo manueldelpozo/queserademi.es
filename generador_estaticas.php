@@ -500,7 +500,7 @@ if( $btn_colabora_s_1 > 0 ) {
 $script_info = "$('#container_info').html('<h4 style=\"margin:15px\">INFORMACIÓN</h4><div id=\"info\"></div>');";
 
 if( isset( $profesion ) ) {  
-    $script_info .= "$('#info').append('<h4 class=\"principal nombre\">". $profesion ."</h4>');";
+    $script_info .= "$('#info').append('<h4 class=\"principal nombre\">". mb_strtoupper($profesion,"UTF-8" ) ."</h4>');";
     if( empty( $filas_info[0]['descripcion'] ) ) { 
         $script_info .= "$('#info').append('<p class=\"descripcion\" id=\"desc1\">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a></div>');";
