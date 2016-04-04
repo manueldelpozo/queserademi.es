@@ -51,11 +51,11 @@ set_time_limit(0);
   }
 
   if (isset($_GET['profesion'])) {
-    $n_alt = ucfirst(mb_strtolower(getNombrePpal($_GET['profesion'], $pdo)));
+    $n_alt = ucfirst(mb_strtolower(getNombrePpal($_GET['profesion'], $pdo),'UTF-8'));
     $profesion = $n_alt ? $n_alt : $_GET['profesion'];
   }
   if (isset($_GET['profesion_dos'])) { 
-    $n_alt_dos = ucfirst(mb_strtolower(getNombrePpal($_GET['profesion_dos'], $pdo)));
+    $n_alt_dos = ucfirst(mb_strtolower(getNombrePpal($_GET['profesion_dos'], $pdo),'UTF-8'));
     $profesion_dos = $n_alt_dos ? $n_alt_dos : $_GET['profesion_dos'];
   } 
 
