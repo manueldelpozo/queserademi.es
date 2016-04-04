@@ -177,10 +177,10 @@
 
   <script type="text/javascript" async>
     
-var seriesSalPrinc      = [13284, 16356, 18492];
-var seriesSalJunior     = [15276, 18708, 21120];
-var seriesSalIntermedio = [16680, 20292, 22824];
-var seriesSalSenior     = [18084, 21732, 24300];
+var seriesSalPrinc      = [13560, 15540, 16932];
+var seriesSalJunior     = [15336, 17160, 18456];
+var seriesSalIntermedio = [17484, 19152, 20424];
+var seriesSalSenior     = [18888, 20508, 22272];
 var salarios = [
     [0,   seriesSalPrinc[0],      seriesSalPrinc[2]],
     [5,   seriesSalJunior[0],     seriesSalJunior[2]],
@@ -246,7 +246,7 @@ var salarios = [
     },
     series: [
         {
-            name: 'Operador de equipos ',
+            name: 'operador de equipos ',
             data: medias,
             color: Highcharts.getOptions().colors[0],
             zIndex: 1,
@@ -260,13 +260,14 @@ var salarios = [
             data: salarios,
             type: 'arearange',
             lineWidth: 0,
-            linkedTo: 'Operador de equipos ',
+            linkedTo: 'operador de equipos ',
             color: Highcharts.getOptions().colors[0],
             fillOpacity: 0.3,
             zIndex: 0
         }
     ]
-});$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">Operador de equipos </h4>');$('#info').append('<p class="descripcion">Este profesional aplica tratamientos de teleterapia: cobaltoterapia, acelerador de partículas y RX de baja y media energía, bajo supervisión facult<span class="excerpt"><span style="display:none;">ativa y colabora con el facultativo en la preparación y aplicación de los tratamientos con braquiterapia.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+});$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">operador de equipos </h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
+        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=operador de equipos " class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -395,11 +396,11 @@ $('.more').click( function() {
     series: [{  
         name: 'OPERADOR DE EQUIPOS ',
         data: seriesCap,
-        stack: 'Operador de equipos '
+        stack: 'operador de equipos '
     }]
 });
-var seriesEmp = [16.51, 17.67, 11.81, 16.08, 14.39, 15.95, 9.37, 14.78];
-var seriesEmpMedia = [39.81, 39.23, 37.13, 36.82, 39.81, 36.43, 34.01, 34.41];$('#container_empleabilidad').highcharts({
+var seriesEmp = [21.8, 21.84, 19.25, 21.12, 22.63, 20.94, 17.83, 20.3];
+var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('#container_empleabilidad').highcharts({
     chart: {
         type: 'column',
         marginTop: 80,
@@ -447,7 +448,7 @@ var seriesEmpMedia = [39.81, 39.23, 37.13, 36.82, 39.81, 36.43, 34.01, 34.41];$(
       {
         name: 'OPERADOR DE EQUIPOS ',
         data: seriesEmp,
-        stack: 'Operador de equipos '
+        stack: 'operador de equipos '
       },{
         name: 'Media de paro de todas las profesiones',
         type: 'spline',
