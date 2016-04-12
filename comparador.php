@@ -39,24 +39,35 @@ set_time_limit(0);
     return $filas;
   }
 
+  function consultaPDO($campo, $consulta, $pdo) {
+    $rs = $pdo->prepare($consulta);
+    $rs->execute();
+    $count = $rs->rowCount();
+    $row = $rs->fetchAll();
+    return ($count > 0) ? $row[0][$campo] : false;
+  }
+
   function getNombrePpal($nombre_alt, $pdo) {
     $consulta_alt = "SELECT nombre_ppal FROM profesiones_test WHERE id = (
                         SELECT id_profesion FROM nombres_alt WHERE nombre_alt LIKE '$nombre_alt'
                       ) ";
-    $rs_alt = $pdo->prepare($consulta_alt);
-    $rs_alt->execute();
-    $count = $rs_alt->rowCount();
-    $row_nombre_ppal =  $rs_alt->fetchAll();
-    return ($count > 0) ? $row_nombre_ppal[0]['nombre_ppal'] : false;
+    return consultaPDO('nombre_ppal', $consulta_alt, $pdo);
   }
+
+  function getIdProfesion($nombre_prof, $pdo) {
+    $consulta_id = "SELECT id FROM profesiones_test WHERE nombre_ppal LIKE '$nombre_prof'";
+    return consultaPDO('id', $consulta_id, $pdo);
+  } 
 
   if (isset($_GET['profesion'])) {
     $n_alt = ucfirst(mb_strtolower(getNombrePpal($_GET['profesion'], $pdo),'UTF-8'));
     $profesion = $n_alt ? $n_alt : $_GET['profesion'];
+    $id_profesion = getIdProfesion($profesion, $pdo);
   }
   if (isset($_GET['profesion_dos'])) { 
     $n_alt_dos = ucfirst(mb_strtolower(getNombrePpal($_GET['profesion_dos'], $pdo),'UTF-8'));
     $profesion_dos = $n_alt_dos ? $n_alt_dos : $_GET['profesion_dos'];
+    $id_profesion_dos = getIdProfesion($profesion_dos, $pdo);
   } 
 
   foreach ($tablas as $tabla => $value) {
@@ -202,7 +213,10 @@ set_time_limit(0);
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_satisfaccion" class="grafica"></div>
-            </div--> 
+            </div> 
+            <div class="col-md-6 col-xs-12 text-center">
+              <div id="container_noticias" class="grafica"></div>
+            </div-->
           </div> 
 
       </form>
@@ -281,6 +295,7 @@ set_time_limit(0);
       include('js/grafica_info.js'); 
       //include('js/grafica_formacion.js');
       //include('js/grafica_satisfaccion.js');
+      //include('js/grafica_noticias.js');
     ?>
   </script>
 
