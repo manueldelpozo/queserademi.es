@@ -61,7 +61,21 @@ $('#container_capacidades').highcharts({
         }
     },
 
-    legend: { enable: false },
+    legend: { 
+        enable: false,
+        itemStyle: {
+            textOverflow: 'ellipsis',
+            width: '350%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        } 
+    },
     pane: {
         size: '80%'
     },
@@ -170,12 +184,12 @@ $('#container_capacidades').highcharts({
     },
 
     series: [{  
-        name: '<?php echo mb_strtoupper($profesion,"UTF-8"); ?>',
+        name: '<?php echo $profesion; ?>',
         data: [ <?php imprimirSeriesCap($filas_capacidades[0], $tablas); ?> ],
         stack: '<?php echo $profesion ?>'
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ) { ?>
     }, {
-        name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?>',
+        name: '<?php echo $profesion_dos; ?>',
         data: [ <?php imprimirSeriesCap($filas_capacidades_dos[0], $tablas); ?> ],
         stack: '<?php echo $profesion_dos ?>' 
         <?php  }  ?> 

@@ -27,6 +27,7 @@ div.body > div {
 .nombre {
   font-weight: bolder;
   text-transform: uppercase;
+  margin: 10px;
 }
 .descripcion, .estudios {
   overflow: auto;

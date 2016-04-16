@@ -54,7 +54,7 @@ var salarios_dos = [
 ];
 <?php } ?>
 
-$('#container_salarios').highcharts({
+var chartSalarios = {
 
     chart: {
         backgroundColor:'rgba(255, 255, 255, 0)',
@@ -80,7 +80,19 @@ $('#container_salarios').highcharts({
     },
 
     legend: { 
-        enable: false 
+        enable: false ,
+        itemStyle: {
+            textOverflow: 'ellipsis',
+            width: '350%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        } 
     },
 
     xAxis: {
@@ -97,7 +109,6 @@ $('#container_salarios').highcharts({
 
     tooltip: {
         headerFormat: '<strong>{point.x} años de experiencia</strong><br>',
-        //pointFormat: '{point.x} años de experiencia',
         crosshairs: true,
         shared: true,
         valueSuffix: ' €'
@@ -161,7 +172,30 @@ $('#container_salarios').highcharts({
         <?php } ?>
         }
     ]
-});
+};
+
+$('#container_salarios').highcharts(chartSalarios);
+
+// Comprobar si los datos han salido iguales(objetos) en la comparacion pero con nombres distintos
+if (chartSalarios.series.length == 4 && JSON.stringify(chartSalarios.series[0].data)==JSON.stringify(chartSalarios.series[1].data) && chartSalarios.series[0].name !== chartSalarios.series[1].name) {
+    var capa_iguales = '<div class="capa-aviso">';
+    capa_iguales += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="images/cross.svg"></img></a></div>';
+    capa_iguales += '<div class="col-md-10 col-md-offset-1">';
+    capa_iguales += '<h3>Atención! Aparecen gráficas similares porque se usan datos generales.</h3>';
+
+    capa_iguales += '<p class="text-center">Ayúdanos a tener información específica sobre <strong>salarios</strong>:<br><br>';
+    capa_iguales += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
+    capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
+    <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
+        capa_iguales += '<br><strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
+        capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a>';
+    <?php  }  ?> 
+    
+    capa_iguales += '</div>';
+    capa_iguales += '</div>';
+
+    $('#container_salarios').append(capa_iguales);
+}
 
 // Comprobar si se necesitan botones producido
 <?php if( $btn_colabora_s_1 || $btn_colabora_s_2 ) { ?>

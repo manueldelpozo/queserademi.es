@@ -18,8 +18,11 @@ function mediaEmpleabilidad($pdo, $meses) {
         }
         $medias[] = round(array_sum($media) / count($media), 2);
     }
-    echo join(", ",$medias);
+    return $medias;
 }
+
+$media_min = min(mediaEmpleabilidad($pdo, $meses));
+$media_max = max(mediaEmpleabilidad($pdo, $meses));
 
 function coefMin($parados) {
     $output = 1;
@@ -45,6 +48,7 @@ function imprimirSeriesEmp($filas, $n_meses) {
     $counter_rect = 0;
     $no_duplicado = true;
     $memo = [];
+    $seriesEmp = array();
     foreach ($filas as $fila) {
         $memo[$counter] = $fila;
         if (count($memo) > 1)
@@ -53,9 +57,11 @@ function imprimirSeriesEmp($filas, $n_meses) {
             $counter_rect++;
             $emp = empleabilidad($fila['contratados'], $fila['parados']);
             echo (is_null($emp) || $emp == 0) ? "0," : $emp.",";
+            //array_push($seriesEmp, (is_null($emp) || $emp == 0) ? "0" : $emp); 
         }
         $counter++;
     }
+    //return $seriesEmp;
 }
 
 // busqueda de nulos
@@ -72,8 +78,7 @@ if( isset($profesion_dos) && !empty($profesion_dos) ){
     }
 }
 ?>
-
-$('#container_empleabilidad').highcharts({
+var chartEmpleabilidad = {
     chart: {
         type: 'column',
         marginTop: 80,
@@ -101,7 +106,21 @@ $('#container_empleabilidad').highcharts({
         text: '- DIFICULTAD DE CONSEGUIR TRABAJO -'
     },
 
-    legend: { enable: false },
+    legend: { 
+        enable: false,
+        itemStyle: {
+            textOverflow: 'ellipsis',
+            width: '350%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        } 
+    },
     xAxis: {
         categories: [ 
         <?php 
@@ -119,9 +138,43 @@ $('#container_empleabilidad').highcharts({
         min: 0,
         title: {
             text: 'Dificultad de conseguir trabajo %'
-        }
+        },
+        plotBands: [{ // Paro alto
+                from: <?php echo $media_max; ?>,
+                to: 100,
+                color: 'rgba(0, 0, 0, 0.3)',
+                label: {
+                    rotation: 90,
+                    verticalAlign: "top",
+                    x: 2,
+                    text: 'ALTO',
+                    style: {
+                        color: '#DDDDDD',
+                        fontSize:'12px'
+                    }
+                }
+            }, { // Paro medio
+                from: <?php echo $media_min; ?>,
+                to: <?php echo $media_max; ?>,
+                color: 'rgba(0, 0, 0, 0.2)'
+            }, { // Paro bajo
+                from: 0,
+                to: <?php echo $media_min; ?>,
+                color: 'rgba(0, 0, 0, 0.1)',
+                label: {
+                    rotation: 90,
+                    verticalAlign: "top",
+                    x: 2,
+                    text: 'BAJO',
+                    style: {
+                        color: '#AAA',
+                        fontSize:'12px'
+                    }
+                }
+            }]
     },
     tooltip: {
+        valueSuffix: ' %',
         headerFormat: '<b>{point.key}</b><br>',
         pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y}'
     },
@@ -130,34 +183,57 @@ $('#container_empleabilidad').highcharts({
     }, 
     series: [
     {
-        name: '<?php echo mb_strtoupper($profesion,"UTF-8" ); ?>',
+        name: '<?php echo $profesion; ?>',
         data: [ <?php imprimirSeriesEmp($filas_empleabilidad, count($meses)); ?> ],
         stack: '<?php echo $profesion ?>'
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 	}, {
-        name: '<?php echo mb_strtoupper($profesion_dos,"UTF-8" ); ?>',
+        name: '<?php echo $profesion_dos; ?>',
         data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, count($meses)); ?> ],
         stack: '<?php echo $profesion_dos ?>'
     	<?php  }  ?> 
 	},{
         name: 'Media de paro de todas las profesiones',
         type: 'spline',
-        data: [ <?php mediaEmpleabilidad($pdo, $meses); ?> ],
+        data: [ <?php echo join(", ",mediaEmpleabilidad($pdo, $meses)); ?> ],
         stack: 'Media de paro',
-        color: 'rgb(0, 0, 0)',
+        color: 'rgba(0, 0, 0, 0.2)',
         dashStyle: 'shortdot',
         marker: {
-            fillColor: 'white',
-            lineWidth: 2,
-            lineColor: 'rgb(0, 0, 0)',
+            fillColor: 'transparent',
+            lineWidth: 1,
+            lineColor: 'rgba(0, 0, 0, 0.2)',
         }
     }
     ]
-});
+};
+
+$('#container_empleabilidad').highcharts(chartEmpleabilidad);
+
+// Comprobar si los datos han salido iguales en la comparacion pero con nombres distintos
+if (chartEmpleabilidad.series.length == 3 && $(chartEmpleabilidad.series[0].data).not(chartEmpleabilidad.series[1].data).length === 0 && chartEmpleabilidad.series[0].name !== chartEmpleabilidad.series[1].name) {
+    var capa_iguales = '<div class="capa-aviso">';
+    capa_iguales += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="images/cross.svg"></img></a></div>';
+    capa_iguales += '<div class="col-md-10 col-md-offset-1">';
+    capa_iguales += '<h3>Atención! Aparecen gráficas similares porque se usan datos generales.</h3>';
+
+    capa_iguales += '<p class="text-center">Ayúdanos a tener información específica sobre <strong>salarios</strong>:<br><br>';
+    capa_iguales += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
+    capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
+    <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
+        capa_iguales += '<br><strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
+        capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a>';
+    <?php  }  ?> 
+
+    capa_iguales += '</div>';
+    capa_iguales += '</div>';
+
+    $('#container_empleabilidad').append(capa_iguales);
+}
 
 // Comprobar si se necesitan botones producido
 <?php if( $btn_colabora_e_1 || $btn_colabora_e_2 ) { ?>
-    // agregar capa de aviso semitransparente (con opcion a quitar?)
+    // agregar capa de aviso semitransparente (con opcion a quitar)
     var capa_aviso = '<div class="capa-aviso">';
     capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="images/cross.svg"></img></a></div>';
     capa_aviso += '<div class="col-md-10 col-md-offset-1">';
@@ -178,7 +254,6 @@ $('#container_empleabilidad').highcharts({
     capa_aviso += '</div>';
     capa_aviso += '</div>';
 
-    // debe aparecer despues de 1 segundo
     $('#container_empleabilidad').append(capa_aviso);
 
 <?php } ?>

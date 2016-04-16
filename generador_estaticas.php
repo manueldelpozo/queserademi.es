@@ -403,7 +403,8 @@ $script_salarios .= 'var salarios = [
     [15,  seriesSalSenior[1]]
 ];';
 
-$script_salarios .= "$('#container_salarios').highcharts({
+$script_salarios .= "
+var chartSalarios = {
     chart: {
         backgroundColor:'rgba(255, 255, 255, 0)',
         spacingBottom: 20,
@@ -426,7 +427,19 @@ $script_salarios .= "$('#container_salarios').highcharts({
         text: '- € / año -'
     },
     legend: { 
-        enable: false 
+        enable: false ,
+        itemStyle: {
+            textOverflow: 'ellipsis',
+            width: '350%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        }  
     },
     xAxis: {
         title: {
@@ -440,7 +453,6 @@ $script_salarios .= "$('#container_salarios').highcharts({
     },
     tooltip: {
         headerFormat: '<strong>{point.x} años de experiencia</strong><br>',
-        //pointFormat: '{point.x} años de experiencia',
         crosshairs: true,
         shared: true,
         valueSuffix: ' €'
@@ -479,6 +491,8 @@ $script_salarios .= "$('#container_salarios').highcharts({
         }
     ]
 });";
+
+$script_salarios .= "$('#container_salarios').highcharts(chartSalarios);";
 
 if( $btn_colabora_s_1 > 0 ) { 
     $script_salarios .= "var capa_aviso = '<div class=\"capa-aviso\">';
@@ -523,7 +537,7 @@ $descripciones = array(
     'Comunicación'              => 'Comunicación, hablar en público, escucha activa.',
     'Destreza y físico'         => 'Destreza técnica, apariciencia física, etc.',
     'Cooperación'               => 'Empatía, sensibilidad, colaboración, trabajo en equipo, escucha.',
-    'Logro de objetivos'  => 'Orientado a objetivos, resultados, etc.',
+    'Logro de objetivos'        => 'Orientado a objetivos, resultados, etc.',
     'Persuasión'                => 'Influencia, negociación, habilidades comerciales, etc.'
 );
 $iconos = array(
@@ -568,7 +582,21 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             'fontWeight': 'bold'
         }
     },
-    legend: { enable: false },
+    legend: { 
+        enable: false,
+        itemStyle: {
+            textOverflow: 'ellipsis',
+            width: '350%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        } 
+    },
     pane: {
         size: '80%'
     },
@@ -669,7 +697,7 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
     },
 
     series: [{  
-        name: '". mb_strtoupper($profesion,"UTF-8") ."',
+        name: '". $profesion ."',
         data: seriesCap,
         stack: '". $profesion ."'
     }]
@@ -710,7 +738,11 @@ $script_empleabilidad = "
 var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad, count($meses))) . "];
 var seriesEmpMedia = [". mediaEmpleabilidad($pdo, $meses) . "];";
 
-$script_empleabilidad .= "$('#container_empleabilidad').highcharts({
+$media_min = min(mediaEmpleabilidad($pdo, $meses));
+$media_max = max(mediaEmpleabilidad($pdo, $meses));
+
+$script_empleabilidad .= "
+var chartEmpleabilidad = {
     chart: {
         type: 'column',
         marginTop: 80,
@@ -736,7 +768,21 @@ $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
     subtitle: {
         text: '- DIFICULTAD DE CONSEGUIR TRABAJO -'
     },
-    legend: { enable: false },
+    legend: { 
+        enable: false,
+        itemStyle: {
+            textOverflow: 'ellipsis',
+            width: '350%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        } 
+    },
     xAxis: {
         categories: [ ";
           foreach ($meses as $n_mes => $mes) { 
@@ -752,7 +798,36 @@ $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
         min: 0,
         title: {
             text: 'Dificultad de conseguir trabajo %'
-        }
+        },
+        plotBands: [
+            { // Paro alto
+                to: 100,
+                color: 'rgba(0, 0, 0, 0.3)',
+                label: {
+                    rotation: 90,
+                    x: 2,
+                    text: 'ALTO',
+                    style: {
+                        color: '#DDDDDD',
+                        fontSize:'12px'
+                    }
+                }
+            }, { // Paro medio
+                color: 'rgba(0, 0, 0, 0.2)'
+            }, { // Paro bajo
+                from: 0,
+                color: 'rgba(0, 0, 0, 0.1)',
+                label: {
+                    rotation: 90,
+                    x: 2,
+                    text: 'BAJO',
+                    style: {
+                        color: '#AAA',
+                        fontSize:'12px'
+                    }
+                }
+            }
+        ]
     },
     tooltip: {
         headerFormat: '<b>{point.key}</b><br>',
@@ -763,7 +838,7 @@ $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
     }, 
     series: [
       {
-        name: '". mb_strtoupper($profesion,"UTF-8" ) ."',
+        name: '". $profesion ."',
         data: seriesEmp,
         stack: '". $profesion ."'
       },{
@@ -771,16 +846,18 @@ $script_empleabilidad .= "$('#container_empleabilidad').highcharts({
         type: 'spline',
         data: seriesEmpMedia,
         stack: 'Media de paro',
-        color: 'rgb(0, 0, 0)',
+        color: 'rgba(0, 0, 0, 0.2)',
         dashStyle: 'shortdot',
         marker: {
-            fillColor: 'white',
-            lineWidth: 2,
-            lineColor: 'rgb(0, 0, 0)',
+            fillColor: 'transparent',
+            lineWidth: 1,
+            lineColor: 'rgba(0, 0, 0, 0.2)',
         }
       }
     ]
-});";
+};";
+
+$script_empleabilidad .= "$('#container_empleabilidad').highcharts(chartEmpleabilidad);";
 
 if( $btn_colabora_e_1 > 0 ) { 
     $script_empleabilidad .= "var capa_aviso = '<div class=\"capa-aviso\">';
