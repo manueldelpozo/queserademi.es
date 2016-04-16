@@ -801,10 +801,12 @@ var chartEmpleabilidad = {
         },
         plotBands: [
             { // Paro alto
+                from: ". $media_max .",
                 to: 100,
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     rotation: 90,
+                    verticalAlign: 'top',
                     x: 2,
                     text: 'ALTO',
                     style: {
@@ -813,12 +815,16 @@ var chartEmpleabilidad = {
                     }
                 }
             }, { // Paro medio
+                from: ". $media_min .",
+                to: ". $media_max .",
                 color: 'rgba(0, 0, 0, 0.2)'
             }, { // Paro bajo
                 from: 0,
+                to: ". $media_min .",
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     rotation: 90,
+                    verticalAlign: 'top',
                     x: 2,
                     text: 'BAJO',
                     style: {
