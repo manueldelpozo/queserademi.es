@@ -191,7 +191,8 @@ var salarios = [
     [5,   seriesSalJunior[1]],
     [10,  seriesSalIntermedio[1]], 
     [15,  seriesSalSenior[1]]
-];$('#container_salarios').highcharts({
+];
+var chartSalarios = {
     chart: {
         backgroundColor:'rgba(255, 255, 255, 0)',
         spacingBottom: 20,
@@ -214,7 +215,19 @@ var salarios = [
         text: '- € / año -'
     },
     legend: { 
-        enable: false 
+        enable: false ,
+        itemStyle: {
+            textOverflow: 'ellipsis',
+            width: '350%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        }  
     },
     xAxis: {
         title: {
@@ -228,7 +241,6 @@ var salarios = [
     },
     tooltip: {
         headerFormat: '<strong>{point.x} años de experiencia</strong><br>',
-        //pointFormat: '{point.x} años de experiencia',
         crosshairs: true,
         shared: true,
         valueSuffix: ' €'
@@ -266,7 +278,7 @@ var salarios = [
             zIndex: 0
         }
     ]
-});$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">RESPONSABLE DE INFOR</h4>');$('#info').append('<p class="descripcion">Este profesional elabora y supervisa dietas adaptadas a personas y colectivos, según sus necesidades nutricionales o su patología específica.<span class="excerpt"><span style="display:none;"></span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">RESPONSABLE DE INFOR</h4>');$('#info').append('<p class="descripcion">Este profesional elabora y supervisa dietas adaptadas a personas y colectivos, según sus necesidades nutricionales o su patología específica.<span class="excerpt"><span style="display:none;"></span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -293,7 +305,21 @@ $('.more').click( function() {
             'fontWeight': 'bold'
         }
     },
-    legend: { enable: false },
+    legend: { 
+        enable: false,
+        itemStyle: {
+            textOverflow: 'ellipsis',
+            width: '350%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        } 
+    },
     pane: {
         size: '80%'
     },
@@ -393,13 +419,14 @@ $('.more').click( function() {
     },
 
     series: [{  
-        name: 'RESPONSABLE DE INFOR',
+        name: 'Responsable de infor',
         data: seriesCap,
         stack: 'Responsable de infor'
     }]
 });
 var seriesEmp = [29.71, 29.57, 29.44, 29.59, 29.61, 29.52, 29.27, 29.54];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('#container_empleabilidad').highcharts({
+var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];
+var chartEmpleabilidad = {
     chart: {
         type: 'column',
         marginTop: 80,
@@ -425,7 +452,21 @@ var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('
     subtitle: {
         text: '- DIFICULTAD DE CONSEGUIR TRABAJO -'
     },
-    legend: { enable: false },
+    legend: { 
+        enable: false,
+        itemStyle: {
+            textOverflow: 'ellipsis',
+            width: '350%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        } 
+    },
     xAxis: {
         categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2014','Abril 2015','Julio 2015','Octubre 2015' ]
     },
@@ -434,7 +475,42 @@ var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('
         min: 0,
         title: {
             text: 'Dificultad de conseguir trabajo %'
-        }
+        },
+        plotBands: [
+            { // Paro alto
+                from: 41.27,
+                to: 100,
+                color: 'rgba(0, 0, 0, 0.3)',
+                label: {
+                    rotation: 90,
+                    verticalAlign: 'top',
+                    x: 2,
+                    text: 'ALTO',
+                    style: {
+                        color: '#DDDDDD',
+                        fontSize:'12px'
+                    }
+                }
+            }, { // Paro medio
+                from: 35.27,
+                to: 41.27,
+                color: 'rgba(0, 0, 0, 0.2)'
+            }, { // Paro bajo
+                from: 0,
+                to: 35.27,
+                color: 'rgba(0, 0, 0, 0.1)',
+                label: {
+                    rotation: 90,
+                    verticalAlign: 'top',
+                    x: 2,
+                    text: 'BAJO',
+                    style: {
+                        color: '#AAA',
+                        fontSize:'12px'
+                    }
+                }
+            }
+        ]
     },
     tooltip: {
         headerFormat: '<b>{point.key}</b><br>',
@@ -445,7 +521,7 @@ var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('
     }, 
     series: [
       {
-        name: 'RESPONSABLE DE INFOR',
+        name: 'Responsable de infor',
         data: seriesEmp,
         stack: 'Responsable de infor'
       },{
@@ -453,15 +529,15 @@ var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('
         type: 'spline',
         data: seriesEmpMedia,
         stack: 'Media de paro',
-        color: 'rgb(0, 0, 0)',
+        color: 'rgba(0, 0, 0, 0.2)',
         dashStyle: 'shortdot',
         marker: {
-            fillColor: 'white',
-            lineWidth: 2,
-            lineColor: 'rgb(0, 0, 0)',
+            fillColor: 'transparent',
+            lineWidth: 1,
+            lineColor: 'rgba(0, 0, 0, 0.2)',
         }
       }
     ]
-});
+};$('#container_empleabilidad').highcharts(chartEmpleabilidad);
   </script>
 </html>

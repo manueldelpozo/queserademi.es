@@ -110,7 +110,7 @@ try {
         }
         $medias[] = round(array_sum($media) / count($media), 2);
     }
-    return join(", ",$medias);
+    return $medias;
   }
 
   function imprimirSeriesEmp($filas, $n_meses) {
@@ -490,7 +490,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-});";
+};";
 
 $script_salarios .= "$('#container_salarios').highcharts(chartSalarios);";
 
@@ -736,7 +736,7 @@ foreach ($filas_empleabilidad as $fila_empleabilidad) {
 
 $script_empleabilidad = "
 var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad, count($meses))) . "];
-var seriesEmpMedia = [". mediaEmpleabilidad($pdo, $meses) . "];";
+var seriesEmpMedia = [". join(", ", mediaEmpleabilidad($pdo, $meses)) . "];";
 
 $media_min = min(mediaEmpleabilidad($pdo, $meses));
 $media_max = max(mediaEmpleabilidad($pdo, $meses));
