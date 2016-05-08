@@ -227,10 +227,10 @@ if( !empty( $_POST['verificacion'] ) ){
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-
 	    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Gracias por colaborar con queserademi" />
 	    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
 	    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/verificador.php" />
+	    <meta name="theme-color" content="#c00">
 	    <link rel="icon" type="image/x-icon" href="images/logo.png">
 	    <link rel="stylesheet" href="css/bootstrap.min.css" />
 	    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
