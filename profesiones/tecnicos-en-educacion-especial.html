@@ -177,10 +177,10 @@
 
   <script type="text/javascript" async>
     
-var seriesSalPrinc      = [0, 0, 0];
-var seriesSalJunior     = [0, 0, 0];
-var seriesSalIntermedio = [0, 0, 0];
-var seriesSalSenior     = [0, 0, 0];
+var seriesSalPrinc      = [15312, 19464, 22704];
+var seriesSalJunior     = [17940, 22128, 26280];
+var seriesSalIntermedio = [19980, 24216, 29256];
+var seriesSalSenior     = [21420, 25764, 31620];
 var salarios = [
     [0,   seriesSalPrinc[0],      seriesSalPrinc[2]],
     [5,   seriesSalJunior[0],     seriesSalJunior[2]],
@@ -278,18 +278,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);var capa_aviso = '<div class="capa-aviso">';
-    capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="../images/cross.svg"></img></a></div>';
-    capa_aviso += '<div class="col-md-10 col-md-offset-1">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
-
-        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
-        capa_aviso += '<strong>TÉCNICOS EN EDUCACIÓN ESPECIAL</strong></p>';
-        capa_aviso += '<a href="../colabora.php?profesion=TÉCNICOS EN EDUCACIÓN ESPECIAL" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
-
-    capa_aviso += '</div></div>';
-
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN EDUCACIÓN ESPECIAL</h4>');$('#info').append('<p class="descripcion">TÉCNICOS ESPECIALISTAS EDUCADORES DE PERSONAS CON DISCAPACIDAD PSÍQUICA<span class="excerpt"><span style="display:none;"></span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN EDUCACIÓN ESPECIAL</h4>');$('#info').append('<p class="descripcion">TÉCNICOS ESPECIALISTAS EDUCADORES DE PERSONAS CON DISCAPACIDAD PSÍQUICA<span class="excerpt"><span style="display:none;"></span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -436,7 +425,7 @@ $('.more').click( function() {
     }]
 });
 var seriesEmp = [14.45, 15.38, 13.67, 13.18, 12.01, 14.15, 13.84, 11.13];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];
+var seriesEmpMedia = [29.29, 29.06, 29.41, 26.97, 29.29, 27.23, 28.02, 25.25];
 var chartEmpleabilidad = {
     chart: {
         type: 'column',
@@ -489,7 +478,7 @@ var chartEmpleabilidad = {
         },
         plotBands: [
             { // Paro alto
-                from: 41.27,
+                from: 29.41,
                 to: 100,
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
@@ -503,12 +492,12 @@ var chartEmpleabilidad = {
                     }
                 }
             }, { // Paro medio
-                from: 35.27,
-                to: 41.27,
+                from: 25.25,
+                to: 29.41,
                 color: 'rgba(0, 0, 0, 0.2)'
             }, { // Paro bajo
                 from: 0,
-                to: 35.27,
+                to: 25.25,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     rotation: 90,

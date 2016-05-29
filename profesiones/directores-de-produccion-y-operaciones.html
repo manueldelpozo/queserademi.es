@@ -177,10 +177,10 @@
 
   <script type="text/javascript" async>
     
-var seriesSalPrinc      = [19412, 28354, 34668];
-var seriesSalJunior     = [21874, 31276, 38106];
-var seriesSalIntermedio = [24166, 34056, 41366];
-var seriesSalSenior     = [26454, 36862, 44738];
+var seriesSalPrinc      = [25294, 31594, 36483];
+var seriesSalJunior     = [28728, 35322, 40814];
+var seriesSalIntermedio = [31565, 38360, 44403];
+var seriesSalSenior     = [33923, 41063, 47860];
 var salarios = [
     [0,   seriesSalPrinc[0],      seriesSalPrinc[2]],
     [5,   seriesSalJunior[0],     seriesSalJunior[2]],
@@ -426,7 +426,7 @@ $('.more').click( function() {
     }]
 });
 var seriesEmp = [23.13, 23.4, 23.19, 23.24, 23.04, 23.32, 22.78, 22.66];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];
+var seriesEmpMedia = [29.29, 29.06, 29.41, 26.97, 29.29, 27.23, 28.02, 25.25];
 var chartEmpleabilidad = {
     chart: {
         type: 'column',
@@ -479,7 +479,7 @@ var chartEmpleabilidad = {
         },
         plotBands: [
             { // Paro alto
-                from: 41.27,
+                from: 29.41,
                 to: 100,
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
@@ -493,12 +493,12 @@ var chartEmpleabilidad = {
                     }
                 }
             }, { // Paro medio
-                from: 35.27,
-                to: 41.27,
+                from: 25.25,
+                to: 29.41,
                 color: 'rgba(0, 0, 0, 0.2)'
             }, { // Paro bajo
                 from: 0,
-                to: 35.27,
+                to: 25.25,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     rotation: 90,

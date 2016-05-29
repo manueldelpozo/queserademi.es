@@ -466,3 +466,17 @@ $('.cerrar-popup').click(function() {
 /*setInterval(function() {
     $('#popUp').show('slow');
 }, 10000);*/
+
+
+// USABILIDAD PARA BUSQUEDA EN MOVILES
+// agregar clase para media queries animacion cuando tap en el input
+$('.typeahead').on('touchend', function(event) {
+	//console.log($(this).scrollTop($(this).offset().top));
+	//console.log($(this).offset().top);
+	//$(this).scrollTop(300);
+  	$(this).addClass('input-mobile');
+  	$('html, body').animate({
+        scrollTop:  '10px'
+    }, 'slow');
+    
+});

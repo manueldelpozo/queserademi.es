@@ -4,12 +4,12 @@
   <head>
       <meta http-equiv="Content-Language" content="es">
       <meta charset="utf-8">
-      <title>Catedrático</title>
-      <meta name="description" content="Catedrático">
+      <title>Catedratico</title>
+      <meta name="description" content="Catedratico">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Catedrático" />
+      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Catedratico" />
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="../images/logo.png" />
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/profesiones/catedratico.html" />   
       <link rel="icon" type="image/x-icon" href="../images/logo.png">
@@ -59,7 +59,7 @@
             <div class="col-md-4">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" value="Catedrático" required>
+                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" value="Catedratico" required>
                   <span class="input-group-btn" >
                     <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
                   </span>
@@ -177,10 +177,10 @@
 
   <script type="text/javascript" async>
     
-var seriesSalPrinc      = [0, 0, 0];
-var seriesSalJunior     = [0, 0, 0];
-var seriesSalIntermedio = [0, 0, 0];
-var seriesSalSenior     = [0, 0, 0];
+var seriesSalPrinc      = [20136, 25220, 33084];
+var seriesSalJunior     = [23256, 28100, 36948];
+var seriesSalIntermedio = [25944, 30608, 40524];
+var seriesSalSenior     = [27732, 32336, 43176];
 var salarios = [
     [0,   seriesSalPrinc[0],      seriesSalPrinc[2]],
     [5,   seriesSalJunior[0],     seriesSalJunior[2]],
@@ -258,7 +258,7 @@ var chartSalarios = {
     },
     series: [
         {
-            name: 'catedrático',
+            name: 'catedratico',
             data: medias,
             color: Highcharts.getOptions().colors[0],
             zIndex: 1,
@@ -272,25 +272,14 @@ var chartSalarios = {
             data: salarios,
             type: 'arearange',
             lineWidth: 0,
-            linkedTo: 'catedrático',
+            linkedTo: 'catedratico',
             color: Highcharts.getOptions().colors[0],
             fillOpacity: 0.3,
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);var capa_aviso = '<div class="capa-aviso">';
-    capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="../images/cross.svg"></img></a></div>';
-    capa_aviso += '<div class="col-md-10 col-md-offset-1">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
-
-        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
-        capa_aviso += '<strong>CATEDRÁTICO</strong></p>';
-        capa_aviso += '<a href="../colabora.php?profesion=catedrático" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
-
-    capa_aviso += '</div></div>';
-
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CATEDRÁTICO</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
-        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=catedrático" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CATEDRATICO</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
+        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=catedratico" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -431,13 +420,13 @@ $('.more').click( function() {
     },
 
     series: [{  
-        name: 'catedrático',
+        name: 'catedratico',
         data: seriesCap,
-        stack: 'catedrático'
+        stack: 'catedratico'
     }]
 });
 var seriesEmp = [15.96, 18.49, 22.11, 4.97, 9.03, 16.57, 21.84, 4.67];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];
+var seriesEmpMedia = [29.29, 29.06, 29.41, 26.97, 29.29, 27.23, 28.02, 25.25];
 var chartEmpleabilidad = {
     chart: {
         type: 'column',
@@ -490,7 +479,7 @@ var chartEmpleabilidad = {
         },
         plotBands: [
             { // Paro alto
-                from: 41.27,
+                from: 29.41,
                 to: 100,
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
@@ -504,12 +493,12 @@ var chartEmpleabilidad = {
                     }
                 }
             }, { // Paro medio
-                from: 35.27,
-                to: 41.27,
+                from: 25.25,
+                to: 29.41,
                 color: 'rgba(0, 0, 0, 0.2)'
             }, { // Paro bajo
                 from: 0,
-                to: 35.27,
+                to: 25.25,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     rotation: 90,
@@ -533,9 +522,9 @@ var chartEmpleabilidad = {
     }, 
     series: [
       {
-        name: 'catedrático',
+        name: 'catedratico',
         data: seriesEmp,
-        stack: 'catedrático'
+        stack: 'catedratico'
       },{
         name: 'Media de paro de todas las profesiones',
         type: 'spline',

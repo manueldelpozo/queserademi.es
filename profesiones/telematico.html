@@ -4,12 +4,12 @@
   <head>
       <meta http-equiv="Content-Language" content="es">
       <meta charset="utf-8">
-      <title>Telemático</title>
-      <meta name="description" content="Telemático">
+      <title>Telematico</title>
+      <meta name="description" content="Telematico">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Telemático" />
+      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Telematico" />
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="../images/logo.png" />
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/profesiones/telematico.html" />   
       <link rel="icon" type="image/x-icon" href="../images/logo.png">
@@ -59,7 +59,7 @@
             <div class="col-md-4">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" value="Telemático" required>
+                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" value="Telematico" required>
                   <span class="input-group-btn" >
                     <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
                   </span>
@@ -258,7 +258,7 @@ var chartSalarios = {
     },
     series: [
         {
-            name: 'telemático',
+            name: 'telematico',
             data: medias,
             color: Highcharts.getOptions().colors[0],
             zIndex: 1,
@@ -272,14 +272,14 @@ var chartSalarios = {
             data: salarios,
             type: 'arearange',
             lineWidth: 0,
-            linkedTo: 'telemático',
+            linkedTo: 'telematico',
             color: Highcharts.getOptions().colors[0],
             fillOpacity: 0.3,
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TELEMÁTICO</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
-        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=telemático" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TELEMATICO</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
+        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=telematico" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -420,13 +420,13 @@ $('.more').click( function() {
     },
 
     series: [{  
-        name: 'telemático',
+        name: 'telematico',
         data: seriesCap,
-        stack: 'telemático'
+        stack: 'telematico'
     }]
 });
 var seriesEmp = [25.91, 26.49, 25.83, 24.81, 24.67, 25.62, 23.95, 24.53];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];
+var seriesEmpMedia = [29.29, 29.06, 29.41, 26.97, 29.29, 27.23, 28.02, 25.25];
 var chartEmpleabilidad = {
     chart: {
         type: 'column',
@@ -479,7 +479,7 @@ var chartEmpleabilidad = {
         },
         plotBands: [
             { // Paro alto
-                from: 41.27,
+                from: 29.41,
                 to: 100,
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
@@ -493,12 +493,12 @@ var chartEmpleabilidad = {
                     }
                 }
             }, { // Paro medio
-                from: 35.27,
-                to: 41.27,
+                from: 25.25,
+                to: 29.41,
                 color: 'rgba(0, 0, 0, 0.2)'
             }, { // Paro bajo
                 from: 0,
-                to: 35.27,
+                to: 25.25,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     rotation: 90,
@@ -522,9 +522,9 @@ var chartEmpleabilidad = {
     }, 
     series: [
       {
-        name: 'telemático',
+        name: 'telematico',
         data: seriesEmp,
-        stack: 'telemático'
+        stack: 'telematico'
       },{
         name: 'Media de paro de todas las profesiones',
         type: 'spline',
