@@ -396,6 +396,7 @@ $(".btn-footer").click(function() {
         $btn = $("#btn-footer-md");
     else if ($(this).attr("id") == "btn-footer-xs")
         $btn = $("#btn-footer-xs");
+    $btn.css('outline', 'none');
 
     var $footer = $btn.parents("footer");
 
@@ -470,13 +471,11 @@ $('.cerrar-popup').click(function() {
 
 // USABILIDAD PARA BUSQUEDA EN MOVILES
 // agregar clase para media queries animacion cuando tap en el input
-$('.typeahead').on('touchend', function(event) {
-	//console.log($(this).scrollTop($(this).offset().top));
-	//console.log($(this).offset().top);
-	//$(this).scrollTop(300);
-  	$(this).addClass('input-mobile');
-  	$('html, body').animate({
-        scrollTop:  '10px'
-    }, 'slow');
-    
+$('.body input.typeahead[data-tipo="profesiones"]').bind('touchstart', function() {
+	$container = $(this).parents('.container-full');
+	if (!$container.hasClass('ux-mobile')) {
+		$container.addClass('ux-mobile');
+		$('footer').slideUp('fast');
+		$(this).focus();
+	}
 });

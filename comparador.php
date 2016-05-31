@@ -200,10 +200,10 @@ set_time_limit(0);
               <div id="container_empleabilidad" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_capacidades" class="grafica"></div>
+              <div id="container_salarios" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_salarios" class="grafica"></div>
+              <div id="container_capacidades" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_info" class="grafica"></div>
@@ -289,9 +289,9 @@ set_time_limit(0);
 
   <script type="text/javascript" async>
     <?php 
-      include('js/grafica_empleabilidad.js');  
+      include('js/grafica_empleabilidad.js');
+      include('js/grafica_salarios.js'); 
       include('js/grafica_capacidades.js');
-      include('js/grafica_salarios.js');
       include('js/grafica_info.js'); 
       //include('js/grafica_formacion.js');
       //include('js/grafica_satisfaccion.js');

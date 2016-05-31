@@ -560,12 +560,18 @@ span.flecha {
 		margin-top: 0;
 		margin-bottom: 20px;
 	}
+	.body {
+		margin: 0;
+	}
 	#formulario.form-index {
-		width: 90%;
+		/*width: 90%;*/
 	}
 	#formulario.form-index:after {
 		content: "(ejemplo: Médico)";
 		color: #c00;
+	}
+	#formulario.form-index .input-group-btn {
+		display: none !important;
 	}
 	.btn-qsdm {
 		margin-top: 0;
@@ -596,6 +602,36 @@ span.flecha {
 	    margin-top: 14px;
 	}
 
+	/*usabilidad mobil*/
+	.ux-mobile {
+		height: 50%;
+		position: fixed;
+		top: 0;
+	}
+	.ux-mobile .header, .ux-mobile .footer, .ux-mobil form .input-group-btn {
+		display: none;
+	}
+	.ux-mobile .body {
+		height: 100%;
+		margin: 0 -15px;
+	}
+	.ux-mobile .body > div > div.dropdown {
+		height: 100%;
+	}
+	.ux-mobile form#formulario {
+		height: 100%;
+	}
+	.ux-mobile form#formulario:after {
+		content: '';
+	}
+	.ux-mobile form#formulario .input-group {
+		height: 100%;
+	}
+	.ux-mobile .tt-dropdown-menu {
+		position: static !important;
+		max-height: 250px;
+		border-radius: 0 !important;
+	}
 }
 
 @media only screen and (max-device-width: 768px) and (orientation:landscape) {
