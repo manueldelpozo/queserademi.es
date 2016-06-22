@@ -603,32 +603,23 @@ span.flecha {
 	}
 
 	/*usabilidad mobil*/
-	.ux-mobile {
-		height: 50%;
-		position: fixed;
-		top: 0;
+	.display-table {
+		display: table;
 	}
-	.ux-mobile .header, .ux-mobile .footer, .ux-mobil form .input-group-btn {
-		display: none;
+	.display-table div.body {
+		display: table-header-group;
 	}
-	.ux-mobile .body {
-		height: 100%;
-		margin: 0 -15px;
+	.display-table div.body div.body-child {
+		padding: 0
 	}
-	.ux-mobile .body > div > div.dropdown {
-		height: 100%;
-	}
-	.ux-mobile form#formulario {
-		height: 100%;
-	}
-	.ux-mobile form#formulario:after {
+	.display-table div.body div.body-child form#formulario:after {
 		content: '';
 	}
-	.ux-mobile form#formulario .input-group {
-		height: 100%;
+	.display-table div.header > .margen {
+		display: none;
 	}
-	.ux-mobile .tt-dropdown-menu {
-		position: static !important;
+	.display-table div.body div.body-child .tt-dropdown-menu {
+		margin-top: 0;
 		max-height: 250px;
 		border-radius: 0 !important;
 	}

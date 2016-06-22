@@ -471,11 +471,11 @@ $('.cerrar-popup').click(function() {
 
 // USABILIDAD PARA BUSQUEDA EN MOVILES
 // agregar clase para media queries animacion cuando tap en el input
-$('.body input.typeahead[data-tipo="profesiones"]').bind('touchstart', function() {
+$('.body input.typeahead[data-tipo="profesiones"]').bind('click', function() {
 	$container = $(this).parents('.container-full');
 	if (!$container.hasClass('ux-mobile')) {
-		$container.addClass('ux-mobile');
-		$('footer').slideUp('fast');
+		$container.addClass('display-table');
+		$('footer').slideUp(200);
 		$(this).focus();
 	}
 });
