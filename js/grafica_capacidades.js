@@ -128,7 +128,10 @@ $('#container_capacidades').highcharts({
     exporting: {
             buttons: {
                anotherButton: {
-                    text: '???',
+                    text: '??',
+                    y: 28,
+                    x: 0,
+                    width: 24,
                     onclick: function () {
                         // agregar capa de glosario semitransparente (con opcion a quitar)
                         var capa_glosario = '<div class="capa-glosario">';

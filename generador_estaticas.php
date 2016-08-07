@@ -663,6 +663,9 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
         buttons: {
            anotherButton: {
                 text: '???',
+                y: 28,
+                x: 0,
+                width: 24,
                 onclick: function () {
                     var capa_glosario = '<div class=\"capa-glosario\">';
                     capa_glosario += '<div class=\"cerrar-glosario\"><img class=\"icon\" src=\"../images/cross.svg\"></img></div>';
