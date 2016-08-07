@@ -170,9 +170,9 @@ $('#container_capacidades').highcharts({
                 Persuasion:                 "<?php echo $descripciones['Persuasión']; ?>"
             };
 
-            var points = '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': <strong>'+this.points[0].y+'</strong><br/>';
+            var points = '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': </span>(<strong>'+this.points[0].y+'</strong>/5)<br/>';
             if (this.points[1]) {
-                points += '<span style="color:'+this.points[1].series.color+'">'+this.points[1].series.name+': <strong>'+this.points[1].y+'</strong><br/>';
+                points += '<span style="color:'+this.points[1].series.color+'">'+this.points[1].series.name+': </span>(<strong>('+this.points[1].y+'</strong>/5)<br/>';
             }
             
             return '<strong style="font-size:17px;color:rgb(0,0,0);">'+ this.x +'</strong><br/>'+'<span>'+ descripciones[this.x.replace(/ /g,"_").latinize()] +'</span><br/>'+ points;   

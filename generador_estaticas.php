@@ -655,7 +655,7 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             };
             
             return '<strong style=\"font-size:17px;color:rgb(0,0,0);\">'+ this.x +'</strong><br/>'+'<span>'+ descripciones[this.x.replace(/ /g,'_').latinize()] +'</span><br/>'+
-            '<span style=\"color:'+this.points[0].series.color+'\">'+this.points[0].series.name+': <strong>'+this.points[0].y+'</strong><br/>';
+            '<span style=\"color:'+this.points[0].series.color+'\">'+this.points[0].series.name+': </span>(<strong>'+this.points[0].y+'</strong>/5)<br/>';
         },
         headerFormat: '<strong>{point.key}</strong><br>'      
     },
