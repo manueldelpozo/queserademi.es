@@ -367,7 +367,7 @@ $('.more').click( function() {
             };
             
             return '<strong style="font-size:17px;color:rgb(0,0,0);">'+ this.x +'</strong><br/>'+'<span>'+ descripciones[this.x.replace(/ /g,'_').latinize()] +'</span><br/>'+
-            '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': <strong>'+this.points[0].y+'</strong><br/>';
+            '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': </span>(<strong>'+this.points[0].y+'</strong>/5)<br/>';
         },
         headerFormat: '<strong>{point.key}</strong><br>'      
     },
@@ -375,6 +375,9 @@ $('.more').click( function() {
         buttons: {
            anotherButton: {
                 text: '???',
+                y: 28,
+                x: 0,
+                width: 24,
                 onclick: function () {
                     var capa_glosario = '<div class="capa-glosario">';
                     capa_glosario += '<div class="cerrar-glosario"><img class="icon" src="../images/cross.svg"></img></div>';
