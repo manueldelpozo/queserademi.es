@@ -1285,6 +1285,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     fclose($pagina_html);
 
     } // end while
+
     //TEST//
     //break;  
   } // end foreach
@@ -1293,3 +1294,4 @@ if( $btn_colabora_sat_1 > 0 ) {
   die('Error: '.$e->GetMessage());
 }
 ?>
+
