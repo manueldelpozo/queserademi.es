@@ -141,6 +141,7 @@ div.body > div {
     height: 183px;
   }
   .grafica {
+    width: 100%;
     margin-bottom: 10px;
   }
   .capa-aviso h3, .capa-glosario h3 {
@@ -160,6 +161,7 @@ div.body > div {
     height: 183px;
   }
   .grafica {
+    width: 100%;
     margin-bottom: 10px;
   }
   .capa-aviso h3, .capa-glosario h3 {

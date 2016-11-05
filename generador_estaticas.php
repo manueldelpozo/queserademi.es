@@ -242,7 +242,6 @@ $html = '
     <div class="container-full">
       <form id="formulario" role="form" action="../comparador.php" method="get">
           <div class="row header">
-            <div class="col-xs-12 hidden-sm hidden-md hidden-lg margen"></div>
 
             <div class="col-md-4">
               <div class="dropdown clearfix">
@@ -296,6 +295,8 @@ $html = '
             </div-->
           </div>
       </form>
+
+      <div class="col-xs-12 margen"></div>
     </div>
 
     <footer>
@@ -429,8 +430,7 @@ var chartSalarios = {
     legend: { 
         enable: false ,
         itemStyle: {
-            textOverflow: 'ellipsis',
-            width: '350%'
+            width: '300%'
         },
         title: {
             text: '<span>(Click para ocultar)</span>',
@@ -452,10 +452,14 @@ var chartSalarios = {
         }
     },
     tooltip: {
-        headerFormat: '<strong>{point.x} años de experiencia</strong><br>',
-        crosshairs: true,
         shared: true,
-        valueSuffix: ' €'
+        headerFormat: '<strong style=\"font-size:16px\">{point.x} años de experiencia</strong><br>',
+        valueSuffix: ' €',
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }
     },
     credits: {
         enabled: false
@@ -585,8 +589,7 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
     legend: { 
         enable: false,
         itemStyle: {
-            textOverflow: 'ellipsis',
-            width: '350%'
+            width: '300%'
         },
         title: {
             text: '<span>(Click para ocultar)</span>',
@@ -644,6 +647,7 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
     },
     tooltip: {
         shared: true,
+        headerFormat: '<strong style=\"font-size:17px\">{point.key}</strong><br>',
         formatter: function() {
             var descripciones = {
                 Analisis:                   '". $descripciones['Análisis'] ."',
@@ -657,7 +661,11 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             return '<strong style=\"font-size:17px;color:rgb(0,0,0);\">'+ this.x +'</strong><br/>'+'<span>'+ descripciones[this.x.replace(/ /g,'_').latinize()] +'</span><br/>'+
             '<span style=\"color:'+this.points[0].series.color+'\">'+this.points[0].series.name+': </span>(<strong>'+this.points[0].y+'</strong>/5)<br/>';
         },
-        headerFormat: '<strong>{point.key}</strong><br>'      
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }      
     },
     exporting: {
         buttons: {
@@ -774,8 +782,7 @@ var chartEmpleabilidad = {
     legend: { 
         enable: false,
         itemStyle: {
-            textOverflow: 'ellipsis',
-            width: '350%'
+            width: '300%'
         },
         title: {
             text: '<span>(Click para ocultar)</span>',
@@ -839,8 +846,14 @@ var chartEmpleabilidad = {
         ]
     },
     tooltip: {
-        headerFormat: '<b>{point.key}</b><br>',
-        pointFormat: '<span style=\"color:{series.color}\">\u25CF</span> {series.name}: {point.y}'
+        headerFormat: '<strong style=\"font-size:16px\">{point.key}</strong><br><br>',
+        pointFormat: '<span style=\"color:{series.color}\">{series.name}: </span><strong>{point.y}</strong>',
+        valueSuffix: ' %',
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }
     },
     credits: {
         enabled: false

@@ -82,8 +82,7 @@ var chartSalarios = {
     legend: { 
         enable: false ,
         itemStyle: {
-            textOverflow: 'ellipsis',
-            width: '350%'
+            width: '300%'
         },
         title: {
             text: '<span>(Click para ocultar)</span>',
@@ -108,10 +107,15 @@ var chartSalarios = {
     },
 
     tooltip: {
-        headerFormat: '<strong>{point.x} años de experiencia</strong><br>',
-        crosshairs: true,
         shared: true,
-        valueSuffix: ' €'
+        headerFormat: '<strong style="font-size:16px">{point.x} años de experiencia</strong><br>',
+        //pointFormat: '<span style="color:{series.color}">{series.name}: </span><strong>{point.y}</strong><br>',
+        valueSuffix: ' €',
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }
     },
 
     credits: {

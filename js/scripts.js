@@ -402,32 +402,24 @@ $(".btn-footer").click(function() {
 
     if ($btn.find("span.caret").hasClass("flecha") || $btn.find("span.glyphicon").hasClass("glyphicon-menu-hamburger")) {
         $btn.find("span.caret").removeClass("flecha");
-        $btn.find("span.glyphicon").removeClass("glyphicon-menu-hamburger").addClass('glyphicon-menu-up');
+        $btn.find("span.glyphicon").removeClass("glyphicon-menu-hamburger").addClass('glyphicon-menu-down');
 
         if ($btn.attr("id") == "btn-footer-md") {
             $footer.animate({ height: '100px' }, 200);
         } else if ($btn.attr("id") == "btn-footer-xs") {
-            $footer.animate({ height: '500px' }, 200);
+            $footer.animate({ height: '100%' }, 200);
             $footer.find('.mobile-menu').each(function() {
                 $(this).removeClass('hidden-xs');
             });
         }
     } else {
         $btn.find("span.caret").addClass("flecha");
-        $btn.find("span.glyphicon").removeClass("glyphicon-menu-up").addClass('glyphicon-menu-hamburger');
+        $btn.find("span.glyphicon").removeClass("glyphicon-menu-down").addClass('glyphicon-menu-hamburger');
         $footer.animate({ height: '50px' }, 200);
         $footer.find('.mobile-menu').each(function() {
             $(this).addClass('hidden-xs');
         });
     }
-});
-
-// ocultar footer si hacemos scroll hasta el fondo
-$(window).scroll(function() {
-    if ($(window).scrollTop() + $(window).height() > $(document).height() - 100)
-        $('footer').slideUp('slow');
-    else
-        $('footer').slideDown('slow');
 });
 
 // VIDEO
@@ -468,14 +460,12 @@ $('.cerrar-popup').click(function() {
     $('#popUp').show('slow');
 }, 10000);*/
 
-
-// USABILIDAD PARA BUSQUEDA EN MOVILES
-// agregar clase para media queries animacion cuando tap en el input
-$('.body input.typeahead[data-tipo="profesiones"]').bind('click', function() {
-	$container = $(this).parents('.container-full');
-	if (!$container.hasClass('ux-mobile')) {
-		$container.addClass('display-table');
-		$('footer').slideUp(200);
-		$(this).focus();
+// ocultar footer si hacemos scroll hasta el fondo // desactivado por mal funcionamiento
+/*$('body').scroll(function(event) {
+	if (!$('footer').hasClass('not-scroll-hidden')) {
+		if ($('body').scrollTop() + $('body').height() > $(document).height() - 100)
+	        $('footer').slideUp('slow');
+	    else
+	        $('footer').slideDown('slow');
 	}
-});
+});*/

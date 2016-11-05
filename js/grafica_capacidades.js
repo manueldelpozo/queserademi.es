@@ -64,8 +64,7 @@ $('#container_capacidades').highcharts({
     legend: { 
         enable: false,
         itemStyle: {
-            textOverflow: 'ellipsis',
-            width: '350%'
+            width: '300%'
         },
         title: {
             text: '<span>(Click para ocultar)</span>',
@@ -163,6 +162,7 @@ $('#container_capacidades').highcharts({
         },
     tooltip: {
         shared: true,
+        headerFormat: '<strong style="font-size:17px">{point.key}</strong><br>',
         formatter: function() {
             var descripciones = {
                 Analisis:                   "<?php echo $descripciones['Análisis']; ?>",
@@ -175,12 +175,16 @@ $('#container_capacidades').highcharts({
 
             var points = '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': </span>(<strong>'+this.points[0].y+'</strong>/5)<br/>';
             if (this.points[1]) {
-                points += '<span style="color:'+this.points[1].series.color+'">'+this.points[1].series.name+': </span>(<strong>('+this.points[1].y+'</strong>/5)<br/>';
+                points += '<span style="color:'+this.points[1].series.color+'">'+this.points[1].series.name+': </span>(<strong>'+this.points[1].y+'</strong>/5)<br/>';
             }
             
             return '<strong style="font-size:17px;color:rgb(0,0,0);">'+ this.x +'</strong><br/>'+'<span>'+ descripciones[this.x.replace(/ /g,"_").latinize()] +'</span><br/>'+ points;   
         },
-        headerFormat: '<strong>{point.key}</strong><br>'      
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }      
     },
     credits: {
          enabled: false

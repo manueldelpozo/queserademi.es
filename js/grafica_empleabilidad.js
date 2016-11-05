@@ -109,8 +109,7 @@ var chartEmpleabilidad = {
     legend: { 
         enable: false,
         itemStyle: {
-            textOverflow: 'ellipsis',
-            width: '350%'
+            width: '300%'
         },
         title: {
             text: '<span>(Click para ocultar)</span>',
@@ -174,9 +173,14 @@ var chartEmpleabilidad = {
             }]
     },
     tooltip: {
+        headerFormat: '<strong style="font-size:16px">{point.key}</strong><br><br>',
+        pointFormat: '<span style="color:{series.color}">{series.name}: </span><strong>{point.y}</strong>',
         valueSuffix: ' %',
-        headerFormat: '<b>{point.key}</b><br>',
-        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y}'
+        style: {
+            "display": "block", 
+            "width": "300px",
+            "whiteSpace": "normal" 
+        }
     },
     credits: {
         enabled: false

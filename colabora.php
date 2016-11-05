@@ -46,7 +46,6 @@ if( isset( $_GET['profesion']  )  )
       <form id="formulario-colabora" class="form-horizontal" role="form" action="verificador.php" method="post" onsubmit="return validacion()">
 
           <div class="row header">
-            <div class="col-xs-12 hidden-sm hidden-md hidden-lg margen"></div>
 
             <div class="col-md-3 col-md-offset-1 col-xs-11 col-xs-offset-1">  
               <h4>Colabora con queserademi, <br><strong>son solo 2 minutos...</strong></h4>  
@@ -401,6 +400,9 @@ if( isset( $_GET['profesion']  )  )
           </div> 
 
       </form>
+
+      <div class="col-xs-12 margen"></div>
+
     </div>
     </div>
     <footer data-role="none" data-enhance="false">

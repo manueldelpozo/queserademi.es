@@ -161,14 +161,13 @@ set_time_limit(0);
     <div class="container-full">
       <form id="formulario" role="form" action="comparador.php" method="get">
 
-          <div class="row header">
-            <div class="col-xs-12 hidden-sm hidden-md hidden-lg margen"></div>
+          <div class="row header ux-mobile-header">
 
-            <div class="col-md-4">
+            <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
                   <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="Busca otra profesión y compara" value="<?php echo @$profesion; ?>" required> 
-                  <span class="input-group-btn" >
+                  <span class="input-group-btn hidden-xs">
                     <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
                   </span>
                 </div>
@@ -182,11 +181,11 @@ set_time_limit(0);
               </a>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
                   <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_dos; ?>" required autofocus>
-                  <span class="input-group-btn" >
+                  <span class="input-group-btn hidden-xs">
                     <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
                   </span>
                 </div>
@@ -220,6 +219,8 @@ set_time_limit(0);
           </div> 
 
       </form>
+
+      <div class="col-xs-12 margen"></div>
     </div>
 
     <footer>

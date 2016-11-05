@@ -10,14 +10,7 @@
 	font-style: normal;
   	font-weight: normal;
 }
-/*
-* {
-	-moz-box-sizing: border-box; 
-}
-*:before, *:after {
-	-moz-box-sizing: border-box; 
-}
-*/
+
 html,body {
 	height:100%;
 	width: 100%;
@@ -27,6 +20,7 @@ html,body {
     overflow-x: hidden;
 	font-family: 'Antic Slab', arial;
 }
+
 #preloader {
 	position: fixed; 
 	left: 0; 
@@ -37,6 +31,7 @@ html,body {
 	overflow: visible; 
 	background: #FFF url(../images/preloader.gif) no-repeat center center; 
 }
+
 .background-image {
 	width: 100%;
 	height: 100%;
@@ -52,16 +47,8 @@ html,body {
 	background-position: top center;
 	background-repeat: repeat;
 	background-size: 33.33%;
-	/*-webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; */
-
-	/*filter: alpha(opacity=10); /* internet explorer */
-    /*-khtml-opacity: 0.1;      /* khtml, old safari */
-    /*-moz-opacity: 0.1;       /* mozilla, netscape */
-    /*opacity: 0.1;           /* fx, safari, opera */
 }
+
 .fullscreen {
     position: absolute;
     top: 50%;
@@ -73,6 +60,7 @@ html,body {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
 }
+
 .blur {
 	-webkit-filter: blur(5px);
 	-moz-filter: blur(5px);
@@ -80,62 +68,51 @@ html,body {
 	-ms-filter: blur(5px);
 	filter: blur(5px);
 }
-.grayscale {
-    filter: grayscale(100%);
-    filter: url(grayscale.svg);  /* Firefox 4+ */
-    filter:gray;  /* IE6-9 */
-    -webkit-filter:grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
-}
+
 .container-full {
 	width: 100%;
-	/*height:120%;*/
-	position: absolute;
-	/*left: 0;*/
-    /*right: 0;*/
+	position: relative;ś
     z-index: 9;
-	/*margin: 0 auto;*/
-	/*padding: 0;*/
-	/*margin:0;	*/
-	/*color:#555;*/
 }
 
 .container-full a {
 	text-decoration:none;
 }
-.header {
-	height: 100px;
-}
+
 .header h4 {
     font-size: 20px;
     line-height: 1.5;
     max-height: 60px;
 }
+
 #titulo {
+	margin-bottom: 0;
 	font-family: 'Antic Slab', arial;
 	color:#c00;
 }
+
 #beta {
     position: absolute;
     left: 0;
     top: 10px;
     width: 100px;
 }
+
 .image-container {   
     height: 44px;
     width: 44px;
 }
+
 .lead {
 	font-size:5em;
 	color:#c00;
 }
+
 h6.sublead {
     color: #c00;
     font-size: 1.5em;
 }
+
 .img-responsive {
 	display: inline-block;
 	max-width: 100px;
@@ -154,6 +131,7 @@ h6.sublead {
 	border-color: black;
 	margin-bottom: 10px;
 }
+
 .scrollable-menu {
 	display: none;
 	height: auto;
@@ -178,20 +156,24 @@ h6.sublead {
 #scrollable-dropdown-menu {
 	width: 95%;
 }
+
 #ver-video {
-	margin-top: 50px;
+	margin-top: 20px;
 }
+
 #ver-video a { 
 	padding: 10px 30px;
 	text-decoration: none;
 	font-size: 1em;
 }
+
 #video {
 	width : 100%;
 	display: none;
 	padding: 0;
 	margin: 0;
 } 
+
 .control-video {
     position: absolute;
     top: 2%;
@@ -200,6 +182,7 @@ h6.sublead {
     font-size: 1em;
     display: none;
 }
+
 #close-fullvid, #arrow-down {
     color: #fff;
     display: inline-block;
@@ -208,10 +191,12 @@ h6.sublead {
     padding-top: 9px;
     background-color: #1d1d1b;
 }
+
 #close-fullvid:hover, #close-fullvid:active, #close-fullvid:link, #arrow-down:hover, #arrow-down:active, #arrow-down:link {
     background-color: #000;
     text-decoration: none;
 }
+
 #fullvid, #popUp {
     position: absolute;
     z-index: 999;
@@ -224,6 +209,7 @@ h6.sublead {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
 }
+
 #popUpBg {
 	background-color: rgba(0,0,0,0.5); 
 	position: absolute; 
@@ -231,6 +217,7 @@ h6.sublead {
     min-height: 100%; 
 	z-index: 999;
 }
+
 #popUpBox {
 	position: relative;
     transform: translateY(50%); 
@@ -239,6 +226,7 @@ h6.sublead {
     padding: 20px; 
     border-radius: 10px;
 }
+
 #popUpBox .cerrar-popup {
   background-color: #337ab7; 
   padding: 5px; 
@@ -247,15 +235,19 @@ h6.sublead {
   top: 10px;
   cursor: pointer;
 }
+
 #popUpBox .cerrar-popup:hover {
   background-color: #23527c; 
 }
+
 .margen {
 	height: 50px;
 }
+
 .borde-separador {
 	border-left: 1px dotted #337ab7;
 }
+
 footer {
 	position: fixed;
 	z-index: 99;
@@ -266,40 +258,45 @@ footer {
 	border-top: 1px #999;
 	background-color: rgba(255, 255, 255, 0.8);
 }
+
 footer div{
 	margin-top: 5px;
 	font-weight: bolder;
 	color: #555;
 }
+
 .separador {
     position: absolute;
     right: 0;
     color: #337ab7;
 }
+
 .mobile-menu {
 	padding: 0;
 	margin-top: 1px;
 }
+
 .social {
 	margin-top: -3px;
 }
+
 ul.share-buttons{
 	list-style: none;
 	padding: 0;
 }
+
 ul.share-buttons li{
 	display: inline;
 }
+
 .caja {
 	font-size: 12px;
 	margin: 20px;
 	padding: 15px;
 	background-color: rgba(255, 255, 255, 0.8);
 	box-shadow: 5px 5px 5px #DDD;
-	/*-moz-box-shadow: inset 1px 5px 1px 5px #DDD;
-    -webkit-box-shadow: inset 1px 5px 1px 5px #DDD;
-    box-shadow: inset 1px 5px 1px 5px #DDD;*/
 }
+
 .sprite {
 	background:url(../images/sprite.png) no-repeat;
 	height: 250px;
@@ -307,9 +304,11 @@ ul.share-buttons li{
 	float: left;
 	margin-right: 15px;
 }
+
 #sprite-alfonso {
 	background-position: -40px 0px;
 }
+
 #sprite-manu {
 	background-position: -40px -353px;
 }
@@ -318,6 +317,7 @@ a.tooltips {
   position: relative;
   display: inline;
 }
+
 a.tooltips span {
   position: absolute;
   z-index: 9999;
@@ -329,6 +329,7 @@ a.tooltips span {
   visibility: hidden;
   border-radius: 6px;
 }
+
 a.tooltips span:after {
   content: '';
   position: absolute;
@@ -340,6 +341,7 @@ a.tooltips span:after {
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
 }
+
 a:hover.tooltips span {
   visibility: visible;
   opacity: 0.7;
@@ -348,6 +350,7 @@ a:hover.tooltips span {
   margin-left: -76px;
   z-index: 999;
 }
+
 .btn-qsdm {
   width: 100%;
   margin-top: 20px;
@@ -368,22 +371,24 @@ a:hover.tooltips span {
 li.hijo {
 	display: none;
 }
+
 li.padre {
 	background-color: #eaf1f7;
-	/*display: none;*/
 }
+
 li.abuelo {
 	background-color: #c1d7e9;
-	/*display: none;*/
 }
+
 li.bisabuelo {
 	background-color: #84afd3;
 	
 }
+
 li.tatarabuelo {
 	background-color: #337ab7;
-	/*display: none;*/
 }
+
 li.tatarabuelo a {
 	color: white;
 }
@@ -532,72 +537,86 @@ span.flecha {
        	-moz-box-sizing: border-box;
         box-sizing: border-box;
 	}
+
 	.background-image {
 		background-size: 66.6%;
 	}
+
 	#scrollable-dropdown-menu {
 		width: 90%;
 	}
+
 	.lead {
 		font-size:3em;
 		color:#c00;
 	}
+
 	#titulo {
 		margin-bottom: 0;
 	}
+
 	.img-responsive {
 		display: inline-block;
 		max-width: 110px;
 		max-height: 110px;		    
 	}
+
 	.img-menu {
 		width: 45px;
     	margin-top: -10px;		    
 	}
+
 	.sublead {
 		font-size:1.2em;
 		color:#c00;
 		margin-top: 0;
 		margin-bottom: 20px;
 	}
+
 	.body {
 		margin: 0;
 	}
-	#formulario.form-index {
-		/*width: 90%;*/
-	}
+
 	#formulario.form-index:after {
 		content: "(ejemplo: Médico)";
 		color: #c00;
 	}
+
 	#formulario.form-index .input-group-btn {
 		display: none !important;
 	}
+
 	.btn-qsdm {
 		margin-top: 0;
 	}
+
 	video {
 		margin: 0;
 		width: 80%;
 		height: auto;
 	}
+
 	#ver-video {
 		margin-top: 100px;
 	} 
+
 	#ver-video a {
 		font-size: 0.9em
 	} 
+
 	.control-video {
         right: 1%;
     }
+
 	footer {
-		top: 0;
 		background-color: rgba(230, 230, 230, 0.9);
 		font-size: 1.6em;
 	}
+
 	.mobile-menu {
 		margin-bottom: 5px;
 	}
+
 	.social {
 	    margin-top: 14px;
 	}
@@ -606,22 +625,40 @@ span.flecha {
 	.display-table {
 		display: table;
 	}
+
 	.display-table div.body {
 		display: table-header-group;
+	} 
+
+	.ux-mobile-header {
+		margin: 0 !important;
+		height: 110px !important;
 	}
-	.display-table div.body div.body-child {
-		padding: 0
+
+	.ux-mobile-header .ux-mobile-input-container .input-group {
+		width: 100% !important;
 	}
-	.display-table div.body div.body-child form#formulario:after {
+
+	.ux-mobile-input-container {
+		padding: 0;
+	}
+
+	.ux-mobile-input-container form#formulario:after {
 		content: '';
 	}
-	.display-table div.header > .margen {
-		display: none;
-	}
-	.display-table div.body div.body-child .tt-dropdown-menu {
+
+	.ux-mobile-input-container .tt-dropdown-menu {
 		margin-top: 0;
 		max-height: 250px;
 		border-radius: 0 !important;
+	}
+
+	.highcharts-tooltip span {
+	    height:auto;
+	    width:140px;
+	    background-color:green;
+	    overflow:auto;
+	    white-space:normal !important; // add this line...
 	}
 }
 
@@ -633,58 +670,103 @@ span.flecha {
        	-moz-box-sizing: border-box;
         box-sizing: border-box;
 	}
+
 	.background-image {
 		background-size: 66.6%;
 	}
+
 	.lead {
 		font-size:3em;
 		color:#c00;
 	}
+
 	#titulo {
 		margin: 0;
 	}
+
 	.img-responsive {
 		display: inline-block;
 		max-width: 80px;
 		max-height: 80px;		    
 	}
+
 	.img-menu {
 		width: 45px;
     	margin-top: -10px;		    
 	}
+
 	.sublead {
 		font-size:1.2em;
 		color:#c00;
 		margin-top: 0;
 		margin-bottom: 20px;
 	}
+
 	#formulario.form-index {
 		width: 95%;
 	}
+
 	video {
 		margin: 0;
 		width: 80%;
 		height: auto;
 	}
+
 	#ver-video {
 		margin-top: 10px;
 	} 
+
 	#fullvid-link {
         padding: 10px 30px;
         font-size: 0.8em;
     }
+
     .control-video {
         right: 1%;
     }
+
 	footer {
-		top: 0;
 		background-color: rgba(230, 230, 230, 0.9);
 		font-size: 1.15em;
 	}
+
 	.mobile-menu {
 		margin-bottom: 5px;
 	}
+
 	.social {
 	    margin-top: 10px;
+	}
+
+	/*usabilidad mobil*/
+	.display-table {
+		display: table;
+	}
+
+	.display-table div.body {
+		display: table-header-group;
+	} 
+
+	.ux-mobile-header {
+		margin: 0 !important;
+		height: 110px !important;
+	}
+
+	.ux-mobile-header .ux-mobile-input-container .input-group {
+		width: 100% !important;
+	}
+
+	.ux-mobile-input-container {
+		padding: 0;
+	}
+
+	.ux-mobile-input-container form#formulario:after {
+		content: '';
+	}
+
+	.ux-mobile-input-container .tt-dropdown-menu {
+		margin-top: 0;
+		max-height: 250px;
+		border-radius: 0 !important;
 	}
 }
