@@ -635,12 +635,12 @@ span.flecha {
 		height: 110px !important;
 	}
 
-	.ux-mobile-header .ux-mobile-input-container .input-group {
-		width: 100% !important;
-	}
-
 	.ux-mobile-input-container {
 		padding: 0;
+	}
+
+	.ux-mobile-input-container .input-group {
+		width: 100% !important;
 	}
 
 	.ux-mobile-input-container form#formulario:after {
@@ -651,14 +651,6 @@ span.flecha {
 		margin-top: 0;
 		max-height: 250px;
 		border-radius: 0 !important;
-	}
-
-	.highcharts-tooltip span {
-	    height:auto;
-	    width:140px;
-	    background-color:green;
-	    overflow:auto;
-	    white-space:normal !important; // add this line...
 	}
 }
 
