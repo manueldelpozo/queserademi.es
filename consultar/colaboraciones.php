@@ -9,9 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale = 1.0">
     <link rel="icon" type="image/x-icon" href="../images/logo.png" />
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <script type="text/javascript" src="../js/jquery-2.1.3.js" ></script>
     <style type="text/css" media="screen">
     	body, h4 {
-    		padding: 10px;
+    		padding: 20px;
+    	}
+
+    	button {
+			float: right;
     	}
     </style>
 </head>
@@ -69,6 +74,12 @@
 		,'email_enviado'
 	];
 
+	if (isset($_POST['clean'])) {
+		$delete = 'DELETE FROM colaboraciones WHERE profesion = ""';
+		$filas_erroneas = $pdo->prepare($delete);
+		$filas_erroneas->execute();
+	}
+
 	$sql = 'SELECT '. join(',', $campos) .' FROM colaboraciones';
 
 	$filas = $pdo->prepare($sql);
@@ -76,7 +87,7 @@
 	$total = $filas->rowCount();
 
 	echo '<h4 class="bg-info">Tenemos un total de <strong>'. $total. ' colaboraciones</strong>. </h4>';
-	echo '<h4 class="bg-danger">*Algunas colaboraciones no incluyen profesion</h4>';
+	echo '<form action="colaboraciones.php?clean=true" method="post"><h4 class="bg-danger">*Algunas colaboraciones no incluyen profesion<button type="submit" class="btn btn-danger">Borrar</button></h4></form>';
 
 	echo '<table class="table table-striped">';
 
@@ -103,5 +114,4 @@
 	?>
 
 </body>
-
 </html>

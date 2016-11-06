@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <style type="text/css" media="screen">
     	body, h4 {
-    		padding: 10px;
+    		padding: 20px;
+    	}
+
+    	button {
+			float: right;
     	}
     </style>
 </head>
@@ -28,6 +32,12 @@
 		'fecha'
 	];
 
+	if (isset($_POST['clean'])) {
+		$delete = 'DELETE FROM profesiones_desconocidas WHERE CHAR_LENGTH(profesion_desconocida) < 5';
+		$filas_erroneas = $pdo->prepare($delete);
+		$filas_erroneas->execute();
+	}
+
 	$sql = 'SELECT '. join(',', $campos) .' FROM profesiones_desconocidas';
 
 	$filas = $pdo->prepare($sql);
@@ -35,7 +45,7 @@
 	$total = $filas->rowCount();
 
 	echo '<h4 class="bg-info">Tenemos un total de <strong>'. $total. ' profesiones desconocidas</strong>. </h4>';
-	echo '<h4 class="bg-danger">*Algunas de las profesiones insertadas parecen falsas</h4>';
+	echo '<form action="profesiones_desconocidas.php?clean=true" method="post"><h4 class="bg-danger">*Algunas de las profesiones insertadas parecen falsas<button type="submit" class="btn btn-danger">Borrar</button></h4></form>';
 
 	echo '<table class="table table-striped">';
 
