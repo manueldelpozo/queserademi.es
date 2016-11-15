@@ -59,7 +59,7 @@
   background: none;
 }
 .ui-body-inherit {
-  background-color: rgba(204, 204, 204, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .ui-mobile,.ui-page-active {
   overflow-y: inherit;

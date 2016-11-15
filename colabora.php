@@ -442,7 +442,7 @@ if( isset( $_GET['profesion']  )  )
                 <span class='hidden-sm hidden-xs separador'>|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a data-role="none" href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Qué nos sugieres</a>
+                <a href="quenossugieres.html">Qué nos sugieres</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
