@@ -37,16 +37,16 @@ if( !empty( $_POST['verificacion'] ) ){
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		if (isset($_POST['sugerencia'])) {
-			$colaborador 			= test_input( is_this_exist( "sugeridor" ) );
-			$email 					= test_input( is_this_exist( "email" ) );
+			$colaborador 			= test_input( is_this_exist( 'sugeridor' ) );
+			$email 					= test_input( is_this_exist( 'email' ) );
 			$descripcion_sugerencia = test_input( is_this_exist( 'sugerencia' ) );
 			$codigo_gen 			= is_this_exist( 'codigo_gen' );
 
 			//MEDIR VERACIDAD EMAIL
 			$email_valido = (!is_null($email) && !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL));
 			    
-			$sugerencia .= "INSERT INTO `sugerencias`(`sugeridor`, `email`, `sugerencia`) ";
-			$sugerencia .= "VALUES ( '$colaborador', '$email', '$descripcion_sugerencia');";
+			$sugerencia .= "INSERT INTO `sugerencias`(`sugeridor`, `email`, `sugerencia`, `codigo_gen`, `email_enviado`) ";
+			$sugerencia .= "VALUES ( '$colaborador', '$email', '$descripcion_sugerencia', '$codigo_gen', '$email_enviado');";
 		} else {
 			$colaborador 			= test_input( is_this_exist( "colaborador" ) );
 			$email 					= test_input( is_this_exist( "email" ) );
@@ -266,7 +266,6 @@ if( !empty( $_POST['verificacion'] ) ){
 		<div class="container-full">
 
 			<div class="row header">
-				<div class="col-xs-12 hidden-sm hidden-md hidden-lg margen"></div>
 				<div class="col-md-6 col-md-offset-3 col-xs-12 text-center">
 					<a href="index.html">
 						<h1 id="titulo" class="lead"><strong>que</strong>sera<strong>de</strong>mi</h1>
@@ -344,7 +343,7 @@ if( !empty( $_POST['verificacion'] ) ){
 			//$mail­->Encoding = "quoted­printable";                                // Set email format to HTML
 
 			$mail->Subject 		= 'Gracias por colaborar con queserademi';
-			$mail->Body    		= "<p><strong>".$linea1."</strong></p><br><p>".$linea2."<br>".$linea2b."</p><p><a href='http://www.queserademi.es/colabora.php'>".$linea3."</a>".$linea3b."</p><p>".$linea4."<br>".$linea5."</p><br><p><strong>".$linea6."</strong><br><a href='http://www.queserademi.es'>".$linea7."</a><br><a href='mailto:info@queserademi.es'>".$linea8."</a><br><br><img src='http://www.queserademi.es/images/logo.png' heigh='60px' width='60px'></p>";
+			$mail->Body    		= "<strong>".$linea1."</strong><br><p>".$linea2."<br>".$linea2b."</p><p><a href='http://www.queserademi.es/colabora.php'>".$linea3."</a>".$linea3b."</p><p>".$linea4."<br><br>".$linea5."</p><br><p><strong>".$linea6."</strong><br><a href='http://www.queserademi.es'>".$linea7."</a><br><a href='mailto:info@queserademi.es'>".$linea8."</a><br><br><img src='http://www.queserademi.es/images/logo.png' heigh='60px' width='60px'></p>";
 			//'This is the body in plain text for non-HTML mail clients';
 			$mail->AltBody 		= $linea1."\n\n".$linea2."\n".$linea2b."\n\n".$linea3.$linea3b."\n\n".$linea4."\n\n".$linea5."\n\n".$linea6."\n".$linea7."\n".$linea8;
 
@@ -354,8 +353,8 @@ if( !empty( $_POST['verificacion'] ) ){
 			} else {
 				// confirmar envio del mail actualizando el booleano en la bbdd
 				$tabla = isset($_POST['sugerencia']) ? 'sugerencias' : 'colaboraciones';
-				echo "UPDATE '$tabla' SET email_enviado = '1' WHERE codigo_gen LIKE '$codigo_gen'";
-				$enviar_email = $pdo->prepare("UPDATE '$tabla' SET email_enviado = '1' WHERE codigo_gen LIKE '$codigo_gen'");
+				$update = "UPDATE ".$tabla." SET email_enviado = '1' WHERE codigo_gen LIKE '$codigo_gen';";
+				$enviar_email = $pdo->prepare($update);
 			    $enviar_email->execute();
 			    echo "<h3>[Recibirá un mail en breves instantes]</h3>";
 			}
@@ -368,7 +367,7 @@ if( !empty( $_POST['verificacion'] ) ){
 ?>
 				</div>
 			</div>
-			
+			<div class="col-xs-12 margen"></div>
 		</div>
 
 		<footer>
