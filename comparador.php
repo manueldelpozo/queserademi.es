@@ -110,22 +110,9 @@ set_time_limit(0);
       <link rel="icon" type="image/x-icon" href="images/logo.png">
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
+
       <link rel="stylesheet" href="css/style.css" />
       <link rel="stylesheet" href="css/style-comparador.css" />
-      <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
-      <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-      <script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
-      <script type="text/javascript" src="js/bootstrap.min.js" ></script>
-      <script type="text/javascript" src="js/typeahead.bundle.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
-      <script type="text/javascript" src="js/highcharts.js" ></script>
-      <script type="text/javascript" src="js/highcharts-more.js" ></script>
-      <script type="text/javascript" src="js/modules/exporting.js"></script>
-      <script type="text/javascript" src="js/scripts.js" defer></script>   
-      <script type="text/javascript" src="js/graficas.js" ></script>
   </head>
   <body>
     <!-- Google Tag Manager -->
@@ -286,9 +273,23 @@ set_time_limit(0);
       </div>
       </footer>
 
-  </body>
+      <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
+      <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+      <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+      <!--script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script-->
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/typeahead.bundle.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
+      <script type="text/javascript" src="js/highcharts.js" ></script>
+      <script type="text/javascript" src="js/highcharts-more.js" ></script>
+      <script type="text/javascript" src="js/modules/exporting.js"></script>
+      <script type="text/javascript" src="js/scripts.js" defer></script>   
+      <script type="text/javascript" src="js/graficas.js" ></script>
 
-  <script type="text/javascript" async>
+      <script type="text/javascript" async>
     <?php 
       include('js/grafica_empleabilidad.js');
       include('js/grafica_salarios.js'); 
@@ -297,9 +298,9 @@ set_time_limit(0);
       //include('js/grafica_formacion.js');
       //include('js/grafica_satisfaccion.js');
       //include('js/grafica_noticias.js');
-    ?>
-  </script>
-
+      ?>
+    </script>
+  </body>
 </html>
 
 <?php
