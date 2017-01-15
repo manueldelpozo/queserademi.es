@@ -575,6 +575,7 @@ span.flecha {
 
 	.body {
 		margin: 0;
+		margin-bottom: 20px;
 	}
 
 	#formulario.form-index:after {

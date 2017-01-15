@@ -227,6 +227,12 @@ $('.cerrar-popup').click(function() {
     $(this).parents('#popUp').hide('slow');
 });
 
+$('.controlador-ux-mobile').click(function() {
+    if (!$(this).hasClass('ux-mobile-input-container')) {
+        $(this).addClass('ux-mobile-input-container');
+        $(this).parents('.container-full').addClass('display-table');
+    }
+});
 
 // POPUP // desactivado por el momento
 /*setInterval(function() {
