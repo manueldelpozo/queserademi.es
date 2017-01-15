@@ -10,7 +10,6 @@ function mediaEmpleabilidad($pdo, $meses, $anyos) {
     foreach ($meses as $n_mes => $mes) {
         $media = array();
         $anyo = $anyos[ceil(($n_mes + 1) / (count($meses) / count($anyos))) - 1];
-        //$anyo = ( $n_mes - 1 > count($meses)/3 - 1 ) ? '2015' : '2014';
         $consulta = "SELECT parados, contratados FROM empleabilidad WHERE mes LIKE '". $mes ."' AND anyo LIKE ". $anyo;
         $rs = $pdo->prepare($consulta);
         $rs->execute();
@@ -126,7 +125,6 @@ var chartEmpleabilidad = {
         categories: [ 
         <?php 
          foreach ($meses as $n_mes => $mes) { 
-            //$year = ( $n_mes - 1 > count($meses)/2 - 1 ) ? '2015' : '2014';
             $anyo = $anyos[ceil(($n_mes + 1) / (count($meses) / count($anyos))) - 1];
             echo "'".ucfirst($mes)." ".$anyo."'";
             if ($n_mes + 1 < count($meses))

@@ -96,11 +96,11 @@ try {
     return (!is_null($parados) && $parados > 0) ?  round(coefMin($parados) * round(100 - ($contratados * 100 / ($parados + $contratados)), 2), 2) : 0;
   }
 
-  function mediaEmpleabilidad($pdo, $meses) {
+  function mediaEmpleabilidad($pdo, $meses, $anyos) {
     $medias = array();
     foreach ($meses as $n_mes => $mes) {
         $media = array();
-        $anyo = ( $n_mes - 1 > count($meses)/2 - 1 ) ? '2015' : '2014';
+        $anyo = $anyos[ceil(($n_mes + 1) / (count($meses) / count($anyos))) - 1];
         $consulta = "SELECT parados, contratados FROM empleabilidad WHERE mes LIKE '". $mes ."' AND anyo LIKE ". $anyo;
         $rs = $pdo->prepare($consulta);
         $rs->execute();
@@ -735,7 +735,8 @@ if( $btn_colabora_c_1 > 0 ) {
 
 $btn_colabora_e_1 = 0;
 $meses = ['enero','abril','julio','octubre'];
-$meses = array_merge($meses, $meses); // concatenar meses 
+$meses = array_merge($meses, $meses, $meses); // concatenar meses 
+$anyos = ['2014', '2015', '2016'];
 //array_pop($meses); // y eliminar el ultimo elemento
 
 // busqueda de nulos en empleabilidad
@@ -747,10 +748,10 @@ foreach ($filas_empleabilidad as $fila_empleabilidad) {
 
 $script_empleabilidad = "
 var seriesEmp = [". join(", ", imprimirSeriesEmp($filas_empleabilidad, count($meses))) . "];
-var seriesEmpMedia = [". join(", ", mediaEmpleabilidad($pdo, $meses)) . "];";
+var seriesEmpMedia = [". join(", ", mediaEmpleabilidad($pdo, $meses, $anyos)) . "];";
 
-$media_min = min(mediaEmpleabilidad($pdo, $meses));
-$media_max = max(mediaEmpleabilidad($pdo, $meses));
+$media_min = min(mediaEmpleabilidad($pdo, $meses, $anyos));
+$media_max = max(mediaEmpleabilidad($pdo, $meses, $anyos));
 
 $script_empleabilidad .= "
 var chartEmpleabilidad = {
@@ -796,8 +797,8 @@ var chartEmpleabilidad = {
     xAxis: {
         categories: [ ";
           foreach ($meses as $n_mes => $mes) { 
-            $year = ( $n_mes - 1 > count($meses)/2 - 1 ) ? '2015' : '2014';
-            $script_empleabilidad .= "'".ucfirst($mes)." ".$year."'";
+            $anyo = $anyos[ceil(($n_mes + 1) / (count($meses) / count($anyos))) - 1];
+            $script_empleabilidad .= "'".ucfirst($mes)." ".$anyo."'";
             if ($n_mes + 1 < count($meses))
               $script_empleabilidad .= ',';
           }
