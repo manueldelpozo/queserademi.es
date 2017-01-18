@@ -16,42 +16,24 @@ String.prototype.isLatin = function() {
 }
 
 // TYPEAHEAD
-/*
-$('#scrollable-dropdown-menu .typeahead').typeahead({
-	minLength: 0,
-    items: 9999,
-    order: "asc",
-	remote: {
-		url : 'ajax.php?query=%QUERY'
-	},
-	limit: 15,
-    //callback: {
-        ///onClickAfter: function (node, a, item, event) {
- 
-            // href key gets added inside item from options.href configuration
-            //alert(item.href);
- 
-        //}
-    //}
-});
-*/
 $('.typeahead[data-tipo="profesiones"]').typeahead({
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: $(location).attr('href').indexOf('/profesiones') > -1 ? '../data/profesiones_test.json' : 'data/profesiones_test.json',
+    hint: true,
+    highlight: true,
     minLength: 0,
-    items: 9999,
-    order: "asc",
-    remote: {
-        url: ($(location).attr('href').indexOf('/profesiones') >= 0) ? '../ajax.php?query=%QUERY&tipo=profesiones_test' : 'ajax.php?query=%QUERY&tipo=profesiones_test'
-    },
-    limit: 80
+    items: 9999
 });
+
 $('.typeahead[data-tipo="formaciones"]').typeahead({
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: $(location).attr('href').indexOf('/profesiones') > -1 ? '../data/formaciones.json' : 'data/formaciones.json',
+    hint: true,
+    highlight: true,
     minLength: 0,
-    items: 9999,
-    order: "asc",
-    remote: {
-        url: 'ajax.php?query=%QUERY&tipo=formaciones'
-    },
-    limit: 80
+    items: 9999
 });
 
 /////************** VALIDACION

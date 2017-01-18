@@ -481,7 +481,8 @@ if( isset( $_GET['profesion']  )  )
       </script>
       <script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
+      <script type="text/javascript" src="js/typeahead.bundle.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
       <script type="text/javascript" src="js/scripts.js"></script>   
       <script type="text/javascript">
         $(document).ready(function() {
