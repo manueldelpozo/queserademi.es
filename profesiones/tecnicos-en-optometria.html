@@ -54,7 +54,6 @@
     <div class="container-full">
       <form id="formulario" role="form" action="../comparador.php" method="get">
           <div class="row header">
-            <div class="col-xs-12 hidden-sm hidden-md hidden-lg margen"></div>
 
             <div class="col-md-4">
               <div class="dropdown clearfix">
@@ -108,6 +107,8 @@
             </div-->
           </div>
       </form>
+
+      <div class="col-xs-12 margen"></div>
     </div>
 
     <footer>
@@ -147,7 +148,7 @@
                 <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Qué nos sugieres</a>
+                <a href="../quenossugieres.html">Qué nos sugieres</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
@@ -217,8 +218,7 @@ var chartSalarios = {
     legend: { 
         enable: false ,
         itemStyle: {
-            textOverflow: 'ellipsis',
-            width: '350%'
+            width: '300%'
         },
         title: {
             text: '<span>(Click para ocultar)</span>',
@@ -240,10 +240,14 @@ var chartSalarios = {
         }
     },
     tooltip: {
-        headerFormat: '<strong>{point.x} años de experiencia</strong><br>',
-        crosshairs: true,
         shared: true,
-        valueSuffix: ' €'
+        headerFormat: '<strong style="font-size:16px">{point.x} años de experiencia</strong><br>',
+        valueSuffix: ' €',
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }
     },
     credits: {
         enabled: false
@@ -308,8 +312,7 @@ $('.more').click( function() {
     legend: { 
         enable: false,
         itemStyle: {
-            textOverflow: 'ellipsis',
-            width: '350%'
+            width: '300%'
         },
         title: {
             text: '<span>(Click para ocultar)</span>',
@@ -355,6 +358,7 @@ $('.more').click( function() {
     },
     tooltip: {
         shared: true,
+        headerFormat: '<strong style="font-size:17px">{point.key}</strong><br>',
         formatter: function() {
             var descripciones = {
                 Analisis:                   'Razonamiento lógico, toma de decisiones, organización, gestión, etc.',
@@ -366,14 +370,21 @@ $('.more').click( function() {
             };
             
             return '<strong style="font-size:17px;color:rgb(0,0,0);">'+ this.x +'</strong><br/>'+'<span>'+ descripciones[this.x.replace(/ /g,'_').latinize()] +'</span><br/>'+
-            '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': <strong>'+this.points[0].y+'</strong><br/>';
+            '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': </span>(<strong>'+this.points[0].y+'</strong>/5)<br/>';
         },
-        headerFormat: '<strong>{point.key}</strong><br>'      
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }      
     },
     exporting: {
         buttons: {
            anotherButton: {
                 text: '???',
+                y: 28,
+                x: 0,
+                width: 24,
                 onclick: function () {
                     var capa_glosario = '<div class="capa-glosario">';
                     capa_glosario += '<div class="cerrar-glosario"><img class="icon" src="../images/cross.svg"></img></div>';
@@ -424,8 +435,8 @@ $('.more').click( function() {
         stack: 'Técnicos en optometría'
     }]
 });
-var seriesEmp = [23.7, 22.73, 22.03, 22.37, 23.11, 23.41, 20.76, 21.6];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];
+var seriesEmp = [23.7, 22.73, 22.03, 22.37, 23.11, 23.41, 20.76, 21.6, 23.03, 22.11, 19.71, 21.25];
+var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27, 35.7, 36.65, 35.5, 33.44, 33.34];
 var chartEmpleabilidad = {
     chart: {
         type: 'column',
@@ -455,8 +466,7 @@ var chartEmpleabilidad = {
     legend: { 
         enable: false,
         itemStyle: {
-            textOverflow: 'ellipsis',
-            width: '350%'
+            width: '300%'
         },
         title: {
             text: '<span>(Click para ocultar)</span>',
@@ -468,7 +478,7 @@ var chartEmpleabilidad = {
         } 
     },
     xAxis: {
-        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2014','Abril 2015','Julio 2015','Octubre 2015' ]
+        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2015','Abril 2015','Julio 2015','Octubre 2015','Enero 2016','Abril 2016','Julio 2016','Octubre 2016' ]
     },
     yAxis: {
         allowDecimals: true,
@@ -492,12 +502,12 @@ var chartEmpleabilidad = {
                     }
                 }
             }, { // Paro medio
-                from: 35.27,
+                from: 33.34,
                 to: 41.27,
                 color: 'rgba(0, 0, 0, 0.2)'
             }, { // Paro bajo
                 from: 0,
-                to: 35.27,
+                to: 33.34,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     rotation: 90,
@@ -513,8 +523,14 @@ var chartEmpleabilidad = {
         ]
     },
     tooltip: {
-        headerFormat: '<b>{point.key}</b><br>',
-        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y}'
+        headerFormat: '<strong style="font-size:16px">{point.key}</strong><br><br>',
+        pointFormat: '<span style="color:{series.color}">{series.name}: </span><strong>{point.y}</strong>',
+        valueSuffix: ' %',
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }
     },
     credits: {
         enabled: false

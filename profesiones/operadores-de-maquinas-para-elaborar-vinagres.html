@@ -54,7 +54,6 @@
     <div class="container-full">
       <form id="formulario" role="form" action="../comparador.php" method="get">
           <div class="row header">
-            <div class="col-xs-12 hidden-sm hidden-md hidden-lg margen"></div>
 
             <div class="col-md-4">
               <div class="dropdown clearfix">
@@ -108,6 +107,8 @@
             </div-->
           </div>
       </form>
+
+      <div class="col-xs-12 margen"></div>
     </div>
 
     <footer>
@@ -147,7 +148,7 @@
                 <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="mailto:info@queserademi.es?subject=Pregunta%20para%20queserademi&body=Hola,%0D%0A%0D%0AQuiero contactar con vosotros para..." target="_top">Qué nos sugieres</a>
+                <a href="../quenossugieres.html">Qué nos sugieres</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
@@ -177,10 +178,10 @@
 
   <script type="text/javascript" async>
     
-var seriesSalPrinc      = [0, 0, 0];
-var seriesSalJunior     = [0, 0, 0];
-var seriesSalIntermedio = [0, 0, 0];
-var seriesSalSenior     = [0, 0, 0];
+var seriesSalPrinc      = [12312, 15096, 17052];
+var seriesSalJunior     = [14760, 17484, 19404];
+var seriesSalIntermedio = [16164, 18876, 20784];
+var seriesSalSenior     = [17412, 20172, 22092];
 var salarios = [
     [0,   seriesSalPrinc[0],      seriesSalPrinc[2]],
     [5,   seriesSalJunior[0],     seriesSalJunior[2]],
@@ -191,7 +192,8 @@ var salarios = [
     [5,   seriesSalJunior[1]],
     [10,  seriesSalIntermedio[1]], 
     [15,  seriesSalSenior[1]]
-];$('#container_salarios').highcharts({
+];
+var chartSalarios = {
     chart: {
         backgroundColor:'rgba(255, 255, 255, 0)',
         spacingBottom: 20,
@@ -214,7 +216,18 @@ var salarios = [
         text: '- € / año -'
     },
     legend: { 
-        enable: false 
+        enable: false ,
+        itemStyle: {
+            width: '300%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        }  
     },
     xAxis: {
         title: {
@@ -227,11 +240,14 @@ var salarios = [
         }
     },
     tooltip: {
-        headerFormat: '<strong>{point.x} años de experiencia</strong><br>',
-        //pointFormat: '{point.x} años de experiencia',
-        crosshairs: true,
         shared: true,
-        valueSuffix: ' €'
+        headerFormat: '<strong style="font-size:16px">{point.x} años de experiencia</strong><br>',
+        valueSuffix: ' €',
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }
     },
     credits: {
         enabled: false
@@ -266,18 +282,7 @@ var salarios = [
             zIndex: 0
         }
     ]
-});var capa_aviso = '<div class="capa-aviso">';
-    capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="../images/cross.svg"></img></a></div>';
-    capa_aviso += '<div class="col-md-10 col-md-offset-1">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
-
-        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
-        capa_aviso += '<strong>OPERADORES DE MÁQUINAS PARA ELABORAR VINAGRES</strong></p>';
-        capa_aviso += '<a href="../colabora.php?profesion=OPERADORES DE MÁQUINAS PARA ELABORAR VINAGRES" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
-
-    capa_aviso += '</div></div>';
-
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MÁQUINAS PARA ELABORAR VINAGRES</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MÁQUINAS PARA ELABORAR VINAGRES</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=OPERADORES DE MÁQUINAS PARA ELABORAR VINAGRES" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
@@ -305,7 +310,20 @@ $('.more').click( function() {
             'fontWeight': 'bold'
         }
     },
-    legend: { enable: false },
+    legend: { 
+        enable: false,
+        itemStyle: {
+            width: '300%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        } 
+    },
     pane: {
         size: '80%'
     },
@@ -341,6 +359,7 @@ $('.more').click( function() {
     },
     tooltip: {
         shared: true,
+        headerFormat: '<strong style="font-size:17px">{point.key}</strong><br>',
         formatter: function() {
             var descripciones = {
                 Analisis:                   'Razonamiento lógico, toma de decisiones, organización, gestión, etc.',
@@ -352,14 +371,21 @@ $('.more').click( function() {
             };
             
             return '<strong style="font-size:17px;color:rgb(0,0,0);">'+ this.x +'</strong><br/>'+'<span>'+ descripciones[this.x.replace(/ /g,'_').latinize()] +'</span><br/>'+
-            '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': <strong>'+this.points[0].y+'</strong><br/>';
+            '<span style="color:'+this.points[0].series.color+'">'+this.points[0].series.name+': </span>(<strong>'+this.points[0].y+'</strong>/5)<br/>';
         },
-        headerFormat: '<strong>{point.key}</strong><br>'      
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }      
     },
     exporting: {
         buttons: {
            anotherButton: {
                 text: '???',
+                y: 28,
+                x: 0,
+                width: 24,
                 onclick: function () {
                     var capa_glosario = '<div class="capa-glosario">';
                     capa_glosario += '<div class="cerrar-glosario"><img class="icon" src="../images/cross.svg"></img></div>';
@@ -410,8 +436,9 @@ $('.more').click( function() {
         stack: 'OPERADORES DE MÁQUINAS PARA ELABORAR VINAGRES'
     }]
 });
-var seriesEmp = [31.59, 32.32, 25.05, 27.91, 30.12, 26.66, 24.3, 24.76];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('#container_empleabilidad').highcharts({
+var seriesEmp = [31.59, 32.32, 25.05, 27.91, 30.12, 26.66, 24.3, 24.76, 25.72, 26.47, 23.48, 22.63];
+var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27, 35.7, 36.65, 35.5, 33.44, 33.34];
+var chartEmpleabilidad = {
     chart: {
         type: 'column',
         marginTop: 80,
@@ -437,20 +464,74 @@ var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('
     subtitle: {
         text: '- DIFICULTAD DE CONSEGUIR TRABAJO -'
     },
-    legend: { enable: false },
+    legend: { 
+        enable: false,
+        itemStyle: {
+            width: '300%'
+        },
+        title: {
+            text: '<span>(Click para ocultar)</span>',
+            style: {
+                fontStyle: 'italic',
+                fontSize: '9px',
+                color: '#888'
+            }
+        } 
+    },
     xAxis: {
-        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2014','Abril 2015','Julio 2015','Octubre 2015' ]
+        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2015','Abril 2015','Julio 2015','Octubre 2015','Enero 2016','Abril 2016','Julio 2016','Octubre 2016' ]
     },
     yAxis: {
         allowDecimals: true,
         min: 0,
         title: {
             text: 'Dificultad de conseguir trabajo %'
-        }
+        },
+        plotBands: [
+            { // Paro alto
+                from: 41.27,
+                to: 100,
+                color: 'rgba(0, 0, 0, 0.3)',
+                label: {
+                    rotation: 90,
+                    verticalAlign: 'top',
+                    x: 2,
+                    text: 'ALTO',
+                    style: {
+                        color: '#DDDDDD',
+                        fontSize:'12px'
+                    }
+                }
+            }, { // Paro medio
+                from: 33.34,
+                to: 41.27,
+                color: 'rgba(0, 0, 0, 0.2)'
+            }, { // Paro bajo
+                from: 0,
+                to: 33.34,
+                color: 'rgba(0, 0, 0, 0.1)',
+                label: {
+                    rotation: 90,
+                    verticalAlign: 'top',
+                    x: 2,
+                    text: 'BAJO',
+                    style: {
+                        color: '#AAA',
+                        fontSize:'12px'
+                    }
+                }
+            }
+        ]
     },
     tooltip: {
-        headerFormat: '<b>{point.key}</b><br>',
-        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y}'
+        headerFormat: '<strong style="font-size:16px">{point.key}</strong><br><br>',
+        pointFormat: '<span style="color:{series.color}">{series.name}: </span><strong>{point.y}</strong>',
+        valueSuffix: ' %',
+        style: {
+            display: 'block', 
+            width: '300px',
+            whiteSpace: 'normal' 
+        }
     },
     credits: {
         enabled: false
@@ -465,15 +546,15 @@ var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];$('
         type: 'spline',
         data: seriesEmpMedia,
         stack: 'Media de paro',
-        color: 'rgb(0, 0, 0)',
+        color: 'rgba(0, 0, 0, 0.2)',
         dashStyle: 'shortdot',
         marker: {
-            fillColor: 'white',
-            lineWidth: 2,
-            lineColor: 'rgb(0, 0, 0)',
+            fillColor: 'transparent',
+            lineWidth: 1,
+            lineColor: 'rgba(0, 0, 0, 0.2)',
         }
       }
     ]
-});
+};$('#container_empleabilidad').highcharts(chartEmpleabilidad);
   </script>
 </html>

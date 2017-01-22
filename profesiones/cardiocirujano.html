@@ -435,8 +435,8 @@ $('.more').click( function() {
         stack: 'Cardiocirujano'
     }]
 });
-var seriesEmp = [10.8, 9.65, 9.7, 10.24, 7.69, 8.62, 8.04, 9.59];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 41.27, 37.77, 35.27, 35.7];
+var seriesEmp = [10.8, 9.65, 9.7, 10.24, 7.69, 8.62, 8.04, 9.59, 7.06, 11.27, 6.51, 7.45];
+var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27, 35.7, 36.65, 35.5, 33.44, 33.34];
 var chartEmpleabilidad = {
     chart: {
         type: 'column',
@@ -478,7 +478,7 @@ var chartEmpleabilidad = {
         } 
     },
     xAxis: {
-        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2014','Abril 2015','Julio 2015','Octubre 2015' ]
+        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2015','Abril 2015','Julio 2015','Octubre 2015','Enero 2016','Abril 2016','Julio 2016','Octubre 2016' ]
     },
     yAxis: {
         allowDecimals: true,
@@ -502,12 +502,12 @@ var chartEmpleabilidad = {
                     }
                 }
             }, { // Paro medio
-                from: 35.27,
+                from: 33.34,
                 to: 41.27,
                 color: 'rgba(0, 0, 0, 0.2)'
             }, { // Paro bajo
                 from: 0,
-                to: 35.27,
+                to: 33.34,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     rotation: 90,
