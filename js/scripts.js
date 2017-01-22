@@ -17,23 +17,23 @@ String.prototype.isLatin = function() {
 
 // TYPEAHEAD
 $('.typeahead[data-tipo="profesiones"]').typeahead({
-    datumTokenizer: Bloodhound.tokenizers.whitespace,
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
     prefetch: $(location).attr('href').indexOf('/profesiones') > -1 ? '../data/profesiones_test.json' : 'data/profesiones_test.json',
     hint: true,
     highlight: true,
     minLength: 0,
-    items: 9999
+    items: 9999,
+    order: "asc",
+    limit: Infinity
 });
 
 $('.typeahead[data-tipo="formaciones"]').typeahead({
-    datumTokenizer: Bloodhound.tokenizers.whitespace,
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
     prefetch: $(location).attr('href').indexOf('/profesiones') > -1 ? '../data/formaciones.json' : 'data/formaciones.json',
     hint: true,
     highlight: true,
     minLength: 0,
-    items: 9999
+    items: 9999,
+    order: "asc",
+    limit: Infinity
 });
 
 /////************** VALIDACION

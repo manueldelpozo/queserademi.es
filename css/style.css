@@ -579,7 +579,7 @@ span.flecha {
 	}
 
 	#formulario.form-index:after {
-		content: "(ejemplo: Médico)";
+		content: "(ejemplo: Abogado)";
 		color: #c00;
 	}
 
