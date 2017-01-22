@@ -16,14 +16,16 @@ foreach ($tipos as &$tipo) {
 	
 	if ($count > 0) {
 		$rows = $request->fetchAll();
-		foreach ( $rows as $row ) {
-			$nombre_ppal = ucfirst( mb_strtolower( $row[$n_ppal], 'UTF-8' ) );
-			$lista[] = trim($nombre_ppal);
+		foreach ($rows as $row) {
+			$nombre_ppal = trim(ucfirst(mb_strtolower($row[$n_ppal], 'UTF-8')));
+			if (!in_array($nombre_ppal, $lista))
+				$lista[] = $nombre_ppal;
 			if (!empty($row[$n_alt]) && !is_null($row[$n_alt])) {
-				$nombre_alt = ucfirst( mb_strtolower( $row[$n_alt], 'UTF-8' ) );
+				$nombre_alt = trim(ucfirst(mb_strtolower($row[$n_alt], 'UTF-8')));
 				if (strlen($row[$n_alt]) < 5 && mb_strtoupper($row[$n_alt], 'UTF-8') == $row[$n_alt])
-					$nombre_alt = $row[$n_alt]; // solo si son siglas
-				$lista[] = trim($nombre_alt);
+					$nombre_alt = trim($row[$n_alt]); // solo si son siglas
+				if (!in_array($nombre_ppal, $lista))
+					$lista[] = $nombre_alt;
 			}
 		}
 	} 
