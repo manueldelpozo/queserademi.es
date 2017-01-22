@@ -18,14 +18,18 @@ foreach ($tipos as &$tipo) {
 		$rows = $request->fetchAll();
 		foreach ($rows as $row) {
 			$nombre_ppal = trim(ucfirst(mb_strtolower($row[$n_ppal], 'UTF-8')));
-			if (!in_array($nombre_ppal, $lista))
+			if (!in_array($nombre_ppal, $lista)) {
 				$lista[] = $nombre_ppal;
+				echo '<p>El nombre principal <strong>' . $nombre_ppal . '</strong> se añadio a la lista de <strong>' . $tipo . '</strong></p>';
+			}
 			if (!empty($row[$n_alt]) && !is_null($row[$n_alt])) {
 				$nombre_alt = trim(ucfirst(mb_strtolower($row[$n_alt], 'UTF-8')));
 				if (strlen($row[$n_alt]) < 5 && mb_strtoupper($row[$n_alt], 'UTF-8') == $row[$n_alt])
 					$nombre_alt = trim($row[$n_alt]); // solo si son siglas
-				if (!in_array($nombre_ppal, $lista))
+				if (!in_array($nombre_alt, $lista)) {
 					$lista[] = $nombre_alt;
+					echo '<p>El nombre alternativo <strong>' . $nombre_alt . '</strong> se añadio a la lista de <strong>' . $tipo . '</strong></p>';
+				}
 			}
 		}
 	} 
