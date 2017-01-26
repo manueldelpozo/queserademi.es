@@ -100,12 +100,11 @@ function submitar($input, item) {
                 } else {
                     // antes de submitar comprobar si es nombre alternativo y redireccionarlo a la estatica
                     /*if (result.substring(result.length - $profesion.length - 2, result.length - 2) == $profesion) {
-                        window.location = 'http://www.queserademi.es/profesiones/' + $profesion.replace(/ /g, "-").latinize().toLowerCase() + '.html';
+                        window.location = 'http://www.queserademi.com/profesiones/' + $profesion.replace(/ /g, "-").latinize().toLowerCase() + '.html';
                         return false;
                     }*/
-                    console.log('event');
                     var profesionLimpia = profesion.replace(/\'|\"|\,|\;|\(|\)|\/|\~|\+/g, "-").latinize().toLowerCase()
-                    var urlEstatica = 'http://www.queserademi.es/profesiones/' + profesionLimpia.replace(/ /g, "-") + '.html';
+                    var urlEstatica = 'http://www.queserademi.com/profesiones/' + profesionLimpia.replace(/ /g, "-") + '.html';
                     $form.attr('action', urlEstatica).submit();
                 }
             },
@@ -113,7 +112,7 @@ function submitar($input, item) {
             	alert(xhr);
                 // y cambiar el redireccionamiento a la pagina estatica si es necesario (status 500)
                 /*if (xhr.status == 500) {
-                    window.location = 'http://www.queserademi.es/profesiones/' + $profesion.replace(/ /g, "-").latinize().toLowerCase() + '.html';
+                    window.location = 'http://www.queserademi.com/profesiones/' + $profesion.replace(/ /g, "-").latinize().toLowerCase() + '.html';
                 }*/
                 alert('Fallo en la consulta');
                 return false;

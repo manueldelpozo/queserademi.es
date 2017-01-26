@@ -242,8 +242,8 @@ if( !empty( $_POST['verificacion'] ) ){
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 	    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Gracias por colaborar con queserademi" />
-	    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.es/images/logo.png" />
-	    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.es/verificador.php" />
+	    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://www.queserademi.com/images/logo.png" />
+	    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.com/verificador.php" />
 	    <meta name="theme-color" content="#c00">
 	    <link rel="icon" type="image/x-icon" href="images/logo.png">
 	    <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -305,10 +305,10 @@ if( !empty( $_POST['verificacion'] ) ){
 			$linea4 		= "Cordialmente,";
 			$linea5 		= "El equipo 'queserademi'.";
 			$linea6 		= "QUESERADEMI";
-			$linea7 		= "http://www.queserademi.es/";
-			$linea8 		= "info@queserademi.es";
+			$linea7 		= "http://www.queserademi.com/";
+			$linea8 		= "info@queserademi.com";
 			
-			//$headers = "From: info@queserademi.es" . "\r\n" . "CC: ".$email;
+			//$headers = "From: info@queserademi.com" . "\r\n" . "CC: ".$email;
 			//$asunto = 'Gracias por colaborar con queserademi';
 
 			//mail( $email, $asunto, $mensaje, $headers );
@@ -321,18 +321,18 @@ if( !empty( $_POST['verificacion'] ) ){
 			//$mail->SMTPDebug = 3;                               // Enable verbose debug output
 			
 			$mail->isSMTP();                                      // Set mailer to use SMTP
-			$mail->Host 		= 'smtp.queserademi.es';  // Specify main and backup SMTP servers
+			$mail->Host 		= 'smtp.queserademi.com';  // Specify main and backup SMTP servers
 			$mail->SMTPAuth 	= true;                               // Enable SMTP authentication
-			$mail->Username 	= 'info@queserademi.es';                 // SMTP username
+			$mail->Username 	= 'info@queserademi.com';                 // SMTP username
 			$mail->Password 	= 'Qsdm2016';                           // SMTP password
 			//$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 			$mail->Port 		= 587;                                    // TCP port to connect to
 			
-			$mail->From 		= 'info@queserademi.es';
+			$mail->From 		= 'info@queserademi.com';
 			$mail->FromName 	= 'queserademi';
 			$mail->addAddress($email, $colaborador );     // Add a recipient
 			//$mail->addAddress('ellen@example.com');               // Name is optional
-			$mail->addReplyTo('info@queserademi.es', 'queserademi');
+			$mail->addReplyTo('info@queserademi.com', 'queserademi');
 			//$mail->addCC('cc@example.com');
 			//$mail->addBCC('bcc@example.com');
 
@@ -343,7 +343,7 @@ if( !empty( $_POST['verificacion'] ) ){
 			//$mail­->Encoding = "quoted­printable";                                // Set email format to HTML
 
 			$mail->Subject 		= 'Gracias por colaborar con queserademi';
-			$mail->Body    		= "<strong>".$linea1."</strong><br><p>".$linea2."<br>".$linea2b."</p><p><a href='http://www.queserademi.es/colabora.php'>".$linea3."</a>".$linea3b."</p><p>".$linea4."<br><br>".$linea5."</p><br><p><strong>".$linea6."</strong><br><a href='http://www.queserademi.es'>".$linea7."</a><br><a href='mailto:info@queserademi.es'>".$linea8."</a><br><br><img src='http://www.queserademi.es/images/logo.png' heigh='60px' width='60px'></p>";
+			$mail->Body    		= "<strong>".$linea1."</strong><br><p>".$linea2."<br>".$linea2b."</p><p><a href='http://www.queserademi.com/colabora.php'>".$linea3."</a>".$linea3b."</p><p>".$linea4."<br><br>".$linea5."</p><br><p><strong>".$linea6."</strong><br><a href='http://www.queserademi.com'>".$linea7."</a><br><a href='mailto:info@queserademi.com'>".$linea8."</a><br><br><img src='http://www.queserademi.com/images/logo.png' heigh='60px' width='60px'></p>";
 			//'This is the body in plain text for non-HTML mail clients';
 			$mail->AltBody 		= $linea1."\n\n".$linea2."\n".$linea2b."\n\n".$linea3.$linea3b."\n\n".$linea4."\n\n".$linea5."\n\n".$linea6."\n".$linea7."\n".$linea8;
 
@@ -411,10 +411,10 @@ if( !empty( $_POST['verificacion'] ) ){
 			        </div>
 			        <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
 			          <ul class="share-buttons">
-			            <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.queserademi.es&t=Comparador%20de%20profesiones" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-			            <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-			            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.es&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-			            <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.es" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+			            <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.queserademi.com&t=Comparador%20de%20profesiones" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+			            <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+			            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.com&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+			            <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
 			          </ul>
 			        </div>
 		        </div>
@@ -427,7 +427,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		        		<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Terminos de uso</a>
         			</div>
 			        <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-			        	<small>&copy; 2015 queserademi.es</small>
+			        	<small>&copy; 2015 queserademi.com</small>
 			        </div>
 		        </div>
 			</div>
