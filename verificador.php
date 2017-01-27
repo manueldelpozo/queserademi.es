@@ -169,7 +169,7 @@ if( !empty( $_POST['verificacion'] ) ){
 					return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
 			}
 			//obtencion de datos guardados
-			$consulta = "SELECT * FROM profesiones_test p 
+			$consulta = "SELECT * FROM profesiones p 
 			INNER JOIN nombres_alt n ON p.id = n.id_profesion 
 			INNER JOIN salarios s ON p.id = s.id_profesion 
 			INNER JOIN capacidades c ON p.id = c.id_profesion 

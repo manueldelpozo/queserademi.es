@@ -28,7 +28,7 @@ $highestColumn 	= $sheet->getHighestColumn();
 
 //eliminar tabla de profesiones de la bbdd 
 try {
-    $delete_sql = 'DELETE FROM profesiones_test;';
+    $delete_sql = 'DELETE FROM profesiones;';
     $delete = $pdo->prepare( $delete_sql );
 	$delete->execute();
 } catch(PDOException $e) {
@@ -37,7 +37,7 @@ try {
 
 try {
 	$campos = array( 
-		'profesiones_test'			=> array('cod', 'nombre_ppal', 'descripcion'),
+		'profesiones'			=> array('cod', 'nombre_ppal', 'descripcion'),
 		'nombres_alt'				=> array('nombre_alt'),
 		'salarios'      			=> array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
 		'empleabilidad' 			=> array('parados', 'contratados', 'mes', 'anyo'),
@@ -47,7 +47,7 @@ try {
 
 	function insertar( $tabla, $campos ) {
 	    $insercion = "INSERT INTO ".$tabla." (";
-    	if ( $tabla != 'profesiones_test')
+    	if ( $tabla != 'profesiones')
     		$insercion .= "id_profesion, ";
 	    foreach ( $campos[$tabla] as $campo) {
 			$insercion .= $campo.",";
@@ -58,7 +58,7 @@ try {
 
 	// desde la fila 2 del archivo excel
 	for ($row = 2; $row <= $highestRow; $row++) { 
-		$insert_profesiones = insertar('profesiones_test', $campos);
+		$insert_profesiones = insertar('profesiones', $campos);
 	    //poner los datos de cada fila en el array rowData
 	    $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
 	    //recoger datos del array rowData
@@ -142,7 +142,7 @@ try {
 
 		//inseratar el resto
 		//consulta a las tablas profesion y formacion y obtener ids creados
-		$sql_profesiones = "SELECT id, nombre_ppal FROM profesiones_test WHERE cod LIKE '$cod'";
+		$sql_profesiones = "SELECT id, nombre_ppal FROM profesiones WHERE cod LIKE '$cod'";
 		$rs_profesiones = $pdo->prepare($sql_profesiones);
 		$rs_profesiones->execute();
 		$filas_profesiones = $rs_profesiones->fetchAll();

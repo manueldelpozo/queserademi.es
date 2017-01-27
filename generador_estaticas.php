@@ -30,7 +30,7 @@ try {
     else
       $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND";
 
-    $consulta .= " FROM profesiones_test p ".$where." p.id = ".$id_profesion;
+    $consulta .= " FROM profesiones p ".$where." p.id = ".$id_profesion;
     echo $consulta . '<br>';
     $rs = $pdo->prepare($consulta);
     $rs->execute();
@@ -39,7 +39,7 @@ try {
   }
 
   // Primero, consulta de nombres principales y alternativos
-  $consulta_nombres = "SELECT id_profesion, nombre_ppal, nombre_alt FROM profesiones_test p INNER JOIN nombres_alt n ON p.id = n.id_profesion;";
+  $consulta_nombres = "SELECT id_profesion, nombre_ppal, nombre_alt FROM profesiones p INNER JOIN nombres_alt n ON p.id = n.id_profesion;";
   $rs_nombres = $pdo->prepare($consulta_nombres);
   $rs_nombres->execute();
   $nombres = $rs_nombres->fetchAll();

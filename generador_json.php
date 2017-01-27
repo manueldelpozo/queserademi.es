@@ -1,13 +1,13 @@
 <?php
 require('conexion.php');
 
-$tipos = array('profesiones_test', 'formaciones');
+$tipos = array('profesiones', 'formaciones');
 
 foreach ($tipos as &$tipo) {
 	$lista = array();
 	$n_ppal = ($tipo == 'formaciones') ? 'f_nombre_ppal' : 'nombre_ppal';
 	$n_alt = ($tipo == 'formaciones') ? 'f_nombre_alt' : 'nombre_alt';
-	$join = ($tipo == 'profesiones_test') ? 'p INNER JOIN nombres_alt n ON p.id = n.id_profesion ' : '';
+	$join = ($tipo == 'profesiones') ? 'p INNER JOIN nombres_alt n ON p.id = n.id_profesion ' : '';
 	$sql = "SELECT $n_ppal, $n_alt FROM $tipo " . $join . "ORDER BY $n_ppal ASC";
 
 	$request = $pdo->prepare($sql);

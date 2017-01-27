@@ -41,7 +41,7 @@ try {
   	`id_formacion` int(11) NOT NULL,
 	PRIMARY KEY (`id`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
-	ALTER TABLE  `profesiones_formaciones` ADD CONSTRAINT  `fk_formaciones_profesiones` FOREIGN KEY (  `id_profesion` ) REFERENCES `qth809`.`profesiones_test` (`id`
+	ALTER TABLE  `profesiones_formaciones` ADD CONSTRAINT  `fk_formaciones_profesiones` FOREIGN KEY (  `id_profesion` ) REFERENCES `qth809`.`profesiones` (`id`
 	) ON DELETE CASCADE ON UPDATE CASCADE ;
 	ALTER TABLE  `profesiones_formaciones` ADD CONSTRAINT  `fk_profesiones_formaciones` FOREIGN KEY (  `id_formacion` ) REFERENCES `qth809`.`formaciones` (`cod`
 	) ON DELETE CASCADE ON UPDATE CASCADE ;" ;

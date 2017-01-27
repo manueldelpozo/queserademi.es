@@ -18,7 +18,7 @@ String.prototype.isLatin = function() {
 // TYPEAHEAD
 /*$('.typeahead[data-tipo="profesiones"]').typeahead({
     prefetch: {
-        url: $(location).attr('href').indexOf('/profesiones') > -1 ? '../data/profesiones_test.json' : 'data/profesiones_test.json',
+        url: $(location).attr('href').indexOf('/profesiones') > -1 ? '../data/profesiones.json' : 'data/profesiones.json',
         prepare: function(query, settings) {
                     console.log(query);
                     return settings;
@@ -49,7 +49,7 @@ $('.typeahead[data-tipo="formaciones"]').typeahead({
 
 $('.typeahead[data-tipo="profesiones"]').autocomplete({
     source: [{
-        url: $(location).attr('href').indexOf('/profesiones') > -1 ? '../data/profesiones_test.json' : 'data/profesiones_test.json',
+        url: $(location).attr('href').indexOf('/profesiones') > -1 ? '../data/profesiones.json' : 'data/profesiones.json',
         type:'remote'
     }],
     getValue: function(item) {
@@ -84,7 +84,7 @@ function submitar($input, item) {
     if (profesion) {
         var prefix = ($(location).attr('href').indexOf('/profesiones') >= 0) ? '../' : ''
         $.ajax({
-            url: prefix + "ajax.php?query=" + profesion + "&tipo=profesiones_test&validar=true",
+            url: prefix + "ajax.php?query=" + profesion + "&tipo=profesiones&validar=true",
             success: function(result) {
                 var $form = $input.parents("#formulario");
                 if (result == '[]' || result == '[""]') {
@@ -171,7 +171,7 @@ $('.btn-submit').click(function(e) {
 function mostrarMasLista($input) {
     // consultar todos los elementos de la lista
     $.ajax({
-        url: "ajax.php?query=%&tipo=profesiones_test",
+        url: "ajax.php?query=%&tipo=profesiones",
         success: function(result) {
             $input.typeahead({
                 source: result,
