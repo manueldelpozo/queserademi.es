@@ -134,6 +134,10 @@ div.body > div {
   display: inline;
 }
 
+.input-group {
+    width: 100% !important;
+  }
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (max-device-width: 400px) and (orientation:portrait) {
   div.header {
@@ -154,6 +158,10 @@ div.body > div {
   .highcharts-container svg > g.highcharts-button:nth-child(2) {
     display: none;
   }
+
+  .input-group {
+    display: block !important;
+  }
 }
 @media only screen and (max-device-width: 768px) and (orientation:landscape) {
   div.header {
@@ -170,5 +178,9 @@ div.body > div {
   } 
   .capa-glosario dd {
     margin-bottom: 3px;
+  }
+
+  .input-group {
+    display: block !important;
   }
 }
