@@ -15,14 +15,14 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 
 	if (isset($_GET['validar'])) {
 		$sql = "SELECT * FROM $tipo ";
-		if ($tipo == 'profesiones')
+		if ($tipo == 'profesiones_test')
 			$sql .= "p INNER JOIN nombres_alt n ON p.id = n.id_profesion WHERE nombre_ppal LIKE '$query' OR nombre_alt LIKE '$query'";
 		else
 			$sql .= "WHERE nombre_ppal LIKE '$query'";
 	} else {
 		// consulta typeahead
 		$sql = "SELECT $n_ppal, $n_alt FROM $tipo ";
-		if ($tipo == 'profesiones')
+		if ($tipo == 'profesiones_test')
 			$sql .= "p INNER JOIN nombres_alt n ON p.id = n.id_profesion ";
 
 		if ($query != '%25')
@@ -85,11 +85,11 @@ if( isset( $_GET['keyword'] ) && isset( $_GET['estudios_asoc'] ) && isset($_SERV
 
 	if( !$keyword == "" ) { 
 
-		//$sql="SELECT * FROM profesiones WHERE ".$item1." LIKE '$keyword%'
-		//UNION distinct SELECT * FROM profesiones WHERE ".$item1." LIKE '%$keyword%' OR ".$item2." LIKE '%$keyword%'";
-		$sql = " SELECT * FROM profesiones WHERE ".$item1." LIKE '$keyword%'
-		UNION distinct SELECT * FROM profesiones WHERE ".$item1." LIKE '%$keyword%' ";
-		//$sql = " SELECT * FROM profesiones WHERE ".$item1." LIKE '%$keyword%'";
+		//$sql="SELECT * FROM profesiones_test WHERE ".$item1." LIKE '$keyword%'
+		//UNION distinct SELECT * FROM profesiones_test WHERE ".$item1." LIKE '%$keyword%' OR ".$item2." LIKE '%$keyword%'";
+		$sql = " SELECT * FROM profesiones_test WHERE ".$item1." LIKE '$keyword%'
+		UNION distinct SELECT * FROM profesiones_test WHERE ".$item1." LIKE '%$keyword%' ";
+		//$sql = " SELECT * FROM profesiones_test WHERE ".$item1." LIKE '%$keyword%'";
 
 		if( $keyword == '%' ) {
 			$sql.= 'ORDER BY '.$item1.' ASC';	

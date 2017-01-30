@@ -30,8 +30,8 @@ set_time_limit(0);
     else
       $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND ";
 
-    $consulta .= " FROM profesiones p ".$where."p.nombre_ppal LIKE '$profesion'";
-
+    $consulta .= " FROM profesiones_test p ".$where."p.nombre_ppal LIKE '$profesion'";
+    
     $rs = $pdo->prepare($consulta);
     $rs->execute();
     $filas = $rs->fetchAll();
@@ -48,14 +48,14 @@ set_time_limit(0);
   }
 
   function getNombrePpal($nombre_alt, $pdo) {
-    $consulta_alt = "SELECT nombre_ppal FROM profesiones WHERE id = (
+    $consulta_alt = "SELECT nombre_ppal FROM profesiones_test WHERE id = (
                         SELECT id_profesion FROM nombres_alt WHERE nombre_alt LIKE '$nombre_alt'
                       ) ";
     return consultaPDO('nombre_ppal', $consulta_alt, $pdo);
   }
 
   function getIdProfesion($nombre_prof, $pdo) {
-    $consulta_id = "SELECT id FROM profesiones WHERE nombre_ppal LIKE '$nombre_prof'";
+    $consulta_id = "SELECT id FROM profesiones_test WHERE nombre_ppal LIKE '$nombre_prof'";
     return consultaPDO('id', $consulta_id, $pdo);
   } 
 
@@ -98,7 +98,7 @@ set_time_limit(0);
   <head>
       <meta http-equiv="Content-Language" content="es">
       <meta charset="utf-8">
-      <title>Comparador de Profesiones</title>
+      <title>Comparador de profesiones</title>
       <meta name="description" content="Comparador de profesiones queserademi">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,11 +108,11 @@ set_time_limit(0);
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.com/comparador.php" />
       <meta name="theme-color" content="#c00">
       <link rel="icon" type="image/x-icon" href="images/logo.png">
-      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" hr­ef="js/autocomplete-master/jquery.autocomplete.css"/>
+      <link rel="stylesheet" href="css/bootstrap.min.css"/>
       <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
-
-      <link rel="stylesheet" href="css/style.css" />
-      <link rel="stylesheet" href="css/style-comparador.css" />
+      <link rel="stylesheet" href="css/style.css"/>
+      <link rel="stylesheet" href="css/style-comparador.css"/>
   </head>
   <body>
     <!-- Google Tag Manager -->
@@ -146,16 +146,18 @@ set_time_limit(0);
     </div>
     <div class="background-image grayscale"></div>
     <div class="container-full">
-      <form id="formulario" role="form" action="comparador.php" method="get">
+      <form id="formulario" role="form">
 
           <div class="row header ux-mobile-header">
 
             <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="Busca otra profesión y compara" value="<?php echo @$profesion; ?>" required> 
+                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="<?php echo @$profesion; ?>" spellcheck="true" autocomplete="off">
                   <span class="input-group-btn hidden-xs">
-                    <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
+                    <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 100%;position: absolute;top: 0;">
+                      <i class="fa fa-search fa-lg" style="color: rgb(204, 204, 204);"></i>
+                    </button>
                   </span>
                 </div>
               </div>
@@ -171,9 +173,11 @@ set_time_limit(0);
             <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="Busca otra profesión y compara" value="<?php echo @$profesion_dos; ?>" required autofocus>
+                  <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required autofocus value="<?php echo @$profesion_dos; ?>" spellcheck="true" autocomplete="off" >
                   <span class="input-group-btn hidden-xs">
-                    <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
+                    <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 100%;position: absolute;top: 0;">
+                      <i class="fa fa-search fa-lg" style="color: rgb(204, 204, 204);"></i>
+                    </button>
                   </span>
                 </div>
               </div>
@@ -267,7 +271,7 @@ set_time_limit(0);
                 <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Terminos de uso</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <small>&copy; 2015 queserademi.com</small>
+                <small>&copy; 2017 queserademi.com</small>
               </div>
             </div>
       </div>
@@ -281,8 +285,7 @@ set_time_limit(0);
       <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
       <!--script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script-->
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="js/typeahead.bundle.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
+      <script type="text/javascript" src="js/autocomplete-master/jquery.autocomplete.js"></script>
       <script type="text/javascript" src="js/highcharts.js" ></script>
       <script type="text/javascript" src="js/highcharts-more.js" ></script>
       <script type="text/javascript" src="js/modules/exporting.js"></script>

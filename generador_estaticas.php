@@ -30,7 +30,7 @@ try {
     else
       $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND";
 
-    $consulta .= " FROM profesiones p ".$where." p.id = ".$id_profesion;
+    $consulta .= " FROM profesiones_test p ".$where." p.id = ".$id_profesion;
     echo $consulta . '<br>';
     $rs = $pdo->prepare($consulta);
     $rs->execute();
@@ -39,7 +39,7 @@ try {
   }
 
   // Primero, consulta de nombres principales y alternativos
-  $consulta_nombres = "SELECT id_profesion, nombre_ppal, nombre_alt FROM profesiones p INNER JOIN nombres_alt n ON p.id = n.id_profesion;";
+  $consulta_nombres = "SELECT id_profesion, nombre_ppal, nombre_alt FROM profesiones_test p INNER JOIN nombres_alt n ON p.id = n.id_profesion;";
   $rs_nombres = $pdo->prepare($consulta_nombres);
   $rs_nombres->execute();
   $nombres = $rs_nombres->fetchAll();
@@ -201,24 +201,11 @@ $html = '
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="../images/logo.png" />
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.com/'; $html .= $url_html . '" />   
       <link rel="icon" type="image/x-icon" href="../images/logo.png">
+      <link rel="stylesheet" hr­ef="../js/autocomplete-master/jquery.autocomplete.css"/>
       <link rel="stylesheet" href="../css/bootstrap.min.css" />
       <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
       <link rel="stylesheet" href="../css/style.css" />
       <link rel="stylesheet" href="../css/style-comparador.css" />
-      <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
-      <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-      <script type="text/javascript" src="../js/jquery-2.1.3.js" ></script>
-      <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
-      <script type="text/javascript" src="../js/typeahead.bundle.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
-      <script type="text/javascript" src="../js/highcharts.js" ></script>
-      <script type="text/javascript" src="../js/highcharts-more.js" ></script>
-      <script type="text/javascript" src="../js/modules/exporting.js"></script>
-      <script type="text/javascript" src="../js/scripts.js" defer></script> 
-      <script type="text/javascript" src="../js/graficas.js" ></script>
   </head>
 
   <body>
@@ -240,15 +227,17 @@ $html = '
     <div class="background-image grayscale"></div>
 
     <div class="container-full">
-      <form id="formulario" role="form" action="../comparador.php" method="get">
+      <form id="formulario" role="form">
           <div class="row header">
 
             <div class="col-md-4">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" value="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '" required>
-                  <span class="input-group-btn" >
-                    <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
+                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '" spellcheck="true" autocomplete="off">
+                  <span class="input-group-btn hidden-xs">
+                    <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 100%;position: absolute;top: 0;">
+                      <i class="fa fa-search fa-lg" style="color: rgb(204, 204, 204);"></i>
+                    </button>
                   </span>
                 </div>
               </div>
@@ -264,9 +253,11 @@ $html = '
             <div class="col-md-4">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required autofocus>
-                  <span class="input-group-btn">
-                    <button class="btn btn-default btn-submit" type="submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 50px;position: absolute;top: 0;"><strong>&gt;</strong></button>
+                  <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required autofocus spellcheck="true" autocomplete="off" >
+                  <span class="input-group-btn hidden-xs">
+                    <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 100%;position: absolute;top: 0;">
+                      <i class="fa fa-search fa-lg" style="color: rgb(204, 204, 204);"></i>
+                    </button>
                   </span>
                 </div>
               </div>
@@ -279,10 +270,10 @@ $html = '
               <div id="container_empleabilidad" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_capacidades" class="grafica"></div>
+              <div id="container_salarios" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_salarios" class="grafica"></div>
+              <div id="container_capacidades" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_info" class="grafica"></div>
@@ -356,14 +347,26 @@ $html = '
                 <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Terminos de uso</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <small>&copy; 2015 queserademi.com</small>
+                <small>&copy; 2017 queserademi.com</small>
               </div>
             </div>
       </div>
     </footer>
 
   </body>
-
+  <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="../js/jquery-2.1.3.js" ></script>
+  <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+  <script type="text/javascript" src="../js/autocomplete-master/jquery.autocomplete.js"></script>
+  <script type="text/javascript" src="../js/highcharts.js" ></script>
+  <script type="text/javascript" src="../js/highcharts-more.js" ></script>
+  <script type="text/javascript" src="../js/modules/exporting.js"></script>
+  <script type="text/javascript" src="../js/scripts.js" defer></script> 
+  <script type="text/javascript" src="../js/graficas.js" ></script>
   <script type="text/javascript" async>
     '; 
 
@@ -1288,7 +1291,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     } // end while
 
     //TEST//
-    //break;  
+    break;  
   } // end foreach
 
 } catch( Exception $e ) {
