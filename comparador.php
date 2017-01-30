@@ -30,7 +30,7 @@ set_time_limit(0);
     else
       $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND ";
 
-    $consulta .= " FROM profesiones_test p ".$where."p.nombre_ppal LIKE '$profesion'";
+    $consulta .= " FROM profesiones p ".$where."p.nombre_ppal LIKE '$profesion'";
     
     $rs = $pdo->prepare($consulta);
     $rs->execute();
@@ -48,14 +48,14 @@ set_time_limit(0);
   }
 
   function getNombrePpal($nombre_alt, $pdo) {
-    $consulta_alt = "SELECT nombre_ppal FROM profesiones_test WHERE id = (
+    $consulta_alt = "SELECT nombre_ppal FROM profesiones WHERE id = (
                         SELECT id_profesion FROM nombres_alt WHERE nombre_alt LIKE '$nombre_alt'
                       ) ";
     return consultaPDO('nombre_ppal', $consulta_alt, $pdo);
   }
 
   function getIdProfesion($nombre_prof, $pdo) {
-    $consulta_id = "SELECT id FROM profesiones_test WHERE nombre_ppal LIKE '$nombre_prof'";
+    $consulta_id = "SELECT id FROM profesiones WHERE nombre_ppal LIKE '$nombre_prof'";
     return consultaPDO('id', $consulta_id, $pdo);
   } 
 

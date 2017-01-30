@@ -58,8 +58,6 @@ $('.typeahead').autocomplete({
 /////************** VALIDACION
 
 function submitar($input, item) {
-    console.log($input);
-    console.log($input.getValue);
     var profesion = item;
     if (profesion) {
         var prefix = ($(location).attr('href').indexOf('/profesiones') > -1) ? '../' : ''
