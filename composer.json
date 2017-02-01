@@ -3,6 +3,7 @@
         "smalot/pdfparser": "*",
         "phpmailer/phpmailer": "5.2.*",
         "PHPOffice/PHPExcel": "1.8.*",
-        "asika/sitemap": "1.*"
+        "asika/sitemap": "1.*",
+        "neitanod/forceutf8": "dev-master"
     }
 }
