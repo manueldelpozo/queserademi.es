@@ -65,51 +65,6 @@
         ]
     },
     {
-        "name": "smalot/pdfparser",
-        "version": "v0.9.25",
-        "version_normalized": "0.9.25.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/smalot/pdfparser.git",
-            "reference": "31590f7938a22f1c7fc4fb292611e3742a62ebaa"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/smalot/pdfparser/zipball/31590f7938a22f1c7fc4fb292611e3742a62ebaa",
-            "reference": "31590f7938a22f1c7fc4fb292611e3742a62ebaa",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0",
-            "tecnickcom/tcpdf": ">=6.0.050"
-        },
-        "require-dev": {
-            "atoum/atoum": "dev-master"
-        },
-        "time": "2015-09-18 08:29:33",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Smalot\\PdfParser\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0"
-        ],
-        "authors": [
-            {
-                "name": "Sebastien MALOT",
-                "email": "sebastien@malot.fr",
-                "homepage": "http://www.malot.fr",
-                "role": "Developer"
-            }
-        ],
-        "description": "Pdf parser library. Can read and extract information from pdf file.",
-        "homepage": "http://www.pdfparser.org"
-    },
-    {
         "name": "phpoffice/phpexcel",
         "version": "1.8.1",
         "version_normalized": "1.8.1.0",
@@ -169,18 +124,106 @@
         ]
     },
     {
-        "name": "phpmailer/phpmailer",
-        "version": "v5.2.14",
-        "version_normalized": "5.2.14.0",
+        "name": "asika/sitemap",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/PHPMailer/PHPMailer.git",
-            "reference": "e774bc9152de85547336e22b8926189e582ece95"
+            "url": "https://github.com/asika32764/php-sitemap.git",
+            "reference": "04e6d5f0430aca38d8a15586a19a83307fe54a6f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/e774bc9152de85547336e22b8926189e582ece95",
-            "reference": "e774bc9152de85547336e22b8926189e582ece95",
+            "url": "https://api.github.com/repos/asika32764/php-sitemap/zipball/04e6d5f0430aca38d8a15586a19a83307fe54a6f",
+            "reference": "04e6d5f0430aca38d8a15586a19a83307fe54a6f",
+            "shasum": ""
+        },
+        "require-dev": {
+            "windwalker/test": "2.*@stable"
+        },
+        "time": "2015-06-07 15:26:31",
+        "type": "php",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Asika\\Sitemap\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "description": "PHP Simple Sitemap Generator",
+        "homepage": "https://github.com/asika32764/php-sitemap",
+        "keywords": [
+            "Sitemap",
+            "google",
+            "seo"
+        ]
+    },
+    {
+        "name": "smalot/pdfparser",
+        "version": "v0.10.0",
+        "version_normalized": "0.10.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/smalot/pdfparser.git",
+            "reference": "c20bfd40e3d7f40ff4083de5971b2a9e7a839dd5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/smalot/pdfparser/zipball/c20bfd40e3d7f40ff4083de5971b2a9e7a839dd5",
+            "reference": "c20bfd40e3d7f40ff4083de5971b2a9e7a839dd5",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "tecnickcom/tcpdf": "~6.0"
+        },
+        "require-dev": {
+            "atoum/atoum": "dev-master"
+        },
+        "time": "2017-01-03 14:32:29",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Smalot\\PdfParser\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPLv3"
+        ],
+        "authors": [
+            {
+                "name": "Sebastien MALOT",
+                "email": "sebastien@malot.fr"
+            }
+        ],
+        "description": "Pdf parser library. Can read and extract information from pdf file.",
+        "homepage": "http://www.pdfparser.org",
+        "keywords": [
+            "extract",
+            "parse",
+            "parser",
+            "pdf",
+            "text"
+        ]
+    },
+    {
+        "name": "phpmailer/phpmailer",
+        "version": "v5.2.22",
+        "version_normalized": "5.2.22.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPMailer/PHPMailer.git",
+            "reference": "b18cb98131bd83103ccb26a888fdfe3177b8a663"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/b18cb98131bd83103ccb26a888fdfe3177b8a663",
+            "reference": "b18cb98131bd83103ccb26a888fdfe3177b8a663",
             "shasum": ""
         },
         "require": {
@@ -191,10 +234,9 @@
             "phpunit/phpunit": "4.7.*"
         },
         "suggest": {
-            "league/oauth2-client": "Needed for XOAUTH2 authentication",
-            "league/oauth2-google": "Needed for Gmail XOAUTH2"
+            "league/oauth2-google": "Needed for Google XOAUTH2 authentication"
         },
-        "time": "2015-11-01 10:15:28",
+        "time": "2017-01-09 09:33:47",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -232,41 +274,39 @@
         "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
     },
     {
-        "name": "asika/sitemap",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
+        "name": "neitanod/forceutf8",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/asika32764/php-sitemap.git",
-            "reference": "04e6d5f0430aca38d8a15586a19a83307fe54a6f"
+            "url": "https://github.com/neitanod/forceutf8.git",
+            "reference": "2c1b21e00ed16b2b083ae4e27901cb5f2856db90"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/asika32764/php-sitemap/zipball/04e6d5f0430aca38d8a15586a19a83307fe54a6f",
-            "reference": "04e6d5f0430aca38d8a15586a19a83307fe54a6f",
+            "url": "https://api.github.com/repos/neitanod/forceutf8/zipball/2c1b21e00ed16b2b083ae4e27901cb5f2856db90",
+            "reference": "2c1b21e00ed16b2b083ae4e27901cb5f2856db90",
             "shasum": ""
         },
-        "require-dev": {
-            "windwalker/test": "2.*@stable"
+        "require": {
+            "php": ">=5.3.0"
         },
-        "time": "2015-06-07 15:26:31",
-        "type": "php",
-        "installation-source": "dist",
+        "time": "2015-05-07 16:37:23",
+        "type": "library",
+        "installation-source": "source",
         "autoload": {
-            "psr-4": {
-                "Asika\\Sitemap\\": "src/"
+            "psr-0": {
+                "ForceUTF8\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0+"
+        "authors": [
+            {
+                "name": "Sebastián Grignoli",
+                "email": "grignoli@gmail.com"
+            }
         ],
-        "description": "PHP Simple Sitemap Generator",
-        "homepage": "https://github.com/asika32764/php-sitemap",
-        "keywords": [
-            "Sitemap",
-            "google",
-            "seo"
-        ]
+        "description": "PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.",
+        "homepage": "https://github.com/neitanod/forceutf8"
     }
 ]

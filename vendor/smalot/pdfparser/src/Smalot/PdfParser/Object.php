@@ -5,24 +5,24 @@
  *          This file is part of the PdfParser library.
  *
  * @author  Sébastien MALOT <sebastien@malot.fr>
- * @date    2013-08-08
- * @license GPL-3.0
+ * @date    2017-01-03
+ * @license LGPLv3
  * @url     <https://github.com/smalot/pdfparser>
  *
  *  PdfParser is a pdf library written in PHP, extraction oriented.
- *  Copyright (C) 2014 - Sébastien MALOT <sebastien@malot.fr>
+ *  Copyright (C) 2017 - Sébastien MALOT <sebastien@malot.fr>
  *
  *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
+ *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ *  GNU Lesser General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
+ *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.
  *  If not, see <http://www.pdfparser.org/sites/default/LICENSE.txt>.
  *
@@ -248,7 +248,19 @@ class Object
     {
         $text                = '';
         $sections            = $this->getSectionsText($this->content);
-        $current_font        = new Font($this->document);
+        $current_font = null;
+
+        foreach ($this->document->getObjects() as $obj) {
+            if ($obj instanceof Font) {
+                $current_font = $obj;
+                break;
+            }
+        }
+
+        if ($current_font === null) {
+            $current_font = new Font($this->document);
+        }
+
         $current_position_td = array('x' => false, 'y' => false);
         $current_position_tm = array('x' => false, 'y' => false);
 
@@ -300,7 +312,9 @@ class Object
                     case 'Tf':
                         list($id,) = preg_split('/\s/s', $command[self::COMMAND]);
                         $id           = trim($id, '/');
-                        $current_font = $page->getFont($id);
+                        if (!is_null($page)) {
+                            $current_font = $page->getFont($id);
+                        }
                         break;
 
                     case "'":
@@ -414,6 +428,140 @@ class Object
 
         return $text . ' ';
     }
+
+	/**
+	 * @param Page
+	 *
+	 * @return array
+	 * @throws \Exception
+	 */
+	public function getTextArray(Page $page = null)
+	{
+		$text                = array();
+		$sections            = $this->getSectionsText($this->content);
+		$current_font        = new Font($this->document);
+
+		foreach ($sections as $section) {
+
+			$commands = $this->getCommandsText($section);
+
+			foreach ($commands as $command) {
+
+				switch ($command[self::OPERATOR]) {
+					// set character spacing
+					case 'Tc':
+						break;
+
+					// move text current point
+					case 'Td':
+						break;
+
+					// move text current point and set leading
+					case 'TD':
+						break;
+
+					case 'Tf':
+						list($id,) = preg_split('/\s/s', $command[self::COMMAND]);
+						$id           = trim($id, '/');
+						$current_font = $page->getFont($id);
+						break;
+
+					case "'":
+					case 'Tj':
+						$command[self::COMMAND] = array($command);
+					case 'TJ':
+						// Skip if not previously defined, should never happened.
+						if (is_null($current_font)) {
+							// Fallback
+							// TODO : Improve
+							$text[] = $command[self::COMMAND][0][self::COMMAND];
+							continue;
+						}
+
+						$sub_text = $current_font->decodeText($command[self::COMMAND]);
+						$text[] = $sub_text;
+						break;
+
+					// set leading
+					case 'TL':
+						break;
+
+					case 'Tm':
+						break;
+
+					// set super/subscripting text rise
+					case 'Ts':
+						break;
+
+					// set word spacing
+					case 'Tw':
+						break;
+
+					// set horizontal scaling
+					case 'Tz':
+						//$text .= "\n";
+						break;
+
+					// move to start of next line
+					case 'T*':
+						//$text .= "\n";
+						break;
+
+					case 'Da':
+						break;
+
+					case 'Do':
+						if (!is_null($page)) {
+							$args = preg_split('/\s/s', $command[self::COMMAND]);
+							$id   = trim(array_pop($args), '/ ');
+							if ($xobject = $page->getXObject($id)) {
+								$text[] = $xobject->getText($page);
+							}
+						}
+						break;
+
+					case 'rg':
+					case 'RG':
+						break;
+
+					case 're':
+						break;
+
+					case 'co':
+						break;
+
+					case 'cs':
+						break;
+
+					case 'gs':
+						break;
+
+					case 'en':
+						break;
+
+					case 'sc':
+					case 'SC':
+						break;
+
+					case 'g':
+					case 'G':
+						break;
+
+					case 'V':
+						break;
+
+					case 'vo':
+					case 'Vo':
+						break;
+
+					default:
+				}
+			}
+		}
+
+		return $text;
+	}
+
 
     /**
      * @param string $text_part

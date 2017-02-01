@@ -5,24 +5,24 @@
  *          This file is part of the PdfParser library.
  *
  * @author  Sébastien MALOT <sebastien@malot.fr>
- * @date    2013-08-08
- * @license GPL-3.0
+ * @date    2017-01-03
+ * @license LGPLv3
  * @url     <https://github.com/smalot/pdfparser>
  *
  *  PdfParser is a pdf library written in PHP, extraction oriented.
- *  Copyright (C) 2014 - Sébastien MALOT <sebastien@malot.fr>
+ *  Copyright (C) 2017 - Sébastien MALOT <sebastien@malot.fr>
  *
  *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
+ *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ *  GNU Lesser General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
+ *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.
  *  If not, see <http://www.pdfparser.org/sites/default/LICENSE.txt>.
  *
@@ -33,6 +33,7 @@ namespace Smalot\PdfParser;
 use Smalot\PdfParser\Element\ElementArray;
 use Smalot\PdfParser\Element\ElementMissing;
 use Smalot\PdfParser\Element\ElementXRef;
+use Smalot\PdfParser\Element\ElementNull;
 
 /**
  * Class Page
@@ -185,6 +186,8 @@ class Page extends Object
 
             if ($contents instanceof ElementMissing) {
                 return '';
+			} elseif ($contents instanceof ElementNull) {
+				return '';
             } elseif ($contents instanceof Object) {
                 $elements = $contents->getHeader()->getElements();
 
@@ -219,4 +222,52 @@ class Page extends Object
 
         return '';
     }
+
+	/**
+	 * @param Page
+	 *
+	 * @return array
+	 */
+	public function getTextArray(Page $page = null)
+	{
+		if ($contents = $this->get('Contents')) {
+
+			if ($contents instanceof ElementMissing) {
+				return array();
+			} elseif ($contents instanceof ElementNull) {
+				return array();
+			} elseif ($contents instanceof Object) {
+				$elements = $contents->getHeader()->getElements();
+
+				if (is_numeric(key($elements))) {
+					$new_content = '';
+
+					foreach ($elements as $element) {
+						if ($element instanceof ElementXRef) {
+							$new_content .= $element->getObject()->getContent();
+						} else {
+							$new_content .= $element->getContent();
+						}
+					}
+
+					$header   = new Header(array(), $this->document);
+					$contents = new Object($this->document, $header, $new_content);
+				}
+			} elseif ($contents instanceof ElementArray) {
+				// Create a virtual global content.
+				$new_content = '';
+
+				foreach ($contents->getContent() as $content) {
+					$new_content .= $content->getContent() . "\n";
+				}
+
+				$header   = new Header(array(), $this->document);
+				$contents = new Object($this->document, $header, $new_content);
+			}
+
+			return $contents->getTextArray($this);
+		}
+
+		return array();
+	}
 }

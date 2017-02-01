@@ -5,24 +5,24 @@
  *          This file is part of the PdfParser library.
  *
  * @author  Sébastien MALOT <sebastien@malot.fr>
- * @date    2013-08-08
- * @license GPL-3.0
+ * @date    2017-01-03
+ * @license LGPLv3
  * @url     <https://github.com/smalot/pdfparser>
  *
  *  PdfParser is a pdf library written in PHP, extraction oriented.
- *  Copyright (C) 2014 - Sébastien MALOT <sebastien@malot.fr>
+ *  Copyright (C) 2017 - Sébastien MALOT <sebastien@malot.fr>
  *
  *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
+ *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ *  GNU Lesser General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
+ *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.
  *  If not, see <http://www.pdfparser.org/sites/default/LICENSE.txt>.
  *
@@ -119,13 +119,15 @@ class Document
         // Extract document info
         if ($this->trailer->has('Info')) {
             /** @var Object $info */
-            $info     = $this->trailer->get('Info');
-            $details  = $info->getHeader()->getDetails();
+            $info = $this->trailer->get('Info');
+            if ($info !== null) {
+                $details = $info->getHeader()->getDetails();
+            }
         }
 
         // Retrieve the page count
         try {
-            $pages            = $this->getPages();
+            $pages = $this->getPages();
             $details['Pages'] = count($pages);
         } catch (\Exception $e) {
             $details['Pages'] = 0;
@@ -215,10 +217,13 @@ class Document
 
             /** @var Pages $object */
             $object = $this->objects[$id]->get('Pages');
-            $pages  = $object->getPages(true);
+            if (method_exists($object, 'getPages')) {
+                $pages = $object->getPages(true);
+                return $pages;
+            }
+        }
 
-            return $pages;
-        } elseif (isset($this->dictionary['Pages'])) {
+        if (isset($this->dictionary['Pages'])) {
             // Search for pages to list kids.
             $pages = array();
 
@@ -229,14 +234,16 @@ class Document
             }
 
             return $pages;
-        } elseif (isset($this->dictionary['Page'])) {
+        }
+
+        if (isset($this->dictionary['Page'])) {
             // Search for 'page' (unordered pages).
             $pages = $this->getObjectsByType('Page');
 
             return array_values($pages);
-        } else {
-            throw new \Exception('Missing catalog.');
         }
+
+        throw new \Exception('Missing catalog.');
     }
 
     /**
@@ -259,7 +266,7 @@ class Document
     }
 
     /**
-     * @param Header $header
+     * @param Header $trailer
      */
     public function setTrailer(Header $trailer)
     {
