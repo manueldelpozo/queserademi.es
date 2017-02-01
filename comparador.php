@@ -2,11 +2,6 @@
 //eliminar el limite de ejecucion
 set_time_limit(0);
 
-// Include Composer autoloader if not already done.
-include 'vendor/autoload.php';
-
-use Neitanod\Forceutf8\ForceUTF8\Encoding;
-
 //try {
   require('conexion.php');
 
