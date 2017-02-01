@@ -2,6 +2,11 @@
 //eliminar el limite de ejecucion
 set_time_limit(0);
 
+// Include Composer autoloader if not already done.
+include 'vendor/autoload.php';
+
+use Neitanod\Forceutf8\ForceUTF8\Encoding;
+
 //try {
   require('conexion.php');
 
@@ -16,12 +21,12 @@ set_time_limit(0);
 
   function consulta($profesion, $tabla, $tablas, $pdo) {
     $consulta = "SELECT ";
+    $tabla_ref = ($tabla == 'info') ? 'p' : $tabla[0];
+
     foreach ($tablas[$tabla] as $campo) {
-      $consulta .= $campo . ",";
+      $consulta .= $tabla_ref . '.' . $campo . ', ';
     }
-    $consulta = substr($consulta, 0, -1);
-    
-    $tabla_ref = $tabla[0];
+    $consulta = substr($consulta, 0, -2);
 
     if ($tabla == 'info')
       $where = "WHERE ";
@@ -30,7 +35,7 @@ set_time_limit(0);
     else
       $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND ";
 
-    $consulta .= " FROM profesiones_test p ".$where."p.nombre_ppal LIKE '$profesion'";
+    $consulta .= " FROM profesiones p ".$where."p.nombre_ppal LIKE '$profesion'";
     
     $rs = $pdo->prepare($consulta);
     $rs->execute();
@@ -48,23 +53,23 @@ set_time_limit(0);
   }
 
   function getNombrePpal($nombre_alt, $pdo) {
-    $consulta_alt = "SELECT nombre_ppal FROM profesiones_test WHERE id = (
+    $consulta_alt = "SELECT nombre_ppal FROM profesiones WHERE id = (
                         SELECT id_profesion FROM nombres_alt WHERE nombre_alt LIKE '$nombre_alt'
                       ) ";
     return consultaPDO('nombre_ppal', $consulta_alt, $pdo);
   }
 
   function getIdProfesion($nombre_prof, $pdo) {
-    $consulta_id = "SELECT id FROM profesiones_test WHERE nombre_ppal LIKE '$nombre_prof'";
+    $consulta_id = "SELECT id FROM profesiones WHERE nombre_ppal LIKE '$nombre_prof'";
     return consultaPDO('id', $consulta_id, $pdo);
   } 
 
-  if (isset($_GET['profesion'])) {
+  if (isset($_GET['profesion']) && !empty($_GET['profesion'])) {
     $n_alt = ucfirst(mb_strtolower(getNombrePpal($_GET['profesion'], $pdo),'UTF-8'));
     $profesion = $n_alt ? $n_alt : $_GET['profesion'];
     $id_profesion = getIdProfesion($profesion, $pdo);
   }
-  if (isset($_GET['profesion_dos'])) { 
+  if (isset($_GET['profesion_dos']) && !empty($_GET['profesion_dos'])) { 
     $n_alt_dos = ucfirst(mb_strtolower(getNombrePpal($_GET['profesion_dos'], $pdo),'UTF-8'));
     $profesion_dos = $n_alt_dos ? $n_alt_dos : $_GET['profesion_dos'];
     $id_profesion_dos = getIdProfesion($profesion_dos, $pdo);
@@ -154,11 +159,6 @@ set_time_limit(0);
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
                   <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="<?php echo @$profesion; ?>" spellcheck="true" autocomplete="off">
-                  <span class="input-group-btn hidden-xs">
-                    <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 100%;position: absolute;top: 0;">
-                      <i class="fa fa-search fa-lg" style="color: rgb(204, 204, 204);"></i>
-                    </button>
-                  </span>
                 </div>
               </div>
             </div>
@@ -174,11 +174,6 @@ set_time_limit(0);
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
                   <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required autofocus value="<?php echo @$profesion_dos; ?>" spellcheck="true" autocomplete="off" >
-                  <span class="input-group-btn hidden-xs">
-                    <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 100%;position: absolute;top: 0;">
-                      <i class="fa fa-search fa-lg" style="color: rgb(204, 204, 204);"></i>
-                    </button>
-                  </span>
                 </div>
               </div>
             </div>

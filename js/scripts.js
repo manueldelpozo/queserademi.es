@@ -34,7 +34,7 @@ $('.typeahead').autocomplete({
     getValue: function(item) {
         return item;
     },
-    dropdownWidth: 'auto',
+    dropdownWidth: '100%',
     dropdownStyle: {
         background:'#FFF'
     },
@@ -42,7 +42,7 @@ $('.typeahead').autocomplete({
         backgroundColor:'#FFF', 
         color:'#000',
         padding: '10px',
-        fontSize: '18px',
+        fontSize: '16px',
         cursor: 'pointer'
     },
     style: {

@@ -228,17 +228,12 @@ $html = '
 
     <div class="container-full">
       <form id="formulario" role="form">
-          <div class="row header">
+          <div class="row header ux-mobile-header">
 
-            <div class="col-md-4">
+            <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
                   <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '" spellcheck="true" autocomplete="off">
-                  <span class="input-group-btn hidden-xs">
-                    <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 100%;position: absolute;top: 0;">
-                      <i class="fa fa-search fa-lg" style="color: rgb(204, 204, 204);"></i>
-                    </button>
-                  </span>
                 </div>
               </div>
             </div>
@@ -250,15 +245,10 @@ $html = '
               </a>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
                   <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required autofocus spellcheck="true" autocomplete="off" >
-                  <span class="input-group-btn hidden-xs">
-                    <button class="btn btn-default btn-submit" style="background-color: rgba(255, 255, 255, 0.6);border-color: rgb(204, 204, 204);height: 100%;position: absolute;top: 0;">
-                      <i class="fa fa-search fa-lg" style="color: rgb(204, 204, 204);"></i>
-                    </button>
-                  </span>
                 </div>
               </div>
             </div>

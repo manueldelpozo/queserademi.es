@@ -66,10 +66,12 @@ function imprimirSeriesEmp($filas, $n_meses) {
 }
 
 // busqueda de nulos
-foreach ($filas_empleabilidad as $fila_empleabilidad) { 
-    $empleabilidad = empleabilidad($fila_empleabilidad['contratados'], $fila_empleabilidad['parados']); 
-    if(is_null($empleabilidad))
-        $btn_colabora_e_1++;
+if( isset($profesion) && !empty($profesion) ){
+    foreach ($filas_empleabilidad as $fila_empleabilidad) { 
+        $empleabilidad = empleabilidad($fila_empleabilidad['contratados'], $fila_empleabilidad['parados']); 
+        if(is_null($empleabilidad))
+            $btn_colabora_e_1++;
+    }
 }
 if( isset($profesion_dos) && !empty($profesion_dos) ){
     foreach ($filas_empleabilidad_dos as $fila_empleabilidad_dos) { 
@@ -196,17 +198,21 @@ var chartEmpleabilidad = {
         enabled: false
     }, 
     series: [
+    <?php if( isset($profesion) && !empty($profesion) ){ ?>
     {
         name: '<?php echo $profesion; ?>',
         data: [ <?php imprimirSeriesEmp($filas_empleabilidad, count($meses)); ?> ],
         stack: '<?php echo $profesion ?>'
-        <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
-	}, {
+    },
+    <?php  }  ?> 
+    <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
+	{
         name: '<?php echo $profesion_dos; ?>',
         data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, count($meses)); ?> ],
         stack: '<?php echo $profesion_dos ?>'
-    	<?php  }  ?> 
-	},{
+    },
+    <?php  }  ?> 
+	{
         name: 'Media de paro de todas las profesiones',
         type: 'spline',
         data: [ <?php echo join(", ", mediaEmpleabilidad($pdo, $meses, $anyos)); ?> ],
@@ -232,10 +238,12 @@ if (chartEmpleabilidad.series.length == 3 && $(chartEmpleabilidad.series[0].data
     capa_iguales += '<h3>Atención! Aparecen gráficas similares porque se usan datos generales.</h3>';
 
     capa_iguales += '<p class="text-center">Ayúdanos a tener información específica sobre <strong>salarios</strong>:<br><br>';
-    capa_iguales += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
-    capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
+    <?php if( isset($profesion) && !empty($profesion) ){ ?>
+        capa_iguales += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
+        capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a><br>';
+    <?php  }  ?> 
     <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
-        capa_iguales += '<br><strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
+        capa_iguales += '<strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
         capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a>';
     <?php  }  ?> 
 

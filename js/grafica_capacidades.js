@@ -25,9 +25,11 @@ function imprimirSeriesCap($filas, $tablas) {
 }
 
 // busqueda de nulos
-foreach ($filas_capacidades as $fila_capacidad) { 
-    if( is_null($fila_capacidad) || $fila_capacidad == 0 )
-        $btn_colabora_c_1++;
+if( isset($profesion) && !empty($profesion) ){
+    foreach ($filas_capacidades as $fila_capacidad) { 
+        if( is_null($fila_capacidad) || $fila_capacidad == 0 )
+            $btn_colabora_c_1++;
+    }
 }
 if( isset($profesion_dos) && !empty($profesion_dos) ){
     foreach ($filas_capacidades_dos as $fila_capacidad_dos) { 
@@ -197,17 +199,22 @@ $('#container_capacidades').highcharts({
          enabled: false
     },
 
-    series: [{  
+    series: [
+    <?php if( isset($profesion) && !empty($profesion) ) { ?>
+    {  
         name: '<?php echo $profesion; ?>',
         data: [ <?php imprimirSeriesCap($filas_capacidades[0], $tablas); ?> ],
-        stack: '<?php echo $profesion ?>'
-        <?php if( isset($profesion_dos) && !empty($profesion_dos) ) { ?>
-    }, {
+        stack: '<?php echo $profesion ?>'    
+    },
+    <?php  }  ?>  
+    <?php if( isset($profesion_dos) && !empty($profesion_dos) ) { ?>
+    {
         name: '<?php echo $profesion_dos; ?>',
         data: [ <?php imprimirSeriesCap($filas_capacidades_dos[0], $tablas); ?> ],
         stack: '<?php echo $profesion_dos ?>' 
-        <?php  }  ?> 
-    }]
+    }
+    <?php  }  ?> 
+    ]
 });
 
 // Comprobar si se necesitan botones producido

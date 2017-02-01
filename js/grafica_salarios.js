@@ -15,9 +15,11 @@ function val($s_valor) {
 }
 
 foreach( $tablas['salarios'] as $rango) { 
-    $$rango = $filas_salarios[0][$rango]; 
-    if( is_null($filas_salarios[0][$rango]) || $filas_salarios[0][$rango] == 0 ) // busqueda de nulos
-        $btn_colabora_s_1++; 
+    if( isset($profesion) && !empty($profesion) ){
+        $$rango = $filas_salarios[0][$rango]; 
+        if( is_null($filas_salarios[0][$rango]) || $filas_salarios[0][$rango] == 0 ) // busqueda de nulos
+            $btn_colabora_s_1++; 
+    }
     if( isset($profesion_dos) && !empty($profesion_dos) ){
         $rango_dos = $rango . '_dos';
         $$rango_dos = $filas_salarios_dos[0][$rango];
@@ -27,7 +29,7 @@ foreach( $tablas['salarios'] as $rango) {
 }
 
 ?>
-
+<?php if( isset($profesion) && !empty($profesion) ){ ?>
 var salarios = [
     [0, <?php val($s_princ_min); ?>, <?php val($s_princ_max); ?>],
     [5, <?php val($s_junior_min); ?>, <?php val($s_junior_max); ?>],
@@ -39,7 +41,7 @@ var salarios = [
     [10, <?php val($s_intermedio_med); ?>], 
     [15, <?php val($s_senior_med); ?>]
 ];
-
+<?php } ?>
 <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 var salarios_dos = [
     [0, <?php val($s_princ_min_dos); ?>, <?php val($s_princ_max_dos); ?>],
@@ -134,6 +136,7 @@ var chartSalarios = {
         }
     },
     series: [
+        <?php if( isset($profesion) && !empty($profesion) ){ ?>
         {
             name: '<?php echo $profesion; ?>',
             data: medias,
@@ -144,8 +147,10 @@ var chartSalarios = {
                 lineWidth: 2,
                 lineColor: Highcharts.getOptions().colors[0]
             }
+        },
+        <?php } ?>
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
-        }, {
+        {
             name: '<?php echo $profesion_dos; ?>',
             data: medias_dos,
             color: Highcharts.getOptions().colors[1],
@@ -155,8 +160,10 @@ var chartSalarios = {
                 lineWidth: 2,
                 lineColor: Highcharts.getOptions().colors[1]
             }
+        }, 
         <?php } ?>
-        }, {
+        <?php if( isset($profesion) && !empty($profesion) ){ ?>
+        {
             name: 'Rango salarial',
             data: salarios,
             type: 'arearange',
@@ -165,8 +172,10 @@ var chartSalarios = {
             color: Highcharts.getOptions().colors[0],
             fillOpacity: 0.3,
             zIndex: 0
+        }, 
+        <?php } ?>
         <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
-        }, {
+        {
             name: 'Rango salarial',
             data: salarios_dos,
             type: 'arearange',
@@ -175,8 +184,8 @@ var chartSalarios = {
             color: Highcharts.getOptions().colors[1],
             fillOpacity: 0.3,
             zIndex: 0
-        <?php } ?>
         }
+        <?php } ?>
     ]
 };
 
@@ -190,8 +199,10 @@ if (chartSalarios.series.length == 4 && JSON.stringify(chartSalarios.series[0].d
     capa_iguales += '<h3>Atención! Aparecen gráficas similares porque se usan datos generales.</h3>';
 
     capa_iguales += '<p class="text-center">Ayúdanos a tener información específica sobre <strong>salarios</strong>:<br><br>';
-    capa_iguales += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
-    capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
+    <?php if( isset($profesion) && !empty($profesion) ){ ?>
+        capa_iguales += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
+        capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
+    <?php  }  ?> 
     <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
         capa_iguales += '<br><strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
         capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a>';
