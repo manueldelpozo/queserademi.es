@@ -55,7 +55,6 @@ var salarios_dos = [
 <?php } ?>
 
 var chartSalarios = {
-
     chart: {
         backgroundColor:'rgba(255, 255, 255, 0)',
         spacingBottom: 20,
@@ -65,7 +64,6 @@ var chartSalarios = {
         width: null,
         height: 380
     },
-
     title: {
         text: 'SALARIO BRUTO ANUAL',
         align: 'center',
@@ -78,7 +76,6 @@ var chartSalarios = {
     subtitle: {
         text: '- € / año -'
     },
-
     legend: { 
         enable: false ,
         itemStyle: {
@@ -93,19 +90,27 @@ var chartSalarios = {
             }
         } 
     },
-
     xAxis: {
         title: {
             text: 'EXPERIENCIA ' + '(años)'.toUpperCase()
         }
     },
-
     yAxis: {
         title: {
             text: 'Salario bruto anual - € / año'
         }
     },
-
+    exporting: {
+        chartOptions: {
+            chart: {
+                events: {
+                    load: function(event) {                
+                        this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                    }
+                } 
+            }
+        }
+    },
     tooltip: {
         shared: true,
         headerFormat: '<strong style="font-size:16px">{point.x} años de experiencia</strong><br>',
@@ -117,11 +122,9 @@ var chartSalarios = {
             whiteSpace: 'normal' 
         }
     },
-
     credits: {
         enabled: false
     },
-
     plotOptions: {
         arearange: {
             fillOpacity: 0.5
@@ -130,7 +133,6 @@ var chartSalarios = {
             allowPointSelect: true
         }
     },
-
     series: [
         {
             name: '<?php echo $profesion; ?>',

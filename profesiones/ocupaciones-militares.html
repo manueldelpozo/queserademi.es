@@ -206,6 +206,17 @@ var chartSalarios = {
         width: null,
         height: 380
     },
+    exporting: {
+        chartOptions: {
+            chart: {
+                events: {
+                  load: function(event) {                
+                    this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                  }
+                } 
+            }
+        }
+    },
     title: {
         text: 'SALARIO BRUTO ANUAL',
         align: 'center',
@@ -313,7 +324,7 @@ $('.more').click( function() {
         spacingLeft: 20,
         spacingRight: 20,
         width: null,
-        height: 380
+        height: 380 
     },
     title: {
         text: 'CUALIDADES PROFESIONALES',
@@ -437,6 +448,15 @@ $('.more').click( function() {
                     });
                 }
             }
+        },
+        chartOptions: {
+            chart: {
+                events: {
+                  load: function(event) {                
+                    this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                  }
+                } 
+            }
         }
     },
     
@@ -465,6 +485,17 @@ var chartEmpleabilidad = {
         spacingRight: 20,
         width: null,
         height: 380
+    },
+    exporting: {
+      chartOptions: {
+        chart: {
+            events: {
+              load: function(event) {                
+                this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+              }
+            } 
+        }
+      }
     },
     title: {
         text: 'PARO',

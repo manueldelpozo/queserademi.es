@@ -82,6 +82,15 @@ $(function () {
                         alert('Donde estudiar? En desarrollo... Disculpe las molestias');
                     }
                 }
+            },
+            chartOptions: {
+                chart: {
+                    events: {
+                      load: function(event) {                
+                        this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                      }
+                    } 
+                }
             }
         },
         <?php

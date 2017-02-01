@@ -50,7 +50,6 @@ $('#container_capacidades').highcharts({
         width: null,
         height: 380
     },
-
     title: {
         text: 'CUALIDADES PROFESIONALES',
         align: "center",
@@ -60,7 +59,6 @@ $('#container_capacidades').highcharts({
             'fontWeight': 'bold'
         }
     },
-
     legend: { 
         enable: false,
         itemStyle: {
@@ -125,41 +123,50 @@ $('#container_capacidades').highcharts({
         }
     },
     exporting: {
-            buttons: {
-               anotherButton: {
-                    text: '??',
-                    y: 28,
-                    x: 0,
-                    width: 24,
-                    onclick: function () {
-                        // agregar capa de glosario semitransparente (con opcion a quitar)
-                        var capa_glosario = '<div class="capa-glosario">';
-                        capa_glosario += '<div class="cerrar-glosario"><img class="icon" src="images/cross.svg"></img></div>';
-                        capa_glosario += '<div class="col-md-10 col-md-offset-1">';
-                       
-                        capa_glosario += '<h3>No te preocupes, te lo aclaramos aquí!</h3><br>';
-                        capa_glosario += '<dl class="dl-horizontal">';
-                        <?php foreach ($descripciones as $nombre => $descripcion) { ?>
-                            capa_glosario += '<dt>';
-                            capa_glosario += '<?php echo $nombre; ?>:';
-                            capa_glosario += '&nbsp;<i class="fa fa-<?php echo $iconos[$nombre]; ?> fa-lg"></i><br>';
-                            capa_glosario += '</dt><dd>&gt;&gt;<?php echo $descripcion; ?></dd>';
-                        <?php } ?>
-                        capa_glosario += '</dl>';
+        buttons: {
+           anotherButton: {
+                text: '??',
+                y: 28,
+                x: 0,
+                width: 24,
+                onclick: function () {
+                    // agregar capa de glosario semitransparente (con opcion a quitar)
+                    var capa_glosario = '<div class="capa-glosario">';
+                    capa_glosario += '<div class="cerrar-glosario"><img class="icon" src="images/cross.svg"></img></div>';
+                    capa_glosario += '<div class="col-md-10 col-md-offset-1">';
+                   
+                    capa_glosario += '<h3>No te preocupes, te lo aclaramos aquí!</h3><br>';
+                    capa_glosario += '<dl class="dl-horizontal">';
+                    <?php foreach ($descripciones as $nombre => $descripcion) { ?>
+                        capa_glosario += '<dt>';
+                        capa_glosario += '<?php echo $nombre; ?>:';
+                        capa_glosario += '&nbsp;<i class="fa fa-<?php echo $iconos[$nombre]; ?> fa-lg"></i><br>';
+                        capa_glosario += '</dt><dd>&gt;&gt;<?php echo $descripcion; ?></dd>';
+                    <?php } ?>
+                    capa_glosario += '</dl>';
 
-                        capa_glosario += '</div>';
-                        capa_glosario += '</div>';
+                    capa_glosario += '</div>';
+                    capa_glosario += '</div>';
 
-                        $('#container_capacidades').append(capa_glosario);
+                    $('#container_capacidades').append(capa_glosario);
 
-                        // cerrar glosario
-                        $('.cerrar-glosario').click( function() {
-                            $(this).parent().remove();
-                        });
-                    }
+                    // cerrar glosario
+                    $('.cerrar-glosario').click( function() {
+                        $(this).parent().remove();
+                    });
                 }
             }
         },
+        chartOptions: {
+            chart: {
+                events: {
+                  load: function(event) {                
+                    this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                  }
+                } 
+            }
+        }
+    },
     tooltip: {
         shared: true,
         headerFormat: '<strong style="font-size:17px">{point.key}</strong><br>',

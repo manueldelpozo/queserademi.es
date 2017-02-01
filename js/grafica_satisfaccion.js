@@ -43,6 +43,17 @@ $('#container_satisfaccion').highcharts({
     credits: {
         enabled: false
     },
+    exporting: {
+        chartOptions: {
+            chart: {
+                events: {
+                    load: function(event) {                
+                        this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                    }
+                } 
+            }
+        }
+    },
     plotOptions: {
         scatter: {
             marker: {

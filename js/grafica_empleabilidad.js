@@ -93,7 +93,6 @@ var chartEmpleabilidad = {
         width: null,
         height: 380
     },
-
     title: {
         text: 'PARO',
         align: "center",
@@ -106,7 +105,6 @@ var chartEmpleabilidad = {
     subtitle: {
         text: '- DIFICULTAD DE CONSEGUIR TRABAJO -'
     },
-
     legend: { 
         enable: false,
         itemStyle: {
@@ -172,6 +170,17 @@ var chartEmpleabilidad = {
                     }
                 }
             }]
+    },
+    exporting: {
+        chartOptions: {
+            chart: {
+                events: {
+                  load: function(event) {                
+                    this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                  }
+                } 
+            }
+        }
     },
     tooltip: {
         headerFormat: '<strong style="font-size:16px">{point.key}</strong><br><br>',

@@ -44,6 +44,17 @@ $(function () {
                 stacking: 'normal',
             }
         },
+        exporting: {
+          chartOptions: {
+            chart: {
+                events: {
+                  load: function(event) {                
+                    this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                  }
+                } 
+            }
+          }
+        },
         series: [
             <?php
             $btn_colabora_f_1 = $btn_colabora_f_2 = 0; 
