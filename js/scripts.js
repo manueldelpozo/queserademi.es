@@ -16,12 +16,13 @@ String.prototype.isLatin = function() {
 }
 
 function getUrl() {
-    var urldir = $(location).attr('href').indexOf('/profesiones') > -1 ? '../' : '';
-    /* solo test */ 
+    var urldir = $(location).attr('href').indexOf('/profesiones') > -1 ? '../../' : '';
     var dataTipo = 'profesiones';
+    /* solo test 
     if (dataTipo === 'profesiones') {
         dataTipo += '_test';
     }
+    */ 
     return urldir + 'data/' + dataTipo + '.json';
 }
 
@@ -62,7 +63,7 @@ function submitar($input, item) {
     console.log($input.getValue);
     var profesion = item;
     if (profesion) {
-        var prefix = ($(location).attr('href').indexOf('/profesiones') > -1) ? '../' : ''
+        var prefix = ($(location).attr('href').indexOf('/profesiones') > -1) ? '../../' : ''
         $.ajax({
             url: prefix + "ajax.php?query=" + profesion + "&tipo=profesiones&validar=true",
             success: function(result) {

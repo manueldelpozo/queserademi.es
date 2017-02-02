@@ -267,7 +267,7 @@ if( !empty( $_POST['verificacion'] ) ){
 
 			<div class="row header">
 				<div class="col-md-6 col-md-offset-3 col-xs-12 text-center">
-					<a href="index.html">
+					<a href="">
 						<h1 id="titulo" class="lead"><strong>que</strong>sera<strong>de</strong>mi</h1>
 						<img class="img-responsive" src="images/logo.svg">
 					</a>
@@ -377,7 +377,7 @@ if( !empty( $_POST['verificacion'] ) ){
 		        </div>
 		        <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
 		        	<div class="col-sm-3 col-xs-3 text-center">
-		        		<a href="index.html">	
+		        		<a href="">	
 			        		<img class="img-menu" src="images/logo.svg" width='35px' height="auto">      	
 		          		</a>
 		        	</div>
@@ -386,7 +386,7 @@ if( !empty( $_POST['verificacion'] ) ){
 					</div>
 		        </div>
 				<div class="col-md-2 col-md-offset-0 hidden-sm hidden-xs col-xs-6 col-xs-offset-3 text-center">
-			        <a href="index.html">	
+			        <a href="">	
 			          	<p id="titulo" style='opacity:1;margin-top:-10px;'>
 				          	<img class="image-container" src="images/logo.svg">
 				          	<strong>que</strong>sera<strong>de</strong>mi

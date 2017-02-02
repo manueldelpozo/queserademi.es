@@ -179,7 +179,11 @@ try {
         $profesion_noacentos  = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', mb_strtolower($profesion, 'UTF-8')); // eliminar acentos y transformar en minusculas
         $profesion_nosignos   = str_replace(array("'",'"',",",";","(",")","/","~","+"), '', $profesion_noacentos); // eliminar signos gramaticales
         $profesion_underscore = str_replace(' ', '-', $profesion_nosignos); // remplazar espacios en blanco por underscore
-        $url_html = "profesiones/" . $profesion_underscore . ".html"; // agregar path y extension 
+        $url_html = "profesiones/" . $profesion_underscore . "/index.html"; // agregar path y extension 
+
+        if (!file_exists("profesiones/" . $profesion_underscore)) {
+          mkdir("profesiones/" . $profesion_underscore, 0777, true);
+        }
         // crear html estatico o reescribirlo si ya existe!!
         $pagina_html = fopen($url_html, "w+") or die("No se puede crear este documento");
         echo '<h1>pagina creada: '.$url_html.'</h1>';
@@ -198,14 +202,14 @@ $html = '
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta prefix="og: http://ogp.me/ns#" property="og:title" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:image" content="../images/logo.png" />
+      <meta prefix="og: http://ogp.me/ns#" property="og:image" content="../../images/logo.png" />
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.com/'; $html .= $url_html . '" />   
-      <link rel="icon" type="image/x-icon" href="../images/logo.png">
-      <link rel="stylesheet" hr­ef="../js/autocomplete-master/jquery.autocomplete.css"/>
-      <link rel="stylesheet" href="../css/bootstrap.min.css" />
+      <link rel="icon" type="image/x-icon" href="../../images/logo.png">
+      <link rel="stylesheet" hr­ef="../../js/autocomplete-master/jquery.autocomplete.css"/>
+      <link rel="stylesheet" href="../../css/bootstrap.min.css" />
       <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
-      <link rel="stylesheet" href="../css/style.css" />
-      <link rel="stylesheet" href="../css/style-comparador.css" />
+      <link rel="stylesheet" href="../../css/style.css" />
+      <link rel="stylesheet" href="../../css/style-comparador.css" />
   </head>
 
   <body>
@@ -239,9 +243,9 @@ $html = '
             </div>
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
-              <a href="../index.html">
+              <a href="../../">
                 <h6 class="sublead">Tu comparador de profesiones</h6>
-                <img class="img-responsive" src="../images/logo.svg" height="60px"> 
+                <img class="img-responsive" src="../../images/logo.svg" height="60px"> 
               </a>
             </div>
 
@@ -287,8 +291,8 @@ $html = '
             </div>
             <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
               <div class="col-sm-3 col-xs-3 text-center">
-                <a href="../index.html"> 
-                  <img class="img-menu" src="../images/logo.svg" width="35px" height="auto">       
+                <a href="../../"> 
+                  <img class="img-menu" src="../../images/logo.svg" width="35px" height="auto">       
                   </a>
               </div>
               <div class="col-sm-3 col-sm-offset-6 col-xs-3 col-xs-offset-6">
@@ -296,28 +300,28 @@ $html = '
           </div>
             </div>
         <div class="col-md-2 col-md-offset-0 hidden-sm hidden-xs col-xs-6 col-xs-offset-3 text-center">
-              <a href="../index.html"> 
+              <a href="../../"> 
                   <p id="titulo" style="opacity:1;margin-top:-10px;">
-                    <img class="image-container" src="../images/logo.svg">
+                    <img class="image-container" src="../../images/logo.svg">
                     <strong>que</strong>sera<strong>de</strong>mi
                   </p>
               </a>
             </div>
           <div class="col-md-10 col-sm-12 col-xs-12 text-center">
               <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../colabora.php">Puedes colaborar</a>
+                <a href="../../colabora.php">Puedes colaborar</a>
                 <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../porquecolaborar.html">Por qué colaborar</a>
+                <a href="../../porquecolaborar.html">Por qué colaborar</a>
                 <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../quienessomos.html">Quiénes somos</a>
+                <a href="../../quienessomos.html">Quiénes somos</a>
                 <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../quenossugieres.html">Qué nos sugieres</a>
+                <a href="../../quenossugieres.html">Qué nos sugieres</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
@@ -349,14 +353,14 @@ $html = '
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <script type="text/javascript" src="../js/jquery-2.1.3.js" ></script>
-  <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
-  <script type="text/javascript" src="../js/autocomplete-master/jquery.autocomplete.js"></script>
-  <script type="text/javascript" src="../js/highcharts.js" ></script>
-  <script type="text/javascript" src="../js/highcharts-more.js" ></script>
-  <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script> 
-  <script type="text/javascript" src="../js/graficas.js" ></script>
+  <script type="text/javascript" src="../../js/jquery-2.1.3.js" ></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js" ></script>
+  <script type="text/javascript" src="../../js/autocomplete-master/jquery.autocomplete.js"></script>
+  <script type="text/javascript" src="../../js/highcharts.js" ></script>
+  <script type="text/javascript" src="../../js/highcharts-more.js" ></script>
+  <script type="text/javascript" src="../../js/modules/exporting.js"></script>
+  <script type="text/javascript" src="../../js/scripts.js" defer></script> 
+  <script type="text/javascript" src="../../js/graficas.js" ></script>
   <script type="text/javascript" async>
     '; 
 
@@ -504,13 +508,13 @@ $script_salarios .= "$('#container_salarios').highcharts(chartSalarios);";
 
 if( $btn_colabora_s_1 > 0 ) { 
     $script_salarios .= "var capa_aviso = '<div class=\"capa-aviso\">';
-    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
+    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
     capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
 
     capa_aviso += '</div></div>';
 
@@ -525,7 +529,7 @@ if( isset( $profesion ) ) {
     $script_info .= "$('#info').append('<h4 class=\"principal nombre\">". mb_strtoupper($profesion,"UTF-8" ) ."</h4>');";
     if( empty( $filas_info[0]['descripcion'] ) ) { 
         $script_info .= "$('#info').append('<p class=\"descripcion\" id=\"desc1\">Falta información! Ayúdanos a conseguirla.</p>');
-        $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a></div>');";
+        $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a></div>');";
     } else { 
         $script_info .= "$('#info').append('<p class=\"descripcion\">". createExcerpts($filas_info[0]["descripcion"], 150, " [ + ]") . "</p>');";
     } 
@@ -680,7 +684,7 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
                 width: 24,
                 onclick: function () {
                     var capa_glosario = '<div class=\"capa-glosario\">';
-                    capa_glosario += '<div class=\"cerrar-glosario\"><img class=\"icon\" src=\"../images/cross.svg\"></img></div>';
+                    capa_glosario += '<div class=\"cerrar-glosario\"><img class=\"icon\" src=\"../../images/cross.svg\"></img></div>';
                     capa_glosario += '<div class=\"col-md-10 col-md-offset-1\">';
                    
                     capa_glosario += '<h3>No te preocupes, te lo aclaramos aquí</h3><br>';
@@ -730,13 +734,13 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
 if( $btn_colabora_c_1 > 0 ) { 
     
     $script_capacidades .= "var capa_aviso = '<div class=\"capa-aviso\">';
-    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
+    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
     capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -908,13 +912,13 @@ $script_empleabilidad .= "$('#container_empleabilidad').highcharts(chartEmpleabi
 
 if( $btn_colabora_e_1 > 0 ) { 
     $script_empleabilidad .= "var capa_aviso = '<div class=\"capa-aviso\">';
-    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
+    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
     capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>desempleo</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -1197,13 +1201,13 @@ $script_formacion = "$('#container_formacion').highcharts({
 
 if( $btn_colabora_f_1 > 0 ) { 
     $script_formacion .= "var capa_aviso = '<div class=\"capa-aviso\">';
-    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
+    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
     capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>formacion</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -1305,13 +1309,13 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
 
 if( $btn_colabora_sat_1 > 0 ) { 
     $script_satisfaccion .= "var capa_aviso = '<div class=\"capa-aviso\">';
-    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
+    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
     capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>satisfaccion</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -1334,7 +1338,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     } // end while
 
     //TEST//
-    break;  
+    //break;  
   } // end foreach
 
 } catch( Exception $e ) {
