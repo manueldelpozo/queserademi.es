@@ -84,7 +84,7 @@ function submitar($input, item) {
                     if ($input.hasClass('principal') && $(location).attr('href').indexOf('comparador.php') < 0) {
                         var profesionLimpia = profesion.replace(/\'|\"|\,|\;|\(|\)|\/|\~|\+/g, '').latinize().toLowerCase()
                         var urlLimpia = $(location).attr('href').replace(/index.html/g, '');
-                        var urlEstatica = urlLimpia + 'profesiones/' + profesionLimpia.replace(/ /g, "-") + '.html';
+                        var urlEstatica = urlLimpia + 'profesiones/' + profesionLimpia.replace(/ /g, "-");
                     }
                     $form.attr('action', urlEstatica);
                     $form.submit();
