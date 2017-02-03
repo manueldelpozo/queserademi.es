@@ -52,7 +52,7 @@ if( isset( $_POST['profesion']  )  )
             </div>
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
-              <a data-role="none" href="">
+              <a data-role="none" href="http://queserademi.com">
                 <img class="img-responsive" src="images/logo.svg" height="60px"> 
               </a>
             </div>
@@ -412,7 +412,7 @@ if( isset( $_POST['profesion']  )  )
             </div>
             <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
               <div class="col-sm-3 col-xs-3 text-center">
-                <a href=""> 
+                <a href="http://queserademi.com"> 
                   <img class="img-menu" src="images/logo.svg" width='35px' height="auto">       
                   </a>
               </div>
@@ -421,7 +421,7 @@ if( isset( $_POST['profesion']  )  )
           </div>
             </div>
         <div class="col-md-2 col-md-offset-0 hidden-sm hidden-xs col-xs-6 col-xs-offset-3 text-center">
-              <a href=""> 
+              <a href="http://queserademi.com"> 
                   <p id="titulo" style='opacity:1;margin-top:-10px;'>
                     <img class="image-container" src="images/logo.svg">
                     <strong>que</strong>sera<strong>de</strong>mi
