@@ -79,6 +79,11 @@ html,body {
 	text-decoration:none;
 }
 
+.seo-header {
+	visbility:hidden;
+	font-size: 5px;
+}
+
 .header h4 {
     font-size: 20px;
     line-height: 1.5;
