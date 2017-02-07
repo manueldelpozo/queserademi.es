@@ -15,14 +15,14 @@ if( isset( $_GET['query'] ) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strto
 
 	if (isset($_GET['validar'])) {
 		$sql = "SELECT * FROM $tipo ";
-		if ($tipo == 'profesiones_test')
+		if ($tipo == 'profesiones')
 			$sql .= "p INNER JOIN nombres_alt n ON p.id = n.id_profesion WHERE nombre_ppal LIKE '$query' OR nombre_alt LIKE '$query'";
 		else
 			$sql .= "WHERE nombre_ppal LIKE '$query'";
 	} else {
 		// consulta typeahead
 		$sql = "SELECT $n_ppal, $n_alt FROM $tipo ";
-		if ($tipo == 'profesiones_test')
+		if ($tipo == 'profesiones')
 			$sql .= "p INNER JOIN nombres_alt n ON p.id = n.id_profesion ";
 
 		if ($query != '%25')

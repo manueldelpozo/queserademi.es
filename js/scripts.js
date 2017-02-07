@@ -15,29 +15,27 @@ String.prototype.isLatin = function() {
     return this == this.latinise()
 }
 
-function getUrl() {
-    var urldir = $(location).attr('href').indexOf('/profesiones') > -1 ? '../../' : '';
-    var dataTipo = 'profesiones';
-    /* solo test 
-    if (dataTipo === 'profesiones') {
-        dataTipo += '_test';
-    }
-    */ 
-    return urldir + 'data/' + dataTipo + '.json';
+var prefix = ($(location).attr('href').indexOf('/profesiones') > -1) ? '../../' : '';
+
+function getUrl(dataTipo) {
+    return prefix + 'data/' + dataTipo + '.json';
 }
 
 // AUTOCOMPLETE
+var lastEventTimeStamp, lastItem, lastEventType;
+
 $('.typeahead').autocomplete({
     source: [{
-        url: getUrl(),
+        url: getUrl('profesiones'),
         type:'remote'
     }],
+    closeOnBlur: false,
     getValue: function(item) {
         return item;
     },
-    dropdownWidth: '100%',
     dropdownStyle: {
-        background:'#FFF'
+        background:'#FFF',
+        width: '100%'
     },
     itemStyle: {
         backgroundColor:'#FFF', 
@@ -53,24 +51,31 @@ $('.typeahead').autocomplete({
     limit: 80,
 }).on('selected.xdsoft', function(event, item){
     var $input = $(event.target);
-    submitar($input, item) 
+
+    if ((lastEventTimeStamp !== event.timeStamp && item === lastItem) || lastEventType === 'selected') {
+        submitar($input, item);
+    }
+    lastEventTimeStamp = event.timeStamp;
+    lastItem = item;
+    lastEventType = event.type;
+});
+
+// prevent touchstart when swiping
+$('.xdsoft_autocomplete_dropdown').on('touchstart touchmove touchend', function(event) {
+    $(this).prev('input').val('').trigger('open');
+    lastEventType = event.type;
 });
 
 /////************** VALIDACION
-
 function submitar($input, item) {
-    console.log($input);
-    console.log($input.getValue);
-    var profesion = item;
-    if (profesion) {
-        var prefix = ($(location).attr('href').indexOf('/profesiones') > -1) ? '../../' : ''
+    if (item) {
         $.ajax({
-            url: prefix + "ajax.php?query=" + profesion + "&tipo=profesiones&validar=true",
+            url: prefix + "ajax.php?query=" + item + "&tipo=profesiones&validar=true",
             success: function(result) {
                 var $form = $input.parents("#formulario");
                 if (result == '[]' || result == '[""]') {
                     // incluir mensaje sobre la profesion no encontrada
-                    var mensaje = '<h3 class="aviso-error">Lo sentimos, no encontramos <strong>' + profesion + '</strong></h3>';
+                    var mensaje = '<h3 class="aviso-error">Lo sentimos, no encontramos <strong>' + item + '</strong></h3>';
                     if ($('#popUp').find('.aviso-error'))
                     	$('#popUp .aviso-error').remove(); // para no acumular mensajes
                     $(mensaje).insertBefore($('#popUp h2'));
@@ -79,19 +84,18 @@ function submitar($input, item) {
                     // proponer mejora de busqueda... por filtros con select
                     return false;
                 } else {            
-                    var urlEstatica = prefix + 'comparador.php' 
+                    var urlEstatica = prefix + 'comparador.php', profesionLimpia, urlLimpia;
 
                     if ($input.hasClass('principal') && $(location).attr('href').indexOf('comparador.php') < 0) {
-                        var profesionLimpia = profesion.replace(/\'|\"|\,|\;|\(|\)|\/|\~|\+/g, '').latinize().toLowerCase()
-                        var urlLimpia = $(location).attr('href').replace(/index.html/g, '');
-                        var urlEstatica = urlLimpia + 'profesiones/' + profesionLimpia.replace(/ /g, "-");
+                        profesionLimpia = item.replace(/\'|\"|\,|\;|\(|\)|\/|\~|\+/g, '').latinize().toLowerCase()
+                        urlLimpia = $(location).attr('href').replace(/index.html/g, '');
+                        urlEstatica = urlLimpia + 'profesiones/' + profesionLimpia.replace(/ /g, "-");
                     }
                     $form.attr('action', urlEstatica);
                     $form.submit();
                 }
             },
             error: function(xhr, textStatus, errorThrown) {
-            	alert(xhr);
                 // y cambiar el redireccionamiento a la pagina estatica si es necesario (status 500)
                 /*if (xhr.status == 500) {
                     window.location = 'http://www.queserademi.com/profesiones/' + $profesion.replace(/ /g, "-").latinize().toLowerCase() + '.html';
@@ -104,29 +108,17 @@ function submitar($input, item) {
 }
 
 // Cuando presionamos ENTER coger el primero si no hemos eleccionado ninguno
-$(".typeahead").keydown(function(e) {
-    if (e.which == 13) {
-        $lista = $(this).siblings('.tt-dropdown-menu');
-        // si input tiene focus 
-        if ($(this).is(":focus")) {
-            // si no hay lista paramos la funcion
-            if ($lista.css('display') == 'none') {
-            	submitar($(this)); // para guardar nombres desconocidos y mostrar popup
-                return false;
-            }
-
-            $(this).siblings('.tt-hint').val('');
-            $(this).val($(this).siblings('.tt-dropdown-menu').find('.tt-suggestion:first-child').text());
-            submitar($(this));
-        }
+$(".typeahead").on('keydown.xdsoft', function(event) {
+    if (event.which === 13) {
+        submitar($(this), $(this).val());
     }
 });
 
-// Cuando clickamos boton submit
-$('.btn-submit').click(function(e) {
-    console.log(event);
-    e.preventDefault();
-    //submitar($(this).parent('#scrollable-dropdown-menu').find('.typeahead'));
+// Cuando clickamos boton submit 
+$('.btn-submit').click(function(event) {
+    var $input_target = $(this).parents('#scrollable-dropdown-menu').find('.typeahead');
+    event.preventDefault();
+    submitar($input_target, $input_target.val());
 });
 
 // LISTA
