@@ -560,6 +560,10 @@ span.flecha {
         right: 1%;
     }
 
+    .borde-separador {
+		border-left: none;
+	}
+
 	footer {
 		background-color: rgba(230, 230, 230, 0.9);
 		font-size: 1.6em;
@@ -674,6 +678,10 @@ span.flecha {
     .control-video {
         right: 1%;
     }
+
+    .borde-separador {
+		border-left: none;
+	}
 
 	footer {
 		background-color: rgba(230, 230, 230, 0.9);

@@ -93,7 +93,7 @@ if( isset( $_POST['profesion']  )  )
                   <label for="profesion" class="col-sm-3 control-label">Profesión:</label>
                   <div class="col-sm-9">  
                     <div class="input-group" style="width: 100%;">
-                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="search" data-tipo="profesiones" data-role="none" data-enhance="false" placeholder="Busca una profesión" data-clear-btn="true" value="<?php echo @$profesion; ?>" required>
+                      <input name="profesion" id="profesion" class="autocomplete-colabora center-block form-control input-lg" type="search" data-tipo="profesiones" data-role="none" data-enhance="false" placeholder="Busca una profesión" data-clear-btn="true" value="<?php echo @$profesion; ?>" autofocus required spellcheck="true" autocomplete="off">
                     </div>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ if( isset( $_POST['profesion']  )  )
                   <label for="estudios_asoc" class="col-sm-3 control-label">Estudios asociados a la profesión:</label>
                   <div class="col-sm-9">
                     <div class="input-group" style="width: 100%;">
-                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="Busca sus estudios asociados" data-clear-btn="true"/>           
+                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="autocomplete-colabora center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="Busca sus estudios asociados" data-clear-btn="true" autofocus required spellcheck="true" autocomplete="off">           
                     </div>
                   </div>
                 </div>
@@ -164,7 +164,7 @@ if( isset( $_POST['profesion']  )  )
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="con-otro" data-role="controlgroup" data-type="horizontal">
                       <label for="entrevista">Entrevista</label>
-                      <input type="radio" name="acceso" id="entrevista" value="entrevista">
+                      <input type="radio" name="acceso" id="entrevista" value="entrevista" checked="checked">
                       <label for="oposiciones">Oposiciones</label>
                       <input type="radio" name="acceso" id="oposiciones" value="oposiciones">
                       <label for="otro-acceso" class="otro-label">Otro</label>
@@ -180,7 +180,7 @@ if( isset( $_POST['profesion']  )  )
                       <label for="publico">Publico</label>
                       <input type="radio" name="sector" id="publico" value="publico">
                       <label for="privado">Privado</label>
-                      <input type="radio" name="sector" id="privado" value="privado">
+                      <input type="radio" name="sector" id="privado" value="privado" checked="checked">
                     </fieldset>                  
                   </div>
                 </div>
@@ -190,7 +190,7 @@ if( isset( $_POST['profesion']  )  )
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="con-otro" data-role="controlgroup" data-type="horizontal">
                       <label for="indefinido">Indefinido</label>
-                      <input type="radio" name="contrato" id="indefinido" value="indefinido">
+                      <input type="radio" name="contrato" id="indefinido" value="indefinido" checked="checked">
                       <label for="temporal">Temporal</label>
                       <input type="radio" name="contrato" id="temporal" value="temporal">
                       <label for="practicas">Practicas</label>
@@ -219,7 +219,7 @@ if( isset( $_POST['profesion']  )  )
                 <div class="form-group">
                   <label for="horas-semana" class="col-sm-3 control-label">Horas semanales totales:</label>
                   <div class="col-md-9 col-xs-12">
-                    <input type="range" name="horas_semana" id="horas-semana" value="38" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
+                    <input type="range" name="horas_semana" id="horas-semana" value="40" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
                 <div class="form-group">
@@ -228,12 +228,6 @@ if( isset( $_POST['profesion']  )  )
                     <input type="range" name="horas_real" id="horas-real" value="30" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
-              
-            </div>
-
-            <div class="col-md-6 col-xs-12 borde-separador">
-
-                
 
                 <div class="form-group">
                   <label for="puesto" class="col-sm-3 control-label">Estatus dentro de la empresa:</label>
@@ -244,12 +238,16 @@ if( isset( $_POST['profesion']  )  )
                       <label for="jefe">Jefe de equipo</label>
                       <input type="radio" name="puesto" id="jefe" value="jefe">
                       <label for="empleado">Empleado</label>
-                      <input type="radio" name="puesto" id="empleado" value="empleado">
+                      <input type="radio" name="puesto" id="empleado" value="empleado" checked="checked">
                       <label for="otro-puesto" class="otro-label">Otro</label>
                       <input type="radio" class="otro" name="puesto" id="otro-puesto" value="otro">
                     </fieldset>                  
                   </div>
                 </div>
+              
+            </div>
+
+            <div class="col-md-6 col-xs-12 borde-separador">
 
                 <div class="form-group">
                   <label for="edad-jubilacion" class="col-sm-3 control-label">Edad de jubilación estimada:</label>
@@ -265,35 +263,50 @@ if( isset( $_POST['profesion']  )  )
                   </div>
                 </div>
 
+                <div class="form-group">
+                  <label for="s_general_anual" class="col-sm-3 control-label">Salario actual<br>(elige anual o mensual):</label>
+                  <div class="col-md-9 col-xs-12">
+                    <input type="range" name="s_general_anual" id="s_general_anual" value="18000" min="7200" max="96000" step="100" data-highlight="true" data-popup-enabled="true"
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                      <label for="anual">€ Bruto Anual</label>
+                      <input type="radio" name="s_modo" id="anual" value="anual" checked="checked">
+                      <label for="mensual">€ Neto Mensual</label>
+                      <input type="radio" name="s_modo" id="mensual" value="mensual">
+                    </fieldset>                  
+                  </div>
+                </div>
+
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>Indica el rango salarial aproximado según experiencia en esta profesión (€/mes neto)</strong></h5>
+                  <h5><strong>Indica el rango salarial aproximado según experiencia en esta profesión (elige anual o mensual)</strong></h5>
                 </div>
                 <div class="form-group">
-                  <label for="s_principiante" class="col-sm-3 control-label">Principiante [Menos de 5 años]: </label>
+                  <label for="s_principiante" class="col-sm-3 control-label">Principiante<br>[Menos de 5 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
-                    <input type="range" class='s_principiante' name="s_principiante_min" id="s_principiante_min" value="650" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">
-                    <input type="range" class='s_principiante' name="s_principiante_max" id="s_principiante_max" value="2000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">                                
+                    <input type="range" class='s_principiante' name="s_principiante_min" id="s_principiante_min" value="6000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
+                    <input type="range" class='s_principiante' name="s_principiante_max" id="s_principiante_max" value="24000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                                
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="s_junior" class="col-sm-3 control-label">Junior [De 5 a 10 años]: </label>
+                  <label for="s_junior" class="col-sm-3 control-label">Junior<br>[De 5 a 10 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
-                    <input type="range" class='s_junior' name="s_junior_min" id="s_junior_min" value="1000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">
-                    <input type="range" class='s_junior' name="s_junior_max" id="s_junior_max" value="3000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">                                
+                    <input type="range" class='s_junior' name="s_junior_min" id="s_junior_min" value="12000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
+                    <input type="range" class='s_junior' name="s_junior_max" id="s_junior_max" value="36000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                                
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="s_intermedio" class="col-sm-3 control-label">Intermedio [De 10 a 15 años]: </label>
+                  <label for="s_intermedio" class="col-sm-3 control-label">Intermedio<br>[De 10 a 15 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
-                    <input type="range" class='s_intermedio' name="s_intermedio_min" id="s_intermedio_min" value="1500" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">
-                    <input type="range" class='s_intermedio' name="s_intermedio_max" id="s_intermedio_max" value="3500" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">                                  
+                    <input type="range" class='s_intermedio' name="s_intermedio_min" id="s_intermedio_min" value="18000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
+                    <input type="range" class='s_intermedio' name="s_intermedio_max" id="s_intermedio_max" value="42000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                                  
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="s_senior" class="col-sm-3 control-label">Senior [Más de 15 años]: </label>
+                  <label for="s_senior" class="col-sm-3 control-label">Senior<br>[Más de 15 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
-                    <input type="range" class='s_senior' name="s_senior_min" id="s_senior_min" value="2000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">
-                    <input type="range" class='s_senior' name="s_senior_max" id="s_senior_max" value="4000" min="200" max="10000" step="50" data-highlight="true" data-popup-enabled="true">                                  
+                    <input type="range" class='s_senior' name="s_senior_min" id="s_senior_min" value="24000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
+                    <input type="range" class='s_senior' name="s_senior_max" id="s_senior_max" value="48000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                           
                   </div>
                 </div>
 
@@ -491,11 +504,70 @@ if( isset( $_POST['profesion']  )  )
       </script>
       <script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="js/typeahead.bundle.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
+      <script type="text/javascript" src="js/autocomplete-master/jquery.autocomplete.js"></script>
       <script type="text/javascript" src="js/scripts.js"></script>   
       <script type="text/javascript">
         $(document).ready(function() {
+
+          // autocomplete
+          $('.autocomplete-colabora[data-tipo=profesiones]').autocomplete({
+              source: [{
+                  url: getUrl('profesiones'),
+                  type:'remote'
+              }],
+              closeOnBlur: false,
+              getValue: function(item) {
+                  return item;
+              },
+              dropdownStyle: {
+                  background:'#FFF',
+                  width: '100%'
+              },
+              itemStyle: {
+                  backgroundColor:'#FFF', 
+                  color:'#000',
+                  padding: '10px',
+                  fontSize: '16px',
+                  cursor: 'pointer'
+              },
+              style: {
+                  fontSize: '18px'
+              },
+              autoselect: true,
+              limit: 80,
+          });
+
+          $('.autocomplete-colabora[data-tipo=formaciones]').autocomplete({
+              source: [{
+                  url: getUrl('formaciones'),
+                  type:'remote'
+              }],
+              closeOnBlur: false,
+              getValue: function(item) {
+                  return item;
+              },
+              dropdownStyle: {
+                  background:'#FFF',
+                  width: '100%'
+              },
+              itemStyle: {
+                  backgroundColor:'#FFF', 
+                  color:'#000',
+                  padding: '10px',
+                  fontSize: '16px',
+                  cursor: 'pointer'
+              },
+              style: {
+                  fontSize: '18px'
+              },
+              autoselect: true,
+              limit: 80,
+          });
+
+          // prevent touchstart when swiping
+          $('.xdsoft_autocomplete_dropdown').on('touchstart touchmove touchend', function(event) {
+              $(this).prev('input').val('').trigger('open');
+          });
 
           // setting default styles
           $('.verif').parent().css('visibility','hidden');
@@ -548,6 +620,34 @@ if( isset( $_POST['profesion']  )  )
               }
             }
             $fieldset.children("input[type='radio']").checkboxradio("refresh");
+          });
+
+          // cambio de modo de salario: anual o mensual
+          var salario_values = {}, salario_inputs = ['s_general_anual', 's_principiante_min', 's_principiante_max', 's_junior_min', 's_junior_max', 's_intermedio_min', 's_intermedio_max', 's_senior_min', 's_senior_max'];
+
+          for (var i = 0; i < salario_inputs.length; i++) {
+            var $salario_input = $("input[name=" + salario_inputs[i] + "]");
+            salario_values[salario_inputs[i]] = {
+              'min_anual': $salario_input.attr('min'),
+              'val_anual': $salario_input.val(),
+              'max_anual': $salario_input.attr('max')
+            }
+          }
+
+          function setSalariosInputValues(divisor) {
+            for (var i = 0; i < salario_inputs.length; i++) {
+              var $salario_input = $("input[name=" + salario_inputs[i] + "]");
+              $salario_input.prop({
+                min: salario_values[salario_inputs[i]].min_anual / divisor,
+                max: salario_values[salario_inputs[i]].max_anual / divisor
+              }).val(salario_values[salario_inputs[i]].val_anual / divisor);
+            }
+          }
+
+          $("input[name='s_modo']").bind('change', function(event, ui) {
+            var divisor = ($(event.target).val() === 'mensual') ? 12 : 1;
+            setSalariosInputValues(divisor);
+            $('.s_senior, .s_intermedio, .s_junior, .s_principiante, #s_general_anual').slider('refresh');
           });
 
           // campos bloqueados por defecto

@@ -8,7 +8,8 @@ if( !empty( $_POST['verificacion'] ) ){
 
 	// resetear variables
 	$error = $trabajas = $tiempo_estudios = $jornada_laboral_min = $jornada_laboral_max = $horas_semana = $horas_real = $movilidad = $edad_jubilacion = $tiempo_trabajo = 0;
-	$s_principiante_min = $s_principiante_max = $s_junior_min = $s_junior_max = $s_intermedio_min = $s_intermedio_max = $s_senior_min = $s_senior_max = 0;
+	$s_modo = '';
+	$s_general_anual = $s_principiante_min = $s_principiante_max = $s_junior_min = $s_junior_max = $s_intermedio_min = $s_intermedio_max = $s_senior_min = $s_senior_max = 0;
 	$c_equipo = $c_analisis = $c_objetivos = $c_comunicacion = $c_forma_fisica = $persuasion = 0;
 	$i_ingles = $i_frances = $i_aleman = $i_otro = $satisfaccion = $aceptado = $email_enviado = 0;
 	$colaborador = $email = $profesion =  $descripcion = $comunidad_autonoma = $estudios_asoc = "";
@@ -67,6 +68,8 @@ if( !empty( $_POST['verificacion'] ) ){
 			$puesto 				= is_this_exist( 'puesto' );
 			$edad_jubilacion		= is_this_number( is_this_exist( 'edad_jubilacion' ) );
 			$tiempo_trabajo 		= is_this_number( is_this_exist( 'tiempo_trabajo' ) );
+			$s_modo					= is_this_exist( 's_modo' );
+			$s_general_anual	 	= is_this_number( is_this_exist( 's_general_anual' ) );
 			$s_principiante_min 	= is_this_number( is_this_exist( 's_principiante_min' ) );
 			$s_principiante_max 	= is_this_number( is_this_exist( 's_principiante_max' ) );
 			$s_junior_min 			= is_this_number( is_this_exist( 's_junior_min' ) );
@@ -168,6 +171,22 @@ if( !empty( $_POST['verificacion'] ) ){
 				else
 					return 2*abs($valor_antiguo - $valor_nuevo) / ($valor_antiguo + $valor_nuevo);	
 			}
+
+			//convertir neto mensual a bruto anual //TODO
+			function convertirSalarioAnual($salario, $s_modo) {
+				return ($s_modo === 'mensual') ? $salario * 12 : $salario;
+			} 
+
+			$s_general_anual 	= convertirSalarioAnual($s_general_anual, $s_modo);
+			$s_principiante_max = convertirSalarioAnual($s_principiante_max, $s_modo);
+			$s_principiante_min = convertirSalarioAnual($s_principiante_min, $s_modo);
+			$s_junior_max 		= convertirSalarioAnual($s_junior_max, $s_modo);
+			$s_junior_min 		= convertirSalarioAnual($s_junior_min, $s_modo);
+			$s_intermedio_max 	= convertirSalarioAnual($s_intermedio_max, $s_modo);
+			$s_intermedio_min 	= convertirSalarioAnual($s_intermedio_min, $s_modo);
+			$s_senior_max 		= convertirSalarioAnual($s_senior_max, $s_modo);
+			$s_senior_min 		= convertirSalarioAnual($s_senior_min, $s_modo);
+
 			//obtencion de datos guardados
 			$consulta = "SELECT * FROM profesiones p 
 			INNER JOIN nombres_alt n ON p.id = n.id_profesion 
@@ -178,6 +197,8 @@ if( !empty( $_POST['verificacion'] ) ){
 		    $rs_registro->execute();
 		    $registro = $rs_registro->fetch(PDO::FETCH_ASSOC);
 
+			if( diferencia( $registro['s_general_anual'], $s_general_anual ) > 0.5 )
+				$error += 0.05;	
 			if( diferencia( $registro['s_princ_max'], $s_principiante_max ) > 0.5 )
 				$error += 0.05;	
 			if( diferencia( $registro['s_junior_max'], $s_junior_max ) > 0.5 )
@@ -218,13 +239,13 @@ if( !empty( $_POST['verificacion'] ) ){
 				// SI EXISTE GENERAR UPDATE
 				$colaboracion .= "UPDATE colaboraciones SET colaborador = '$colaborador' , email = '$email' , profesion = '$profesion' , descripcion = '$descripcion' , trabajas = '$trabajas' , comunidad_autonoma = '$comunidad_autonoma' , estudios_asoc = '$estudios_asoc' , tiempo_estudios = '$tiempo_estudios' , ";
 				$colaboracion .= "acceso = '$acceso' , sector = '$sector' , contrato = '$contrato' , jornada_laboral_min = '$jornada_laboral_min' , jornada_laboral_max = '$jornada_laboral_max' , movilidad = '$movilidad' , horas_semana = '$horas_semana' , horas_real = '$horas_real' , puesto = '$puesto' , edad_jubilacion = '$edad_jubilacion' , ";
-				$colaboracion .= "tiempo_trabajo = '$tiempo_trabajo' , s_principiante_min = '$s_principiante_min' , s_principiante_max = '$s_principiante_max' ,s_junior_min = '$s_junior_min' , s_junior_max = '$s_junior_max' , s_intermedio_min = '$s_intermedio_min' , s_intermedio_max = '$s_intermedio_max' , s_senior_min = '$s_senior_min' , s_senior_max = '$s_senior_max' , ";
+				$colaboracion .= "tiempo_trabajo = '$tiempo_trabajo' , s_general_anual = '$s_general_anual' , s_principiante_min = '$s_principiante_min' , s_principiante_max = '$s_principiante_max' ,s_junior_min = '$s_junior_min' , s_junior_max = '$s_junior_max' , s_intermedio_min = '$s_intermedio_min' , s_intermedio_max = '$s_intermedio_max' , s_senior_min = '$s_senior_min' , s_senior_max = '$s_senior_max' , ";
 				$colaboracion .= "c_equipo = '$c_equipo' , c_analisis = '$c_analisis' , c_comunicacion = '$c_comunicacion' , c_forma_fisica = '$c_forma_fisica' , c_objetivos = '$c_objetivos' , c_persuasion = '$c_persuasion' , i_ingles = '$i_ingles' , i_frances = '$i_frances' , i_aleman = '$i_aleman' , i_otro = '$i_otro' , i_otro_val = '$i_otro_val' , satisfaccion = '$satisfaccion' , aceptado = '$aceptado' ";
 				$colaboracion .= "WHERE codigo_gen LIKE '$codigo_gen'";
 			} else {
 				// SI NO EXISTE GENERAR INSERT
-				$colaboracion .= "INSERT INTO `colaboraciones`(`colaborador`, `email`, `profesion`, `descripcion`, `trabajas`, `comunidad_autonoma`, `estudios_asoc`, `tiempo_estudios`, `acceso`, `sector`, `contrato`, `jornada_laboral_min`, `jornada_laboral_max`, `movilidad`, `horas_semana`, `horas_real`, `puesto`, `edad_jubilacion`, `tiempo_trabajo`, `s_principiante_min`, `s_principiante_max`, `s_junior_min`, `s_junior_max`, `s_intermedio_min`, `s_intermedio_max`, `s_senior_min`, `s_senior_max`, `c_equipo`, `c_analisis`, `c_objetivos`, `c_comunicacion`, `c_forma_fisica`, `c_persuasion`, `i_ingles`, `i_frances`, `i_aleman`, `i_otro`, `i_otro_val`, `satisfaccion`, `codigo_gen`, `aceptado`) ";
-				$colaboracion .= "VALUES ( '$colaborador', '$email', '$profesion', '$descripcion', $trabajas, '$comunidad_autonoma', '$estudios_asoc', $tiempo_estudios, '$acceso', '$sector', '$contrato', $jornada_laboral_min, $jornada_laboral_max, $movilidad, $horas_semana, $horas_real, '$puesto', $edad_jubilacion, $tiempo_trabajo, $s_principiante_min, $s_principiante_max, $s_junior_min, $s_junior_max, $s_intermedio_min, $s_intermedio_max, $s_senior_min, $s_senior_max, $c_equipo, $c_analisis, $c_objetivos, $c_comunicacion, $c_forma_fisica, $c_persuasion, $i_ingles, $i_frances, $i_aleman, $i_otro, '$i_otro_val', $satisfaccion, '$codigo_gen', $aceptado);";
+				$colaboracion .= "INSERT INTO `colaboraciones`(`colaborador`, `email`, `profesion`, `descripcion`, `trabajas`, `comunidad_autonoma`, `estudios_asoc`, `tiempo_estudios`, `acceso`, `sector`, `contrato`, `jornada_laboral_min`, `jornada_laboral_max`, `movilidad`, `horas_semana`, `horas_real`, `puesto`, `edad_jubilacion`, `tiempo_trabajo`, `s_general_anual`, `s_principiante_min`, `s_principiante_max`, `s_junior_min`, `s_junior_max`, `s_intermedio_min`, `s_intermedio_max`, `s_senior_min`, `s_senior_max`, `c_equipo`, `c_analisis`, `c_objetivos`, `c_comunicacion`, `c_forma_fisica`, `c_persuasion`, `i_ingles`, `i_frances`, `i_aleman`, `i_otro`, `i_otro_val`, `satisfaccion`, `codigo_gen`, `aceptado`) ";
+				$colaboracion .= "VALUES ( '$colaborador', '$email', '$profesion', '$descripcion', $trabajas, '$comunidad_autonoma', '$estudios_asoc', $tiempo_estudios, '$acceso', '$sector', '$contrato', $jornada_laboral_min, $jornada_laboral_max, $movilidad, $horas_semana, $horas_real, '$puesto', $edad_jubilacion, $tiempo_trabajo, $s_general_anual, $s_principiante_min, $s_principiante_max, $s_junior_min, $s_junior_max, $s_intermedio_min, $s_intermedio_max, $s_senior_min, $s_senior_max, $c_equipo, $c_analisis, $c_objetivos, $c_comunicacion, $c_forma_fisica, $c_persuasion, $i_ingles, $i_frances, $i_aleman, $i_otro, '$i_otro_val', $satisfaccion, '$codigo_gen', $aceptado);";
 			}
 		} 
 	}
