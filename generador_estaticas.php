@@ -194,16 +194,25 @@ $html = '
 <!DOCTYPE html>
 <html>
   <head>
-      <meta http-equiv="Content-Language" content="es">
-      <meta charset="utf-8">
-      <title>'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '</title>
+      <title>Queserademi.com | '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '</title>
       <meta name="description" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:image" content="../../images/logo.png" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.queserademi.com/'; $html .= $url_html . '" />   
+      <!--Compatibilidad y móvil-->
+      <meta http-equiv="Content-Language" content="es">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="robots" content="noodp">
+      <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="theme-color" content="#c00">
+      <!--OGs-->
+      <link rel="canonical" href="http://queserademi.com/'; $html .= $url_html . '">
+      <meta property="og:locale" content="es_ES">
+      <meta property="og:type" content="website">
+      <meta property="og:title" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '">
+      <meta property="og:url" content="http://queserademi.com/'; $html .= $url_html . '">
+      <meta property="og:site_name" content="queserademi">
+      <meta property="og:image" content="http://queserademi.com/images/logo.png">
+      <!--Links css-->
       <link rel="icon" type="image/x-icon" href="../../images/logo.png">
       <link rel="stylesheet" hr­ef="../../js/autocomplete-master/jquery.autocomplete.css"/>
       <link rel="stylesheet" href="../../css/bootstrap.min.css" />
@@ -325,7 +334,7 @@ $html = '
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
-                  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.queserademi.com&t=Comparador%20de%20profesiones" target="_blank" title="Share on Facebook" onclick="window.open("https://www.facebook.com/sharer/sharer.php?u="" + encodeURIComponent(document.URL) + "&t="" + encodeURIComponent(document.URL)); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+                  <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="Share on Facebook" onclick="window.open("https://www.facebook.com/queserademicom"); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
                   <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on Google+" onclick="window.open("https://plus.google.com/share?url=" + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
                   <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.com&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on LinkedIn" onclick="window.open("http://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(document.URL) + "&title=" +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
                   <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open("mailto:?subject=" + encodeURIComponent(document.title) + "&body=" +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
