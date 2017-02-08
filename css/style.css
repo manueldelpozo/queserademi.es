@@ -156,15 +156,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 4px;
 }
  
 ::-webkit-scrollbar-track {
-    border-radius: 10px;
+    border-radius: 4px;
 }
  
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 4px;
     background-color: #337ab7;
 }
 
