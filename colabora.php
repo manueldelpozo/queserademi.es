@@ -28,9 +28,8 @@ if( isset( $_POST['profesion']  )  )
     <meta property="og:image" content="http://queserademi.com/images/logo.png">
     <!--Links css-->
     <link rel="icon" type="image/x-icon" href="images/logo.png">
-    <link rel="stylesheet" hr­ef="js/autocomplete-master/jquery.autocomplete.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css"/>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-colabora.css">
@@ -93,7 +92,7 @@ if( isset( $_POST['profesion']  )  )
                   <label for="profesion" class="col-sm-3 control-label">Profesión:</label>
                   <div class="col-sm-9">  
                     <div class="input-group" style="width: 100%;">
-                      <input name="profesion" id="profesion" class="autocomplete-colabora center-block form-control input-lg" type="search" data-tipo="profesiones" data-role="none" data-enhance="false" placeholder="Busca una profesión" data-clear-btn="true" value="<?php echo @$profesion; ?>" autofocus required spellcheck="true" autocomplete="off">
+                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="search" data-tipo="profesiones" data-role="none" data-enhance="false" placeholder="Busca una profesión" data-clear-btn="true" value="<?php echo @$profesion; ?>" autofocus required spellcheck="true" autocomplete="off">
                     </div>
                   </div>
                 </div>
@@ -147,7 +146,7 @@ if( isset( $_POST['profesion']  )  )
                   <label for="estudios_asoc" class="col-sm-3 control-label">Estudios asociados a la profesión:</label>
                   <div class="col-sm-9">
                     <div class="input-group" style="width: 100%;">
-                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="autocomplete-colabora center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="Busca sus estudios asociados" data-clear-btn="true" autofocus required spellcheck="true" autocomplete="off">           
+                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="Busca sus estudios asociados" data-clear-btn="true" autofocus required spellcheck="true" autocomplete="off">           
                     </div>
                   </div>
                 </div>
@@ -504,70 +503,10 @@ if( isset( $_POST['profesion']  )  )
       </script>
       <script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="js/autocomplete-master/jquery.autocomplete.js"></script>
+      <script type="text/javascript" src="js/typeahead.0.9.3.min.js"></script>
       <script type="text/javascript" src="js/scripts.js"></script>   
       <script type="text/javascript">
         $(document).ready(function() {
-
-          // autocomplete
-          $('.autocomplete-colabora[data-tipo=profesiones]').autocomplete({
-              source: [{
-                  url: getUrl('profesiones'),
-                  type:'remote'
-              }],
-              closeOnBlur: false,
-              getValue: function(item) {
-                  return item;
-              },
-              dropdownStyle: {
-                  background:'#FFF',
-                  width: '100%'
-              },
-              itemStyle: {
-                  backgroundColor:'#FFF', 
-                  color:'#000',
-                  padding: '10px',
-                  fontSize: '16px',
-                  cursor: 'pointer'
-              },
-              style: {
-                  fontSize: '18px'
-              },
-              autoselect: true,
-              limit: 80,
-          });
-
-          $('.autocomplete-colabora[data-tipo=formaciones]').autocomplete({
-              source: [{
-                  url: getUrl('formaciones'),
-                  type:'remote'
-              }],
-              closeOnBlur: false,
-              getValue: function(item) {
-                  return item;
-              },
-              dropdownStyle: {
-                  background:'#FFF',
-                  width: '100%'
-              },
-              itemStyle: {
-                  backgroundColor:'#FFF', 
-                  color:'#000',
-                  padding: '10px',
-                  fontSize: '16px',
-                  cursor: 'pointer'
-              },
-              style: {
-                  fontSize: '18px'
-              },
-              autoselect: true,
-              limit: 80,
-          });
-
-          // prevent touchstart when swiping
-          $('.xdsoft_autocomplete_dropdown').on('touchstart touchmove touchend', function(event) {
-              $(this).prev('input').val('').trigger('open');
-          });
 
           // setting default styles
           $('.verif').parent().css('visibility','hidden');

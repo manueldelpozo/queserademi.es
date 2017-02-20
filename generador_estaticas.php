@@ -175,14 +175,12 @@ try {
 
       if (!empty($profesion)) {
         // darle url al html estatico
-        // setlocale(LC_ALL, 'en_GB'); esta configuracion evitara tambien las ene espanola
-        $profesion_noacentos  = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', mb_strtolower($profesion, 'UTF-8')); // eliminar acentos y transformar en minusculas
-        $profesion_nosignos   = str_replace(array("'",'"',",",";","(",")","/","~","+"), '', $profesion_noacentos); // eliminar signos gramaticales
-        $profesion_underscore = str_replace(' ', '-', $profesion_nosignos); // remplazar espacios en blanco por underscore
-        $url_html = "profesiones/" . $profesion_underscore . "/index.html"; // agregar path y extension 
+        $profesion_nosignos = getNombreLimpio($profesion);
+        $profesion_dashed = str_replace(' ', '-', $profesion_nosignos); // remplazar espacios en blanco por underscore
+        $url_html = "profesiones/" . $profesion_dashed . "/" . $profesion_dashed . ".html"; // agregar path y extension 
 
-        if (!file_exists("profesiones/" . $profesion_underscore)) {
-          mkdir("profesiones/" . $profesion_underscore, 0777, true);
+        if (!file_exists("profesiones/" . $profesion_dashed)) {
+          mkdir("profesiones/" . $profesion_dashed, 0777, true);
         }
         // crear html estatico o reescribirlo si ya existe!!
         $pagina_html = fopen($url_html, "w+") or die("No se puede crear este documento");
@@ -215,10 +213,10 @@ $html = '
       <!--Links css-->
       <link rel="icon" type="image/x-icon" href="../../images/logo.png">
       <link rel="stylesheet" hr­ef="../../js/autocomplete-master/jquery.autocomplete.css"/>
-      <link rel="stylesheet" href="../../css/bootstrap.min.css" />
-      <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
-      <link rel="stylesheet" href="../../css/style.css" />
-      <link rel="stylesheet" href="../../css/style-comparador.css" />
+      <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="../../css/font-awesome.css"/>
+      <link rel="stylesheet" href="../../css/style.css"/>
+      <link rel="stylesheet" href="../../css/style-comparador.css"/>
   </head>
 
   <body>
@@ -362,14 +360,14 @@ $html = '
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <script type="text/javascript" src="../../js/jquery-2.1.3.js" ></script>
-  <script type="text/javascript" src="../../js/bootstrap.min.js" ></script>
-  <script type="text/javascript" src="../../js/autocomplete-master/jquery.autocomplete.js"></script>
-  <script type="text/javascript" src="../../js/highcharts.js" ></script>
-  <script type="text/javascript" src="../../js/highcharts-more.js" ></script>
+  <script type="text/javascript" src="../../js/jquery-2.1.3.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/typeahead.0.9.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highcharts.js"></script>
+  <script type="text/javascript" src="../../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../../js/modules/exporting.js"></script>
   <script type="text/javascript" src="../../js/scripts.js" defer></script> 
-  <script type="text/javascript" src="../../js/graficas.js" ></script>
+  <script type="text/javascript" src="../../js/graficas.js"></script>
   <script type="text/javascript" async>
     '; 
 

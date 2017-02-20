@@ -21,53 +21,29 @@ function getUrl(dataTipo) {
     return prefix + 'data/' + dataTipo + '.json';
 }
 
-// AUTOCOMPLETE
-var lastEventTimeStamp, lastItem, lastEventType;
-
-$('.typeahead').autocomplete({
-    source: [{
-        url: getUrl('profesiones'),
-        type:'remote'
-    }],
-    closeOnBlur: false,
-    getValue: function(item) {
-        return item;
-    },
-    dropdownStyle: {
-        background:'#FFF',
-        width: '100%'
-    },
-    itemStyle: {
-        backgroundColor:'#FFF', 
-        color:'#000',
-        padding: '10px',
-        fontSize: '16px',
-        cursor: 'pointer'
-    },
-    style: {
-        fontSize: '18px'
-    },
-    autoselect: true,
-    limit: 80,
-}).on('selected.xdsoft', function(event, item){
-    var $input = $(event.target);
-
-    if ((lastEventTimeStamp !== event.timeStamp && item === lastItem) || lastEventType === 'selected') {
-        submitar($input, item);
-    }
-    lastEventTimeStamp = event.timeStamp;
-    lastItem = item;
-    lastEventType = event.type;
+$('.typeahead[data-tipo="profesiones"]').typeahead({
+    prefetch: getUrl('profesiones'),
+    hint: true,
+    highlight: true,
+    minLength: 0,
+    items: 9999,
+    order: "asc",
+    limit: Infinity
 });
 
-// prevent touchstart when swiping
-$('.xdsoft_autocomplete_dropdown').on('touchstart touchmove touchend', function(event) {
-    $(this).prev('input').val('').trigger('open');
-    lastEventType = event.type;
+$('.typeahead[data-tipo="formaciones"]').typeahead({
+    prefetch: getUrl('formaciones'),
+    hint: true,
+    highlight: true,
+    minLength: 0,
+    items: 9999,
+    order: "asc",
+    limit: Infinity
 });
 
 /////************** VALIDACION
 function submitar($input, item) {
+    var item = $input.val() || item;
     if (item) {
         $.ajax({
             url: prefix + "ajax.php?query=" + item + "&tipo=profesiones&validar=true",
@@ -83,7 +59,7 @@ function submitar($input, item) {
                     $('#popUp').show('slow');
                     // proponer mejora de busqueda... por filtros con select
                     return false;
-                } else {            
+                } else {
                     var urlEstatica = prefix + 'comparador.php', profesionLimpia, urlLimpia;
 
                     if ($input.hasClass('principal') && $(location).attr('href').indexOf('comparador.php') < 0) {
@@ -107,29 +83,30 @@ function submitar($input, item) {
     }
 }
 
-// Cuando presionamos ENTER coger el primero si no hemos eleccionado ninguno
-$(".typeahead").on('keydown.xdsoft', function(event) {
+// Cuando presionamos ENTER coger el primero si no hemos seleccionado ninguno
+$(".typeahead").keypress(function(event) {
     if (event.which === 13) {
-        submitar($(this), $(this).val());
+        submitar($(this));
     }
 });
 
-// Cuando clickamos boton submit 
+// Cuando clickamos boton submit
 $('.btn-submit').click(function(event) {
     var $input_target = $(this).parents('#scrollable-dropdown-menu').find('.typeahead');
     event.preventDefault();
-    submitar($input_target, $input_target.val());
+    submitar($input_target);
 });
 
 // LISTA
 // Submit despues de seleccionar item de la lista
-/*$(".active").click(function(e) {
-    var $textItem = $(e.target).text();
+$('.tt-dropdown-menu').click(function(event) {
+    var $textItem = $(event.target).text();
     var $input = $(this).siblings('.typeahead');
     var $consulta = $input.val();
-    if ($consulta == $textItem && $textItem != 'Más...') {
+
+    if ($consulta === $textItem && $textItem !== 'Más...') {
         submitar($input);
-    }*/
+    }
     // No usar opcion Mas por el momento
     /*else if ($textItem == 'Más...') {
     	// no ocultar lista
@@ -140,7 +117,7 @@ $('.btn-submit').click(function(event) {
     	$(e.target).parent('.tt-suggestion').remove();
     	mostrarMasLista($input);
     }*/
-//});
+});
 
 function mostrarMasLista($input) {
     // consultar todos los elementos de la lista

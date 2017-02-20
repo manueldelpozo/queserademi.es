@@ -117,9 +117,8 @@ set_time_limit(0);
     <meta property="og:image" content="http://queserademi.com/images/logo.png">
     <!--Links css-->
     <link rel="icon" type="image/x-icon" href="images/logo.png">
-    <link rel="stylesheet" hr­ef="js/autocomplete-master/jquery.autocomplete.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-comparador.css">
 </head>
@@ -284,7 +283,7 @@ set_time_limit(0);
       <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
       <!--script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script-->
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="js/autocomplete-master/jquery.autocomplete.js"></script>
+      <script type="text/javascript" src="js/typeahead.0.9.3.min.js"></script>
       <script type="text/javascript" src="js/highcharts.js" ></script>
       <script type="text/javascript" src="js/highcharts-more.js" ></script>
       <script type="text/javascript" src="js/modules/exporting.js"></script>
