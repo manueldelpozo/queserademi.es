@@ -212,11 +212,11 @@ $html = '
       <meta property="og:image" content="http://queserademi.com/images/logo.png">
       <!--Links css-->
       <link rel="icon" type="image/x-icon" href="../../images/logo.png">
-      <link rel="stylesheet" hr­ef="../../js/autocomplete-master/jquery.autocomplete.css"/>
-      <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
-      <link rel="stylesheet" href="../../css/font-awesome.css"/>
-      <link rel="stylesheet" href="../../css/style.css"/>
-      <link rel="stylesheet" href="../../css/style-comparador.css"/>
+      <link rel="stylesheet" hr­ef="../../js/autocomplete-master/jquery.autocomplete.css">
+      <link rel="stylesheet" href="../../css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css">
+      <link rel="stylesheet" href="../../css/style.css">
+      <link rel="stylesheet" href="../../css/style-comparador.css">
   </head>
 
   <body>

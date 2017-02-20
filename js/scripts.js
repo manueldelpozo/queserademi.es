@@ -86,7 +86,19 @@ function submitar($input, item) {
 // Cuando presionamos ENTER coger el primero si no hemos seleccionado ninguno
 $(".typeahead").keypress(function(event) {
     if (event.which === 13) {
-        submitar($(this));
+        $lista = $(this).siblings('.tt-dropdown-menu');
+        // si input tiene focus 
+        if ($(this).is(":focus")) {
+            // si no hay lista paramos la funcion
+            if ($lista.css('display') == 'none') {
+                submitar($(this)); // para guardar nombres desconocidos y mostrar popup
+                return false;
+            }
+
+            $(this).siblings('.tt-hint').val('');
+            $(this).val($(this).siblings('.tt-dropdown-menu').find('.tt-suggestion:first-child').text());
+            submitar($(this));
+        }
     }
 });
 
