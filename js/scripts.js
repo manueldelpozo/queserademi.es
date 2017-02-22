@@ -15,7 +15,8 @@ String.prototype.isLatin = function() {
     return this == this.latinise()
 }
 
-var prefix = ($(location).attr('href').indexOf('/profesiones') > -1) ? '../../' : '';
+var isEstatica = $(location).attr('href').indexOf('/profesiones') > -1;
+var prefix = isEstatica ? '../' : '';
 
 function getUrl(dataTipo) {
     return prefix + 'data/' + dataTipo + '.json';
@@ -60,14 +61,14 @@ function submitar($input, item) {
                     // proponer mejora de busqueda... por filtros con select
                     return false;
                 } else {
-                    var urlEstatica = prefix + 'comparador.php', profesionLimpia, urlLimpia;
-
-                    if ($input.hasClass('principal') && $(location).attr('href').indexOf('comparador.php') < 0) {
-                        profesionLimpia = item.replace(/\'|\"|\,|\;|\(|\)|\/|\~|\+/g, '').latinize().toLowerCase()
+                    var urlEstatica, profesionLimpia, urlLimpia;
+                    // Comprobar que estamos en la homepage
+                    if ($input.hasClass('principal') && !isEstatica && $(location).attr('href').indexOf('comparador.php') < 0) {
+                        profesionLimpia = item.replace(/\'|\"|\,|\;|\(|\)|\/|\~|\+/g, '').latinize().toLowerCase().replace(/ /g, "-");
                         urlLimpia = $(location).attr('href').replace(/index.html/g, '');
-                        urlEstatica = urlLimpia + 'profesiones/' + profesionLimpia.replace(/ /g, "-");
+                        urlEstatica = urlLimpia + 'profesiones/' + profesionLimpia + '.html';
+                        $form.attr('action', urlEstatica);
                     }
-                    $form.attr('action', urlEstatica);
                     $form.submit();
                 }
             },

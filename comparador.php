@@ -154,7 +154,7 @@ set_time_limit(0);
     </div>
     <div class="background-image grayscale"></div>
     <div class="container-full">
-      <form id="formulario" role="form">
+      <form id="formulario" role="form" action="comparador.php">
 
           <div class="row header ux-mobile-header">
 
