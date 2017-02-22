@@ -1,10 +1,12 @@
 <?php
 
 function connect() {
-	$host = "qxc430.queserademi.com";
-	$database = "qxc430";
-	$user = "qxc430";
-	$password = "Qsdm2017";
+	$isTest = false;
+
+	$host = $isTest ? "127.0.0.1" : "qxc430.queserademi.com";
+	$database = $isTest ? "qsdm" : "qxc430";
+	$user = $isTest ? "root" : "qxc430";
+	$password = $isTest ? "" : "Qsdm2017";
 	$arrayPDO = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
     return new PDO('mysql:host='.$host.';dbname='.$database, $user, $password, $arrayPDO);
 }
