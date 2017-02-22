@@ -237,7 +237,7 @@ if (chartEmpleabilidad.series.length == 3 && $(chartEmpleabilidad.series[0].data
     capa_iguales += '<div class="col-md-10 col-md-offset-1">';
     capa_iguales += '<h3>Atención! Aparecen gráficas similares porque se usan datos generales.</h3>';
 
-    capa_iguales += '<p class="text-center">Ayúdanos a tener información específica sobre <strong>salarios</strong>:<br><br>';
+    capa_iguales += '<p class="text-center">Ayúdanos a tener información específica sobre <strong>paro</strong>:<br><br>';
     <?php if( isset($profesion) && !empty($profesion) ){ ?>
         capa_iguales += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
         capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a><br>';
