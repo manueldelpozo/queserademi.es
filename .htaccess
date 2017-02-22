@@ -1,11 +1,24 @@
+# Options +FollowsSymLinks -MultiViews -Indexes
+
+RewriteEngine On
+
+# Remove prefix www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Remove sufix html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L,QSA]
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+# testLocal RewriteRule ^(.*)\.html$ /queserademi.es/$1 [R=301,L]
+
 # Redirect errors to customized pages
 ErrorDocument 400 http://queserademi.com/errors/400.html
 ErrorDocument 401 http://queserademi.com/errors/401.html
 ErrorDocument 403 http://queserademi.com/errors/403.html
 ErrorDocument 404 http://queserademi.com/errors/404.html
 ErrorDocument 500 http://queserademi.com/errors/500.html
-
-RewriteEngine on
-
-RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
