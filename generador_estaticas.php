@@ -431,10 +431,13 @@ var chartSalarios = {
         buttons: {
             contextButton: {
                 menuItems: [{
+                    text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
                 },{
+                    text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                 },{
                     separator: true
                 },{
+                    text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
                     onclick: function() {
                         this.exportChart({
                             type: 'image/jpeg'
@@ -731,10 +734,13 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             },
             contextButton: {
                 menuItems: [{
+                    text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
                 },{
+                    text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                 },{
                     separator: true
                 },{
+                    text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
                     onclick: function() {
                         this.exportChart({
                             type: 'image/jpeg'
@@ -832,10 +838,13 @@ var chartEmpleabilidad = {
       buttons: {
           contextButton: {
               menuItems: [{
+                  text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
               },{
+                  text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
               },{
                   separator: true
               },{
+                  text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
                   onclick: function() {
                       this.exportChart({
                           type: 'image/jpeg'
@@ -1008,10 +1017,13 @@ $script_formacion = "$('#container_formacion').highcharts({
           buttons: {
               contextButton: {
                   menuItems: [{
+                      text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
                   },{
+                      text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                   },{
                       separator: true
                   },{
+                      text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
                       onclick: function() {
                           this.exportChart({
                               type: 'image/jpeg'
@@ -1064,10 +1076,13 @@ $script_formacion = "$('#container_formacion').highcharts({
                 },
                 contextButton: {
                     menuItems: [{
+                        text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
                     },{
+                        text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                     },{
                         separator: true
                     },{
+                        text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
                         onclick: function() {
                             this.exportChart({
                                 type: 'image/jpeg'
@@ -1320,10 +1335,13 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
         buttons: {
             contextButton: {
                 menuItems: [{
+                    text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
                 },{
+                    text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                 },{
                     separator: true
                 },{
+                    text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
                     onclick: function() {
                         this.exportChart({
                             type: 'image/jpeg'
