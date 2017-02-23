@@ -111,6 +111,21 @@ var chartSalarios = {
                     }
                 } 
             }
+        },
+        buttons: {
+            contextButton: {
+                menuItems: [{
+                },{
+                },{
+                    separator: true
+                },{
+                    onclick: function() {
+                        this.exportChart({
+                            type: 'image/jpeg'
+                        });
+                    }
+                }]
+            }
         }
     },
     tooltip: {

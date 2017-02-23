@@ -157,6 +157,19 @@ $('#container_capacidades').highcharts({
                         $(this).parent().remove();
                     });
                 }
+            },
+            contextButton: {
+                menuItems: [{
+                },{
+                },{
+                    separator: true
+                },{
+                    onclick: function() {
+                        this.exportChart({
+                            type: 'image/jpeg'
+                        });
+                    }
+                }]
             }
         },
         chartOptions: {

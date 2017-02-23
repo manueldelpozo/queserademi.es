@@ -427,6 +427,21 @@ var chartSalarios = {
                   }
                 } 
             }
+        },
+        buttons: {
+            contextButton: {
+                menuItems: [{
+                },{
+                },{
+                    separator: true
+                },{
+                    onclick: function() {
+                        this.exportChart({
+                            type: 'image/jpeg'
+                        });
+                    }
+                }]
+            }
         }
     },
     title: {
@@ -713,6 +728,19 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
                         $(this).parent().remove();
                     });
                 }
+            },
+            contextButton: {
+                menuItems: [{
+                },{
+                },{
+                    separator: true
+                },{
+                    onclick: function() {
+                        this.exportChart({
+                            type: 'image/jpeg'
+                        });
+                    }
+                }]
             }
         },
         chartOptions: {
@@ -800,6 +828,21 @@ var chartEmpleabilidad = {
               }
             } 
         }
+      },
+      buttons: {
+          contextButton: {
+              menuItems: [{
+              },{
+              },{
+                  separator: true
+              },{
+                  onclick: function() {
+                      this.exportChart({
+                          type: 'image/jpeg'
+                      });
+                  }
+              }]
+          }
       }
     },
     title: {
@@ -961,6 +1004,21 @@ $script_formacion = "$('#container_formacion').highcharts({
                   }
                 } 
             }
+          },
+          buttons: {
+              contextButton: {
+                  menuItems: [{
+                  },{
+                  },{
+                      separator: true
+                  },{
+                      onclick: function() {
+                          this.exportChart({
+                              type: 'image/jpeg'
+                          });
+                      }
+                  }]
+              }
           }
         },
         title: {
@@ -1003,6 +1061,19 @@ $script_formacion = "$('#container_formacion').highcharts({
                     onclick: function () {
                         alert('Donde estudiar? En desarrollo... Disculpe las molestias');
                     }
+                },
+                contextButton: {
+                    menuItems: [{
+                    },{
+                    },{
+                        separator: true
+                    },{
+                        onclick: function() {
+                            this.exportChart({
+                                type: 'image/jpeg'
+                            });
+                        }
+                    }]
                 }
             }
         },";
@@ -1244,6 +1315,21 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
                     this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
                   }
                 } 
+            }
+        },
+        buttons: {
+            contextButton: {
+                menuItems: [{
+                },{
+                },{
+                    separator: true
+                },{
+                    onclick: function() {
+                        this.exportChart({
+                            type: 'image/jpeg'
+                        });
+                    }
+                }]
             }
         }
     },

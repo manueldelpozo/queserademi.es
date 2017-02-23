@@ -76,11 +76,24 @@ $(function () {
                         ?>
                     }
                 },*/
-               anotherButton: {
+                anotherButton: {
                     text: 'Donde estudiar?',
                     onclick: function () {
                         alert('Donde estudiar? En desarrollo... Disculpe las molestias');
                     }
+                },
+                contextButton: {
+                    menuItems: [{
+                    },{
+                    },{
+                        separator: true
+                    },{
+                        onclick: function() {
+                            this.exportChart({
+                                type: 'image/jpeg'
+                            });
+                        }
+                    }]
                 }
             },
             chartOptions: {
