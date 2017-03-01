@@ -150,6 +150,15 @@ function mostrarMasLista($input) {
     });
 }
 
+// FORMULARIOS
+function generateKey(longitudMax) {
+    var long = longitudMax || 10, ret = "";
+    while (ret.length < long) {
+      ret += Math.random().toString(16).substring(2);
+    }
+    return ret.substring(0, long);
+}
+
 // FOOTER
 // animar footer
 $(".btn-footer").click(function() {

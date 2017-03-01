@@ -214,26 +214,17 @@
 	    <![endif]-->
 		<script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
 		<script>
-		$(document).on('mobileinit', function () {
-		    $.mobile.ignoreContentEnabled = true;
-		    $.mobile.ajaxEnabled = false; // no jqm for links
-		});
+			$(document).on('mobileinit', function () {
+			    $.mobile.ignoreContentEnabled = true;
+			    $.mobile.ajaxEnabled = false; // no jqm for links
+			});
 		</script>
 		<script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/scripts.js"></script> 
 		<script type="text/javascript">
 	        $(document).ready(function() {
-	        	// generar codigo aleatorio e introducirlo en el input oculto
-				function generateKey(length) {
-					var ret = '';
-					while (ret.length < length) {
-					  ret += Math.random().toString(16).substring(2);
-					}
-					return ret.substring(0,length);
-				}
-
-				$('#codigo-gen').val( generateKey(10) );
+				$('#codigo-gen').val( generateKey() );
 	        }); 
         </script> 
 

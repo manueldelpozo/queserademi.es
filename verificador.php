@@ -1,5 +1,4 @@
 <?php
-
 if( !empty( $_POST['verificacion'] ) ){
     // Si se ha insertado informacion en el input oculto 'verificacion'.../Es un SPAMbot
     exit();
@@ -14,19 +13,21 @@ if( !empty( $_POST['verificacion'] ) ){
 	$i_ingles = $i_frances = $i_aleman = $i_otro = $satisfaccion = $aceptado = $email_enviado = 0;
 	$colaborador = $email = $profesion =  $descripcion = $comunidad_autonoma = $estudios_asoc = "";
 	$acceso = $sector = $contrato = $puesto = $i_otro_val = $codigo_gen = $colaboracion = ""; 
-	$descripcion_sugerencia = $sugerencia = '';
+	$descripcion_sugerencia = $sugerencia = $accion = '';
 
-	// filtrar valores introducidos 
-
-	function is_this_exist( $valor ) {
+	// metodos para filtrar valores introducidos 
+	function is_this_exist($valor) {
 		return isset($_POST[$valor]) ? $_POST[$valor] : null;
 	}
+
 	function is_this_number($number) {
 		return (is_nan($number) || empty($number) || !isset($number) || is_null($number)) ? 0 : $number;
 	}
+
 	function is_this_on($valor) {
 		return ($valor == 'off' || !isset($valor) || empty($valor) || is_null($valor)) ? 0 : 1;
 	}
+
 	function test_input($data) {
 		if ( !is_null($data) ) {
 		  	$data = trim($data);
@@ -38,6 +39,7 @@ if( !empty( $_POST['verificacion'] ) ){
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		if (isset($_POST['sugerencia'])) {
+			$accion                 = 'sugerencia';
 			$colaborador 			= test_input( is_this_exist( 'sugeridor' ) );
 			$email 					= test_input( is_this_exist( 'email' ) );
 			$descripcion_sugerencia = test_input( is_this_exist( 'sugerencia' ) );
@@ -49,6 +51,7 @@ if( !empty( $_POST['verificacion'] ) ){
 			$sugerencia .= "INSERT INTO `sugerencias`(`sugeridor`, `email`, `sugerencia`, `codigo_gen`, `email_enviado`) ";
 			$sugerencia .= "VALUES ( '$colaborador', '$email', '$descripcion_sugerencia', '$codigo_gen', '$email_enviado');";
 		} else {
+			$accion                 = 'colaboración';
 			$colaborador 			= test_input( is_this_exist( "colaborador" ) );
 			$email 					= test_input( is_this_exist( "email" ) );
 			$profesion 				= test_input( is_this_exist( 'profesion' ) );
@@ -197,8 +200,6 @@ if( !empty( $_POST['verificacion'] ) ){
 		    $rs_registro->execute();
 		    $registro = $rs_registro->fetch(PDO::FETCH_ASSOC);
 
-			if( diferencia( $registro['s_general_anual'], $s_general_anual ) > 0.5 )
-				$error += 0.05;	
 			if( diferencia( $registro['s_princ_max'], $s_principiante_max ) > 0.5 )
 				$error += 0.05;	
 			if( diferencia( $registro['s_junior_max'], $s_junior_max ) > 0.5 )
@@ -291,7 +292,6 @@ if( !empty( $_POST['verificacion'] ) ){
 						<h1 id="titulo" class="lead"><strong>que</strong>sera<strong>de</strong>mi</h1>
 						<img class="img-responsive" src="images/logo.svg">
 					</a>
-					<h6 class="sublead">Gracias por tu <?php echo isset($_POST['sugerencia']) ? 'sugerencia' : 'colaboración'; ?>!</h6>
 			    </div>
 			</div>
 
@@ -305,28 +305,30 @@ if( !empty( $_POST['verificacion'] ) ){
 	$updating = $pdo->prepare($sql);
 	$updating->execute();
 
-	if ( $updating ) {
+	if ($updating) {
 
 		echo "<h1>La información ha sido recibida correctamente!</h1>\n";
-		echo "<h2>Muchas gracias por colaborar con queserademi.</h2>\n";	
+		echo "<h2>Muchas gracias por tu " . $accion . "!</h2>\n";	
 
 		//enviar mail de agradecimiento... 
 		//solo si tenemos el email, es valido y aun no se ha enviado
-		if( !is_null( $email ) && !$email_enviado && $email_valido ) {
+		if(!is_null($email) && !$email_enviado && $email_valido) {
 			
-			if( is_null($colaborador) || empty($colaborador) )
-				$colaborador = "colaborador/a";
+			if(is_null($colaborador) || empty($colaborador)) {
+				$colaborador = 'amigo/a';
+			}
 		
-			$linea1 		= "Estimado/a " . $colaborador . ",";
-			$linea2 		= "Nos alegra que haya participado en este gran proyecto.";
-			$linea2b 		= "Gracias a la información que ha aportado, podremos seguir desarrollando esta potente herramienta que servirá de apoyo orientativo a futuras y presentes generaciones.";
-			$linea3 		= "Puede seguir colaborando"; 
-			$linea3b 		= ", aportando información profesional de familiares o cercanos. ";
-			$linea4 		= "Cordialmente,";
-			$linea5 		= "El equipo 'queserademi'.";
-			$linea6 		= "QUESERADEMI";
-			$linea7 		= "http://www.queserademi.com/";
-			$linea8 		= "info@queserademi.com";
+			$linea1 	= 'Estimado/a ' . $colaborador . ',';
+			$linea2 	= "Nos alegra que haya participado en este gran proyecto.";
+			$linea2b 	= "Gracias a " . $accion . ", podremos seguir desarrollando esta potente herramienta que servirá de apoyo orientativo a futuras y presentes generaciones.";
+			$enlace		= $accion === 'sugerencia' ? 'quenossugieres.html' : 'colabora.php';
+			$linea3 	= "Puede seguir " . $accion === 'sugerencia' ? 'sugeriendo' : 'colaborando'; 
+			$linea3b 	= $accion === 'sugerencia' ? ', para hacer de queserademi un portal web más completo y accesible.' : ', aportando información profesional de familiares o cercanos.';
+			$linea4 	= "Atentamente,";
+			$linea5 	= "El equipo 'queserademi'.";
+			$linea6 	= "QUESERADEMI";
+			$linea7 	= "http://www.queserademi.com/";
+			$linea8 	= "info@queserademi.com";
 			
 			//$headers = "From: info@queserademi.com" . "\r\n" . "CC: ".$email;
 			//$asunto = 'Gracias por colaborar con queserademi';
@@ -344,7 +346,7 @@ if( !empty( $_POST['verificacion'] ) ){
 			$mail->Host 		= 'smtp.queserademi.com';  // Specify main and backup SMTP servers
 			$mail->SMTPAuth 	= true;                               // Enable SMTP authentication
 			$mail->Username 	= 'info@queserademi.com';                 // SMTP username
-			$mail->Password 	= 'Qsdm2016';                           // SMTP password
+			$mail->Password 	= 'Qsdm2017';                           // SMTP password
 			//$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 			$mail->Port 		= 587;                                    // TCP port to connect to
 			
@@ -362,8 +364,8 @@ if( !empty( $_POST['verificacion'] ) ){
 			//$mail­->CharSet = "UTF­8";
 			//$mail­->Encoding = "quoted­printable";                                // Set email format to HTML
 
-			$mail->Subject 		= 'Gracias por colaborar con queserademi';
-			$mail->Body    		= "<strong>".$linea1."</strong><br><p>".$linea2."<br>".$linea2b."</p><p><a href='http://www.queserademi.com/colabora.php'>".$linea3."</a>".$linea3b."</p><p>".$linea4."<br><br>".$linea5."</p><br><p><strong>".$linea6."</strong><br><a href='http://www.queserademi.com'>".$linea7."</a><br><a href='mailto:info@queserademi.com'>".$linea8."</a><br><br><img src='http://www.queserademi.com/images/logo.png' heigh='60px' width='60px'></p>";
+			$mail->Subject 		= 'Queserademi te agradece tu ' . $accion;
+			$mail->Body    		= "<strong>" . $linea1 . "</strong><br><p>" . $linea2 . "<br>" . $linea2b . '</p><p><a href="http://www.queserademi.com/' . $enlace . '">' . $linea3 . "</a>" . $linea3b . "</p><p>" . $linea4 . "<br><br>" . $linea5 . "</p><br><p><strong>" . $linea6 . "</strong><br><a href='http://www.queserademi.com'>" . $linea7 . "</a><br><a href='mailto:info@queserademi.com'>" . $linea8 . "</a><br><br><img src='http://www.queserademi.com/images/logo.png' heigh='60px' width='60px'></p>";
 			//'This is the body in plain text for non-HTML mail clients';
 			$mail->AltBody 		= $linea1."\n\n".$linea2."\n".$linea2b."\n\n".$linea3.$linea3b."\n\n".$linea4."\n\n".$linea5."\n\n".$linea6."\n".$linea7."\n".$linea8;
 
@@ -373,7 +375,7 @@ if( !empty( $_POST['verificacion'] ) ){
 			} else {
 				// confirmar envio del mail actualizando el booleano en la bbdd
 				$tabla = isset($_POST['sugerencia']) ? 'sugerencias' : 'colaboraciones';
-				$update = "UPDATE ".$tabla." SET email_enviado = '1' WHERE codigo_gen LIKE '$codigo_gen';";
+				$update = "UPDATE " . $tabla . " SET email_enviado = '1' WHERE codigo_gen LIKE '$codigo_gen';";
 				$enviar_email = $pdo->prepare($update);
 			    $enviar_email->execute();
 			    echo "<h3>[Recibirá un mail en breves instantes]</h3>";
@@ -381,8 +383,8 @@ if( !empty( $_POST['verificacion'] ) ){
 		}
 
 	} else { 
-		echo "<h1>Lo sentimos, su colaboración no se ha recibido correctamente...<h1>\n";
-		echo "<h2>Por favor, vuelva a <a href='colabora.php'>intentarlo</a></h2>";
+		echo "<h1>Lo sentimos, tu " . $accion . " no se ha recibido correctamente...<h1>\n";
+		echo "<h2>Por favor, vuelve a <a href='colabora.php'>intentarlo</a></h2>";
 	}
 ?>
 				</div>
@@ -460,6 +462,7 @@ if( !empty( $_POST['verificacion'] ) ){
 	    <![endif]-->
 		<script type="text/javascript" src="js/jquery-2.1.3.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/scripts.js"></script>
 	</body>
 
 </html>

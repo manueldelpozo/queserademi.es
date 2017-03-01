@@ -634,14 +634,7 @@ if( isset( $_POST['profesion']  )  )
           });
 
           // generar codigo aleatorio e introducirlo en el input oculto
-          function generateKey(length) {
-            var ret = "";
-            while (ret.length < length) {
-              ret += Math.random().toString(16).substring(2);
-            }
-            return ret.substring(0,length);
-          }
-          $('#codigo-gen').val( generateKey(10) );
+          $('#codigo-gen').val( generateKey() );
 
           // ocultar footer si hacemos scroll hasta el fondo
           $('.ui-page').scroll(function() {
