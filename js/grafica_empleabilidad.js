@@ -81,6 +81,7 @@ if( isset($profesion_dos) && !empty($profesion_dos) ){
     }
 }
 ?>
+
 var chartEmpleabilidad = {
     chart: {
         type: 'column',
@@ -186,9 +187,14 @@ var chartEmpleabilidad = {
         buttons: {
             contextButton: {
                 menuItems: [{
-                    text: '<a href="https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID" target="_blank"><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>'
+                    text: '<a><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>',
+                    onclick: function(event) {
+                        if (event.target.href === '') {
+                            getUrlShare('facebook', this, event.target);    
+                        }
+                    }
                 },{
-                    text: '<a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID" target="_blank"><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+                    text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
                 },{
                     separator: true
                 },{
@@ -248,6 +254,7 @@ var chartEmpleabilidad = {
 
 $('#container_empleabilidad').highcharts(chartEmpleabilidad);
 
+
 // Comprobar si los datos han salido iguales en la comparacion pero con nombres distintos
 if (chartEmpleabilidad.series.length == 3 && $(chartEmpleabilidad.series[0].data).not(chartEmpleabilidad.series[1].data).length === 0 && chartEmpleabilidad.series[0].name !== chartEmpleabilidad.series[1].name) {
     var capa_iguales = '<div class="capa-aviso">';
@@ -258,7 +265,7 @@ if (chartEmpleabilidad.series.length == 3 && $(chartEmpleabilidad.series[0].data
     capa_iguales += '<p class="text-center">Ayúdanos a tener información específica sobre <strong>paro</strong>:<br><br>';
     <?php if( isset($profesion) && !empty($profesion) ){ ?>
         capa_iguales += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
-        capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a><br>';
+        capa_iguales += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d5001e; color: #d5001e;">Colabora!</a><br>';
     <?php  }  ?> 
     <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
         capa_iguales += '<strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
@@ -282,7 +289,7 @@ if (chartEmpleabilidad.series.length == 3 && $(chartEmpleabilidad.series[0].data
     <?php if( $btn_colabora_e_1 > 0 ) { ?>
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>desempleo</strong> de la profesión<br>';
         capa_aviso += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
-        capa_aviso += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
+        capa_aviso += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d5001e; color: #d5001e;">Colabora!</a>';
     <?php } ?>
 
     <?php if( $btn_colabora_e_2 > 0 ) { ?>

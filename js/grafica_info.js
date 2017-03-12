@@ -24,7 +24,7 @@ $('#container_info').html('<h5 style="margin:15px; font-family: sans-serif; font
     $('#info').append('<h4 class="principal nombre"><?php echo mb_strtoupper($profesion,"UTF-8" ); ?></h4>');
     <?php if( empty( $filas_info[0]['descripcion'] ) ) { ?>
         $('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
-        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');
+        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d5001e; color: #d5001e;">Colabora!</a></div>');
     <?php } else { ?>
         $('#info').append('<p class="descripcion"><?php echo createExcerpts( $filas_info[0]["descripcion"] , 20 , " [ + ]" ); ?></p>');
     <?php } ?>

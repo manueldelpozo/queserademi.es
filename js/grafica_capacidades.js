@@ -160,9 +160,14 @@ $('#container_capacidades').highcharts({
             },
             contextButton: {
                 menuItems: [{
-                    text: '<a href="https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID" target="_blank"><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>'
+                    text: '<a><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>',
+                    onclick: function(event) {
+                        if (event.target.href === '') {
+                            getUrlShare('facebook', this, event.target);    
+                        }
+                    }
                 },{
-                    text: '<a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID" target="_blank"><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+                    text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
                 },{
                     separator: true
                 },{
@@ -244,7 +249,7 @@ $('#container_capacidades').highcharts({
     <?php if( $btn_colabora_c_1 > 0 ) { ?>
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>';
         capa_aviso += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
-        capa_aviso += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
+        capa_aviso += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d5001e; color: #d5001e;">Colabora!</a>';
     <?php } ?>
 
     <?php if( $btn_colabora_c_2 > 0 ) { ?>

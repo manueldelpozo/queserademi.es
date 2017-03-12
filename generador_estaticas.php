@@ -201,7 +201,7 @@ $html = '
       <meta name="robots" content="noodp">
       <meta name="viewport" content="width=device-width, initial-scale = 1.0">
       <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="theme-color" content="#c00">
+      <meta name="theme-color" content="#d5001e">
       <!--OGs-->
       <link rel="canonical" href="http://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:locale" content="es_ES">
@@ -373,6 +373,49 @@ $html = '
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
   <script type="text/javascript" async>
+    Highcharts.setOptions({
+  colors: [\'#d5001e\', \'#337ab7\'],
+  chart: {
+    style: {
+      fontFamily: \'Roboto\'
+    }
+  },
+  lang: {
+        numericSymbols: [\'.000\', \'.000.000\', \'.000.000.000\', \'.000.000.000.000\', \'.000.000.000.000.000\', \'.000.000.000.000.000.000\'] //otherwise by default [\'k\', \'M\', \'G\', \'T\', \'P\', \'E\']
+    }
+});
+
+function getUrlShare(redSocial, smt, link) {
+    var redSocialUrl = \'http://www.facebook.com/sharer.php?\';
+
+    function serialize(obj) {
+        return Object.keys(obj).map(function(p) {
+            return encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]);
+        }).join("&");
+    }
+
+    function postToRedSocial(url) {
+        var url = smt.options.exporting.url + url,
+            title = smt.options.title.text;
+        
+        link.target = \'_blank\';
+        link.href = redSocialUrl + \'u=\' + encodeURIComponent(url) + \'&t=\' + encodeURIComponent(title);
+    }
+
+    $.ajax({
+        type: \'POST\',
+        data: serialize({
+            svg: smt.getSVGForExport(),
+            type: \'image/jpeg\',
+            async: true
+        }),
+        url: smt.options.exporting.url,
+        success: postToRedSocial,
+        error: function(e) {
+            throw e;
+        }
+    });
+}
     '; 
 
 /**SALARIOS**/ 
@@ -436,9 +479,14 @@ var chartSalarios = {
         buttons: {
             contextButton: {
                 menuItems: [{
-                    text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
-                },{
-                    text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
+                    text: '<a><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>',
+                      onclick: function(event) {
+                          if (event.target.href === '') {
+                              getUrlShare('facebook', this, event.target);    
+                          }
+                      }
+                    },{
+                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                 },{
                     separator: true
                 },{
@@ -543,7 +591,7 @@ if( $btn_colabora_s_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
 
     capa_aviso += '</div></div>';
 
@@ -558,7 +606,7 @@ if( isset( $profesion ) ) {
     $script_info .= "$('#info').append('<h4 class=\"principal nombre\">". mb_strtoupper($profesion,"UTF-8" ) ."</h4>');";
     if( empty( $filas_info[0]['descripcion'] ) ) { 
         $script_info .= "$('#info').append('<p class=\"descripcion\" id=\"desc1\">Falta información! Ayúdanos a conseguirla.</p>');
-        $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a></div>');";
+        $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a></div>');";
     } else { 
         $script_info .= "$('#info').append('<p class=\"descripcion\">". createExcerpts($filas_info[0]["descripcion"], 150, " [ + ]") . "</p>');";
     } 
@@ -739,9 +787,14 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             },
             contextButton: {
                 menuItems: [{
-                    text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
-                },{
-                    text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
+                    text: '<a><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>',
+                      onclick: function(event) {
+                          if (event.target.href === '') {
+                              getUrlShare('facebook', this, event.target);    
+                          }
+                      }
+                    },{
+                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                 },{
                     separator: true
                 },{
@@ -785,7 +838,7 @@ if( $btn_colabora_c_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -843,9 +896,14 @@ var chartEmpleabilidad = {
       buttons: {
           contextButton: {
               menuItems: [{
-                  text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
+                  text: '<a><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>',
+                  onclick: function(event) {
+                      if (event.target.href === '') {
+                          getUrlShare('facebook', this, event.target);    
+                      }
+                  }
               },{
-                  text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
+                  text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
               },{
                   separator: true
               },{
@@ -981,7 +1039,7 @@ if( $btn_colabora_e_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>desempleo</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -1022,9 +1080,14 @@ $script_formacion = "$('#container_formacion').highcharts({
           buttons: {
               contextButton: {
                   menuItems: [{
-                      text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
-                  },{
-                      text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
+                      text: '<a><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>',
+                      onclick: function(event) {
+                          if (event.target.href === '') {
+                              getUrlShare('facebook', this, event.target);    
+                          }
+                      }
+                    },{
+                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                   },{
                       separator: true
                   },{
@@ -1081,18 +1144,23 @@ $script_formacion = "$('#container_formacion').highcharts({
                 },
                 contextButton: {
                     menuItems: [{
-                        text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
+                      text: '<a><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>',
+                      onclick: function(event) {
+                          if (event.target.href === '') {
+                              getUrlShare('facebook', this, event.target);    
+                          }
+                      }
                     },{
-                        text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
+                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                     },{
-                        separator: true
+                      separator: true
                     },{
-                        text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
-                        onclick: function() {
-                            this.exportChart({
-                                type: 'image/jpeg'
-                            });
-                        }
+                      text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
+                      onclick: function() {
+                          this.exportChart({
+                              type: 'image/jpeg'
+                          });
+                      }
                     }]
                 }
             }
@@ -1304,7 +1372,7 @@ if( $btn_colabora_f_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>formacion</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -1340,9 +1408,14 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
         buttons: {
             contextButton: {
                 menuItems: [{
-                    text: '<a href=\"https://wwww.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>'
-                },{
-                    text: '<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcloud.highcharts.com%2Fshow%2FCHART_ID\" target=\"_blank\"><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
+                    text: '<a><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>',
+                      onclick: function(event) {
+                          if (event.target.href === '') {
+                              getUrlShare('facebook', this, event.target);    
+                          }
+                      }
+                    },{
+                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                 },{
                     separator: true
                 },{
@@ -1430,7 +1503,7 @@ if( $btn_colabora_sat_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>satisfaccion</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -1453,7 +1526,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     } // end while
 
     //TEST//
-    //break;  
+    break;  
   } // end foreach
 
 } catch( Exception $e ) {

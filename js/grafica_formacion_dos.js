@@ -223,7 +223,7 @@ $(function () {
     <?php if( $btn_colabora_f_1 > 0 ) { ?>
         capa_aviso += "<p class='text-center'>Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>";
         capa_aviso += "<strong><?php echo mb_strtoupper($profesion,'UTF-8' ); ?></strong></p>";
-        capa_aviso += "<a href='colabora.php?profesion=<?php echo $profesion; ?>' class='btn btn-aviso' style='border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);'>Colabora!</a>";
+        capa_aviso += "<a href='colabora.php?profesion=<?php echo $profesion; ?>' class='btn btn-aviso' style='border-color: #d5001e; color: #d5001e;'>Colabora!</a>";
     <?php } ?>
 
     <?php if( $btn_colabora_f_2 > 0 ) { ?>
