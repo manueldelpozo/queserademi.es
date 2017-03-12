@@ -77,46 +77,46 @@ if( isset( $_POST['profesion']  )  )
             <div class="col-md-6 col-xs-12">
               
                 <div class="form-group">
-                  <label for="colaborador" class="col-sm-3 control-label">Nombre:(opcional)</label>
+                  <label for="colaborador" class="col-sm-3 control-label">nombre: (opcional)</label>
                   <div class="col-sm-9">                 
-                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="Aquí tu nombre completo" data-clear-btn="true" value="<?php //echo @$profesion; ?>" autofocus/>
+                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="aquí tu nombre completo" data-clear-btn="true" value="<?php //echo @$profesion; ?>" autofocus/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="email" class="col-sm-3 control-label">Email:(opcional)</label>
+                  <label for="email" class="col-sm-3 control-label">email: (opcional)</label>
                   <div class="col-sm-9">
-                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="Aquí tu dirección email" data-clear-btn="true"/>
+                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="aquí tu dirección email" data-clear-btn="true"/>
                   </div>
                 </div>
                 <div class="form-group dropdown clearfix profesion required">
-                  <label for="profesion" class="col-sm-3 control-label">Profesión:</label>
+                  <label for="profesion" class="col-sm-3 control-label">profesión:</label>
                   <div class="col-sm-9">  
                     <div class="input-group" style="width: 100%;">
-                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="search" data-tipo="profesiones" data-role="none" data-enhance="false" placeholder="Busca una profesión" data-clear-btn="true" value="<?php echo @$profesion; ?>" autofocus required spellcheck="true" autocomplete="off">
+                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="search" data-tipo="profesiones" data-role="none" data-enhance="false" placeholder="busca una profesión" data-clear-btn="true" value="<?php echo @$profesion; ?>" autofocus required spellcheck="true" autocomplete="off">
                     </div>
                   </div>
                 </div>
                 
                 <div class="form-group">
-                  <label for="descripcion" class="col-sm-3 control-label">Descripción:(opcional)</label>
+                  <label for="descripcion" class="col-sm-3 control-label">descripción: (opcional)</label>
                   <div class="col-sm-9">
-                    <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="Escribe una breve descripción de la profesión "></textarea>
+                    <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="escribe una breve descripción de la profesión "></textarea>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="trabajas" class="col-sm-3 control-label">Tabajando?:</label>
+                  <label for="trabajas" class="col-sm-3 control-label">trabajando actualmente?:</label>
                   <div class="col-md-9 col-xs-12">
                      <input type="checkbox" data-role="flipswitch" name="trabajas" id="trabajas" data-on-text="Si" data-off-text="No">                  
                   </div>
                 </div>      
 
                 <div class="form-group">
-                  <label for="comunidad-autonoma" class="col-sm-3 control-label">Donde?:</label>
+                  <label for="comunidad-autonoma" class="col-sm-3 control-label">donde?:</label>
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="ui-field-contain">
                       <select name="comunidad_autonoma" id="comunidad-autonoma" data-native-menu="false">
-                        <option value="">Selecciona tu región</option>
+                        <option value="">selecciona tu región</option>
                         <option value="and">Andalucía</option>
                         <option value="ara">Aragón</option>
                         <option value="ast">Principado de Asturias</option>
@@ -143,23 +143,23 @@ if( isset( $_POST['profesion']  )  )
                 </div>
    
                 <div class="form-group dropdown clearfix estudios">
-                  <label for="estudios_asoc" class="col-sm-3 control-label">Estudios asociados a la profesión:</label>
+                  <label for="estudios_asoc" class="col-sm-3 control-label">los estudios asociados a la profesión:</label>
                   <div class="col-sm-9">
                     <div class="input-group" style="width: 100%;">
-                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="Busca sus estudios asociados" data-clear-btn="true" autofocus required spellcheck="true" autocomplete="off">           
+                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="busca sus estudios asociados" data-clear-btn="true" autofocus required spellcheck="true" autocomplete="off">           
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="tiempo-estudios" class="col-sm-3 control-label">Años dedicados a esos estudios:</label>
+                  <label for="tiempo-estudios" class="col-sm-3 control-label">y los años dedicados a esos estudios:</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="tiempo_estudios" id="tiempo-estudios" value="5" min="1" max="15" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="acceso" class="col-sm-3 control-label">Acceso al puesto de trabajo:</label>
+                  <label for="acceso" class="col-sm-3 control-label">como fue el acceso al puesto de trabajo:</label>
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="con-otro" data-role="controlgroup" data-type="horizontal">
                       <label for="entrevista">Entrevista</label>
@@ -173,7 +173,7 @@ if( isset( $_POST['profesion']  )  )
                 </div>
 
                 <div class="form-group">
-                  <label for="sector" class="col-sm-3 control-label">Tipo de sector:</label>
+                  <label for="sector" class="col-sm-3 control-label">el tipo de sector:</label>
                   <div class="col-md-9 col-xs-12">
                     <fieldset data-role="controlgroup" data-type="horizontal">
                       <label for="publico">Publico</label>
@@ -185,7 +185,7 @@ if( isset( $_POST['profesion']  )  )
                 </div>
 
                 <div class="form-group">
-                  <label for="contrato" class="col-sm-3 control-label">Tipo de contrato conseguido:</label>
+                  <label for="contrato" class="col-sm-3 control-label">el tipo de contrato conseguido:</label>
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="con-otro" data-role="controlgroup" data-type="horizontal">
                       <label for="indefinido">Indefinido</label>
@@ -201,7 +201,7 @@ if( isset( $_POST['profesion']  )  )
                 </div>
 
                 <div class="form-group">
-                  <label for="jornada-laboral" class="col-sm-3 control-label">Jornada laboral (Ejemplo: 9h - 18h): </label>
+                  <label for="jornada-laboral" class="col-sm-3 control-label">tu jornada laboral (Ejemplo: 9h - 18h): </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" name="jornada_laboral_min" id="jornada-laboral-min" value="9" min="0" max="23" step="1" data-highlight="true" data-popup-enabled="true">
                     <input type="range" name="jornada_laboral_max" id="jornada-laboral-max" value="18" min="0" max="23" step="1" data-highlight="true" data-popup-enabled="true">                                  
@@ -209,20 +209,20 @@ if( isset( $_POST['profesion']  )  )
                 </div>
 
                 <div class="form-group">
-                  <label for="movilidad" class="col-sm-3 control-label">Requiere movilidad?:</label>
+                  <label for="movilidad" class="col-sm-3 control-label">requiere movilidad?:</label>
                   <div class="col-md-9 col-xs-12">
                      <input type="checkbox" data-role="flipswitch" name="movilidad" id="movilidad" data-on-text="Si" data-off-text="No">                  
                   </div>
                 </div> 
 
                 <div class="form-group">
-                  <label for="horas-semana" class="col-sm-3 control-label">Horas semanales totales:</label>
+                  <label for="horas-semana" class="col-sm-3 control-label">las horas semanales totales de trabajo:</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="horas_semana" id="horas-semana" value="40" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="horas-real" class="col-sm-3 control-label">Horas semanales dedicadas (horas reales):</label>
+                  <label for="horas-real" class="col-sm-3 control-label">y las horas realmente dedicadas:</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="horas_real" id="horas-real" value="30" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
                   </div>
@@ -249,21 +249,21 @@ if( isset( $_POST['profesion']  )  )
             <div class="col-md-6 col-xs-12 borde-separador">
 
                 <div class="form-group">
-                  <label for="edad-jubilacion" class="col-sm-3 control-label">Edad de jubilación estimada:</label>
+                  <label for="edad-jubilacion" class="col-sm-3 control-label">la edad de jubilación estimada:</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="edad_jubilacion" id="edad-jubilacion" value="60" min="50" max="70" step="1" data-popup-enabled="true">                 
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="tiempo-trabajo" class="col-sm-3 control-label">Años trabajados en esta profesión (experiencia):</label>
+                  <label for="tiempo-trabajo" class="col-sm-3 control-label">los años trabajados en esta profesión (experiencia):</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="tiempo_trabajo" id="tiempo-trabajo" value="6" min="0" max="40" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="s_general_anual" class="col-sm-3 control-label">Salario actual<br>(elige anual o mensual):</label>
+                  <label for="s_general_anual" class="col-sm-3 control-label">tu salario actual<br>(elige anual o mensual):</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="s_general_anual" id="s_general_anual" value="18000" min="7200" max="96000" step="100" data-highlight="true" data-popup-enabled="true"
                   </div>
@@ -278,31 +278,31 @@ if( isset( $_POST['profesion']  )  )
                 </div>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>Indica el rango salarial aproximado según experiencia en esta profesión (elige anual o mensual)</strong></h5>
+                  <h5><strong>puedes darnos más información sobre tu salario? Selecciona el rango salarial aproximado según experiencia en esta profesión (elige anual o mensual)</strong></h5>
                 </div>
                 <div class="form-group">
-                  <label for="s_principiante" class="col-sm-3 control-label">Principiante<br>[Menos de 5 años]: </label>
+                  <label for="s_principiante" class="col-sm-3 control-label">[menos de 5 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" class='s_principiante' name="s_principiante_min" id="s_principiante_min" value="6000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
                     <input type="range" class='s_principiante' name="s_principiante_max" id="s_principiante_max" value="24000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                                
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="s_junior" class="col-sm-3 control-label">Junior<br>[De 5 a 10 años]: </label>
+                  <label for="s_junior" class="col-sm-3 control-label">[de 5 a 10 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" class='s_junior' name="s_junior_min" id="s_junior_min" value="12000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
                     <input type="range" class='s_junior' name="s_junior_max" id="s_junior_max" value="36000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                                
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="s_intermedio" class="col-sm-3 control-label">Intermedio<br>[De 10 a 15 años]: </label>
+                  <label for="s_intermedio" class="col-sm-3 control-label">[de 10 a 15 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" class='s_intermedio' name="s_intermedio_min" id="s_intermedio_min" value="18000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
                     <input type="range" class='s_intermedio' name="s_intermedio_max" id="s_intermedio_max" value="42000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                                  
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="s_senior" class="col-sm-3 control-label">Senior<br>[Más de 15 años]: </label>
+                  <label for="s_senior" class="col-sm-3 control-label">[más de 15 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" class='s_senior' name="s_senior_min" id="s_senior_min" value="24000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
                     <input type="range" class='s_senior' name="s_senior_max" id="s_senior_max" value="48000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                           
@@ -310,78 +310,80 @@ if( isset( $_POST['profesion']  )  )
                 </div>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>Evalúa las capacidades que se necesitan para la profesión según tu criterio [1-5]</strong></h5>
+                  <h5><strong>pon nota a las capacidades que se necesitan para esta profesión [1-5]</strong></h5>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_equipo" class="titulo2">Cooperación:</label>
+                    <label for="c_equipo" class="titulo2">cooperación:</label>
                     <input type="range" name="c_equipo" id="c_equipo" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_analisis" class="titulo2">Análisis:</label>
+                    <label for="c_analisis" class="titulo2">análisis:</label>
                     <input type="range" name="c_analisis" id="c_analisis" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_objetivos" class="titulo2">Logro de objetivos:</label>
+                    <label for="c_objetivos" class="titulo2">logro de objetivos:</label>
                     <input type="range" name="c_organizacion" id="c_organizacion" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_comunicacion" class="titulo2">Comunicación:</label>
+                    <label for="c_comunicacion" class="titulo2">comunicación:</label>
                     <input type="range" name="c_comunicacion" id="c_comunicacion" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_forma_fisica" class="titulo2">Destreza y físico:</label>
+                    <label for="c_forma_fisica" class="titulo2">destreza y físico:</label>
                     <input type="range" name="c_forma_fisica" id="c_forma_fisica" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="c_persuasion" class="titulo2">Persuasión:</label>
+                    <label for="c_persuasion" class="titulo2">persuasión:</label>
                     <input type="range" name="c_forma_fisica" id="c_forma_fisica" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>Evalua el nivel de idiomas que se necesitaría en esta profesión [1-5]</strong></h5>
+                  <h5><strong>y el nivel de idiomas que se necesitaría [1-5]</strong></h5>
                 </div>
                 <div class="col-md-6 col-xs-12 text-center">
                   <div class="form-group required">
-                    <label for="i_ingles" class="titulo2">Inglés:</label>
+                    <label for="i_ingles" class="titulo2">inglés:</label>
                     <input type="range" name="i_ingles" id="i_ingles" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-6 col-xs-12 text-center i-bloqueado">
                   <div class="form-group">
-                    <label for="i_frances" class="titulo2">Francés:</label>
+                    <label for="i_frances" class="titulo2">francés:</label>
                     <input type="range" name="i_frances" id="i_frances" value="1" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-6 col-xs-12 text-center i-bloqueado">
                   <div class="form-group">
-                    <label for="i_aleman" class="titulo2">Alemán:</label>
+                    <label for="i_aleman" class="titulo2">alemán:</label>
                     <input type="range" name="i_aleman" id="i_aleman" value="1" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
                 <div class="col-md-6 col-xs-12 text-center i-bloqueado">
                   <div class="form-group">
-                    <label for="i_otro" class="titulo2" style="display:inline-flex;">Otro:
+                    <label for="i_otro" class="titulo2" style="display:inline-flex;">otro:
                       <input type="text" data-role='none' data-enhance="false" name="i_otro_val" style="height: 30px;width: 100px;margin-left: 20px;margin-top: -10px;">
                     </label>
                     <input type="range" name="i_otro" id="i_otro" value="1" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
 
+                <div class="col-md-12 col-xs-12 text-center titulo1">
+                  <h5><strong>por último, dinos tu satisfacción sobre esta profesión</strong></h5>
+                </div>
                 <div class="form-group">
-                  <label for="satisfaccion" class="col-sm-3 control-label">Grado de satisfacción en esta profesión:</label>
-                  <div class="col-md-9 col-xs-12 stars">
+                  <div class="col-md-12 stars">
                     <fieldset data-role="controlgroup" data-type="horizontal">
                       <label for="star-1">&#9733;</label>
                       <input type="checkbox" name="stars[]" id="star-1" value="1">
@@ -452,19 +454,19 @@ if( isset( $_POST['profesion']  )  )
             </div>
           <div class="col-md-10 col-sm-12 col-xs-12 text-center">
               <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu sel-menu">
-                <a data-role="none" href="colabora.php">Puedes colaborar</a>
-                <span class='hidden-sm hidden-xs separador'>|</span>
+                  <a href="colabora.php">cómo colaborar</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a data-role="none" href="porquecolaborar.html">Por qué colaborar</a>
-                <span class='hidden-sm hidden-xs separador'>|</span>
+                  <a href="porquecolaborar.html">por qué colaborar</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a data-role="none" href="quienessomos.html">Quiénes somos</a>
-                <span class='hidden-sm hidden-xs separador'>|</span>
+                  <a href="quienessomos.html">quiénes somos</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="quenossugieres.html">Qué nos sugieres</a>
+                  <a href="">qué noticias</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
@@ -476,16 +478,20 @@ if( isset( $_POST['profesion']  )  )
               </div>
             </div>
             <div class="col-md-10 col-md-offset-2 col-sm-12 col-xs-12 terminos text-center">
-              <div class="col-md-2 col-md-offset-6 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a data-role="none" rel="data-protection" href="http://ec.europa.eu/justice/data-protection/index_es.htm">Privacidad de datos</a>
-                <span class='hidden-sm hidden-xs separador'>|</span>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a data-role="none" rel="license" href="https://creativecommons.org/licenses/by/4.0/">Terminos de uso</a>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <small>&copy; 2015 queserademi.com</small>
-              </div>
+                <div class="col-md-2 col-md-offset-4 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <a href="quenossugieres.html">qué nos sugieres</a>
+                    <span class="hidden-sm hidden-xs separador">|</span>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <a rel="license" href="http://ec.europa.eu/justice/data-protection/index_es.htm">privacidad de datos</a>
+                    <span class="hidden-sm hidden-xs separador">|</span>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">terminos de uso</a>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <small>&copy; 2017 queserademi.com</small>
+                </div>
             </div>
       </div>
       </footer>
@@ -505,6 +511,7 @@ if( isset( $_POST['profesion']  )  )
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/typeahead.0.9.3.min.js"></script>
       <script type="text/javascript" src="js/scripts.js"></script>   
+      <script type="text/javascript" src="js/scripts-combobox.js"></script>
       <script type="text/javascript">
         $(document).ready(function() {
 

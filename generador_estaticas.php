@@ -315,19 +315,19 @@ $html = '
             </div>
           <div class="col-md-10 col-sm-12 col-xs-12 text-center">
               <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../colabora.php">Puedes colaborar</a>
-                <span class="hidden-sm hidden-xs separador">|</span>
+                  <a href="../colabora.php">cómo colaborar</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../porquecolaborar.html">Por qué colaborar</a>
-                <span class="hidden-sm hidden-xs separador">|</span>
+                  <a href="../porquecolaborar.html">por qué colaborar</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../quienessomos.html">Quiénes somos</a>
-                <span class="hidden-sm hidden-xs separador">|</span>
+                  <a href="../quienessomos.html">quiénes somos</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../quenossugieres.html">Qué nos sugieres</a>
+                  <a href="../">qué noticias</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
@@ -339,16 +339,20 @@ $html = '
               </div>
             </div>
             <div class="col-md-10 col-md-offset-2 col-sm-12 col-xs-12 terminos text-center">
-              <div class="col-md-2 col-md-offset-6 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a rel="license" href="http://ec.europa.eu/justice/data-protection/index_es.htm">Privacidad de datos</a>
-                <span class="hidden-sm hidden-xs separador">|</span>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Terminos de uso</a>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <small>&copy; 2017 queserademi.com</small>
-              </div>
+                <div class="col-md-2 col-md-offset-4 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <a href="quenossugieres.html">qué nos sugieres</a>
+                    <span class="hidden-sm hidden-xs separador">|</span>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <a rel="license" href="http://ec.europa.eu/justice/data-protection/index_es.htm">privacidad de datos</a>
+                    <span class="hidden-sm hidden-xs separador">|</span>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">terminos de uso</a>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <small>&copy; 2017 queserademi.com</small>
+                </div>
             </div>
       </div>
     </footer>
@@ -365,7 +369,8 @@ $html = '
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script> 
+  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
   <script type="text/javascript" async>
     '; 
