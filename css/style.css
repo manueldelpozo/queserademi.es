@@ -40,10 +40,13 @@ h1, h2, h3, h4, h5, h6 {
 
 a:hover {
 	text-decoration: none !important;
+    font-weight: normal;
+}
+
+button, a {
 	outline: none !important;
 	-webkit-user-select: none; /* disable selection/Copy of UIWebView */
     -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
-    font-weight: normal;
 }
 
 #preloader {
@@ -602,10 +605,10 @@ span.flecha {
 		margin-bottom: 20px;
 	}
 
-	#formulario.form-index:after {
+	/*#formulario.form-index:after {
 		content: "(ejemplo: Abogado)";
 		color: #d5001e;
-	}
+	}*/
 
 	.btn-qsdm {
 		margin-top: 0;
@@ -643,6 +646,7 @@ span.flecha {
 
 	footer .glyphicon-menu-hamburger {
 		top: 0 !important;
+		outline: none !important;
 	}
 
 	.mobile-menu {
