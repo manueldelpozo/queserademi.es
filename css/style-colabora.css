@@ -1,9 +1,11 @@
 .header {
   margin-bottom: 30px;
 }
+
 .control-label {
   padding-right: 0;
 }
+
 .slider-selection {
   background: #BABABA;
 }
@@ -12,18 +14,16 @@
   margin-top: 20px;
   border-top: 1px;
 }
+
 .slider-handle {
-  background-image: linear-gradient(to bottom, red, #c00);
+  background-image: linear-gradient(to bottom, red, #d5001e);
 }
+
 .normal-input {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   background-color: rgba(255, 255, 255, 0.6);
-  /* For IE 5.5 - 7*/
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-  /* For IE 8*/
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 
   border-radius: 0;
   border: 2px solid #ccc;
@@ -40,13 +40,16 @@
   border-left-style: solid;
   border-left-width: 2px;
 }
+
 .inputs-ocultos { 
   display: none; 
 }
+
 .form-group.required label:after {
   content:"*";
   color:red;
 }
+
 .scrollable-menu {
   position: relative;
 }
@@ -55,57 +58,76 @@
 .ui-page {
   
 }
+
+.ui-content {
+  padding: 0;
+}
+
 .ui-page-theme-a {
   background: none;
 }
+
 .ui-body-inherit {
   background-color: rgba(255, 255, 255, 0.8);
 }
+
 .ui-mobile,.ui-page-active {
   overflow-y: inherit;
 }
+
 .ui-input-text, .ui-input-search {
   margin: 0; 
   border-width: 2px; 
   /* border-style: solid; */
 }
+
 .ui-field-contain, .ui-mobile fieldset.ui-field-contain {
   padding: 0;
 }
+
 .ui-corner-all {
   -webkit-border-radius: 0; 
   border-radius: 0;
 }
+
 .ui-controlgroup-controls {
   width: 100%;
 }
+
 .ui-controlgroup-controls .ui-btn {
   text-align: center;
 }
+
 .ui-radio {
   width: 50%;
 }
+
 .ui-input-text input {
   padding: 15px;
 }
-body, input, select, textarea, button, .ui-btn {
+
+.ui-btn {
   font-family: 'Antic Slab', arial;
   font-size: 14px;
   line-height: 1.42857143; 
 }
+
 .otro-input {
   width: 50%;
   height: 44px;
   padding-left: 10px;
 }
+
 .ui-checkbox{
   width: 20%;
-  font-size: 1.1em;
 }
+
 .btn-qsdm {
-  /*margin-top: 50px;*/
+  margin-top: 30px;
+  height: 50px;
 }
-a {
-  -webkit-user-select: none; /* disable selection/Copy of UIWebView */
-  -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+
+button.btn-qsdm, .ui-radio label {
+  font-weight: normal !important;
+  font-size: 14px !important;
 }
