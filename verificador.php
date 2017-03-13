@@ -429,7 +429,7 @@ if( !empty( $_POST['verificacion'] ) ){
 					  <span class="hidden-sm hidden-xs separador">|</span>
 					</div>
 					<div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-					  <a href="">qué noticias</a>
+					  <a href="noticias/">qué noticias</a>
 					</div>
 			        <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
 			          <ul class="share-buttons">
