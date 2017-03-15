@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+<div class="background-image"></div>
 <div id="blog">
 
   <section>
