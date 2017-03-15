@@ -1,5 +1,7 @@
 <html>
     <head>
+        <title>Queserademi.com | Noticias</title>
+	    <meta name="description" content="Actualizate con las últimas novedades en el mundo laboral.">
 	    <!--Compatibilidad y móvil-->
 	    <meta http-equiv="Content-Language" content="es">
 	    <meta charset="UTF-8">
@@ -9,9 +11,12 @@
 	    <meta name="apple-mobile-web-app-capable" content="yes">
 	    <meta name="theme-color" content="#c00">
 	    <!--OGs-->
+	    <link rel="canonical" href="http://queserademi.com/noticias">
 	    <meta property="og:locale" content="es_ES">
 	    <meta property="og:type" content="website">
 	    <meta property="og:title" content="Orientación Laboral y Comparador de Profesiones | Queserademi">
+	    <meta property="og:description" content="Actualizate con las últimas novedades en el mundo laboral.">
+	    <meta property="og:url" content="http://queserademi.com/noticias">
 	    <meta property="og:site_name" content="queserademi">
 	    <meta property="og:image" content="http://queserademi.com/images/logo.png">
 	    <!--Links css-->
