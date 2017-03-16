@@ -288,9 +288,9 @@ set_time_limit(0);
       <!--script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script-->
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/typeahead.0.9.3.min.js"></script>
-      <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
-      <script type="text/javascript" src="js/highcharts-more.js" ></script>
-      <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+      <script type="text/javascript" src="js/highcharts.js"></script>
+      <script type="text/javascript" src="js/highcharts-more.js"></script>
+      <script type="text/javascript" src="js/modules/exporting.js"></script>
       <script type="text/javascript" src="js/scripts.js" defer></script> 
       <script type="text/javascript" src="js/scripts-combobox.js"></script>  
       <!--script type="text/javascript" src="js/graficas.js" ></script-->

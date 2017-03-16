@@ -11,7 +11,7 @@
       <meta name="robots" content="noodp">
       <meta name="viewport" content="width=device-width, initial-scale = 1.0">
       <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="theme-color" content="#c00">
+      <meta name="theme-color" content="#d5001e">
       <!--OGs-->
       <link rel="canonical" href="http://queserademi.com/profesiones/administrativo-de-personal.html">
       <meta property="og:locale" content="es_ES">
@@ -125,19 +125,19 @@
             </div>
           <div class="col-md-10 col-sm-12 col-xs-12 text-center">
               <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../colabora.php">Puedes colaborar</a>
-                <span class="hidden-sm hidden-xs separador">|</span>
+                  <a href="../colabora.php">cómo colaborar</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../porquecolaborar.html">Por qué colaborar</a>
-                <span class="hidden-sm hidden-xs separador">|</span>
+                  <a href="../porquecolaborar.html">por qué colaborar</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../quienessomos.html">Quiénes somos</a>
-                <span class="hidden-sm hidden-xs separador">|</span>
+                  <a href="../quienessomos.html">quiénes somos</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="../quenossugieres.html">Qué nos sugieres</a>
+                  <a href="../noticias/">qué noticias</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
@@ -149,16 +149,20 @@
               </div>
             </div>
             <div class="col-md-10 col-md-offset-2 col-sm-12 col-xs-12 terminos text-center">
-              <div class="col-md-2 col-md-offset-6 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a rel="license" href="http://ec.europa.eu/justice/data-protection/index_es.htm">Privacidad de datos</a>
-                <span class="hidden-sm hidden-xs separador">|</span>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Terminos de uso</a>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <small>&copy; 2017 queserademi.com</small>
-              </div>
+                <div class="col-md-2 col-md-offset-4 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <a href="quenossugieres.html">qué nos sugieres</a>
+                    <span class="hidden-sm hidden-xs separador">|</span>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <a rel="license" href="http://ec.europa.eu/justice/data-protection/index_es.htm">privacidad de datos</a>
+                    <span class="hidden-sm hidden-xs separador">|</span>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">terminos de uso</a>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                    <small>&copy; 2017 queserademi.com</small>
+                </div>
             </div>
       </div>
     </footer>
@@ -175,9 +179,53 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script> 
+  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
   <script type="text/javascript" async>
+    Highcharts.setOptions({
+  colors: ['#d5001e', '#337ab7'],
+  chart: {
+    style: {
+      fontFamily: 'Roboto'
+    }
+  },
+  lang: {
+        numericSymbols: ['.000', '.000.000', '.000.000.000', '.000.000.000.000', '.000.000.000.000.000', '.000.000.000.000.000.000'] //otherwise by default ['k', 'M', 'G', 'T', 'P', 'E']
+    }
+});
+
+function getUrlShare(redSocial, smt, link) {
+    var redSocialUrl = 'http://www.facebook.com/sharer.php?';
+
+    function serialize(obj) {
+        return Object.keys(obj).map(function(p) {
+            return encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]);
+        }).join("&");
+    }
+
+    function postToRedSocial(url) {
+        var url = smt.options.exporting.url + url,
+            title = smt.options.title.text;
+        
+        link.target = '_blank';
+        link.href = redSocialUrl + 'u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent(title);
+    }
+
+    $.ajax({
+        type: 'POST',
+        data: serialize({
+            svg: smt.getSVGForExport(),
+            type: 'image/jpeg',
+            async: true
+        }),
+        url: smt.options.exporting.url,
+        success: postToRedSocial,
+        error: function(e) {
+            throw e;
+        }
+    });
+}
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -212,6 +260,29 @@ var chartSalarios = {
                     this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
                   }
                 } 
+            }
+        },
+        buttons: {
+            contextButton: {
+                menuItems: [{
+                    text: '<a><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>',
+                      onclick: function(event) {
+                          if (event.target.href === '') {
+                              getUrlShare('facebook', this, event.target);    
+                          }
+                      }
+                    },{
+                      text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+                },{
+                    separator: true
+                },{
+                    text: '<a href="#"><i class="glyphicon glyphicon-download-alt" style="padding:5px"></i>Descargar JPEG</a>',
+                    onclick: function() {
+                        this.exportChart({
+                            type: 'image/jpeg'
+                        });
+                    }
+                }]
             }
         }
     },
@@ -301,12 +372,12 @@ var chartSalarios = {
 
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
         capa_aviso += '<strong>ADMINISTRATIVO DE PERSONAL</strong></p>';
-        capa_aviso += '<a href="../colabora.php?profesion=administrativo de personal" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a>';
+        capa_aviso += '<a href="../colabora.php?profesion=administrativo de personal" class="btn btn-aviso" style="border-color: #d5001e; color: #d5001e;">Colabora!</a>';
 
     capa_aviso += '</div></div>';
 
     $('#container_salarios').append(capa_aviso);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ADMINISTRATIVO DE PERSONAL</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
-        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=administrativo de personal" class="btn btn-aviso" style="border-color: rgb(204, 0, 0); color: rgb(204, 0, 0);">Colabora!</a></div>');// Excerpt
+        $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=administrativo de personal" class="btn btn-aviso" style="border-color: #d5001e; color: #d5001e;">Colabora!</a></div>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -445,6 +516,27 @@ $('.more').click( function() {
                         $(this).parent().remove();
                     });
                 }
+            },
+            contextButton: {
+                menuItems: [{
+                    text: '<a><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>',
+                      onclick: function(event) {
+                          if (event.target.href === '') {
+                              getUrlShare('facebook', this, event.target);    
+                          }
+                      }
+                    },{
+                      text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+                },{
+                    separator: true
+                },{
+                    text: '<a href="#"><i class="glyphicon glyphicon-download-alt" style="padding:5px"></i>Descargar JPEG</a>',
+                    onclick: function() {
+                        this.exportChart({
+                            type: 'image/jpeg'
+                        });
+                    }
+                }]
             }
         },
         chartOptions: {
@@ -493,6 +585,29 @@ var chartEmpleabilidad = {
               }
             } 
         }
+      },
+      buttons: {
+          contextButton: {
+              menuItems: [{
+                  text: '<a><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>',
+                  onclick: function(event) {
+                      if (event.target.href === '') {
+                          getUrlShare('facebook', this, event.target);    
+                      }
+                  }
+              },{
+                  text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+              },{
+                  separator: true
+              },{
+                  text: '<a href="#"><i class="glyphicon glyphicon-download-alt" style="padding:5px"></i>Descargar JPEG</a>',
+                  onclick: function() {
+                      this.exportChart({
+                          type: 'image/jpeg'
+                      });
+                  }
+              }]
+          }
       }
     },
     title: {

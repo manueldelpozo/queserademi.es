@@ -1526,7 +1526,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     } // end while
 
     //TEST//
-    break;  
+    //break;  
   } // end foreach
 
 } catch( Exception $e ) {
