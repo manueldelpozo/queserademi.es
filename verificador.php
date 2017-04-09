@@ -256,7 +256,7 @@ if( !empty( $_POST['verificacion'] ) ){
 <!DOCTYPE html>
 <html>
 	<head>
-	    <title>Queserademi.com | Verificador de colaboraciones</title>
+	    <title>queserademi.com | Verificador de colaboraciones</title>
 	    <meta name="description" content="Gracias por colaborar con queserademi">
 	    <!--Compatibilidad y móvil-->
 	    <meta http-equiv="Content-Language" content="es">
@@ -270,7 +270,7 @@ if( !empty( $_POST['verificacion'] ) ){
 	    <link rel="canonical" href="http://queserademi.com/verificador.php">
 	    <meta property="og:locale" content="es_ES">
 	    <meta property="og:type" content="website">
-	    <meta property="og:title" content="Orientación Laboral y Comparador de Profesiones | Queserademi">
+	    <meta property="og:title" content="Orientación Laboral y Comparador de Profesiones | queserademi">
 	    <meta property="og:description" content="Gracias por colaborar con queserademi">
 	    <meta property="og:url" content="http://queserademi.com/verificador.php">
 	    <meta property="og:site_name" content="queserademi">

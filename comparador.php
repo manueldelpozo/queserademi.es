@@ -96,7 +96,7 @@ set_time_limit(0);
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Queserademi.com | Comparador de profesiones</title>
+    <title>queserademi.com | Comparador de profesiones</title>
     <meta name="description" content="Comparador de profesiones">
     <!--Compatibilidad y móvil-->
     <meta http-equiv="Content-Language" content="es">
@@ -110,7 +110,7 @@ set_time_limit(0);
     <link rel="canonical" href="http://queserademi.com/comparador.php">
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Orientación Laboral y Comparador de Profesiones | Queserademi">
+    <meta property="og:title" content="Orientación Laboral y Comparador de Profesiones | queserademi">
     <meta property="og:description" content="Comparador de profesiones">
     <meta property="og:url" content="http://queserademi.com/comparador.php">
     <meta property="og:site_name" content="queserademi">

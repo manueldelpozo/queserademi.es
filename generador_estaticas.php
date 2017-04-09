@@ -192,7 +192,7 @@ $html = '
 <!DOCTYPE html>
 <html>
   <head>
-      <title>Queserademi.com | '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '</title>
+      <title>queserademi.com | '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '</title>
       <meta name="description" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
@@ -206,7 +206,7 @@ $html = '
       <link rel="canonical" href="http://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:locale" content="es_ES">
       <meta property="og:type" content="website">
-      <meta property="og:title" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '">
+      <meta property="og:title" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' | queserademi">
       <meta property="og:url" content="http://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:site_name" content="queserademi">
       <meta property="og:image" content="http://queserademi.com/images/logo.png">
