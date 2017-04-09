@@ -26,6 +26,7 @@ function getUrlShare(redSocial, smt, link) {
         
         link.target = '_blank';
         link.href = redSocialUrl + 'u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent(title);
+        link.click();
     }
 
     $.ajax({
