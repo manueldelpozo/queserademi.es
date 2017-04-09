@@ -50,7 +50,12 @@ $('#container_capacidades').highcharts({
         spacingLeft: 20,
         spacingRight: 20,
         width: null,
-        height: 380
+        height: 380,
+        events: {
+            load: function(){
+                this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+            }
+        }
     },
     title: {
         text: 'CUALIDADES PROFESIONALES',
@@ -219,7 +224,19 @@ $('#container_capacidades').highcharts({
     credits: {
          enabled: false
     },
-
+    plotOptions: {
+        series: {
+            stickyTracking: false,
+            events: {
+                click: function(evt) {
+                    this.chart.myTooltip.refresh(evt.point, evt);
+                },
+                mouseOut: function() {
+                    this.chart.myTooltip.hide();
+                }                       
+            }          
+        }
+    },
     series: [
     <?php if( isset($profesion) && !empty($profesion) ) { ?>
     {  

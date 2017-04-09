@@ -43,15 +43,5 @@ function getUrlShare(redSocial, smt, link) {
     });
 }
 
-// desactivar tooltip durante el touchmove. Here’s a small drop-in snippets that stops tooltips from the mousemove event, and applies them to the click instead. Touch devices should be unaltered.
-(function (H) {
-    H.wrap(H.Tooltip.prototype, 'refresh', function (proceed, point, e) {
-        if (e && e.type !== 'mousemove') {
-            proceed.call(this, point, e);
-        }
-    });
-    H.addEvent(H.Point.prototype, 'click', function (e) {
-        e.point.series.chart.tooltip.refresh([e.point], e);
-    });
-}(Highcharts));
+
 

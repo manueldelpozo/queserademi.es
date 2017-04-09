@@ -257,7 +257,11 @@ $html = '
             </div>
 
             <div class="col-md-4 ux-mobile-input-container">
-              <div class="dropdown clearfix">
+              <div id="btnAddComparador">
+                <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                <strong>Compara con otra profesión</strong>
+              </div>
+              <div class="dropdown clearfix" hidden>
                 <div class="input-group" id="scrollable-dropdown-menu">
                   <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required autofocus spellcheck="true" autocomplete="off" >
                 </div>
@@ -374,49 +378,6 @@ $html = '
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
   <script type="text/javascript" async>
-    Highcharts.setOptions({
-  colors: [\'#d5001e\', \'#337ab7\'],
-  chart: {
-    style: {
-      fontFamily: \'Roboto\'
-    }
-  },
-  lang: {
-        numericSymbols: [\'.000\', \'.000.000\', \'.000.000.000\', \'.000.000.000.000\', \'.000.000.000.000.000\', \'.000.000.000.000.000.000\'] //otherwise by default [\'k\', \'M\', \'G\', \'T\', \'P\', \'E\']
-    }
-});
-
-function getUrlShare(redSocial, smt, link) {
-    var redSocialUrl = \'http://www.facebook.com/sharer.php?\';
-
-    function serialize(obj) {
-        return Object.keys(obj).map(function(p) {
-            return encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]);
-        }).join("&");
-    }
-
-    function postToRedSocial(url) {
-        var url = smt.options.exporting.url + url,
-            title = smt.options.title.text;
-        
-        link.target = \'_blank\';
-        link.href = redSocialUrl + \'u=\' + encodeURIComponent(url) + \'&t=\' + encodeURIComponent(title);
-    }
-
-    $.ajax({
-        type: \'POST\',
-        data: serialize({
-            svg: smt.getSVGForExport(),
-            type: \'image/jpeg\',
-            async: true
-        }),
-        url: smt.options.exporting.url,
-        success: postToRedSocial,
-        error: function(e) {
-            throw e;
-        }
-    });
-}
     '; 
 
 /**SALARIOS**/ 
@@ -465,7 +426,12 @@ var chartSalarios = {
         spacingLeft: 20,
         spacingRight: 20,
         width: null,
-        height: 380
+        height: 380,
+        events: {
+            load: function(){
+                this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+            }
+        }
     },
     exporting: {
         chartOptions: {
@@ -538,14 +504,14 @@ var chartSalarios = {
         }
     },
     tooltip: {
-        shared: true,
         headerFormat: '<strong style=\"font-size:16px\">{point.x} años de experiencia</strong><br>',
         valueSuffix: ' €',
         style: {
             display: 'block', 
             width: '300px',
             whiteSpace: 'normal' 
-        }
+        },
+        enabled: false
     },
     credits: {
         enabled: false
@@ -555,7 +521,16 @@ var chartSalarios = {
             fillOpacity: 0.5
         },
         series: {
-            allowPointSelect: true
+            allowPointSelect: true,
+            stickyTracking: false,
+            events: {
+                click: function(evt) {
+                    this.chart.myTooltip.refresh(evt.point, evt);
+                },
+                mouseOut: function() {
+                    this.chart.myTooltip.hide();
+                }                       
+            } 
         }
     },
     series: [
@@ -661,7 +636,12 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
         spacingLeft: 20,
         spacingRight: 20,
         width: null,
-        height: 380 
+        height: 380,
+        events: {
+            load: function(){
+                this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+            }
+        } 
     },
     title: {
         text: 'CUALIDADES PROFESIONALES',
@@ -751,7 +731,7 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             display: 'block', 
             width: '300px',
             whiteSpace: 'normal' 
-        }      
+        }     
     },
     exporting: {
         buttons: {
@@ -818,11 +798,22 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             }
         }
     },
-    
     credits: {
          enabled: false
     },
-
+    plotOptions: {
+        series: {
+            stickyTracking: false,
+            events: {
+                click: function(evt) {
+                    this.chart.myTooltip.refresh(evt.point, evt);
+                },
+                mouseOut: function() {
+                    this.chart.myTooltip.hide();
+                }                       
+            }          
+        }
+    },
     series: [{  
         name: '". $profesion ."',
         data: seriesCap,
@@ -882,7 +873,12 @@ var chartEmpleabilidad = {
         spacingLeft: 20,
         spacingRight: 20,
         width: null,
-        height: 380
+        height: 380,
+        events: {
+            load: function(){
+                this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+            }
+        }
     },
     exporting: {
       chartOptions: {
@@ -1004,10 +1000,24 @@ var chartEmpleabilidad = {
             display: 'block', 
             width: '300px',
             whiteSpace: 'normal' 
-        }
+        },
+        enabled: false
     },
     credits: {
         enabled: false
+    },
+    plotOptions: {
+        series: {
+            stickyTracking: false,
+            events: {
+                click: function(evt) {
+                    this.chart.myTooltip.refresh(evt.point, evt);
+                },
+                mouseOut: function() {
+                    this.chart.myTooltip.hide();
+                }                       
+            }          
+        }
     }, 
     series: [
       {
@@ -1066,7 +1076,12 @@ $script_formacion = "$('#container_formacion').highcharts({
             spacingLeft: 20,
             spacingRight: 20,
             width: null,
-            height: 380
+            height: 380,
+            events: {
+                load: function(){
+                    this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+                }
+            }
         },
         exporting: {
           chartOptions: {
@@ -1123,11 +1138,23 @@ $script_formacion = "$('#container_formacion').highcharts({
         credits: {
              enabled: false
         },
+        tooltip: {
+            enabled: false
+        },
         colorBypoint: true,
         colors: [ '#ede2e8', '#dcc6d1', '#ba8da4', '#975577', '#751c4a', '#58002e', '#420022', '#2c0017', '#210011', '#160000' ],
         plotOptions: {
             series: {
                 stacking: 'normal',
+                stickyTracking: false,
+                events: {
+                    click: function(evt) {
+                        this.chart.myTooltip.refresh(evt.point, evt);
+                    },
+                    mouseOut: function() {
+                        this.chart.myTooltip.hide();
+                    }                       
+                }
             },
             scatter: {
                 tooltip: {
@@ -1394,7 +1421,12 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
         spacingLeft: 20,
         spacingRight: 20,
         width: null,
-        height: 380
+        height: 380,
+        events: {
+            load: function(){
+                this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+            }
+        }
     },
     exporting: {
         chartOptions: {
@@ -1447,6 +1479,9 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
     credits: {
         enabled: false
     },
+    tooltip: {
+        enabled: false
+    },
     plotOptions: {
         scatter: {
             marker: {
@@ -1469,6 +1504,17 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
                 headerFormat: '<b>{series.name}</b><br>',
                 pointFormat: '{point.x} años de experiencia'
             }
+        },
+        series: {
+            stickyTracking: false,
+            events: {
+                click: function(evt) {
+                    this.chart.myTooltip.refresh(evt.point, evt);
+                },
+                mouseOut: function() {
+                    this.chart.myTooltip.hide();
+                }                       
+            }          
         }
     },
     series: [{
@@ -1527,7 +1573,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     } // end while
 
     //TEST//
-    //break;  
+    break;  
   } // end foreach
 
 } catch( Exception $e ) {

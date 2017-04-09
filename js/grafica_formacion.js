@@ -23,7 +23,12 @@ $(function () {
             spacingLeft: 20,
             spacingRight: 20,
             width: null,
-            height: 380
+            height: 380,
+            events: {
+                load: function(){
+                    this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+                }
+            }
         },
         title: {
             text: 'FORMACION'
@@ -47,6 +52,9 @@ $(function () {
         legend: {
             reversed: true
         },
+        tooltip: {
+            enabled: false 
+        },
         credits: {
              enabled: false
         },
@@ -55,6 +63,15 @@ $(function () {
         plotOptions: {
             series: {
                 stacking: 'normal',
+                stickyTracking: false,
+                events: {
+                    click: function(evt) {
+                        this.chart.myTooltip.refresh(evt.point, evt);
+                    },
+                    mouseOut: function() {
+                        this.chart.myTooltip.hide();
+                    }                       
+                } 
             },
             scatter: {
                 tooltip: {

@@ -94,7 +94,12 @@ var chartEmpleabilidad = {
         spacingLeft: 20,
         spacingRight: 20,
         width: null,
-        height: 380
+        height: 380,
+        events: {
+            load: function(){
+                this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+            }
+        }
     },
     title: {
         text: 'PARO',
@@ -216,11 +221,25 @@ var chartEmpleabilidad = {
             "display": "block", 
             "width": "300px",
             "whiteSpace": "normal" 
-        }
+        },
+        enabled: false
     },
     credits: {
         enabled: false
     }, 
+    plotOptions: {
+        series: {
+            stickyTracking: false,
+            events: {
+                click: function(evt) {
+                    this.chart.myTooltip.refresh(evt.point, evt);
+                },
+                mouseOut: function() {
+                    this.chart.myTooltip.hide();
+                }                       
+            }          
+        }
+    },
     series: [
     <?php if( isset($profesion) && !empty($profesion) ){ ?>
     {

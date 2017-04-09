@@ -38,7 +38,7 @@ div.body > div {
   margin-bottom: 10px;
 }
 .principal {
-  color: #cc0000;
+  color: #d5001e;
 }
 .secundaria {
   color: #337ab7;
@@ -85,8 +85,6 @@ div.body > div {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  /* For IE 5.5 - 7*/
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
   /* For IE 8*/
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
   background-color: rgba(255, 255, 255, 0.6);
@@ -135,8 +133,19 @@ div.body > div {
 }
 
 .input-group {
-    width: 100% !important;
-  }
+  width: 100% !important;
+}
+
+#btnAddComparador {
+  cursor: pointer;
+  font-size: 1.5em;
+  margin: 10px;
+  color: #337ab7;
+}
+
+#btnAddComparador:hover {
+  color: #d5001e;
+}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (max-device-width: 400px) and (orientation:portrait) {

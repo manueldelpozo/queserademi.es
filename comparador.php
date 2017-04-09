@@ -296,7 +296,7 @@ set_time_limit(0);
       <script type="text/javascript" src="js/modules/exporting.js"></script>
       <script type="text/javascript" src="js/scripts.js" defer></script> 
       <script type="text/javascript" src="js/scripts-combobox.js"></script>  
-      <script type="text/javascript" src="js/graficas.js" async></script>
+      <script type="text/javascript" src="js/graficas.js"></script>
 
       <script type="text/javascript" async>
         <?php 

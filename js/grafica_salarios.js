@@ -64,7 +64,12 @@ var chartSalarios = {
         spacingLeft: 20,
         spacingRight: 20,
         width: null,
-        height: 380
+        height: 380,
+        events: {
+            load: function(){
+                this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+            }
+        }
     },
     title: {
         text: 'SALARIO BRUTO ANUAL',
@@ -137,7 +142,6 @@ var chartSalarios = {
         }
     },
     tooltip: {
-        shared: true,
         headerFormat: '<strong style="font-size:16px">{point.x} años de experiencia</strong><br>',
         //pointFormat: '<span style="color:{series.color}">{series.name}: </span><strong>{point.y}</strong><br>',
         valueSuffix: ' €',
@@ -145,7 +149,8 @@ var chartSalarios = {
             display: 'block', 
             width: '300px',
             whiteSpace: 'normal' 
-        }
+        },
+        enabled: false
     },
     credits: {
         enabled: false
@@ -155,7 +160,16 @@ var chartSalarios = {
             fillOpacity: 0.5
         },
         series: {
-            allowPointSelect: true
+            allowPointSelect: true,
+            stickyTracking: false,
+            events: {
+                click: function(evt) {
+                    this.chart.myTooltip.refresh(evt.point, evt);
+                },
+                mouseOut: function() {
+                    this.chart.myTooltip.hide();
+                }                       
+            } 
         }
     },
     series: [

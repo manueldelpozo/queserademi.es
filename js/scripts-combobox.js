@@ -134,3 +134,11 @@ function mostrarMasLista($input) {
         }
     });
 }
+
+// mostrar input para comparar
+$('#btnAddComparador').click(function() {
+    $(this).hide(100);
+    $(this).next().show(200, function() {
+        $(this).find('input').focus();
+    });
+});
