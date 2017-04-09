@@ -60,7 +60,7 @@ if( isset( $_POST['profesion']  )  )
           <div class="row header">
 
             <div class="col-md-3 col-md-offset-1 col-xs-11 col-xs-offset-1">  
-              <h4>Colabora con queserademi, <br><strong>son solo 2 minutos...</strong></h4>  
+              <h4>Colabora con queserademi, <br>de forma anónima y <br><strong>en sólo 2 minutos...</strong></h4>  
             </div>
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
@@ -79,18 +79,6 @@ if( isset( $_POST['profesion']  )  )
 
             <div class="col-md-6 col-xs-12">
               
-                <div class="form-group">
-                  <label for="colaborador" class="col-sm-3 control-label">nombre: (opcional)</label>
-                  <div class="col-sm-9">                 
-                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="aquí tu nombre completo" data-clear-btn="true" value="<?php //echo @$profesion; ?>" autofocus/>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="email" class="col-sm-3 control-label">email: (opcional)</label>
-                  <div class="col-sm-9">
-                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="aquí tu dirección email" data-clear-btn="true"/>
-                  </div>
-                </div>
                 <div class="form-group dropdown clearfix profesion required">
                   <label for="profesion" class="col-sm-3 control-label">profesión:</label>
                   <div class="col-sm-9">  
@@ -104,6 +92,36 @@ if( isset( $_POST['profesion']  )  )
                   <label for="descripcion" class="col-sm-3 control-label">descripción: (opcional)</label>
                   <div class="col-sm-9">
                     <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="escribe una breve descripción de la profesión "></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group dropdown clearfix estudios">
+                  <label for="estudios_asoc" class="col-sm-3 control-label">los estudios asociados a la profesión:</label>
+                  <div class="col-sm-9">
+                    <div class="input-group" style="width: 100%;">
+                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="busca sus estudios asociados" data-clear-btn="true" autofocus required spellcheck="true" autocomplete="off">           
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="tiempo-estudios" class="col-sm-3 control-label">y los años dedicados a esos estudios:</label>
+                  <div class="col-md-9 col-xs-12">
+                    <input type="range" name="tiempo_estudios" id="tiempo-estudios" value="5" min="1" max="15" data-highlight="true" data-popup-enabled="true">                 
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="colaborador" class="col-sm-3 control-label">nombre: (opcional y anónimo)</label>
+                  <div class="col-sm-9">                 
+                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="tu nombre completo" data-clear-btn="true" value="<?php //echo @$profesion; ?>" autofocus/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="col-sm-3 control-label">email: (opcional y anónimo)</label>
+                  <div class="col-sm-9">
+                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="tu dirección email" data-clear-btn="true"/>
                   </div>
                 </div>
 
@@ -142,22 +160,6 @@ if( isset( $_POST['profesion']  )  )
                         <option><hr></option>
                       </select>
                     </fieldset>                 
-                  </div>
-                </div>
-   
-                <div class="form-group dropdown clearfix estudios">
-                  <label for="estudios_asoc" class="col-sm-3 control-label">los estudios asociados a la profesión:</label>
-                  <div class="col-sm-9">
-                    <div class="input-group" style="width: 100%;">
-                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="busca sus estudios asociados" data-clear-btn="true" autofocus required spellcheck="true" autocomplete="off">           
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="tiempo-estudios" class="col-sm-3 control-label">y los años dedicados a esos estudios:</label>
-                  <div class="col-md-9 col-xs-12">
-                    <input type="range" name="tiempo_estudios" id="tiempo-estudios" value="5" min="1" max="15" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
 
@@ -268,9 +270,7 @@ if( isset( $_POST['profesion']  )  )
                 <div class="form-group">
                   <label for="s_general_anual" class="col-sm-3 control-label">tu salario actual<br>(elige anual o mensual):</label>
                   <div class="col-md-9 col-xs-12">
-                    <input type="range" name="s_general_anual" id="s_general_anual" value="18000" min="7200" max="96000" step="100" data-highlight="true" data-popup-enabled="true"
-                  </div>
-                  <div class="col-md-12 col-xs-12">
+                    <input type="range" name="s_general_anual" id="s_general_anual" value="18000" min="7200" max="96000" step="100" data-highlight="true" data-popup-enabled="true">
                     <fieldset data-role="controlgroup" data-type="horizontal">
                       <label for="anual">€ Bruto Anual</label>
                       <input type="radio" name="s_modo" id="anual" value="anual" checked="checked">
@@ -281,7 +281,7 @@ if( isset( $_POST['profesion']  )  )
                 </div>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>puedes darnos más información sobre tu salario? Selecciona el rango salarial aproximado según experiencia en esta profesión (elige anual o mensual)</strong></h5>
+                  <h5><strong>podrías darnos más información sobre tu salario? Selecciona el rango salarial aproximado según experiencia en esta profesión (elige anual o mensual)</strong></h5>
                 </div>
                 <div class="form-group">
                   <label for="s_principiante" class="col-sm-3 control-label">[menos de 5 años]: </label>
@@ -353,7 +353,7 @@ if( isset( $_POST['profesion']  )  )
                 </div>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>y el nivel de idiomas que se necesitaría [1-5]</strong></h5>
+                  <h5><strong>y de nivel de idiomas, que se necesitaría? [1-5]</strong></h5>
                 </div>
                 <div class="col-md-6 col-xs-12 text-center">
                   <div class="form-group required">
@@ -376,17 +376,17 @@ if( isset( $_POST['profesion']  )  )
                 <div class="col-md-6 col-xs-12 text-center i-bloqueado">
                   <div class="form-group">
                     <label for="i_otro" class="titulo2" style="display:inline-flex;">otro:
-                      <input type="text" data-role='none' data-enhance="false" name="i_otro_val" style="height: 30px;width: 100px;margin-left: 20px;margin-top: -10px;">
+                      <input type="text" data-role='none' data-enhance="false" name="i_otro_val" style="height: 30px;width: 100px;margin-left: 20px;margin-top: -10px; border: solid 2px darkgrey;">
                     </label>
                     <input type="range" name="i_otro" id="i_otro" value="1" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
 
                 <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>por último, dinos tu satisfacción sobre esta profesión</strong></h5>
+                  <h5><strong>por último, puntúa tu satisfacción sobre esta profesión</strong></h5>
                 </div>
-                <div class="form-group">
-                  <div class="col-md-12 stars">
+                <div class="col-md-12 col-xs-12 text-center stars">
+                  <div class="form-group"> 
                     <fieldset data-role="controlgroup" data-type="horizontal">
                       <label for="star-1">&#9733;</label>
                       <input type="checkbox" name="stars[]" id="star-1" value="1">
