@@ -10,7 +10,7 @@ function createExcerpts($text, $length, $more_txt) {
     // primer letra en mayuscula forzando el UTF8
     $text = Encoding::toUTF8(ucfirst($text));
     // dividir el texto en dos
-    $split_text = split(' ', $text, $length);
+    $split_text = explode(' ', $text, $length);
     $excerpt = array_pop($split_text);
     $content = join(' ', $split_text);
     return $content . '<span class="excerpt"><span style="display:none;">' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></span>'; 
