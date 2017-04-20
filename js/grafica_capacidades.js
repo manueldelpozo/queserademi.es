@@ -72,7 +72,7 @@ $('#container_capacidades').highcharts({
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -233,7 +233,10 @@ $('#container_capacidades').highcharts({
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }               
             }          
         }
     },

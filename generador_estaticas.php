@@ -485,7 +485,7 @@ var chartSalarios = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -529,7 +529,10 @@ var chartSalarios = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             } 
         }
     },
@@ -658,7 +661,7 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -810,7 +813,10 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
@@ -932,7 +938,7 @@ var chartEmpleabilidad = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -1015,6 +1021,9 @@ var chartEmpleabilidad = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
+                },
+                legendItemClick: function() {
+                    return false; 
                 }                       
             }          
         }
@@ -1153,7 +1162,10 @@ $script_formacion = "$('#container_formacion').highcharts({
                     },
                     mouseOut: function() {
                         this.chart.myTooltip.hide();
-                    }                       
+                    },
+                    legendItemClick: function() {
+                        return false; 
+                    }                        
                 }
             },
             scatter: {
@@ -1513,7 +1525,10 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
