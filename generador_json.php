@@ -3,6 +3,14 @@ require('conexion.php');
 
 $tipos = array('profesiones', 'formaciones');
 
+function getExtraTokens($nombre_userfriendly, $nombre_formal) {
+	$tokens = array($nombre_userfriendly, $nombre_formal);
+	$extraTokens = array_reverse(explode(' ', $nombre_userfriendly));
+	$diff = ['a', 'de', 'del', 'y', ',', '.', 'para', 'la', 'las', 'el', 'los', 'en', 'o'];
+	$extraTokens = array_diff($extraTokens, $diff);
+	return array_merge($extraTokens, $tokens);
+}
+
 foreach ($tipos as &$tipo) {
 	$lista = array();
 	$n_ppal = ($tipo == 'formaciones') ? 'f_nombre_ppal' : 'nombre_ppal';
@@ -21,7 +29,7 @@ foreach ($tipos as &$tipo) {
 			$nombre_ppal_formal = ucfirst(trim(mb_strtolower($row[$n_ppal], 'UTF-8'))); //primera mayusc
 			$nombre_ppal_userfriendly = getNombreLimpio($row[$n_ppal]);
 			$nombre_ppal['value'] = $nombre_ppal_formal;
-			$nombre_ppal['tokens'] = array($nombre_ppal_userfriendly, $nombre_ppal_formal);
+			$nombre_ppal['tokens'] = getExtraTokens($nombre_ppal_userfriendly, $nombre_ppal_formal);
 
 			if (!array_key_exists($nombre_ppal_userfriendly, $lista)) {
 				$lista[$nombre_ppal_userfriendly] = $nombre_ppal;
@@ -34,7 +42,7 @@ foreach ($tipos as &$tipo) {
 				$nombre_alt_formal = ucfirst(trim($son_siglas ? $row[$n_alt] : mb_strtolower($row[$n_alt], 'UTF-8'))); //primera mayusc
 				$nombre_alt_userfriendly = getNombreLimpio($row[$n_alt]);
 				$nombre_alt['value'] = $nombre_alt_formal;
-				$nombre_alt['tokens'] = array($nombre_alt_userfriendly, $nombre_alt_formal);
+				$nombre_alt['tokens'] = getExtraTokens($nombre_alt_userfriendly, $nombre_alt_formal);
 				
 				if (!array_key_exists($nombre_alt_userfriendly, $lista)) {
 					$lista[$nombre_alt_userfriendly] = $nombre_alt;
