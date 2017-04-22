@@ -271,7 +271,7 @@ var chartSalarios = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -315,7 +315,10 @@ var chartSalarios = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             } 
         }
     },
@@ -341,7 +344,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICOS ESPECIALISTAS EN ONCOLOGÍA MÉDICA</h4>');$('#info').append('<p class="descripcion">La Oncología Médica es una especialidad troncal de la Medicina, para la que se requiere una formación básica y fundamental en Medicina Interna, y <span class="excerpt"><span style="display:none;">que capacita al especialista en la evaluación y manejo de los pacientes con cáncer.   El oncólogo médico se especializa en la atención del enfermo con cáncer como un todo. Su objetivo es el cuidado del enfermo desde el diagnóstico, incluyendo el tratamiento y seguimiento, hasta la curación o durante el período terminal del enfermo. Atiende la patología asociada a la enfermedad y las complicaciones derivadas del tratamiento. Colabora activamente en el apoyo emocional, social y psicológico que los pacientes y sus familiares necesitan. Es de su especial competencia el manejo de los fármacos antineoplásicos, y debe poseer un conocimiento amplio de su farmacocinética, interacciones con otras drogas y sistemas de monitorización de los niveles de las mismas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICOS ESPECIALISTAS EN ONCOLOGÍA MÉDICA</h4>');$('#info').append('<p class="descripcion">La Oncología Médica es una especialidad troncal de la Medicina, para la que se requiere una formación básica y fundamental en Medicina Interna, y que capacita al especialista en la evaluación y manejo de los pacientes con cáncer.   El oncólogo médico se especializa en la atención del enfermo con cáncer como un todo. Su objetivo es el cuidado del enfermo desde el diagnóstico, incluyendo el tratamiento y seguimiento, hasta la curación o durante el período terminal del enfermo. Atiende la patología asociada a la enfermedad y las complicaciones derivadas del tratamiento. Colabora activamente en el apoyo emocional, social y psicológico que los pacientes y sus familiares necesitan. Es de su especial competencia el manejo de los fármacos antineoplásicos, y debe poseer un conocimiento amplio de su farmacocinética, interacciones con otras drogas y sistemas de monitorización de los niveles de las<span class="excerpt"><span style="display:none;">mismas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -379,7 +382,7 @@ $('.more').click( function() {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -530,7 +533,10 @@ $('.more').click( function() {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
@@ -613,7 +619,7 @@ var chartEmpleabilidad = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -689,6 +695,9 @@ var chartEmpleabilidad = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
+                },
+                legendItemClick: function() {
+                    return false; 
                 }                       
             }          
         }

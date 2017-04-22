@@ -271,7 +271,7 @@ var chartSalarios = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -315,7 +315,10 @@ var chartSalarios = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             } 
         }
     },
@@ -341,7 +344,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICOS ESPECIALISTAS EN ANESTESIOLOGÍA Y REANIMACIÓN</h4>');$('#info').append('<p class="descripcion">La Anestesiología y Reanimación es una especialidad médica que tiene como objetivos el estudio, docencia, investigación y aplicación clínica de:<span class="excerpt"><span style="display:none;">  a). Métodos y técnicas para hacer insensible al dolor y proteger al paciente de la agresión antes, durante y después de cualquier intervención quirúrgica y obstétrica, de exploraciones diagnósticas y de traumatismos.  b) Mantener las funciones vitales en cualquiera de las condiciones citadas y en los pacientes donantes de órganos.  c) Tratar pacientes cuyas funciones vitales estén gravemente comprometidas, manteniendo las medidas terapéuticas hasta que se supere la situación de riesgo vital de dichas funciones.  d) Tratamiento del dolor de cualquier etiología, tanto aguda como crónica.  e) La reanimación en el lugar del accidente y la evacuación de accidentados o pacientes en situación crítica.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICOS ESPECIALISTAS EN ANESTESIOLOGÍA Y REANIMACIÓN</h4>');$('#info').append('<p class="descripcion">La Anestesiología y Reanimación es una especialidad médica que tiene como objetivos el estudio, docencia, investigación y aplicación clínica de:  a). Métodos y técnicas para hacer insensible al dolor y proteger al paciente de la agresión antes, durante y después de cualquier intervención quirúrgica y obstétrica, de exploraciones diagnósticas y de traumatismos.  b) Mantener las funciones vitales en cualquiera de las condiciones citadas y en los pacientes donantes de órganos.  c) Tratar pacientes cuyas funciones vitales estén gravemente comprometidas, manteniendo las medidas terapéuticas hasta que se supere la situación de riesgo vital de dichas funciones.  d) Tratamiento del dolor de cualquier etiología, tanto aguda como crónica.  e) La reanimación en el lugar del accidente y la evacuación de accidentados o pacientes en situación<span class="excerpt"><span style="display:none;">crítica.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -379,7 +382,7 @@ $('.more').click( function() {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -530,7 +533,10 @@ $('.more').click( function() {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
@@ -613,7 +619,7 @@ var chartEmpleabilidad = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -689,6 +695,9 @@ var chartEmpleabilidad = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
+                },
+                legendItemClick: function() {
+                    return false; 
                 }                       
             }          
         }

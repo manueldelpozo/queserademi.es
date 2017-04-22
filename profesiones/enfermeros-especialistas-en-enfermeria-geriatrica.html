@@ -271,7 +271,7 @@ var chartSalarios = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -315,7 +315,10 @@ var chartSalarios = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             } 
         }
     },
@@ -341,7 +344,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ENFERMEROS ESPECIALISTAS EN ENFERMERÍA GERIÁTRICA</h4>');$('#info').append('<p class="descripcion">La enfermera especialista en Enfermería Geriátrica es el profesional que presta atención y cuidados de enfermería a la población anciana, estando<span class="excerpt"><span style="display:none;"> capacitada para enseñar, supervisar, investigar, gestionar y liderar los cuidados destinados a este colectivo en situaciones complejas en las que también actúa como asesor en todos los niveles del sistema socio-sanitario.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ENFERMEROS ESPECIALISTAS EN ENFERMERÍA GERIÁTRICA</h4>');$('#info').append('<p class="descripcion">La enfermera especialista en Enfermería Geriátrica es el profesional que presta atención y cuidados de enfermería a la población anciana, estando capacitada para enseñar, supervisar, investigar, gestionar y liderar los cuidados destinados a este colectivo en situaciones complejas en las que también actúa como asesor en todos los niveles del sistema<span class="excerpt"><span style="display:none;">socio-sanitario.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -379,7 +382,7 @@ $('.more').click( function() {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -530,7 +533,10 @@ $('.more').click( function() {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
@@ -613,7 +619,7 @@ var chartEmpleabilidad = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -689,6 +695,9 @@ var chartEmpleabilidad = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
+                },
+                legendItemClick: function() {
+                    return false; 
                 }                       
             }          
         }

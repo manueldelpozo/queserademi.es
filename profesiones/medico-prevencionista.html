@@ -271,7 +271,7 @@ var chartSalarios = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -315,7 +315,10 @@ var chartSalarios = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             } 
         }
     },
@@ -341,7 +344,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICO PREVENCIONISTA</h4>');$('#info').append('<p class="descripcion">Es la ciencia y la práctica del fomento, elaboración y aplicación de políticas de promoción y protección de la salud y de prevención de la enfe<span class="excerpt"><span style="display:none;">rmedad tanto para reducir la probabilidad de su aparición como para impedir o controlar su progresión, asícomo de la vigilancia de la salud de la población, de la identificación de sus necesidades sanitarias y de la planificación y evaluación de los servicios de salud</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICO PREVENCIONISTA</h4>');$('#info').append('<p class="descripcion">Es la ciencia y la práctica del fomento, elaboración y aplicación de políticas de promoción y protección de la salud y de prevención de la enfermedad tanto para reducir la probabilidad de su aparición como para impedir o controlar su progresión, asícomo de la vigilancia de la salud de la población, de la identificación de sus necesidades sanitarias y de la planificación y evaluación de los servicios de<span class="excerpt"><span style="display:none;">salud</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -379,7 +382,7 @@ $('.more').click( function() {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -530,7 +533,10 @@ $('.more').click( function() {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
@@ -613,7 +619,7 @@ var chartEmpleabilidad = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -689,6 +695,9 @@ var chartEmpleabilidad = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
+                },
+                legendItemClick: function() {
+                    return false; 
                 }                       
             }          
         }

@@ -271,7 +271,7 @@ var chartSalarios = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -315,7 +315,10 @@ var chartSalarios = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             } 
         }
     },
@@ -341,7 +344,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ESPECIALISTAS MICROBIOLOGÍA Y PARASITOLOGÍA CLÍNICAS</h4>');$('#info').append('<p class="descripcion">La especialidad de Microbiología y Parasitología estudia los microorganismos que se interrelacionan con el hombre y la naturaleza de dicha relación<span class="excerpt"><span style="display:none;"> que, en ocasiones se traduce en una enfermedad infecciosa. La especialidad de Microbiología y Parasitología no sólo ha de considerar el estudio de los microorganismos que producen enfermedades en el hombre, sino que también debe ocuparse de los microorganismos que forman parte de la microbiota saprofita, por la trascendencia que dichos agentes pueden tener en el control de diversos nichos ecológicos, por sus efectos beneficiosos en la fisiología humana, y por su potencial patógeno</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ESPECIALISTAS MICROBIOLOGÍA Y PARASITOLOGÍA CLÍNICAS</h4>');$('#info').append('<p class="descripcion">La especialidad de Microbiología y Parasitología estudia los microorganismos que se interrelacionan con el hombre y la naturaleza de dicha relación que, en ocasiones se traduce en una enfermedad infecciosa. La especialidad de Microbiología y Parasitología no sólo ha de considerar el estudio de los microorganismos que producen enfermedades en el hombre, sino que también debe ocuparse de los microorganismos que forman parte de la microbiota saprofita, por la trascendencia que dichos agentes pueden tener en el control de diversos nichos ecológicos, por sus efectos beneficiosos en la fisiología humana, y por su potencial<span class="excerpt"><span style="display:none;">patógeno</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -379,7 +382,7 @@ $('.more').click( function() {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -530,7 +533,10 @@ $('.more').click( function() {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
@@ -613,7 +619,7 @@ var chartEmpleabilidad = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -689,6 +695,9 @@ var chartEmpleabilidad = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
+                },
+                legendItemClick: function() {
+                    return false; 
                 }                       
             }          
         }

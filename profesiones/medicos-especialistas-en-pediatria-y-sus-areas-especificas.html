@@ -271,7 +271,7 @@ var chartSalarios = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -315,7 +315,10 @@ var chartSalarios = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             } 
         }
     },
@@ -341,7 +344,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICOS ESPECIALISTAS EN PEDIATRÍA Y SUS ÁREAS ESPECÍFICAS</h4>');$('#info').append('<p class="descripcion">Pediatría es la medicina integral del período evolutivo de la existencia humana desde la concepción hasta el fin de la adolescencia, época cuya si<span class="excerpt"><span style="display:none;">ngularidad reside en el fenómeno del crecimiento, maduración y desarrollo biológico, fisiológico y social que, en cada momento, se liga a la íntima interdependencia entre el patrimonio heredado y el medio ambiente en el que el niño se desenvuelve.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICOS ESPECIALISTAS EN PEDIATRÍA Y SUS ÁREAS ESPECÍFICAS</h4>');$('#info').append('<p class="descripcion">Pediatría es la medicina integral del período evolutivo de la existencia humana desde la concepción hasta el fin de la adolescencia, época cuya singularidad reside en el fenómeno del crecimiento, maduración y desarrollo biológico, fisiológico y social que, en cada momento, se liga a la íntima interdependencia entre el patrimonio heredado y el medio ambiente en el que el niño se<span class="excerpt"><span style="display:none;">desenvuelve.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -379,7 +382,7 @@ $('.more').click( function() {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -530,7 +533,10 @@ $('.more').click( function() {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
@@ -613,7 +619,7 @@ var chartEmpleabilidad = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -689,6 +695,9 @@ var chartEmpleabilidad = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
+                },
+                legendItemClick: function() {
+                    return false; 
                 }                       
             }          
         }

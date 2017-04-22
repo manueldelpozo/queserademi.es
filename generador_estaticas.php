@@ -4,6 +4,11 @@ set_time_limit(0);
 
 require('conexion.php');
 
+// Include Composer autoloader if not already done.
+include 'vendor/autoload.php';
+
+use \ForceUTF8\Encoding;
+
 try { 
   $tablas = array( 
     'salarios'      => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
@@ -45,6 +50,7 @@ try {
   $nombres = $rs_nombres->fetchAll();
   $nombres_usados = array();
   $nombres_usados_alt = array();
+  $count = 0;
 
   //funciones para scripts
 
@@ -61,13 +67,13 @@ try {
   function createExcerpts($text, $length, $more_txt) { 
     $text = preg_replace('/[\n\r]/', '', $text);
     $text = str_replace('"','',$text);
-      // primer letra en mayuscula forzando el UTF8
-      $text = Encoding::toUTF8(ucfirst($text));
-      // dividir el texto en dos
-      $split_text = explode(' ', $text, $length);
-      $excerpt = array_pop($split_text);
-      $content = join(' ', $split_text);
-      return $content . '<span class="excerpt"><span style="display:none;">' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></span>'; 
+    // primer letra en mayuscula forzando el UTF8
+    $text = Encoding::toUTF8(ucfirst($text));
+    // dividir el texto en dos
+    $split_text = explode(' ', $text, $length);
+    $excerpt = array_pop($split_text);
+    $content = join(' ', $split_text);
+    return $content . '<span class="excerpt"><span style="display:none;">' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></span>'; 
   }
 
   function imprimirSeriesCap($filas, $tablas) {
@@ -176,6 +182,7 @@ try {
       }
 
       if (!empty($profesion)) {
+        $count++;
         // darle url al html estatico
         $profesion_nosignos = getNombreLimpio($profesion);
         $profesion_dashed = str_replace(' ', '-', $profesion_nosignos); // remplazar espacios en blanco por underscore
@@ -186,7 +193,7 @@ try {
         }*/ 
         // crear html estatico o reescribirlo si ya existe!!
         $pagina_html = fopen($url_html, "w+") or die("No se puede crear este documento");
-        echo '<h1>pagina creada: '.$url_html.'</h1>';
+        echo '<h1><strong>'.$count.'</strong> pagina creada: '.$url_html.'</h1>';
       }
       
 // comenzamos a generar el html como string

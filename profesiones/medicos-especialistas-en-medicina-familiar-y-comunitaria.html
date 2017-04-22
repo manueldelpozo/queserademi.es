@@ -271,7 +271,7 @@ var chartSalarios = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -315,7 +315,10 @@ var chartSalarios = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             } 
         }
     },
@@ -341,7 +344,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICOS ESPECIALISTAS EN MEDICINA FAMILIAR Y COMUNITARIA</h4>');$('#info').append('<p class="descripcion">El especialista en Medicina de Familia y Comunitaria es el licenciado en Medicina con formación específica de postgrado en esta especialidad. Es el <span class="excerpt"><span style="display:none;">especialista médico que realiza Atención Primaria de alta calidad prestando cuidados integrales de salud desde una perspectiva biopsicosocial al individuo, familia y comunidad. E1 médico de familia es el interlocutor válido del sistema sanitario ante el individuo y la comunidad, capaz de traducir las necesidades de salud al lenguaje cotidiano facilitando la autorresponsabilidad en su cuidado y mantenimiento.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICOS ESPECIALISTAS EN MEDICINA FAMILIAR Y COMUNITARIA</h4>');$('#info').append('<p class="descripcion">El especialista en Medicina de Familia y Comunitaria es el licenciado en Medicina con formación específica de postgrado en esta especialidad. Es el especialista médico que realiza Atención Primaria de alta calidad prestando cuidados integrales de salud desde una perspectiva biopsicosocial al individuo, familia y comunidad. E1 médico de familia es el interlocutor válido del sistema sanitario ante el individuo y la comunidad, capaz de traducir las necesidades de salud al lenguaje cotidiano facilitando la autorresponsabilidad en su cuidado y<span class="excerpt"><span style="display:none;">mantenimiento.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -379,7 +382,7 @@ $('.more').click( function() {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -530,7 +533,10 @@ $('.more').click( function() {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
@@ -613,7 +619,7 @@ var chartEmpleabilidad = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -689,6 +695,9 @@ var chartEmpleabilidad = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
+                },
+                legendItemClick: function() {
+                    return false; 
                 }                       
             }          
         }

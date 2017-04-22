@@ -271,7 +271,7 @@ var chartSalarios = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -315,7 +315,10 @@ var chartSalarios = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             } 
         }
     },
@@ -341,7 +344,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICOS ESPECIALISTAS EN BIOQUÍMICA CLÍNICA</h4>');$('#info').append('<p class="descripcion">La Bioquímica Clínica es la especialidad que se ocupa del estudio de los aspectos químicos de la vida humana en la salud y en la enfermedad, y de l<span class="excerpt"><span style="display:none;">a aplicación de los métodos químicos y bioquímicos de laboratorio al diagnóstico, control del tratamiento, prevención e investigación de la enfermedad.  Por tanto, comprende el estudio de los procesos metabólicos en relación a los cambios tanto fisiológicos como patológicos, o los inducidos por maniobras terapéuticas. Para este estudio la Bioquímica Clínica aplica los métodos, técnicas y procedimientos de la química y bioquímica analítica con el propósito de obtener y participar en la interpretación de la información útil para la prevención, diagnóstico, pronóstico y evolución de la enfermedad, así como de su respuesta al tratamiento.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MÉDICOS ESPECIALISTAS EN BIOQUÍMICA CLÍNICA</h4>');$('#info').append('<p class="descripcion">La Bioquímica Clínica es la especialidad que se ocupa del estudio de los aspectos químicos de la vida humana en la salud y en la enfermedad, y de la aplicación de los métodos químicos y bioquímicos de laboratorio al diagnóstico, control del tratamiento, prevención e investigación de la enfermedad.  Por tanto, comprende el estudio de los procesos metabólicos en relación a los cambios tanto fisiológicos como patológicos, o los inducidos por maniobras terapéuticas. Para este estudio la Bioquímica Clínica aplica los métodos, técnicas y procedimientos de la química y bioquímica analítica con el propósito de obtener y participar en la interpretación de la información útil para la prevención, diagnóstico, pronóstico y evolución de la enfermedad, así como de su respuesta al<span class="excerpt"><span style="display:none;">tratamiento.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -379,7 +382,7 @@ $('.more').click( function() {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -530,7 +533,10 @@ $('.more').click( function() {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
@@ -613,7 +619,7 @@ var chartEmpleabilidad = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -689,6 +695,9 @@ var chartEmpleabilidad = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
+                },
+                legendItemClick: function() {
+                    return false; 
                 }                       
             }          
         }

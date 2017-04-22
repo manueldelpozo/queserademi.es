@@ -271,7 +271,7 @@ var chartSalarios = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -315,7 +315,10 @@ var chartSalarios = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             } 
         }
     },
@@ -341,7 +344,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">COMADRONA</h4>');$('#info').append('<p class="descripcion">La matrona es el profesional sanitario que, con una actitud científica responsable y utilizando los medios clínicos y tecnológicos adecuados al des<span class="excerpt"><span style="display:none;">arrollo de la ciencia en cada momento, proporciona una atención integral a la salud sexual, reproductiva y maternal de la mujer, en su facetas preventiva, de promoción y de atención y recuperación de la salud, incluyendo así mismo la atención a la madre, en el diagnóstico, control y asistencia del embarazo, parto y puerperio normal y la atención al hijo recién nacido sano, hasta el 28 día de vida.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h4 style="margin:15px">INFORMACIÓN</h4><div id="info"></div>');$('#info').append('<h4 class="principal nombre">COMADRONA</h4>');$('#info').append('<p class="descripcion">La matrona es el profesional sanitario que, con una actitud científica responsable y utilizando los medios clínicos y tecnológicos adecuados al desarrollo de la ciencia en cada momento, proporciona una atención integral a la salud sexual, reproductiva y maternal de la mujer, en su facetas preventiva, de promoción y de atención y recuperación de la salud, incluyendo así mismo la atención a la madre, en el diagnóstico, control y asistencia del embarazo, parto y puerperio normal y la atención al hijo recién nacido sano, hasta el 28 día de<span class="excerpt"><span style="display:none;">vida.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -379,7 +382,7 @@ $('.more').click( function() {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -530,7 +533,10 @@ $('.more').click( function() {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
-                }                       
+                },
+                legendItemClick: function() {
+                    return false; 
+                }                        
             }          
         }
     },
@@ -613,7 +619,7 @@ var chartEmpleabilidad = {
             width: '300%'
         },
         title: {
-            text: '<span>(Click para ocultar)</span>',
+            text: '<span>(Click para ver información)</span>',
             style: {
                 fontStyle: 'italic',
                 fontSize: '9px',
@@ -689,6 +695,9 @@ var chartEmpleabilidad = {
                 },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
+                },
+                legendItemClick: function() {
+                    return false; 
                 }                       
             }          
         }
