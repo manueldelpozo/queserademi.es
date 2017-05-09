@@ -226,6 +226,7 @@ $('#container_capacidades').highcharts({
     },
     plotOptions: {
         series: {
+            cursor: 'pointer',
             stickyTracking: false,
             events: {
                 click: function(evt) {

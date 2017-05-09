@@ -229,6 +229,7 @@ var chartEmpleabilidad = {
     }, 
     plotOptions: {
         series: {
+            cursor: 'pointer',
             stickyTracking: false,
             events: {
                 click: function(evt) {

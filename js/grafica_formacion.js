@@ -62,6 +62,7 @@ $(function () {
         colors: [ '#ede2e8', '#dcc6d1', '#ba8da4', '#975577', '#751c4a', '#58002e', '#420022', '#2c0017', '#210011', '#160000' ],
         plotOptions: {
             series: {
+                cursor: 'pointer',
                 stacking: 'normal',
                 stickyTracking: false,
                 events: {

@@ -160,6 +160,7 @@ var chartSalarios = {
             fillOpacity: 0.5
         },
         series: {
+            cursor: 'pointer',
             allowPointSelect: true,
             stickyTracking: false,
             events: {
