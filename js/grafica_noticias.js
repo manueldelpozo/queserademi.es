@@ -1,8 +1,34 @@
 
-$('#container_noticias').html('<h5 style="margin:15px; font-family: sans-serif; font-weight: bold;">NOTICIAS</h5><div id="noticiasContainer"></div>');
+$('#container_noticias').html('<h5 style="margin: 15px; font-weight: bold;">BLOG QUESERADEMI</h5><div id="noticiasContainer"></div>');
+
+
+// PARA MOSTRAR TODAS LAS NOTICIAS DEL BLOG
+$.ajax({
+    url: 'http://queserademi.com/noticias/wp-json/wp/v2/posts',
+    method: 'GET',
+    success: function(result) {
+        console.log(result);
+        var title, content, src, i, posts = '';
+        for (i = 0; i < result.length; i++) {
+            title = result[i].title.rendered;
+            content = result[i].excerpt.rendered;
+            src = result[i].link;
+            posts += '<a href="' + src + '" class="list-group-item list-group-item-action"><h4><strong>' + title + '</strong></h4><p>' + content + '</p></a>';
+        }
+        $('#noticiasContainer').append('<div class="list-group">' + posts + '</div>');
+    },
+    error: function(xhr, textStatus, errorThrown) {
+        console.log(xhr, textStatus, errorThrown);
+        $('#noticiasContainer').append('<h2>No hay noticias!</h2>');
+    }
+});
+
+
+
+// PARA MOSTRAR NOTICIAS ESPECIFICAS A LA PROFESION
 
 //conexion a http://diy-qsdm.rhcloud.com/
-function getNoticias(id) {
+/*function getNoticias(id) {
     console.log("http://diy-qsdm.rhcloud.com/service/noticias/byProfesion/" + id);
     $.ajax({
         url: "http://diy-qsdm.rhcloud.com/service/noticias/byProfesion/" + id,
@@ -47,7 +73,7 @@ function getNoticias(id) {
         }
         $('#noticiasContainer').append('</ul>');
     }
-<?php } ?>
+<?php } ?>*/
 
 
 

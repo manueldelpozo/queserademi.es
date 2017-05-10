@@ -292,6 +292,9 @@ $html = '
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_info" class="grafica"></div>
             </div>
+            <div class="col-md-6 col-xs-12 text-center">
+              <div id="container_noticias" class="grafica"></div>
+            </div>
             <!--div class="col-md-6 col-xs-12 text-center">
               <div id="container_formacion" class="grafica"></div>
             </div>
@@ -589,7 +592,7 @@ if( $btn_colabora_s_1 > 0 ) {
 
 /** INFO **/
 
-$script_info = "$('#container_info').html('<h4 style=\"margin:15px\">INFORMACIÓN</h4><div id=\"info\"></div>');";
+$script_info = "$('#container_info').html('<h5 style=\"margin:15px; font-weight: bold;\">INFORMACIÓN</h5><div id=\"info\"></div>');";
 
 if( isset( $profesion ) ) {  
     $script_info .= "$('#info').append('<h4 class=\"principal nombre\">". mb_strtoupper($profesion,"UTF-8" ) ."</h4>');";
@@ -1078,6 +1081,34 @@ if( $btn_colabora_e_1 > 0 ) {
 
     $('#container_empleabilidad').append(capa_aviso);";
 } 
+
+/** NOTICIAS **/
+
+$script_noticias .= "
+
+$('#container_noticias').html('<h5 style=\"margin: 15px; font-weight: bold;\">BLOG QUESERADEMI</h5><div id=\"noticiasContainer\"></div>');
+
+$.ajax({
+    url: 'http://queserademi.com/noticias/wp-json/wp/v2/posts',
+    method: 'GET',
+    success: function(result) {
+        console.log(result);
+        var title, content, src, i, posts = '';
+        for (i = 0; i < result.length; i++) {
+            title = result[i].title.rendered;
+            content = result[i].excerpt.rendered;
+            src = result[i].link;
+            posts += '<a href=\"' + src + '\" class=\"list-group-item list-group-item-action\"><h4><strong>' + title + '</strong></h4><p>' + content + '</p></a>';
+        }
+        $('#noticiasContainer').append('<div class=\"list-group\">' + posts + '</div>');
+    },
+    error: function(xhr, textStatus, errorThrown) {
+        console.log(xhr, textStatus, errorThrown);
+        $('#noticiasContainer').append('<h2>No hay noticias!</h2>');
+    }
+});
+
+";
 
 /** FORMACION **/
 /*
@@ -1588,7 +1619,7 @@ if( $btn_colabora_sat_1 > 0 ) {
 */
   // incluir scripts y cerrar html 
 
-    $html .= $script_salarios . $script_info . $script_capacidades . $script_empleabilidad; 
+    $html .= $script_salarios . $script_info . $script_capacidades . $script_empleabilidad . $script_noticias; 
     //$html .= $script_formacion . $script_satisfaccion;
     $html .= '
   </script>

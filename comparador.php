@@ -204,10 +204,10 @@ set_time_limit(0);
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_satisfaccion" class="grafica"></div>
-            </div> 
+            </div--> 
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_noticias" class="grafica"></div>
-            </div-->
+            </div>
           </div> 
 
       </form>
@@ -306,7 +306,7 @@ set_time_limit(0);
           include('js/grafica_info.js'); 
           //include('js/grafica_formacion.js');
           //include('js/grafica_satisfaccion.js');
-          //include('js/grafica_noticias.js');
+          include('js/grafica_noticias.js');
         ?>
       </script>
   </body>

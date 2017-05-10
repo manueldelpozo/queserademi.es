@@ -147,6 +147,16 @@ div.body > div {
   color: #d5001e;
 }
 
+#noticiasContainer {
+  overflow: scroll;
+  height: 319px;
+  margin: 20px;
+}
+
+#noticiasContainer .list-group {
+  text-align: left !important;
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (max-device-width: 400px) and (orientation:portrait) {
   div.header {
