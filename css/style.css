@@ -104,7 +104,8 @@ button, a {
 }
 
 .seo-header {
-	visibility: hidden;
+	color: transparent;
+	height: 0;
 }
 
 .header h4 {
