@@ -249,12 +249,12 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 				$prev_page = $max_pages;
 			}
 			$prev_link = add_query_arg( 'page', $prev_page, $base );
-			$response->link_header( 'prev', $prev_link );
+			//$response->link_header( 'prev', $prev_link );
 		}
 		if ( $max_pages > $page ) {
 			$next_page = $page + 1;
 			$next_link = add_query_arg( 'page', $next_page, $base );
-			$response->link_header( 'next', $next_link );
+			//$response->link_header( 'next', $next_link );
 		}
 
 		return $response;
