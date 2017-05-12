@@ -1,0 +1,12 @@
+.wpvp_system_stats{
+	position: absolute;
+	right: 10%;
+	border: 3px solid #C9C9C9;
+	padding: 10px;
+}
+.wpvp_system_stats span.true{
+	color: rgb(0, 194, 0);
+}
+.wpvp_system_stats span.false{
+	color:red;
+}

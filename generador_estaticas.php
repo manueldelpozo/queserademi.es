@@ -16,7 +16,7 @@ try {
     'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
     'info'          => array('descripcion'),
     'satisfaccion'  => array('experiencia','grado_satisfaccion'),
-    'formaciones'   => array('f_nombre_ppal', 'f_nombre_alt', 'f_descripcion', 'duracion_academica', 'duracion_real', 'acceso', 'nivel')
+    'formaciones'   => array('f_nombre_ppal', 'f_nombre_alt', 'f_descripcion', 'duracion_academica', 'duracion_real')
   );
 
   function consulta($id_profesion, $tabla, $tablas, $pdo ) {
@@ -1084,29 +1084,39 @@ if( $btn_colabora_e_1 > 0 ) {
 
 /** NOTICIAS **/
 
-$script_noticias .= "
+$script_noticias = "
 
 $('#container_noticias').html('<h5 style=\"margin: 15px; font-weight: bold;\">BLOG QUESERADEMI</h5><div id=\"noticiasContainer\"></div>');
 
-$.ajax({
-    url: 'http://queserademi.com/noticias/wp-json/wp/v2/posts',
-    method: 'GET',
-    success: function(result) {
-        console.log(result);
-        var title, content, src, i, posts = '';
-        for (i = 0; i < result.length; i++) {
-            title = result[i].title.rendered;
-            content = result[i].excerpt.rendered;
-            src = result[i].link;
-            posts += '<a href=\"' + src + '\" class=\"list-group-item list-group-item-action\"><h4><strong>' + title + '</strong></h4><p>' + content + '</p></a>';
-        }
-        $('#noticiasContainer').append('<div class=\"list-group\">' + posts + '</div>');
-    },
-    error: function(xhr, textStatus, errorThrown) {
-        console.log(xhr, textStatus, errorThrown);
-        $('#noticiasContainer').append('<h2>No hay noticias!</h2>');
-    }
-});
+var loaded = false;
+
+function showNews() {
+  if(loaded) return;
+
+  $.ajax({
+      url: 'http://queserademi.com/noticias/wp-json/wp/v2/posts',
+      method: 'GET',
+      success: function(result) {
+          console.log(result);
+          var title, content, src, i, posts = '';
+          for (i = 0; i < result.length; i++) {
+              title = result[i].title.rendered;
+              content = result[i].excerpt.rendered;
+              src = result[i].link;
+              posts += '<a href=\"' + src + '\" class=\"list-group-item list-group-item-action\"><h4><strong>' + title + '</strong></h4><p>' + content + '</p></a>';
+          }
+          $('#noticiasContainer').append('<div class=\"list-group\">' + posts + '</div>');
+      },
+      error: function(xhr, textStatus, errorThrown) {
+          console.log(xhr, textStatus, errorThrown);
+          $('#noticiasContainer').append('<h2>No hay noticias!</h2>');
+      }
+  });
+
+  loaded = true;
+}
+
+showNews();
 
 ";
 

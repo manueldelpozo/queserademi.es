@@ -13,8 +13,8 @@ RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+)$ $1.html [L,QSA]
 
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
-# testLocal RewriteRule ^(.*)\.html$ /$1 [R=301,L]
-RewriteRule ^(.*)\.html$ /queserademi.es/$1 [R=301,L]
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+# testLocal RewriteRule ^(.*)\.html$ /queserademi.es/$1 [R=301,L]
 
 # Redirect errors to customized pages
 ErrorDocument 400 http://queserademi.com/errors/400.html

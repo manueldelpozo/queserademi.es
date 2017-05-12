@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Video Destacado\n"
+"POT-Creation-Date: 2016-01-19 12:57-0200\n"
+"PO-Revision-Date: 2016-01-19 12:58-0200\n"
+"Last-Translator: \n"
+"Language-Team: Airton Vancin Junior <airtonvancin@gmail.com>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.4\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: video-destacado.php\n"
+"X-Poedit-SearchPath-1: video-destacado-settings.php\n"
+
+#: video-destacado-settings.php:13
+msgid "Featured Video"
+msgstr "Vídeo destacó"
+
+#: video-destacado-settings.php:42
+msgid "Featured Video Settings"
+msgstr "Ajustes destacados Vídeo"
+
+#: video-destacado-settings.php:43
+msgid "Active the plugin to"
+msgstr "Activar el plugin para"
+
+#: video-destacado-settings.php:76
+#, fuzzy
+msgid "Post Type"
+msgstr "Post Type"
+
+#: video-destacado.php:53
+msgid "Settings"
+msgstr "Ajustes"
+
+#: video-destacado.php:83
+msgid "ID do Video"
+msgstr "Yo haría vídeo"
+
+#: video-destacado.php:86
+msgid "More Options"
+msgstr "Mas opciones"
+
+#: video-destacado.php:90
+msgid "Width"
+msgstr "Anchura"
+
+#: video-destacado.php:92 video-destacado.php:97
+msgid "Default"
+msgstr "Defecto"
+
+#: video-destacado.php:95
+msgid "Height"
+msgstr "Altura"
+
+#: video-destacado.php:104
+msgid "Add"
+msgstr "Añadir"
+
+#: video-destacado.php:105
+msgid "Remove"
+msgstr "Eliminar"
