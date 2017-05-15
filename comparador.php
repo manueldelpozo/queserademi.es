@@ -9,9 +9,9 @@ set_time_limit(0);
     'salarios'      => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
     'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
     'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
-    'info'          => array('descripcion'),
-    'satisfaccion'  => array('experiencia','grado_satisfaccion'),
-    'formaciones'   => array('f_nombre_ppal','f_nombre_alt','duracion_academica','duracion_real','acceso','nivel')
+    //'satisfaccion'  => array('experiencia','grado_satisfaccion'),
+    //'formaciones'   => array('f_nombre_ppal','f_descripcion','duracion_academica','duracion_real'),
+    'info'          => array('descripcion')
   );
 
   function consulta($profesion, $tabla, $tablas, $pdo) {
