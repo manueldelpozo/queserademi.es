@@ -16,7 +16,7 @@ try {
     'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
     'info'          => array('descripcion'),
     'satisfaccion'  => array('experiencia','grado_satisfaccion'),
-    'formaciones'   => array('f_nombre_ppal', 'f_nombre_alt', 'f_descripcion', 'duracion_academica', 'duracion_real')
+    'formaciones'   => array('f_nombre_ppal', 'f_descripcion', 'duracion_academica', 'duracion_real')
   );
 
   function consulta($id_profesion, $tabla, $tablas, $pdo ) {
@@ -114,9 +114,10 @@ try {
         $rs->execute();
         $filas = $rs->fetchAll();
         foreach ($filas as $fila) {
-            $media[] = empleabilidad($fila['contratados'], $fila['parados']);
+          $media[] = empleabilidad($fila['contratados'], $fila['parados']);
         }
-        $medias[] = round(array_sum($media) / count($media), 2);
+        if (count($media) > 0)
+          $medias[] = round(array_sum($media) / count($media), 2);
     }
     return $medias;
   }
@@ -861,9 +862,9 @@ if( $btn_colabora_c_1 > 0 ) {
 /** EMPLEABILIDAD **/
 
 $btn_colabora_e_1 = 0;
-$meses = ['enero','abril','julio','octubre'];
-$meses = array_merge($meses, $meses, $meses); // concatenar meses 
-$anyos = ['2014', '2015', '2016'];
+$meses = ['enero', 'abril', 'julio', 'octubre'];
+$meses = array_merge($meses, $meses, $meses, $meses); // concatenar meses 
+$anyos = ['2014', '2015', '2016', '2017'];
 //array_pop($meses); // y eliminar el ultimo elemento
 
 // busqueda de nulos en empleabilidad

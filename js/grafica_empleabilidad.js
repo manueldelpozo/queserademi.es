@@ -1,8 +1,8 @@
 <?php 
 $btn_colabora_e_1 = $btn_colabora_e_2 = 0;
 $meses = ['enero', 'abril', 'julio', 'octubre'];
-$meses = array_merge($meses, $meses, $meses); // concatenar meses 
-$anyos = ['2014', '2015', '2016'];
+$meses = array_merge($meses, $meses, $meses, $meses); // concatenar meses 
+$anyos = ['2014', '2015', '2016', '2017'];
 //array_pop($meses); // y eliminar el ultimo elemento
 
 function mediaEmpleabilidad($pdo, $meses, $anyos) {
@@ -17,7 +17,8 @@ function mediaEmpleabilidad($pdo, $meses, $anyos) {
         foreach ($filas as $fila) {
             $media[] = empleabilidad($fila['contratados'], $fila['parados']);
         }
-        $medias[] = round(array_sum($media) / count($media), 2);
+        if (count($media) > 0)
+          $medias[] = round(array_sum($media) / count($media), 2);
     }
     return $medias;
 }

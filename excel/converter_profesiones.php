@@ -57,7 +57,7 @@ $highestRow 	= $sheet->getHighestRow();
 $highestColumn 	= $sheet->getHighestColumn();
 //$highestRow = 2932;
 //$highestColumn = 'AT';
-
+	
 try {
 	// PRIMERO PROFESIONES
 	// desde la fila 2 del archivo excel
@@ -150,6 +150,10 @@ try {
 		$contratados_julio_2016 	= str_replace(',', '.', $rowData[0][53]);
 		$parados_octubre_2016	 	= str_replace(',', '.', $rowData[0][54]);
 		$contratados_octubre_2016 	= str_replace(',', '.', $rowData[0][55]);
+		$parados_enero_2017 		= str_replace(',', '.', $rowData[0][56]);
+		$contratados_enero_2017 	= str_replace(',', '.', $rowData[0][57]);
+		$parados_abril_2017 		= str_replace(',', '.', $rowData[0][58]);
+		$contratados_abril_2017 	= str_replace(',', '.', $rowData[0][59]);
 
 		//consulta a las tablas profesion y formacion y obtener ids creados
 		$sql_profesiones = "SELECT id, nombre_ppal FROM profesiones WHERE cod LIKE '$cod'";
@@ -175,6 +179,8 @@ try {
 			$insert_empleabilidad_abril_2016 	= $insert_empleabilidad.$id_profesion.",'$parados_abril_2016','$contratados_abril_2016','abril', 2016)";
 			$insert_empleabilidad_julio_2016 	= $insert_empleabilidad.$id_profesion.",'$parados_julio_2016','$contratados_julio_2016','julio', 2016)";
 			$insert_empleabilidad_octubre_2016 	= $insert_empleabilidad.$id_profesion.",'$parados_octubre_2016','$contratados_octubre_2016','octubre', 2016)";
+			$insert_empleabilidad_enero_2017 	= $insert_empleabilidad.$id_profesion.",'$parados_enero_2017','$contratados_enero_2017','enero', 2017)";
+			$insert_empleabilidad_abril_2017 	= $insert_empleabilidad.$id_profesion.",'$parados_abril_2017','$contratados_abril_2017','abril', 2017)";
 			$insert_capacidades_total 			= $insert_capacidades.$id_profesion.",'$c_analisis','$c_comunicacion','$c_equipo','$c_forma_fisica','$c_objetivos','$c_persuasion','$i_ingles','$i_frances','$i_aleman','$i_otro','$i_otro_nombre')";
 			$insert_profesiones_formaciones_1 	= $id_formacion_1 > 0 ? $insert_profesiones_formaciones . $id_profesion . ",$id_formacion_1)" : null; 
 			$insert_profesiones_formaciones_2 	= $id_formacion_2 > 0 ? $insert_profesiones_formaciones . $id_profesion . ",$id_formacion_2)" : null;
@@ -197,6 +203,8 @@ try {
 				$insert_empleabilidad_abril_2016, 
 				$insert_empleabilidad_julio_2016,
 				$insert_empleabilidad_octubre_2016, 
+				$insert_empleabilidad_enero_2017, 
+				$insert_empleabilidad_abril_2017,
 				$insert_capacidades_total, 
 				$insert_profesiones_formaciones_1, 
 				$insert_profesiones_formaciones_2, 
