@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>queserademi.com | Patologo</title>
-      <meta name="description" content="Patologo">
+      <title>queserademi.com | Patólogo</title>
+      <meta name="description" content="Patólogo">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -16,7 +16,7 @@
       <link rel="canonical" href="http://queserademi.com/profesiones/patologo.html">
       <meta property="og:locale" content="es_ES">
       <meta property="og:type" content="website">
-      <meta property="og:title" content="Patologo | queserademi">
+      <meta property="og:title" content="Patólogo | queserademi">
       <meta property="og:url" content="http://queserademi.com/profesiones/patologo.html">
       <meta property="og:site_name" content="queserademi">
       <meta property="og:image" content="http://queserademi.com/images/logo.png">
@@ -54,7 +54,7 @@
             <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="Patologo" spellcheck="true" autocomplete="off">
+                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="Patólogo" spellcheck="true" autocomplete="off">
                 </div>
               </div>
             </div>
@@ -192,10 +192,10 @@
   <script type="text/javascript" src="../js/graficas.js"></script>
   <script type="text/javascript" async>
     
-var seriesSalPrinc      = [13956, 16392, 18672];
-var seriesSalJunior     = [16524, 156612, 21828];
-var seriesSalIntermedio = [17928, 20100, 23628];
-var seriesSalSenior     = [19992, 22128, 26616];
+var seriesSalPrinc      = [30060, 36564, 42132];
+var seriesSalJunior     = [35244, 41580, 48804];
+var seriesSalIntermedio = [39480, 45756, 54672];
+var seriesSalSenior     = [42408, 48720, 59184];
 var salarios = [
     [0,   seriesSalPrinc[0],      seriesSalPrinc[2]],
     [5,   seriesSalJunior[0],     seriesSalJunior[2]],
@@ -328,7 +328,7 @@ var chartSalarios = {
     },
     series: [
         {
-            name: 'patologo',
+            name: 'Patólogo',
             data: medias,
             color: Highcharts.getOptions().colors[0],
             zIndex: 1,
@@ -342,18 +342,18 @@ var chartSalarios = {
             data: salarios,
             type: 'arearange',
             lineWidth: 0,
-            linkedTo: 'patologo',
+            linkedTo: 'Patólogo',
             color: Highcharts.getOptions().colors[0],
             fillOpacity: 0.3,
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PATOLOGO</h4>');$('#info').append('<p class="descripcion">Este profesional realiza la selección y aproximación diagnóstica de citologías, bajo la supervisión del facultativo. Realiza el registro fotográfico de las piezas y preparaciones a nivel macroscópico, microscópico y<span class="excerpt"><span style="display:none;">ultramicroscópico.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PATÓLOGO</h4>');$('#info').append('<p class="descripcion">La Anatomía Patológica Humana es la rama de la Medicina que se ocupa del estudio, por medio de técnicas morfológicas, de las causas, desarrollo y consecuencias de las enfermedades. El fin último es el diagnóstico correcto de biopsias, piezas quirúrgicas, citologías y autopsias. En el caso de la Medicina, el ámbito fundamental son las enfermedades humanas, si bien no se deben olvidar áreas como la patología experimental y la patología<span class="excerpt"><span style="display:none;">comparada.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
     $(this).text(text == ' [ + ]' ? ' [ - ]' : ' [ + ]');
-});var seriesCap = [2, 2, 2, 2, 2, 2];$('#container_capacidades').highcharts({
+});var seriesCap = [5, 3, 4, 4, 3, 4];$('#container_capacidades').highcharts({
     chart: {
         polar: true,
         type: 'line',
@@ -546,13 +546,13 @@ $('.more').click( function() {
         }
     },
     series: [{  
-        name: 'patologo',
+        name: 'Patólogo',
         data: seriesCap,
-        stack: 'patologo'
+        stack: 'Patólogo'
     }]
 });
-var seriesEmp = [22.85, 23.16, 21.76, 22.72, 22.66, 23.34, 21.72, 22.45, 22.29, 22.75, 20.42, 22.2];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27, 35.7, 36.65, 35.5, 33.44, 33.34];
+var seriesEmp = [10.8, 9.65, 9.7, 10.24, 7.69, 8.62, 8.04, 9.59, 7.06, 11.27, 6.51, 7.45, 6.24, 7.09];
+var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27, 35.7, 36.65, 35.5, 33.44, 33.34, 33.59, 33.19];
 var chartEmpleabilidad = {
     chart: {
         type: 'column',
@@ -633,7 +633,7 @@ var chartEmpleabilidad = {
         } 
     },
     xAxis: {
-        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2015','Abril 2015','Julio 2015','Octubre 2015','Enero 2016','Abril 2016','Julio 2016','Octubre 2016' ]
+        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2015','Abril 2015','Julio 2015','Octubre 2015','Enero 2016','Abril 2016','Julio 2016','Octubre 2016','Enero 2017','Abril 2017','Julio 2017','Octubre 2017' ]
     },
     yAxis: {
         allowDecimals: true,
@@ -657,12 +657,12 @@ var chartEmpleabilidad = {
                     }
                 }
             }, { // Paro medio
-                from: 33.34,
+                from: 33.19,
                 to: 41.27,
                 color: 'rgba(0, 0, 0, 0.2)'
             }, { // Paro bajo
                 from: 0,
-                to: 33.34,
+                to: 33.19,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     rotation: 90,
@@ -710,9 +710,9 @@ var chartEmpleabilidad = {
     }, 
     series: [
       {
-        name: 'patologo',
+        name: 'Patólogo',
         data: seriesEmp,
-        stack: 'patologo'
+        stack: 'Patólogo'
       },{
         name: 'Media de paro de todas las profesiones',
         type: 'spline',

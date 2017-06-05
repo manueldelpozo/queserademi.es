@@ -348,7 +348,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">VISITADORES MÉDICOS</h4>');$('#info').append('<p class="descripcion">Los representantes de comercio y técnicos de ventas venden bienes y servicios al por mayor, inclusive instalaciones, máquinas y artículos de uso técnico, y proporcionan información especializada cuando esto se requiere. Entre sus tareas se incluyen: Obtener órdenes de venta de bienes y servicios a establecimientos industriales y empresas minoristas o mayoristas o de otra índole Vender equipos, aparatos e instrumentos técnicos, repuestos y otros suministros, con los servicios que requieran, a empresas comerciales, industriales o de otra índole y a clientes particulares Proporcionar a los clientes y presuntos compradores información general o técnica acerca de las características y funcionamiento del material técnico en venta y demostrar su utilización Informar a los fabricantes acerca de la reacción y las necesidades de los usuarios Realizar visitas periódicas a profesionales de la medicina, para darles a conocer productos farmacéuticos Desempeñar tareas afines Supervisar a<span class="excerpt"><span style="display:none;">otros</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">VISITADORES MÉDICOS</h4>');$('#info').append('<p class="descripcion">Los representantes de comercio y técnicos de ventas venden bienes y servicios al por mayor, inclusive instalaciones, máquinas y artículos de uso técnico, y proporcionan información especializada cuando esto se requiere. Entre sus tareas se incluyen:  Obtener órdenes de venta de bienes y servicios a establecimientos industriales y empresas minoristas o mayoristas o de otra índole  Vender equipos, aparatos e instrumentos técnicos, repuestos y otros suministros, con los servicios que requieran, a empresas comerciales, industriales o de otra índole y a clientes particulares  Proporcionar a los clientes y presuntos compradores información general o técnica acerca de las características y funcionamiento del material técnico en venta y demostrar su utilización  Informar a los fabricantes acerca de la reacción y las necesidades de los usuarios  Realizar visitas periódicas a profesionales de la medicina, para darles a conocer productos farmacéuticos  Desempeñar tareas afines  Supervisar a<span class="excerpt"><span style="display:none;">otros</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -551,8 +551,8 @@ $('.more').click( function() {
         stack: 'VISITADORES MÉDICOS'
     }]
 });
-var seriesEmp = [93.86, 88.32, 87.51, 86, 82.97, 80.77, 77.07, 76.56, 78.36, 72.91, 67.76, 68.06];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27, 35.7, 36.65, 35.5, 33.44, 33.34];
+var seriesEmp = [93.86, 88.32, 87.51, 86, 82.97, 80.77, 77.07, 76.56, 78.36, 72.91, 67.76, 68.06, 67.16, 67.22];
+var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27, 35.7, 36.65, 35.5, 33.44, 33.34, 33.59, 33.19];
 var chartEmpleabilidad = {
     chart: {
         type: 'column',
@@ -633,7 +633,7 @@ var chartEmpleabilidad = {
         } 
     },
     xAxis: {
-        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2015','Abril 2015','Julio 2015','Octubre 2015','Enero 2016','Abril 2016','Julio 2016','Octubre 2016' ]
+        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2015','Abril 2015','Julio 2015','Octubre 2015','Enero 2016','Abril 2016','Julio 2016','Octubre 2016','Enero 2017','Abril 2017','Julio 2017','Octubre 2017' ]
     },
     yAxis: {
         allowDecimals: true,
@@ -657,12 +657,12 @@ var chartEmpleabilidad = {
                     }
                 }
             }, { // Paro medio
-                from: 33.34,
+                from: 33.19,
                 to: 41.27,
                 color: 'rgba(0, 0, 0, 0.2)'
             }, { // Paro bajo
                 from: 0,
-                to: 33.34,
+                to: 33.19,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     rotation: 90,
