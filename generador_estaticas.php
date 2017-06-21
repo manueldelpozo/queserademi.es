@@ -15,8 +15,8 @@ try {
     'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
     'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
     'info'          => array('descripcion'),
-    'satisfaccion'  => array('experiencia','grado_satisfaccion'),
-    'formaciones'   => array('f_nombre_ppal', 'f_descripcion', 'duracion_academica', 'duracion_real')
+    //'satisfaccion'  => array('experiencia','grado_satisfaccion'),
+    'formaciones'   => array('id', 'f_nombre_ppal','f_descripcion','duracion_academica','duracion_real')
   );
 
   function consulta($id_profesion, $tabla, $tablas, $pdo ) {
@@ -140,6 +140,47 @@ try {
       $counter++;
     }
     return $seriesEmp;
+  }
+
+  /** FORMACION **/
+  function consultarFormacionesAnteriores($id_formacion, $campos_formacion, $pdo, $arbol_formaciones) {
+      try {
+          $consulta_formaciones = 'SELECT id_formacion_ant FROM formaciones_formacion_ant WHERE id_formacion = '. $id_formacion . ';';
+          $rs = $pdo->prepare($consulta_formaciones);
+          $rs->execute();
+          $cod_formaciones_ant = $rs->fetchAll();
+          $info_formaciones = array();
+      
+          foreach ($cod_formaciones_ant as $cod_formacion_ant) {
+              $consulta_formacion_info = 'SELECT ' . join(', ', $campos_formacion) . ' FROM formaciones WHERE cod LIKE ' . $cod_formacion_ant[0] . ';';
+
+              $rs = $pdo->prepare($consulta_formacion_info);
+              $rs->execute();
+              $info_formacion = $rs->fetchAll();
+              $info_formaciones[] = $info_formacion;
+          }
+      } catch(PDOException $Exception) {
+          echo "<p>Error en la consulta.<p>\n" . $Exception;
+          exit;
+      } 
+
+      $formacion_ant = current($info_formaciones)[0];
+
+      if (!empty($formacion_ant)) {
+          $arbol_formaciones[] = $formacion_ant;
+          return consultarFormacionesAnteriores($formacion_ant['id'], $campos_formacion, $pdo, $arbol_formaciones);
+      } else {
+          return $arbol_formaciones; 
+      }
+  }
+
+  function getTotalAnyosEstudios($formaciones, $tipoDuracion) {
+      $total = 0;
+      foreach ($formaciones as $formacion) {
+          $total += $formacion[$tipoDuracion];
+      }
+
+      return $total;
   }
 
 
@@ -291,15 +332,15 @@ $html = '
               <div id="container_capacidades" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_info" class="grafica"></div>
+              <div id="container_formacion" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_noticias" class="grafica"></div>
             </div>
-            <!--div class="col-md-6 col-xs-12 text-center">
-              <div id="container_formacion" class="grafica"></div>
-            </div>
             <div class="col-md-6 col-xs-12 text-center">
+              <div id="container_info" class="grafica"></div>
+            </div>
+            <!--div class="col-md-6 col-xs-12 text-center">
               <div id="container_satisfaccion" class="grafica"></div>
             </div-->
           </div>
@@ -350,8 +391,6 @@ $html = '
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
                   <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="Share on Facebook" onclick="window.open("https://www.facebook.com/queserademicom"); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-                  <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on Google+" onclick="window.open("https://plus.google.com/share?url=" + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-                  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.com&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on LinkedIn" onclick="window.open("http://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(document.URL) + "&title=" +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
                   <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open("mailto:?subject=" + encodeURIComponent(document.title) + "&body=" +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
                 </ul>
               </div>
@@ -1122,41 +1161,114 @@ showNews();
 ";
 
 /** FORMACION **/
-/*
-$i = 0;
 
-$formacion          = $filas_formaciones[$i]['f_nombre_ppal'];
-$duracion           = $filas_formaciones[$i]['duracion_academica'];
-$duracion_real      = $filas_formaciones[$i]['duracion_real'];
-$nivel              = $filas_formaciones[$i]['nivel'];
+$btn_colabora_f_1 = false; 
+$arbol_formaciones = array();
 
-$script_formacion = "$('#container_formacion').highcharts({
-        chart: {
-            type: 'bar',
-            backgroundColor:'rgba(255, 255, 255, 0)',
-            spacingBottom: 20,
-            spacingTop: 20,
-            spacingLeft: 20,
-            spacingRight: 20,
-            width: null,
-            height: 380,
-            events: {
-                load: function(){
-                    this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
-                }
-            }
-        },
-        exporting: {
-          chartOptions: {
-            chart: {
-                events: {
-                  load: function(event) {                
-                    this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
-                  }
-                } 
-            }
+  if (isset($profesion) && !empty($filas_formaciones)) {
+    $ultima_formaciones = end($filas_formaciones);
+
+    $arbol_formaciones[] = $ultima_formaciones;
+    $arbol_formaciones = consultarFormacionesAnteriores($ultima_formaciones['id'], $tablas['formaciones'], $pdo, $arbol_formaciones);
+  }
+
+  $series = array();
+  if( isset($profesion) && !empty($filas_formaciones) ) {
+      foreach ($arbol_formaciones as $formac) {
+          if ($formac['duracion_academica']) {
+             $serie = '{';
+              $serie .= "name: '" . $formac['f_nombre_ppal'] . "', ";
+              $serie .= 'data: [' . $formac['duracion_academica'] . ', 0]';
+              $serie .= '}';
+              $series[] = $serie; 
+          }
+      }
+  } else { 
+    $btn_colabora_f_1 = true; 
+  }
+
+  $script_formacion = "
+  var chartFormacion = {
+      chart: {
+          type: 'bar',
+          backgroundColor:'rgba(255, 255, 255, 0)',
+          spacingBottom: 20,
+          spacingTop: 20,
+          spacingLeft: 20,
+          spacingRight: 20,
+          width: null,
+          height: 380,
+          events: {
+              load: function(){
+                  this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+              }
+          }
+      },
+      title: {
+          text: 'FORMACIÓN',
+          align: 'center',
+          style: { 
+              'color': '#555',
+              'fontSize': '14px',
+              'fontWeight': 'bold'
+          }
+      },
+      xAxis: {
+          categories: ['" . mb_strtoupper($profesion, 'UTF-8') . "<br><strong>[" . getTotalAnyosEstudios($arbol_formaciones, 'duracion_academica') . " años]</strong>']
+      },
+      yAxis: {
+          min: 0,
+          title: {
+              text: 'Duración de estudios (años)'
+          }
+      },
+      legend: {
+          reversed: false,
+          enabled: false
+      },
+      tooltip: {
+          headerFormat: '',
+          pointFormat: '<span>{series.name}</span><br><strong>Duración (años) &gt;&gt; {point.y}</strong>',
+          style: {
+              display: 'block', 
+              width: '300px',
+              whiteSpace: 'normal' 
           },
+          enabled: false
+      },
+      credits: {
+          enabled: false
+      },
+      colorBypoint: true,
+      colors: [ '#160000', '#210011', '#2c0017', '#420022', '#58002e', '#751c4a', '#975577', '#ba8da4', '#dcc6d1', '#ede2e8'],
+      plotOptions: {
+          series: {
+              cursor: 'pointer',
+              stacking: 'normal',
+              stickyTracking: false,
+              events: {
+                  click: function(evt) {
+                      this.chart.myTooltip.refresh(evt.point, evt);
+                  },
+                  mouseOut: function() {
+                      this.chart.myTooltip.hide();
+                  }                       
+              } 
+          },
+          scatter: {
+              tooltip: {
+                  pointFormat: '{point.x} años de estudios'
+              }
+          }
+      },
+      exporting: {
           buttons: {
+              anotherButton: {
+                  text: 'Dónde estudiar?',
+                  onclick: function () {
+                      alert('Dónde estudiar? En desarrollo... Disculpe las molestias');
+                  }
+              },
               contextButton: {
                   menuItems: [{
                       text: '<a><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>',
@@ -1165,7 +1277,7 @@ $script_formacion = "$('#container_formacion').highcharts({
                               getUrlShare('facebook', this, event.target);    
                           }
                       }
-                    },{
+                  },{
                       text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
                   },{
                       separator: true
@@ -1178,303 +1290,43 @@ $script_formacion = "$('#container_formacion').highcharts({
                       }
                   }]
               }
+          },
+          chartOptions: {
+              chart: {
+                  events: {
+                    load: function(event) {                
+                      this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                    }
+                  } 
+              }
           }
-        },
-        title: {
-            text: 'FORMACION'
-        },
-        xAxis: {
-            categories: [
-            '". mb_strtoupper($profesion, "UTF-8") ."<br><strong>". $formacion ." &gt;&gt;</strong>'
-            , '(Duracion real estimada) <br><strong>". $formacion ." &gt;&gt;</strong>'
-            ]
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: 'Duracion de estudios (años)'
-            }
-        },
-        legend: {
-            reversed: true
-        },
-        credits: {
-             enabled: false
-        },
-        tooltip: {
-            enabled: false
-        },
-        colorBypoint: true,
-        colors: [ '#ede2e8', '#dcc6d1', '#ba8da4', '#975577', '#751c4a', '#58002e', '#420022', '#2c0017', '#210011', '#160000' ],
-        plotOptions: {
-            series: {
-                cursor: 'pointer',
-                stacking: 'normal',
-                stickyTracking: false,
-                events: {
-                    click: function(evt) {
-                        this.chart.myTooltip.refresh(evt.point, evt);
-                    },
-                    mouseOut: function() {
-                        this.chart.myTooltip.hide();
-                    },
-                    legendItemClick: function() {
-                        return false; 
-                    }                        
-                }
-            },
-            scatter: {
-                tooltip: {
-                    pointFormat: '{point.x} años de estudios'
-                }
-            }
-        },
-        exporting: {
-            buttons: {
-               anotherButton: {
-                    text: 'Donde estudiar?',
-                    onclick: function () {
-                        alert('Donde estudiar? En desarrollo... Disculpe las molestias');
-                    }
-                },
-                contextButton: {
-                    menuItems: [{
-                      text: '<a><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>',
-                      onclick: function(event) {
-                          if (event.target.href === '') {
-                              getUrlShare('facebook', this, event.target);    
-                          }
-                      }
-                    },{
-                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
-                    },{
-                      separator: true
-                    },{
-                      text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
-                      onclick: function() {
-                          this.exportChart({
-                              type: 'image/jpeg'
-                          });
-                      }
-                    }]
-                }
-            }
-        },";
-       
-        $btn_colabora_f_1 = 0; 
+      },
+      series: [" . join($series, ',') . "]
+  };
 
-        $formacion          = $filas_formaciones[$i]['f_nombre_ppal'];
-        $duracion           = $filas_formaciones[$i]['duracion_academica'];
-        $duracion_real      = $filas_formaciones[$i]['duracion_real'];
-        $nivel              = $filas_formaciones[$i]['nivel'];
-     
-        $doctorado = $master = $universidad = $fp_superior = false;
-        
-        $script_formacion .= "series: [";         
-            if( $duracion > 16 && $nivel == 11 ) {
-              $script_formacion .= "{
-                  name: 'Doctorado',
-                  data: [";
-                  if( isset($duracion) && $duracion > 16 ) { 
-                    $doctorado = true; 
-                    if($duracion > 18) {
-                      $script_formacion .= ($duracion - 18);
-                    } else {
-                      $script_formacion .= 2;
-                    } 
-                    $script_formacion .= ", 0";
-                  } else { 
-                    $btn_colabora_f_1 = 9; 
-                    $script_formacion .= '0, 0';
-                  } 
-                  $script_formacion .= "]
-              },";
-            } 
-            if( $duracion > 16 && $nivel == 10 ) { 
-              $script_formacion .= "{
-                  name: 'Master',
-                  data: [";
-                  if( isset($duracion) && $duracion > 16 ) { 
-                    $master = true; 
-                    if($duracion < 19) {
-                      $script_formacion .= ($duracion - 16);
-                    } else {
-                      $script_formacion .= 2;
-                    }
-                  $script_formacion .= ", 0";
-                  } else { 
-                    $btn_colabora_f_1 = 8; 
-                    $script_formacion .= '0, 0';
-                  } 
-                  $script_formacion .= "]
-              },"; 
-            } 
-            if( $nivel == 9 ) { 
-              $script_formacion .= "{
-                  name: 'Oposiciones',
-                  data: [";
-                  if( isset($duracion) && $duracion > 12 ) { 
-                    if($duracion > 16) {
-                      $script_formacion .= ($duracion - 16);
-                    } else if($duracion < 17) {
-                      $script_formacion .= ($duracion - 12);
-                    } else {
-                      $script_formacion .= 2;
-                    } 
-                  $script_formacion .= ", 0";
-                  } else { 
-                    $btn_colabora_f_1 = 7; 
-                    $script_formacion .= '0, 0';
-                  } 
-                
-                  $script_formacion .= "]
-              },";
-            } 
-            if( ($duracion > 12 || $nivel == 8) || $master || $doctorado ) { 
-              $script_formacion .= "{
-                  name: 'Grado Universitario',
-                  data: [";
-                  if( isset($duracion) && $duracion > 12 ) { 
-                    $universidad = true; 
-                    if($duracion < 17) {
-                      $script_formacion .= ($duracion - 12);
-                    } else {
-                      $script_formacion .= 4;
-                    } 
-                    $script_formacion .= ", 0";
-                  } else { 
-                    $btn_colabora_f_1 = 6; 
-                    $script_formacion .= '0, 0';
-                  }
-            
-                  $script_formacion .= "]
-              },"; 
-            } 
-            if( $duracion > 12 && $nivel == 7 ) { 
-              $script_formacion .= "{
-                  name: 'F.P. Superior',
-                  data: [";
-                  if( isset($duracion) && $duracion > 12 ) { 
-                    $fp_superior = true; 
-                    if($duracion < 15) {
-                      $script_formacion .= ($duracion - 12);
-                    } else {
-                      $script_formacion .= 2;
-                    } 
-                    $script_formacion .= ", 0";
-                  } else { 
-                    $btn_colabora_f_1 = 5; 
-                    $script_formacion .= '0, 0';
-                  } 
-                
-                  $script_formacion .= "]
-              },"; 
-            } 
-            if( ($duracion > 10 && $nivel == 6) || $universidad || $fp_superior ) { 
-              $script_formacion .= "{
-                  name: 'Bachillerato',
-                  data: [";
-                  if( isset($duracion) && $duracion > 10 ) {
-                    if($duracion < 13) {
-                      $script_formacion .= ($duracion - 10);
-                    } 
-                    else {
-                      $script_formacion .= 2;
-                    } 
-                    $script_formacion .= ", 0";
-                  } else { 
-                    $btn_colabora_f_1 = 4; 
-                    $script_formacion .= '0, 0';
-                  } 
-                  $script_formacion .= "]
-              },";
-            } 
-            if( $duracion > 10 && $nivel == 5 ) { 
-              $script_formacion .= "{
-                  name: 'F.P. Medio',
-                  data: [";
-                  if( isset($duracion) && $duracion > 10 ) { 
-                    if($duracion < 13) {
-                      $script_formacion .= ($duracion - 10);
-                    } else {
-                      $script_formacion .= 2;
-                    } 
-                    $script_formacion .= ", 0";
-                  } else { 
-                    $btn_colabora_f_1 = 3; 
-                    $script_formacion .= '0, 0';
-                  } 
-                  $script_formacion .= "]
-              },";
-            } 
-            if( $duracion > 6 ) { 
-              $script_formacion .= "{
-                  name: 'E.S.O.',
-                  data: [";
-                  if( isset($duracion) && $duracion > 6 ) { 
-                    if($duracion < 11) {
-                      $script_formacion .= ($duracion - 6);
-                    } else {
-                      $script_formacion .= 4;
-                    } 
-                    $script_formacion .= ", 0";
-                  } else { 
-                    $btn_colabora_f_1 = 2; 
-                    $script_formacion .= '0, 0';
-                  } 
-                  $script_formacion .= "]
-              },";
-            } 
-            if( $duracion > 0 ) { 
-              $script_formacion .= "{
-                  name: 'Primaria',
-                  data: [";
-                  if( isset($duracion) && $duracion > 0 ) { 
-                    if($duracion < 7) {
-                      $script_formacion .= $duracion;
-                    } else {
-                      $script_formacion .= 6;
-                    } 
-                    $script_formacion .= ", 0"; 
-                  } else { 
-                    $btn_colabora_f_1 = 1; 
-                    $script_formacion .= '0, 0';
-                  } 
-                  $script_formacion .= "]
-              },"; 
-            } 
-            if( isset($duracion_real) ) { 
-              $script_formacion .= "{
-                  name: 'Duracion real estimada',
-                  data: [";
-                  if( isset($duracion_real) && $duracion_real > 0 ) { 
-                    $script_formacion .= "0, ".$duracion_real;
-                  } else { 
-                    $btn_colabora_f_1 = 10;  
-                    $script_formacion .= '0, 0';
-                  } 
-                  $script_formacion .= "]
-              }";
-            } 
-        $script_formacion .= "]
-    });";
+  $('#container_formacion').highcharts(chartFormacion);";
 
-if( $btn_colabora_f_1 > 0 ) { 
-    $script_formacion .= "var capa_aviso = '<div class=\"capa-aviso\">';
+
+if($btn_colabora_f_1) {
+    $script_formacion .= "
+    var capa_aviso = '<div class=\"capa-aviso\">';
     capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
     capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
 
-        capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>formacion</strong> de la profesión<br>';
-        capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
+        capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>formación</strong> de la profesión<br>';
+        capa_aviso += '<strong>" . mb_strtoupper($profesion,"UTF-8") . "</strong></p>';
         capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
 
+    // debe aparecer despues de 1 segundo
     $('#container_formacion').append(capa_aviso);";
-} 
-*/
+}
+
+/*
+
 /** SATISFACCION **/
 /*$btn_colabora_sat_1 = 0;
 $script_satisfaccion = "$('#container_satisfaccion').highcharts({
@@ -1630,8 +1482,8 @@ if( $btn_colabora_sat_1 > 0 ) {
 */
   // incluir scripts y cerrar html 
 
-    $html .= $script_salarios . $script_info . $script_capacidades . $script_empleabilidad . $script_noticias; 
-    //$html .= $script_formacion . $script_satisfaccion;
+    $html .= $script_salarios . $script_info . $script_capacidades . $script_empleabilidad . $script_noticias . $script_formacion; 
+    //$html .= $script_satisfaccion;
     $html .= '
   </script>
 </html>';

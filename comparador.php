@@ -6,12 +6,12 @@ set_time_limit(0);
   require('conexion.php');
 
   $tablas = array( 
-    'salarios'      => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
-    'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
-    'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
-    //'satisfaccion'  => array('experiencia','grado_satisfaccion'),
-    //'formaciones'   => array('f_nombre_ppal','f_descripcion','duracion_academica','duracion_real'),
-    'info'          => array('descripcion')
+    'salarios'            => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
+    'empleabilidad'       => array('parados', 'contratados', 'mes', 'anyo'),
+    'capacidades'         => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
+    'formaciones'         => array('id', 'f_nombre_ppal','f_descripcion','duracion_academica','duracion_real'),
+    'info'                => array('descripcion'),
+    //'satisfaccion'      => array('experiencia','grado_satisfaccion'),
   );
 
   function consulta($profesion, $tabla, $tablas, $pdo) {
@@ -23,14 +23,18 @@ set_time_limit(0);
     }
     $consulta = substr($consulta, 0, -2);
 
-    if ($tabla == 'info')
-      $where = "WHERE ";
-    else if ($tabla == 'formaciones')
-      $where = "INNER JOIN profesiones_formaciones pf ON p.id = pf.id_profesion INNER JOIN formaciones f ON f.id = pf.id_formacion WHERE ";
-    else
-      $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND ";
-
-    $consulta .= " FROM profesiones p ".$where."p.nombre_ppal LIKE '$profesion'";
+    if ($tabla == 'info') {
+      $consulta .= " FROM profesiones p 
+                    WHERE p.nombre_ppal = '$profesion'";
+    } else if ($tabla == 'formaciones') {
+      $consulta .= " FROM formaciones f
+                    INNER JOIN profesiones_formaciones pf on f.cod = pf.id_formacion
+                    INNER JOIN profesiones p on pf.id_profesion = p.id
+                    WHERE p.nombre_ppal = '$profesion'";
+    } else {
+      $consulta .= " FROM profesiones p , ".$tabla." ".$tabla_ref." 
+                    WHERE p.id = ".$tabla_ref.".id_profesion AND p.nombre_ppal = '$profesion'";
+    }
     
     $rs = $pdo->prepare($consulta);
     $rs->execute();
@@ -197,17 +201,17 @@ set_time_limit(0);
               <div id="container_capacidades" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_info" class="grafica"></div>
-            </div>
-            <!--div class="col-md-6 col-xs-12 text-center">
               <div id="container_formacion" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_satisfaccion" class="grafica"></div>
-            </div--> 
-            <div class="col-md-6 col-xs-12 text-center">
               <div id="container_noticias" class="grafica"></div>
             </div>
+            <div class="col-md-6 col-xs-12 text-center">
+              <div id="container_info" class="grafica"></div>
+            </div>
+            <!--div class="col-md-6 col-xs-12 text-center">
+              <div id="container_satisfaccion" class="grafica"></div>
+            </div--> 
           </div> 
 
       </form>
@@ -257,8 +261,6 @@ set_time_limit(0);
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
                   <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/queserademicom'); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-                  <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-                  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.com&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
                   <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
                 </ul>
               </div>
@@ -298,17 +300,13 @@ set_time_limit(0);
       <script type="text/javascript" src="js/scripts-combobox.js"></script>  
       <script type="text/javascript" src="js/graficas.js"></script>
 
-      <script type="text/javascript" async>
-        <?php 
-          include('js/grafica_empleabilidad.js');
-          include('js/grafica_salarios.js'); 
-          include('js/grafica_capacidades.js');
-          include('js/grafica_info.js'); 
-          //include('js/grafica_formacion.js');
-          //include('js/grafica_satisfaccion.js');
-          include('js/grafica_noticias.js');
-        ?>
-      </script>
+      <script type="text/javascript" async><?php include('js/grafica_empleabilidad.js'); ?></script>
+      <script type="text/javascript" async><?php include('js/grafica_salarios.js'); ?></script>
+      <script type="text/javascript" async><?php include('js/grafica_capacidades.js'); ?></script>
+      <script type="text/javascript" async><?php include('js/grafica_formacion.js'); ?></script>
+      <script type="text/javascript" async><?php include('js/grafica_noticias.js'); ?></script>
+      <script type="text/javascript" async><?php include('js/grafica_info.js'); ?></script>
+      <!--script type="text/javascript" async><?php //include('js/grafica_satisfaccion.js'); ?></script-->
   </body>
 </html>
 
