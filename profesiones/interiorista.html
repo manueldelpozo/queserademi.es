@@ -91,15 +91,15 @@
               <div id="container_capacidades" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_info" class="grafica"></div>
+              <div id="container_formacion" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_noticias" class="grafica"></div>
             </div>
-            <!--div class="col-md-6 col-xs-12 text-center">
-              <div id="container_formacion" class="grafica"></div>
-            </div>
             <div class="col-md-6 col-xs-12 text-center">
+              <div id="container_info" class="grafica"></div>
+            </div>
+            <!--div class="col-md-6 col-xs-12 text-center">
               <div id="container_satisfaccion" class="grafica"></div>
             </div-->
           </div>
@@ -150,8 +150,6 @@
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
                   <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="Share on Facebook" onclick="window.open("https://www.facebook.com/queserademicom"); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-                  <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on Google+" onclick="window.open("https://plus.google.com/share?url=" + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-                  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.com&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on LinkedIn" onclick="window.open("http://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(document.URL) + "&title=" +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
                   <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open("mailto:?subject=" + encodeURIComponent(document.title) + "&body=" +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
                 </ul>
               </div>
@@ -552,8 +550,8 @@ $('.more').click( function() {
         stack: 'interiorista'
     }]
 });
-var seriesEmp = [57.89, 57.82, 52.91, 52.57, 53.01, 52.62, 52.68, 52.12, 52.72, 47.6, 47.88, 47.45];
-var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27, 35.7, 36.65, 35.5, 33.44, 33.34];
+var seriesEmp = [57.89, 57.82, 52.91, 52.57, 53.01, 52.62, 52.68, 52.12, 52.72, 47.6, 47.88, 47.45, 47.78, 47.27];
+var seriesEmpMedia = [41.27, 40.33, 38.32, 38.25, 38.72, 37.77, 35.27, 35.7, 36.65, 35.5, 33.44, 33.34, 33.59, 33.19];
 var chartEmpleabilidad = {
     chart: {
         type: 'column',
@@ -634,7 +632,7 @@ var chartEmpleabilidad = {
         } 
     },
     xAxis: {
-        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2015','Abril 2015','Julio 2015','Octubre 2015','Enero 2016','Abril 2016','Julio 2016','Octubre 2016' ]
+        categories: [ 'Enero 2014','Abril 2014','Julio 2014','Octubre 2014','Enero 2015','Abril 2015','Julio 2015','Octubre 2015','Enero 2016','Abril 2016','Julio 2016','Octubre 2016','Enero 2017','Abril 2017','Julio 2017','Octubre 2017' ]
     },
     yAxis: {
         allowDecimals: true,
@@ -658,12 +656,12 @@ var chartEmpleabilidad = {
                     }
                 }
             }, { // Paro medio
-                from: 33.34,
+                from: 33.19,
                 to: 41.27,
                 color: 'rgba(0, 0, 0, 0.2)'
             }, { // Paro bajo
                 from: 0,
-                to: 33.34,
+                to: 33.19,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     rotation: 90,
@@ -763,5 +761,136 @@ function showNews() {
 showNews();
 
 
+  var chartFormacion = {
+      chart: {
+          type: 'bar',
+          backgroundColor:'rgba(255, 255, 255, 0)',
+          spacingBottom: 20,
+          spacingTop: 20,
+          spacingLeft: 20,
+          spacingRight: 20,
+          width: null,
+          height: 380,
+          events: {
+              load: function(){
+                  this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+              }
+          }
+      },
+      title: {
+          text: 'FORMACIÓN',
+          align: 'center',
+          style: { 
+              'color': '#555',
+              'fontSize': '14px',
+              'fontWeight': 'bold'
+          }
+      },
+      xAxis: {
+          categories: ['INTERIORISTA<br><strong>[0 años]</strong>']
+      },
+      yAxis: {
+          min: 0,
+          title: {
+              text: 'Duración de estudios (años)'
+          }
+      },
+      legend: {
+          reversed: false,
+          enabled: false
+      },
+      tooltip: {
+          headerFormat: '',
+          pointFormat: '<span>{series.name}</span><br><strong>Duración (años) &gt;&gt; {point.y}</strong>',
+          style: {
+              display: 'block', 
+              width: '300px',
+              whiteSpace: 'normal' 
+          },
+          enabled: false
+      },
+      credits: {
+          enabled: false
+      },
+      colorBypoint: true,
+      colors: [ '#160000', '#210011', '#2c0017', '#420022', '#58002e', '#751c4a', '#975577', '#ba8da4', '#dcc6d1', '#ede2e8'],
+      plotOptions: {
+          series: {
+              cursor: 'pointer',
+              stacking: 'normal',
+              stickyTracking: false,
+              events: {
+                  click: function(evt) {
+                      this.chart.myTooltip.refresh(evt.point, evt);
+                  },
+                  mouseOut: function() {
+                      this.chart.myTooltip.hide();
+                  }                       
+              } 
+          },
+          scatter: {
+              tooltip: {
+                  pointFormat: '{point.x} años de estudios'
+              }
+          }
+      },
+      exporting: {
+          buttons: {
+              anotherButton: {
+                  text: 'Dónde estudiar?',
+                  onclick: function () {
+                      alert('Dónde estudiar? En desarrollo... Disculpe las molestias');
+                  }
+              },
+              contextButton: {
+                  menuItems: [{
+                      text: '<a><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>',
+                      onclick: function(event) {
+                          if (event.target.href === '') {
+                              getUrlShare('facebook', this, event.target);    
+                          }
+                      }
+                  },{
+                      text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+                  },{
+                      separator: true
+                  },{
+                      text: '<a href="#"><i class="glyphicon glyphicon-download-alt" style="padding:5px"></i>Descargar JPEG</a>',
+                      onclick: function() {
+                          this.exportChart({
+                              type: 'image/jpeg'
+                          });
+                      }
+                  }]
+              }
+          },
+          chartOptions: {
+              chart: {
+                  events: {
+                    load: function(event) {                
+                      this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                    }
+                  } 
+              }
+          }
+      },
+      series: []
+  };
+
+  $('#container_formacion').highcharts(chartFormacion);
+    var capa_aviso = '<div class="capa-aviso">';
+    capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="../images/cross.svg"></img></a></div>';
+    capa_aviso += '<div class="col-md-10 col-md-offset-1">';
+    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
+
+        capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>formación</strong> de la profesión<br>';
+        capa_aviso += '<strong>INTERIORISTA</strong></p>';
+        capa_aviso += '<a href="../colabora.php?profesion=interiorista" class="btn btn-aviso" style="border-color: #d5001e; color: #d5001e;">Colabora!</a>';
+
+    capa_aviso += '</div>';
+    capa_aviso += '</div>';
+
+    // debe aparecer despues de 1 segundo
+    $('#container_formacion').append(capa_aviso);
   </script>
 </html>
