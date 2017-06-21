@@ -3,6 +3,7 @@ $btn_colabora_e_1 = $btn_colabora_e_2 = 0;
 $meses = ['enero', 'abril', 'julio', 'octubre'];
 $meses = array_merge($meses, $meses, $meses, $meses); // concatenar meses 
 $anyos = ['2014', '2015', '2016', '2017'];
+$faltaMeses = 2;
 //array_pop($meses); // y eliminar el ultimo elemento
 
 function mediaEmpleabilidad($pdo, $meses, $anyos) {
@@ -45,7 +46,7 @@ function empleabilidad($contratados, $parados) {
     return (!is_null($parados) && $parados > 0) ?  round(coefMin($parados) * round(100 - ($contratados * 100 / ($parados + $contratados)), 2), 2) : 0;
 }
 
-function imprimirSeriesEmp($filas, $n_meses) {
+function imprimirSeriesEmp($filas, $n_meses, $faltaMeses) {
     $counter = 0;
     $counter_rect = 0;
     $no_duplicado = true;
@@ -55,7 +56,7 @@ function imprimirSeriesEmp($filas, $n_meses) {
         $memo[$counter] = $fila;
         if (count($memo) > 1)
             $no_duplicado = ($memo[$counter - 1]['mes'] !== $memo[$counter]['mes']);
-        if ($no_duplicado && $counter_rect < $n_meses) {
+        if ($no_duplicado && $counter_rect < $n_meses - $faltaMeses) {
             $counter_rect++;
             $emp = empleabilidad($fila['contratados'], $fila['parados']);
             echo (is_null($emp) || $emp == 0) ? "0," : $emp.",";
@@ -249,14 +250,14 @@ var chartEmpleabilidad = {
     <?php if( isset($profesion) && !empty($profesion) ){ ?>
     {
         name: '<?php echo $profesion; ?>',
-        data: [ <?php imprimirSeriesEmp($filas_empleabilidad, count($meses)); ?> ],
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad, count($meses), $faltaMeses); ?> ],
         stack: '<?php echo $profesion ?>'
     },
     <?php  }  ?> 
     <?php if( isset($profesion_dos) && !empty($profesion_dos) ){ ?>
 	{
         name: '<?php echo $profesion_dos; ?>',
-        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, count($meses)); ?> ],
+        data: [ <?php imprimirSeriesEmp($filas_empleabilidad_dos, count($meses), $faltaMeses); ?> ],
         stack: '<?php echo $profesion_dos ?>'
     },
     <?php  }  ?> 

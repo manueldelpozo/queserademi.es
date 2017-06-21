@@ -17,7 +17,7 @@ function createExcerpts($text, $length, $more_txt) {
 }
 ?>
 
-$('#container_info').html('<h5 style="margin: 15px; font-weight: bold;">INFORMACIÓN</h5><div id="info"></div>');
+$('#container_info').html('<h5 style="margin: 15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');
 //$('#container_info').append('<div id="slider"></div>'); eliminar slider
 
 <?php if( isset( $profesion ) && !empty($profesion) ) { ?>  
