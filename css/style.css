@@ -70,8 +70,6 @@ button, a {
 
 	display: block;
 	background-image: url('../images/bg/bg-bl-15.jpg');
-
-	background-attachment:fixed;
 	background-position: top center;
 	background-repeat: repeat;
 	background-size: 33.33%;
