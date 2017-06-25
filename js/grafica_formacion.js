@@ -64,9 +64,9 @@ var chartFormacion = {
     chart: {
         type: 'bar',
         backgroundColor:'rgba(255, 255, 255, 0)',
-        spacingBottom: 20,
+        spacingBottom: 40,
         spacingTop: 20,
-        spacingLeft: 20,
+        spacingLeft: 40,
         spacingRight: 20,
         width: null,
         height: 380,
@@ -91,7 +91,12 @@ var chartFormacion = {
         <?php if( isset($profesion_dos) && !empty($filas_formaciones_dos) ) { ?>
         , '<?php echo mb_strtoupper($profesion_dos, "UTF-8") . "<br><strong>[" . getTotalAnyosEstudios($arbol_formaciones_dos, "duracion_academica") . " años]</strong>"; ?>'
         <?php } ?>
-        ]
+        ],
+        labels: {
+            align: 'left',
+            x: 8,
+            y: -53
+        }
     },
     yAxis: {
         min: 0,
@@ -106,7 +111,6 @@ var chartFormacion = {
     tooltip: {
         headerFormat: '',
         pointFormat: '<span>{series.name}</span><br><strong>Duración (años) &gt;&gt; {point.y}</strong>',
-        //valueSuffix: ' años',
         style: {
             display: 'block', 
             width: '300px',
@@ -117,8 +121,6 @@ var chartFormacion = {
     credits: {
         enabled: false
     },
-    colorBypoint: true,
-    colors: [ '#160000', '#210011', '#2c0017', '#420022', '#58002e', '#751c4a', '#975577', '#ba8da4', '#dcc6d1', '#ede2e8'],
     plotOptions: {
         series: {
             cursor: 'pointer',
@@ -132,21 +134,16 @@ var chartFormacion = {
                     this.chart.myTooltip.hide();
                 }                       
             } 
-        },
-        scatter: {
-            tooltip: {
-                pointFormat: '{point.x} años de estudios'
-            }
         }
     },
     exporting: {
         buttons: {
-            anotherButton: {
+            /*anotherButton: {
                 text: 'Dónde estudiar?',
                 onclick: function () {
                     alert('Dónde estudiar? En desarrollo... Disculpe las molestias');
                 }
-            },
+            },*/
             contextButton: {
                 menuItems: [{
                     text: '<a><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>',
@@ -183,13 +180,16 @@ var chartFormacion = {
         <?php
             $series = array();
             if( isset($profesion) && !empty($filas_formaciones) ) {
+                $i = 0;
                 foreach ($arbol_formaciones as $formac) {
                     if ($formac['duracion_academica']) {
                        $serie = '{';
                         $serie .= "name: '" . $formac['f_nombre_ppal'] . "', ";
-                        $serie .= 'data: [' . $formac['duracion_academica'] . ', 0]';
+                        $serie .= 'data: [' . $formac['duracion_academica'] . ', 0], ';
+                        $serie .= 'color: "#d5001e"';
                         $serie .= '}';
                         $series[] = $serie; 
+                        $i++;
                     }
                 }
             } else { $btn_colabora_f_1 = true; }
@@ -198,7 +198,8 @@ var chartFormacion = {
                     if ($formac_dos['duracion_academica']) {
                        $serie = '{';
                         $serie .= "name: '" . $formac_dos['f_nombre_ppal'] . "', ";
-                        $serie .= 'data: [0, ' . $formac_dos['duracion_academica'] . ']';
+                        $serie .= 'data: [0, ' . $formac_dos['duracion_academica'] . '], ';
+                        $serie .= 'color: "#337ab7"';
                         $serie .= '}';
                         $series[] = $serie; 
                     }
