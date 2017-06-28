@@ -144,6 +144,7 @@ var chartEmpleabilidad = {
     yAxis: {
         allowDecimals: true,
         min: 0,
+        max: 100,
         title: {
             text: 'Dificultad de conseguir trabajo %'
         },

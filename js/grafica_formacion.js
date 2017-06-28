@@ -87,15 +87,23 @@ var chartFormacion = {
     },
     xAxis: {
         categories: [
-        '<?php echo mb_strtoupper($profesion, "UTF-8") . "<br><strong>[" . getTotalAnyosEstudios($arbol_formaciones, "duracion_academica") . " años]</strong>"; ?>'
+        '<?php echo "<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>" . mb_strtoupper($profesion, "UTF-8") . "<br><strong>[" . getTotalAnyosEstudios($arbol_formaciones, "duracion_academica") . " años]</strong></div>"; ?>'
         <?php if( isset($profesion_dos) && !empty($filas_formaciones_dos) ) { ?>
-        , '<?php echo mb_strtoupper($profesion_dos, "UTF-8") . "<br><strong>[" . getTotalAnyosEstudios($arbol_formaciones_dos, "duracion_academica") . " años]</strong>"; ?>'
+        , '<?php echo "<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>" . mb_strtoupper($profesion_dos, "UTF-8") . "<br><strong>[" . getTotalAnyosEstudios($arbol_formaciones_dos, "duracion_academica") . " años]</strong></div>"; ?>'
         <?php } ?>
         ],
         labels: {
-            align: 'left',
+            //align: 'left',
             x: 8,
-            y: -53
+            y: 30,
+            useHTML : true,
+            style: { 
+                fontSize: '11px',
+                maxWidth: '0px',
+                'text-overflow': 'ellipsis',
+                'white-space': 'normal',
+                'overflow': 'visible !important'
+            }
         }
     },
     yAxis: {
@@ -133,7 +141,8 @@ var chartFormacion = {
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 }                       
-            } 
+            },
+            pointWidth: 30
         }
     },
     exporting: {

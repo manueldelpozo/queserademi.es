@@ -636,6 +636,7 @@ var chartEmpleabilidad = {
     yAxis: {
         allowDecimals: true,
         min: 0,
+        max: 100,
         title: {
             text: 'Dificultad de conseguir trabajo %'
         },
@@ -764,9 +765,9 @@ showNews();
       chart: {
           type: 'bar',
           backgroundColor:'rgba(255, 255, 255, 0)',
-          spacingBottom: 20,
+          spacingBottom: 40,
           spacingTop: 20,
-          spacingLeft: 20,
+          spacingLeft: 40,
           spacingRight: 20,
           width: null,
           height: 380,
@@ -786,7 +787,19 @@ showNews();
           }
       },
       xAxis: {
-          categories: ['NEUROFISIOLOGO<br><strong>[4 años]</strong>']
+          categories: ['<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>NEUROFISIOLOGO<br><strong>[28 años]</strong></div>'],
+          labels: {
+            x: 8,
+            y: 30,
+            useHTML : true,
+            style: { 
+                fontSize: '11px',
+                maxWidth: '0px',
+                'text-overflow': 'ellipsis',
+                'white-space': 'normal',
+                'overflow': 'visible !important'
+            }
+          }
       },
       yAxis: {
           min: 0,
@@ -811,8 +824,6 @@ showNews();
       credits: {
           enabled: false
       },
-      colorBypoint: true,
-      colors: [ '#160000', '#210011', '#2c0017', '#420022', '#58002e', '#751c4a', '#975577', '#ba8da4', '#dcc6d1', '#ede2e8'],
       plotOptions: {
           series: {
               cursor: 'pointer',
@@ -825,22 +836,12 @@ showNews();
                   mouseOut: function() {
                       this.chart.myTooltip.hide();
                   }                       
-              } 
-          },
-          scatter: {
-              tooltip: {
-                  pointFormat: '{point.x} años de estudios'
-              }
+              },
+              pointWidth: 30 
           }
       },
       exporting: {
           buttons: {
-              anotherButton: {
-                  text: 'Dónde estudiar?',
-                  onclick: function () {
-                      alert('Dónde estudiar? En desarrollo... Disculpe las molestias');
-                  }
-              },
               contextButton: {
                   menuItems: [{
                       text: '<a><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>',
@@ -873,7 +874,7 @@ showNews();
               }
           }
       },
-      series: [{name: 'Neurofisiología Clínica', data: [4, 0]}]
+      series: [{name: 'Neurofisiología Clínica', data: [4, 0], color: "#d5001e"},{name: 'Graduado o Graduada en Medicina', data: [6, 0], color: "#d5001e"},{name: 'Bachillerato Modalidad de Ciencias y Tecnología 2º curso', data: [1, 0], color: "#d5001e"},{name: 'Bachillerato Modalidad de Ciencias y Tecnología 1er curso', data: [1, 0], color: "#d5001e"},{name: 'ESO Curso 4º', data: [1, 0], color: "#d5001e"},{name: 'ESO Cursos 1º a 3º', data: [3, 0], color: "#d5001e"},{name: 'Educación primaria Tercer ciclo (de 10 a 12 años) máximo 13 años', data: [2, 0], color: "#d5001e"},{name: 'Educación primaria Segundo ciclo (de 8 a 10 años) máximo 11 años', data: [2, 0], color: "#d5001e"},{name: 'Educación primaria Primer ciclo (de 6 a 8 años) máximo 9 años', data: [2, 0], color: "#d5001e"},{name: 'Educación infantil 2º ciclo (hasta 6 años)', data: [3, 0], color: "#d5001e"},{name: 'Educación infantil 1er ciclo (hasta 3 años)', data: [3, 0], color: "#d5001e"}]
   };
 
   $('#container_formacion').highcharts(chartFormacion);
