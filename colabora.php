@@ -1,7 +1,9 @@
 <?php 
 
-if( isset( $_POST['profesion']  )  )
-  $profesion = $_POST['profesion'];
+if( isset( $_GET['profesion']  )  ) {
+  $profesion = $_GET['profesion'];
+}
+
 ?>
 
 <!DOCTYPE html>
