@@ -36,7 +36,7 @@ try {
       $where = ", ".$tabla." ".$tabla_ref." WHERE p.id = ".$tabla_ref.".id_profesion AND";
 
     $consulta .= " FROM profesiones p ".$where." p.id = ".$id_profesion;
-    echo $consulta . '<br>';
+
     $rs = $pdo->prepare($consulta);
     $rs->execute();
     $filas = $rs->fetchAll();
@@ -51,6 +51,7 @@ try {
   $nombres_usados = array();
   $nombres_usados_alt = array();
   $count = 0;
+  $total_profesiones = 3689;
 
   //funciones para scripts
 
@@ -201,7 +202,7 @@ try {
       if ( !in_array($id_profesion, $nombres_usados, TRUE) ) { // solo una vez!!!
         $repetir = true; // repetimos while en este caso para buscar un nombre alternativo
         $profesion = $nombre_ppal; // en este caso $nombre sera el nombre_ppal en lugar del alternativo
-        echo '<h3>Hay ppal</h3>';
+        echo '<h3>Hay ppal: '.$nombre_ppal.'</h3>';
       } else { // en le caso de que haya sido usado buscamos nombre alternativo
         echo '<p>buscando nombre alternativo...</p>';
         if (empty($nombre_alt) || is_null($nombre_alt) || $nombre_alt == 'test' || in_array($nombre_alt, $nombres_usados_alt, TRUE)) {
@@ -212,7 +213,7 @@ try {
           $repetir = true; // repetimos while en este caso para buscar mas nombres alternativo
           $profesion = $nombre_alt; // profesion pasa a ser el nombre alternativo
           array_push($nombres_usados_alt, $profesion); // y lo incluimos en nombres alternativos usados
-          echo '<h3>Hay alt</h3>';
+          echo '<h3>Hay alt: '.$nombres_alt.'</h3>';
         }
       }
       // incluir id_profesion en nombres usados
@@ -1216,7 +1217,7 @@ $arbol_formaciones = array();
           }
       },
       xAxis: {
-          categories: ['<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>" . mb_strtoupper($profesion, 'UTF-8') . "<br><strong>[" . getTotalAnyosEstudios($arbol_formaciones, 'duracion_academica') . " años]</strong></div>'],
+          categories: ['<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>" . mb_strtoupper($profesion, 'UTF-8') . "<br><strong>Terminarías a los <strong>" . getTotalAnyosEstudios($arbol_formaciones, "duracion_academica") . " años</strong></div>', ''],
           labels: {
             x: 8,
             y: 30,
@@ -1237,18 +1238,25 @@ $arbol_formaciones = array();
           }
       },
       legend: {
-          reversed: false,
           enabled: false
       },
       tooltip: {
           headerFormat: '',
-          pointFormat: '<span>{series.name}</span><br><strong>Duración (años) &gt;&gt; {point.y}</strong>',
+          pointFormat: '<span>{series.name}</span><br><strong>Duración de estudios (años): {point.y}</strong>',
           style: {
               display: 'block', 
-              width: '300px',
-              whiteSpace: 'normal' 
+              width: '310px',
+              whiteSpace: 'normal' ,
+              fontSize: 10
           },
-          enabled: false
+          positioner: function (labelWidth, labelHeight, point) {
+            var tooltipX = 40;
+            var tooltipY = point.plotY - 15;
+            return {
+                x: tooltipX,
+                y: tooltipY
+            };
+          }
       },
       credits: {
           enabled: false
@@ -1258,14 +1266,6 @@ $arbol_formaciones = array();
               cursor: 'pointer',
               stacking: 'normal',
               stickyTracking: false,
-              events: {
-                  click: function(evt) {
-                      this.chart.myTooltip.refresh(evt.point, evt);
-                  },
-                  mouseOut: function() {
-                      this.chart.myTooltip.hide();
-                  }                       
-              },
               pointWidth: 30 
           }
       },

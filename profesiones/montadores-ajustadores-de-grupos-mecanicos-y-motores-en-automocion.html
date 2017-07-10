@@ -637,6 +637,7 @@ var chartEmpleabilidad = {
     yAxis: {
         allowDecimals: true,
         min: 0,
+        max: 100,
         title: {
             text: 'Dificultad de conseguir trabajo %'
         },
@@ -765,9 +766,9 @@ showNews();
       chart: {
           type: 'bar',
           backgroundColor:'rgba(255, 255, 255, 0)',
-          spacingBottom: 20,
+          spacingBottom: 40,
           spacingTop: 20,
-          spacingLeft: 20,
+          spacingLeft: 40,
           spacingRight: 20,
           width: null,
           height: 380,
@@ -787,7 +788,19 @@ showNews();
           }
       },
       xAxis: {
-          categories: ['MONTADORES-AJUSTADORES DE GRUPOS MECÁNICOS Y MOTORES EN AUTOMOCIÓN<br><strong>[0 años]</strong>']
+          categories: ['<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>MONTADORES-AJUSTADORES DE GRUPOS MECÁNICOS Y MOTORES EN AUTOMOCIÓN<br><strong>Terminarías a los <strong>0 años</strong></div>', ''],
+          labels: {
+            x: 8,
+            y: 30,
+            useHTML : true,
+            style: { 
+                fontSize: '11px',
+                maxWidth: '0px',
+                'text-overflow': 'ellipsis',
+                'white-space': 'normal',
+                'overflow': 'visible !important'
+            }
+          }
       },
       yAxis: {
           min: 0,
@@ -796,52 +809,39 @@ showNews();
           }
       },
       legend: {
-          reversed: false,
           enabled: false
       },
       tooltip: {
           headerFormat: '',
-          pointFormat: '<span>{series.name}</span><br><strong>Duración (años) &gt;&gt; {point.y}</strong>',
+          pointFormat: '<span>{series.name}</span><br><strong>Duración de estudios (años): {point.y}</strong>',
           style: {
               display: 'block', 
-              width: '300px',
-              whiteSpace: 'normal' 
+              width: '310px',
+              whiteSpace: 'normal' ,
+              fontSize: 10
           },
-          enabled: false
+          positioner: function (labelWidth, labelHeight, point) {
+            var tooltipX = 40;
+            var tooltipY = point.plotY - 15;
+            return {
+                x: tooltipX,
+                y: tooltipY
+            };
+          }
       },
       credits: {
           enabled: false
       },
-      colorBypoint: true,
-      colors: [ '#160000', '#210011', '#2c0017', '#420022', '#58002e', '#751c4a', '#975577', '#ba8da4', '#dcc6d1', '#ede2e8'],
       plotOptions: {
           series: {
               cursor: 'pointer',
               stacking: 'normal',
               stickyTracking: false,
-              events: {
-                  click: function(evt) {
-                      this.chart.myTooltip.refresh(evt.point, evt);
-                  },
-                  mouseOut: function() {
-                      this.chart.myTooltip.hide();
-                  }                       
-              } 
-          },
-          scatter: {
-              tooltip: {
-                  pointFormat: '{point.x} años de estudios'
-              }
+              pointWidth: 30 
           }
       },
       exporting: {
           buttons: {
-              anotherButton: {
-                  text: 'Dónde estudiar?',
-                  onclick: function () {
-                      alert('Dónde estudiar? En desarrollo... Disculpe las molestias');
-                  }
-              },
               contextButton: {
                   menuItems: [{
                       text: '<a><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>',

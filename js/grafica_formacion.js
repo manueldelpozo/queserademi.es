@@ -87,13 +87,12 @@ var chartFormacion = {
     },
     xAxis: {
         categories: [
-        '<?php echo "<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>" . mb_strtoupper($profesion, "UTF-8") . "<br><strong>[" . getTotalAnyosEstudios($arbol_formaciones, "duracion_academica") . " años]</strong></div>"; ?>'
+        '<?php echo "<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>" . mb_strtoupper($profesion, "UTF-8") . "<br>Terminarías a los <strong>" . getTotalAnyosEstudios($arbol_formaciones, "duracion_academica") . " años</strong></div>"; ?>'
         <?php if( isset($profesion_dos) && !empty($filas_formaciones_dos) ) { ?>
-        , '<?php echo "<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>" . mb_strtoupper($profesion_dos, "UTF-8") . "<br><strong>[" . getTotalAnyosEstudios($arbol_formaciones_dos, "duracion_academica") . " años]</strong></div>"; ?>'
+        , '<?php echo "<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>" . mb_strtoupper($profesion_dos, "UTF-8") . "<br>Terminarías a los <strong>" . getTotalAnyosEstudios($arbol_formaciones_dos, "duracion_academica") . " años</strong></div>"; ?>'
         <?php } ?>
         ],
         labels: {
-            //align: 'left',
             x: 8,
             y: 30,
             useHTML : true,
@@ -113,18 +112,25 @@ var chartFormacion = {
         }
     },
     legend: {
-        reversed: false,
         enabled: false
     },
     tooltip: {
         headerFormat: '',
-        pointFormat: '<span>{series.name}</span><br><strong>Duración (años) &gt;&gt; {point.y}</strong>',
+        pointFormat: '<span>{series.name}</span><br><strong>Duración de estudios (años): {point.y}</strong>',
         style: {
             display: 'block', 
-            width: '300px',
-            whiteSpace: 'normal' 
+            width: '310px',
+            whiteSpace: 'normal',
+            fontSize: 10
         },
-        enabled: false
+        positioner: function (labelWidth, labelHeight, point) {
+            var tooltipX = 40;
+            var tooltipY = point.plotY - 15;
+            return {
+                x: tooltipX,
+                y: tooltipY
+            };
+        }
     },
     credits: {
         enabled: false
@@ -134,14 +140,6 @@ var chartFormacion = {
             cursor: 'pointer',
             stacking: 'normal',
             stickyTracking: false,
-            events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
-                mouseOut: function() {
-                    this.chart.myTooltip.hide();
-                }                       
-            },
             pointWidth: 30
         }
     },
