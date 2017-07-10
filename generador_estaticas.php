@@ -213,7 +213,7 @@ try {
           $repetir = true; // repetimos while en este caso para buscar mas nombres alternativo
           $profesion = $nombre_alt; // profesion pasa a ser el nombre alternativo
           array_push($nombres_usados_alt, $profesion); // y lo incluimos en nombres alternativos usados
-          echo '<h3>Hay alt: '.$nombres_alt.'</h3>';
+          echo '<h3>Hay alt: '.$nombre_alt.'</h3>';
         }
       }
       // incluir id_profesion en nombres usados
