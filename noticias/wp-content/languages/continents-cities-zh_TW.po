@@ -1,14 +1,15 @@
-# Translation of Continents & Cities in Chinese (Taiwan)
-# This file is distributed under the same license as the Continents & Cities package.
+# Translation of WordPress - 4.7.x - Continents & Cities in Chinese (Taiwan)
+# This file is distributed under the same license as the WordPress - 4.7.x - Continents & Cities package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-08-18 13:52:35+0000\n"
+"PO-Revision-Date: 2016-12-06 10:09:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/2.1.0-alpha\n"
-"Project-Id-Version: Continents & Cities\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: zh_TW\n"
+"Project-Id-Version: WordPress - 4.7.x - Continents & Cities\n"
 
 #: wp-admin/includes/continents-cities.php:93
 msgid "Bahia Banderas"
@@ -128,7 +129,7 @@ msgstr "漢德加"
 
 #: wp-admin/includes/continents-cities.php:250
 msgid "Troll"
-msgstr "左爾"
+msgstr "特羅爾"
 
 #: wp-admin/includes/continents-cities.php:39
 msgid "Juba"

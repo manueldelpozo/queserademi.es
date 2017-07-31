@@ -8,16 +8,12 @@
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
           <article class="blogbox2">
-                        <div class="blogtitle2"><a><?php the_title();?></a></div>
-                        <div class="blogdata">
-                            <p><?php the_date();?></p>
-                        </div>
+                        <h1 class="blogtitle2"><a><?php the_title();?></a></h1>
                         <div class="gallerytext2">
                           <p><?php the_content();?></p>
                         </div>
-
           </article>
-
+        
         <?php endwhile; else : ?>
         <h1>No se encontraron Articulos</h1>
         <?php endif; ?>

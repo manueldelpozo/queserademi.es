@@ -1,4 +1,3 @@
-</body>
 
     <footer>
 	<div class="row">
@@ -42,8 +41,6 @@
 			        <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
 			          <ul class="share-buttons">
 			            <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/queserademicom'); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-			            <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-			            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.queserademi.com&title=Comparador%20de%20profesiones&summary=&source=http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
 			            <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
 			          </ul>
 			        </div>
@@ -66,5 +63,10 @@
 	            </div>
 			</div>
     </footer>
+    <script type="text/javascript" src="http://queserademi.com/js/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="http://queserademi.com/js/bootstrap.min.js"></script>            
+    <script type="text/javascript" src="http://queserademi.com/js/scripts.js"></script>
+    <?php wp_footer(); ?>
 
+</body>
 </html>

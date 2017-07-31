@@ -1,0 +1,27 @@
+Sitemap: http://queserademi.com/sitemap_index.xml
+User-agent: *
+Disallow: /wc-logs/
+Disallow: /wp-admin/*
+Disallow: /wp-includes/*
+Disallow: /trackback/
+Disallow: /comments/
+Disallow: */trackback/
+Disallow: */comments/
+Disallow: /*?*
+Disallow: /*?
+Disallow: *?replytocom
+Allow: /wp-content/uploads
+
+# Google Image
+User-agent: Googlebot-Image
+Disallow:
+Allow: /*
+
+# Google AdSense
+User-agent: Mediapartners-Google*
+Disallow:
+Allow: /*
+
+# digg mirror
+User-agent: dggmirror
+Disallow: /

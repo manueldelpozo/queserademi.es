@@ -13,33 +13,54 @@ Author URL: www.web.com
   padding: 0px;
 }
 
+img.img-responsive {
+    height: 60px !important;
+    margin-top: 15px !important;
+}
+
+.background-image {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: -1;
+
+	display: block;
+	background-image: url('http://queserademi.com/images/bg/bg-bl-15.jpg');
+	background-position: top center;
+	background-repeat: repeat;
+	background-size: 33.33%;
+}
+
   #blog {
-    background: #f1f1f1;
-    padding: 40px 0px 40px 0px;
+    padding: 10px 0px 10px 0px;
     text-align: center;
   }
 
-  .blogbox {
-    width: 26%;
-    display: inline-block;
-    height: auto;
-    padding: 15px;
-    margin-right: 1.5%;
-    margin-left: 1.5%;
-    margin-bottom: 40px;
-    background: white;
-  }
+#blog > section {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
 
-  .blogbox2 {
-    width: 60%;
-    display: inline-block;
+.blogbox {
+  padding: 30px;
+    width: 400px;
     height: auto;
-    padding: 0px;
-    margin-right: 1.5%;
-    margin-left: 1.5%;
-    margin-bottom: 40px;
-    background: white;
-  }
+    margin-top: 10px;
+    background-color: white;
+    border: 1px #DDD solid;
+}
 
   .wp-post-image {
     width: 100%;
@@ -47,13 +68,12 @@ Author URL: www.web.com
   }
 
   .blogtitle {
-    margin-top: 10px;
-    font-family: 'Muli', sans-serif;
-    font-size: 17px;
+    /*font-family: 'Muli', sans-serif;*/
+    font-size: 20px;
     font-weight: 700;
-    width: 90%;
     text-align: center;
-    display: inline-block;
+    display: block;
+    margin-top: 10px;
     padding-bottom: 8px;
   }
 
@@ -62,39 +82,46 @@ Author URL: www.web.com
     color: black;
   }
 
+.blogtitle a:hover { 
+    color: #d5001e;
+    font-weight: initial;
+}
+
   .blogtitle2 {
-    margin-top: 40px;
-    font-family: 'Muli', sans-serif;
-    font-size: 26px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    /*font-family: 'Muli', sans-serif;*/
+    font-size: 28px;
     font-weight: 700;
-    width: 90%;
     text-align: center;
-    display: inline-block;
-    padding-bottom: 8px;
+    display: block;
   }
 
   .gallerytext {
     display: inline-block;
     margin-top: 10px;
     width: 90%;
-    font-family: 'Muli', sans-serif;
+    /*font-family: 'Muli', sans-serif;*/
     font-size: 14px;
     font-weight: 300;
     color: black;
     padding-bottom: 15px;
-    text-align: left;
+    /*text-align: left;*/
   }
 
   .gallerytext2 {
     display: inline-block;
     margin-top: 10px;
-    width: 90%;
-    font-family: 'Muli', sans-serif;
+    width: 60%;
+    /*font-family: 'Muli', sans-serif;*/
     font-size: 16px;
     font-weight: 300;
     color: black;
     padding-bottom: 15px;
     text-align: left;
+    background-color: white;
+    border: 1px #DDD solid;
+    padding: 30px;
   }
 
   .gallerytext2 p {
@@ -107,13 +134,18 @@ Author URL: www.web.com
     width: 100%;
   }
 
+  .gallerytext2 iframe {
+      width: 100% !important;
+      height: 400px !important;
+    }
+
   .blogdata {
     display: inline-block;
     padding-bottom: 10px;
   }
 
   .blogdata p, .blogdata a, .blogdata li  {
-    font-family: 'Muli', sans-serif;
+    /*font-family: 'Muli', sans-serif;*/
     color: gray;
     text-decoration: none;
     display: inline-block;
@@ -122,27 +154,39 @@ Author URL: www.web.com
   }
 
   @media only screen and (max-width : 1000px) and (min-width : 650px) {
-    .blogbox {
+    body {
+      padding: 0 !important;
+    }
+    /*.blogbox {
       width: 39%;
       margin-right: 2.5%;
       margin-left: 2.5%;
-    }
+    }*/
     .blogbox2 {
       width: 85%;
     }
   }
 
   @media only screen and (max-width : 650px) and (min-width : 0px) {
-    .blogbox {
-      width: 80%;
+    body {
+      padding: 0 !important;
     }
+    /*.blogbox {
+      width: 80%;
+    }*/
     .blogbox2 {
       width: 90%;
     }
     .gallerytext2 {
-      font-size: 15px;
+      /*font-size: 15px;*/
+      width: 100%
     }
     .blogtitle2 {
       font-size: 20px;
     }
-  }
+    .gallerytext2 iframe {
+      width: 100% !important;
+      height: initial !important;
+    }
+
+}
