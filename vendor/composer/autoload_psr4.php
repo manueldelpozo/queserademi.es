@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Asika\\Sitemap\\' => array($vendorDir . '/asika/sitemap/src'),
+    '' => array($vendorDir . '/havramar/next-php-sitemap-generator/src'),
 );
