@@ -1,3 +1,8 @@
+.background-image {
+  -webkit-filter: brightness(105%);
+  filter: brightness(105%);
+}
+
 .header {
   margin-bottom: 30px;
 }
@@ -55,10 +60,6 @@
 }
 
 /* editar jquery-mobile styles */
-.ui-page {
-  
-}
-
 .ui-content {
   padding: 0;
 }
@@ -67,12 +68,9 @@
   background: none;
 }
 
-.ui-body-inherit {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
 .ui-mobile,.ui-page-active {
   overflow-y: inherit;
+  background: none;
 }
 
 .ui-input-text, .ui-input-search {
@@ -124,10 +122,54 @@
 
 .btn-qsdm {
   margin-top: 30px;
+  margin-bottom: 50px;
   height: 50px;
 }
 
 button.btn-qsdm, .ui-radio label {
   font-weight: normal !important;
   font-size: 14px !important;
+}
+
+#progressBarContainer input#progreso {
+  width: 0;
+  visibility: hidden;
+}
+
+#progressBarContainer .ui-slider-track {
+  margin: 0;
+}
+
+#progressBarContainer .ui-slider-handle {
+  visibility: hidden;
+}
+
+#progressBarContainer .ui-slider-bg {
+  background-color: #d5001e;
+}
+
+#progressBarContainer {
+  position: fixed;
+  bottom: 50px;
+  width: 100%;
+  height: 85px;
+  background: white;
+  z-index: 99;
+  box-shadow: 10px 0 10px 0 #DDD;
+}
+
+.group-salario {
+  display: none;
+}
+
+#btnAddGrupoSalario {
+  cursor: pointer;
+  font-size: 1.5em;
+  margin: 10px;
+  color: #337ab7;
+  text-align: center;
+}
+
+#btnAddGrupoSalario:hover {
+  color: #d5001e;
 }

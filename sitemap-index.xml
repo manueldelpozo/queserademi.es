@@ -2,15 +2,15 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
              http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd">
   <sitemap>
-    <loc>http://queserademi.com/sitemap.xml</loc> 
+    <loc>http://queserademi.com/sitemap.xml.gz</loc> 
     <lastmod>2017-08-15</lastmod> 
   </sitemap>
   <sitemap>
-    <loc>http://queserademi.com/sitemap-1.xml</loc> 
+    <loc>http://queserademi.com/sitemap-1.xml.gz</loc> 
     <lastmod>2017-08-15</lastmod> 
   </sitemap>
   <sitemap>
-    <loc>http://queserademi.com/sitemap-2.xml</loc> 
+    <loc>http://queserademi.com/sitemap-2.xml.gz</loc> 
     <lastmod>2017-08-15</lastmod> 
   </sitemap>
 </sitemapindex>

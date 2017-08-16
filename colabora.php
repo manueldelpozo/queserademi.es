@@ -61,7 +61,7 @@ if( isset( $_GET['profesion']  )  ) {
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="preloader"></div>
-    <div class="background-image grayscale blur"></div>
+    <div class="background-image grayscale"></div>
     <div data-role="page">
       
     <div data-role="main" class="container-full ui-content">
@@ -87,62 +87,48 @@ if( isset( $_GET['profesion']  )  ) {
 
           <div class="row body">
 
-            <div class="col-md-6 col-xs-12">
+            <div class="col-md-6 col-md-offset-3 col-xs-12">
               
-                <div class="form-group dropdown clearfix profesion required">
-                  <label for="profesion" class="col-sm-3 control-label">profesión:</label>
+                <div class="group-1 form-group dropdown clearfix profesion required">
+                  <label for="profesion" class="col-sm-3 control-label"><strong>profesión</strong>:</label>
                   <div class="col-sm-9">  
                     <div class="input-group" style="width: 100%;">
-                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="search" data-tipo="profesiones" data-role="none" data-enhance="false" placeholder="busca una profesión" data-clear-btn="true" value="<?php echo @$profesion; ?>" autofocus required spellcheck="true" autocomplete="off">
+                      <input name="profesion" id="profesion" class="typeahead center-block form-control input-lg" type="search" data-tipo="profesiones" data-role="none" data-enhance="false" placeholder="busca una profesión (ej. Electricista)" data-clear-btn="true" value="<?php echo @$profesion; ?>" autofocus required spellcheck="true" autocomplete="off">
                     </div>
                   </div>
                 </div>
                 
-                <div class="form-group">
-                  <label for="descripcion" class="col-sm-3 control-label">descripción: (opcional)</label>
+                <div class="group-1 form-group">
+                  <label for="descripcion" class="col-sm-3 control-label"><strong>descripción</strong>: (opcional)</label>
                   <div class="col-sm-9">
                     <textarea name="descripcion" id="descripcion" class="normal-input center-block form-control input-lg" rows="5" placeholder="escribe una breve descripción de la profesión "></textarea>
                   </div>
                 </div>
 
-                <div class="form-group dropdown clearfix estudios">
-                  <label for="estudios_asoc" class="col-sm-3 control-label">los estudios asociados a la profesión:</label>
+                <div class="group-1 form-group dropdown clearfix estudios">
+                  <label for="estudios_asoc" class="col-sm-3 control-label">los últimos <strong>estudios</strong> realizados:</label>
                   <div class="col-sm-9">
                     <div class="input-group" style="width: 100%;">
-                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="busca sus estudios asociados" data-clear-btn="true" autofocus required spellcheck="true" autocomplete="off">           
+                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="busca una formación (ej. Master...)" data-clear-btn="true" autofocus required spellcheck="true" autocomplete="off">           
                     </div>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="tiempo-estudios" class="col-sm-3 control-label">y los años dedicados a esos estudios:</label>
+                <div class="group-1 form-group">
+                  <label for="tiempo-estudios" class="col-sm-3 control-label">y cuantos <strong>años (reales)</strong> duraron esos estudios:</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="tiempo_estudios" id="tiempo-estudios" value="5" min="1" max="15" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="colaborador" class="col-sm-3 control-label">nombre: (opcional y anónimo)</label>
-                  <div class="col-sm-9">                 
-                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="tu nombre completo" data-clear-btn="true" value="<?php //echo @$profesion; ?>" autofocus/>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="email" class="col-sm-3 control-label">email: (opcional y anónimo)</label>
-                  <div class="col-sm-9">
-                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="tu dirección email" data-clear-btn="true"/>
-                  </div>
-                </div>
-
-                <div class="form-group">
+                <div class="group-1 form-group">
                   <label for="trabajas" class="col-sm-3 control-label">trabajando actualmente?:</label>
                   <div class="col-md-9 col-xs-12">
                      <input type="checkbox" data-role="flipswitch" name="trabajas" id="trabajas" data-on-text="Si" data-off-text="No">                  
                   </div>
                 </div>      
 
-                <div class="form-group">
+                <div class="group-1 form-group">
                   <label for="comunidad-autonoma" class="col-sm-3 control-label">donde?:</label>
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="ui-field-contain">
@@ -173,8 +159,8 @@ if( isset( $_GET['profesion']  )  ) {
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="acceso" class="col-sm-3 control-label">como fue el acceso al puesto de trabajo:</label>
+                <div class="group-1 form-group">
+                  <label for="acceso" class="col-sm-3 control-label">como fue el <strong>acceso</strong> al puesto de trabajo:</label>
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="con-otro" data-role="controlgroup" data-type="horizontal">
                       <label for="entrevista">Entrevista</label>
@@ -187,8 +173,8 @@ if( isset( $_GET['profesion']  )  ) {
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="sector" class="col-sm-3 control-label">el tipo de sector:</label>
+                <div class="group-1 form-group">
+                  <label for="sector" class="col-sm-3 control-label">el tipo de <strong>sector</strong>:</label>
                   <div class="col-md-9 col-xs-12">
                     <fieldset data-role="controlgroup" data-type="horizontal">
                       <label for="publico">Publico</label>
@@ -199,8 +185,8 @@ if( isset( $_GET['profesion']  )  ) {
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="contrato" class="col-sm-3 control-label">el tipo de contrato conseguido:</label>
+                <div class="group-1 form-group">
+                  <label for="contrato" class="col-sm-3 control-label">el tipo de <strong>contrato</strong> conseguido:</label>
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="con-otro" data-role="controlgroup" data-type="horizontal">
                       <label for="indefinido">Indefinido</label>
@@ -215,36 +201,36 @@ if( isset( $_GET['profesion']  )  ) {
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="jornada-laboral" class="col-sm-3 control-label">tu jornada laboral (Ejemplo: 9h - 18h): </label>
+                <div class="group-1 form-group">
+                  <label for="jornada-laboral" class="col-sm-3 control-label">tu <strong>jornada laboral</strong> (Ejemplo: 9h - 18h): </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" name="jornada_laboral_min" id="jornada-laboral-min" value="9" min="0" max="23" step="1" data-highlight="true" data-popup-enabled="true">
                     <input type="range" name="jornada_laboral_max" id="jornada-laboral-max" value="18" min="0" max="23" step="1" data-highlight="true" data-popup-enabled="true">                                  
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="movilidad" class="col-sm-3 control-label">requiere movilidad?:</label>
+                <div class="group-1 form-group">
+                  <label for="movilidad" class="col-sm-3 control-label">requiere <strong>movilidad</strong> al extranjero?:</label>
                   <div class="col-md-9 col-xs-12">
                      <input type="checkbox" data-role="flipswitch" name="movilidad" id="movilidad" data-on-text="Si" data-off-text="No">                  
                   </div>
                 </div> 
 
-                <div class="form-group">
-                  <label for="horas-semana" class="col-sm-3 control-label">las horas semanales totales de trabajo:</label>
+                <div class="group-1 form-group">
+                  <label for="horas-semana" class="col-sm-3 control-label">las <strong>horas semanales</strong> totales de trabajo:</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="horas_semana" id="horas-semana" value="40" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="horas-real" class="col-sm-3 control-label">y las horas realmente dedicadas:</label>
+                <div class="group-1 form-group">
+                  <label for="horas-real" class="col-sm-3 control-label">y las <strong>horas reales</strong> dedicadas:</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="horas_real" id="horas-real" value="30" min="10" max="70" step="1" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="puesto" class="col-sm-3 control-label">Estatus dentro de la empresa:</label>
+                <div class="group-1 form-group">
+                  <label for="puesto" class="col-sm-3 control-label"><strong>Estatus</strong> dentro de la empresa:</label>
                   <div class="col-md-9 col-xs-12">
                     <fieldset class="con-otro" data-role="controlgroup" data-type="horizontal">
                       <label for="director">Director</label>
@@ -258,27 +244,23 @@ if( isset( $_GET['profesion']  )  ) {
                     </fieldset>                  
                   </div>
                 </div>
-              
-            </div>
 
-            <div class="col-md-6 col-xs-12 borde-separador">
-
-                <div class="form-group">
-                  <label for="edad-jubilacion" class="col-sm-3 control-label">la edad de jubilación estimada:</label>
+                <div class="group-1 form-group">
+                  <label for="edad-jubilacion" class="col-sm-3 control-label">la <strong>edad de jubilación</strong> estimada:</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="edad_jubilacion" id="edad-jubilacion" value="60" min="50" max="70" step="1" data-popup-enabled="true">                 
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="tiempo-trabajo" class="col-sm-3 control-label">los años trabajados en esta profesión (experiencia):</label>
+                <div class="group-1 form-group">
+                  <label for="tiempo-trabajo" class="col-sm-3 control-label">los <strong>años trabajados</strong> en esta profesión (experiencia):</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="tiempo_trabajo" id="tiempo-trabajo" value="6" min="0" max="40" data-highlight="true" data-popup-enabled="true">                 
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="s_general_anual" class="col-sm-3 control-label">tu salario actual<br>(elige anual o mensual):</label>
+                <div class="group-1 form-group">
+                  <label for="s_general_anual" class="col-sm-3 control-label">tu <strong>salario</strong> actual<br>(elige anual o mensual):</label>
                   <div class="col-md-9 col-xs-12">
                     <input type="range" name="s_general_anual" id="s_general_anual" value="18000" min="7200" max="96000" step="100" data-highlight="true" data-popup-enabled="true">
                     <fieldset data-role="controlgroup" data-type="horizontal">
@@ -290,31 +272,36 @@ if( isset( $_GET['profesion']  )  ) {
                   </div>
                 </div>
 
-                <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>podrías darnos más información sobre tu salario? Selecciona el rango salarial aproximado según experiencia en esta profesión (elige anual o mensual)</strong></h5>
+                <div id="btnAddGrupoSalario" class="col-md-12 col-xs-12">
+                    <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                    <strong>&nbsp;podrías darnos más información sobre tu salario?</strong>
                 </div>
-                <div class="form-group">
+
+                <div class="group-salario col-md-12 col-xs-12 text-center titulo1">
+                  <h5>selecciona el <strong>rango salarial</strong> aproximado según experiencia en esta profesión (elige anual o mensual)</h5>
+                </div>
+                <div class="group-salario form-group">
                   <label for="s_principiante" class="col-sm-3 control-label">[menos de 5 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" class='s_principiante' name="s_principiante_min" id="s_principiante_min" value="6000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
                     <input type="range" class='s_principiante' name="s_principiante_max" id="s_principiante_max" value="24000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                                
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="group-salario form-group">
                   <label for="s_junior" class="col-sm-3 control-label">[de 5 a 10 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" class='s_junior' name="s_junior_min" id="s_junior_min" value="12000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
                     <input type="range" class='s_junior' name="s_junior_max" id="s_junior_max" value="36000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                                
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="group-salario form-group">
                   <label for="s_intermedio" class="col-sm-3 control-label">[de 10 a 15 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" class='s_intermedio' name="s_intermedio_min" id="s_intermedio_min" value="18000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
                     <input type="range" class='s_intermedio' name="s_intermedio_max" id="s_intermedio_max" value="42000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">                                  
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="group-salario form-group">
                   <label for="s_senior" class="col-sm-3 control-label">[más de 15 años]: </label>
                   <div class="col-md-9 col-xs-12 " data-role="rangeslider">
                     <input type="range" class='s_senior' name="s_senior_min" id="s_senior_min" value="24000" min="2400" max="120000" step="100" data-highlight="true" data-popup-enabled="true">
@@ -322,68 +309,68 @@ if( isset( $_GET['profesion']  )  ) {
                   </div>
                 </div>
 
-                <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>pon nota a las capacidades que se necesitan para esta profesión [1-5]</strong></h5>
+                <div class="group-1 col-md-12 col-xs-12 text-center titulo1">
+                  <h5>pon nota a las <strong>capacidades</strong> que se necesitan para esta profesión [1-5]</h5>
                 </div>
-                <div class="col-md-4 col-xs-12 text-center">
+                <div class="group-1 col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_equipo" class="titulo2">cooperación:</label>
                     <input type="range" name="c_equipo" id="c_equipo" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-4 col-xs-12 text-center">
+                <div class="group-1 col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_analisis" class="titulo2">análisis:</label>
                     <input type="range" name="c_analisis" id="c_analisis" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-4 col-xs-12 text-center">
+                <div class="group-1 col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_objetivos" class="titulo2">logro de objetivos:</label>
                     <input type="range" name="c_organizacion" id="c_organizacion" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-4 col-xs-12 text-center">
+                <div class="group-1 col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_comunicacion" class="titulo2">comunicación:</label>
                     <input type="range" name="c_comunicacion" id="c_comunicacion" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-4 col-xs-12 text-center">
+                <div class="group-1 col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_forma_fisica" class="titulo2">destreza y físico:</label>
                     <input type="range" name="c_forma_fisica" id="c_forma_fisica" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-4 col-xs-12 text-center">
+                <div class="group-1 col-md-4 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="c_persuasion" class="titulo2">persuasión:</label>
                     <input type="range" name="c_forma_fisica" id="c_forma_fisica" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
 
-                <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>y de nivel de idiomas, que se necesitaría? [1-5]</strong></h5>
+                <div class="group-1 col-md-12 col-xs-12 text-center titulo1">
+                  <h5>y de nivel de <strong>idiomas</strong>, que se necesitaría? [1-5]</h5>
                 </div>
-                <div class="col-md-6 col-xs-12 text-center">
+                <div class="group-1 col-md-6 col-xs-12 text-center">
                   <div class="form-group required">
                     <label for="i_ingles" class="titulo2">inglés:</label>
                     <input type="range" name="i_ingles" id="i_ingles" value="3" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-6 col-xs-12 text-center i-bloqueado">
+                <div class="group-1 col-md-6 col-xs-12 text-center i-bloqueado">
                   <div class="form-group">
                     <label for="i_frances" class="titulo2">francés:</label>
                     <input type="range" name="i_frances" id="i_frances" value="1" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-6 col-xs-12 text-center i-bloqueado">
+                <div class="group-1 col-md-6 col-xs-12 text-center i-bloqueado">
                   <div class="form-group">
                     <label for="i_aleman" class="titulo2">alemán:</label>
                     <input type="range" name="i_aleman" id="i_aleman" value="1" min="1" max="5" step="1" data-popup-enabled="true" required>
                   </div>
                 </div>
-                <div class="col-md-6 col-xs-12 text-center i-bloqueado">
+                <div class="group-1 col-md-6 col-xs-12 text-center i-bloqueado">
                   <div class="form-group">
                     <label for="i_otro" class="titulo2" style="display:inline-flex;">otro:
                       <input type="text" data-role='none' data-enhance="false" name="i_otro_val" style="height: 30px;width: 100px;margin-left: 20px;margin-top: -10px; border: solid 2px darkgrey;">
@@ -392,10 +379,10 @@ if( isset( $_GET['profesion']  )  ) {
                   </div>
                 </div>
 
-                <div class="col-md-12 col-xs-12 text-center titulo1">
-                  <h5><strong>por último, puntúa tu satisfacción sobre esta profesión</strong></h5>
+                <div class="group-1 col-md-12 col-xs-12 text-center titulo1">
+                  <h5>por último, puntúa tu <strong>satisfacción</strong> sobre esta profesión</h5>
                 </div>
-                <div class="col-md-12 col-xs-12 text-center stars">
+                <div class="group-1 col-md-12 col-xs-12 text-center stars">
                   <div class="form-group"> 
                     <fieldset data-role="controlgroup" data-type="horizontal">
                       <label for="star-1">&#9733;</label>
@@ -412,21 +399,35 @@ if( isset( $_GET['profesion']  )  ) {
                   </div>
                 </div>
 
-                <div class="col-md-6 col-xs-12 inputs-ocultos">
+                <div class="group-1 form-group">
+                  <label for="colaborador" class="col-sm-3 control-label"><strong>nombre</strong>: (opcional y anónimo)</label>
+                  <div class="col-sm-9">                 
+                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="tu nombre completo" data-clear-btn="true" value="<?php //echo @$profesion; ?>" autofocus/>
+                  </div>
+                </div>
+
+                <div class="group-1 form-group">
+                  <label for="email" class="col-sm-3 control-label"><strong>email</strong>: (opcional y anónimo)</label>
+                  <div class="col-sm-9">
+                    <input name="email" type="email" id="email" class="normal-input center-block form-control input-lg" placeholder="tu dirección email" data-clear-btn="true"/>
+                  </div>
+                </div>
+
+                <div class="group-1 col-md-6 col-xs-12 inputs-ocultos">
                   <div class="form-group">
                     <label for="verificacion">¡Si ves esto, no rellenes el siguiente campo!</label>
                     <input type="text" name="verificacion" id="verif" />
                   </div>
                 </div>
 
-                <div class="col-md-6 col-xs-12 inputs-ocultos">
+                <div class="group-1 col-md-6 col-xs-12 inputs-ocultos">
                   <div class="form-group">
                     <label for="codigo-gen">¡Si ves esto, no rellenes el siguiente campo!</label>
                     <input type="text" name="codigo_gen" id="codigo-gen" />
                   </div>
                 </div>
 
-                <div class="col-md-6 col-md-offset-6 col-xs-12 text-center">
+                <div class="group-1 col-md-12 col-xs-12 text-center">
                   <div class="form-group"> 
                     <button type="submit" class="btn btn-default btn-qsdm" data-role='none' data-enhance="false">COLABORA!</button>
                   </div>
@@ -441,6 +442,12 @@ if( isset( $_GET['profesion']  )  ) {
       <div class="col-xs-12 margen"></div>
 
     </div>
+    </div>
+    <div id="progressBarContainer">
+      <div class="col-md-6 col-md-offset-3 col-xs-12">
+        <input type="range" name="progreso" id="progreso" step="1" min="0" data-highlight="true" data-theme="b" data-track-theme="d">
+        <div class="text-center">Animo! Has completado el <strong id=progressBarPercentage></strong> del formulario!</div>
+      </div>
     </div>
     <footer data-role="none" data-enhance="false">
       <div class="row">
@@ -531,25 +538,37 @@ if( isset( $_GET['profesion']  )  ) {
           $('.ui-input-text').removeClass('ui-corner-all ui-shadow-inset');
           $('.typeahead').css('background-color','#FFF');
 
-          // ocultar lista si limpiamos input - we dont need it
-          /*
-          $('.ui-input-clear').click( function() {
-            if ( $('.tt-dropdown-menu').css('display') == 'block' )
-              $('.tt-dropdown-menu').css('display','none');
+          // incializar barra de progreso
+          var $numTotalFormGroup = $('.form-group').length;
+          $('#progreso').attr('max', $numTotalFormGroup)
+          .slider().val(1)
+          .slider('option', { disabled: true }).slider('refresh');
+
+          function increaseProgressBar() {
+            var $newVal = Number($('#progreso').slider().val()) + 1;
+            var $newPercentage = Math.round($newVal / $numTotalFormGroup * 100);
+            $('#progreso').slider().val($newVal).slider('refresh');
+            $('#progressBarPercentage').text($newPercentage + '%');
+            // Si supera un tercio cambiar al azul
+            if ($newVal > $numTotalFormGroup / 3) {
+              $('#progreso').next().find('.ui-slider-bg').css('background-color', '#3388cc');
+            }
+          }
+
+          increaseProgressBar();
+
+          //captar inputs cambiados
+          var inputsYaModificados = {};
+          $('.form-group input').bind('change', function(event, ui) {
+            var inputModificado = event.target;
+            if (!inputsYaModificados.hasOwnProperty(inputModificado.name)) {
+              inputsYaModificados[inputModificado.name] = inputModificado;
+              increaseProgressBar();
+            }
           });
-          */
 
-          // para inputs radio dar atributo name con valor del label
-          /*
-          $('.ui-radio').children('label').each( function() {
-            $(this).next().attr('name',$(this).text());
-          }); 
-
-          // darle a todos los otros la propiedad de editarse
-          $('.otro-label').prop('contentEditable','true');
-          */
           //asegurar que se chequea el valor
-          $('.ui-radio input').on("click", function () { 
+          $('.ui-radio input').on('click', function () { 
             $(this).prop('checked',true).val($(this).prop('id')); 
             $(this).parent().siblings('.ui-radio').children('input').prop('checked',false); ;
             $(this).checkboxradio( "refresh" ); 
@@ -610,8 +629,16 @@ if( isset( $_GET['profesion']  )  ) {
           // campos bloqueados por defecto
           $('.s_senior, .s_intermedio, #i_frances, #i_aleman, #i_otro').slider( "disable" );
 
+          // mostrar rangos de salario 
+          $('#btnAddGrupoSalario').click(function () {
+            $(this).hide();
+            $('.group-salario').each(function () {        
+              $(this).show();
+            });
+          });
+
           // desbloquear rangos de salario segun el tiempo de trabajo
-          $( '#tiempo-trabajo' ).slider({
+          $('#tiempo-trabajo').slider({
             stop: function( event, ui ) {
               var tiempo_trabajo = $(this).slider().val();
               if( tiempo_trabajo < 5 ) {
@@ -654,12 +681,21 @@ if( isset( $_GET['profesion']  )  ) {
           // generar codigo aleatorio e introducirlo en el input oculto
           $('#codigo-gen').val( generateKey() );
 
-          // ocultar footer si hacemos scroll hasta el fondo
-          $('.ui-page').scroll(function() {
-              if( $('.ui-page').scrollTop() + $('.ui-page').height() > $('.ui-content').height() - 100 )
-                $('footer').slideUp('slow');
-              else 
-                $('footer').slideDown('slow');
+          // ocultar footer y progressBar si hacemos scroll hasta el fondo
+          $(window).on('scrollstop', function() {
+            var isScrollBottom = $(window).scrollTop() == $(document).height() - $(window).height();
+            if (isScrollBottom) {
+              $('footer').slideUp(500);
+              $('#progressBarContainer').animate({
+                bottom: 0,
+              }, 500);
+            }
+            else {
+              $('footer').slideDown(500);
+              $('#progressBarContainer').animate({
+                bottom: '50px',
+              }, 500);
+            }    
           });
 
           // lanzar ajax cada 5 segundos
@@ -671,11 +707,21 @@ if( isset( $_GET['profesion']  )  ) {
             success: function( msg ) { desplegarLista( $input, msg ) } 
           });  */
           var actualizador = setInterval( function() {
-            $.post( "verificador.php", $( "#formulario-colabora" ).serialize() );
+            $.post('verificador.php', $('#formulario-colabora').serialize());
           }, 5000);
 
           /*$('#formulario-colabora').submit( function() {
             clear(actualizador)
+          });*/
+
+          /*$('input#estudios_asoc').on('change', function() {
+            var query = $(this).slider().val();
+            console.log(query);
+
+            $.get( 'ajax.php', { tipo: 'formaciones', query: query } )
+            .done(function( data ) {
+              alert( "Data Loaded: " + data );
+            });
           });*/
 
         });
