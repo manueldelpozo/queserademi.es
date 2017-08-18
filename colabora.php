@@ -109,7 +109,7 @@ if( isset( $_GET['profesion']  )  ) {
                   <label for="estudios_asoc" class="col-sm-3 control-label">los últimos <strong>estudios</strong> realizados:</label>
                   <div class="col-sm-9">
                     <div class="input-group" style="width: 100%;">
-                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="busca una formación (ej. Master...)" data-clear-btn="true" autofocus required spellcheck="true" autocomplete="off">           
+                      <input name="estudios_asoc" type="search" id="estudios_asoc" class="typeahead center-block form-control input-lg" data-tipo="formaciones" data-role="none" data-enhance="false" placeholder="busca una formación (ej. Master...)" data-clear-btn="true" required spellcheck="true" autocomplete="off">           
                     </div>
                   </div>
                 </div>
@@ -400,9 +400,10 @@ if( isset( $_GET['profesion']  )  ) {
                 </div>
 
                 <div class="group-1 form-group">
-                  <label for="colaborador" class="col-sm-3 control-label"><strong>nombre</strong>: (opcional y anónimo)</label>
+                  <label for="colaborador" class="col-sm-3 control-label" style="display: inline-block;
+""><strong>nombre</strong>: (opcional y anónimo)</label>
                   <div class="col-sm-9">                 
-                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="tu nombre completo" data-clear-btn="true" value="<?php //echo @$profesion; ?>" autofocus/>
+                    <input name="colaborador" type="text" id="colaborador" class="normal-input center-block form-control input-lg" placeholder="tu nombre completo" data-clear-btn="true"/>
                   </div>
                 </div>
 
@@ -532,6 +533,8 @@ if( isset( $_GET['profesion']  )  ) {
       <script type="text/javascript" src="js/scripts-combobox.js"></script>
       <script type="text/javascript">
         $(document).ready(function() {
+          //forzar autofocus
+          $('input[name=profesion]').focus();
 
           // setting default styles
           $('.verif').parent().css('visibility','hidden');
@@ -568,17 +571,17 @@ if( isset( $_GET['profesion']  )  ) {
           });
 
           //asegurar que se chequea el valor
-          $('.ui-radio input').on('click', function () { 
+          $('.ui-radio input').on('touchstart click', function () { 
             $(this).prop('checked',true).val($(this).prop('id')); 
             $(this).parent().siblings('.ui-radio').children('input').prop('checked',false); ;
-            $(this).checkboxradio( "refresh" ); 
+            $(this).checkboxradio('refresh'); 
           });
   
           $('#formulario-colabora').on( 'touchstart click', function(e){
             var $fieldset = $(e.target).parents('fieldset.con-otro');
             var $otro_label = $fieldset.children().find('.otro-label');
             
-            if( $fieldset.length>0 && $(e.target).hasClass('otro-label') ) {
+            if($fieldset.length > 0 && $(e.target).hasClass('otro-label') ) {
               var tema = $otro_label.next().attr('name');
               $otro_label.parent('.ui-radio').replaceWith('<input type="text" class="otro-input" id="'+tema+'" placeholder="escribe otro valor">'); 
               $(this).children().find('.otro-input').focus();
@@ -630,7 +633,8 @@ if( isset( $_GET['profesion']  )  ) {
           $('.s_senior, .s_intermedio, #i_frances, #i_aleman, #i_otro').slider( "disable" );
 
           // mostrar rangos de salario 
-          $('#btnAddGrupoSalario').click(function () {
+          $('#btnAddGrupoSalario').on('touchstart click', function () {
+            $(this).focus();
             $(this).hide();
             $('.group-salario').each(function () {        
               $(this).show();
@@ -681,7 +685,7 @@ if( isset( $_GET['profesion']  )  ) {
           // generar codigo aleatorio e introducirlo en el input oculto
           $('#codigo-gen').val( generateKey() );
 
-          // ocultar footer y progressBar si hacemos scroll hasta el fondo
+          // ocultar footer si hacemos scroll hasta el fondo
           $(window).on('scrollstop', function() {
             var isScrollBottom = $(window).scrollTop() == $(document).height() - $(window).height();
             if (isScrollBottom) {
@@ -696,6 +700,25 @@ if( isset( $_GET['profesion']  )  ) {
                 bottom: '50px',
               }, 500);
             }    
+          });
+
+          // ocultar progress bar cuando input en los typeahead SOLO EN MOBILES
+          $('input.typeahead').focus(function() {
+            $('#progressBarContainer').addClass('hidden-xs');
+            $('footer').addClass('hidden-xs');
+          }).blur(function() {
+            $('#progressBarContainer').removeClass('hidden-xs');
+            $('footer').removeClass('hidden-xs');
+          });
+
+          // ocultar progress bar cuando el movil esta en landscape
+          $(window).on("orientationchange", function(event) {
+            var orientation = event.orientation;
+            if (orientation === 'portrait') {
+              $('#progressBarContainer').removeClass('hidden-xs');
+            } else {
+              $('#progressBarContainer').addClass('hidden-xs');
+            }
           });
 
           // lanzar ajax cada 5 segundos
