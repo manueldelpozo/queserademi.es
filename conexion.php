@@ -1,7 +1,7 @@
 <?php
 
 function connect() {
-	$isTest = true;
+	$isTest = false;
 
 	$host = $isTest ? "127.0.0.1" : "qxc430.queserademi.com";
 	$database = $isTest ? "qsdm" : "qxc430";
