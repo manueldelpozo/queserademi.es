@@ -382,17 +382,19 @@ ul.share-buttons li {
 .sprite {
 	background:url(../images/sprite.png) no-repeat;
 	height: 250px;
-	width: 100px;
-	float: left;
-	margin-right: 15px;
+	width: 150px;
 }
 
 #sprite-alfonso {
 	background-position: -40px 0px;
+	float: left;
+	margin-right: 15px;
 }
 
 #sprite-manu {
 	background-position: -40px -353px;
+	float: right;
+	margin-left: 15px;
 }
 
 a.tooltips {
@@ -444,31 +446,6 @@ a:hover.tooltips span {
   background-color: #d5001e;
 }
 
-li.hijo {
-	display: none;
-}
-
-li.padre {
-	background-color: #eaf1f7;
-}
-
-li.abuelo {
-	background-color: #c1d7e9;
-}
-
-li.bisabuelo {
-	background-color: #84afd3;
-
-}
-
-li.tatarabuelo {
-	background-color: #337ab7;
-}
-
-li.tatarabuelo a {
-	color: white;
-}
-
 .btn-footer {
 	width: 100%;
 	height: 10px;
@@ -499,65 +476,14 @@ span.flecha {
     position: absolute;
 }
 
+.qsdm-color-red {
+	color: #d5001e !important;
+}
+
 .mobile-menu a:hover, .sel-menu a {
 	color: #d5001e !important;
 }
 
-
-/* Tablets (portrait and landscape) ----------- */
-/*
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait) {
-	.lead {
-		font-size:5em;
-		color:#d5001e;
-	}
-	.img-responsive {
-		display: inline-block;
-		max-width: 100px;
-		max-height: 100px;
-	}
-	.sublead {
-		font-size:1.5em;
-		color:#d5001e;
-		margin-top: 0;
-		margin-bottom: 25px;
-	}
-	video {
-		margin: 0;
-		width: 35%;
-		height: auto;
-	}
-	footer {
-		background-color: rgba(255, 255, 255, 0.8);
-	}
-}
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
-	.lead {
-		font-size:5em;
-		color:#d5001e;
-	}
-	.img-responsive {
-		display: inline-block;
-		max-width: 100px;
-		max-height: 100px;
-	}
-	.sublead {
-		font-size:1.5em;
-		color:#d5001e;
-		margin-top: 0;
-		margin-bottom: 25px;
-	}
-	video {
-		margin: 0;
-		width: 35%;
-		height: auto;
-	}
-	footer {
-		background-color: rgba(255, 255, 255, 0.8);
-		font-size: 0.7em;
-	}
-}
-*/
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (max-device-width: 400px) and (orientation:portrait) {
 	html,body {
@@ -636,7 +562,7 @@ span.flecha {
 	}
 
 	footer {
-		background-color: rgba(230, 230, 230, 0.9);
+		background-color: rgba(230, 230, 230, 0.97);
 	}
 
 	footer div {
