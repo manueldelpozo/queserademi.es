@@ -71,8 +71,11 @@ var chartFormacion = {
         width: null,
         height: 380,
         events: {
-            load: function(){
-                this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
+            load: function () {
+                <?php if( isset($profesion) && !empty($filas_formaciones) ) { ?>
+                    var profesion = this.series[0].points[0];
+                    this.tooltip.refresh(profesion);
+                <?php } ?>            
             }
         }
     },

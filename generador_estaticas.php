@@ -245,7 +245,14 @@ $html = '
 <html>
   <head>
       <title>queserademi.com | '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '</title>
-      <meta name="description" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '">
+      <meta name="description" content="
+        Información sobre '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' |
+        Paro de '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' |
+        Salario de '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' |
+        Paro 2017 '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' |
+        Salario 2017 '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' |
+        Cualidades profesionales de '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '
+      ">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -258,7 +265,7 @@ $html = '
       <link rel="canonical" href="http://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:locale" content="es_ES">
       <meta property="og:type" content="website">
-      <meta property="og:title" content="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' | queserademi">
+      <meta property="og:title" content="Información sobre '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' | queserademi">
       <meta property="og:url" content="http://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:site_name" content="queserademi">
       <meta property="og:image" content="http://queserademi.com/images/logo.png">
@@ -1210,9 +1217,12 @@ $arbol_formaciones = array();
           width: null,
           height: 380,
           events: {
-              load: function(){
-                  this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
-              }
+            load: function() {
+              if (this.series) {
+                var profesion = this.series[0].points[0];
+                this.tooltip.refresh(profesion);
+              }                      
+            }
           }
       },
       title: {
@@ -1505,7 +1515,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     } // end while
 
     //TEST//
-    //break;  
+    break;  
   } // end foreach
 
 } catch( Exception $e ) {
