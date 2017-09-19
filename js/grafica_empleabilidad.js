@@ -153,13 +153,17 @@ var chartEmpleabilidad = {
                 to: 100,
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
+                    align: 'right',
                     rotation: 90,
                     verticalAlign: "top",
+                    textAlign: 'center',
                     x: 2,
+                    y: 40,
                     text: 'ALTO',
                     style: {
-                        color: '#DDDDDD',
-                        fontSize:'12px'
+                        color: '#999',
+                        fontSize:'14px',
+                        fontWeight: 'bolder'
                     }
                 }
             }, { // Paro medio
@@ -171,13 +175,17 @@ var chartEmpleabilidad = {
                 to: <?php echo $media_min; ?>,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
+                    align: 'right',
                     rotation: 90,
                     verticalAlign: "top",
                     x: 2,
+                    y: 20,
+                    textAlign: 'center',
                     text: 'BAJO',
                     style: {
-                        color: '#AAA',
-                        fontSize:'12px'
+                        color: '#999',
+                        fontSize:'14px',
+                        fontWeight: 'bolder'
                     }
                 }
             }]
@@ -267,12 +275,12 @@ var chartEmpleabilidad = {
         type: 'spline',
         data: [ <?php echo join(", ", mediaEmpleabilidad($pdo, $meses, $anyos)); ?> ],
         stack: 'Media de paro',
-        color: 'rgba(0, 0, 0, 0.2)',
+        color: 'rgba(0, 0, 0, 0.6)',
         dashStyle: 'shortdot',
         marker: {
             fillColor: 'transparent',
             lineWidth: 1,
-            lineColor: 'rgba(0, 0, 0, 0.2)',
+            lineColor: 'rgba(0, 0, 0, 0.6)',
         }
     }
     ]
