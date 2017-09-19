@@ -1,5 +1,5 @@
 
-$('#container_noticias').html('<h5 style="margin: 15px; font-weight: bold;">BLOG QUESERADEMI</h5><div id="noticiasContainer"></div>');
+$('#container_noticias').html('<h5 style="margin: 15px; font-weight: bold;">CANAL DE NOVEDADES</h5><div id="noticiasContainer"></div>');
 
 
 // PARA MOSTRAR TODAS LAS NOTICIAS DEL BLOG

@@ -127,7 +127,12 @@ var chartSalarios = {
                         }
                     }
                 },{
-                    text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+                    text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>',
+                    onclick: function(event) {
+                        if (event.target.href === '') {
+                        getUrlShare('linkedin', this, event.target);    
+                        }
+                    }
                 },{
                     separator: true
                 },{
