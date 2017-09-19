@@ -12,12 +12,22 @@ Highcharts.setOptions({
 });
 
 function getUrlShare(redSocial, smt, link) {
-    var redSocialUrl = 'http://www.facebook.com/sharer.php?';
+    var redSocialUrl, u, t;
+    
+    if (redSocial === 'facebook') {
+        redSocialUrl = 'http://www.facebook.com/sharer.php?';
+        u = 'u';
+        t = 't';
+    } else if (redSocial === 'linkedin') {
+        redSocialUrl = 'http://www.linkedin.com/shareArticle?'; 
+        u = 'url';
+        t = 'title'; 
+    }
 
     function serialize(obj) {
         return Object.keys(obj).map(function(p) {
-            return encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]);
-        }).join("&");
+            return encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]);
+        }).join('&');
     }
 
     function postToRedSocial(url) {
@@ -25,7 +35,7 @@ function getUrlShare(redSocial, smt, link) {
             title = smt.options.title.text;
         
         link.target = '_blank';
-        link.href = redSocialUrl + 'u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent(title);
+        link.href = redSocialUrl + u + '=' + encodeURIComponent(url) + '&' + t + '=' + encodeURIComponent(title);
         link.click();
     }
 
