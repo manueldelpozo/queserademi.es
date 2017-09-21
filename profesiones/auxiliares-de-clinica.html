@@ -3,7 +3,16 @@
 <html>
   <head>
       <title>queserademi.com | Auxiliares de clínica</title>
-      <meta name="description" content="Auxiliares de clínica">
+      <meta name="description" content="Comparador de profesiones | 
+        Información sobre Auxiliares de clínica | 
+        Paro de Auxiliares de clínica | 
+        Desempleo de Auxiliares de clínica | 
+        Salario de Auxiliares de clínica | 
+        Cuanto gana Auxiliares de clínica | 
+        Cualidades profesionales de Auxiliares de clínica | 
+        Que estudiar para ser Auxiliares de clínica | 
+        Novedades y noticias de Auxiliares de clínica
+      ">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -16,7 +25,7 @@
       <link rel="canonical" href="http://queserademi.com/profesiones/auxiliares-de-clinica.html">
       <meta property="og:locale" content="es_ES">
       <meta property="og:type" content="website">
-      <meta property="og:title" content="Auxiliares de clínica | queserademi">
+      <meta property="og:title" content="Información sobre Auxiliares de clínica | queserademi">
       <meta property="og:url" content="http://queserademi.com/profesiones/auxiliares-de-clinica.html">
       <meta property="og:site_name" content="queserademi">
       <meta property="og:image" content="http://queserademi.com/images/logo.png">
@@ -69,7 +78,7 @@
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
               <a href="http://queserademi.com">
-                <h6 class="sublead">Tu comparador de profesiones</h6>
+                <h6 class="sublead">tu <strong>comparador</strong> de profesiones</h6>
                 <img class="img-responsive" src="../images/logo.svg" height="60px"> 
               </a>
             </div>
@@ -141,6 +150,10 @@
             </div>
           <div class="col-md-10 col-sm-12 col-xs-12 text-center">
               <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                  <a href="../noticias/">canal de novedades</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
+              </div>
+              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
                   <a href="../colabora.php">cómo colaborar</a>
                   <span class="hidden-sm hidden-xs separador">|</span>
               </div>
@@ -150,15 +163,12 @@
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
                   <a href="../quienessomos.html">quiénes somos</a>
-                  <span class="hidden-sm hidden-xs separador">|</span>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                  <a href="../noticias/">qué noticias</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
-                  <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="Share on Facebook" onclick="window.open("https://www.facebook.com/queserademicom"); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-                  <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open("mailto:?subject=" + encodeURIComponent(document.title) + "&body=" +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+                  <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="queserademi Facebook" onclick="window.open("https://www.facebook.com/queserademicom"); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+                  <li><a href="https://www.linkedin.com/company/queserademi" target="_blank" title="queserademi LinkedIn" onclick="window.open("http://www.linkedin.com/company/queserademi"); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+                  <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
                 </ul>
               </div>
             </div>
@@ -248,7 +258,12 @@ var chartSalarios = {
                           }
                       }
                     },{
-                      text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+                      text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>',
+                      onclick: function(event) {
+                        if (event.target.href === '') {
+                              getUrlShare('linkedin', this, event.target);    
+                          }
+                      }
                 },{
                     separator: true
                 },{
@@ -509,7 +524,12 @@ $('.more').click( function() {
                           }
                       }
                     },{
-                      text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+                      text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>',
+                      onclick: function(event) {
+                        if (event.target.href === '') {
+                              getUrlShare('linkedin', this, event.target);    
+                          }
+                      }
                 },{
                     separator: true
                 },{
@@ -599,7 +619,12 @@ var chartEmpleabilidad = {
                       }
                   }
               },{
-                  text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+                  text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>',
+                  onclick: function(event) {
+                    if (event.target.href === '') {
+                          getUrlShare('linkedin', this, event.target);    
+                      }
+                  }
               },{
                   separator: true
               },{
@@ -655,13 +680,17 @@ var chartEmpleabilidad = {
                 to: 100,
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
+                    align: 'right',
                     rotation: 90,
                     verticalAlign: 'top',
                     x: 2,
+                    y: 40,
+                    textAlign: 'center',
                     text: 'ALTO',
                     style: {
-                        color: '#DDDDDD',
-                        fontSize:'12px'
+                        color: '#999',
+                        fontSize:'14px',
+                        fontWeight: 'bolder'
                     }
                 }
             }, { // Paro medio
@@ -673,13 +702,17 @@ var chartEmpleabilidad = {
                 to: 33.19,
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
+                    align: 'right',
                     rotation: 90,
                     verticalAlign: 'top',
                     x: 2,
+                    y: 20,
+                    textAlign: 'center',
                     text: 'BAJO',
                     style: {
-                        color: '#AAA',
-                        fontSize:'12px'
+                        color: '#999',
+                        fontSize:'14px',
+                        fontWeight: 'bolder'
                     }
                 }
             }
@@ -726,18 +759,18 @@ var chartEmpleabilidad = {
         type: 'spline',
         data: seriesEmpMedia,
         stack: 'Media de paro',
-        color: 'rgba(0, 0, 0, 0.2)',
+        color: 'rgba(0, 0, 0, 0.6)',
         dashStyle: 'shortdot',
         marker: {
             fillColor: 'transparent',
             lineWidth: 1,
-            lineColor: 'rgba(0, 0, 0, 0.2)',
+            lineColor: 'rgba(0, 0, 0, 0.6)',
         }
       }
     ]
 };$('#container_empleabilidad').highcharts(chartEmpleabilidad);
 
-$('#container_noticias').html('<h5 style="margin: 15px; font-weight: bold;">BLOG QUESERADEMI</h5><div id="noticiasContainer"></div>');
+$('#container_noticias').html('<h5 style="margin: 15px; font-weight: bold;">CANAL DE NOVEDADES</h5><div id="noticiasContainer"></div>');
 
 var loaded = false;
 
@@ -781,9 +814,12 @@ showNews();
           width: null,
           height: 380,
           events: {
-              load: function(){
-                  this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
-              }
+            load: function() {
+              if (this.series && this.series[0]) {
+                var profesion = this.series[0].points[0];
+                this.tooltip.refresh(profesion);
+              }                      
+            }
           }
       },
       title: {
@@ -859,7 +895,12 @@ showNews();
                           }
                       }
                   },{
-                      text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>'
+                      text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>',
+                      onclick: function(event) {
+                        if (event.target.href === '') {
+                              getUrlShare('linkedin', this, event.target);    
+                          }
+                      }
                   },{
                       separator: true
                   },{

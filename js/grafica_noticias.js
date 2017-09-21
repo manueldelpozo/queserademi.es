@@ -12,13 +12,15 @@ function showNews() {
       url: 'http://queserademi.com/noticias/wp-json/wp/v2/posts',
       method: 'GET',
       success: function(result) {
-          console.log(result);
           var title, content, src, i, posts = '';
           for (i = 0; i < result.length; i++) {
               title = result[i].title.rendered;
               content = result[i].excerpt.rendered;
               src = result[i].link;
-              posts += '<a href="' + src + '" class="list-group-item list-group-item-action"><h4><strong>' + title + '</strong></h4><p>' + content + '</p></a>';
+              posts += '<a href="' + src + '" class="list-group-item list-group-item-action">';
+              posts += '<h4><strong>' + title + '</strong></h4>';
+              posts += content;
+              posts += '</a>';
           }
           $('#noticiasContainer').append('<div class="list-group">' + posts + '</div>');
       },

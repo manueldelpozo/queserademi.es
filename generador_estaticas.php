@@ -238,20 +238,24 @@ try {
         $pagina_html = fopen($url_html, "w+") or die("No se puede crear este documento");
         echo '<h1><strong>'.$count.'</strong> pagina creada: '.$url_html.'</h1>';
       }
+
+      $nombre_profesion = ucfirst(mb_strtolower($profesion, 'UTF-8'));
       
 // comenzamos a generar el html como string
 $html = '
 <!DOCTYPE html>
 <html>
   <head>
-      <title>queserademi.com | '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '</title>
-      <meta name="description" content="
-        Información sobre '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' |
-        Paro de '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' |
-        Salario de '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' |
-        Paro 2017 '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' |
-        Salario 2017 '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' |
-        Cualidades profesionales de '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '
+      <title>queserademi.com | '; $html .= $nombre_profesion . '</title>
+      <meta name="description" content="Comparador de profesiones | 
+        Información sobre '; $html .= $nombre_profesion . ' | 
+        Paro de '; $html .= $nombre_profesion . ' | 
+        Desempleo de '; $html .= $nombre_profesion . ' | 
+        Salario de '; $html .= $nombre_profesion . ' | 
+        Cuanto gana '; $html .= $nombre_profesion . ' | 
+        Cualidades profesionales de '; $html .= $nombre_profesion . ' | 
+        Que estudiar para ser '; $html .= $nombre_profesion . ' | 
+        Novedades y noticias de '; $html .= $nombre_profesion . '
       ">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
@@ -265,7 +269,7 @@ $html = '
       <link rel="canonical" href="http://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:locale" content="es_ES">
       <meta property="og:type" content="website">
-      <meta property="og:title" content="Información sobre '; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . ' | queserademi">
+      <meta property="og:title" content="Información sobre '; $html .= $nombre_profesion . ' | queserademi">
       <meta property="og:url" content="http://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:site_name" content="queserademi">
       <meta property="og:image" content="http://queserademi.com/images/logo.png">
@@ -311,14 +315,14 @@ $html = '
             <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="'; $html .= ucfirst(mb_strtolower($profesion, 'UTF-8')) . '" spellcheck="true" autocomplete="off">
+                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="'; $html .= $nombre_profesion . '" spellcheck="true" autocomplete="off">
                 </div>
               </div>
             </div>
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
               <a href="http://queserademi.com">
-                <h6 class="sublead">Tu comparador de profesiones</h6>
+                <h6 class="sublead">tu <strong>comparador</strong> de profesiones</h6>
                 <img class="img-responsive" src="../images/logo.svg" height="60px"> 
               </a>
             </div>
@@ -390,6 +394,10 @@ $html = '
             </div>
           <div class="col-md-10 col-sm-12 col-xs-12 text-center">
               <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
+                  <a href="../noticias/">canal de novedades</a>
+                  <span class="hidden-sm hidden-xs separador">|</span>
+              </div>
+              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
                   <a href="../colabora.php">cómo colaborar</a>
                   <span class="hidden-sm hidden-xs separador">|</span>
               </div>
@@ -399,15 +407,12 @@ $html = '
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
                   <a href="../quienessomos.html">quiénes somos</a>
-                  <span class="hidden-sm hidden-xs separador">|</span>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                  <a href="../noticias/">qué noticias</a>
               </div>
               <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
                 <ul class="share-buttons">
-                  <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="Share on Facebook" onclick="window.open("https://www.facebook.com/queserademicom"); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-                  <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open("mailto:?subject=" + encodeURIComponent(document.title) + "&body=" +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+                  <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="queserademi Facebook" onclick="window.open("https://www.facebook.com/queserademicom"); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+                  <li><a href="https://www.linkedin.com/company/queserademi" target="_blank" title="queserademi LinkedIn" onclick="window.open("http://www.linkedin.com/company/queserademi"); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+                  <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open(\'mailto:?subject=\' + encodeURIComponent(document.title) + \'&body=\' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
                 </ul>
               </div>
             </div>
@@ -521,7 +526,12 @@ var chartSalarios = {
                           }
                       }
                     },{
-                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
+                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>',
+                      onclick: function(event) {
+                        if (event.target.href === '') {
+                              getUrlShare('linkedin', this, event.target);    
+                          }
+                      }
                 },{
                     separator: true
                 },{
@@ -847,7 +857,12 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
                           }
                       }
                     },{
-                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
+                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>',
+                      onclick: function(event) {
+                        if (event.target.href === '') {
+                              getUrlShare('linkedin', this, event.target);    
+                          }
+                      }
                 },{
                     separator: true
                 },{
@@ -976,7 +991,12 @@ var chartEmpleabilidad = {
                       }
                   }
               },{
-                  text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
+                  text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>',
+                  onclick: function(event) {
+                    if (event.target.href === '') {
+                          getUrlShare('linkedin', this, event.target);    
+                      }
+                  }
               },{
                   separator: true
               },{
@@ -1039,13 +1059,17 @@ var chartEmpleabilidad = {
                 to: 100,
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
+                    align: 'right',
                     rotation: 90,
                     verticalAlign: 'top',
                     x: 2,
+                    y: 40,
+                    textAlign: 'center',
                     text: 'ALTO',
                     style: {
-                        color: '#DDDDDD',
-                        fontSize:'12px'
+                        color: '#999',
+                        fontSize:'14px',
+                        fontWeight: 'bolder'
                     }
                 }
             }, { // Paro medio
@@ -1057,13 +1081,17 @@ var chartEmpleabilidad = {
                 to: ". $media_min .",
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
+                    align: 'right',
                     rotation: 90,
                     verticalAlign: 'top',
                     x: 2,
+                    y: 20,
+                    textAlign: 'center',
                     text: 'BAJO',
                     style: {
-                        color: '#AAA',
-                        fontSize:'12px'
+                        color: '#999',
+                        fontSize:'14px',
+                        fontWeight: 'bolder'
                     }
                 }
             }
@@ -1110,12 +1138,12 @@ var chartEmpleabilidad = {
         type: 'spline',
         data: seriesEmpMedia,
         stack: 'Media de paro',
-        color: 'rgba(0, 0, 0, 0.2)',
+        color: 'rgba(0, 0, 0, 0.6)',
         dashStyle: 'shortdot',
         marker: {
             fillColor: 'transparent',
             lineWidth: 1,
-            lineColor: 'rgba(0, 0, 0, 0.2)',
+            lineColor: 'rgba(0, 0, 0, 0.6)',
         }
       }
     ]
@@ -1143,7 +1171,7 @@ if( $btn_colabora_e_1 > 0 ) {
 
 $script_noticias = "
 
-$('#container_noticias').html('<h5 style=\"margin: 15px; font-weight: bold;\">BLOG QUESERADEMI</h5><div id=\"noticiasContainer\"></div>');
+$('#container_noticias').html('<h5 style=\"margin: 15px; font-weight: bold;\">CANAL DE NOVEDADES</h5><div id=\"noticiasContainer\"></div>');
 
 var loaded = false;
 
@@ -1218,7 +1246,7 @@ $arbol_formaciones = array();
           height: 380,
           events: {
             load: function() {
-              if (this.series) {
+              if (this.series && this.series[0]) {
                 var profesion = this.series[0].points[0];
                 this.tooltip.refresh(profesion);
               }                      
@@ -1298,7 +1326,12 @@ $arbol_formaciones = array();
                           }
                       }
                   },{
-                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
+                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>',
+                      onclick: function(event) {
+                        if (event.target.href === '') {
+                              getUrlShare('linkedin', this, event.target);    
+                          }
+                      }
                   },{
                       separator: true
                   },{
@@ -1515,7 +1548,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     } // end while
 
     //TEST//
-    break;  
+    //break;  
   } // end foreach
 
 } catch( Exception $e ) {
