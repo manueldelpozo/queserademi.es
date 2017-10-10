@@ -16,20 +16,17 @@ String.prototype.isLatin = function() {
 }
 
 // FOOTER
-// animar footer
-$(".btn-footer").click(function() {
-    var $btn;
-    if ($(this).attr("id") == "btn-footer-md")
-        $btn = $("#btn-footer-md");
-    else if ($(this).attr("id") == "btn-footer-xs")
-        $btn = $("#btn-footer-xs");
+function displayMenu(event) {
+    var event = event || $(window).event;
+    var $target = $(event.target) ||$(event.srcElement);
+    var $btnIcon = $target[0].tagName === 'BUTTON' ? $target.children() : $target;
+    var $btn = $btnIcon.parent();
+    var $footer = $btn.parents("footer");
     $btn.css('outline', 'none');
 
-    var $footer = $btn.parents("footer");
-
-    if ($btn.find("span.caret").hasClass("flecha") || $btn.find("span.glyphicon").hasClass("glyphicon-menu-hamburger")) {
-        $btn.find("span.caret").removeClass("flecha");
-        $btn.find("span.glyphicon").removeClass("glyphicon-menu-hamburger").addClass('glyphicon-menu-down');
+    if ($btnIcon.hasClass("flecha") || $btnIcon.hasClass("glyphicon-menu-hamburger")) {
+        $btnIcon.removeClass("flecha");
+        $btnIcon.removeClass("glyphicon-menu-hamburger").addClass('glyphicon-menu-down');
 
         if ($btn.attr("id") == "btn-footer-md") {
             $footer.animate({ height: '100px' }, 200);
@@ -40,14 +37,14 @@ $(".btn-footer").click(function() {
             });
         }
     } else {
-        $btn.find("span.caret").addClass("flecha");
-        $btn.find("span.glyphicon").removeClass("glyphicon-menu-down").addClass('glyphicon-menu-hamburger');
+        $btnIcon.addClass("flecha");
+        $btnIcon.removeClass("glyphicon-menu-down").addClass('glyphicon-menu-hamburger');
         $footer.animate({ height: '50px' }, 200);
         $footer.find('.mobile-menu').each(function() {
             $(this).addClass('hidden-xs');
         });
-    }
-});
+    } 
+}
 
 // FORMULARIOS
 function generateKey(longitudMax) {
@@ -78,7 +75,7 @@ $('#ver-video a').click(function(event) {
     });
 });
 
-// AVISOS
+// AVISOS Y POPUPS
 // ocultar avisos
 $('.cerrar-aviso').click(function() {
     event.preventDefault ? event.preventDefault(event) : event.returnValue = false;
@@ -90,11 +87,28 @@ $('.cerrar-popup').click(function() {
     $(this).parents('#popUp').hide('slow');
 });
 
+// INPUT TO TOP
 $('.controlador-ux-mobile').click(function() {
-    if (!$(this).hasClass('ux-mobile-input-container')) {
-        $(this).addClass('ux-mobile-input-container');
-        $(this).parents('.container-full').addClass('display-table');
+    inputToTop();
+});
+
+var oldScroll;
+
+function inputToTop() {
+    if (!$('.controlador-ux-mobile').hasClass('position-top')) {
+        $('html, body').animate({
+            scrollTop: $(document.body).height()
+        }, 700);
+        setTimeout(function () {
+            oldScroll = $(document.body).height();
+        }, 700);
     }
+}
+
+$(document.body).scroll(function() {
+    var isScrollBottom = ($(this).scrollTop() == ($(document).height() - $(this).height()));
+    $('.controlador-ux-mobile').toggleClass('position-top', isScrollBottom);
+    $('#double-down').toggle(!isScrollBottom);
 });
 
 // POPUP instantaneo // desactivado por el momento

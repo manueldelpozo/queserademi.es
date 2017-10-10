@@ -70,7 +70,12 @@ function submitar($input, item) {
 }
 
 // Cuando presionamos ENTER coger el primero si no hemos seleccionado ninguno
-$(".typeahead").keypress(function(event) {
+$(".typeahead").keydown(function(event) {
+    // evitar el scroll automatico en el movil
+    setTimeout(function() {
+        document.body.scrollTo(0, oldScroll);
+    }, 0);
+
     if (event.which === 13) {
         $lista = $(this).siblings('.tt-dropdown-menu');
         // si input tiene focus 
