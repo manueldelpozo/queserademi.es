@@ -62,11 +62,9 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="preloader"></div>
-    <div class="background-image grayscale"></div>
 
-    <div class="container-full">
       <form id="formulario" role="form" action="../comparador.php">
-          <div class="row header ux-mobile-header">
+          <div class="row header">
 
             <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
@@ -78,15 +76,15 @@
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
               <a href="http://queserademi.com">
-                <h6 class="sublead">tu <strong>comparador</strong> de profesiones</h6>
-                <img class="img-responsive" src="../images/logo.svg" height="60px"> 
+                <h6 class="sublead qsdm-color-white">tu <strong>comparador</strong> de profesiones</h6>
+                <img class="img-responsive" src="../images/logo-blanco.png"> 
               </a>
             </div>
 
             <div class="col-md-4 ux-mobile-input-container">
               <div id="btnAddComparador">
                 <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
-                <strong>Compara con otra profesión</strong>
+                <strong class="qsdm-color-white">Compara con otra profesión</strong>
               </div>
               <div class="dropdown clearfix" hidden>
                 <div class="input-group" id="scrollable-dropdown-menu">
@@ -96,6 +94,9 @@
             </div>
 
           </div> 
+
+          <div class="col-xs-12 margen"></div>
+          <div class="col-xs-12 margen"></div>
 
           <div class="row body" style="margin-top:5px;height:120%;">
             <div class="col-md-6 col-xs-12 text-center">
@@ -123,12 +124,11 @@
       </form>
 
       <div class="col-xs-12 margen"></div>
-    </div>
 
     <footer>
       <div class="row">
         <div class="col-lg-12 col-md-12 hidden-sm hidden-xs text-center">
-          <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-md" ><span class="caret flecha"></span></button>
+          <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-md" onclick="displayMenu(event)"><span class="caret flecha"></span></button>
             </div>
             <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
               <div class="col-sm-3 col-xs-3 text-center">
@@ -137,17 +137,17 @@
                   </a>
               </div>
               <div class="col-sm-3 col-sm-offset-6 col-xs-3 col-xs-offset-6">
-            <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-xs" ><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
+            <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-xs" onclick="displayMenu(event)"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
           </div>
-            </div>
-        <div class="col-md-2 col-md-offset-0 hidden-sm hidden-xs col-xs-6 col-xs-offset-3 text-center">
+          </div>
+          <div class="col-md-2 col-md-offset-0 hidden-sm hidden-xs col-xs-6 col-xs-offset-3 text-center">
               <a href="http://queserademi.com"> 
                   <p id="titulo" style="opacity:1;margin-top:-10px;">
                     <img class="image-container" src="../images/logo.svg">
                     <strong>que</strong>sera<strong>de</strong>mi
                   </p>
               </a>
-            </div>
+          </div>
           <div class="col-md-10 col-sm-12 col-xs-12 text-center">
               <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
                   <a href="../noticias/">canal de novedades</a>
@@ -191,7 +191,6 @@
       </div>
     </footer>
 
-  </body>
   <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -369,7 +368,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PEGADORES DE FORROS, PLANTILLAS Y/O TALONETAS, A MANO (APARADO DE CALZADO)</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PEGADORES DE FORROS, PLANTILLAS Y/O TALONETAS, A MANO (APARADO DE CALZADO)</h4>');$('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class="col-md-8 col-md-offset-2"><a href="../colabora.php?profesion=PEGADORES DE FORROS, PLANTILLAS Y/O TALONETAS, A MANO (APARADO DE CALZADO)" class="btn btn-aviso" style="border-color: #d5001e; color: #d5001e;">Colabora!</a></div>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
@@ -942,4 +941,5 @@ showNews();
     // debe aparecer despues de 1 segundo
     $('#container_formacion').append(capa_aviso);
   </script>
+  </body>
 </html>
