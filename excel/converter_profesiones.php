@@ -16,7 +16,8 @@ $campos = array(
 	'salarios'      			=> array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
 	'empleabilidad' 			=> array('parados', 'contratados', 'mes', 'anyo'),
 	'capacidades'   			=> array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion', 'i_ingles', 'i_frances', 'i_aleman', 'i_otro', 'i_otro_nombre'),
-	'profesiones_formaciones'	=> array('id_formacion')
+	'profesiones_formaciones'	=> array('id_formacion'),
+	'temporalidad'				=> array('temporalidad')
 );
 
 function insertar($tabla, $campos) {
@@ -70,7 +71,7 @@ try {
 	    //recoger datos del array rowData
 		$cod 			= $rowData[0][0];
 	    $nombre_ppal 	= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][1]);
-	    $descripcion 	= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][5]);
+	    $descripcion 	= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][14]);
 	   
 	    //insertar profesiones
 	    $insert_profesiones .= "'$cod','$nombre_ppal','$descripcion')";
@@ -91,6 +92,7 @@ try {
 		$insert_empleabilidad 			= insertar('empleabilidad', $campos);
 		$insert_capacidades				= insertar('capacidades', $campos);
 		$insert_profesiones_formaciones = insertar('profesiones_formaciones', $campos);
+		$insert_temporalidad			= insertar('temporalidad', $campos);
 
 		//poner los datos de cada fila en el array rowData
 	    $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
@@ -100,60 +102,71 @@ try {
 	    $nombre_alt_1				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][2]);
 	    $nombre_alt_2				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][3]);
 	    $nombre_alt_3				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][4]);
-	    $s_princ_min 				= str_replace(',', '.', $rowData[0][6]); 
-	    $s_princ_med 				= str_replace(',', '.', $rowData[0][7]); 
-	    $s_princ_max 				= str_replace(',', '.', $rowData[0][8]); 
-	    $s_junior_min 				= str_replace(',', '.', $rowData[0][9]); 
-	    $s_junior_med 				= str_replace(',', '.', $rowData[0][10]); 
-	    $s_junior_max 				= str_replace(',', '.', $rowData[0][11]); 
-	    $s_intermedio_min 			= str_replace(',', '.', $rowData[0][12]); 
-	    $s_intermedio_med 			= str_replace(',', '.', $rowData[0][13]); 
-	    $s_intermedio_max 			= str_replace(',', '.', $rowData[0][14]); 
-	    $s_senior_min 				= str_replace(',', '.', $rowData[0][15]); 
-	    $s_senior_med 				= str_replace(',', '.', $rowData[0][16]); 
-	    $s_senior_max 				= str_replace(',', '.', $rowData[0][17]);
-		$c_analisis 				= str_replace(',', '.', $rowData[0][18]);
-		$c_comunicacion 			= str_replace(',', '.', $rowData[0][19]);
-		$c_equipo 					= str_replace(',', '.', $rowData[0][20]);
-		$c_forma_fisica 			= str_replace(',', '.', $rowData[0][21]);
-		$c_objetivos 				= str_replace(',', '.', $rowData[0][22]);
-		$c_persuasion 				= str_replace(',', '.', $rowData[0][23]);
-		$i_ingles 					= str_replace(',', '.', $rowData[0][24]);
-		$i_frances 					= str_replace(',', '.', $rowData[0][25]);
-		$i_aleman 					= str_replace(',', '.', $rowData[0][26]);
-		$i_otro 					= str_replace(',', '.', $rowData[0][27]);
-		$i_otro_nombre 				= $rowData[0][28];
-		$id_formacion_1 			= $rowData[0][29];
-		$id_formacion_2 			= $rowData[0][30];
-		$id_formacion_3 			= $rowData[0][31];
-		$parados_enero_2014 		= str_replace(',', '.', $rowData[0][32]);
-		$contratados_enero_2014 	= str_replace(',', '.', $rowData[0][33]);
-		$parados_abril_2014 		= str_replace(',', '.', $rowData[0][34]);
-		$contratados_abril_2014 	= str_replace(',', '.', $rowData[0][35]);
-		$parados_julio_2014 		= str_replace(',', '.', $rowData[0][36]);
-		$contratados_julio_2014 	= str_replace(',', '.', $rowData[0][37]);
-		$parados_octubre_2014 		= str_replace(',', '.', $rowData[0][38]);
-		$contratados_octubre_2014 	= str_replace(',', '.', $rowData[0][39]);
-		$parados_enero_2015 		= str_replace(',', '.', $rowData[0][40]);
-		$contratados_enero_2015 	= str_replace(',', '.', $rowData[0][41]);
-		$parados_abril_2015 		= str_replace(',', '.', $rowData[0][42]);
-		$contratados_abril_2015 	= str_replace(',', '.', $rowData[0][43]);
-		$parados_julio_2015 		= str_replace(',', '.', $rowData[0][44]);
-		$contratados_julio_2015 	= str_replace(',', '.', $rowData[0][45]);
-		$parados_octubre_2015	 	= str_replace(',', '.', $rowData[0][46]);
-		$contratados_octubre_2015 	= str_replace(',', '.', $rowData[0][47]);
-		$parados_enero_2016 		= str_replace(',', '.', $rowData[0][48]);
-		$contratados_enero_2016 	= str_replace(',', '.', $rowData[0][49]);
-		$parados_abril_2016 		= str_replace(',', '.', $rowData[0][50]);
-		$contratados_abril_2016 	= str_replace(',', '.', $rowData[0][51]);
-		$parados_julio_2016 		= str_replace(',', '.', $rowData[0][52]);
-		$contratados_julio_2016 	= str_replace(',', '.', $rowData[0][53]);
-		$parados_octubre_2016	 	= str_replace(',', '.', $rowData[0][54]);
-		$contratados_octubre_2016 	= str_replace(',', '.', $rowData[0][55]);
-		$parados_enero_2017 		= str_replace(',', '.', $rowData[0][56]);
-		$contratados_enero_2017 	= str_replace(',', '.', $rowData[0][57]);
-		$parados_abril_2017 		= str_replace(',', '.', $rowData[0][58]);
-		$contratados_abril_2017 	= str_replace(',', '.', $rowData[0][59]);
+	    $nombre_alt_4				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][5]);
+	    $nombre_alt_5				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][6]);
+	    $nombre_alt_6				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][7]);
+	    $nombre_alt_7				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][8]);
+	    $nombre_alt_8				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][9]);
+	    $nombre_alt_9				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][10]);
+	    $nombre_alt_10				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][11]);
+	    $nombre_alt_11				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][12]);
+	    $nombre_alt_12				= preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][13]);
+	    /*descripcion               = preg_replace('/^[\pZ\pC]+|[\pZ\pC]+$/u', '', $rowData[0][14]);*/
+	    $s_princ_min 				= str_replace(',', '.', $rowData[0][15]); 
+	    $s_princ_med 				= str_replace(',', '.', $rowData[0][16]); 
+	    $s_princ_max 				= str_replace(',', '.', $rowData[0][17]); 
+	    $s_junior_min 				= str_replace(',', '.', $rowData[0][18]); 
+	    $s_junior_med 				= str_replace(',', '.', $rowData[0][19]); 
+	    $s_junior_max 				= str_replace(',', '.', $rowData[0][20]); 
+	    $s_intermedio_min 			= str_replace(',', '.', $rowData[0][21]); 
+	    $s_intermedio_med 			= str_replace(',', '.', $rowData[0][22]); 
+	    $s_intermedio_max 			= str_replace(',', '.', $rowData[0][23]); 
+	    $s_senior_min 				= str_replace(',', '.', $rowData[0][24]); 
+	    $s_senior_med 				= str_replace(',', '.', $rowData[0][25]); 
+	    $s_senior_max 				= str_replace(',', '.', $rowData[0][26]);
+		$c_analisis 				= str_replace(',', '.', $rowData[0][27]);
+		$c_comunicacion 			= str_replace(',', '.', $rowData[0][28]);
+		$c_equipo 					= str_replace(',', '.', $rowData[0][29]);
+		$c_forma_fisica 			= str_replace(',', '.', $rowData[0][30]);
+		$c_objetivos 				= str_replace(',', '.', $rowData[0][31]);
+		$c_persuasion 				= str_replace(',', '.', $rowData[0][32]);
+		$i_ingles 					= str_replace(',', '.', $rowData[0][33]);
+		$i_frances 					= str_replace(',', '.', $rowData[0][34]);
+		$i_aleman 					= str_replace(',', '.', $rowData[0][35]);
+		$i_otro 					= str_replace(',', '.', $rowData[0][36]);
+		$i_otro_nombre 				= $rowData[0][37];
+		$temporalidad				= str_replace(',', '.', $rowData[0][38]);
+		$id_formacion_1 			= $rowData[0][39];
+		$id_formacion_2 			= $rowData[0][40];
+		$id_formacion_3 			= $rowData[0][41];
+		$parados_enero_2014 		= str_replace(',', '.', $rowData[0][42]);
+		$contratados_enero_2014 	= str_replace(',', '.', $rowData[0][43]);
+		$parados_abril_2014 		= str_replace(',', '.', $rowData[0][44]);
+		$contratados_abril_2014 	= str_replace(',', '.', $rowData[0][45]);
+		$parados_julio_2014 		= str_replace(',', '.', $rowData[0][46]);
+		$contratados_julio_2014 	= str_replace(',', '.', $rowData[0][47]);
+		$parados_octubre_2014 		= str_replace(',', '.', $rowData[0][48]);
+		$contratados_octubre_2014 	= str_replace(',', '.', $rowData[0][49]);
+		$parados_enero_2015 		= str_replace(',', '.', $rowData[0][50]);
+		$contratados_enero_2015 	= str_replace(',', '.', $rowData[0][51]);
+		$parados_abril_2015 		= str_replace(',', '.', $rowData[0][52]);
+		$contratados_abril_2015 	= str_replace(',', '.', $rowData[0][53]);
+		$parados_julio_2015 		= str_replace(',', '.', $rowData[0][54]);
+		$contratados_julio_2015 	= str_replace(',', '.', $rowData[0][55]);
+		$parados_octubre_2015	 	= str_replace(',', '.', $rowData[0][56]);
+		$contratados_octubre_2015 	= str_replace(',', '.', $rowData[0][57]);
+		$parados_enero_2016 		= str_replace(',', '.', $rowData[0][58]);
+		$contratados_enero_2016 	= str_replace(',', '.', $rowData[0][59]);
+		$parados_abril_2016 		= str_replace(',', '.', $rowData[0][60]);
+		$contratados_abril_2016 	= str_replace(',', '.', $rowData[0][61]);
+		$parados_julio_2016 		= str_replace(',', '.', $rowData[0][62]);
+		$contratados_julio_2016 	= str_replace(',', '.', $rowData[0][63]);
+		$parados_octubre_2016	 	= str_replace(',', '.', $rowData[0][64]);
+		$contratados_octubre_2016 	= str_replace(',', '.', $rowData[0][65]);
+		$parados_enero_2017 		= str_replace(',', '.', $rowData[0][66]);
+		$contratados_enero_2017 	= str_replace(',', '.', $rowData[0][67]);
+		$parados_abril_2017 		= str_replace(',', '.', $rowData[0][68]);
+		$contratados_abril_2017 	= str_replace(',', '.', $rowData[0][69]);
 
 		//consulta a las tablas profesion y formacion y obtener ids creados
 		$sql_profesiones = "SELECT id, nombre_ppal FROM profesiones WHERE cod LIKE '$cod'";
@@ -166,6 +179,15 @@ try {
 			$insert_nombres_alt_1 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_1')";
 			$insert_nombres_alt_2 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_2')";
 			$insert_nombres_alt_3 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_3')";
+			$insert_nombres_alt_4 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_4')";
+			$insert_nombres_alt_5 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_5')";
+			$insert_nombres_alt_6 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_6')";
+			$insert_nombres_alt_7 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_7')";
+			$insert_nombres_alt_8 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_8')";
+			$insert_nombres_alt_9 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_9')";
+			$insert_nombres_alt_10 				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_10')";
+			$insert_nombres_alt_11				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_11')";
+			$insert_nombres_alt_12				= $insert_nombres_alt.$id_profesion.",'$nombre_alt_12')";
 			$insert_salarios_total 				= $insert_salarios.$id_profesion.",'$s_princ_min','$s_princ_med','$s_princ_max','$s_junior_min','$s_junior_med','$s_junior_max','$s_intermedio_min','$s_intermedio_med','$s_intermedio_max','$s_senior_min','$s_senior_med','$s_senior_max')";
 			$insert_empleabilidad_enero_2014 	= $insert_empleabilidad.$id_profesion.",'$parados_enero_2014','$contratados_enero_2014','enero',2014)";
 			$insert_empleabilidad_abril_2014 	= $insert_empleabilidad.$id_profesion.",'$parados_abril_2014','$contratados_abril_2014','abril',2014)";
@@ -185,11 +207,20 @@ try {
 			$insert_profesiones_formaciones_1 	= $id_formacion_1 > 0 ? $insert_profesiones_formaciones . $id_profesion . ",$id_formacion_1)" : null; 
 			$insert_profesiones_formaciones_2 	= $id_formacion_2 > 0 ? $insert_profesiones_formaciones . $id_profesion . ",$id_formacion_2)" : null;
 			$insert_profesiones_formaciones_3 	= $id_formacion_3 > 0 ? $insert_profesiones_formaciones . $id_profesion . ",$id_formacion_3)" : null;
+			$insert_temporalidad				= $insert_temporalidad.$id_profesion.",'$temporalidad')";
 
 			$inserts = array(
 				$insert_nombres_alt_1, 
 				$insert_nombres_alt_2, 
-				$insert_nombres_alt_3, 
+				$insert_nombres_alt_4, 
+				$insert_nombres_alt_5, 
+				$insert_nombres_alt_6, 
+				$insert_nombres_alt_7, 
+				$insert_nombres_alt_8, 
+				$insert_nombres_alt_9, 
+				$insert_nombres_alt_10, 
+				$insert_nombres_alt_11, 
+				$insert_nombres_alt_12,  
 				$insert_salarios_total, 
 				$insert_empleabilidad_enero_2014, 
 				$insert_empleabilidad_abril_2014, 
@@ -208,7 +239,8 @@ try {
 				$insert_capacidades_total, 
 				$insert_profesiones_formaciones_1, 
 				$insert_profesiones_formaciones_2, 
-				$insert_profesiones_formaciones_3
+				$insert_profesiones_formaciones_3,
+				$insert_temporalidad
 			);
 			foreach ($inserts as $insert) {
 				echo $insert . "<br>";
