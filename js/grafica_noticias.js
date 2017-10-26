@@ -61,7 +61,7 @@ showNews();
     $('#noticiasContainer').append('<h4 class="principal nombre"><?php echo mb_strtoupper($profesion,"UTF-8" ); ?></h4>');
     if (!noticias || noticias.length === 0) {
         $('#noticiasContainer').append('<p class="descripcion" id="desc1">No hay noticias sobre esta profesion!</p>');
-        $('#noticiasContainer').append('<div class="col-md-8 col-md-offset-2"><a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d5001e; color: #d5001e;">Colabora!</a></div>');
+        $('#noticiasContainer').append('<div class="col-md-8 col-md-offset-2"><a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d62e46; color: #d62e46;">Colabora!</a></div>');
     } else {
         $('#noticiasContainer').append('<ul class="noticias">');
         for (var i = 0; i < noticias.length; i++) {

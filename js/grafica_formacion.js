@@ -201,7 +201,7 @@ var chartFormacion = {
                        $serie = '{';
                         $serie .= "name: '" . $formac['f_nombre_ppal'] . "', ";
                         $serie .= 'data: [' . $formac['duracion_academica'] . ', 0], ';
-                        $serie .= 'color: "#d5001e"';
+                        $serie .= 'color: "#d62e46"';
                         $serie .= '}';
                         $series[] = $serie; 
                         $i++;
@@ -238,7 +238,7 @@ $('#container_formacion').highcharts(chartFormacion);
     <?php if($btn_colabora_f_1) { ?>
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>formación</strong> de la profesión<br>';
         capa_aviso += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
-        capa_aviso += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d5001e; color: #d5001e;">Colabora!</a>';
+        capa_aviso += '<a href="colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d62e46; color: #d62e46;">Colabora!</a>';
     <?php } ?>
 
     <?php if($btn_colabora_f_2) { ?>

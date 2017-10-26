@@ -70,16 +70,16 @@ function submitar($input, item) {
 }
 
 // Cuando presionamos ENTER coger el primero si no hemos seleccionado ninguno
-$(".typeahead").keydown(function(event) {
-    // evitar el scroll automatico en el movil
-    setTimeout(function() {
-        document.body.scrollTo(0, oldScroll);
-    }, 0);
+$('.typeahead').keyup(function(event) {
+    var hasFocus = $(this).is(":focus");
+
+    // hide footer on focus input
+    $('footer').toggle(isMobile && hasFocus && !Boolean($(this).val()));
 
     if (event.which === 13) {
         $lista = $(this).siblings('.tt-dropdown-menu');
         // si input tiene focus 
-        if ($(this).is(":focus")) {
+        if (hasFocus) {
             // si no hay lista paramos la funcion
             if ($lista.css('display') == 'none') {
                 submitar($(this)); // para guardar nombres desconocidos y mostrar popup
