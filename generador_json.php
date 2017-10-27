@@ -6,7 +6,7 @@ $tipos = array('profesiones', 'formaciones');
 function getExtraTokens($nombre_userfriendly, $nombre_formal) {
 	$tokens = array($nombre_userfriendly, $nombre_formal);
 	$extraTokens = array_reverse(explode(' ', $nombre_userfriendly));
-	$diff = ['a', 'de', 'del', 'y', ',', '.', 'para', 'la', 'las', 'el', 'los', 'en', 'o'];
+	$diff = ['a', 'al', 'de', 'del', 'y', 'e', ',', '.', 'para', 'por', 'la', 'las', 'el', 'los', 'en', 'o', 'u'];
 	$extraTokens = array_diff($extraTokens, $diff);
 	return array_merge($extraTokens, $tokens);
 }
