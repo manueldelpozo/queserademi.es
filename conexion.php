@@ -13,9 +13,11 @@ function connect() {
 $pdo = connect();
 
 function getNombreLimpio($string) {
-	$signos_para_eliminar = array("'",'"',",",";","(",")","/","~","+");
-	// eliminar acentos y signos, yconvertir underscore en espacios
-    return str_replace('_', ' ', str_replace($signos_para_eliminar, '', iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', trim(mb_strtolower($string, 'UTF-8')))));
+	$signos_para_eliminar = array("'",'"',",",";","(",")","~","+");
+	// eliminar acentos y signos, 
+	$string = str_replace($signos_para_eliminar, '', iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', trim(mb_strtolower($string, 'UTF-8'))));
+	// y convertir underscore y slash en espacios
+    return str_replace(array('_', '/'), ' ', $string);
 }
 
 ?>
