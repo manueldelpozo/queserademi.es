@@ -125,6 +125,7 @@ set_time_limit(0);
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-comparador.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <!-- Google Tag Manager -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -150,6 +151,18 @@ set_time_limit(0);
       height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <!-- Facebook script -->
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.10';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- End Facebook script -->
     <div id="preloader"></div>
     <div id="popUp" class="text-center" hidden>
         <div id="popUpBox" class="col-md-6 col-md-offset-3 col-xs-12">
@@ -167,11 +180,10 @@ set_time_limit(0);
         </div>
         <div id="popUpBg"></div>
     </div>
-    <div class="background-image grayscale"></div>
-    <div class="container-full">
+  
       <form id="formulario" role="form" action="comparador.php">
 
-          <div class="row header ux-mobile-header">
+          <div class="row header">
 
             <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
@@ -183,8 +195,8 @@ set_time_limit(0);
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
               <a href="http://queserademi.com">
-                <h6 class="sublead">Tu comparador de profesiones</h6>
-                <img class="img-responsive" src="images/logo.svg" height="60px"> 
+                <h6 class="sublead qsdm-color-white">tu <strong>comparador</strong> de profesiones</h6>
+                <img class="img-responsive" src="images/logo-blanco.svg"> 
               </a>
             </div>
 
@@ -197,6 +209,9 @@ set_time_limit(0);
             </div>
 
           </div> 
+
+          <div class="col-xs-12 margen"></div>
+          <div class="col-xs-12 margen"></div>
 
           <div class="row body" style="margin-top:5px;height:120%;">
             <div class="col-md-6 col-xs-12 text-center">
@@ -225,73 +240,12 @@ set_time_limit(0);
       </form>
 
       <div class="col-xs-12 margen"></div>
-    </div>
+  
 
-    <footer>
-      <div class="row">
-        <div class="col-lg-12 col-md-12 hidden-sm hidden-xs text-center">
-          <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-md" ><span class="caret flecha"></span></button>
-            </div>
-            <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
-              <div class="col-sm-3 col-xs-3 text-center">
-                <a href="http://queserademi.com"> 
-                  <img class="img-menu" src="images/logo.svg" width='35px' height="auto">       
-                  </a>
-              </div>
-              <div class="col-sm-3 col-sm-offset-6 col-xs-3 col-xs-offset-6">
-            <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-xs" ><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
-          </div>
-            </div>
-        <div class="col-md-2 col-md-offset-0 hidden-sm hidden-xs col-xs-6 col-xs-offset-3 text-center">
-              <a href="http://queserademi.com"> 
-                  <p id="titulo" style='opacity:1;margin-top:-10px;'>
-                    <img class="image-container" src="images/logo.svg">
-                    <strong>que</strong>sera<strong>de</strong>mi
-                  </p>
-              </a>
-            </div>
-          <div class="col-md-10 col-sm-12 col-xs-12 text-center">
-              <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="noticias/">canal de novedades</a>
-                <span class="hidden-sm hidden-xs separador">|</span>
-              </div>
-                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="colabora.php">cómo colaborar</a>
-              <span class="hidden-sm hidden-xs separador">|</span>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="porquecolaborar.html">por qué colaborar</a>
-                <span class="hidden-sm hidden-xs separador">|</span>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                <a href="quienessomos.html">quiénes somos</a>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
-                <ul class="share-buttons">
-                  <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="queserademi Facebook" onclick="window.open('https://www.facebook.com/queserademicom'); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-                  <li><a href="https://www.linkedin.com/company/queserademi" target="_blank" title="queserademi LinkedIn" onclick="window.open('http://www.linkedin.com/company/queserademi'); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-                  <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-10 col-md-offset-2 col-sm-12 col-xs-12 terminos text-center">
-                <div class="col-md-2 col-md-offset-4 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                    <a href="quenossugieres.html">qué nos sugieres</a>
-                    <span class="hidden-sm hidden-xs separador">|</span>
-                </div>
-                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                    <a rel="license" href="http://ec.europa.eu/justice/data-protection/index_es.htm">privacidad de datos</a>
-                    <span class="hidden-sm hidden-xs separador">|</span>
-                </div>
-                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">terminos de uso</a>
-                </div>
-                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                    <small>&copy; 2017 queserademi.com</small>
-                </div>
-            </div>
-      </div>
-      </footer>
+      <footer w3-include-html="footer.html"></footer>
+      <script type="text/javascript">
+          w3.includeHTML();
+      </script>
 
       <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
       <!--[if lt IE 9]>
