@@ -1,53 +1,73 @@
 div.header {
-  margin-left: 2%;
-  margin-right: 2%;
-  margin-bottom: 0;
-  margin-top: 2%;
-  height: 120px;
+    height: 114px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #d62e46;
+    z-index: 98;
+    box-shadow: 0px 5px 20px #333;
+    padding: 15px 30px;
 }
+
 div.body > div {
   padding:0;
 }
+
 .sublead {
   margin: 0;
   font-size: 1em;
 }
+
 .img-responsive {
   height: 60px;
 }
+
 .grafica {
   border: 1.7px dotted #444; 
   border-radius: 16px;
   width: 90%; 
   height: 380px;
-  margin: 0 auto;
-  margin-bottom: 60px;
+  margin: 20px auto;
   position: relative;
   background-color: rgba(255, 255, 255, 0.7);
 } 
+
 .nombre {
   font-weight: bolder;
   text-transform: uppercase;
   margin: 10px;
 }
+
 .descripcion, .estudios {
   overflow: auto;
   border-top: 1px dotted grey;
   margin: 0px 15px; 
+  padding-top: 10px;
 }
+
+.descripcion ul {
+  font-size: .8em;
+  margin-top: 10px;
+}
+
 .estudios {
   margin-bottom: 10px;
 }
+
 .principal {
-  color: #d5001e;
+  color: #d62e46;
 }
+
 .secundaria {
   color: #337ab7;
 }
+
 .more {
   cursor: cell;
   white-space: nowrap;
 }
+
 .highcharts-container {
   font-family: inherit;
 }
@@ -58,10 +78,12 @@ div.body > div {
   overflow: hidden;
   height: 380px;
 }
+
 #info {
   height: 85%;
   overflow: auto;
 }
+
 #slider {
   background-image: url(../images/slider/img1.jpg);
   background-repeat: no-repeat; 
@@ -69,6 +91,7 @@ div.body > div {
   background-size:cover;
   height: 28%;
 }
+
 .capa-aviso, .capa-glosario {
   width: 100%;
   height: 100%;
@@ -81,6 +104,7 @@ div.body > div {
   overflow: auto;
   border-radius: 14.5px;
 }
+
 .btn-aviso {
   width: 50%;
   font-size: 1.2em;
@@ -94,12 +118,14 @@ div.body > div {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+
 .cerrar-aviso, .cerrar-glosario {
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
 }
+
 .capa-glosario dd {
   margin-bottom: 10px;
 }
@@ -146,7 +172,7 @@ div.body > div {
 }
 
 #btnAddComparador:hover {
-  color: #d5001e;
+  color: #ffffff;
 }
 
 #noticiasContainer {
@@ -162,55 +188,66 @@ div.body > div {
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (max-device-width: 400px) and (orientation:portrait) {
   div.header {
-    margin-top: 4%;
-    height: 183px;
+    padding: 5px 20px;
   }
+
   .grafica {
     border-radius: 0;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
+
   .capa-aviso, .capa-glosario {
     border-radius: 0;
   }
+
   .capa-aviso h3, .capa-glosario h3 {
     font-size: 18px;
     margin-top: 10px;
   } 
+
   .capa-glosario dd {
     margin-bottom: 3px;
   }
+
   .highcharts-container svg > g.highcharts-button:nth-child(2) {
     display: none;
   }
+
   .cerrar-aviso, .cerrar-glosario {
     top: 5px;
     right: 5px;
   }
+
   .input-group {
     display: block !important;
   }
 }
+
 @media only screen and (max-device-width: 768px) and (orientation:landscape) {
   div.header {
-    margin-top: 4%;
-    height: 183px;
+    padding: 5px 20px;
   }
+
   .grafica {
     border-radius: 0;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
+
   .capa-aviso, .capa-glosario {
     border-radius: 0;
   }
+
   .capa-aviso h3, .capa-glosario h3 {
     font-size: 18px;
     margin-top: 10px;
   } 
+
   .capa-glosario dd {
     margin-bottom: 3px;
   }
+
   .cerrar-aviso, .cerrar-glosario {
     top: 5px;
     right: 5px;

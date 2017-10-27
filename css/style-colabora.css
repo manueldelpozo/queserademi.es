@@ -5,10 +5,19 @@
 
 .header {
   margin-bottom: 30px;
+  color: #001F3F;
 }
 
 .control-label {
   padding-right: 0;
+}
+
+.control-label, .header h4 a {
+  color: #FFFFFF !important;
+}
+
+.header h4 a:hover {
+  color: #337ab7 !important;
 }
 
 .slider-selection {
@@ -20,15 +29,20 @@
   border-top: 1px;
 }
 
+.img-responsive {
+  height: 75px;
+  margin-top: 15px;
+}
+
 .slider-handle {
   background-image: linear-gradient(to bottom, red, #d5001e);
 }
 
 .normal-input {
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  background-color: rgba(255, 255, 255, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  background-color: rgba(255, 255, 255, .6);
 
   border-radius: 0;
   border: 2px solid #ccc;
@@ -50,9 +64,10 @@
   display: none; 
 }
 
-.form-group.required label:after {
-  content:"*";
-  color:red;
+.form-group.required label:before {
+  content: "*";
+  color: #FFFFFF;
+  margin-right: 5px;
 }
 
 .scrollable-menu {
@@ -66,6 +81,7 @@
 
 .ui-page-theme-a {
   background: none;
+  text-shadow: none;
 }
 
 .ui-mobile,.ui-page-active {
@@ -168,8 +184,9 @@ button.btn-qsdm, .ui-radio label {
   margin: 10px;
   color: #337ab7;
   text-align: center;
+  text-shadow: 0 0 0 #000, 0 0 0 #000, 0 0 0 #000, 0 0 0 #000, 0 1px 0 #000;
 }
 
 #btnAddGrupoSalario:hover {
-  color: #d5001e;
+  color: #ffffff;
 }
