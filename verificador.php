@@ -283,6 +283,18 @@ if( !empty( $_POST['verificacion'] ) ){
 	    <script src="https://www.w3schools.com/lib/w3.js"></script>
 	</head>
 	<body>
+		<!-- Facebook script -->
+	    <div id="fb-root"></div>
+	    <script>
+	    (function(d, s, id) {
+	      var js, fjs = d.getElementsByTagName(s)[0];
+	      if (d.getElementById(id)) return;
+	      js = d.createElement(s); js.id = id;
+	      js.src = 'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.10';
+	      fjs.parentNode.insertBefore(js, fjs);
+	    }(document, 'script', 'facebook-jssdk'));
+	    </script>
+	    <!-- End Facebook script -->
         <div id="preloader"></div>
         <div class="background-image grayscale"></div>
 		<div class="container-full">
