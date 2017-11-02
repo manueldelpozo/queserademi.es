@@ -1,5 +1,5 @@
 <?php
-//eliminar el limite de ejecucion
+//eliminar el _LIMIT de ejecucion
 set_time_limit(0);
 
 // Include Composer autoloader
@@ -29,7 +29,6 @@ echo '<h2>' . $nombre_sitemap . '</h2>';
 // vaciar sitemap - nueva instancia
 $sitemap = new Sitemap;
 //Loop de todas las url creadas
-$limite = 1620;
 $num = 1;
 
 foreach(glob('profesiones/*.html') as $n => $filename) {
@@ -37,7 +36,7 @@ foreach(glob('profesiones/*.html') as $n => $filename) {
 	//if ($_SERVER['HTTP_HOST'] === 'localhost')
 		//$url = 'http://' . $_SERVER['HTTP_HOST'] . '/queserademi/queserademi/' . $filename;
 	$sitemap->addItem($url, '0.7', ChangeFreq::MONTHLY, new \DateTime()); //You can add some optional params
-	if ($n % $limite === 0 && $n > 0) {
+	if ($n % $_LIMIT === 0 && $n > 0) {
 		//Render it to XML:
 		header('Content-Type: application/xml');
 		$nombre_sitemap = 'sitemap-' . $num . '.xml';
