@@ -10,6 +10,8 @@ include 'vendor/autoload.php';
 use \ForceUTF8\Encoding;
 
 try { 
+  echo '<div style="background-color: lightgrey; position: fixed; top: 0; right: 0; left: 0; height: 30px; width: 100%; z-index: 1;"></div>';
+
   $tablas = array( 
     'salarios'      => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
     'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
@@ -50,8 +52,6 @@ try {
   $nombres = $rs_nombres->fetchAll();
   $nombres_usados = array();
   $nombres_usados_alt = array();
-  $count = 0;
-  $total_profesiones = 3689;
 
   //funciones para scripts
 
@@ -161,7 +161,7 @@ try {
               $info_formaciones[] = $info_formacion;
           }
       } catch(PDOException $Exception) {
-          echo "<p>Error en la consulta.<p>\n" . $Exception;
+          echo "<div>Error en la consulta.</div>\n" . $Exception;
           exit;
       } 
 
@@ -184,10 +184,10 @@ try {
       return $total;
   }
 
-
-  // bucle de todos los nombres
   foreach ($nombres as $nombre) {
-    
+
+  if (array_search($nombre, $nombres) > $_COUNT_FROM) {  
+
     $repetir = true; // accede para cada iteracion del foreach
     $profesion = $nombre_ppal = $nombre_alt = $id_profesion = '';
     $nombre_ppal = $nombre['nombre_ppal']; // por defecto no se da valor al nombre ppal
@@ -202,18 +202,19 @@ try {
       if ( !in_array($id_profesion, $nombres_usados, TRUE) ) { // solo una vez!!!
         $repetir = true; // repetimos while en este caso para buscar un nombre alternativo
         $profesion = $nombre_ppal; // en este caso $nombre sera el nombre_ppal en lugar del alternativo
-        echo '<h3>Hay ppal: '.$nombre_ppal.'</h3>';
+        echo '<div style="width: 100%; border-bottom: 1px solid black;"></div>';
+        echo '<div>Nombre principal: <strong>'.$nombre_ppal.'</strong></div><br>';
       } else { // en le caso de que haya sido usado buscamos nombre alternativo
-        echo '<p>buscando nombre alternativo...</p>';
+        echo '<span>Buscando nombre alternativo... </span>';
         if (empty($nombre_alt) || is_null($nombre_alt) || $nombre_alt == 'test' || in_array($nombre_alt, $nombres_usados_alt, TRUE)) {
           $repetir = false; //romper el bucle si el nombre alternativo esta vacio, nulo o repetido
-          echo '<h3>No hay alt</h3>';
+          echo '<span>No hay nombre alternativo</span><br>';
           continue;        
         } else {
           $repetir = true; // repetimos while en este caso para buscar mas nombres alternativo
           $profesion = $nombre_alt; // profesion pasa a ser el nombre alternativo
           array_push($nombres_usados_alt, $profesion); // y lo incluimos en nombres alternativos usados
-          echo '<h3>Hay alt: '.$nombre_alt.'</h3>';
+          echo '<span>Hay nombre alternativo: <strong>'.$nombre_alt.'</strong></span><br>';
         }
       }
       // incluir id_profesion en nombres usados
@@ -225,18 +226,27 @@ try {
       }
 
       if (!empty($profesion)) {
-        $count++;
+        $_COUNT_FROM++;
+        $percentage_complete = round(100 * $_COUNT_FROM / $_TOTAL_PROFESSION, 1);
         // darle url al html estatico
         $profesion_nosignos = getNombreLimpio($profesion);
         $profesion_dashed = str_replace(' ', '-', $profesion_nosignos); // remplazar espacios en blanco por underscore
+        $monosilabes = array('-a-', '-e-', '-o-', '-u-', '-y-', '-en-', '-de-', '-del-', '-al-', '-el-', '-la-', '-los-', '-las-', '-para-', '-por-');
+        $profesion_dashed = str_replace($monosilabes, '-', $profesion_dashed); // clean monosilabes
         $url_html = "profesiones/" . $profesion_dashed . ".html"; // agregar path y extension 
         // generar carpeta si no existe
         /*if (!file_exists("profesiones/" . $profesion_dashed)) {
           mkdir("profesiones/" . $profesion_dashed, 0777, true);
         }*/ 
         // crear html estatico o reescribirlo si ya existe!!
-        $pagina_html = fopen($url_html, "w+") or die("No se puede crear este documento");
-        echo '<h1><strong>'.$count.'</strong> pagina creada: '.$url_html.'</h1>';
+        try {
+          $pagina_html = fopen($url_html, "w+");
+        } catch( Exception $e ) {
+          //echo 'No se puede crear este documento: ' . e
+        }
+        echo '<div style="background-color: green; position: fixed; top: 0; left: 0; height: 30px; width: ' . $percentage_complete . '%; z-index: ' .$_COUNT_FROM . ';"></div>';
+        echo '<div style="background-color: lightgrey; font-family: Arial; color: green; position: fixed; top: 0; right: 0; height: 30px; width: 60px; text-align: center; z-index: ' .$_COUNT_FROM . ';display: flex; align-items: center;">' . $percentage_complete . '%</div>';
+        echo '<div><strong style="color: green;">' . $percentage_complete . ' % </strong> - pagina creada '. $_COUNT_FROM .': <strong style="color: green;">'.$url_html.'</strong></div>';
       }
 
       $nombre_profesion = ucfirst(mb_strtolower($profesion, 'UTF-8'));
@@ -246,17 +256,8 @@ $html = '
 <!DOCTYPE html>
 <html>
   <head>
-      <title>queserademi.com | '; $html .= $nombre_profesion . '</title>
-      <meta name="description" content="Comparador de profesiones | 
-        Información sobre '; $html .= $nombre_profesion . ' | 
-        Paro de '; $html .= $nombre_profesion . ' | 
-        Desempleo de '; $html .= $nombre_profesion . ' | 
-        Salario de '; $html .= $nombre_profesion . ' | 
-        Cuanto gana '; $html .= $nombre_profesion . ' | 
-        Cualidades profesionales de '; $html .= $nombre_profesion . ' | 
-        Que estudiar para ser '; $html .= $nombre_profesion . ' | 
-        Novedades y noticias de '; $html .= $nombre_profesion . '
-      ">
+      <title>'; $html .= $nombre_profesion . ' | queserademi.com</title>
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>'; $html .= $nombre_profesion . '</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -264,12 +265,13 @@ $html = '
       <meta name="robots" content="noodp">
       <meta name="viewport" content="width=device-width, initial-scale = 1.0">
       <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="theme-color" content="#d5001e">
+      <meta name="theme-color" content="#d62e46">
       <!--OGs-->
       <link rel="canonical" href="http://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:locale" content="es_ES">
       <meta property="og:type" content="website">
-      <meta property="og:title" content="Información sobre '; $html .= $nombre_profesion . ' | queserademi">
+      <meta property="og:title" content="'; $html .= $nombre_profesion . ' | queserademi">
+      <meta property="og:description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>'; $html .= $nombre_profesion . '</em>">
       <meta property="og:url" content="http://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:site_name" content="queserademi">
       <meta property="og:image" content="http://queserademi.com/images/logo.png">
@@ -279,6 +281,7 @@ $html = '
       <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css">
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/style-comparador.css">
+      <script src="https://www.w3schools.com/lib/w3.js"></script>
     <!-- Google Tag Manager -->
     <script>
       (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
@@ -304,13 +307,23 @@ $html = '
       height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <!-- Facebook script -->
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = \'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.10\';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, \'script\', \'facebook-jssdk\'));
+    </script>
+    <!-- End Facebook script -->
 
     <div id="preloader"></div>
-    <div class="background-image grayscale"></div>
 
-    <div class="container-full">
       <form id="formulario" role="form" action="../comparador.php">
-          <div class="row header ux-mobile-header">
+          <div class="row header">
 
             <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
@@ -322,15 +335,15 @@ $html = '
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
               <a href="http://queserademi.com">
-                <h6 class="sublead">tu <strong>comparador</strong> de profesiones</h6>
-                <img class="img-responsive" src="../images/logo.svg" height="60px"> 
+                <h6 class="sublead qsdm-color-white">tu <strong>comparador</strong> de profesiones</h6>
+                <img class="img-responsive" src="../images/logo-blanco.svg"> 
               </a>
             </div>
 
             <div class="col-md-4 ux-mobile-input-container">
               <div id="btnAddComparador">
                 <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
-                <strong>Compara con otra profesión</strong>
+                <strong class="qsdm-color-white">Compara con otra profesión</strong>
               </div>
               <div class="dropdown clearfix" hidden>
                 <div class="input-group" id="scrollable-dropdown-menu">
@@ -340,6 +353,9 @@ $html = '
             </div>
 
           </div> 
+
+          <div class="col-xs-12 margen"></div>
+          <div class="col-xs-12 margen"></div>
 
           <div class="row body" style="margin-top:5px;height:120%;">
             <div class="col-md-6 col-xs-12 text-center">
@@ -367,75 +383,12 @@ $html = '
       </form>
 
       <div class="col-xs-12 margen"></div>
-    </div>
 
-    <footer>
-      <div class="row">
-        <div class="col-lg-12 col-md-12 hidden-sm hidden-xs text-center">
-          <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-md" ><span class="caret flecha"></span></button>
-            </div>
-            <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
-              <div class="col-sm-3 col-xs-3 text-center">
-                <a href="http://queserademi.com"> 
-                  <img class="img-menu" src="../images/logo.svg" width="35px" height="auto">       
-                  </a>
-              </div>
-              <div class="col-sm-3 col-sm-offset-6 col-xs-3 col-xs-offset-6">
-            <button type="button" data-toggle="dropup" aria-expanded="false" class="btn-footer" id="btn-footer-xs" ><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
-          </div>
-            </div>
-        <div class="col-md-2 col-md-offset-0 hidden-sm hidden-xs col-xs-6 col-xs-offset-3 text-center">
-              <a href="http://queserademi.com"> 
-                  <p id="titulo" style="opacity:1;margin-top:-10px;">
-                    <img class="image-container" src="../images/logo.svg">
-                    <strong>que</strong>sera<strong>de</strong>mi
-                  </p>
-              </a>
-            </div>
-          <div class="col-md-10 col-sm-12 col-xs-12 text-center">
-              <div class="col-md-2 col-md-offset-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                  <a href="../noticias/">canal de novedades</a>
-                  <span class="hidden-sm hidden-xs separador">|</span>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                  <a href="../colabora.php">cómo colaborar</a>
-                  <span class="hidden-sm hidden-xs separador">|</span>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                  <a href="../porquecolaborar.html">por qué colaborar</a>
-                  <span class="hidden-sm hidden-xs separador">|</span>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                  <a href="../quienessomos.html">quiénes somos</a>
-              </div>
-              <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu social">
-                <ul class="share-buttons">
-                  <li><a href="https://www.facebook.com/queserademicom" target="_blank" title="queserademi Facebook" onclick="window.open("https://www.facebook.com/queserademicom"); return false;"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-                  <li><a href="https://www.linkedin.com/company/queserademi" target="_blank" title="queserademi LinkedIn" onclick="window.open("http://www.linkedin.com/company/queserademi"); return false;"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-                  <li><a href="mailto:?subject=Comparador%20de%20profesiones&body=:%20http%3A%2F%2Fwww.queserademi.com" target="_blank" title="Email" onclick="window.open(\'mailto:?subject=\' + encodeURIComponent(document.title) + \'&body=\' +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-square fa-2x"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-10 col-md-offset-2 col-sm-12 col-xs-12 terminos text-center">
-                <div class="col-md-2 col-md-offset-4 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                    <a href="quenossugieres.html">qué nos sugieres</a>
-                    <span class="hidden-sm hidden-xs separador">|</span>
-                </div>
-                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                    <a rel="license" href="http://ec.europa.eu/justice/data-protection/index_es.htm">privacidad de datos</a>
-                    <span class="hidden-sm hidden-xs separador">|</span>
-                </div>
-                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">terminos de uso</a>
-                </div>
-                <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs mobile-menu">
-                    <small>&copy; 2017 queserademi.com</small>
-                </div>
-            </div>
-      </div>
-    </footer>
+      <footer w3-include-html="../footer.html"></footer>
+      <script type="text/javascript">
+          w3.includeHTML();
+      </script>
 
-  </body>
   <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -649,7 +602,7 @@ if( $btn_colabora_s_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d62e46; color: #d62e46;\">Colabora!</a>';
 
     capa_aviso += '</div></div>';
 
@@ -658,13 +611,13 @@ if( $btn_colabora_s_1 > 0 ) {
 
 /** INFO **/
 
-$script_info = "$('#container_info').html('<h5 style=\"margin:15px; font-weight: bold;\">INFORMACIÓN</h5><div id=\"info\"></div>');";
+$script_info = "$('#container_info').html('<h5 style=\"margin:15px; font-weight: bold;\">+ INFORMACIÓN</h5><div id=\"info\"></div>');";
 
 if( isset( $profesion ) ) {  
     $script_info .= "$('#info').append('<h4 class=\"principal nombre\">". mb_strtoupper($profesion,"UTF-8" ) ."</h4>');";
     if( empty( $filas_info[0]['descripcion'] ) ) { 
         $script_info .= "$('#info').append('<p class=\"descripcion\" id=\"desc1\">Falta información! Ayúdanos a conseguirla.</p>');
-        $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a></div>');";
+        $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d62e46; color: #d62e46;\">Colabora!</a></div>');";
     } else { 
         $script_info .= "$('#info').append('<p class=\"descripcion\">". createExcerpts($filas_info[0]["descripcion"], 150, " [ + ]") . "</p>');";
     } 
@@ -921,7 +874,7 @@ if( $btn_colabora_c_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d62e46; color: #d62e46;\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -1159,7 +1112,7 @@ if( $btn_colabora_e_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>desempleo</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d62e46; color: #d62e46;\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -1224,7 +1177,7 @@ $arbol_formaciones = array();
              $serie = '{';
               $serie .= "name: '" . $formac['f_nombre_ppal'] . "', ";
               $serie .= 'data: [' . $formac['duracion_academica'] . ', 0], ';
-              $serie .= 'color: "#d5001e"';
+              $serie .= 'color: "#d62e46"';
               $serie .= '}';
               $series[] = $serie; 
           }
@@ -1369,7 +1322,7 @@ if($btn_colabora_f_1) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>formación</strong> de la profesión<br>';
         capa_aviso += '<strong>" . mb_strtoupper($profesion,"UTF-8") . "</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d62e46; color: #d62e46;\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -1525,7 +1478,7 @@ if( $btn_colabora_sat_1 > 0 ) {
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>satisfaccion</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d5001e; color: #d5001e;\">Colabora!</a>';
+        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d62e46; color: #d62e46;\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
@@ -1539,6 +1492,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     //$html .= $script_satisfaccion;
     $html .= '
   </script>
+  </body>
 </html>';
     
     // guardar html
@@ -1549,6 +1503,7 @@ if( $btn_colabora_sat_1 > 0 ) {
 
     //TEST//
     //break;  
+  } // end if
   } // end foreach
 
 } catch( Exception $e ) {

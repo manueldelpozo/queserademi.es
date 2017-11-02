@@ -1,7 +1,7 @@
 <?php
 
 function connect() {
-	$enLocal = false;
+	$enLocal = true;
 
 	$host = $enLocal ? "127.0.0.1" : "qxc430.queserademi.com";
 	$database = $enLocal ? "qsdm" : "qxc430";
@@ -20,4 +20,11 @@ function getNombreLimpio($string) {
     return str_replace(array('_', '/'), ' ', $string);
 }
 
+// CONFIG GENERADOR_ESTATICAS
+$_COUNT_FROM = 0;
+$_TOTAL_PROFESSION = 8254;
+
+
+// CONFIG GENERADOR_SITEMAP
+$_LIMIT = $_TOTAL_PROFESSION / 2;
 ?>
