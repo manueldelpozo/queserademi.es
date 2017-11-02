@@ -50,6 +50,10 @@ function submitar($input, item) {
                     // Comprobar que estamos en la homepage
                     if ($input.hasClass('principal') && !isEstatica && $(location).attr('href').indexOf('comparador.php') < 0) {
                         profesionLimpia = item.replace(/\'|\"|\,|\;|\(|\)|\/|\~|\+/g, '').latinize().toLowerCase().replace(/ /g, "-");
+                        var prepositions = ['-a-', '-e-', '-o-', '-u-', '-y-', '-en-', '-de-', '-del-', '-al-', '-el-', '-la-', '-los-', '-las-', '-para-', '-por-'];
+                        for (var i = 0; i < prepositions.length; i++) {
+                           profesionLimpia = profesionLimpia.replace(prepositions[i], '-');
+                        }                   
                         urlLimpia = $(location).attr('href').replace(/index.html/g, '');
                         urlEstatica = urlLimpia + 'profesiones/' + profesionLimpia + '.html';
                         $form.attr('action', urlEstatica);
