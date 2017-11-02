@@ -63,7 +63,7 @@ button, a {
 .background-image { /*PARALAX*/
     height: 100%; 
     /* Create the parallax scrolling effect */
-    background-image: url('../images/bg/bg-bl.jpg');
+    background-image: url('../images/bg/queserademi.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
