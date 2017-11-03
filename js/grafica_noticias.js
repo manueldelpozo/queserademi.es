@@ -9,7 +9,7 @@ function showNews() {
   if(loaded) return;
 
   $.ajax({
-      url: 'http://queserademi.com/noticias/wp-json/wp/v2/posts',
+      url: 'https://queserademi.com/noticias/wp-json/wp/v2/posts',
       method: 'GET',
       success: function(result) {
           var title, content, src, i, posts = '';

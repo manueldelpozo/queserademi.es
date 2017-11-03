@@ -267,14 +267,14 @@ $html = '
       <meta name="apple-mobile-web-app-capable" content="yes">
       <meta name="theme-color" content="#d62e46">
       <!--OGs-->
-      <link rel="canonical" href="http://queserademi.com/'; $html .= $url_html . '">
+      <link rel="canonical" href="https://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:locale" content="es_ES">
       <meta property="og:type" content="website">
       <meta property="og:title" content="'; $html .= $nombre_profesion . ' | queserademi">
       <meta property="og:description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>'; $html .= $nombre_profesion . '</em>">
-      <meta property="og:url" content="http://queserademi.com/'; $html .= $url_html . '">
+      <meta property="og:url" content="https://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:site_name" content="queserademi">
-      <meta property="og:image" content="http://queserademi.com/images/logo.png">
+      <meta property="og:image" content="https://queserademi.com/images/logo.png">
       <!--Links css-->
       <link rel="icon" type="image/x-icon" href="../images/logo.png">
       <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -334,7 +334,7 @@ $html = '
             </div>
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
-              <a href="http://queserademi.com">
+              <a href="https://queserademi.com">
                 <h6 class="sublead qsdm-color-white">tu <strong>comparador</strong> de profesiones</h6>
                 <img class="img-responsive" src="../images/logo-blanco.svg"> 
               </a>
@@ -464,7 +464,7 @@ var chartSalarios = {
             chart: {
                 events: {
                   load: function(event) {                
-                    this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                    this.renderer.image('https://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
                   }
                 } 
             }
@@ -832,7 +832,7 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             chart: {
                 events: {
                   load: function(event) {                
-                    this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                    this.renderer.image('https://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
                   }
                 } 
             }
@@ -929,7 +929,7 @@ var chartEmpleabilidad = {
         chart: {
             events: {
               load: function(event) {                
-                this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                this.renderer.image('https://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
               }
             } 
         }
@@ -1132,7 +1132,7 @@ function showNews() {
   if(loaded) return;
 
   $.ajax({
-      url: 'http://queserademi.com/noticias/wp-json/wp/v2/posts',
+      url: 'https://queserademi.com/noticias/wp-json/wp/v2/posts',
       method: 'GET',
       success: function(result) {
           console.log(result);
@@ -1301,7 +1301,7 @@ $arbol_formaciones = array();
               chart: {
                   events: {
                     load: function(event) {                
-                      this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                      this.renderer.image('https://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
                     }
                   } 
               }
@@ -1358,7 +1358,7 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
             chart: {
                 events: {
                   load: function(event) {                
-                    this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                    this.renderer.image('https://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
                   }
                 } 
             }

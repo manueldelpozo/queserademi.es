@@ -111,14 +111,14 @@ set_time_limit(0);
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#c00">
     <!--OGs-->
-    <link rel="canonical" href="http://queserademi.com/comparador.php">
+    <link rel="canonical" href="https://queserademi.com/comparador.php">
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Orientación Laboral y Comparador de Profesiones | queserademi">
     <meta property="og:description" content="Comparador de profesiones">
-    <meta property="og:url" content="http://queserademi.com/comparador.php">
+    <meta property="og:url" content="https://queserademi.com/comparador.php">
     <meta property="og:site_name" content="queserademi">
-    <meta property="og:image" content="http://queserademi.com/images/logo.png">
+    <meta property="og:image" content="https://queserademi.com/images/logo.png">
     <!--Links css-->
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -194,7 +194,7 @@ set_time_limit(0);
             </div>
 
             <div class="col-md-4 hidden-sm hidden-xs text-center">
-              <a href="http://queserademi.com">
+              <a href="https://queserademi.com">
                 <h6 class="sublead qsdm-color-white">tu <strong>comparador</strong> de profesiones</h6>
                 <img class="img-responsive" src="images/logo-blanco.svg"> 
               </a>

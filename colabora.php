@@ -20,14 +20,14 @@ if( isset( $_GET['profesion']  )  ) {
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#c00">
     <!--OGs-->
-    <link rel="canonical" href="http://queserademi.com/colabora.php">
+    <link rel="canonical" href="https://queserademi.com/colabora.php">
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Orientación Laboral y Comparador de Profesiones | queserademi">
     <meta property="og:description" content="Con dos minutos de tu tiempo construirás con nosotros un espacio donde encontrar los datos más relevantes del mundo laboral para compartir con los profesionales de hoy y del futuro. Tu colaboración anónima nos permite seguir avanzando en nuestro empeño de ofrecer toda la información analizada de forma gratuita y de fácil acceso.">
-    <meta property="og:url" content="http://queserademi.com/colabora.php">
+    <meta property="og:url" content="https://queserademi.com/colabora.php">
     <meta property="og:site_name" content="queserademi">
-    <meta property="og:image" content="http://queserademi.com/images/logo.png">
+    <meta property="og:image" content="https://queserademi.com/images/logo.png">
     <!--Links css-->
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -87,7 +87,7 @@ if( isset( $_GET['profesion']  )  ) {
             </div>
 
             <div class="col-md-2 hidden-sm hidden-xs text-center">
-              <a data-role="none" href="http://queserademi.com">
+              <a data-role="none" href="https://queserademi.com">
                 <img class="img-responsive" src="images/logo-blanco.svg"> 
               </a>
             </div>

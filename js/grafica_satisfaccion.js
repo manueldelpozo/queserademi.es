@@ -48,7 +48,7 @@ $('#container_satisfaccion').highcharts({
             chart: {
                 events: {
                     load: function(event) {                
-                        this.renderer.image('http://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                        this.renderer.image('https://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
                     }
                 } 
             }
@@ -150,13 +150,13 @@ $('#container_satisfaccion').highcharts({
     <?php if( $btn_colabora_sat_1 > 0 ) { ?>
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>satisfaccion</strong> de la profesión<br>';
         capa_aviso += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
-        capa_aviso += '<a href="http://queserademi.com/colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d62e46; color: #d62e46;">Colabora!</a>';
+        capa_aviso += '<a href="https://queserademi.com/colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d62e46; color: #d62e46;">Colabora!</a>';
     <?php } ?>
 
     <?php if( $btn_colabora_sat_2 > 0 ) { ?>
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>satisfaccion</strong> de la profesión<br>';
         capa_aviso += '<strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
-        capa_aviso += '<a href="http://queserademi.com/colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a>';
+        capa_aviso += '<a href="https://queserademi.com/colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a>';
     <?php } ?>
 
     capa_aviso += '</div>';

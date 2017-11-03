@@ -52,7 +52,7 @@ $('#container_info').html('<h5 style="margin: 15px; font-weight: bold;">+ INFORM
     $('#info').append('<h4 class="principal nombre"><?php echo mb_strtoupper($profesion,"UTF-8" ); ?></h4>');
     <?php if( empty( $description_info ) ) { ?>
         $('#info').append('<p class="descripcion" id="desc1">Falta información! Ayúdanos a conseguirla.</p>' +
-                          '<div class="col-md-8 col-md-offset-2"><a href="http://queserademi.com/colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d62e46; color: #d62e46;">Colabora!</a></div>');
+                          '<div class="col-md-8 col-md-offset-2"><a href="https://queserademi.com/colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d62e46; color: #d62e46;">Colabora!</a></div>');
     <?php } else { ?>
         $('#info').append('<div class="descripcion"><?php echo $description_info; ?></div>');
     <?php } ?>
@@ -62,7 +62,7 @@ $('#container_info').html('<h5 style="margin: 15px; font-weight: bold;">+ INFORM
                       '<h4 class="secundaria nombre"><?php echo mb_strtoupper($profesion_dos,"UTF-8" ); ?></h4>');
     <?php if( empty( $description_info_dos ) ) { ?>
         $('#info').append('<p class="descripcion">Falta información! Ayúdanos a conseguirla.</p>' +
-                          '<div class="col-md-8 col-md-offset-2"><a href="http://queserademi.com/colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a></div>');
+                          '<div class="col-md-8 col-md-offset-2"><a href="https://queserademi.com/colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a></div>');
     <?php } else { ?>
         $('#info').append('<div class="descripcion"><?php echo $description_info_dos; ?></div>');
     <?php } ?>

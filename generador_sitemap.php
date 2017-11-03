@@ -12,7 +12,7 @@ use Asika\Sitemap\ChangeFreq;
 $sitemap = new Sitemap;
 
 foreach(glob('*.html') as $filename) {
-	$url = 'http://queserademi.com/' . $filename;
+	$url = 'https://queserademi.com/' . $filename;
 	$sitemap->addItem($url, '1', ChangeFreq::MONTHLY, new \DateTime()); //You can add some optional params
 }
 //Render it to XML:
@@ -32,9 +32,9 @@ $sitemap = new Sitemap;
 $num = 1;
 
 foreach(glob('profesiones/*.html') as $n => $filename) {
-	$url = 'http://' . 'queserademi.com' . '/' . $filename;
+	$url = 'https://' . 'queserademi.com' . '/' . $filename;
 	//if ($_SERVER['HTTP_HOST'] === 'localhost')
-		//$url = 'http://' . $_SERVER['HTTP_HOST'] . '/queserademi/queserademi/' . $filename;
+		//$url = 'https://' . $_SERVER['HTTP_HOST'] . '/queserademi/queserademi/' . $filename;
 	$sitemap->addItem($url, '0.7', ChangeFreq::MONTHLY, new \DateTime()); //You can add some optional params
 	if ($n % $_LIMIT === 0 && $n > 0) {
 		//Render it to XML:
