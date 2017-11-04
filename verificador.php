@@ -278,9 +278,9 @@ if( !empty( $_POST['verificacion'] ) ){
 	    <!--Links css-->
 	    <link rel="icon" type="image/x-icon" href="images/logo.png">
 	    <link rel="stylesheet" href="css/bootstrap.min.css">
-	    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css">
+	    <link rel="stylesheet" href="css/font-awesome.css">
 	    <link rel="stylesheet" href="css/style.css">
-	    <script src="https://www.w3schools.com/lib/w3.js"></script>
+	    <script src="js/w3.js"></script>
 	</head>
 	<body>
 		<!-- Facebook script -->

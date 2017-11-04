@@ -31,11 +31,11 @@ if( isset( $_GET['profesion']  )  ) {
     <!--Links css-->
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-colabora.css">
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="js/w3.js"></script>
     <!-- Google Tag Manager -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
