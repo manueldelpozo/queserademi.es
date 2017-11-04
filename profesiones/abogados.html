@@ -623,16 +623,15 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    rotation: 90,
                     verticalAlign: 'top',
-                    x: 2,
+                    x: 10,
                     y: 40,
                     textAlign: 'center',
-                    text: 'ALTO',
+                    text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
+                    useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'14px',
-                        fontWeight: 'bolder'
+                        fontSize:'20px'
                     }
                 }
             }, { // Paro medio
@@ -645,16 +644,15 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.1)',
                 label: {
                     align: 'right',
-                    rotation: 90,
                     verticalAlign: 'top',
-                    x: 2,
+                    x: 10,
                     y: 20,
                     textAlign: 'center',
-                    text: 'BAJO',
+                    text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
+                    useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'14px',
-                        fontWeight: 'bolder'
+                        fontSize:'20px'
                     }
                 }
             }
