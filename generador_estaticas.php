@@ -271,7 +271,7 @@ $html = '
       <meta property="og:locale" content="es_ES">
       <meta property="og:type" content="website">
       <meta property="og:title" content="'; $html .= $nombre_profesion . ' | queserademi">
-      <meta property="og:description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>'; $html .= $nombre_profesion . '</em>">
+      <meta property="og:description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser '; $html .= $nombre_profesion . '">
       <meta property="og:url" content="https://queserademi.com/'; $html .= $url_html . '">
       <meta property="og:site_name" content="queserademi">
       <meta property="og:image" content="https://queserademi.com/images/logo.png">
