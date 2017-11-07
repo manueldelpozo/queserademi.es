@@ -77,9 +77,6 @@ function submitar($input, item) {
 $('.typeahead').keyup(function(event) {
     var hasFocus = $(this).is(":focus");
 
-    // hide footer on focus input
-    $('footer').toggle(isMobile && hasFocus && !Boolean($(this).val()));
-
     if (event.which === 13) {
         $lista = $(this).siblings('.tt-dropdown-menu');
         // si input tiene focus 
@@ -96,6 +93,7 @@ $('.typeahead').keyup(function(event) {
         }
     }
 });
+
 
 // Cuando clickamos boton submit
 $('.btn-submit').click(function(event) {
@@ -151,3 +149,15 @@ $('#btnAddComparador').click(function() {
         $(this).find('input').focus();
     });
 });
+
+// FOOTER
+// it is hidden on tsppingin mobile version
+if (isMobile) {
+    $('.typeahead').on('touchend tap click', function(event) {
+        $('footer').slideUp('slow');
+    });
+
+    $('.typeahead').blur(function(event) {
+        $('footer').slideDown('slow');
+    }); 
+}
