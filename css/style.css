@@ -390,8 +390,9 @@ input:-webkit-autofill, input:-webkit-autofill:focus {
 
 .sprite {
 	background:url(../images/sprite.png) no-repeat;
-	height: 275px;
+	height: 300px;
 	background-position-x: 0;
+	margin: 0 10px;
 }
 
 #sprite-alfonso {
@@ -405,13 +406,24 @@ input:-webkit-autofill, input:-webkit-autofill:focus {
 }
 
 #sprite-nacho {
-	background-position-y: -705px;
-	float: right;
+	background-position-y: -725px;
+	float: left;
 }
 
 #sprite-maria {
-	background-position-y: -1077px;
+	background-position-y: -1097px;
 	float: left;
+}
+
+#sprite-mabel {
+	background-position-y: -1457px;
+	float: left;
+}
+
+.speech {
+	overflow: auto;
+    height: 185px;
+    text-align: left;
 }
 
 address {
@@ -730,8 +742,7 @@ ul.share-buttons li {
 	}
 
 	.sprite {
-		height: 250px;
-		margin: 0  0 10px;
+		background-position-x: -50px;
 	}
 }
 
@@ -874,10 +885,5 @@ ul.share-buttons li {
 		margin-top: 0;
 		max-height: 250px;
 		border-radius: 0 !important;
-	}
-
-	.sprite {
-		height: 250px;
-		margin: 0  0 10px;
 	}
 }
