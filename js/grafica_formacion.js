@@ -142,7 +142,7 @@ var chartFormacion = {
         series: {
             cursor: 'pointer',
             stacking: 'normal',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             pointWidth: 30
         }
     },

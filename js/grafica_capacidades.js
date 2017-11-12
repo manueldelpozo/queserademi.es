@@ -224,7 +224,7 @@ $('#container_capacidades').highcharts({
             display: 'block', 
             width: '300px',
             whiteSpace: 'normal' 
-        }      
+        }    
     },
     credits: {
          enabled: false
@@ -232,16 +232,13 @@ $('#container_capacidades').highcharts({
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }               
             }          
         }

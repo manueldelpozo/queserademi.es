@@ -149,15 +149,3 @@ $('#btnAddComparador').click(function() {
         $(this).find('input').focus();
     });
 });
-
-// FOOTER
-// it is hidden on tsppingin mobile version
-if (isMobile) {
-    $('.typeahead').on('touchend tap click', function(event) {
-        $('footer').slideUp('slow');
-    });
-
-    $('.typeahead').blur(function(event) {
-        $('footer').slideDown('slow');
-    }); 
-}
