@@ -65,17 +65,37 @@ try {
     return $seriesSal;
   }
 
-  function createExcerpts($text, $length, $more_txt) { 
-    $text = preg_replace('/[\n\r]/', '', $text);
-    $text = str_replace('"','',$text);
-    // primer letra en mayuscula forzando el UTF8
-    $text = Encoding::toUTF8(ucfirst($text));
-    // dividir el texto en dos
-    $split_text = explode(' ', $text, $length);
+  function prepareText($text) {
+    $text = preg_replace( '/[\n\r]/', ' ', $text); // remove breaks
+    $text = str_replace('"','',$text); // remove "
+    $text = preg_replace( '/^(Nota:.*\.?)$/', ' ', $text); // remove Nota
+    return Encoding::toUTF8(ucfirst($text)); // primer letra en mayuscula forzando el UTF8
+}
+
+function parseToList($text, $first_symbol, $second_symbol) {
+    if (empty($text)) {
+        return $text;
+    }
+    $split_text = explode($first_symbol, $text);
+    if (count($split_text) <= 1) {
+        return $text;
+    }
+    $list = array_pop($split_text);
+    $initial_text = join(' ', $split_text);
+    $list_items = explode($second_symbol, $list);
+    return '<span>' . $initial_text . ':</span><ul class="list-group"><li class="list-group-item">' . join('</li><li class="list-group-item">', $list_items) . '</li></ul>';
+}
+
+function createExcerpts($text, $length, $more_txt) { 
+    $split_text = explode(' ', $text, $length); // dividir el texto en dos
     $excerpt = array_pop($split_text);
     $content = join(' ', $split_text);
-    return $content . '<span class="excerpt"><span style="display:none;">' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></span>'; 
-  }
+
+    $excerpt = parseToList($excerpt, ': -', '; -');
+    $excerpt = parseToList($excerpt, ': a)', '; b)');
+    
+    return $content . '<div class="excerpt"><div hidden>' . $excerpt . '</div>' . '<strong class="more">' . $more_txt . '</strong></div>'; 
+}
 
   function imprimirSeriesCap($filas, $tablas) {
     $seriesCap = array();
@@ -610,6 +630,8 @@ if( $btn_colabora_s_1 > 0 ) {
 } 
 
 /** INFO **/
+$description_info = prepareText($filas_info[0]["descripcion"]);
+$description_info = createExcerpts($description_info, 20, ' [ + ]');
 
 $script_info = "$('#container_info').html('<h5 style=\"margin:15px; font-weight: bold;\">+ INFORMACIÓN</h5><div id=\"info\"></div>');";
 
@@ -619,7 +641,7 @@ if( isset( $profesion ) ) {
         $script_info .= "$('#info').append('<p class=\"descripcion\" id=\"desc1\">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d62e46; color: #d62e46;\">Colabora!</a></div>');";
     } else { 
-        $script_info .= "$('#info').append('<p class=\"descripcion\">". createExcerpts($filas_info[0]["descripcion"], 150, " [ + ]") . "</p>');";
+        $script_info .= "$('#info').append('<p class=\"descripcion\">". $description_info . "</p>');";
     } 
 } 
 

@@ -37,10 +37,10 @@ function createExcerpts($text, $length, $more_txt) {
 }
 
 $description_info = prepareText($filas_info[0]["descripcion"]);
-$description_info = createExcerpts($description_info, 30, ' [ + ]');
+$description_info = createExcerpts($description_info, 20, ' [ + ]');
 
 $description_info_dos = prepareText($filas_info_dos[0]["descripcion"]);
-$description_info_dos = createExcerpts($description_info_dos, 30, ' [ + ]');
+$description_info_dos = createExcerpts($description_info_dos, 20, ' [ + ]');
 
 
 ?>
