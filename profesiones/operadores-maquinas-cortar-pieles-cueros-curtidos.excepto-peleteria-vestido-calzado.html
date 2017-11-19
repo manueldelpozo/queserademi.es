@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de máquinas de cortar pieles y cueros curtidos.(excepto peletería, vestido y calzado) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de máquinas de cortar pieles y cueros curtidos.(excepto peletería, vestido y calzado)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de máquinas de cortar pieles y cueros curtidos.(excepto peletería, vestido y calzado)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [10560, 12336, 13584];
 var seriesSalJunior     = [12276, 14268, 15672];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MÁQUINAS DE CORTAR PIELES Y CUEROS CURTIDOS.(EXCEPTO PELETERÍA, VESTIDO Y CALZADO)</h4>');$('#info').append('<p class="descripcion">Los operadores de máquinas para tratar pieles y cueros accionan y vigilan diversasmáquinas utilizadas en la preparación, curtido y tratamiento de cueros y pieles.Cortan, rascan, limpian, curten, desfloran y tiñen pieles y pellejos para obtenerpiezas de cuero y pieles acabadas.Entre sus tareas se incluyen:- accionar y vigilar máquinas para retirar los restos de carne y grasa de las pieleso pellejos a fin de limpiarlos y suavizarlos antes de curarlos;- accionar y vigilar máquinas para eliminar pelos largos y gruesos de las pielese igualar la longitud de la pelambre, y para teñir, alisar y suavizar las pielescurtidas;- accionar y vigilar máquinas para eliminar de las pieles las raíces del pelo, lascélulas pigmentarias y los depósitos de sales;- accionar y vigilar máquinas para reducir el grosor de las pieles y pellejos aun tamaño uniforme;- accionar y vigilar máquinas para desbastar las pieles o pellejos hasta obtenerel acabado especificado;- accionar y vigilar<span class="excerpt"><span style="display:none;">máquinas para separar la lana del cuero o eliminar la carney el pelo de los cueros;- accionar o vigilar máquinas para cortar o hender los cueros a fin de obtenerdos o más piezas o darles un grosor uniforme;- accionar y vigilar máquinas para curtir cueros y pellejos en soluciones especialesy obtener productos curtidos;- tratar la superficie del cuero con aceites y accionar máquinas y darle un acabadobrillante;- accionar y vigilar máquinas para aplicar tinturas y colorantes a los cueroscurtidos;- mantener y reparar las cubas y la restante maquinaria.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MÁQUINAS DE CORTAR PIELES Y CUEROS CURTIDOS.(EXCEPTO PELETERÍA, VESTIDO Y CALZADO)</h4>');$('#info').append('<p class="descripcion">Los operadores de máquinas para tratar pieles y cueros accionan y vigilan diversas máquinas utilizadas en la preparación, curtido<div class="excerpt"><div hidden><span>y tratamiento de cueros y pieles. Cortan, rascan, limpian, curten, desfloran y tiñen pieles y pellejos para obtener piezas de cuero y pieles acabadas. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> accionar y vigilar máquinas para retirar los restos de carne y grasa de las pieles o pellejos a fin de limpiarlos y suavizarlos antes de curarlos</li><li class="list-group-item"> accionar y vigilar máquinas para eliminar pelos largos y gruesos de las pieles e igualar la longitud de la pelambre, y para teñir, alisar y suavizar las pieles curtidas</li><li class="list-group-item"> accionar y vigilar máquinas para eliminar de las pieles las raíces del pelo, las células pigmentarias y los depósitos de sales</li><li class="list-group-item"> accionar y vigilar máquinas para reducir el grosor de las pieles y pellejos a un tamaño uniforme</li><li class="list-group-item"> accionar y vigilar máquinas para desbastar las pieles o pellejos hasta obtener el acabado especificado</li><li class="list-group-item"> accionar y vigilar máquinas para separar la lana del cuero o eliminar la carne y el pelo de los cueros</li><li class="list-group-item"> accionar o vigilar máquinas para cortar o hender los cueros a fin de obtener dos o más piezas o darles un grosor uniforme</li><li class="list-group-item"> accionar y vigilar máquinas para curtir cueros y pellejos en soluciones especiales y obtener productos curtidos</li><li class="list-group-item"> tratar la superficie del cuero con aceites y accionar máquinas y darle un acabado brillante</li><li class="list-group-item"> accionar y vigilar máquinas para aplicar tinturas y colorantes a los cueros curtidos</li><li class="list-group-item"> mantener y reparar las cubas y la restante maquinaria.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

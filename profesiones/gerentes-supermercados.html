@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Gerentes de supermercados | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Gerentes de supermercados">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Gerentes de supermercados</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">GERENTES DE SUPERMERCADOS</h4>');$('#info').append('<p class="descripcion">Los directores y gerentes de empresas de comercio al por menor planifican, organizan,coordinan y controlan las actividades de los establecimientos de ventade bienes al por menor. Son responsables de los presupuestos, la dotación depersonal y la orientación de la explotación de las tiendas o de las unidades organizativasexistentes dentro de las tiendas que venden tipos concretos de productos.29Nota: Los directores y gerentes de empresas de comercio al por menor suelenestar empleados en establecimientos relativamente pequeños en los que no hayuna estructura jerarquizada de directivos. También se clasifican en este grupoprimario los gerentes de grandes establecimientos al por menor, como supermercadosy grandes almacenes, aunque en esos establecimientos haya una estructurajerarquizada de directivos y supervisores. En cambio, los directores generalesde grupos de establecimientos como supermercados o de cadenas degrandes almacenes deben clasificarse en el grupo primario 1120, Directores generalesy presidentes ejecutivos.Los comerciantes propietarios de pequeñas tiendas en las que la gestión<span class="excerpt"><span style="display:none;">y supervisióndel personal no son un elemento significativo del trabajo se clasificanen el grupo primario 5300, Comerciantes propietarios de tiendas.El personal que controla y dirige las actividades de los dependientes de tiendas yalmacenes, operadores de caja y otros empleados, pero que no tiene la responsabilidadde definir la combinación de productos, fijar los precios, elaborar lospresupuestos y los niveles de dotación de personal, y seleccionar y contratar aéste, se clasifica en el grupo primario 5210, Jefes de sección de tiendas y almacenes.Entre sus tareas se incluyen:- definir la combinación de productos, los niveles de existencias y las normasde servicio;- elaborar y aplicar políticas de compras y de comercialización, y fijar los precios;- promover y publicitar los bienes y servicios de los establecimientos;- mantener registros de los niveles de exist</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">GERENTES DE SUPERMERCADOS</h4>');$('#info').append('<p class="descripcion">Los directores y gerentes de empresas de comercio al por menor planifican, organizan, coordinan y controlan las actividades de<div class="excerpt"><div hidden><span>los establecimientos de venta de bienes al por menor. Son responsables de los presupuestos, la dotación de personal y la orientación de la explotación de las tiendas o de las unidades organizativas existentes dentro de las tiendas que venden tipos concretos de productos. 29 Nota: Los directores y gerentes de empresas de comercio al por menor suelen estar empleados en establecimientos relativamente pequeños en los que no hay una estructura jerarquizada de directivos. También se clasifican en este grupo primario los gerentes de grandes establecimientos al por menor, como supermercados y grandes almacenes, aunque en esos establecimientos haya una estructura jerarquizada de directivos y supervisores. En cambio, los directores generales de grupos de establecimientos como supermercados o de cadenas de grandes almacenes deben clasificarse en el grupo primario 1120, Directores generales y presidentes ejecutivos. Los comerciantes propietarios de pequeñas tiendas en las que la gestión y supervisión del personal no son un elemento significativo del trabajo se clasifican en el grupo primario 5300, Comerciantes propietarios de tiendas. El personal que controla y dirige las actividades de los dependientes de tiendas y almacenes, operadores de caja y otros empleados, pero que no tiene la responsabilidad de definir la combinación de productos, fijar los precios, elaborar los presupuestos y los niveles de dotación de personal, y seleccionar y contratar a éste, se clasifica en el grupo primario 5210, Jefes de sección de tiendas y almacenes. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> definir la combinación de productos, los niveles de existencias y las normas de servicio</li><li class="list-group-item"> elaborar y aplicar políticas de compras y de comercialización, y fijar los precios</li><li class="list-group-item"> promover y publicitar los bienes y servicios de los establecimientos</li><li class="list-group-item"> mantener registros de los niveles de exist</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

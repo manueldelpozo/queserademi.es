@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Auxiliar de atención jurídica | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Auxiliar de atención jurídica">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Auxiliar de atención jurídica</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12648, 15552, 17592];
 var seriesSalJunior     = [14544, 17424, 19428];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">AUXILIAR DE ATENCIÓN JURÍDICA</h4>');$('#info').append('<p class="descripcion">Los profesionales de apoyo de servicios jurídicos y servicios similares desempeñanfunciones de apoyo en tribunales o despachos de abogados, prestan serviciosen materias jurídicas como contratos de seguro, transmisiones de propiedady concesión de préstamos u otras operaciones financieras, o realizan investigacionespara clientes.Entre sus tareas se incluyen:- documentar procedimientos y sentencias judiciales;- trasladar y entregar escritos de demanda, autos de emplazamiento o de citacióny otras resoluciones judiciales;- mantener el orden en las salas de vistas;- preparar documentos jurídicos tales como expedientes judiciales, alegaciones,recursos, testamentos y contratos, y preparar documentos que resumanlas posiciones de las partes o establezcan las condiciones de un préstamo oun seguro;- investigar hechos, reunir pruebas y buscar disposiciones legales, jurisprudenciay otros documentos para preparar los asuntos;180- asesorar a los clientes sobre cuestiones jurídicas;- examinar documentos tales como escrituras de constitución de hipotecas ode servidumbres, sentencias, contratos y planos para verificar la descripciónjurídica y la titularidad de inmuebles;- preparar<span class="excerpt"><span style="display:none;">documentos de transmisión de inmuebles, títulos y valores u otrosasuntos que requieran registro oficial;- investigar presuntos casos de hurto, robo o transmisión indebida de informaciónen establecimientos comerciales o industriales y otros posibles casosde comportamiento ilícito de clientes o empleados;- investigar establecimientos comerciales o industriales y las circunstancias yel comportamiento de determinadas personas en nombre de los clientes.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">AUXILIAR DE ATENCIÓN JURÍDICA</h4>');$('#info').append('<p class="descripcion">Los profesionales de apoyo de servicios jurídicos y servicios similares desempeñan funciones de apoyo en tribunales o despachos de<div class="excerpt"><div hidden><span>abogados, prestan servicios en materias jurídicas como contratos de seguro, transmisiones de propiedad y concesión de préstamos u otras operaciones financieras, o realizan investigaciones para clientes. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> documentar procedimientos y sentencias judiciales</li><li class="list-group-item"> trasladar y entregar escritos de demanda, autos de emplazamiento o de citación y otras resoluciones judiciales</li><li class="list-group-item"> mantener el orden en las salas de vistas</li><li class="list-group-item"> preparar documentos jurídicos tales como expedientes judiciales, alegaciones, recursos, testamentos y contratos, y preparar documentos que resuman las posiciones de las partes o establezcan las condiciones de un préstamo o un seguro</li><li class="list-group-item"> investigar hechos, reunir pruebas y buscar disposiciones legales, jurisprudencia y otros documentos para preparar los asuntos; 180 - asesorar a los clientes sobre cuestiones jurídicas</li><li class="list-group-item"> examinar documentos tales como escrituras de constitución de hipotecas o de servidumbres, sentencias, contratos y planos para verificar la descripción jurídica y la titularidad de inmuebles</li><li class="list-group-item"> preparar documentos de transmisión de inmuebles, títulos y valores u otros asuntos que requieran registro oficial</li><li class="list-group-item"> investigar presuntos casos de hurto, robo o transmisión indebida de información en establecimientos comerciales o industriales y otros posibles casos de comportamiento ilícito de clientes o empleados</li><li class="list-group-item"> investigar establecimientos comerciales o industriales y las circunstancias y el comportamiento de determinadas personas en nombre de los clientes.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

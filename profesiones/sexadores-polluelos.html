@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Sexadores de polluelos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Sexadores de polluelos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Sexadores de polluelos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14640, 21000, 25428];
 var seriesSalJunior     = [16416, 23292, 28092];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">SEXADORES DE POLLUELOS</h4>');$('#info').append('<p class="descripcion">Los trabajadores cualificados en la avicultura y la cunicultura organizan y realizanoperaciones de cría y cuidado de pollos, pavos, gansos, patos y otras avesde corral y conejos para producir carne, huevos y polluelos. La producción sedestina, principal o exclusivamente, a la comercialización a través de mayoristas,organizaciones comerciales o mercados.Entre sus tareas se incluyen:- efectuar el seguimiento de la actividad del mercado, planificar y coordinar laproducción consiguiente, mantener y evaluar registros de las actividades dela explotación;256- cultivar y comprar piensos y otros suministros necesarios para mantener alas aves de corral y conejos en estado y niveles de nutrición apropiados;- vigilar y examinar las aves de corral y los conejos para detectar enfermedades,lesiones o dolencias, y para verificar el estado físico, como ser la tasa deaumento de peso, y eliminar de la bandada de aves de corral las débiles, enfermasy muertas;- mezclar piensos y aditivos para piensos y llenar los recipientes<span class="excerpt"><span style="display:none;">con piensos yagua;- vacunar las aves de corral y los conejos por medio de ingestión de agua, lainyección, o el espolvoreado del aire;- recoger y almacenar huevos y envasarlos para ser vendidos al mercado;- determinar el sexo de los polluelos y gazapos y facilitar la procreación, la inseminaciónartificial, y la incubación de los huevos;- alquiler o invertir y mantener y limpiar las edificaciones de la explotación, lamaquinaria, equipamientos y estructuras;- sacrificar las aves de corral y los conejos y acondicionarlas para la venta o laentrega al mercado;- almacenar y llevar a cabo algunos procesamientos de los productos;- organizar la venta, la compra y transporte de existencias, productos y suministros;- capacitar y supervisar trabajadores en los procedimientos de producción deaves de corral y conejos, en tareas de mantenimiento, y tomar precaucionesde la salud y seguridad, y contratar y dispensar trabajadores y contratistas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">SEXADORES DE POLLUELOS</h4>');$('#info').append('<p class="descripcion">Los trabajadores cualificados en la avicultura y la cunicultura organizan y realizan operaciones de cría y cuidado de pollos,<div class="excerpt"><div hidden><span>pavos, gansos, patos y otras aves de corral y conejos para producir carne, huevos y polluelos. La producción se destina, principal o exclusivamente, a la comercialización a través de mayoristas, organizaciones comerciales o mercados. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> efectuar el seguimiento de la actividad del mercado, planificar y coordinar la producción consiguiente, mantener y evaluar registros de las actividades de la explotación; 256 - cultivar y comprar piensos y otros suministros necesarios para mantener a las aves de corral y conejos en estado y niveles de nutrición apropiados</li><li class="list-group-item"> vigilar y examinar las aves de corral y los conejos para detectar enfermedades, lesiones o dolencias, y para verificar el estado físico, como ser la tasa de aumento de peso, y eliminar de la bandada de aves de corral las débiles, enfermas y muertas</li><li class="list-group-item"> mezclar piensos y aditivos para piensos y llenar los recipientes con piensos y agua</li><li class="list-group-item"> vacunar las aves de corral y los conejos por medio de ingestión de agua, la inyección, o el espolvoreado del aire</li><li class="list-group-item"> recoger y almacenar huevos y envasarlos para ser vendidos al mercado</li><li class="list-group-item"> determinar el sexo de los polluelos y gazapos y facilitar la procreación, la inseminación artificial, y la incubación de los huevos</li><li class="list-group-item"> alquiler o invertir y mantener y limpiar las edificaciones de la explotación, la maquinaria, equipamientos y estructuras</li><li class="list-group-item"> sacrificar las aves de corral y los conejos y acondicionarlas para la venta o la entrega al mercado</li><li class="list-group-item"> almacenar y llevar a cabo algunos procesamientos de los productos</li><li class="list-group-item"> organizar la venta, la compra y transporte de existencias, productos y suministros</li><li class="list-group-item"> capacitar y supervisar trabajadores en los procedimientos de producción de aves de corral y conejos, en tareas de mantenimiento, y tomar precauciones de la salud y seguridad, y contratar y dispensar trabajadores y contratistas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

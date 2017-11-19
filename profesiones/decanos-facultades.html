@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Decanos de facultades | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Decanos de facultades">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Decanos de facultades</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [24120, 31236, 36204];
 var seriesSalJunior     = [29100, 36384, 41496];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DECANOS DE FACULTADES</h4>');$('#info').append('<p class="descripcion">Los directores de servicios de educación planifican, dirigen y coordinan los aspectoseducativos y administrativos de los servicios de educación, los centros deenseñanza primaria y secundaria, las facultades y otras instituciones docentes.Entre sus tareas se incluyen:- determinar los programas educativos en el marco establecido en cada casopor las autoridades educativas y los órganos directivos;- aplicar sistemas y procedimientos para supervisar el rendimiento escolar y21las matriculaciones de alumnos;- dirigir las actividades administrativas y de secretaría relativas a la admisiónde alumnos y a la prestación de los servicios educativos;- controlar actividades administrativas tales como la planificación presupuestaria,la preparación de informes, la asunción de gastos por suministros,equipos y servicios;- asumir el liderazgo y orientación del personal docente, académico y administrativoy e los alumnos;- evaluar la labor de los profesores visitando las aulas, observando los métodosdocentes, revisando los objetivos formativos y examinando los materialesdidácticos;- promover el programa educativo y representar al servicio o institución<span class="excerpt"><span style="display:none;">en lacomunidad en sentido más amplio;- supervisar el mantenimiento de las instalaciones educativas;- elaborar y aplicar un código disciplinario para crear un entorno seguro yfavorable para los alumnos y los profesores;- organizar y aplicar métodos para la captación adicional de fondos conjuntamentecon los padres y con los grupos de la comunidad y los patrocinadores;- controlar la selección, formación y supervisión del personal.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DECANOS DE FACULTADES</h4>');$('#info').append('<p class="descripcion">Los directores de servicios de educación planifican, dirigen y coordinan los aspectos educativos y administrativos de los servicios de<div class="excerpt"><div hidden><span>educación, los centros de enseñanza primaria y secundaria, las facultades y otras instituciones docentes. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> determinar los programas educativos en el marco establecido en cada caso por las autoridades educativas y los órganos directivos</li><li class="list-group-item"> aplicar sistemas y procedimientos para supervisar el rendimiento escolar y 21 las matriculaciones de alumnos</li><li class="list-group-item"> dirigir las actividades administrativas y de secretaría relativas a la admisión de alumnos y a la prestación de los servicios educativos</li><li class="list-group-item"> controlar actividades administrativas tales como la planificación presupuestaria, la preparación de informes, la asunción de gastos por suministros, equipos y servicios</li><li class="list-group-item"> asumir el liderazgo y orientación del personal docente, académico y administrativo y e los alumnos</li><li class="list-group-item"> evaluar la labor de los profesores visitando las aulas, observando los métodos docentes, revisando los objetivos formativos y examinando los materiales didácticos</li><li class="list-group-item"> promover el programa educativo y representar al servicio o institución en la comunidad en sentido más amplio</li><li class="list-group-item"> supervisar el mantenimiento de las instalaciones educativas</li><li class="list-group-item"> elaborar y aplicar un código disciplinario para crear un entorno seguro y favorable para los alumnos y los profesores</li><li class="list-group-item"> organizar y aplicar métodos para la captación adicional de fondos conjuntamente con los padres y con los grupos de la comunidad y los patrocinadores</li><li class="list-group-item"> controlar la selección, formación y supervisión del personal.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

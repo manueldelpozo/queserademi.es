@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de instalaciones de tratamientos químicos por cubas de electrólisis | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de instalaciones de tratamientos químicos por cubas de electrólisis">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de instalaciones de tratamientos químicos por cubas de electrólisis</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17208, 21012, 23688];
 var seriesSalJunior     = [19200, 22980, 25620];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE INSTALACIONES DE TRATAMIENTOS QUÍMICOS POR CUBAS DE ELECTRÓLISIS</h4>');$('#info').append('<p class="descripcion">Los operadores en plantas industriales químicas vigilan y accionan aparatos ymáquinas para combinar, mezclar, procesar y envasar una gran diversidad deproductos químicos (excepto productos farmacéuticos o cosméticos).Entre sus tareas se incluyen:- preparar, poner en marcha, controlar, ajustar y detener máquinas e instalaciones;- vigilar procesos de reacción y transferencias de productos de conformidadcon los procedimientos de seguridad establecidos;- vigilar medidores, calibradores e instrumentos electrónicos en uno o másaparatos para la fabricación o formulación de productos químicos, comomáquinas mezcladoras, calentadoras, amasadoras, secadoras, prensadoras,encapsuladoras, granuladoras o recubridoras;- medir, pesar y cargar ingredientes químicos siguiendo las fichas de formulación;- tomar muestras y realizar análisis químicos y físicos de rutina de productos yregistrar datos de producción;- limpiar y realizar reparaciones menores en máquinas e<span class="excerpt"><span style="display:none;">instalaciones.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE INSTALACIONES DE TRATAMIENTOS QUÍMICOS POR CUBAS DE ELECTRÓLISIS</h4>');$('#info').append('<p class="descripcion">Los operadores en plantas industriales químicas vigilan y accionan aparatos y máquinas para combinar, mezclar, procesar y envasar una<div class="excerpt"><div hidden><span>gran diversidad de productos químicos (excepto productos farmacéuticos o cosméticos). Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> preparar, poner en marcha, controlar, ajustar y detener máquinas e instalaciones</li><li class="list-group-item"> vigilar procesos de reacción y transferencias de productos de conformidad con los procedimientos de seguridad establecidos</li><li class="list-group-item"> vigilar medidores, calibradores e instrumentos electrónicos en uno o más aparatos para la fabricación o formulación de productos químicos, como máquinas mezcladoras, calentadoras, amasadoras, secadoras, prensadoras, encapsuladoras, granuladoras o recubridoras</li><li class="list-group-item"> medir, pesar y cargar ingredientes químicos siguiendo las fichas de formulación</li><li class="list-group-item"> tomar muestras y realizar análisis químicos y físicos de rutina de productos y registrar datos de producción</li><li class="list-group-item"> limpiar y realizar reparaciones menores en máquinas e instalaciones.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

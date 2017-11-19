@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Recolectores de patatas (en cultivo extensivo) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Recolectores de patatas (en cultivo extensivo)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Recolectores de patatas (en cultivo extensivo)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [11052, 13944, 15972];
 var seriesSalJunior     = [13440, 15960, 17724];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">RECOLECTORES DE PATATAS (EN CULTIVO EXTENSIVO)</h4>');$('#info').append('<p class="descripcion">Los peones agrícolas (excepto en huertas, invernaderos, viveros y jardines) realizantareas sencillas y rutinarias en la producción de cultivos extensivos y cultivosleñosos, tales como frutas, nueces, granos y hortalizas en explotaciones agrícolas.No conducen maquinaria agrícola.Nota: Los peones de la horticultura y la jardinería se clasifican en 9512, Peonesagrícolas en huertas, invernaderos, viveros y jardines.Entre sus tareas se incluyen:- cavar y apalear para limpiar zanjas o para otros fines;- cargar y descargar suministros, productos y otros materiales;367- rastrillar, lanzar y apilar paja, heno y materiales similares;- regar, ralear y desherbar cultivos a mano o utilizando herramientas manuales;- recoger frutas, nueces, hortalizas y otros cultivos;- plantar y cosechar cultivos, tales como el arroz, a mano;- clasificar, ordenar, agrupar y envasar productos en recipientes;- realizar reparaciones menores en instalaciones, edificios, equipos y<span class="excerpt"><span style="display:none;">cercos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">RECOLECTORES DE PATATAS (EN CULTIVO EXTENSIVO)</h4>');$('#info').append('<p class="descripcion">Los peones agrícolas (excepto en huertas, invernaderos, viveros y jardines) realizan tareas sencillas y rutinarias en la producción de<div class="excerpt"><div hidden><span>cultivos extensivos y cultivos leñosos, tales como frutas, nueces, granos y hortalizas en explotaciones agrícolas. No conducen maquinaria agrícola. Nota: Los peones de la horticultura y la jardinería se clasifican en 9512, Peones agrícolas en huertas, invernaderos, viveros y jardines. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> cavar y apalear para limpiar zanjas o para otros fines</li><li class="list-group-item"> cargar y descargar suministros, productos y otros materiales; 367 - rastrillar, lanzar y apilar paja, heno y materiales similares</li><li class="list-group-item"> regar, ralear y desherbar cultivos a mano o utilizando herramientas manuales</li><li class="list-group-item"> recoger frutas, nueces, hortalizas y otros cultivos</li><li class="list-group-item"> plantar y cosechar cultivos, tales como el arroz, a mano</li><li class="list-group-item"> clasificar, ordenar, agrupar y envasar productos en recipientes</li><li class="list-group-item"> realizar reparaciones menores en instalaciones, edificios, equipos y cercos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Empleados administrativos de archivos y/o bibliotecas | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Empleados administrativos de archivos y/o bibliotecas">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Empleados administrativos de archivos y/o bibliotecas</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [11964, 16548, 19764];
 var seriesSalJunior     = [14136, 18948, 22320];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EMPLEADOS ADMINISTRATIVOS DE ARCHIVOS Y/O BIBLIOTECAS</h4>');$('#info').append('<p class="descripcion">Los empleados de bibliotecas y archivos envían y reciben fondos bibliotecarios,clasifican y colocan, material audiovisual, periódicos y revistas y proporcionaninformación general sobre la biblioteca a los usuarios.Así mismo se encargan de archivar correspondencia, tarjetas, facturas, recibos yotros registros en orden alfabético, numérico o con arreglo al sistema de registroutilizado. Localizan y eliminan elementos de los archivos cuando se les requiere,y fotocopian, escanean y envían por fax documentos.Entre sus tareas se incluyen:- entregar y recibir libros y otros materiales de la biblioteca;- colocar los libros y otros materiales de la biblioteca en estanterías;- asistir a los usuarios de las bibliotecas en el acceso a los fondos básicos delas mismas y realizar préstamos entre bibliotecas;- llevar los registros bibliotecarios relativos a la adquisición, la entrega y la devoluciónde libros y otros materiales;- realizar actividades administrativas como las de registro manual y electrónico,procesamiento de textos y, ocasionalmente, mecanografiado;- mantener las suscripciones a<span class="excerpt"><span style="display:none;">publicaciones diarias;- ordenar y clasificar materiales de archivos con arreglo a directrices relativasal contenido, la finalidad, los criterios del usuario o de acuerdo con el ordencronológico, alfabético o numérico;- archivar material en cajones, armarios y cajas de almacenamiento;- localizar y eliminar elementos de los archivos cuando así se les requiere;- llevar registros de materiales archivados y suprimidos;- fotocopiar, escanear y enviar por fax documentos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EMPLEADOS ADMINISTRATIVOS DE ARCHIVOS Y/O BIBLIOTECAS</h4>');$('#info').append('<p class="descripcion">Los empleados de bibliotecas y archivos envían y reciben fondos bibliotecarios, clasifican y colocan, material audiovisual, periódicos y revistas<div class="excerpt"><div hidden><span>y proporcionan información general sobre la biblioteca a los usuarios. Así mismo se encargan de archivar correspondencia, tarjetas, facturas, recibos y otros registros en orden alfabético, numérico o con arreglo al sistema de registro utilizado. Localizan y eliminan elementos de los archivos cuando se les requiere, y fotocopian, escanean y envían por fax documentos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> entregar y recibir libros y otros materiales de la biblioteca</li><li class="list-group-item"> colocar los libros y otros materiales de la biblioteca en estanterías</li><li class="list-group-item"> asistir a los usuarios de las bibliotecas en el acceso a los fondos básicos de las mismas y realizar préstamos entre bibliotecas</li><li class="list-group-item"> llevar los registros bibliotecarios relativos a la adquisición, la entrega y la devolución de libros y otros materiales</li><li class="list-group-item"> realizar actividades administrativas como las de registro manual y electrónico, procesamiento de textos y, ocasionalmente, mecanografiado</li><li class="list-group-item"> mantener las suscripciones a publicaciones diarias</li><li class="list-group-item"> ordenar y clasificar materiales de archivos con arreglo a directrices relativas al contenido, la finalidad, los criterios del usuario o de acuerdo con el orden cronológico, alfabético o numérico</li><li class="list-group-item"> archivar material en cajones, armarios y cajas de almacenamiento</li><li class="list-group-item"> localizar y eliminar elementos de los archivos cuando así se les requiere</li><li class="list-group-item"> llevar registros de materiales archivados y suprimidos</li><li class="list-group-item"> fotocopiar, escanear y enviar por fax documentos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

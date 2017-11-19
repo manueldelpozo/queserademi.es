@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Bármanes | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Bármanes">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Bármanes</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [10752, 12912, 14424];
 var seriesSalJunior     = [12372, 14460, 15924];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">BÁRMANES</h4>');$('#info').append('<p class="descripcion">Los camareros asalariados sirven alimentos y bebidas a los clientes de restaurantes,bares, cantinas, clubes y otros establecimientos comerciales similares,así como en otras instituciones y a bordo de buques y trenes de pasajeros comoasalariados. Así mismo sirven bebidas alcohólicas y no alcohólicas a los clientesdirectamente en la barra o a través de camareros de mesas.Nota: Los camareros propietarios de pequeños cafés, restaurantes y bares queno dedican una parte significativa de su trabajo a la gestión del negocio o la supervisiónde sus empleados se clasifican en 5000, Camareros y cocinerospropietarios.Entre sus tareas se incluyen:- poner las mesas con manteles limpios y con los cubiertos, vajilla y cristalería;- recibir a los clientes y presentarles los menús y las cartas de bebidas;- aconsejarles en la elección de los menús y de las bebidas;215- tomar los pedidos de alimentos y bebidas y pasarlos al personal de cocina ode la barra;- servir alimentos y bebidas<span class="excerpt"><span style="display:none;">a los clientes en las mesas;- limpiar las mesas y devolver los platos y cubiertos a la cocina;- presentar las facturas, cobrar el precio y manejar máquinas de punto de venta,cajas registradoras, cuadrar el efectivo;- preparar y servir bebidas alcohólicas y no alcohólicas en la barra;- lavar las copas y vasos usados, y limpiar y mantener las zonas de servicio dela barra, las zonas de preparación de té y café y las máquinas como las cafeterasexprés;- manejar los barriles de cerveza y conectarles conductos de salida;- ayudar a mantener la barra debidamente ordenada y disponer las botellas,vasos y copas;- comprobar los documentos de identidad de los clientes para verificar quetienen la edad para servirles bebidas alcohólicas;- adoptar medidas para limitar los problemas derivados de los excesos de bebida,como persuadir a los clientes para que dejen de beber, denegarles elservicio o disponer su traslado;- mezclar los ingredientes para preparar cócteles y otras bebidas;- servir a l</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">BÁRMANES</h4>');$('#info').append('<p class="descripcion">Los camareros asalariados sirven alimentos y bebidas a los clientes de restaurantes, bares, cantinas, clubes y otros establecimientos comerciales<div class="excerpt"><div hidden><span>similares, así como en otras instituciones y a bordo de buques y trenes de pasajeros como asalariados. Así mismo sirven bebidas alcohólicas y no alcohólicas a los clientes directamente en la barra o a través de camareros de mesas. Nota: Los camareros propietarios de pequeños cafés, restaurantes y bares que no dedican una parte significativa de su trabajo a la gestión del negocio o la supervisión de sus empleados se clasifican en 5000, Camareros y cocineros propietarios. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> poner las mesas con manteles limpios y con los cubiertos, vajilla y cristalería</li><li class="list-group-item"> recibir a los clientes y presentarles los menús y las cartas de bebidas</li><li class="list-group-item"> aconsejarles en la elección de los menús y de las bebidas; 215 - tomar los pedidos de alimentos y bebidas y pasarlos al personal de cocina o de la barra</li><li class="list-group-item"> servir alimentos y bebidas a los clientes en las mesas</li><li class="list-group-item"> limpiar las mesas y devolver los platos y cubiertos a la cocina</li><li class="list-group-item"> presentar las facturas, cobrar el precio y manejar máquinas de punto de venta, cajas registradoras, cuadrar el efectivo</li><li class="list-group-item"> preparar y servir bebidas alcohólicas y no alcohólicas en la barra</li><li class="list-group-item"> lavar las copas y vasos usados, y limpiar y mantener las zonas de servicio de la barra, las zonas de preparación de té y café y las máquinas como las cafeteras exprés</li><li class="list-group-item"> manejar los barriles de cerveza y conectarles conductos de salida</li><li class="list-group-item"> ayudar a mantener la barra debidamente ordenada y disponer las botellas, vasos y copas</li><li class="list-group-item"> comprobar los documentos de identidad de los clientes para verificar que tienen la edad para servirles bebidas alcohólicas</li><li class="list-group-item"> adoptar medidas para limitar los problemas derivados de los excesos de bebida, como persuadir a los clientes para que dejen de beber, denegarles el servicio o disponer su traslado</li><li class="list-group-item"> mezclar los ingredientes para preparar cócteles y otras bebidas</li><li class="list-group-item"> servir a l</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

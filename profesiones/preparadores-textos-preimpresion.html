@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Preparadores de textos (preimpresión) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Preparadores de textos (preimpresión)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Preparadores de textos (preimpresión)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17292, 20424, 22620];
 var seriesSalJunior     = [19836, 22836, 24936];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PREPARADORES DE TEXTOS (PREIMPRESIÓN)</h4>');$('#info').append('<p class="descripcion">Este grupo primario abarca los técnicos en ciencias físicas y en ingeniería no clasificadosen ningún otro epígrafe del subgrupo 312, Técnicos de las ciencias físicas,químicas y de las ingenierías. En él se incluyen, por ejemplo, los técnicosque ayudan a los ingenieros que trabajan en el desarrollo de procedimientos oen la realización de investigaciones sobre ingeniería biomédica, medioambiental,industrial o de la producción.Entre sus tareas se incluyen:- reunir información y prestar asistencia técnica en relación con la utilizacióneficiente, segura y rentable de la mano de obra, los materiales y los equipos;los métodos de trabajo y la sistematización de la secuencia de distintas operacionesy la supervisión en ambos aspectos, y la disposición eficiente de lasinstalaciones o del establecimiento;- ayudar a identificar riesgos e implantar procedimientos y dispositivos de seguridad;- modificar y ensayar los equipos y dispositivos de ensayo utilizados en la prevención,control y remedio de la contaminación ambiental, la restauración deemplazamientos y<span class="excerpt"><span style="display:none;">la recuperación de tierras;- ayudar al desarrollo de dispositivos para remediar la contaminación, bajo ladirección de un ingeniero;- ayudar a los ingenieros en el ensayo y proyecto de equipos de robótica.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PREPARADORES DE TEXTOS (PREIMPRESIÓN)</h4>');$('#info').append('<p class="descripcion">Este grupo primario abarca los técnicos en ciencias físicas y en ingeniería no clasificados en ningún otro epígrafe del<div class="excerpt"><div hidden><span>subgrupo 312, Técnicos de las ciencias físicas, químicas y de las ingenierías. En él se incluyen, por ejemplo, los técnicos que ayudan a los ingenieros que trabajan en el desarrollo de procedimientos o en la realización de investigaciones sobre ingeniería biomédica, medioambiental, industrial o de la producción. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> reunir información y prestar asistencia técnica en relación con la utilización eficiente, segura y rentable de la mano de obra, los materiales y los equipos; los métodos de trabajo y la sistematización de la secuencia de distintas operaciones y la supervisión en ambos aspectos, y la disposición eficiente de las instalaciones o del establecimiento</li><li class="list-group-item"> ayudar a identificar riesgos e implantar procedimientos y dispositivos de seguridad</li><li class="list-group-item"> modificar y ensayar los equipos y dispositivos de ensayo utilizados en la prevención, control y remedio de la contaminación ambiental, la restauración de emplazamientos y la recuperación de tierras</li><li class="list-group-item"> ayudar al desarrollo de dispositivos para remediar la contaminación, bajo la dirección de un ingeniero</li><li class="list-group-item"> ayudar a los ingenieros en el ensayo y proyecto de equipos de robótica.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

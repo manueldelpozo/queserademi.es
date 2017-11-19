@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Auxiliar de tren | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Auxiliar de tren">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Auxiliar de tren</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12684, 17352, 20628];
 var seriesSalJunior     = [14844, 19728, 23160];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">AUXILIAR DE TREN</h4>');$('#info').append('<p class="descripcion">Los auxiliares de vuelo y camareros de avión, barco y tren velan por la comodidady la seguridad de los pasajeros, sirven comidas y bebidas y prestan serviciospersonales, generalmente en aeronaves, trenes y a bordo de buques. Puedenplanificar y coordinar el cuidado de las instalaciones y las actividades sociales enbuques.Entre sus tareas se incluyen:- saludar a los pasajeros que suben a bordo de la aeronave o el buque, comprobarlos billetes o tarjetas de embarque y conducirles a sus asientos o camarotes;- anunciar, explicar y hacer demostraciones de los procedimientos de seguridady emergencia, como el uso de mascarillas de oxígeno, cinturones de seguridady chalecos salvavidas;- combinar y servir alimentos preparados de antemano y bebidas;- vender artículos libres de impuestos;- atender las necesidades generales y la comodidad de los pasajeros, contestarsus preguntas y mantener la cabina limpia y en orden;- orientar y ayudar a los pasajeros y seguir los procedimientos prescritos encaso<span class="excerpt"><span style="display:none;">de emergencia, como la evacuación de la tripulación tras un aterrizajede emergencia;- verificar que los botiquines de primeros auxilios y los restantes equipos deemergencia están en condiciones operativas;- prestar primeros auxilios a los pasajeros que los precisen;- asistir a las reuniones informativas previas a los vuelos en las que se exponenlas condiciones atmosféricas, las altitudes de vuelo, las rutas, los procedimientosde emergencia, la duración de los vuelos, los servicios de alimentosy bebidas que vayan a ofrecerse y el número de pasajeros;- preparar a los pasajeros y las aeronaves para el despegue y el aterrizaje;- determinar las necesidades especiales de asistencia de pasajeros como losniños pequeños, las personas de edad avanzada y las personas con discapacidades.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">AUXILIAR DE TREN</h4>');$('#info').append('<p class="descripcion">Los auxiliares de vuelo y camareros de avión, barco y tren velan por la comodidad y la seguridad de<div class="excerpt"><div hidden><span>los pasajeros, sirven comidas y bebidas y prestan servicios personales, generalmente en aeronaves, trenes y a bordo de buques. Pueden planificar y coordinar el cuidado de las instalaciones y las actividades sociales en buques. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> saludar a los pasajeros que suben a bordo de la aeronave o el buque, comprobar los billetes o tarjetas de embarque y conducirles a sus asientos o camarotes</li><li class="list-group-item"> anunciar, explicar y hacer demostraciones de los procedimientos de seguridad y emergencia, como el uso de mascarillas de oxígeno, cinturones de seguridad y chalecos salvavidas</li><li class="list-group-item"> combinar y servir alimentos preparados de antemano y bebidas</li><li class="list-group-item"> vender artículos libres de impuestos</li><li class="list-group-item"> atender las necesidades generales y la comodidad de los pasajeros, contestar sus preguntas y mantener la cabina limpia y en orden</li><li class="list-group-item"> orientar y ayudar a los pasajeros y seguir los procedimientos prescritos en caso de emergencia, como la evacuación de la tripulación tras un aterrizaje de emergencia</li><li class="list-group-item"> verificar que los botiquines de primeros auxilios y los restantes equipos de emergencia están en condiciones operativas</li><li class="list-group-item"> prestar primeros auxilios a los pasajeros que los precisen</li><li class="list-group-item"> asistir a las reuniones informativas previas a los vuelos en las que se exponen las condiciones atmosféricas, las altitudes de vuelo, las rutas, los procedimientos de emergencia, la duración de los vuelos, los servicios de alimentos y bebidas que vayan a ofrecerse y el número de pasajeros</li><li class="list-group-item"> preparar a los pasajeros y las aeronaves para el despegue y el aterrizaje</li><li class="list-group-item"> determinar las necesidades especiales de asistencia de pasajeros como los niños pequeños, las personas de edad avanzada y las personas con discapacidades.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

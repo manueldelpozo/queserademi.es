@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Profesionales de apoyo de la administración pública de tributos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Profesionales de apoyo de la administración pública de tributos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Profesionales de apoyo de la administración pública de tributos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17136, 19416, 21024];
 var seriesSalJunior     = [19980, 22008, 24264];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESIONALES DE APOYO DE LA ADMINISTRACIÓN PÚBLICA DE TRIBUTOS</h4>');$('#info').append('<p class="descripcion">Los profesionales de apoyo de la Administración Pública de tributos examinandeclaraciones tributarias, facturas de venta y otros documentos para determinarel tipo y cuantía de los impuestos, derechos de aduanas, gravámenes y otrastasas públicas que deben pagar particulares o empresas, y remiten los casos excepcionaleso importantes al personal directivo de la administración pública.Entre sus tareas se incluyen:- asesorar a organizaciones, empresas y al público en general sobre lainterpretación adecuada de las leyes, reglamentos y disposiciones estatalesen materia de fijación y pago de impuestos, derechos de aduanas,gravámenes y otras tasas públicas, y sobre los derechos y obligaciones delos contribuyentes;- examinar declaraciones tributarias, facturas de venta y otros documentospertinentes para fijar el tipo y cuantía de los impuestos, derechos de adua176nas, gravámenes y otras tasas públicas que haya que pagar;- investigar declaraciones tributarias presentadas y registros, sistemas y controlescontables internos de las organizaciones para garantizar el cumplimientode las leyes y reglamentos fiscales;-<span class="excerpt"><span style="display:none;">realizar tareas administrativas afines para documentar los resultados obtenidos,mantener registros e informar de las medidas adoptadas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESIONALES DE APOYO DE LA ADMINISTRACIÓN PÚBLICA DE TRIBUTOS</h4>');$('#info').append('<p class="descripcion">Los profesionales de apoyo de la Administración Pública de tributos examinan declaraciones tributarias, facturas de venta y otros documentos<div class="excerpt"><div hidden><span>para determinar el tipo y cuantía de los impuestos, derechos de aduanas, gravámenes y otras tasas públicas que deben pagar particulares o empresas, y remiten los casos excepcionales o importantes al personal directivo de la administración pública. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> asesorar a organizaciones, empresas y al público en general sobre la interpretación adecuada de las leyes, reglamentos y disposiciones estatales en materia de fijación y pago de impuestos, derechos de aduanas, gravámenes y otras tasas públicas, y sobre los derechos y obligaciones de los contribuyentes</li><li class="list-group-item"> examinar declaraciones tributarias, facturas de venta y otros documentos pertinentes para fijar el tipo y cuantía de los impuestos, derechos de adua176 nas, gravámenes y otras tasas públicas que haya que pagar</li><li class="list-group-item"> investigar declaraciones tributarias presentadas y registros, sistemas y controles contables internos de las organizaciones para garantizar el cumplimiento de las leyes y reglamentos fiscales</li><li class="list-group-item"> realizar tareas administrativas afines para documentar los resultados obtenidos, mantener registros e informar de las medidas adoptadas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

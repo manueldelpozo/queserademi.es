@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Tallistas, labrantes a mano de piedras y/o mármol | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Tallistas, labrantes a mano de piedras y/o mármol">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Tallistas, labrantes a mano de piedras y/o mármol</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12408, 16284, 18984];
 var seriesSalJunior     = [14136, 18444, 21480];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TALLISTAS, LABRANTES A MANO DE PIEDRAS Y/O MÁRMOL</h4>');$('#info').append('<p class="descripcion">Los canteros, tronzadores, labrantes y grabadores de piedras abren en losas obloques la piedra extraída de una cantera. Asimismo cortan, labran y pulen piedracon herramientas manuales o máquinas herramientas de uso manual paraser utilizadas en la construcción, decoración, monumentos y otros fines.Entre sus tareas se incluyen:- introducir cuñas en la piedra extraída de una cantera para romperla en losaso bloques;- seleccionar y clasificar bloques de granito, mármol y otros tipos de piedra;- cortar, aserrar, igualar, suavizar y pulir piedra, como granito o mármol, destinadaa la construcción de edificios y monumentos;- confeccionar los patrones y trazar sus contornos sobre la piedra para que seaaserrada, debastada, taladrada y labrada en otras formas;- cortar y grabar caracteres, figuras o motivos decorativos en bloques de piedrapara monumentos, lápidas o piedras conmemorativas;- montar la piedra en la construcción de monumentos o piedras conmemorativas;- cortar y grabar caracteres, figuras o motivos decorativos en edificios;- desempeñar<span class="excerpt"><span style="display:none;">tareas afines;- supervisar a otros trabajadores</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TALLISTAS, LABRANTES A MANO DE PIEDRAS Y/O MÁRMOL</h4>');$('#info').append('<p class="descripcion">Los canteros, tronzadores, labrantes y grabadores de piedras abren en losas o bloques la piedra extraída de una cantera.<div class="excerpt"><div hidden><span>Asimismo cortan, labran y pulen piedra con herramientas manuales o máquinas herramientas de uso manual para ser utilizadas en la construcción, decoración, monumentos y otros fines. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> introducir cuñas en la piedra extraída de una cantera para romperla en losas o bloques</li><li class="list-group-item"> seleccionar y clasificar bloques de granito, mármol y otros tipos de piedra</li><li class="list-group-item"> cortar, aserrar, igualar, suavizar y pulir piedra, como granito o mármol, destinada a la construcción de edificios y monumentos</li><li class="list-group-item"> confeccionar los patrones y trazar sus contornos sobre la piedra para que sea aserrada, debastada, taladrada y labrada en otras formas</li><li class="list-group-item"> cortar y grabar caracteres, figuras o motivos decorativos en bloques de piedra para monumentos, lápidas o piedras conmemorativas</li><li class="list-group-item"> montar la piedra en la construcción de monumentos o piedras conmemorativas</li><li class="list-group-item"> cortar y grabar caracteres, figuras o motivos decorativos en edificios</li><li class="list-group-item"> desempeñar tareas afines</li><li class="list-group-item"> supervisar a otros trabajadores</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

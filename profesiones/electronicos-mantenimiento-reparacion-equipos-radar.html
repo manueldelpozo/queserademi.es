@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Electrónicos de mantenimiento y reparación de equipos de radar | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Electrónicos de mantenimiento y reparación de equipos de radar">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Electrónicos de mantenimiento y reparación de equipos de radar</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13692, 18684, 22164];
 var seriesSalJunior     = [15420, 20940, 24816];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ELECTRÓNICOS DE MANTENIMIENTO Y REPARACIÓN DE EQUIPOS DE RADAR</h4>');$('#info').append('<p class="descripcion">Los instaladores y reparadores en tecnología de la información y las comunicacionesinstalan, reparan y mantienen equipos de telecomunicaciones y detransmisión de datos, cables, antenas y conductos, y reparan, adaptan y mantienenordenadores.Entre sus tareas se incluyen:- mantener, corregir, probar y reparar ordenadores, equipos de transmisión dedatos y periféricos;- adaptar y ajustar equipos informáticos;- instalar, mantener, reparar y diagnosticar averías de sistemas de comunicacionespor microondas, telemetría, multiplexado, satélite y otros de ondas deradio o electromagnéticas;293- prestar asesoramiento técnico e información, y ocuparse de seguir el rendimientode redes y equipos de telecomunicaciones complejos;- instalar y reparar cables para la transmisión por ordenador, radio, telefonía ytelevisión;- empalmar cables de telecomunicaciones y de datos y sellar cubiertas;- instalar, mantener y reparar las antenas utilizadas en las<span class="excerpt"><span style="display:none;">comunicaciones.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ELECTRÓNICOS DE MANTENIMIENTO Y REPARACIÓN DE EQUIPOS DE RADAR</h4>');$('#info').append('<p class="descripcion">Los instaladores y reparadores en tecnología de la información y las comunicaciones instalan, reparan y mantienen equipos de telecomunicaciones<div class="excerpt"><div hidden><span>y de transmisión de datos, cables, antenas y conductos, y reparan, adaptan y mantienen ordenadores. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> mantener, corregir, probar y reparar ordenadores, equipos de transmisión de datos y periféricos</li><li class="list-group-item"> adaptar y ajustar equipos informáticos</li><li class="list-group-item"> instalar, mantener, reparar y diagnosticar averías de sistemas de comunicaciones por microondas, telemetría, multiplexado, satélite y otros de ondas de radio o electromagnéticas; 293 - prestar asesoramiento técnico e información, y ocuparse de seguir el rendimiento de redes y equipos de telecomunicaciones complejos</li><li class="list-group-item"> instalar y reparar cables para la transmisión por ordenador, radio, telefonía y televisión</li><li class="list-group-item"> empalmar cables de telecomunicaciones y de datos y sellar cubiertas</li><li class="list-group-item"> instalar, mantener y reparar las antenas utilizadas en las comunicaciones.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

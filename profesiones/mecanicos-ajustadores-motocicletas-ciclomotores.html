@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Mecánicos-ajustadores de motocicletas y ciclomotores | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Mecánicos-ajustadores de motocicletas y ciclomotores">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Mecánicos-ajustadores de motocicletas y ciclomotores</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14076, 17556, 19992];
 var seriesSalJunior     = [16500, 19980, 22404];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MECÁNICOS-AJUSTADORES DE MOTOCICLETAS Y CICLOMOTORES</h4>');$('#info').append('<p class="descripcion">Los mecánicos y ajustadores de vehículos de motor ajustan, instalan, mantieneny reparan motores y la parte mecánica y equipos afines de motocicletas, automóvilesde turismo, furgonetas y otros vehículos de motor.Entre sus tareas se incluyen:- descubrir y diagnosticar averías en los motores y piezas;- ajustar, examinar, probar y mantener los motores de vehículos y motocicletas;- sustituir el motor o partes de éste;- instalar, examinar, ajustar, desmontar, reconstruir y sustituir las piezas mecánicasdefectuosas de los vehículos de motor;- montar y ajustar el motor, los frenos, la dirección y otras partes mecánicasde vehículos de motor;- instalar, ajustar, mantener y reparar los componentes de mecatrónica de losvehículos de motor;- prestar servicios de mantenimiento programado, como los de cambio deaceite, lubricación y puesta a punto, para conseguir un mejor funcionamientode los vehículos y garantizar el cumplimiento de la normativa sobre contaminación;- volver a montar los motores y piezas una vez<span class="excerpt"><span style="display:none;">reparados.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MECÁNICOS-AJUSTADORES DE MOTOCICLETAS Y CICLOMOTORES</h4>');$('#info').append('<p class="descripcion">Los mecánicos y ajustadores de vehículos de motor ajustan, instalan, mantienen y reparan motores y la parte mecánica y<div class="excerpt"><div hidden><span>equipos afines de motocicletas, automóviles de turismo, furgonetas y otros vehículos de motor. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> descubrir y diagnosticar averías en los motores y piezas</li><li class="list-group-item"> ajustar, examinar, probar y mantener los motores de vehículos y motocicletas</li><li class="list-group-item"> sustituir el motor o partes de éste</li><li class="list-group-item"> instalar, examinar, ajustar, desmontar, reconstruir y sustituir las piezas mecánicas defectuosas de los vehículos de motor</li><li class="list-group-item"> montar y ajustar el motor, los frenos, la dirección y otras partes mecánicas de vehículos de motor</li><li class="list-group-item"> instalar, ajustar, mantener y reparar los componentes de mecatrónica de los vehículos de motor</li><li class="list-group-item"> prestar servicios de mantenimiento programado, como los de cambio de aceite, lubricación y puesta a punto, para conseguir un mejor funcionamiento de los vehículos y garantizar el cumplimiento de la normativa sobre contaminación</li><li class="list-group-item"> volver a montar los motores y piezas una vez reparados.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

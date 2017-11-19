@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de máquina esmaltadora de metales | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de máquina esmaltadora de metales">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de máquina esmaltadora de metales</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14412, 17856, 20268];
 var seriesSalJunior     = [17076, 21036, 23808];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MÁQUINA ESMALTADORA DE METALES</h4>');$('#info').append('<p class="descripcion">Los operadores de máquinas pulidoras, galvanizadoras y recubridoras de metalesaccionan y vigilan máquinas o equipos para acabar, galvanizar y recubrir piezaso artículos de metal a fin de aumentar su resistencia a la corrosión y a laabrasión, darles aspecto decorativo o conferirles propiedades eléctricas o magnéticas.Entre sus tareas se incluyen:- accionar y vigilar máquinas y equipos para limpiar piezas de metal antes desometerlas a procesos de galvanoplastia, esmaltado u operaciones similares;- accionar y vigilar máquinas y equipos de galvanoplastia;- accionar y vigilar máquinas y equipos para dar baños anticorrosivos en calientea productos de hierro y acero;- accionar y vigilar máquinas para recubrir hilos de alambre con un metal no327ferroso;- accionar y vigilar aparatos para pulverizar metal fundido u otras sustanciassobre productos de metal, con el fin de revestirlos de una capa protectora odecorativa o restaurar superficies gastadas o deterioradas;- accionar y vigilar aparatos para pavonar y dar un acabado resistente<span class="excerpt"><span style="display:none;">a la oxidacióna productos de metal, tratándolos en caliente con productos químicos;- comprobar el espesor adecuado del galvanizado empleando micrómetros,calibres y otros dispositivos de registro de datos, y llevar registros de producción;- preparar y mezclar soluciones de metalizado según fórmulas o especificaciones.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MÁQUINA ESMALTADORA DE METALES</h4>');$('#info').append('<p class="descripcion">Los operadores de máquinas pulidoras, galvanizadoras y recubridoras de metales accionan y vigilan máquinas o equipos para acabar, galvanizar<div class="excerpt"><div hidden><span>y recubrir piezas o artículos de metal a fin de aumentar su resistencia a la corrosión y a la abrasión, darles aspecto decorativo o conferirles propiedades eléctricas o magnéticas. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> accionar y vigilar máquinas y equipos para limpiar piezas de metal antes de someterlas a procesos de galvanoplastia, esmaltado u operaciones similares</li><li class="list-group-item"> accionar y vigilar máquinas y equipos de galvanoplastia</li><li class="list-group-item"> accionar y vigilar máquinas y equipos para dar baños anticorrosivos en caliente a productos de hierro y acero</li><li class="list-group-item"> accionar y vigilar máquinas para recubrir hilos de alambre con un metal no 327 ferroso</li><li class="list-group-item"> accionar y vigilar aparatos para pulverizar metal fundido u otras sustancias sobre productos de metal, con el fin de revestirlos de una capa protectora o decorativa o restaurar superficies gastadas o deterioradas</li><li class="list-group-item"> accionar y vigilar aparatos para pavonar y dar un acabado resistente a la oxidación a productos de metal, tratándolos en caliente con productos químicos</li><li class="list-group-item"> comprobar el espesor adecuado del galvanizado empleando micrómetros, calibres y otros dispositivos de registro de datos, y llevar registros de producción</li><li class="list-group-item"> preparar y mezclar soluciones de metalizado según fórmulas o especificaciones.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

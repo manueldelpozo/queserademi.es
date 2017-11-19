@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Conductores propietarios de camiones | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Conductores propietarios de camiones">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Conductores propietarios de camiones</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CONDUCTORES PROPIETARIOS DE CAMIONES</h4>');$('#info').append('<p class="descripcion">Los conductores propietarios de camiones pesados conducen y se ocupan desus propios vehículos motorizados pesados para el transporte a corta o largadistancia de mercancías, líquidos y materiales pesados.Entre sus tareas se incluyen:- conducir y ocuparse de vehículos motorizados pesados, como camiones cono sin remolque o volquete para el transporte de mercancías, líquidos o materialespesados a corta o larga distancia;- calcular la ruta más conveniente;- asegurar que las mercancías se guarden y cubran de forma segura, para evitarpérdidas y daños;- ayudar o realizar operaciones de carga o descarga, utilizando diferentesdispositivos de elevación o descarga;- realizar el mantenimiento menor de los vehículos, y subcontratar elmantenimiento y las reparaciones de mayor importancia;- estimar pesos para respetar las limitaciones de carga, y asegurar una distribuciónsegura de los<span class="excerpt"><span style="display:none;">pesos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CONDUCTORES PROPIETARIOS DE CAMIONES</h4>');$('#info').append('<p class="descripcion">Los conductores propietarios de camiones pesados conducen y se ocupan de sus propios vehículos motorizados pesados para el transporte<div class="excerpt"><div hidden><span>a corta o larga distancia de mercancías, líquidos y materiales pesados. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> conducir y ocuparse de vehículos motorizados pesados, como camiones con o sin remolque o volquete para el transporte de mercancías, líquidos o materiales pesados a corta o larga distancia</li><li class="list-group-item"> calcular la ruta más conveniente</li><li class="list-group-item"> asegurar que las mercancías se guarden y cubran de forma segura, para evitar pérdidas y daños</li><li class="list-group-item"> ayudar o realizar operaciones de carga o descarga, utilizando diferentes dispositivos de elevación o descarga</li><li class="list-group-item"> realizar el mantenimiento menor de los vehículos, y subcontratar el mantenimiento y las reparaciones de mayor importancia</li><li class="list-group-item"> estimar pesos para respetar las limitaciones de carga, y asegurar una distribución segura de los pesos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

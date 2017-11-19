@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Directores de departamento de planificación y desarrollo | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Directores de departamento de planificación y desarrollo">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Directores de departamento de planificación y desarrollo</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [30288, 40032, 46848];
 var seriesSalJunior     = [34680, 44688, 51684];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE DEPARTAMENTO DE PLANIFICACIÓN Y DESARROLLO</h4>');$('#info').append('<p class="descripcion">En este grupo primario se incluyen los directores de políticas y planificación loscuales planifican, organizan, dirigen y coordinan actividades de planificación estratégicay de asesoramiento sobre políticas dentro de la administración públicao para organizaciones no gubernamentales o entidades del sector privado, o8gestionan las actividades de empresas que prestan servicios de planificación estratégicay de asesoramiento sobre políticas. También se incluyen los directoresde departamentos administrativos y de servicios no clasificados bajo otros epígrafesdel subgrupo 121, Directores de departamentos administrativos. Se incluyen,por ejemplo, ocupaciones como las de director de servicios administrativos,director de instalaciones o director de servicios de limpieza ya sean directores dedepartamentos de grandes empresas u organizaciones o directores de empresasque proveen dichos servicios a otras empresas u organizaciones.Entre sus tareas se incluyen:- elaborar, aplicar y supervisar planes, programas, políticas, procesos, sistemasy procedimientos estratégicos para alcanzar fines u objetivos o cumplirnormas de trabajo;- elaborar, dirigir y administrar estudios y análisis de políticas<span class="excerpt"><span style="display:none;">y participar enellos;- coordinar la aplicación de políticas y prácticas;- establecer medidas de la actividad y mediciones de la responsabilidad;- planificar y dirigir el trabajo diario;- dirigir y gestionar las actividades del personal de elaboración de políticas yde planificación estratégica;- controlar la selección, formación y rendimiento del personal;- representar a la empresa u organización en negociaciones y en convenciones,seminarios, audiencias públicas y foros;- realizar tareas de asistencia, estudio y asesoramiento en los ámbitos administrativo,operativo y de planificación estratégica a la alta dirección sobrecuestiones como la gestión de las instalaciones de la empresa y de los serviciosadministrativos;- desarrollar y gestionar los recursos administrat</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE DEPARTAMENTO DE PLANIFICACIÓN Y DESARROLLO</h4>');$('#info').append('<p class="descripcion">En este grupo primario se incluyen los directores de políticas y planificación los cuales planifican, organizan, dirigen y coordinan<div class="excerpt"><div hidden><span>actividades de planificación estratégica y de asesoramiento sobre políticas dentro de la administración pública o para organizaciones no gubernamentales o entidades del sector privado, o 8 gestionan las actividades de empresas que prestan servicios de planificación estratégica y de asesoramiento sobre políticas. También se incluyen los directores de departamentos administrativos y de servicios no clasificados bajo otros epígrafes del subgrupo 121, Directores de departamentos administrativos. Se incluyen, por ejemplo, ocupaciones como las de director de servicios administrativos, director de instalaciones o director de servicios de limpieza ya sean directores de departamentos de grandes empresas u organizaciones o directores de empresas que proveen dichos servicios a otras empresas u organizaciones. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> elaborar, aplicar y supervisar planes, programas, políticas, procesos, sistemas y procedimientos estratégicos para alcanzar fines u objetivos o cumplir normas de trabajo</li><li class="list-group-item"> elaborar, dirigir y administrar estudios y análisis de políticas y participar en ellos</li><li class="list-group-item"> coordinar la aplicación de políticas y prácticas</li><li class="list-group-item"> establecer medidas de la actividad y mediciones de la responsabilidad</li><li class="list-group-item"> planificar y dirigir el trabajo diario</li><li class="list-group-item"> dirigir y gestionar las actividades del personal de elaboración de políticas y de planificación estratégica</li><li class="list-group-item"> controlar la selección, formación y rendimiento del personal</li><li class="list-group-item"> representar a la empresa u organización en negociaciones y en convenciones, seminarios, audiencias públicas y foros</li><li class="list-group-item"> realizar tareas de asistencia, estudio y asesoramiento en los ámbitos administrativo, operativo y de planificación estratégica a la alta dirección sobre cuestiones como la gestión de las instalaciones de la empresa y de los servicios administrativos</li><li class="list-group-item"> desarrollar y gestionar los recursos administrat</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

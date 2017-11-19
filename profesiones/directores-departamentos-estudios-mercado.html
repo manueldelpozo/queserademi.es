@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Directores de departamentos de estudios de mercado | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Directores de departamentos de estudios de mercado">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Directores de departamentos de estudios de mercado</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [24240, 29784, 33660];
 var seriesSalJunior     = [27912, 33408, 38100];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE DEPARTAMENTOS DE ESTUDIOS DE MERCADO</h4>');$('#info').append('<p class="descripcion">Los directores comerciales y de ventas planifican, dirigen y coordinan las actividadesde ventas y comercialización de una empresa u organización, o de empresasque prestan servicios de ventas y comercialización a otras empresas u organizaciones.Entre sus tareas se incluyen:- planificar y organizar programas especiales de venta y comercialización basadosen el estado de las ventas y la evaluación del mercado;- fijar las listas de precios, los porcentajes de descuento y los plazos de entrega,los presupuestos para campañas de promoción de ventas, los métodosde venta, y los incentivos y campañas especiales;- establecer y dirigir los procedimientos operativos y administrativos relativosa las actividades de ventas y comercialización;- dirigir y gestionar las actividades del personal de ventas y comercialización;- planificar y dirigir el trabajo diario;- establecer y gestionar presupuestos, controlar los gastos y asegurar la utilizacióneficiente de los recursos;- controlar la selección, formación y rendimiento del personal;- representar a la empresa u organización en<span class="excerpt"><span style="display:none;">convenciones de ventas y comercialización,ferias de muestras y otros foros.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE DEPARTAMENTOS DE ESTUDIOS DE MERCADO</h4>');$('#info').append('<p class="descripcion">Los directores comerciales y de ventas planifican, dirigen y coordinan las actividades de ventas y comercialización de una empresa<div class="excerpt"><div hidden><span>u organización, o de empresas que prestan servicios de ventas y comercialización a otras empresas u organizaciones. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> planificar y organizar programas especiales de venta y comercialización basados en el estado de las ventas y la evaluación del mercado</li><li class="list-group-item"> fijar las listas de precios, los porcentajes de descuento y los plazos de entrega, los presupuestos para campañas de promoción de ventas, los métodos de venta, y los incentivos y campañas especiales</li><li class="list-group-item"> establecer y dirigir los procedimientos operativos y administrativos relativos a las actividades de ventas y comercialización</li><li class="list-group-item"> dirigir y gestionar las actividades del personal de ventas y comercialización</li><li class="list-group-item"> planificar y dirigir el trabajo diario</li><li class="list-group-item"> establecer y gestionar presupuestos, controlar los gastos y asegurar la utilización eficiente de los recursos</li><li class="list-group-item"> controlar la selección, formación y rendimiento del personal</li><li class="list-group-item"> representar a la empresa u organización en convenciones de ventas y comercialización, ferias de muestras y otros foros.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

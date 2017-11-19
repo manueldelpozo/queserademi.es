@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Directores de departamento de producción en empresa industrial de 10 o más asalariados, en general | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Directores de departamento de producción en empresa industrial de 10 o más asalariados, en general">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Directores de departamento de producción en empresa industrial de 10 o más asalariados, en general</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [35832, 37476, 40944];
 var seriesSalJunior     = [40608, 41508, 46080];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE DEPARTAMENTO DE PRODUCCIÓN EN EMPRESA INDUSTRIAL DE 10 O MÁS ASALARIADOS, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los directores de industrias manufactureras planifican, dirigen y coordinan lasactividades relativas a la producción de bienes, la producción y la distribución deelectricidad, gas y agua y el tratamiento y eliminación de residuos así como lavalorización. Se recogen en este grupo tanto los directores de departamentos deproducción de grandes empresas como los directores de pequeñas empresasmanufactureras.Entre sus tareas se incluyen:- definir, aplicar y supervisar estrategias, políticas y planes de producción;- planificar detalles de las actividades de producción en términos de calidad ycantidad del producto, costes, tiempos y necesidades de mano de obra;- controlar el funcionamiento de la planta de producción y de los procedimientosde calidad mediante la planificación del mantenimiento, la indicación delas horas de funcionamiento y el suministro de piezas y utillaje;- establecer y gestionar presupuestos, controlar el producto y los costes deproducción, y ajustar los procesos y recursos para minimizar los costes;- consultar a otros directores sobre cuestiones<span class="excerpt"><span style="display:none;">de producción e informarles deellas;- controlar la adquisición e instalación de nuevas instalaciones y equipos;- controlar la preparación de registros e informes de producción;- coordinar el cumplimiento de los requisitos de salud y seguridad en el trabajo;- identificar oportunidades de negocio y determinar los productos que debenfabricarse;- estudiar y aplicar los requisitos legales y reglamentarios que afectan a lasoperaciones de fabricación y al medio ambiente;- controlar la fijación de cuotas para la fabricación de bienes especializados ycelebrar contratos con clientes y proveedores;- controlar la selección, formación y rendimiento del personal.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE DEPARTAMENTO DE PRODUCCIÓN EN EMPRESA INDUSTRIAL DE 10 O MÁS ASALARIADOS, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los directores de industrias manufactureras planifican, dirigen y coordinan las actividades relativas a la producción de bienes, la producción<div class="excerpt"><div hidden><span>y la distribución de electricidad, gas y agua y el tratamiento y eliminación de residuos así como la valorización. Se recogen en este grupo tanto los directores de departamentos de producción de grandes empresas como los directores de pequeñas empresas manufactureras. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> definir, aplicar y supervisar estrategias, políticas y planes de producción</li><li class="list-group-item"> planificar detalles de las actividades de producción en términos de calidad y cantidad del producto, costes, tiempos y necesidades de mano de obra</li><li class="list-group-item"> controlar el funcionamiento de la planta de producción y de los procedimientos de calidad mediante la planificación del mantenimiento, la indicación de las horas de funcionamiento y el suministro de piezas y utillaje</li><li class="list-group-item"> establecer y gestionar presupuestos, controlar el producto y los costes de producción, y ajustar los procesos y recursos para minimizar los costes</li><li class="list-group-item"> consultar a otros directores sobre cuestiones de producción e informarles de ellas</li><li class="list-group-item"> controlar la adquisición e instalación de nuevas instalaciones y equipos</li><li class="list-group-item"> controlar la preparación de registros e informes de producción</li><li class="list-group-item"> coordinar el cumplimiento de los requisitos de salud y seguridad en el trabajo</li><li class="list-group-item"> identificar oportunidades de negocio y determinar los productos que deben fabricarse</li><li class="list-group-item"> estudiar y aplicar los requisitos legales y reglamentarios que afectan a las operaciones de fabricación y al medio ambiente</li><li class="list-group-item"> controlar la fijación de cuotas para la fabricación de bienes especializados y celebrar contratos con clientes y proveedores</li><li class="list-group-item"> controlar la selección, formación y rendimiento del personal.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

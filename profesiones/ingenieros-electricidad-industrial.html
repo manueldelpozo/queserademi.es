@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Ingenieros en electricidad industrial | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Ingenieros en electricidad industrial">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Ingenieros en electricidad industrial</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [24048, 26448, 29340];
 var seriesSalJunior     = [27612, 29592, 33384];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS EN ELECTRICIDAD INDUSTRIAL</h4>');$('#info').append('<p class="descripcion">Los ingenieros en electricidad proyectan y dirigen la construcción, el funcionamiento,el mantenimiento y la reparación de sistemas, motores y equipos eléctricose investigan y asesoran al respecto.Entre sus tareas se incluyen:- proyectar sistemas de producción, transmisión y distribución de energíaeléctrica;- proyectar sistemas eléctricos para motores, tracción eléctrica y otros equiposeléctricos o aparatos electrodomésticos;- establecer normas y procedimientos de control para garantizar el eficaz funcionamientoy la seguridad de sistemas de producción y distribución, motoresy equipos eléctricos;- localizar y corregir deficiencias;- organizar y dirigir el mantenimiento y reparación de sistemas, motores yequipos eléctricos;- estudiar aspectos tecnológicos de determinados materiales, productos o procesosy asesorar al respecto;- preparar ponencias e informes de carácter académico o científico;- desempeñar tareas afines;- supervisar a otros<span class="excerpt"><span style="display:none;">trabajadores.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS EN ELECTRICIDAD INDUSTRIAL</h4>');$('#info').append('<p class="descripcion">Los ingenieros en electricidad proyectan y dirigen la construcción, el funcionamiento, el mantenimiento y la reparación de sistemas, motores<div class="excerpt"><div hidden><span>y equipos eléctricos e investigan y asesoran al respecto. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> proyectar sistemas de producción, transmisión y distribución de energía eléctrica</li><li class="list-group-item"> proyectar sistemas eléctricos para motores, tracción eléctrica y otros equipos eléctricos o aparatos electrodomésticos</li><li class="list-group-item"> establecer normas y procedimientos de control para garantizar el eficaz funcionamiento y la seguridad de sistemas de producción y distribución, motores y equipos eléctricos</li><li class="list-group-item"> localizar y corregir deficiencias</li><li class="list-group-item"> organizar y dirigir el mantenimiento y reparación de sistemas, motores y equipos eléctricos</li><li class="list-group-item"> estudiar aspectos tecnológicos de determinados materiales, productos o procesos y asesorar al respecto</li><li class="list-group-item"> preparar ponencias e informes de carácter académico o científico</li><li class="list-group-item"> desempeñar tareas afines</li><li class="list-group-item"> supervisar a otros trabajadores.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

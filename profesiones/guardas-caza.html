@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Guardas de caza | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Guardas de caza">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Guardas de caza</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13356, 19620, 24000];
 var seriesSalJunior     = [15804, 22068, 26436];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">GUARDAS DE CAZA</h4>');$('#info').append('<p class="descripcion">Los agentes forestales y medioambientales realizan labores de vigilancia y proteccióndel medio natural e inspeccionan el uso y los aprovechamientos que serealizan del mismo para prevenir el deterioro y la incidencia de accidentes quepueden afectarle, como incendios o plagas.Entre sus tareas se incluyen:- custodia, inspección y vigilancia del medio natural, de los aprovechamientosforestales y de la flora y fauna silvestres;- inspección y vigilancia de actividades cinegéticas y de la pesca continental;- vigilar y prevenir la incidencia de incendios forestales, plagas y enfermedadesforestales y demás tipos de daños;- vigilar y prevenir la incidencia de incendios forestales;- colaborar con los ingenieros y técnicos forestales, bomberos forestales ydemás técnicos en el ámbito forestal y del medio natural en el ejercicio desus funciones;- controlar los accesos de personas o vehículos a espacios naturales y las nuevasconstrucciones e instalaciones, de acuerdo a la normativa;- inspección y vigilancia en materia de residuos y vertidos en<span class="excerpt"><span style="display:none;">espacios naturales;- información y orientación a los ciudadanos en lo relativo al uso, disfrute yconservación del medio natural;- auxilio en caso de accidente, catástrofe, emergencia o calamidad pública, oen otros supuestos de protección civil en el ámbito rural;- denuncia de infracciones medioambientales.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">GUARDAS DE CAZA</h4>');$('#info').append('<p class="descripcion">Los agentes forestales y medioambientales realizan labores de vigilancia y protección del medio natural e inspeccionan el uso y<div class="excerpt"><div hidden><span>los aprovechamientos que se realizan del mismo para prevenir el deterioro y la incidencia de accidentes que pueden afectarle, como incendios o plagas. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> custodia, inspección y vigilancia del medio natural, de los aprovechamientos forestales y de la flora y fauna silvestres</li><li class="list-group-item"> inspección y vigilancia de actividades cinegéticas y de la pesca continental</li><li class="list-group-item"> vigilar y prevenir la incidencia de incendios forestales, plagas y enfermedades forestales y demás tipos de daños</li><li class="list-group-item"> vigilar y prevenir la incidencia de incendios forestales</li><li class="list-group-item"> colaborar con los ingenieros y técnicos forestales, bomberos forestales y demás técnicos en el ámbito forestal y del medio natural en el ejercicio de sus funciones</li><li class="list-group-item"> controlar los accesos de personas o vehículos a espacios naturales y las nuevas construcciones e instalaciones, de acuerdo a la normativa</li><li class="list-group-item"> inspección y vigilancia en materia de residuos y vertidos en espacios naturales</li><li class="list-group-item"> información y orientación a los ciudadanos en lo relativo al uso, disfrute y conservación del medio natural</li><li class="list-group-item"> auxilio en caso de accidente, catástrofe, emergencia o calamidad pública, o en otros supuestos de protección civil en el ámbito rural</li><li class="list-group-item"> denuncia de infracciones medioambientales.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

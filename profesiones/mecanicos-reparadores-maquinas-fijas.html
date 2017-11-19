@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Mecánicos y reparadores de máquinas fijas | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Mecánicos y reparadores de máquinas fijas">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Mecánicos y reparadores de máquinas fijas</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [15672, 19284, 21816];
 var seriesSalJunior     = [18828, 22392, 24888];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MECÁNICOS Y REPARADORES DE MÁQUINAS FIJAS</h4>');$('#info').append('<p class="descripcion">Los mecánicos y ajustadores de maquinaria agrícola e industrial ajustan, instalan,revisan, acondicionan y reparan motores, maquinaria agrícola e industrial yotros equipos mecánicos, excepto motores de automóviles y aviones, motoreseléctricos, maquinaria naval y ferroviaria.Entre sus tareas se incluyen:- ajustar, instalar, revisar, acondicionar y reparar motores y máquinas agrícolase industriales;- engrasar y aceitar motores fijos y maquinaria agrícola e industrial;- revisar y probar maquinaria y equipos mecánicos nuevos, agrícola e industrial,para cerciorarse de que cumplen las normas y prescripciones;- desmontar maquinaria y equipos, agrícolas e industriales, para retirar piezaso hacer reparaciones;- examinar sus piezas para descubrir defectos como fugas y desgaste excesivo;- manejar la maquinaria y equipos reparados para verificar que las reparacioneshan sido adecuadas;- registrar las reparaciones y el mantenimiento<span class="excerpt"><span style="display:none;">realizados.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MECÁNICOS Y REPARADORES DE MÁQUINAS FIJAS</h4>');$('#info').append('<p class="descripcion">Los mecánicos y ajustadores de maquinaria agrícola e industrial ajustan, instalan, revisan, acondicionan y reparan motores, maquinaria agrícola e<div class="excerpt"><div hidden><span>industrial y otros equipos mecánicos, excepto motores de automóviles y aviones, motores eléctricos, maquinaria naval y ferroviaria. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> ajustar, instalar, revisar, acondicionar y reparar motores y máquinas agrícolas e industriales</li><li class="list-group-item"> engrasar y aceitar motores fijos y maquinaria agrícola e industrial</li><li class="list-group-item"> revisar y probar maquinaria y equipos mecánicos nuevos, agrícola e industrial, para cerciorarse de que cumplen las normas y prescripciones</li><li class="list-group-item"> desmontar maquinaria y equipos, agrícolas e industriales, para retirar piezas o hacer reparaciones</li><li class="list-group-item"> examinar sus piezas para descubrir defectos como fugas y desgaste excesivo</li><li class="list-group-item"> manejar la maquinaria y equipos reparados para verificar que las reparaciones han sido adecuadas</li><li class="list-group-item"> registrar las reparaciones y el mantenimiento realizados.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

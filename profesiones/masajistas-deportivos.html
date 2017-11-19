@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Masajistas deportivos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Masajistas deportivos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Masajistas deportivos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14112, 16788, 18756];
 var seriesSalJunior     = [16092, 19056, 21732];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MASAJISTAS DEPORTIVOS</h4>');$('#info').append('<p class="descripcion">Los ayudantes fisioterapeutas aplican tratamientos terapéuticos físicos a los pacientescuando el movimiento funcional está amenazado por alguna lesión, enfermedado dolencia. El tratamiento suele administrarse en el marco de un plande rehabilitación definido por un fisioterapeuta o por otro profesional de la salud.Entre sus tareas se incluyen:- administrar tratamientos manuales tales como masajes o terapia de punto depresión;- administrar tratamientos de tipo eléctrico, ultrasonidos y otras terapias físicasmediante el uso de técnicas y equipos especializados, incluidas lámparasde infrarrojos, compresas húmedas y terapias de herboristería y minerales;- enseñar, motivar, proteger y ayudar a los pacientes a practicar ejercicios físicos,técnicas de relajación y actividades funcionales;- consultar con fisioterapeutas o con otros profesionales de la salud para evaluarinformación sobre el paciente con el fin de planificar, modificar y coordi158nar el tratamiento;- seguir y registrar la evolución del tratamiento de los pacientes, incluyendo lamedida de la amplitud del movimiento articular y los signos vitales;-<span class="excerpt"><span style="display:none;">preparar a los pacientes para el uso de férulas ortopédicas, prótesis y otrosdispositivos de apoyo, como muletas, y enseñarles a usar esos dispositivos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MASAJISTAS DEPORTIVOS</h4>');$('#info').append('<p class="descripcion">Los ayudantes fisioterapeutas aplican tratamientos terapéuticos físicos a los pacientes cuando el movimiento funcional está amenazado por alguna lesión,<div class="excerpt"><div hidden><span>enfermedad o dolencia. El tratamiento suele administrarse en el marco de un plan de rehabilitación definido por un fisioterapeuta o por otro profesional de la salud. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> administrar tratamientos manuales tales como masajes o terapia de punto de presión</li><li class="list-group-item"> administrar tratamientos de tipo eléctrico, ultrasonidos y otras terapias físicas mediante el uso de técnicas y equipos especializados, incluidas lámparas de infrarrojos, compresas húmedas y terapias de herboristería y minerales</li><li class="list-group-item"> enseñar, motivar, proteger y ayudar a los pacientes a practicar ejercicios físicos, técnicas de relajación y actividades funcionales</li><li class="list-group-item"> consultar con fisioterapeutas o con otros profesionales de la salud para evaluar información sobre el paciente con el fin de planificar, modificar y coordi158 nar el tratamiento</li><li class="list-group-item"> seguir y registrar la evolución del tratamiento de los pacientes, incluyendo la medida de la amplitud del movimiento articular y los signos vitales</li><li class="list-group-item"> preparar a los pacientes para el uso de férulas ortopédicas, prótesis y otros dispositivos de apoyo, como muletas, y enseñarles a usar esos dispositivos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

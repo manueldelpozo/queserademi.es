@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Trabajadores cualificados en apicultura y sericicultura | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Trabajadores cualificados en apicultura y sericicultura">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Trabajadores cualificados en apicultura y sericicultura</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14640, 21000, 25428];
 var seriesSalJunior     = [16416, 23292, 28092];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TRABAJADORES CUALIFICADOS EN APICULTURA Y SERICICULTURA</h4>');$('#info').append('<p class="descripcion">Los trabajadores cualificados en apicultura y sericicultura planifican, organizan yrealizan tareas operativas para criar, cuidar y alimentar insectos, tales abejas demiel, gusanos de seda, y otras especies para producir miel, cera, seda y otrosproductos. La producción se destina, principal o exclusivamente, a la comercializacióna través de mayoristas, organizaciones comerciales o mercados.Entre sus tareas se incluyen:- efectuar el seguimiento de la actividad y condiciones del mercado, planificary coordinar la producción consiguiente, determinar los tipos y cantidad deinsectos a ser producidos;- comprar insectos y desarrollarlos o comprar piensos y otros suministros;- criar, cuidar y alimentar insectos y recoger sus productos;- alquilar o invertir y mantener y limpiar edificaciones, maquinaria, equipamientosy estructuras;- almacenar y llevar a cabo algunos procesamientos de los productos;- organizar la venta, compra y transporte de existencias, productos y suministrosy mantener y evaluar registros de las actividades de la explotación;- capacitar y supervisar trabajadores en procedimientos de producción, tareasde<span class="excerpt"><span style="display:none;">mantenimiento, y tomar precauciones de salud y seguridad, y contratar ydispensar trabajadores y contratistas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TRABAJADORES CUALIFICADOS EN APICULTURA Y SERICICULTURA</h4>');$('#info').append('<p class="descripcion">Los trabajadores cualificados en apicultura y sericicultura planifican, organizan y realizan tareas operativas para criar, cuidar y alimentar insectos,<div class="excerpt"><div hidden><span>tales abejas de miel, gusanos de seda, y otras especies para producir miel, cera, seda y otros productos. La producción se destina, principal o exclusivamente, a la comercialización a través de mayoristas, organizaciones comerciales o mercados. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> efectuar el seguimiento de la actividad y condiciones del mercado, planificar y coordinar la producción consiguiente, determinar los tipos y cantidad de insectos a ser producidos</li><li class="list-group-item"> comprar insectos y desarrollarlos o comprar piensos y otros suministros</li><li class="list-group-item"> criar, cuidar y alimentar insectos y recoger sus productos</li><li class="list-group-item"> alquilar o invertir y mantener y limpiar edificaciones, maquinaria, equipamientos y estructuras</li><li class="list-group-item"> almacenar y llevar a cabo algunos procesamientos de los productos</li><li class="list-group-item"> organizar la venta, compra y transporte de existencias, productos y suministros y mantener y evaluar registros de las actividades de la explotación</li><li class="list-group-item"> capacitar y supervisar trabajadores en procedimientos de producción, tareas de mantenimiento, y tomar precauciones de salud y seguridad, y contratar y dispensar trabajadores y contratistas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

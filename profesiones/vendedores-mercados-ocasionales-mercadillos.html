@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Vendedores en mercados ocasionales y mercadillos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Vendedores en mercados ocasionales y mercadillos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Vendedores en mercados ocasionales y mercadillos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12120, 14652, 16416];
 var seriesSalJunior     = [13896, 16608, 18516];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">VENDEDORES EN MERCADOS OCASIONALES Y MERCADILLOS</h4>');$('#info').append('<p class="descripcion">Los vendedores en mercados ocasionales y mercadillos venden diversos productosen paradas situadas en mercados al aire libre o cubiertos, en calles u otrosespacios abiertos.Nota: Los vendedores en la calle, en puesto de mercado, de productos de alimentaciónfrescos no destinados al consumo inmediato (como frutas, hortalizas,carne y productos lácteos) deben clasificarse en el grupo primario 5412, Vendedoresen mercados ocasionales y mercadillos. Los vendedores en la calle y enpuestos de mercado de alimentos preparados y productos de alimentación parasu consumo inmediato deben clasificarse en los subgrupos 50 o 51. Los vendedoresen la calle y en lugares públicos de productos no de alimentación (o deproductos de alimentación no perecederos envasados, como caramelos) ofrecidosen carritos, bandejas o cestas deben clasificarse en el grupo primario 9410,Vendedores callejeros. Los trabajadores que preparan productos de alimentaciónpara consumo inmediato, como hamburguesas, pero tienen un contacto directolimitado con los clientes, deben clasificarse en el grupo primario 9320, Preparadoresde<span class="excerpt"><span style="display:none;">comidas rápidas.Entre sus tareas se incluyen:- obtener de las autoridades locales competentes el permiso necesario parainstalar un puesto de venta en un lugar concreto de una calle, un mercado uotro espacio abierto;- determinar la combinación de productos que van a venderse, las existenciasy los niveles de precios;- comprar o contratar un suministro regular de los bienes que van a vendersecon mayoristas o directamente con los productores;- erigir y desmontar el puesto de venta, y transportar, almacenar, cargar y descargarlos productos en venta;- hacer demostraciones de los productos, venderlos y cobrar su precio;- apilar y exponer los productos en venta, y envolver y envasar los ya vendidos;- llevar la contabilidad y mantener un registro de los niveles de existencias.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">VENDEDORES EN MERCADOS OCASIONALES Y MERCADILLOS</h4>');$('#info').append('<p class="descripcion">Los vendedores en mercados ocasionales y mercadillos venden diversos productos en paradas situadas en mercados al aire libre o<div class="excerpt"><div hidden><span>cubiertos, en calles u otros espacios abiertos. Nota: Los vendedores en la calle, en puesto de mercado, de productos de alimentación frescos no destinados al consumo inmediato (como frutas, hortalizas, carne y productos lácteos) deben clasificarse en el grupo primario 5412, Vendedores en mercados ocasionales y mercadillos. Los vendedores en la calle y en puestos de mercado de alimentos preparados y productos de alimentación para su consumo inmediato deben clasificarse en los subgrupos 50 o 51. Los vendedores en la calle y en lugares públicos de productos no de alimentación (o de productos de alimentación no perecederos envasados, como caramelos) ofrecidos en carritos, bandejas o cestas deben clasificarse en el grupo primario 9410, Vendedores callejeros. Los trabajadores que preparan productos de alimentación para consumo inmediato, como hamburguesas, pero tienen un contacto directo limitado con los clientes, deben clasificarse en el grupo primario 9320, Preparadores de comidas rápidas. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> obtener de las autoridades locales competentes el permiso necesario para instalar un puesto de venta en un lugar concreto de una calle, un mercado u otro espacio abierto</li><li class="list-group-item"> determinar la combinación de productos que van a venderse, las existencias y los niveles de precios</li><li class="list-group-item"> comprar o contratar un suministro regular de los bienes que van a venderse con mayoristas o directamente con los productores</li><li class="list-group-item"> erigir y desmontar el puesto de venta, y transportar, almacenar, cargar y descargar los productos en venta</li><li class="list-group-item"> hacer demostraciones de los productos, venderlos y cobrar su precio</li><li class="list-group-item"> apilar y exponer los productos en venta, y envolver y envasar los ya vendidos</li><li class="list-group-item"> llevar la contabilidad y mantener un registro de los niveles de existencias.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Criadores de avestruces | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Criadores de avestruces">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Criadores de avestruces</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14640, 21000, 25428];
 var seriesSalJunior     = [16416, 23292, 28092];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CRIADORES DE AVESTRUCES</h4>');$('#info').append('<p class="descripcion">Este grupo primario comprende criadores de animales orientados al mercado noclasificados en otra parte del subgrupo:, Trabajadores cualificados en actividadesganaderas, avícolas, apícolas y similares. Por ejemplo, el grupo incluye aaquellos que se dedican a la cría, alimentación y cuidado de mamíferos no do257mesticados, aves de caza y otras aves (excepto aves de corral), caracoles, serpientesy otros reptiles, así como diversos insectos y animales utilizados parapruebas de laboratorio, para la venta o la entrega de forma periódica a compradoresmayoristas, organizaciones de comercialización, parques zoológicos y circos,o a los mercados.Nota: Los trabajadores que producen una combinación de producciones animalesdistintas (ganado, aves, conejos...) deben clasificarse en el epígrafe que secorresponde con la producción predominante.Entre sus tareas se incluyen:- efectuar el seguimiento de la actividad y las condiciones del mercado,determinar los tipos y cantidad de productos a ser producidos, planificar ycoordinar la producción consiguiente;- criar, alimentación y cuidar animales;- matar y desollar animales<span class="excerpt"><span style="display:none;">y prepararlos a ellos o a los productos de origenanimal, para el mercado;- efectuar el seguimiento y examinar animales para detectar enfermedades,lesiones o dolencias, y comprobar la condición física, tales como tasa de aumentode peso;- desempeñar tareas relacionadas con la reproducción animal, tales como laprocreación, inseminación artificial, y ayudar en el nacimiento de animales;- alquilar o invertir y mantener y limpiar edificaciones, maquinaria, equipamientosy estructuras;- sacrificar y desollar animales y prepararlos para el mercado;- almacenar y llevar a cabo algunos procesamientos de los productos;- promover y comercializar productos, organizar la venta, compra y transportede existencias, productos y suministros, y mantenimiento y evaluación deregistros de actividades y transacciones;- capacitar y supervisar trabajadores en los p</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CRIADORES DE AVESTRUCES</h4>');$('#info').append('<p class="descripcion">Este grupo primario comprende criadores de animales orientados al mercado no clasificados en otra parte del subgrupo:, Trabajadores cualificados<div class="excerpt"><div hidden><span>en actividades ganaderas, avícolas, apícolas y similares. Por ejemplo, el grupo incluye a aquellos que se dedican a la cría, alimentación y cuidado de mamíferos no do257 mesticados, aves de caza y otras aves (excepto aves de corral), caracoles, serpientes y otros reptiles, así como diversos insectos y animales utilizados para pruebas de laboratorio, para la venta o la entrega de forma periódica a compradores mayoristas, organizaciones de comercialización, parques zoológicos y circos, o a los mercados. Nota: Los trabajadores que producen una combinación de producciones animales distintas (ganado, aves, conejos...) deben clasificarse en el epígrafe que se corresponde con la producción predominante. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> efectuar el seguimiento de la actividad y las condiciones del mercado, determinar los tipos y cantidad de productos a ser producidos, planificar y coordinar la producción consiguiente</li><li class="list-group-item"> criar, alimentación y cuidar animales</li><li class="list-group-item"> matar y desollar animales y prepararlos a ellos o a los productos de origen animal, para el mercado</li><li class="list-group-item"> efectuar el seguimiento y examinar animales para detectar enfermedades, lesiones o dolencias, y comprobar la condición física, tales como tasa de aumento de peso</li><li class="list-group-item"> desempeñar tareas relacionadas con la reproducción animal, tales como la procreación, inseminación artificial, y ayudar en el nacimiento de animales</li><li class="list-group-item"> alquilar o invertir y mantener y limpiar edificaciones, maquinaria, equipamientos y estructuras</li><li class="list-group-item"> sacrificar y desollar animales y prepararlos para el mercado</li><li class="list-group-item"> almacenar y llevar a cabo algunos procesamientos de los productos</li><li class="list-group-item"> promover y comercializar productos, organizar la venta, compra y transporte de existencias, productos y suministros, y mantenimiento y evaluación de registros de actividades y transacciones</li><li class="list-group-item"> capacitar y supervisar trabajadores en los p</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

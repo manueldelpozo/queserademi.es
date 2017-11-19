@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Ingenieros técnicos en electrónica, en general | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Ingenieros técnicos en electrónica, en general">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Ingenieros técnicos en electrónica, en general</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [24156, 26352, 27888];
 var seriesSalJunior     = [27972, 29688, 30900];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS TÉCNICOS EN ELECTRÓNICA, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los ingenieros técnicos en electrónica proyectan y dirigen, ejerciendo las tareaspropias de sus competencias, la ejecución material de toda clase de instalaciones,centrales telegráficas y telefónicas, equipos electrónicos, líneas y demásmedios de dispositivos de comunicación.Entre sus tareas se incluyen:- ejercer las funciones propias de su competencia en la instalación de estacionestelegráficas y de centrales telefónicas, de emisoras de radiocomunicacióny de equipos de grabación, reproducción y mezclas de señales acústicas;- ejercer las funciones propias de su competencia en la construcción de líneastelegráficas y telefónicas en cables aéreos o subterráneos;- participar en el montaje de dispositivos y de equipos de telecontrol, reproduccióny mezcla de señales acústicas y megafonías en locales y espaciosabiertos y similares;- organizar el mantenimiento y reparación de sistemas;- localizar y corregir deficiencias;- desempeñar tareas afines;- supervisar a otros<span class="excerpt"><span style="display:none;">trabajadores.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS TÉCNICOS EN ELECTRÓNICA, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los ingenieros técnicos en electrónica proyectan y dirigen, ejerciendo las tareas propias de sus competencias, la ejecución material de<div class="excerpt"><div hidden><span>toda clase de instalaciones, centrales telegráficas y telefónicas, equipos electrónicos, líneas y demás medios de dispositivos de comunicación. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> ejercer las funciones propias de su competencia en la instalación de estaciones telegráficas y de centrales telefónicas, de emisoras de radiocomunicación y de equipos de grabación, reproducción y mezclas de señales acústicas</li><li class="list-group-item"> ejercer las funciones propias de su competencia en la construcción de líneas telegráficas y telefónicas en cables aéreos o subterráneos</li><li class="list-group-item"> participar en el montaje de dispositivos y de equipos de telecontrol, reproducción y mezcla de señales acústicas y megafonías en locales y espacios abiertos y similares</li><li class="list-group-item"> organizar el mantenimiento y reparación de sistemas</li><li class="list-group-item"> localizar y corregir deficiencias</li><li class="list-group-item"> desempeñar tareas afines</li><li class="list-group-item"> supervisar a otros trabajadores.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

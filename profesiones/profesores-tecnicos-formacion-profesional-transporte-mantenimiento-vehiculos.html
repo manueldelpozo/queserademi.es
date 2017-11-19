@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Profesores técnicos de formación profesional (transporte y mantenimiento de vehículos) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Profesores técnicos de formación profesional (transporte y mantenimiento de vehículos)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Profesores técnicos de formación profesional (transporte y mantenimiento de vehículos)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [22836, 27744, 32412];
 var seriesSalJunior     = [25188, 30048, 35532];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESORES TÉCNICOS DE FORMACIÓN PROFESIONAL (TRANSPORTE Y MANTENIMIENTO DE VEHÍCULOS)</h4>');$('#info').append('<p class="descripcion">Los profesores de formación profesional (materias específicas) enseñan una omás especialidades de contenido técnico o profesional en la Educación Secundariay en la Formación Profesional.Nota: Aquellos profesores que imparten materias específicas que tienen comofinalidad preparar a los estudiantes para un empleo específico se clasificarán eneste grupo primario, tanto si trabajan en un instituto de enseñanza secundariacomo si lo hacen en uno de formación profesional. Aquellos profesores que impartena nivel de secundaria materias tales como matemáticas y que no preparanal alumno para el empleo en un área específica ocupacional se clasificaránen el grupo primario 2230, Profesores de enseñanza secundaria (excepto materiasespecíficas de formación profesional) independientemente de si trabajan enun instituto de secundaria o en uno de formación profesional.Entre sus tareas se incluyen:- preparar a los alumnos desde una perspectiva de aplicación práctica para laactividad en un campo profesional y su capacitación para el desempeño cualificadode las distintas profesiones;- proporcionar a los<span class="excerpt"><span style="display:none;">alumnos una formación polivalente, funcional y técnicaque posibilite su adaptación a los cambios tecnológicos y organizativos relativosa la profesión;- impartir lecciones desde una perspectiva de aplicación práctica de los contenidostécnicos aprendidos por los alumnos sobre sus especialidades y supervisarel trabajo y la disciplina de los alumnos;- preparar, asignar y corregir ejercicios prácticos;- examinar mediante pruebas y exámenes con objeto de evaluar los progresosde los alumnos y otorgar la calificación correspondiente.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESORES TÉCNICOS DE FORMACIÓN PROFESIONAL (TRANSPORTE Y MANTENIMIENTO DE VEHÍCULOS)</h4>');$('#info').append('<p class="descripcion">Los profesores de formación profesional (materias específicas) enseñan una o más especialidades de contenido técnico o profesional en la<div class="excerpt"><div hidden><span>Educación Secundaria y en la Formación Profesional. Nota: Aquellos profesores que imparten materias específicas que tienen como finalidad preparar a los estudiantes para un empleo específico se clasificarán en este grupo primario, tanto si trabajan en un instituto de enseñanza secundaria como si lo hacen en uno de formación profesional. Aquellos profesores que imparten a nivel de secundaria materias tales como matemáticas y que no preparan al alumno para el empleo en un área específica ocupacional se clasificarán en el grupo primario 2230, Profesores de enseñanza secundaria (excepto materias específicas de formación profesional) independientemente de si trabajan en un instituto de secundaria o en uno de formación profesional. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> preparar a los alumnos desde una perspectiva de aplicación práctica para la actividad en un campo profesional y su capacitación para el desempeño cualificado de las distintas profesiones</li><li class="list-group-item"> proporcionar a los alumnos una formación polivalente, funcional y técnica que posibilite su adaptación a los cambios tecnológicos y organizativos relativos a la profesión</li><li class="list-group-item"> impartir lecciones desde una perspectiva de aplicación práctica de los contenidos técnicos aprendidos por los alumnos sobre sus especialidades y supervisar el trabajo y la disciplina de los alumnos</li><li class="list-group-item"> preparar, asignar y corregir ejercicios prácticos</li><li class="list-group-item"> examinar mediante pruebas y exámenes con objeto de evaluar los progresos de los alumnos y otorgar la calificación correspondiente.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

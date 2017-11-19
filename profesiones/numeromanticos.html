@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Numerománticos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Numerománticos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Numerománticos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14412, 18144, 20748];
 var seriesSalJunior     = [16464, 20628, 23544];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">NUMEROMÁNTICOS</h4>');$('#info').append('<p class="descripcion">Los astrólogos, adivinadores y afines rastrean el pasado y vaticinan el porveniraplicando los métodos de la astrología, basándose en las características de lasrayas de las manos, la disposición de naipes echados al azar y otros elementos.Entre sus tareas se incluyen:- determinar el horóscopo de las personas en la fecha de su nacimiento o conposterioridad, a fin de rastrear el pasado y predecir el porvenir tanto en loque concierne a los episodios de la vida como a la condición de las personas;- interpretar las características de las rayas de las manos, la disposición denaipes echados al azar, la posición de hojas de té o restos de café en el fondode tazas, las formas y diseños sugeridos por los huesos de animales muertosy otros elementos de adivinación;- pronosticar con base en tales interpretaciones;- determinar el momento más propicio para emprender determinadas actividadeso actos, como inauguraciones, matrimonios, viajes, ceremonias religiosas,etcétera;- aconsejar y<span class="excerpt"><span style="display:none;">advertir acerca de ulteriores comportamientos o sucesos;- aconsejar a las personas acerca de cómo evitar influencias o agüeros perniciosos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">NUMEROMÁNTICOS</h4>');$('#info').append('<p class="descripcion">Los astrólogos, adivinadores y afines rastrean el pasado y vaticinan el porvenir aplicando los métodos de la astrología, basándose<div class="excerpt"><div hidden><span>en las características de las rayas de las manos, la disposición de naipes echados al azar y otros elementos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> determinar el horóscopo de las personas en la fecha de su nacimiento o con posterioridad, a fin de rastrear el pasado y predecir el porvenir tanto en lo que concierne a los episodios de la vida como a la condición de las personas</li><li class="list-group-item"> interpretar las características de las rayas de las manos, la disposición de naipes echados al azar, la posición de hojas de té o restos de café en el fondo de tazas, las formas y diseños sugeridos por los huesos de animales muertos y otros elementos de adivinación</li><li class="list-group-item"> pronosticar con base en tales interpretaciones</li><li class="list-group-item"> determinar el momento más propicio para emprender determinadas actividades o actos, como inauguraciones, matrimonios, viajes, ceremonias religiosas, etcétera</li><li class="list-group-item"> aconsejar y advertir acerca de ulteriores comportamientos o sucesos</li><li class="list-group-item"> aconsejar a las personas acerca de cómo evitar influencias o agüeros perniciosos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

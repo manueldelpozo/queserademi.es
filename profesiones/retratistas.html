@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Retratistas | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Retratistas">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Retratistas</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17472, 20904, 23832];
 var seriesSalJunior     = [20172, 23496, 27240];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">RETRATISTAS</h4>');$('#info').append('<p class="descripcion">Los artistas de artes plásticas y visuales crean y ejecutan obras de escultura, pintura,dibujo, viñeta, grabado y otras técnicas artísticas.Entre sus tareas se incluyen:- concebir y desarrollar ideas, diseños y estilos para obras de pintura, dibujo yescultura;- disponer los objetos, colocar a los modelos en la posición deseada y seleccionarlos paisajes y las demás formas visuales de acuerdo con lo deseado;- seleccionar los medios, métodos y materiales artísticos;- crear esculturas figurativas o abstractas en tres dimensiones o en relieve,modelando, tallando, trabajando y combinando materiales como madera,piedra, arcilla, metal, hielo o papel;- crear pinturas y dibujos representativos o abstractos empleando lápices, pinceles,tinta, tiza, óleo y acuarelas o mediante la aplicación de otras técnicas;- crear dibujos y grabados sobre metal, madera u otros materiales;- crear viñetas para representar a personas o acontecimientos, a menudo enforma de caricatura;- restaurar pinturas y otros objetos de arte deteriorados, sucios o<span class="excerpt"><span style="display:none;">descoloridos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">RETRATISTAS</h4>');$('#info').append('<p class="descripcion">Los artistas de artes plásticas y visuales crean y ejecutan obras de escultura, pintura, dibujo, viñeta, grabado y otras<div class="excerpt"><div hidden><span>técnicas artísticas. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> concebir y desarrollar ideas, diseños y estilos para obras de pintura, dibujo y escultura</li><li class="list-group-item"> disponer los objetos, colocar a los modelos en la posición deseada y seleccionar los paisajes y las demás formas visuales de acuerdo con lo deseado</li><li class="list-group-item"> seleccionar los medios, métodos y materiales artísticos</li><li class="list-group-item"> crear esculturas figurativas o abstractas en tres dimensiones o en relieve, modelando, tallando, trabajando y combinando materiales como madera, piedra, arcilla, metal, hielo o papel</li><li class="list-group-item"> crear pinturas y dibujos representativos o abstractos empleando lápices, pinceles, tinta, tiza, óleo y acuarelas o mediante la aplicación de otras técnicas</li><li class="list-group-item"> crear dibujos y grabados sobre metal, madera u otros materiales</li><li class="list-group-item"> crear viñetas para representar a personas o acontecimientos, a menudo en forma de caricatura</li><li class="list-group-item"> restaurar pinturas y otros objetos de arte deteriorados, sucios o descoloridos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

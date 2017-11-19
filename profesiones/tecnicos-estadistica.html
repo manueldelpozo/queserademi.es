@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en estadística | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en estadística">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en estadística</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN ESTADÍSTICA</h4>');$('#info').append('<p class="descripcion">Los profesionales de nivel medio de servicios estadísticos, matemáticos y actuarialesasisten en la planificación de la recogida, el tratamiento y la presentaciónde datos estadísticos, matemáticos o actuariales, así como en la realización deestas operaciones, trabajando normalmente bajo la dirección de estadísticos,matemáticos o actuarios.Entre sus tareas se incluyen:- transmitir los pedidos y vender mercancías al por menor, a la industria, amayoristas u otros establecimientos;- asistir en la planificación y realización de estimaciones estadísticas, matemáticas,actuariales y afines;- preparar estimaciones pormenorizadas de las cantidades y los costes de ma165teriales y mano de obra requeridos para realizar encuestas y censos estadísticos;- realizar tareas técnicas relacionadas con el establecimiento, mantenimiento yuso de registros y marcos de muestreo para censos y encuestas;- realizar tareas técnicas relacionadas con las operaciones de recogida de datosy control de calidad en censos y encuestas;- utilizar paquetes de aplicaciones informáticas estándar para realizar cálculosmatemáticos, actuariales, estadísticos, contables y afines;- preparar<span class="excerpt"><span style="display:none;">resultados estadísticos, matemáticos, actuariales, contables y deotro tipo para su presentación en forma gráfica o tabular;- aplicar el conocimiento de los principios y las prácticas estadísticos, matemáticos,actuariales, contables y afines para identificar y resolver los problemasque surjan en el transcurso de su labor;- supervisar la labor de los administrativos de servicios estadísticos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN ESTADÍSTICA</h4>');$('#info').append('<p class="descripcion">Los profesionales de nivel medio de servicios estadísticos, matemáticos y actuariales asisten en la planificación de la recogida, el<div class="excerpt"><div hidden><span>tratamiento y la presentación de datos estadísticos, matemáticos o actuariales, así como en la realización de estas operaciones, trabajando normalmente bajo la dirección de estadísticos, matemáticos o actuarios. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> transmitir los pedidos y vender mercancías al por menor, a la industria, a mayoristas u otros establecimientos</li><li class="list-group-item"> asistir en la planificación y realización de estimaciones estadísticas, matemáticas, actuariales y afines</li><li class="list-group-item"> preparar estimaciones pormenorizadas de las cantidades y los costes de ma165 teriales y mano de obra requeridos para realizar encuestas y censos estadísticos</li><li class="list-group-item"> realizar tareas técnicas relacionadas con el establecimiento, mantenimiento y uso de registros y marcos de muestreo para censos y encuestas</li><li class="list-group-item"> realizar tareas técnicas relacionadas con las operaciones de recogida de datos y control de calidad en censos y encuestas</li><li class="list-group-item"> utilizar paquetes de aplicaciones informáticas estándar para realizar cálculos matemáticos, actuariales, estadísticos, contables y afines</li><li class="list-group-item"> preparar resultados estadísticos, matemáticos, actuariales, contables y de otro tipo para su presentación en forma gráfica o tabular</li><li class="list-group-item"> aplicar el conocimiento de los principios y las prácticas estadísticos, matemáticos, actuariales, contables y afines para identificar y resolver los problemas que surjan en el transcurso de su labor</li><li class="list-group-item"> supervisar la labor de los administrativos de servicios estadísticos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Responsables de créditos hipotecarios | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Responsables de créditos hipotecarios">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Responsables de créditos hipotecarios</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [22248, 27684, 31488];
 var seriesSalJunior     = [25644, 31068, 34860];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">RESPONSABLES DE CRÉDITOS HIPOTECARIOS</h4>');$('#info').append('<p class="descripcion">Los comerciales de préstamos y créditos analizan y evalúan la información financierasobre solicitudes de crédito y préstamo, y determinan la aprobación odesaprobación del solicitante, o recomiendan una u otra a los miembros de ladirección.Entre sus tareas se incluyen:- entrevistar a los solicitantes de créditos personales, hipotecarios, para estudiantesy para empresas;- investigar y evaluar la situación financiera, las referencias, el crédito y lacapacidad de reembolsar el préstamo del solicitante del mismo;- presentar las solicitudes de crédito y de préstamo a los miembros de la dirección,con recomendaciones para su aprobación o denegación; o aprobar odenegar las solicitudes dentro de los límites autorizados, garantizando que seobserven las normas de crédito de la institución;- llevar registro de los pagos, preparar cartas ordinarias para el requerimientodel pago de cuentas vencidas, y remitir tales cartas para la puesta en marchade acciones jurídicas;- cumplimentar la información de créditos y<span class="excerpt"><span style="display:none;">préstamos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">RESPONSABLES DE CRÉDITOS HIPOTECARIOS</h4>');$('#info').append('<p class="descripcion">Los comerciales de préstamos y créditos analizan y evalúan la información financiera sobre solicitudes de crédito y préstamo, y<div class="excerpt"><div hidden><span>determinan la aprobación o desaprobación del solicitante, o recomiendan una u otra a los miembros de la dirección. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> entrevistar a los solicitantes de créditos personales, hipotecarios, para estudiantes y para empresas</li><li class="list-group-item"> investigar y evaluar la situación financiera, las referencias, el crédito y la capacidad de reembolsar el préstamo del solicitante del mismo</li><li class="list-group-item"> presentar las solicitudes de crédito y de préstamo a los miembros de la dirección, con recomendaciones para su aprobación o denegación; o aprobar o denegar las solicitudes dentro de los límites autorizados, garantizando que se observen las normas de crédito de la institución</li><li class="list-group-item"> llevar registro de los pagos, preparar cartas ordinarias para el requerimiento del pago de cuentas vencidas, y remitir tales cartas para la puesta en marcha de acciones jurídicas</li><li class="list-group-item"> cumplimentar la información de créditos y préstamos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

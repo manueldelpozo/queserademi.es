@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Expendedores de combustible en puerto deportivo | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Expendedores de combustible en puerto deportivo">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Expendedores de combustible en puerto deportivo</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [11088, 14580, 17028];
 var seriesSalJunior     = [12648, 16572, 19308];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EXPENDEDORES DE COMBUSTIBLE EN PUERTO DEPORTIVO</h4>');$('#info').append('<p class="descripcion">Los expendedores de gasolineras venden combustibles, lubricantes y otros productospara el automóvil y prestan servicios de repostaje, limpieza, engrase ypequeñas reparaciones a vehículos de motor.221Nota: Los trabajadores que vendan productos en tiendas de gasolineras o cobrensu precio, pero que no presten servicios propios de éstas, como los relativos aalimentación de combustible, lubricantes, limpieza y mantenimiento, estánexcluidos del grupo primario 5430, Expendedores de gasolineras.Entre sus tareas se incluyen:- llenar los depósitos de combustible y los envases que se les entreguen, hastael nivel especificado por el cliente;- comprobar la presión de los neumáticos y los niveles de aceite y de líquidos,y completarlos hasta lo recomendado;- lavar los parabrisas y ventanillas de los vehículos;- hacer en los vehículos pequeñas reparaciones, como el cambio de neumáticos,bombillas y limpiaparabrisas;- mantener y manejar las instalaciones de lavado automático de vehículos;- cobrar a los clientes;- limpiar las bombas de combustibles, las vías de acceso, la tienda<span class="excerpt"><span style="display:none;">y las instalacionesen general;- controlar las existencias y preparar informes sobre las ventas de combustibles,lubricantes, aceite y otros productos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EXPENDEDORES DE COMBUSTIBLE EN PUERTO DEPORTIVO</h4>');$('#info').append('<p class="descripcion">Los expendedores de gasolineras venden combustibles, lubricantes y otros productos para el automóvil y prestan servicios de repostaje, limpieza,<div class="excerpt"><div hidden><span>engrase y pequeñas reparaciones a vehículos de motor. 221 Nota: Los trabajadores que vendan productos en tiendas de gasolineras o cobren su precio, pero que no presten servicios propios de éstas, como los relativos a alimentación de combustible, lubricantes, limpieza y mantenimiento, están excluidos del grupo primario 5430, Expendedores de gasolineras. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> llenar los depósitos de combustible y los envases que se les entreguen, hasta el nivel especificado por el cliente</li><li class="list-group-item"> comprobar la presión de los neumáticos y los niveles de aceite y de líquidos, y completarlos hasta lo recomendado</li><li class="list-group-item"> lavar los parabrisas y ventanillas de los vehículos</li><li class="list-group-item"> hacer en los vehículos pequeñas reparaciones, como el cambio de neumáticos, bombillas y limpiaparabrisas</li><li class="list-group-item"> mantener y manejar las instalaciones de lavado automático de vehículos</li><li class="list-group-item"> cobrar a los clientes</li><li class="list-group-item"> limpiar las bombas de combustibles, las vías de acceso, la tienda y las instalaciones en general</li><li class="list-group-item"> controlar las existencias y preparar informes sobre las ventas de combustibles, lubricantes, aceite y otros productos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

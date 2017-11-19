@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Empleados de centro de información (telefónica)de atención al cliente | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Empleados de centro de información (telefónica)de atención al cliente">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Empleados de centro de información (telefónica)de atención al cliente</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13440, 15312, 16620];
 var seriesSalJunior     = [15420, 17124, 18540];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EMPLEADOS DE CENTRO DE INFORMACIÓN (TELEFÓNICA)DE ATENCIÓN AL CLIENTE</h4>');$('#info').append('<p class="descripcion">Los teleoperadores suministran información y asesoran a los clientes, respondena preguntas relacionadas con los productos, servicios y políticas de la empresa ola organización y tramitan las transferencias financieras, por teléfono o medioselectrónicos, como el correo electrónico. Operan exclusivamente por teléfono,no son accesibles directamente por los clientes y pueden estar localizados enestablecimientos lejos de donde se realizan otras operaciones de las organizacioneso compañías sobre las que se suministra información.Nota: Sólo se clasifican en el grupo primario 4424, Teleoperadores, los empleadosque responden a solicitudes de información y/o se ocupan de operacionessencillas. Los que prestan servicios especializados, como los consultores de viajes,se clasifican en el grupo especializado correspondiente, estén o no esténubicados en los centros de atención al cliente.Entre sus tareas se incluyen:- ocuparse de las llamadas entrantes y los mensajes de los clientes, ya sea pararesponder a preguntas, para atender solicitudes de servicio o para resolverreclamaciones;- determinar las necesidades e introducir<span class="excerpt"><span style="display:none;">los resultados en un sistema informático;- remitir tareas a otras unidades, de ser necesario;- facturar o tramitar pagos, de ser necesario;- enviar cartas, hojas de información y otros documentos a los clientes;208- asesorar a los clientes sobre productos o servicios adicionales.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EMPLEADOS DE CENTRO DE INFORMACIÓN (TELEFÓNICA)DE ATENCIÓN AL CLIENTE</h4>');$('#info').append('<p class="descripcion">Los teleoperadores suministran información y asesoran a los clientes, responden a preguntas relacionadas con los productos, servicios y políticas<div class="excerpt"><div hidden><span>de la empresa o la organización y tramitan las transferencias financieras, por teléfono o medios electrónicos, como el correo electrónico. Operan exclusivamente por teléfono, no son accesibles directamente por los clientes y pueden estar localizados en establecimientos lejos de donde se realizan otras operaciones de las organizaciones o compañías sobre las que se suministra información. Nota: Sólo se clasifican en el grupo primario 4424, Teleoperadores, los empleados que responden a solicitudes de información y/o se ocupan de operaciones sencillas. Los que prestan servicios especializados, como los consultores de viajes, se clasifican en el grupo especializado correspondiente, estén o no estén ubicados en los centros de atención al cliente. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> ocuparse de las llamadas entrantes y los mensajes de los clientes, ya sea para responder a preguntas, para atender solicitudes de servicio o para resolver reclamaciones</li><li class="list-group-item"> determinar las necesidades e introducir los resultados en un sistema informático</li><li class="list-group-item"> remitir tareas a otras unidades, de ser necesario</li><li class="list-group-item"> facturar o tramitar pagos, de ser necesario</li><li class="list-group-item"> enviar cartas, hojas de información y otros documentos a los clientes; 208 - asesorar a los clientes sobre productos o servicios adicionales.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

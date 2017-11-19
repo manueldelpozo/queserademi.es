@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Meteorólogos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Meteorólogos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Meteorólogos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [21948, 26088, 28980];
 var seriesSalJunior     = [24828, 29400, 32592];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">METEORÓLOGOS</h4>');$('#info').append('<p class="descripcion">Los meteorólogos preparan pronósticos del tiempo a corto o a largo plazo para su uso en la navegación aérea o marítima, la agricultura y otros campos y para la información del público en general. Realizan investigaciones relativas a la composición, estructura y dinámica de la atmósfera. Entre sus tareas se incluyen: - investigar la dirección y velocidad de las masas de aire, las presiones, temperaturas, humedad, transformaciones físicas y químicas de los contaminantes y otros fenómenos, como la formación de nubes y precipitaciones, las perturbaciones eléctricas o la radiación solar; - analizar los datos obtenidos de estaciones meteorológicas, imágenes de redar o de satélites y modelos de ordenador para preparar pronósticos del tiempo; - preparar mapas, pronósticos y avisos a corto o a largo plazo sobre fenómenos atmosféricos tales como ciclones, tormentas y otros riesgos para la vida y los bienes, informar sobre ellos y difundir información sobre las<span class="excerpt"><span style="display:none;">condiciones atmosféricas a través de diversos medios, como la radio, la televisión, la prensa e internet; - realizar experimentos sobre dispersión de la niebla, siembra de nubes, lluvia artificial y otros tipos de programas de modificación del tiempo;- elaborar y probar modelos matemáticos del tiempo y del clima para uso experimental o práctico; - participar en estudios sobre el efecto del tiempo en el medio ambiente; - analizar el impacto de los proyectos industriales y de la actividad humana sobre el clima y sobre la calidad del aire y colaborar con la comunidad de expertos en ciencias sociales, ingeniería y economía para elaborar estrategias de mitigación adecuadas; - esforzarse por proyectar y desarrollar nuevo equipos y procedimientos para la recopilación de datos meteorológicos, la teledetección y otras aplicaciones afines; - realizar investigaciones y perfeccionar o desarrollar conceptos, teorías y métodos operativos relativos a la composición, estructura y dinámica de la atmósfera y preparar ponencias e </span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">METEORÓLOGOS</h4>');$('#info').append('<p class="descripcion">Los meteorólogos preparan pronósticos del tiempo a corto o a largo plazo para su uso en la navegación aérea<div class="excerpt"><div hidden>o marítima, la agricultura y otros campos y para la información del público en general. Realizan investigaciones relativas a la composición, estructura y dinámica de la atmósfera. Entre sus tareas se incluyen:  - investigar la dirección y velocidad de las masas de aire, las presiones, temperaturas, humedad, transformaciones físicas y químicas de los contaminantes y otros fenómenos, como la formación de nubes y precipitaciones, las perturbaciones eléctricas o la radiación solar;  - analizar los datos obtenidos de estaciones meteorológicas, imágenes de redar o de satélites y modelos de ordenador para preparar pronósticos del tiempo;  - preparar mapas, pronósticos y avisos a corto o a largo plazo sobre fenómenos atmosféricos tales como ciclones, tormentas y otros riesgos para la vida y los bienes, informar sobre ellos y difundir información sobre las condiciones atmosféricas a través de diversos medios, como la radio, la televisión, la prensa e internet;  - realizar experimentos sobre dispersión de la niebla, siembra de nubes, lluvia artificial y otros tipos de programas de modificación del tiempo; - elaborar y probar modelos matemáticos del tiempo y del clima para uso experimental o práctico; - participar en estudios sobre el efecto del tiempo en el medio ambiente;  - analizar el impacto de los proyectos industriales y de la actividad humana sobre el clima y sobre la calidad del aire y colaborar con la comunidad de expertos en ciencias sociales, ingeniería y economía para elaborar estrategias de mitigación adecuadas;  - esforzarse por proyectar y desarrollar nuevo equipos y procedimientos para la recopilación de datos meteorológicos, la teledetección y otras aplicaciones afines;  - realizar investigaciones y perfeccionar o desarrollar conceptos, teorías y métodos operativos relativos a la composición, estructura y dinámica de la atmósfera y preparar ponencias e </div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

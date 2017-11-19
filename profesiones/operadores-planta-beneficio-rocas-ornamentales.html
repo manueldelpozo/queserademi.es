@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de planta de beneficio de rocas ornamentales | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de planta de beneficio de rocas ornamentales">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de planta de beneficio de rocas ornamentales</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12912, 16368, 18792];
 var seriesSalJunior     = [14976, 18744, 21396];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE PLANTA DE BENEFICIO DE ROCAS ORNAMENTALES</h4>');$('#info').append('<p class="descripcion">Los operadores en instalaciones para la preparación de minerales y rocas accionany vigilan máquinas y equipos de tratamiento de minerales y rocas para obtenerproductos refinados para su uso inmediato o para posterior tratamiento.Entre sus tareas se incluyen:- ajustar y accionar máquinas y equipos para machacar, triturar, cortar, serrary partir rocas y minerales de acuerdo con las especificaciones del trabajo;- colocar en las máquinas bloques y losas de roca para los trabajos de serrado,corte y otros;323- vigilar y mantener la alimentación de rocas y minerales no tratados de lascintas transportadoras a las máquinas;- accionar equipos de lavado, separación, lixiviación, precipitado, filtrado ycombinación para eliminar el material de desecho y recuperar los minerales;- combinar los minerales con disolventes para facilitar su ulterior tratamiento;- separar metales o minerales concentrados del mineral o los depósitos aluvialespor sedimentación, flotación, gravedad, filtrado o por medios magnéticoso electrostáticos;- observar los contadores, indicadores y cuadros de control,<span class="excerpt"><span style="display:none;">ajustar las válvulasy mandos para garantizar el funcionamiento seguro y eficiente de losequipos y detectar su posible mal funcionamiento, y ayudar al mantenimientoy reparación de los equipos y máquinas;- examinar visual o manualmente los materiales tratados para garantizar quese cumplen las normas establecidas y las especificaciones de trabajo, y recoger,en su caso, muestras para análisis de laboratorio;- registrar información sobre los tratamientos completados durante los turnos,especificando, por ejemplo, las cantidades, tipos y dimensiones de los materialesproducidos;- clasificar, apilar y trasladar los minerales y rocas tratados para su embalaje,posterior tratamiento o embarque.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE PLANTA DE BENEFICIO DE ROCAS ORNAMENTALES</h4>');$('#info').append('<p class="descripcion">Los operadores en instalaciones para la preparación de minerales y rocas accionan y vigilan máquinas y equipos de tratamiento<div class="excerpt"><div hidden><span>de minerales y rocas para obtener productos refinados para su uso inmediato o para posterior tratamiento. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> ajustar y accionar máquinas y equipos para machacar, triturar, cortar, serrar y partir rocas y minerales de acuerdo con las especificaciones del trabajo</li><li class="list-group-item"> colocar en las máquinas bloques y losas de roca para los trabajos de serrado, corte y otros; 323 - vigilar y mantener la alimentación de rocas y minerales no tratados de las cintas transportadoras a las máquinas</li><li class="list-group-item"> accionar equipos de lavado, separación, lixiviación, precipitado, filtrado y combinación para eliminar el material de desecho y recuperar los minerales</li><li class="list-group-item"> combinar los minerales con disolventes para facilitar su ulterior tratamiento</li><li class="list-group-item"> separar metales o minerales concentrados del mineral o los depósitos aluviales por sedimentación, flotación, gravedad, filtrado o por medios magnéticos o electrostáticos</li><li class="list-group-item"> observar los contadores, indicadores y cuadros de control, ajustar las válvulas y mandos para garantizar el funcionamiento seguro y eficiente de los equipos y detectar su posible mal funcionamiento, y ayudar al mantenimiento y reparación de los equipos y máquinas</li><li class="list-group-item"> examinar visual o manualmente los materiales tratados para garantizar que se cumplen las normas establecidas y las especificaciones de trabajo, y recoger, en su caso, muestras para análisis de laboratorio</li><li class="list-group-item"> registrar información sobre los tratamientos completados durante los turnos, especificando, por ejemplo, las cantidades, tipos y dimensiones de los materiales producidos</li><li class="list-group-item"> clasificar, apilar y trasladar los minerales y rocas tratados para su embalaje, posterior tratamiento o embarque.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

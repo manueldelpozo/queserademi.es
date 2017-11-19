@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de maquinaria para fabricar productos derivados de minerales no metálicos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de maquinaria para fabricar productos derivados de minerales no metálicos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de maquinaria para fabricar productos derivados de minerales no metálicos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12408, 16284, 18984];
 var seriesSalJunior     = [14136, 18444, 21480];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MAQUINARIA PARA FABRICAR PRODUCTOS DERIVADOS DE MINERALES NO METÁLICOS</h4>');$('#info').append('<p class="descripcion">Estos trabajadores accionan y vigilan máquinas para fabricar y acabar diversosprefabricados de hormigón o piedra, incluida la piedra artificial, para la industriade la construcción.Nota: Entre los productos fabricados por los operadores de los equipos y máquinasincluidos en este grupo primario figuran los siguientes: hormigón mezcladopara uso en proyectos de obras públicas y de construcción, bordillos, ladrillos ybaldosas de hormigón, postes para cercas, tubos moldeados, revestimientos paracunetas, traviesas de hormigón para ferrocarriles, secciones de muros y tabiques,materiales de edificación, tubos de protección de cables, conductos paraevacuación de humos y polvo, ruedas abrasivas y muebles de exterior.Entre sus tareas se incluyen:- accionar máquinas de extruir, moldear, mezclar, bombear, compactar, molturary cortar para la fabricación y acabado de prefabricados de hormigón opiedra;- accionar equipos para producir cemento, cal y clinker, incluida la carga ydescarga de ingredientes y el manejo de equipos de alimentación continua,325como bombas y cintas transportadoras;- accionar y vigilar máquinas<span class="excerpt"><span style="display:none;">que mezclan arena, grava, cemento, agua yotros ingredientes para fabricar hormigón;- accionar equipos y máquinas que montan y llenan moldes con mezclas dehormigón y piedra artificial, retiran los vaciados y acaban las superficies delos prefabricados;- cortar, molturar, perforar, chorrear con arena y pulir productos de hormigón,como bloques y losas, de acuerdo con las especificaciones establecidas;- comprobar los planos de producción y las especificaciones para determinar yseleccionar los materiales, ingredientes, procedimientos, componentes yajustes para las máquinas de extrusión, moldeo, mezclado y compactación;- vigilar el funcionamiento de los equipos y máquinas observando instrumentoscomo los indicadores de temperatura y de presión, ajustar los mandos einformar de los casos de mal funcionamiento cuando se requiera;- recoger y examinar </span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MAQUINARIA PARA FABRICAR PRODUCTOS DERIVADOS DE MINERALES NO METÁLICOS</h4>');$('#info').append('<p class="descripcion">Estos trabajadores accionan y vigilan máquinas para fabricar y acabar diversos prefabricados de hormigón o piedra, incluida la piedra<div class="excerpt"><div hidden><span>artificial, para la industria de la construcción. Nota: Entre los productos fabricados por los operadores de los equipos y máquinas incluidos en este grupo primario figuran los siguientes: hormigón mezclado para uso en proyectos de obras públicas y de construcción, bordillos, ladrillos y baldosas de hormigón, postes para cercas, tubos moldeados, revestimientos para cunetas, traviesas de hormigón para ferrocarriles, secciones de muros y tabiques, materiales de edificación, tubos de protección de cables, conductos para evacuación de humos y polvo, ruedas abrasivas y muebles de exterior. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> accionar máquinas de extruir, moldear, mezclar, bombear, compactar, molturar y cortar para la fabricación y acabado de prefabricados de hormigón o piedra</li><li class="list-group-item"> accionar equipos para producir cemento, cal y clinker, incluida la carga y descarga de ingredientes y el manejo de equipos de alimentación continua, 325 como bombas y cintas transportadoras</li><li class="list-group-item"> accionar y vigilar máquinas que mezclan arena, grava, cemento, agua y otros ingredientes para fabricar hormigón</li><li class="list-group-item"> accionar equipos y máquinas que montan y llenan moldes con mezclas de hormigón y piedra artificial, retiran los vaciados y acaban las superficies de los prefabricados</li><li class="list-group-item"> cortar, molturar, perforar, chorrear con arena y pulir productos de hormigón, como bloques y losas, de acuerdo con las especificaciones establecidas</li><li class="list-group-item"> comprobar los planos de producción y las especificaciones para determinar y seleccionar los materiales, ingredientes, procedimientos, componentes y ajustes para las máquinas de extrusión, moldeo, mezclado y compactación</li><li class="list-group-item"> vigilar el funcionamiento de los equipos y máquinas observando instrumentos como los indicadores de temperatura y de presión, ajustar los mandos e informar de los casos de mal funcionamiento cuando se requiera</li><li class="list-group-item"> recoger y examinar </li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

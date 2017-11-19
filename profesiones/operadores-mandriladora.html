@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de mandriladora | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de mandriladora">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de mandriladora</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MANDRILADORA</h4>');$('#info').append('<p class="descripcion">Los ajustadores y operadores de máquinas-herramienta, pertenecientes al Grupo principal de Trabajadorescualificados de las industrias, regulan y manejan distintas máquinas herramientas que trabajan con precisión. Entresus tareas se incluyen:-Regular una o diversas clases de máquinas herramientas para la fabricación de piezas de metal en seriesestandarizadas;-Regular y manejar un tipo determinado de máquina herramienta (por ejemplo, torno automático, fresadora,cepilladora, mandriladora, taladradora o rectificadora), inclusive con control numérico;-Ejecutar tareas similares para mecanizar materias plásticas y otros sucedáneos del metal;-Observar el funcionamiento de las máquinas para descubrir defectos en las piezas de trabajo o disfunciones delas propias máquinas, regulándolas en lo que sea necesario;-Inspeccionar las piezas de trabajo para descubrir defectos y medirlas para determinar la precisión de las máquinasen las que se han mecanizado, usando reglas, plantillas u otros instrumentos de medida;-Cambiar los accesorios de las máquinas que se hayan desgastado, usando herramientas<span class="excerpt"><span style="display:none;">manuales.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MANDRILADORA</h4>');$('#info').append('<p class="descripcion">Los ajustadores y operadores de máquinas-herramienta, pertenecientes al Grupo principal de Trabajadores cualificados de las industrias, regulan y manejan<div class="excerpt"><div hidden><span>distintas máquinas herramientas que trabajan con precisión. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item">Regular una o diversas clases de máquinas herramientas para la fabricación de piezas de metal en series estandarizadas</li><li class="list-group-item">Regular y manejar un tipo determinado de máquina herramienta (por ejemplo, torno automático, fresadora, cepilladora, mandriladora, taladradora o rectificadora), inclusive con control numérico</li><li class="list-group-item">Ejecutar tareas similares para mecanizar materias plásticas y otros sucedáneos del metal</li><li class="list-group-item">Observar el funcionamiento de las máquinas para descubrir defectos en las piezas de trabajo o disfunciones de las propias máquinas, regulándolas en lo que sea necesario</li><li class="list-group-item">Inspeccionar las piezas de trabajo para descubrir defectos y medirlas para determinar la precisión de las máquinas en las que se han mecanizado, usando reglas, plantillas u otros instrumentos de medida</li><li class="list-group-item">Cambiar los accesorios de las máquinas que se hayan desgastado, usando herramientas manuales.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

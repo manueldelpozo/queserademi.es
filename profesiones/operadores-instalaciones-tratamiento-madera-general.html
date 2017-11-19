@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de instalaciones para el tratamiento de la madera, en general | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de instalaciones para el tratamiento de la madera, en general">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de instalaciones para el tratamiento de la madera, en general</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12912, 16368, 18792];
 var seriesSalJunior     = [14976, 18744, 21396];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE INSTALACIONES PARA EL TRATAMIENTO DE LA MADERA, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Estos operadores vigilan, accionan y controlan equipos para desbastar troncos,cortar los maderos en chapas, fabricar tableros de contra-chapado y de partículasy preparar de otras formas la madera para su utilización posterior.Entre sus tareas se incluyen:- examinar los maderos y la madera bruta para determinar su tamaño, estado,calidad y demás características con objeto de decidir los mejores cortes quedeban hacerse, o accionar equipos automáticos para hacer pasar los troncospor aparatos de láser que determinen los patrones de corte más productivo yrentables;- accionar y vigilar carriles y cintas transportadoras para colocar maderos enposición;- accionar y vigilar sierras mecánicas principales, reaserradoras y de variashojas para aserrar troncos, trozas, costeros o rollizos y suprimir esquinas ycantos desiguales de la madera aserrada;- accionar y vigilar máquinas intercaladoras de láminas de chapa y prensas332para fabricar contrachapado con láminas de chapa encoladas y prensadas encaliente;- limpiar y lubricar los equipos de<span class="excerpt"><span style="display:none;">aserrado.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE INSTALACIONES PARA EL TRATAMIENTO DE LA MADERA, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Estos operadores vigilan, accionan y controlan equipos para desbastar troncos, cortar los maderos en chapas, fabricar tableros de contra-chapado<div class="excerpt"><div hidden><span>y de partículas y preparar de otras formas la madera para su utilización posterior. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> examinar los maderos y la madera bruta para determinar su tamaño, estado, calidad y demás características con objeto de decidir los mejores cortes que deban hacerse, o accionar equipos automáticos para hacer pasar los troncos por aparatos de láser que determinen los patrones de corte más productivo y rentables</li><li class="list-group-item"> accionar y vigilar carriles y cintas transportadoras para colocar maderos en posición</li><li class="list-group-item"> accionar y vigilar sierras mecánicas principales, reaserradoras y de varias hojas para aserrar troncos, trozas, costeros o rollizos y suprimir esquinas y cantos desiguales de la madera aserrada</li><li class="list-group-item"> accionar y vigilar máquinas intercaladoras de láminas de chapa y prensas 332 para fabricar contrachapado con láminas de chapa encoladas y prensadas en caliente</li><li class="list-group-item"> limpiar y lubricar los equipos de aserrado.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

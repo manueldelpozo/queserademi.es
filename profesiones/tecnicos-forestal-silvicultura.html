@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos forestal y/o silvicultura | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos forestal y/o silvicultura">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos forestal y/o silvicultura</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [16680, 17880, 19200];
 var seriesSalJunior     = [19248, 20532, 22560];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS FORESTAL Y/O SILVICULTURA</h4>');$('#info').append('<p class="descripcion">Los técnicos forestales desempeñan funciones técnicas y de supervisión en apoyode la investigación forestal, la gestión y explotación de los bosques, la conservaciónde los recursos y la protección del medio ambiente.Entre sus tareas se incluyen:- realizar inventarios, reconocimientos y mediciones forestales segúnprocedimientos científicos y de trabajo aceptados;- desempeñar y ayudar al desempeño de funciones técnicas en la preparaciónde planes de gestión y explotación de los bosques utilizando técnicas fotogramétricasy cartográficas y sistemas informatizados;- ayudar a la planificación y supervisión de la construcción de rutas de accesoy caminos forestales;- desempeñar y supervisar el desempeño de funciones técnicas en el ámbitoforestal que impliquen la preparación, plantación y atención de los bosques;- coordinar actividades tales como la cubicación de madera, la extinción deincendios forestales, el control de plagas o insectos o el aclareo precomercialde masas forestales;- desempeñar y supervisar el desempeño de funciones técnicas de explotaciónde los bosques;- velar por el cumplimiento<span class="excerpt"><span style="display:none;">de los reglamentos y políticas en materia de proteccióndel medio ambiente, utilización de los recursos, seguridad contra incendiosy prevención de accidentes;- supervisar las actividades relativas a los viveros forestales;- prestar asistencia técnica a los programas de investigación forestal en ámbitoscomo la mejora de los árboles, los semilleros forestales, el estudio de insectosy plagas, la silvicultura experimental y las investigaciones sobre ingenieríaforestal;- preparar planes de cultivo y tala forestales.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS FORESTAL Y/O SILVICULTURA</h4>');$('#info').append('<p class="descripcion">Los técnicos forestales desempeñan funciones técnicas y de supervisión en apoyo de la investigación forestal, la gestión y explotación<div class="excerpt"><div hidden><span>de los bosques, la conservación de los recursos y la protección del medio ambiente. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> realizar inventarios, reconocimientos y mediciones forestales según procedimientos científicos y de trabajo aceptados</li><li class="list-group-item"> desempeñar y ayudar al desempeño de funciones técnicas en la preparación de planes de gestión y explotación de los bosques utilizando técnicas fotogramétricas y cartográficas y sistemas informatizados</li><li class="list-group-item"> ayudar a la planificación y supervisión de la construcción de rutas de acceso y caminos forestales</li><li class="list-group-item"> desempeñar y supervisar el desempeño de funciones técnicas en el ámbito forestal que impliquen la preparación, plantación y atención de los bosques</li><li class="list-group-item"> coordinar actividades tales como la cubicación de madera, la extinción de incendios forestales, el control de plagas o insectos o el aclareo precomercial de masas forestales</li><li class="list-group-item"> desempeñar y supervisar el desempeño de funciones técnicas de explotación de los bosques</li><li class="list-group-item"> velar por el cumplimiento de los reglamentos y políticas en materia de protección del medio ambiente, utilización de los recursos, seguridad contra incendios y prevención de accidentes</li><li class="list-group-item"> supervisar las actividades relativas a los viveros forestales</li><li class="list-group-item"> prestar asistencia técnica a los programas de investigación forestal en ámbitos como la mejora de los árboles, los semilleros forestales, el estudio de insectos y plagas, la silvicultura experimental y las investigaciones sobre ingeniería forestal</li><li class="list-group-item"> preparar planes de cultivo y tala forestales.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

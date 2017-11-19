@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en electrónica, especialidad en electro medicina | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en electrónica, especialidad en electro medicina">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en electrónica, especialidad en electro medicina</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [16500, 22464, 26652];
 var seriesSalJunior     = [18420, 24600, 28920];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN ELECTRÓNICA, ESPECIALIDAD EN ELECTRO MEDICINA</h4>');$('#info').append('<p class="descripcion">Los técnicos en electrónica, especialidad en electromedicina, planifican, gestionany supervisan la instalación y el mantenimiento de los productos sanitariosactivos no implantables (PSANI) en sistemas de electromedicina y sus instalacionesasociadas, bajo criterios de calidad, en condiciones de seguridad y cumpliendola normativa vigente. Desarrollan su actividad profesional en centrossanitarios, públicos o privados, en los servicios de electromedicina, y en empresasfabricantes, distribuidoras o proveedoras de servicios de electromedicina, enlos departamentos de asistencia técnica o atención al cliente, tanto por cuentapropia o ajena.Entre sus tareas se incluyen:- determinar las características técnicas de los equipos adecuadas a necesidadesdel centro sanitario;- seleccionar los equipos, elementos y materiales;- determinar los costes de los equipos e instalaciones;- desarrollar programas de montaje de los equipos;- planificar las pruebas de seguridad, funcionamiento y puesta en servicio de131los equipos;- elaborar la documentación correspondiente al montaje y mantenimiento delsistema;- realizar el replanteo y lanzamiento de la obra;- realizar el seguimiento y<span class="excerpt"><span style="display:none;">supervisión del programa de montaje de los equipos;- realizar y supervisar las intervenciones para el montaje de los equipos;- realizar y supervisar las pruebas de seguridad, funcionamiento y puesta enmarcha de los equipos;- aplicar programas de gestión de residuos;- desarrollar y gestionar programas para el aprovisionamiento de medios ymateriales para el mantenimiento;- desarrollar programas para el mantenimiento de los equipos;- organizar y controlar las intervenciones para el mantenimiento de los equipos;- realizar el diagnóstico de la avería o disfunción de equipos e instalaciones;- supervisar y realizar las intervenciones para el mantenimiento de los equipos;- determinar las necesidades de formación de los usuarios y del personal delservicio en el manejo de los equipos;- for</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN ELECTRÓNICA, ESPECIALIDAD EN ELECTRO MEDICINA</h4>');$('#info').append('<p class="descripcion">Los técnicos en electrónica, especialidad en electromedicina, planifican, gestionan y supervisan la instalación y el mantenimiento de los productos<div class="excerpt"><div hidden><span>sanitarios activos no implantables (PSANI) en sistemas de electromedicina y sus instalaciones asociadas, bajo criterios de calidad, en condiciones de seguridad y cumpliendo la normativa vigente. Desarrollan su actividad profesional en centros sanitarios, públicos o privados, en los servicios de electromedicina, y en empresas fabricantes, distribuidoras o proveedoras de servicios de electromedicina, en los departamentos de asistencia técnica o atención al cliente, tanto por cuenta propia o ajena. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> determinar las características técnicas de los equipos adecuadas a necesidades del centro sanitario</li><li class="list-group-item"> seleccionar los equipos, elementos y materiales</li><li class="list-group-item"> determinar los costes de los equipos e instalaciones</li><li class="list-group-item"> desarrollar programas de montaje de los equipos</li><li class="list-group-item"> planificar las pruebas de seguridad, funcionamiento y puesta en servicio de 131 los equipos</li><li class="list-group-item"> elaborar la documentación correspondiente al montaje y mantenimiento del sistema</li><li class="list-group-item"> realizar el replanteo y lanzamiento de la obra</li><li class="list-group-item"> realizar el seguimiento y supervisión del programa de montaje de los equipos</li><li class="list-group-item"> realizar y supervisar las intervenciones para el montaje de los equipos</li><li class="list-group-item"> realizar y supervisar las pruebas de seguridad, funcionamiento y puesta en marcha de los equipos</li><li class="list-group-item"> aplicar programas de gestión de residuos</li><li class="list-group-item"> desarrollar y gestionar programas para el aprovisionamiento de medios y materiales para el mantenimiento</li><li class="list-group-item"> desarrollar programas para el mantenimiento de los equipos</li><li class="list-group-item"> organizar y controlar las intervenciones para el mantenimiento de los equipos</li><li class="list-group-item"> realizar el diagnóstico de la avería o disfunción de equipos e instalaciones</li><li class="list-group-item"> supervisar y realizar las intervenciones para el mantenimiento de los equipos</li><li class="list-group-item"> determinar las necesidades de formación de los usuarios y del personal del servicio en el manejo de los equipos</li><li class="list-group-item"> for</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

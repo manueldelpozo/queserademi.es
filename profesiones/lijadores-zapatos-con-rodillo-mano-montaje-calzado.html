@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Lijadores de zapatos con rodillo, a mano (montaje de calzado) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Lijadores de zapatos con rodillo, a mano (montaje de calzado)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Lijadores de zapatos con rodillo, a mano (montaje de calzado)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [8544, 12468, 15216];
 var seriesSalJunior     = [9864, 14352, 17484];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">LIJADORES DE ZAPATOS CON RODILLO, A MANO (MONTAJE DE CALZADO)</h4>');$('#info').append('<p class="descripcion">Los zapateros y afines confeccionan, modifican y reparan calzado normal, a medidau ortopédico u otros artículos de cuero natural o artificial, como maletas,bolsos y cinturones (excepto prendas de vestir, sombreros y guantes), o participanen la fabricación de zapatos y artículos similares. Decoran, refuerzan o danel acabado a zapatos, maletas, bolsos y cinturones.Entre sus tareas se incluyen:- confeccionar, modificar y reparar calzado normal para atender necesidadesde los clientes;- confeccionar, modificar y reparar calzado ortopédico o terapéutico de acuerdocon prescripciones médicas, o modificar calzado existente para personascon problemas en los pies y necesidades especiales;- arreglar cinturones, maletas, bolsos y productos similares;- sacar moldes de escayola de piernas o pies deformados para preparar planos;- preparar insertos, plantillas y alzas a partir de moldes de los pies de clientes;- estudiar los planos y otras especificaciones para confeccionar calzado deacuerdo con las necesidades de clientes;- estudiar los pedidos o las identificaciones de partes de<span class="excerpt"><span style="display:none;">zapatos para obtenerinformación sobre las cargas de trabajo, las especificaciones y los tipos demateriales que han de emplearse;- comprobar la textura, color y resistencia del cuero para garantizar que esadecuado para el fin concreto a que se destina;- cortar, moldear y acolchar las piezas con las que se han de confeccionar artículosde cuero;- coser descosidos o poner parches para arreglar artículos como bolsos,cinturones, zapatos y maletas;- retirar y examinar zapatos, partes de zapatos y diseños para verificar que secumplen las especificaciones en aspectos como el encaje adecuado de laspuntadas en canales;- añadir accesorios o elementos para adornar o proteger los productos;- confeccionar y reparar artículos como monturas y arneses para animales,maletas, bolsos de mano, maletines, bolsos de cuero, cinturones y otrosartículos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">LIJADORES DE ZAPATOS CON RODILLO, A MANO (MONTAJE DE CALZADO)</h4>');$('#info').append('<p class="descripcion">Los zapateros y afines confeccionan, modifican y reparan calzado normal, a medida u ortopédico u otros artículos de cuero<div class="excerpt"><div hidden><span>natural o artificial, como maletas, bolsos y cinturones (excepto prendas de vestir, sombreros y guantes), o participan en la fabricación de zapatos y artículos similares. Decoran, refuerzan o dan el acabado a zapatos, maletas, bolsos y cinturones. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> confeccionar, modificar y reparar calzado normal para atender necesidades de los clientes</li><li class="list-group-item"> confeccionar, modificar y reparar calzado ortopédico o terapéutico de acuerdo con prescripciones médicas, o modificar calzado existente para personas con problemas en los pies y necesidades especiales</li><li class="list-group-item"> arreglar cinturones, maletas, bolsos y productos similares</li><li class="list-group-item"> sacar moldes de escayola de piernas o pies deformados para preparar planos</li><li class="list-group-item"> preparar insertos, plantillas y alzas a partir de moldes de los pies de clientes</li><li class="list-group-item"> estudiar los planos y otras especificaciones para confeccionar calzado de acuerdo con las necesidades de clientes</li><li class="list-group-item"> estudiar los pedidos o las identificaciones de partes de zapatos para obtener información sobre las cargas de trabajo, las especificaciones y los tipos de materiales que han de emplearse</li><li class="list-group-item"> comprobar la textura, color y resistencia del cuero para garantizar que es adecuado para el fin concreto a que se destina</li><li class="list-group-item"> cortar, moldear y acolchar las piezas con las que se han de confeccionar artículos de cuero</li><li class="list-group-item"> coser descosidos o poner parches para arreglar artículos como bolsos, cinturones, zapatos y maletas</li><li class="list-group-item"> retirar y examinar zapatos, partes de zapatos y diseños para verificar que se cumplen las especificaciones en aspectos como el encaje adecuado de las puntadas en canales</li><li class="list-group-item"> añadir accesorios o elementos para adornar o proteger los productos</li><li class="list-group-item"> confeccionar y reparar artículos como monturas y arneses para animales, maletas, bolsos de mano, maletines, bolsos de cuero, cinturones y otros artículos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

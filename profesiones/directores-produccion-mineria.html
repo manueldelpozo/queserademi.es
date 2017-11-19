@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Directores de producción (minería) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Directores de producción (minería)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Directores de producción (minería)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [22716, 27780, 31332];
 var seriesSalJunior     = [25956, 31572, 35520];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE PRODUCCIÓN (MINERÍA)</h4>');$('#info').append('<p class="descripcion">Los directores de explotaciones mineras planifican, dirigen y coordinan las actividadesde producción de las explotaciones de minería, canteras y yacimientosde extracción de petróleo y gas. Se incluyen en este grupo tanto directores dedepartamentos como directores generales de empresas que no cuentan con unajerarquía a nivel directivo.Entre sus tareas se incluyen:- celebrar consultas con otros directores para fijar cuotas de producción, planificarlugares de extracción y elaborar políticas para la eliminación de las materiasprimas;- evaluar la eficiencia de los lugares de producción para determinar la idoneidaddel personal, los equipos y la tecnología utilizados y para introducir cambios,en caso necesario, en el programa de trabajo o en los equipos;- planificar detalles de las actividades de producción en términos de calidad ycantidad del producto, costes, tiempos y necesidades de mano de obra;- controlar el funcionamiento de la planta de producción y de los procedimientosde calidad mediante la planificación del mantenimiento, la indicación delas<span class="excerpt"><span style="display:none;">horas de funcionamiento y el suministro de piezas y utillaje;- establecer y gestionar presupuestos, controlar el producto y los costes deproducción, y ajustar los procesos y recursos para minimizar los costes;- controlar la adquisición e instalación de nuevas instalaciones y equipos;- controlar la preparación de registros e informes de producción;- coordinar el cumplimiento de los requisitos de salud y seguridad en el trabajo;- estudiar y aplicar los requisitos legales y reglamentarios que afectan a lasoperaciones de extracción de minerales y al medio ambiente;- controlar la selección, formación y rendimiento del personal.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE PRODUCCIÓN (MINERÍA)</h4>');$('#info').append('<p class="descripcion">Los directores de explotaciones mineras planifican, dirigen y coordinan las actividades de producción de las explotaciones de minería, canteras<div class="excerpt"><div hidden><span>y yacimientos de extracción de petróleo y gas. Se incluyen en este grupo tanto directores de departamentos como directores generales de empresas que no cuentan con una jerarquía a nivel directivo. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> celebrar consultas con otros directores para fijar cuotas de producción, planificar lugares de extracción y elaborar políticas para la eliminación de las materias primas</li><li class="list-group-item"> evaluar la eficiencia de los lugares de producción para determinar la idoneidad del personal, los equipos y la tecnología utilizados y para introducir cambios, en caso necesario, en el programa de trabajo o en los equipos</li><li class="list-group-item"> planificar detalles de las actividades de producción en términos de calidad y cantidad del producto, costes, tiempos y necesidades de mano de obra</li><li class="list-group-item"> controlar el funcionamiento de la planta de producción y de los procedimientos de calidad mediante la planificación del mantenimiento, la indicación de las horas de funcionamiento y el suministro de piezas y utillaje</li><li class="list-group-item"> establecer y gestionar presupuestos, controlar el producto y los costes de producción, y ajustar los procesos y recursos para minimizar los costes</li><li class="list-group-item"> controlar la adquisición e instalación de nuevas instalaciones y equipos</li><li class="list-group-item"> controlar la preparación de registros e informes de producción</li><li class="list-group-item"> coordinar el cumplimiento de los requisitos de salud y seguridad en el trabajo</li><li class="list-group-item"> estudiar y aplicar los requisitos legales y reglamentarios que afectan a las operaciones de extracción de minerales y al medio ambiente</li><li class="list-group-item"> controlar la selección, formación y rendimiento del personal.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

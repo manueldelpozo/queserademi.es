@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en seguridad aeronáutica | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en seguridad aeronáutica">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en seguridad aeronáutica</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN SEGURIDAD AERONÁUTICA</h4>');$('#info').append('<p class="descripcion">Los técnicos en seguridad aeronáutica realizan tareas técnicas relacionadas conel diseño, instalación, gestión, manejo, mantenimiento y reparación de sistemasde control del tráfico aéreo y de la navegación aérea.Entre sus tareas se incluyen:- efectuar trabajos técnicos relacionados con el trabajo de desarrollo de equiposelectrónicos y electromecánicos y de sistemas informáticos utilizados enaeronáutica, y probar prototipos;- prestar asistencia técnica en el diseño y proyección de circuitos interactivosde control de la navegación aérea y de sistemas de detección de aeronaves yseguimiento u observación de su rumbo;- preparar y contribuir a la preparación de la estimación de costes y las especificacionesde carácter técnico o con fines de instrucción en lo concerniente a145los equipos de seguridad aeronáutica y de control del tráfico aéreo;- realizar o asistir en las tareas de supervisión técnica de la construcción, instalación,manejo, mantenimiento y reparación de los aparatos de control aeronáuticodesde tierra para asegurar el cumplimiento de las normas y<span class="excerpt"><span style="display:none;">las especificacionespertinentes;- aplicar capacidades y conocimientos de los principios y prácticas en materiade ingeniería aeronáutica aplicada a la seguridad del tráfico aéreo para identificary resolver los problemas que surjan en el curso de su trabajo; desarrollar,modificar y detectar y eliminar errores en los programas informáticos;- modificar los sistemas y equipos de control aeronáutico desde tierra paraadecuarlos a los nuevos procedimientos de control del tráfico aéreo, con elfin de mejorar su capacidad, fiabilidad e integridad, o para facilitar los procedimientosde control del tráfico aéreo y la designación del espacio aéreo;- controlar, vigilar y certificar los aparatos de comunicación y control del tráficoaéreo y calibrar los instrumentos y aparatos de control aeronáutico desdetierra para garantizar plena exactitud y seguridad en las maniobras de vuelo,aterrizaje y despegue;- </span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN SEGURIDAD AERONÁUTICA</h4>');$('#info').append('<p class="descripcion">Los técnicos en seguridad aeronáutica realizan tareas técnicas relacionadas con el diseño, instalación, gestión, manejo, mantenimiento y reparación de<div class="excerpt"><div hidden><span>sistemas de control del tráfico aéreo y de la navegación aérea. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> efectuar trabajos técnicos relacionados con el trabajo de desarrollo de equipos electrónicos y electromecánicos y de sistemas informáticos utilizados en aeronáutica, y probar prototipos</li><li class="list-group-item"> prestar asistencia técnica en el diseño y proyección de circuitos interactivos de control de la navegación aérea y de sistemas de detección de aeronaves y seguimiento u observación de su rumbo</li><li class="list-group-item"> preparar y contribuir a la preparación de la estimación de costes y las especificaciones de carácter técnico o con fines de instrucción en lo concerniente a 145 los equipos de seguridad aeronáutica y de control del tráfico aéreo</li><li class="list-group-item"> realizar o asistir en las tareas de supervisión técnica de la construcción, instalación, manejo, mantenimiento y reparación de los aparatos de control aeronáutico desde tierra para asegurar el cumplimiento de las normas y las especificaciones pertinentes</li><li class="list-group-item"> aplicar capacidades y conocimientos de los principios y prácticas en materia de ingeniería aeronáutica aplicada a la seguridad del tráfico aéreo para identificar y resolver los problemas que surjan en el curso de su trabajo; desarrollar, modificar y detectar y eliminar errores en los programas informáticos</li><li class="list-group-item"> modificar los sistemas y equipos de control aeronáutico desde tierra para adecuarlos a los nuevos procedimientos de control del tráfico aéreo, con el fin de mejorar su capacidad, fiabilidad e integridad, o para facilitar los procedimientos de control del tráfico aéreo y la designación del espacio aéreo</li><li class="list-group-item"> controlar, vigilar y certificar los aparatos de comunicación y control del tráfico aéreo y calibrar los instrumentos y aparatos de control aeronáutico desde tierra para garantizar plena exactitud y seguridad en las maniobras de vuelo, aterrizaje y despegue</li><li class="list-group-item"> </li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

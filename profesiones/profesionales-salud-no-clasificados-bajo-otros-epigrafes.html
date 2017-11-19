@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Profesionales de la salud no clasificados bajo otros epígrafes | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Profesionales de la salud no clasificados bajo otros epígrafes">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Profesionales de la salud no clasificados bajo otros epígrafes</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [16188, 21780, 25704];
 var seriesSalJunior     = [18588, 24888, 29292];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESIONALES DE LA SALUD NO CLASIFICADOS BAJO OTROS EPÍGRAFES</h4>');$('#info').append('<p class="descripcion">Este grupo primario engloba los profesionales de la salud no clasificados enotros epígrafes del subgrupo principal 21, Profesionales de la salud. El grupoincluye ocupaciones como, por ejemplo, psicólogo clínico, terapeuta recreativo,y otras profesiones que realizan diagnósticos o prestan servicios de salud preventivos,curativos o de rehabilitación.Entre sus tareas se incluyen:- entrevistar a los pacientes y realizar pruebas de diagnóstico para determinarsu estado de salud, limitaciones funcionales y la naturaleza de su trastorno,enfermedad o problema, físico o mental;- desarrollar y aplicar planes de tratamiento para lesiones, enfermedades yotros tipos de trastornos físicos o mentales;- evaluar y documentar el progreso del paciente a lo largo de los tratamientos,y remitirlos, a ellos o a sus familiares, a médicos u otros personal sanitariocuando sean necesarios cuidados especializados, de rehabilitación o similares;- planificar y realizar programas terapéuticos, de manera individual o en grupo,para mejorar y mantener la funcionalidad física, cognitiva, emocional ysocial (incluyendo el uso<span class="excerpt"><span style="display:none;">de las artes y la artesanía, la danza y el movimiento,la música y otras actividades recreativas).</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESIONALES DE LA SALUD NO CLASIFICADOS BAJO OTROS EPÍGRAFES</h4>');$('#info').append('<p class="descripcion">Este grupo primario engloba los profesionales de la salud no clasificados en otros epígrafes del subgrupo principal 21, Profesionales<div class="excerpt"><div hidden><span>de la salud. El grupo incluye ocupaciones como, por ejemplo, psicólogo clínico, terapeuta recreativo, y otras profesiones que realizan diagnósticos o prestan servicios de salud preventivos, curativos o de rehabilitación. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> entrevistar a los pacientes y realizar pruebas de diagnóstico para determinar su estado de salud, limitaciones funcionales y la naturaleza de su trastorno, enfermedad o problema, físico o mental</li><li class="list-group-item"> desarrollar y aplicar planes de tratamiento para lesiones, enfermedades y otros tipos de trastornos físicos o mentales</li><li class="list-group-item"> evaluar y documentar el progreso del paciente a lo largo de los tratamientos, y remitirlos, a ellos o a sus familiares, a médicos u otros personal sanitario cuando sean necesarios cuidados especializados, de rehabilitación o similares</li><li class="list-group-item"> planificar y realizar programas terapéuticos, de manera individual o en grupo, para mejorar y mantener la funcionalidad física, cognitiva, emocional y social (incluyendo el uso de las artes y la artesanía, la danza y el movimiento, la música y otras actividades recreativas).</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

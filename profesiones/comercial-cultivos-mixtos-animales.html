@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Comercial de cultivos mixtos o animales | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Comercial de cultivos mixtos o animales">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Comercial de cultivos mixtos o animales</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14640, 21000, 25428];
 var seriesSalJunior     = [16416, 23292, 28092];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">COMERCIAL DE CULTIVOS MIXTOS O ANIMALES</h4>');$('#info').append('<p class="descripcion">Los productores y trabajadores calificados de explotaciones agropecuarias mixtascuya producción se destina al mercado planifican, organizan y realizan operacionesagrícolas para cultivar y cosechar campos, árboles y otros cultivos, asícomo para criar, alimentar y cuidar animales y para producir una variedad deproductos de origen animal para la venta o la entrega a compradores mayoristas,organizaciones de comercialización o a los mercados.Nota: Los agricultores y trabajadores cualificados agropecuarios cuya actividadpredominante es la cría de ganado o bien la agricultura, pero también se ocupande manera ocasional de la otra actividad, esto es, la agricultura o la cría de ganadorespectivamente, no se deberían incluir en este epígrafe. Por ejemplo unganadero que cría cerdos para el mercado pero dedica algo de tiempo a cultivarverduras debería clasificarse en 6203, Trabajadores cualificados en actividadesganaderas de porcino. De manera similar, un agricultor cerealista que mantieneuna pequeña cabaña de aves y animales de granja debe clasificarse en 6110,Trabajadores cualificados<span class="excerpt"><span style="display:none;">en actividades agrícolas (excepto en huertas, invernaderos,viveros y jardines).Entre sus tareas se incluyen:- efectuar el seguimiento de la actividad y las condiciones del mercado, determinarlos tipos y cantidades de cultivos a ser cosechados y animales a sercriados, y planificar y coordinar la producción consiguiente;- comprar semillas, fertilizantes y otros suministros;- realizar operaciones tales como la preparación de la tierra, siembra, plantación,cultivo y cosecha de cultivos;- producir o comprar forraje y otros suplementos alimentarios;- criar, alimentar y cuidar animales;- sacrificar y desollar animales y preparar animales o productos de origenanimal para el mercado;- alquilar o invertir y mantener y limpiar las edificaciones de la explotación, lamaquinaria, equipamiento y estructuras;- almacenar y llevar a cabo algún procesamiento de los productos;- promover</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">COMERCIAL DE CULTIVOS MIXTOS O ANIMALES</h4>');$('#info').append('<p class="descripcion">Los productores y trabajadores calificados de explotaciones agropecuarias mixtas cuya producción se destina al mercado planifican, organizan y realizan<div class="excerpt"><div hidden><span>operaciones agrícolas para cultivar y cosechar campos, árboles y otros cultivos, así como para criar, alimentar y cuidar animales y para producir una variedad de productos de origen animal para la venta o la entrega a compradores mayoristas, organizaciones de comercialización o a los mercados. Nota: Los agricultores y trabajadores cualificados agropecuarios cuya actividad predominante es la cría de ganado o bien la agricultura, pero también se ocupan de manera ocasional de la otra actividad, esto es, la agricultura o la cría de ganado respectivamente, no se deberían incluir en este epígrafe. Por ejemplo un ganadero que cría cerdos para el mercado pero dedica algo de tiempo a cultivar verduras debería clasificarse en 6203, Trabajadores cualificados en actividades ganaderas de porcino. De manera similar, un agricultor cerealista que mantiene una pequeña cabaña de aves y animales de granja debe clasificarse en 6110, Trabajadores cualificados en actividades agrícolas (excepto en huertas, invernaderos, viveros y jardines). Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> efectuar el seguimiento de la actividad y las condiciones del mercado, determinar los tipos y cantidades de cultivos a ser cosechados y animales a ser criados, y planificar y coordinar la producción consiguiente</li><li class="list-group-item"> comprar semillas, fertilizantes y otros suministros</li><li class="list-group-item"> realizar operaciones tales como la preparación de la tierra, siembra, plantación, cultivo y cosecha de cultivos</li><li class="list-group-item"> producir o comprar forraje y otros suplementos alimentarios</li><li class="list-group-item"> criar, alimentar y cuidar animales</li><li class="list-group-item"> sacrificar y desollar animales y preparar animales o productos de origen animal para el mercado</li><li class="list-group-item"> alquilar o invertir y mantener y limpiar las edificaciones de la explotación, la maquinaria, equipamiento y estructuras</li><li class="list-group-item"> almacenar y llevar a cabo algún procesamiento de los productos</li><li class="list-group-item"> promover</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

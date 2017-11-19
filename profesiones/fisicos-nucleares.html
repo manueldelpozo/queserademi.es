@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Físicos nucleares | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Físicos nucleares">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Físicos nucleares</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [21948, 26088, 28980];
 var seriesSalJunior     = [24828, 29400, 32592];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">FÍSICOS NUCLEARES</h4>');$('#info').append('<p class="descripcion">Los físicos y astrónomos investigan, perfeccionan o desarrollan conceptos, teorías y métodos operativos relativos a la materia, el espacio, el tiempo, la energía, las fuerzas y los campos y a la relación recíproca entre estos fenómenos físicos. Aplican los conocimientos científicos de la física y la astronomía en las actividades industriales, la medicina, la esfera militar y otros ámbitos. Entre sus tareas se incluyen:- realizar investigaciones y perfeccionar o desarrollar los conceptos, las teorí as, la instrumentación, el software y los métodos operativos de la física y la astronomía; - efectuar experimentos, ensayos y análisis sobre la estructura y propiedades de la materia en campos como la mecánica, la termodinámica, la electrónica, las comunicaciones, la generación y distribución de energía, la aerodinámica, la óptica y el láser, la medicina, la ciencia del sonido, el magnetismo y la física nuclear; - evaluar los resultados de investigaciones y experimentos y formular<span class="excerpt"><span style="display:none;">conclusiones, recurriendo principalmente a técnicas y modelos matemáticos; - aplicar principios, técnicas y procesos para perfeccionar o mejorar las aplicaciones industriales, médicas, militares y de otros tipos de los principios y técnicas de la física y la astronomía; - asegurar el carácter seguro y efectivo de las radiaciones (ionizantes y no ionizantes) aplicadas a los pacientes para conseguir un resultado diagnóstico o terapéutico de conformidad con lo prescrito por un profesional médico; - asegurar la medición y caracterización exactas de las cantidades físicas usadas en aplicaciones médicas; - probar, poner a punto y evaluar los equipos usados en aplicaciones como la técnica de imagen, el tratamiento médico y la dosimetría; - asesorar a los profesionales médicos y a los demás profesionales de la salud y consultarles para optimizar el equilibrio entre los efectos beneficiosos y nocivos de las radiaciones; - observar, analizar e interpretar fenómenos celestes e idear métodos, model</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">FÍSICOS NUCLEARES</h4>');$('#info').append('<p class="descripcion">Los físicos y astrónomos investigan, perfeccionan o desarrollan conceptos, teorías y métodos operativos relativos a la materia, el espacio,<div class="excerpt"><div hidden><span>el tiempo, la energía, las fuerzas y los campos y a la relación recíproca entre estos fenómenos físicos. Aplican los conocimientos científicos de la física y la astronomía en las actividades industriales, la medicina, la esfera militar y otros ámbitos.  Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> realizar investigaciones y perfeccionar o desarrollar los conceptos, las teorí as, la instrumentación, el software y los métodos operativos de la física y la astronomía;  - efectuar experimentos, ensayos y análisis sobre la estructura y propiedades de la materia en campos como la mecánica, la termodinámica, la electrónica, las comunicaciones, la generación y distribución de energía, la aerodinámica, la óptica y el láser, la medicina, la ciencia del sonido, el magnetismo y la física nuclear;  - evaluar los resultados de investigaciones y experimentos y formular conclusiones, recurriendo principalmente a técnicas y modelos matemáticos;  - aplicar principios, técnicas y procesos para perfeccionar o mejorar las aplicaciones industriales, médicas, militares y de otros tipos de los principios y técnicas de la física y la astronomía;  - asegurar el carácter seguro y efectivo de las radiaciones (ionizantes y no ionizantes) aplicadas a los pacientes para conseguir un resultado diagnóstico o terapéutico de conformidad con lo prescrito por un profesional médico;  - asegurar la medición y caracterización exactas de las cantidades físicas usadas en aplicaciones médicas;  - probar, poner a punto y evaluar los equipos usados en aplicaciones como la técnica de imagen, el tratamiento médico y la dosimetría;  - asesorar a los profesionales médicos y a los demás profesionales de la salud y consultarles para optimizar el equilibrio entre los efectos beneficiosos y nocivos de las radiaciones;  - observar, analizar e interpretar fenómenos celestes e idear métodos, model</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

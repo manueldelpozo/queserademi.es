@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Ingenieros de logística | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Ingenieros de logística">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Ingenieros de logística</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [21768, 26136, 30060];
 var seriesSalJunior     = [25344, 29568, 34644];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS DE LOGÍSTICA</h4>');$('#info').append('<p class="descripcion">Los ingenieros industriales y de producción realizan investigaciones y proyectan, organizan y supervisan la construcción, funcionamiento y mantenimiento de instalaciones y procesos de producción industrial. Establecen programas para la coordinación de las actividades de fabricación y evalúan la eficacia desde el punto del coste y la seguridad.Entre sus tareas se incluyen:- Examinar declaraciones de funciones, organigramas e información sobre proyectos para determinar las funciones y tareas de los trabajadores y unidades de trabajo e identificar áreas de duplicación;- Establecer programas de medida del trabajo y analizar muestras de trabajo a fin de elaborar normas para su uso por la mano de obra;- Analizar la utilización de mano de obra, el diseño de las instalaciones, los datos operativos y los calendarios de producción para determinar la eficiencia óptima de los trabajadores y los equipos;- Elaborar especificaciones de fabricación y determinar los materiales, equipos, flujos de materiales, capacidades y diseño de<span class="excerpt"><span style="display:none;">las instalaciones y sistemas;- Organizar y gestionar la mano de obra de los proyectos y la entrega de los materiales, instalaciones y equipos;- Establecer normas y políticas en materia de instalación, modificación, control de calidad, ensayo, inspección y mantenimiento de acuerdo con los principios de ingeniería y la normativa de seguridad;- Inspeccionar las instalaciones para mantener y mejorar el rendimiento;- Dirigir el mantenimiento de los edificios y equipos productivos y coordinar las necesidades de nuevos proyectos, estudios y programas de mantenimiento;- Asesorar a la dirección sobre nuevos métodos, técnicas y equipos de producción;- Mantener contactos con los departamentos responsables de la compra, almacenamiento y control de materiales para garantizar un flujo sin problemas de los suministros.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS DE LOGÍSTICA</h4>');$('#info').append('<p class="descripcion">Los ingenieros industriales y de producción realizan investigaciones y proyectan, organizan y supervisan la construcción, funcionamiento y mantenimiento de<div class="excerpt"><div hidden><span>instalaciones y procesos de producción industrial. Establecen programas para la coordinación de las actividades de fabricación y evalúan la eficacia desde el punto del coste y la seguridad. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> Examinar declaraciones de funciones, organigramas e información sobre proyectos para determinar las funciones y tareas de los trabajadores y unidades de trabajo e identificar áreas de duplicación</li><li class="list-group-item"> Establecer programas de medida del trabajo y analizar muestras de trabajo a fin de elaborar normas para su uso por la mano de obra</li><li class="list-group-item"> Analizar la utilización de mano de obra, el diseño de las instalaciones, los datos operativos y los calendarios de producción para determinar la eficiencia óptima de los trabajadores y los equipos</li><li class="list-group-item"> Elaborar especificaciones de fabricación y determinar los materiales, equipos, flujos de materiales, capacidades y diseño de las instalaciones y sistemas</li><li class="list-group-item"> Organizar y gestionar la mano de obra de los proyectos y la entrega de los materiales, instalaciones y equipos</li><li class="list-group-item"> Establecer normas y políticas en materia de instalación, modificación, control de calidad, ensayo, inspección y mantenimiento de acuerdo con los principios de ingeniería y la normativa de seguridad</li><li class="list-group-item"> Inspeccionar las instalaciones para mantener y mejorar el rendimiento</li><li class="list-group-item"> Dirigir el mantenimiento de los edificios y equipos productivos y coordinar las necesidades de nuevos proyectos, estudios y programas de mantenimiento</li><li class="list-group-item"> Asesorar a la dirección sobre nuevos métodos, técnicas y equipos de producción</li><li class="list-group-item"> Mantener contactos con los departamentos responsables de la compra, almacenamiento y control de materiales para garantizar un flujo sin problemas de los suministros.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

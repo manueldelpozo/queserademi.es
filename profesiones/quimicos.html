@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Químicos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Químicos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Químicos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [21180, 25680, 28824];
 var seriesSalJunior     = [24492, 28884, 31956];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">QUÍMICOS</h4>');$('#info').append('<p class="descripcion">Los químicos investigan, perfeccionan o desarrollan conceptos, teorías y métodos operativos o aplican los conocimientos científicos de la química para idear nuevos conocimientos o productos y para el control de la calidad y de los procesos. Entre sus tareas se incluyen: - realizar investigaciones y perfeccionar o desarrollar conceptos, instrumentos, teorías y métodos operativos de la química;- efectuar experimentos, ensayos y análisis para investigar la composición química, la energía y las transformaciones químicas de diversas sustancias, materiales y productos naturales, artificiales o sintéticos; - elaborar procedimientos de control ambiental, de control de calidad y de varios otros tipos para fabricantes o usuarios; - realizar programas de recopilación y análisis de muestras y de datos para identificar y cuantificar sustancias ambientales tóxicas; - participar en proyectos de investigación y desarrollo multidisciplinarios con ingenieros químicos, biólogos, microbiólogos, agrónomos, geólogos y otros profesionales; - usar microorganismos para convertir sustancias en nuevos compuestos;<span class="excerpt"><span style="display:none;">- determinar el modo de reforzar o combinar los materiales existentes o desarrollar otros nuevos; - reproducir y sintetizar sustancias existentes en la naturaleza y crear otras nuevas artificiales; - preparar ponencias e informes de carácter científico.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">QUÍMICOS</h4>');$('#info').append('<p class="descripcion">Los químicos investigan, perfeccionan o desarrollan conceptos, teorías y métodos operativos o aplican los conocimientos científicos de la química<div class="excerpt"><div hidden>para idear nuevos conocimientos o productos y para el control de la calidad y de los procesos.  Entre sus tareas se incluyen:  - realizar investigaciones y perfeccionar o desarrollar conceptos, instrumentos, teorías y métodos operativos de la química; - efectuar experimentos, ensayos y análisis para investigar la composición química, la energía y las transformaciones químicas de diversas sustancias, materiales y productos naturales, artificiales o sintéticos;  - elaborar procedimientos de control ambiental, de control de calidad y de varios otros tipos para fabricantes o usuarios;  - realizar programas de recopilación y análisis de muestras y de datos para identificar y cuantificar sustancias ambientales tóxicas;  - participar en proyectos de investigación y desarrollo multidisciplinarios con ingenieros químicos, biólogos, microbiólogos, agrónomos, geólogos y otros profesionales; - usar microorganismos para convertir sustancias en nuevos compuestos;  - determinar el modo de reforzar o combinar los materiales existentes o desarrollar otros nuevos; - reproducir y sintetizar sustancias existentes en la naturaleza y crear otras nuevas artificiales;  - preparar ponencias e informes de carácter científico.</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

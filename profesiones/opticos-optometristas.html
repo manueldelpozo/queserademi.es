@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>ópticos-optometristas | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser ópticos-optometristas">
+      <title>ópticos y/u optometristas | queserademi.com</title>
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>ópticos y/u optometristas</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -16,8 +16,8 @@
       <link rel="canonical" href="https://queserademi.com/profesiones/opticos-optometristas.html">
       <meta property="og:locale" content="es_ES">
       <meta property="og:type" content="website">
-      <meta property="og:title" content="ópticos-optometristas | queserademi">
-      <meta property="og:description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser ópticos-optometristas">
+      <meta property="og:title" content="ópticos y/u optometristas | queserademi">
+      <meta property="og:description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser ópticos y/u optometristas">
       <meta property="og:url" content="https://queserademi.com/profesiones/opticos-optometristas.html">
       <meta property="og:site_name" content="queserademi">
       <meta property="og:image" content="https://queserademi.com/images/logo.png">
@@ -74,7 +74,7 @@
             <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="ópticos-optometristas" spellcheck="true" autocomplete="off">
+                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="ópticos y/u optometristas" spellcheck="true" autocomplete="off">
                 </div>
               </div>
             </div>
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [16644, 19236, 21060];
 var seriesSalJunior     = [19224, 21636, 23316];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,14 +285,14 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
     },
     series: [
         {
-            name: 'Ópticos-optometristas',
+            name: 'ÓPTICOS Y/U OPTOMETRISTAS',
             data: medias,
             color: Highcharts.getOptions().colors[0],
             zIndex: 1,
@@ -306,13 +306,13 @@ var chartSalarios = {
             data: salarios,
             type: 'arearange',
             lineWidth: 0,
-            linkedTo: 'Ópticos-optometristas',
+            linkedTo: 'ÓPTICOS Y/U OPTOMETRISTAS',
             color: Highcharts.getOptions().colors[0],
             fillOpacity: 0.3,
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ÓPTICOS-OPTOMETRISTAS</h4>');$('#info').append('<p class="descripcion">Profesional de la salud que se dedica al estudio, cuidado y mejora de los problemas visuales, valorando las condiciones y las posibles alteraciones y aportando las soluciones adecuadas para la correcta visión. Determina el estado de salud y la valoración funcional de los componentes de acomodación refractiva, ocular-sensorial-motora y perceptual del aparato visual, prescribe y adapta lentes de contacto y sistemas ópticos que el examen visual indique, actuando normalmente con la colaboración o la ayuda de un<span class="excerpt"><span style="display:none;">oftalmólogo.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ÓPTICOS Y/U OPTOMETRISTAS</h4>');$('#info').append('<p class="descripcion">Profesional de la salud que se dedica al estudio, cuidado y mejora de los problemas visuales, valorando las condiciones<div class="excerpt"><div hidden>y las posibles alteraciones y aportando las soluciones adecuadas para la correcta visión. Determina el estado de salud y la valoración funcional de los componentes de acomodación refractiva, ocular-sensorial-motora y perceptual del aparato visual, prescribe y adapta lentes de contacto y sistemas ópticos que el examen visual indique, actuando normalmente con la colaboración o la ayuda de un oftalmólogo.</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,24 +500,21 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
     },
     series: [{  
-        name: 'Ópticos-optometristas',
+        name: 'ÓPTICOS Y/U OPTOMETRISTAS',
         data: seriesCap,
-        stack: 'Ópticos-optometristas'
+        stack: 'ÓPTICOS Y/U OPTOMETRISTAS'
     }]
 });
 var seriesEmp = [19.58, 19.09, 15.9, 17.36, 17.97, 18.26, 15.21, 16.07, 17.37, 16.52, 14.61, 15.47, 16.57, 16.49];
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,16 +683,16 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
     }, 
     series: [
       {
-        name: 'Ópticos-optometristas',
+        name: 'ÓPTICOS Y/U OPTOMETRISTAS',
         data: seriesEmp,
-        stack: 'Ópticos-optometristas'
+        stack: 'ÓPTICOS Y/U OPTOMETRISTAS'
       },{
         name: 'Media de paro de todas las profesiones',
         type: 'spline',
@@ -772,7 +771,7 @@ showNews();
           }
       },
       xAxis: {
-          categories: ['<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>ÓPTICOS-OPTOMETRISTAS<br><strong>Terminarías a los <strong>22 años</strong></div>', ''],
+          categories: ['<div style=\'text-overflow: ellipsis;width: 300px;overflow: hidden;\'>ÓPTICOS Y/U OPTOMETRISTAS<br><strong>Terminarías a los <strong>22 años</strong></div>', ''],
           labels: {
             x: 8,
             y: 30,
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Ingenieros, construcción/edificios | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Ingenieros, construcción/edificios">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Ingenieros, construcción/edificios</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [23076, 26196, 28392];
 var seriesSalJunior     = [27180, 29916, 31848];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS, CONSTRUCCIÓN/EDIFICIOS</h4>');$('#info').append('<p class="descripcion">Los ingenieros en construcción y obra civil proyectan y dirigen la construcción,el funcionamiento y el mantenimiento de estructuras de ingeniería civil (puentes,carreteras, etc.) e investigan y asesoran sobre la materia.Entre sus tareas se incluyen:- realizar investigaciones y desarrollar o perfeccionar teorías y métodos relativosa la ingeniería civil y a las obras públicas;- proyectar estructuras-puentes, embalses, muelles, carreteras, aeropuertos,vías férreas, canales, gaseoductos, oleoductos, sistemas de evacuación dedesechos y de defensa contra inundaciones, edificios industriales y otrasgrandes edificaciones;- determinar y especificar métodos y materiales de construcción y normas decalidad, y dirigir obras de construcción;- establecer sistemas de control para garantizar el funcionamiento eficaz de lasconstrucciones, su seguridad y la protección del medio ambiente;- organizar y dirigir la conservación y reparación de las estructuras existentes;- analizar el comportamiento de los suelos y rocas cuando reciben la presiónde las estructuras propuestas y proyectar los cimientos;- analizar la estabilidad de las estructuras y ensayar<span class="excerpt"><span style="display:none;">el comportamiento y duraciónde los materiales usados en su construcción;- preparar ponencias e informes de carácter académico o científico;- supervisar a otros trabajadores.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS, CONSTRUCCIÓN/EDIFICIOS</h4>');$('#info').append('<p class="descripcion">Los ingenieros en construcción y obra civil proyectan y dirigen la construcción, el funcionamiento y el mantenimiento de estructuras<div class="excerpt"><div hidden><span>de ingeniería civil (puentes, carreteras, etc.) e investigan y asesoran sobre la materia. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> realizar investigaciones y desarrollar o perfeccionar teorías y métodos relativos a la ingeniería civil y a las obras públicas</li><li class="list-group-item"> proyectar estructuras-puentes, embalses, muelles, carreteras, aeropuertos, vías férreas, canales, gaseoductos, oleoductos, sistemas de evacuación de desechos y de defensa contra inundaciones, edificios industriales y otras grandes edificaciones</li><li class="list-group-item"> determinar y especificar métodos y materiales de construcción y normas de calidad, y dirigir obras de construcción</li><li class="list-group-item"> establecer sistemas de control para garantizar el funcionamiento eficaz de las construcciones, su seguridad y la protección del medio ambiente</li><li class="list-group-item"> organizar y dirigir la conservación y reparación de las estructuras existentes</li><li class="list-group-item"> analizar el comportamiento de los suelos y rocas cuando reciben la presión de las estructuras propuestas y proyectar los cimientos</li><li class="list-group-item"> analizar la estabilidad de las estructuras y ensayar el comportamiento y duración de los materiales usados en su construcción</li><li class="list-group-item"> preparar ponencias e informes de carácter académico o científico</li><li class="list-group-item"> supervisar a otros trabajadores.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Meteorologo | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Meteorologo">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Meteorologo</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [18060, 21792, 24396];
 var seriesSalJunior     = [20448, 24552, 27420];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">METEOROLOGO</h4>');$('#info').append('<p class="descripcion">Los técnicos en ciencias físicas y químicas ejecutan tareas técnicas relacionadascon la investigación y las aplicaciones industriales, médicas, militares y de otraíndole de los conocimientos logrados en los campos de la química, la física, lageología, la geofísica, la meteorología y la astronomía.Entre sus tareas se incluyen:- reunir y preparar muestras, materiales e instrumentos, aparatos y otrosequipos para experimentos, pruebas y análisis;- realizar ensayos de laboratorio habituales y desempeñar diversas funcionesde apoyo para ayudar a los científicos químicos y físicos en la investigación,el desarrollo, el análisis y los ensayos;- controlar la calidad y cantidad de los suministros de laboratorio ensayandomuestras, supervisando su uso y preparando cálculos y estimaciones detalladosde las cantidades y costes de los materiales y la mano de obra necesariospara los proyectos, de acuerdo con las especificaciones establecidas;- disponer, manejar y mantener los instrumentos y equipos de laboratorio, supervisarlos experimentos, hacer observaciones y calcular y registrar los resultados;-<span class="excerpt"><span style="display:none;">preparar los materiales para experimentación, congelando y cortando muestras,por ejemplo, o mezclando productos químicos;- reunir y ensayar muestras de origen terrestre y acuático, registrar las observacionesy analizar los datos en apoyo de los geólogos y geofísicos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">METEOROLOGO</h4>');$('#info').append('<p class="descripcion">Los técnicos en ciencias físicas y químicas ejecutan tareas técnicas relacionadas con la investigación y las aplicaciones industriales, médicas,<div class="excerpt"><div hidden><span>militares y de otra índole de los conocimientos logrados en los campos de la química, la física, la geología, la geofísica, la meteorología y la astronomía. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> reunir y preparar muestras, materiales e instrumentos, aparatos y otros equipos para experimentos, pruebas y análisis</li><li class="list-group-item"> realizar ensayos de laboratorio habituales y desempeñar diversas funciones de apoyo para ayudar a los científicos químicos y físicos en la investigación, el desarrollo, el análisis y los ensayos</li><li class="list-group-item"> controlar la calidad y cantidad de los suministros de laboratorio ensayando muestras, supervisando su uso y preparando cálculos y estimaciones detallados de las cantidades y costes de los materiales y la mano de obra necesarios para los proyectos, de acuerdo con las especificaciones establecidas</li><li class="list-group-item"> disponer, manejar y mantener los instrumentos y equipos de laboratorio, supervisar los experimentos, hacer observaciones y calcular y registrar los resultados</li><li class="list-group-item"> preparar los materiales para experimentación, congelando y cortando muestras, por ejemplo, o mezclando productos químicos</li><li class="list-group-item"> reunir y ensayar muestras de origen terrestre y acuático, registrar las observaciones y analizar los datos en apoyo de los geólogos y geofísicos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

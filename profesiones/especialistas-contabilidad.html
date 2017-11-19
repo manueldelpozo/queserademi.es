@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Especialistas en contabilidad | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Especialistas en contabilidad">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Especialistas en contabilidad</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [18276, 22656, 25716];
 var seriesSalJunior     = [21024, 25380, 28428];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ESPECIALISTAS EN CONTABILIDAD</h4>');$('#info').append('<p class="descripcion">Los Especialistas en contabilidad desempeñan las siguientes funciones principales: Los especialistas en contabilidad planifican, organizan yadministran sistemas contables para personas y organizaciones. Algunas de las ocupaciones clasificadas en esteepígrafe examinan y analizan los registros contables y financieros de personas y organizaciones con el fin degarantizar la precisión y el cumplimiento de las normas y los procedimientos contables establecidos.Entre sus tareas se incluyen: planificar e implantar políticas y sistemas presupuestarios, de control de cuentas ysimilares, y asesorar al respecto; preparar y certificar estados financieros para presentarlos a la dirección, a losaccionistas y a los organismos públicos o de otra índole; preparar declaraciones tributarias, asesorar sobre problemasfiscales y presentar alegaciones o reclamaciones ante la Hacienda pública; preparar presupuestos y previsiones debeneficios o informar al respecto; realizar investigaciones financieras en casos de presuntos fraudes, insolvencia yquiebras o de índole semejante; auditar cuentas y llevar registros contables; conducir investigaciones y asesorar a ladirección<span class="excerpt"><span style="display:none;">sobre aspectos financieros de la productividad, las acciones, las ventas, nuevos productos, etc.; formular ysupervisar sistemas para la determinación del coste unitario de productos y servicios.En esta muestra las ocupaciones más representadas, por ser las más ofertadas, las de técnicos medios y superioresen contabilidad y finanzas en general.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ESPECIALISTAS EN CONTABILIDAD</h4>');$('#info').append('<p class="descripcion">Los Especialistas en contabilidad desempeñan las siguientes funciones principales: Los especialistas en contabilidad planifican, organizan y administran sistemas contables<div class="excerpt"><div hidden>para personas y organizaciones. Algunas de las ocupaciones clasificadas en este epígrafe examinan y analizan los registros contables y financieros de personas y organizaciones con el fin de garantizar la precisión y el cumplimiento de las normas y los procedimientos contables establecidos. Entre sus tareas se incluyen: planificar e implantar políticas y sistemas presupuestarios, de control de cuentas y similares, y asesorar al respecto; preparar y certificar estados financieros para presentarlos a la dirección, a los accionistas y a los organismos públicos o de otra índole; preparar declaraciones tributarias, asesorar sobre problemas fiscales y presentar alegaciones o reclamaciones ante la Hacienda pública; preparar presupuestos y previsiones de beneficios o informar al respecto; realizar investigaciones financieras en casos de presuntos fraudes, insolvencia y quiebras o de índole semejante; auditar cuentas y llevar registros contables; conducir investigaciones y asesorar a la dirección sobre aspectos financieros de la productividad, las acciones, las ventas, nuevos productos, etc.; formular y supervisar sistemas para la determinación del coste unitario de productos y servicios. En esta muestra las ocupaciones más representadas, por ser las más ofertadas, las de técnicos medios y superiores en contabilidad y finanzas en general.</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

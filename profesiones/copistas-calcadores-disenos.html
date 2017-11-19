@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Copistas y/o calcadores de diseños | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Copistas y/o calcadores de diseños">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Copistas y/o calcadores de diseños</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [15528, 20304, 23652];
 var seriesSalJunior     = [17940, 22848, 26280];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">COPISTAS Y/O CALCADORES DE DISEÑOS</h4>');$('#info').append('<p class="descripcion">Los delineantes y dibujantes técnicos preparan dibujos, planos e ilustracionestécnicos partiendo de croquis, mediciones y otros datos, y realizan dibujos e ilustracionespara impresión directa.Entre sus tareas se incluyen:- preparar y revisar dibujos de taller partiendo de croquis y especificacionespreparados por ingenieros y proyectistas para la fabricación, instalación ymontaje de máquinas y equipos, o para la construcción, modificación, mantenimientoy reparación de edificios, embalses, puentes, carreteras y otrosproyectos de arquitectura y de ingeniería civil;- utilizar material de dibujo asistido por ordenador para crear, modificar y obtenerrepresentaciones de dibujos de taller en forma impresa o digital;- manejar ordenadores destinados a la representación digital o equipos similarespara dar forma digital a representaciones impresas de dibujos de taller,mapas y otras curvas;- preparar y revisar ilustraciones para obras de referencia, folletos y manualestécnicos que traten del montaje, instalación, funcionamiento, conservación yreparación de maquinaria y otros equipos y bienes;- copiar dibujos e ilustraciones sobre piedra litográfica<span class="excerpt"><span style="display:none;">o plancha metálica parasu impresión;127- preparar diagramas de cableado, diagramas de placas de circuito impreso yplanos para la fabricación, instalación y reparación de equipos eléctricos defábricas, centrales eléctricas y edificaciones;- crear diagramas de detalle de máquinas y dispositivos mecánicos, incluyendosus dimensiones, métodos de sujeción y otra información de ingeniería;- organizar la reproducción de los dibujos terminados, para su uso como dibujosde taller.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">COPISTAS Y/O CALCADORES DE DISEÑOS</h4>');$('#info').append('<p class="descripcion">Los delineantes y dibujantes técnicos preparan dibujos, planos e ilustraciones técnicos partiendo de croquis, mediciones y otros datos, y<div class="excerpt"><div hidden><span>realizan dibujos e ilustraciones para impresión directa. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> preparar y revisar dibujos de taller partiendo de croquis y especificaciones preparados por ingenieros y proyectistas para la fabricación, instalación y montaje de máquinas y equipos, o para la construcción, modificación, mantenimiento y reparación de edificios, embalses, puentes, carreteras y otros proyectos de arquitectura y de ingeniería civil</li><li class="list-group-item"> utilizar material de dibujo asistido por ordenador para crear, modificar y obtener representaciones de dibujos de taller en forma impresa o digital</li><li class="list-group-item"> manejar ordenadores destinados a la representación digital o equipos similares para dar forma digital a representaciones impresas de dibujos de taller, mapas y otras curvas</li><li class="list-group-item"> preparar y revisar ilustraciones para obras de referencia, folletos y manuales técnicos que traten del montaje, instalación, funcionamiento, conservación y reparación de maquinaria y otros equipos y bienes</li><li class="list-group-item"> copiar dibujos e ilustraciones sobre piedra litográfica o plancha metálica para su impresión; 127 - preparar diagramas de cableado, diagramas de placas de circuito impreso y planos para la fabricación, instalación y reparación de equipos eléctricos de fábricas, centrales eléctricas y edificaciones</li><li class="list-group-item"> crear diagramas de detalle de máquinas y dispositivos mecánicos, incluyendo sus dimensiones, métodos de sujeción y otra información de ingeniería</li><li class="list-group-item"> organizar la reproducción de los dibujos terminados, para su uso como dibujos de taller.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

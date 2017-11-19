@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Electrónicos-ajustadores de aparatos médicos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Electrónicos-ajustadores de aparatos médicos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Electrónicos-ajustadores de aparatos médicos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13692, 18684, 22164];
 var seriesSalJunior     = [15420, 20940, 24816];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ELECTRÓNICOS-AJUSTADORES DE APARATOS MÉDICOS</h4>');$('#info').append('<p class="descripcion">Los instaladores y reparadores en electromedicina instalan y mantienen productossanitarios activos no implantables (PSANI) en sistemas de electromedicina ysus instalaciones asociadas, bajo criterios de calidad, en condiciones de seguridady cumpliendo la normativa vigente.Entre sus tareas se incluyen:- verificar que el espacio físico y la infraestructura donde se va a realizar la instalaciónestá de acuerdo al proyecto, documentación técnica del fabricante ya las necesidades del montaje;- recepcionar los equipos y elementos del sistema;- instalar los equipos y elementos del sistema;- realizar la puesta en marcha de equipos y elementos del sistema;- realizar el mantenimiento preventivo de los sistemas de electromedicina;- diagnosticar las averías producidas en los sistemas de electromedicina y susinstalaciones asociadas;- reparar las averías o disfunciones diagnosticadas en sistemas de electromedicina;- formar a los usuarios de la instalación en el funcionamiento de los equipos yen las medidas de seguridad a<span class="excerpt"><span style="display:none;">adoptar.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ELECTRÓNICOS-AJUSTADORES DE APARATOS MÉDICOS</h4>');$('#info').append('<p class="descripcion">Los instaladores y reparadores en electromedicina instalan y mantienen productos sanitarios activos no implantables (PSANI) en sistemas de electromedicina<div class="excerpt"><div hidden><span>y sus instalaciones asociadas, bajo criterios de calidad, en condiciones de seguridad y cumpliendo la normativa vigente. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> verificar que el espacio físico y la infraestructura donde se va a realizar la instalación está de acuerdo al proyecto, documentación técnica del fabricante y a las necesidades del montaje</li><li class="list-group-item"> recepcionar los equipos y elementos del sistema</li><li class="list-group-item"> instalar los equipos y elementos del sistema</li><li class="list-group-item"> realizar la puesta en marcha de equipos y elementos del sistema</li><li class="list-group-item"> realizar el mantenimiento preventivo de los sistemas de electromedicina</li><li class="list-group-item"> diagnosticar las averías producidas en los sistemas de electromedicina y sus instalaciones asociadas</li><li class="list-group-item"> reparar las averías o disfunciones diagnosticadas en sistemas de electromedicina</li><li class="list-group-item"> formar a los usuarios de la instalación en el funcionamiento de los equipos y en las medidas de seguridad a adoptar.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

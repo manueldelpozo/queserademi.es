@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de maquina de fabricación de neumáticos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de maquina de fabricación de neumáticos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de maquina de fabricación de neumáticos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [11916, 16368, 19500];
 var seriesSalJunior     = [13560, 18540, 22032];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MAQUINA DE FABRICACIÓN DE NEUMÁTICOS</h4>');$('#info').append('<p class="descripcion">Los operadores de máquinas para fabricar productos de caucho y derivados deresinas naturales accionan y vigilan máquinas que amasan y mezclan caucho,compuestos de caucho o derivados de resinas naturales, y fabrican diversoscomponentes y artículos a partir de caucho natural o sintético y derivados deresinas naturales, como calzado de goma, artículos del hogar, materiales aislantes,accesorios industriales y neumáticos.Entre sus tareas se incluyen:- accionar y vigilar máquinas para amasar y mezclar caucho bruto o compuestosde caucho con vistas a su tratamiento ulterior;330- accionar y vigilar máquinas (calandrias) que estiran la materia prima medianterollos para producir láminas de caucho o telas encauchadas;- accionar y vigilar máquinas que, por extrusión, comprimen compuestos decaucho o moldean tales materiales en su estado blando mediante operacionesde vulcanización;- accionar y vigilar máquinas para elaborar neumáticos para ruedas en hormasespeciales, vulcanizarlos o volverlos a moldear o encauchar una vez gastados;- examinar la producción para detectar defectos y no<span class="excerpt"><span style="display:none;">conformidades con lasespecificaciones;- localizar defectos y reparar neumáticos gastados o defectuosos medianteoperaciones de vulcanización o de otro tipo.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MAQUINA DE FABRICACIÓN DE NEUMÁTICOS</h4>');$('#info').append('<p class="descripcion">Los operadores de máquinas para fabricar productos de caucho y derivados de resinas naturales accionan y vigilan máquinas que<div class="excerpt"><div hidden><span>amasan y mezclan caucho, compuestos de caucho o derivados de resinas naturales, y fabrican diversos componentes y artículos a partir de caucho natural o sintético y derivados de resinas naturales, como calzado de goma, artículos del hogar, materiales aislantes, accesorios industriales y neumáticos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> accionar y vigilar máquinas para amasar y mezclar caucho bruto o compuestos de caucho con vistas a su tratamiento ulterior; 330 - accionar y vigilar máquinas (calandrias) que estiran la materia prima mediante rollos para producir láminas de caucho o telas encauchadas</li><li class="list-group-item"> accionar y vigilar máquinas que, por extrusión, comprimen compuestos de caucho o moldean tales materiales en su estado blando mediante operaciones de vulcanización</li><li class="list-group-item"> accionar y vigilar máquinas para elaborar neumáticos para ruedas en hormas especiales, vulcanizarlos o volverlos a moldear o encauchar una vez gastados</li><li class="list-group-item"> examinar la producción para detectar defectos y no conformidades con las especificaciones</li><li class="list-group-item"> localizar defectos y reparar neumáticos gastados o defectuosos mediante operaciones de vulcanización o de otro tipo.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Linotipistas | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Linotipistas">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Linotipistas</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12408, 16116, 18708];
 var seriesSalJunior     = [14904, 18696, 21360];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">LINOTIPISTAS</h4>');$('#info').append('<p class="descripcion">Los trabajadores de procesos de preimpresión hacen pruebas de impresión, disponenel formato y componen texto y gráficos de forma adecuada para su usoen distintos procesos de impresión y de representación en otros medios visuales.Entre sus tareas se incluyen:- manejar cámaras gráficas y otros equipos fotográficos para reproducir ejemplareslistos para impresión en películas, planchas y dispositivos de salidadigitales;- usar aplicaciones informáticas para generar imágenes, texto, bocetos e imposicionespara imprenta y para visualización en otros medios visuales;- manejar equipos de preparación de planchas para reproducir imágenes depelícula en planchas de impresión, dispositivos de salida digital y prensas;- manejar equipos informáticos con pantalla para escaneado, separación decolor, corrección de color, enmascaramiento, diseño creativo, combinación,302imposición, retoque y otros procesos empleados para transferir a película, yproducir películas para planchas, salidas digitales y prensas de cilindro;- sacar pruebas digitales y químicas a partir de sistemas digitales y positivos ynegativos de película;- valorar las galeradas, comprobarlas<span class="excerpt"><span style="display:none;">y corregirlas para garantizar su calidad;- preparar y exponer papel pigmento para depositar en el cilindro por el métodode transferencia, y revelar imágenes.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">LINOTIPISTAS</h4>');$('#info').append('<p class="descripcion">Los trabajadores de procesos de preimpresión hacen pruebas de impresión, disponen el formato y componen texto y gráficos de<div class="excerpt"><div hidden><span>forma adecuada para su uso en distintos procesos de impresión y de representación en otros medios visuales. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> manejar cámaras gráficas y otros equipos fotográficos para reproducir ejemplares listos para impresión en películas, planchas y dispositivos de salida digitales</li><li class="list-group-item"> usar aplicaciones informáticas para generar imágenes, texto, bocetos e imposiciones para imprenta y para visualización en otros medios visuales</li><li class="list-group-item"> manejar equipos de preparación de planchas para reproducir imágenes de película en planchas de impresión, dispositivos de salida digital y prensas</li><li class="list-group-item"> manejar equipos informáticos con pantalla para escaneado, separación de color, corrección de color, enmascaramiento, diseño creativo, combinación, 302 imposición, retoque y otros procesos empleados para transferir a película, y producir películas para planchas, salidas digitales y prensas de cilindro</li><li class="list-group-item"> sacar pruebas digitales y químicas a partir de sistemas digitales y positivos y negativos de película</li><li class="list-group-item"> valorar las galeradas, comprobarlas y corregirlas para garantizar su calidad</li><li class="list-group-item"> preparar y exponer papel pigmento para depositar en el cilindro por el método de transferencia, y revelar imágenes.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

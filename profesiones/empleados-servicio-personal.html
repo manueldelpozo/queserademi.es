@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Empleados de servicio de personal | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Empleados de servicio de personal">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Empleados de servicio de personal</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EMPLEADOS DE SERVICIO DE PERSONAL</h4>');$('#info').append('<p class="descripcion">Los empleados de servicio de personal llevan y actualizan registros de personalcomo los relativos a la información sobre traslados y ascensos, evaluaciones derendimiento, permisos disfrutados y acumulados, sueldos, cualificaciones y formación.Entre sus tareas se incluyen:- actualizar la información sobre el historial de empleo, los sueldos, las evaluacionesde rendimiento, las cualificaciones y la formación y los permisosdisfrutados y acumulados;- crear registros de trabajadores recién contratados y comprobar que seancompletos;- tramitar solicitudes de empleo y ascenso e informar a los solicitantes de losresultados;- recibir y responder las consultas sobre derechos y condiciones de empleo;- publicar solicitudes de empleo y anuncios de puestos vacantes y exámenespara el acceso a puestos de trabajo;- mantener y actualizar sistemas de archivo y registro manuales e informatizados;- compilar y preparar informes y documentos relativos a actividades de personal;- almacenar y recuperar archivos y registros de personal previa<span class="excerpt"><span style="display:none;">petición.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EMPLEADOS DE SERVICIO DE PERSONAL</h4>');$('#info').append('<p class="descripcion">Los empleados de servicio de personal llevan y actualizan registros de personal como los relativos a la información sobre<div class="excerpt"><div hidden><span>traslados y ascensos, evaluaciones de rendimiento, permisos disfrutados y acumulados, sueldos, cualificaciones y formación. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> actualizar la información sobre el historial de empleo, los sueldos, las evaluaciones de rendimiento, las cualificaciones y la formación y los permisos disfrutados y acumulados</li><li class="list-group-item"> crear registros de trabajadores recién contratados y comprobar que sean completos</li><li class="list-group-item"> tramitar solicitudes de empleo y ascenso e informar a los solicitantes de los resultados</li><li class="list-group-item"> recibir y responder las consultas sobre derechos y condiciones de empleo</li><li class="list-group-item"> publicar solicitudes de empleo y anuncios de puestos vacantes y exámenes para el acceso a puestos de trabajo</li><li class="list-group-item"> mantener y actualizar sistemas de archivo y registro manuales e informatizados</li><li class="list-group-item"> compilar y preparar informes y documentos relativos a actividades de personal</li><li class="list-group-item"> almacenar y recuperar archivos y registros de personal previa petición.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

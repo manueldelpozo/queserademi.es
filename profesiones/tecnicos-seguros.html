@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en seguros | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en seguros">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en seguros</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [26136, 30180, 33012];
 var seriesSalJunior     = [30048, 33780, 36408];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN SEGUROS</h4>');$('#info').append('<p class="descripcion">Los mediadores y agentes de seguros asesoran y venden seguros de accidente,automóvil, responsabilidad civil, inversión, incendios, marítimos y otros tipos deseguros tanto a sus clientes habituales como a otros nuevos.Entre sus tareas se incluyen:- obtener información sobre las circunstancias de sus clientes a fin de determinarel tipo más conveniente de seguro y las condiciones del mismo;- negociar con los clientes para determinar el tipo y el grado de riesgo para losbienes que se desean asegurar;- explicar a los clientes detalles sobre seguros y condiciones, primas de coberturade riesgos y beneficios para los clientes;- ayudar a los clientes a determinar el tipo y nivel de cobertura necesario, calcularlas prima y establecer el método de pago;- negociar y establecer pólizas de reaseguro;- asesorar, negociar los términos y realizar contratos de seguros para proyectos,instalaciones y otros riesgos de gran envergadura o que presentan<span class="excerpt"><span style="display:none;">circunstanciasespeciales.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN SEGUROS</h4>');$('#info').append('<p class="descripcion">Los mediadores y agentes de seguros asesoran y venden seguros de accidente, automóvil, responsabilidad civil, inversión, incendios, marítimos y<div class="excerpt"><div hidden><span>otros tipos de seguros tanto a sus clientes habituales como a otros nuevos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> obtener información sobre las circunstancias de sus clientes a fin de determinar el tipo más conveniente de seguro y las condiciones del mismo</li><li class="list-group-item"> negociar con los clientes para determinar el tipo y el grado de riesgo para los bienes que se desean asegurar</li><li class="list-group-item"> explicar a los clientes detalles sobre seguros y condiciones, primas de cobertura de riesgos y beneficios para los clientes</li><li class="list-group-item"> ayudar a los clientes a determinar el tipo y nivel de cobertura necesario, calcular las prima y establecer el método de pago</li><li class="list-group-item"> negociar y establecer pólizas de reaseguro</li><li class="list-group-item"> asesorar, negociar los términos y realizar contratos de seguros para proyectos, instalaciones y otros riesgos de gran envergadura o que presentan circunstancias especiales.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

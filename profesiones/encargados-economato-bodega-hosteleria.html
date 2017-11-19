@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Encargados de economato y bodega (hostelería) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Encargados de economato y bodega (hostelería)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Encargados de economato y bodega (hostelería)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14232, 17532, 19860];
 var seriesSalJunior     = [16980, 20256, 23172];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ENCARGADOS DE ECONOMATO Y BODEGA (HOSTELERÍA)</h4>');$('#info').append('<p class="descripcion">Los jefes de sección de tiendas y almacenes supervisan y coordinan las actividadesde los dependientes, operadores de caja y demás empleados de establecimientosde venta al por mayor y al por menor como supermercados y grandesalmacenes.Nota: Quienes exploten pequeñas tiendas y no tengan la gestión del establecimientoy la supervisión de personal como componentes significativas de su tra216bajo deben clasificarse en el grupo primario 5300, Comerciantes propietarios detiendas.Los gerentes de tiendas que, además de supervisar al personal, realicen tareascomo determinar la combinación de productos que van a venderse, establecerlos precios, elaborar los presupuestos y decidir sobre la selección y contrataciónde personal deben clasificarse en el grupo primario 143, Directores y gerentes deempresas de comercio al por mayor y al por menor.Entre sus tareas se incluyen:- planificar y preparar programas de trabajo y asignar al personal a tareas concretas;- instruir al personal sobre los procedimientos de venta, incluido el modo demanejar los<span class="excerpt"><span style="display:none;">casos difíciles o complejos;- velar por que los clientes reciban un servicio rápido;- asesorar a los directivos y participar con ellos en las tareas de realización deentrevistas, contratación, formación, evaluación, promoción y despido delpersonal, y resolver las quejas de éste;- examinar los productos devueltos y decidir sobre la actuación adecuada;- hacer inventario de los productos en venta y realizar nuevos pedidos;- velar por que los productos y servicios tengan asignado el precio y estén expuestosde forma correcta;- velar por que se cumplan los procedimientos de seguridad.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ENCARGADOS DE ECONOMATO Y BODEGA (HOSTELERÍA)</h4>');$('#info').append('<p class="descripcion">Los jefes de sección de tiendas y almacenes supervisan y coordinan las actividades de los dependientes, operadores de caja<div class="excerpt"><div hidden><span>y demás empleados de establecimientos de venta al por mayor y al por menor como supermercados y grandes almacenes. Nota: Quienes exploten pequeñas tiendas y no tengan la gestión del establecimiento y la supervisión de personal como componentes significativas de su tra216 bajo deben clasificarse en el grupo primario 5300, Comerciantes propietarios de tiendas. Los gerentes de tiendas que, además de supervisar al personal, realicen tareas como determinar la combinación de productos que van a venderse, establecer los precios, elaborar los presupuestos y decidir sobre la selección y contratación de personal deben clasificarse en el grupo primario 143, Directores y gerentes de empresas de comercio al por mayor y al por menor. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> planificar y preparar programas de trabajo y asignar al personal a tareas concretas</li><li class="list-group-item"> instruir al personal sobre los procedimientos de venta, incluido el modo de manejar los casos difíciles o complejos</li><li class="list-group-item"> velar por que los clientes reciban un servicio rápido</li><li class="list-group-item"> asesorar a los directivos y participar con ellos en las tareas de realización de entrevistas, contratación, formación, evaluación, promoción y despido del personal, y resolver las quejas de éste</li><li class="list-group-item"> examinar los productos devueltos y decidir sobre la actuación adecuada</li><li class="list-group-item"> hacer inventario de los productos en venta y realizar nuevos pedidos</li><li class="list-group-item"> velar por que los productos y servicios tengan asignado el precio y estén expuestos de forma correcta</li><li class="list-group-item"> velar por que se cumplan los procedimientos de seguridad.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

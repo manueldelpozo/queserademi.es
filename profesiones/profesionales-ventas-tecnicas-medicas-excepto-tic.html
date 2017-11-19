@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Profesionales de ventas técnicas y médicas (excepto las tic) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Profesionales de ventas técnicas y médicas (excepto las tic)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Profesionales de ventas técnicas y médicas (excepto las tic)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [21024, 27288, 31680];
 var seriesSalJunior     = [24756, 31164, 35652];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESIONALES DE VENTAS TÉCNICAS Y MÉDICAS (EXCEPTO LAS TIC)</h4>');$('#info').append('<p class="descripcion">Los profesionales de ventas técnicas y médicas (excluyendo las TIC) representan a las empresas vendiendo distintosbienes y servicios industriales, médicos y farmacéuticos a establecimientos industriales, empresas, profesionales yotros establecimientos.Entre sus tareas se incluyen: compilar listas de posibles clientes; conocer los bienes y servicios de la competencia ylas condiciones de mercado; visitar a los clientes para establecer oportunidades de venta y actuar en consecuencia;valorar las necesidades y recursos de los clientes y recomendarles los bienes y servicios apropiados; contribuir aldiseño de los bienes o servicios cuando deban ajustarse a las necesidades de los clientes; preparar informes ypropuestas como elementos de la presentación de ventas para demostrar los beneficios del uso de los bienes oservicios; presupuestar el coste de la instalación y mantenimiento de los equipos o servicios; supervisar los cambiosen las necesidades de los clientes y en las actividades de la competencia e informar sobre ello a la dirección deventas;<span class="excerpt"><span style="display:none;">cotizar y negociar precios y condiciones de venta, y preparar y gestionar contratos de venta; organizar laentrega de los bienes, la instalación de los equipos y la prestación de los servicios; informar a la dirección de ventassobre las ventas (hechas y posibles a realizar) de los bienes y servicios; consultar a los clientes después de la ventapara garantizar su satisfacción, resolver los posibles problemas y prestar apoyo.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESIONALES DE VENTAS TÉCNICAS Y MÉDICAS (EXCEPTO LAS TIC)</h4>');$('#info').append('<p class="descripcion">Los profesionales de ventas técnicas y médicas (excluyendo las TIC) representan a las empresas vendiendo distintos bienes y servicios<div class="excerpt"><div hidden>industriales, médicos y farmacéuticos a establecimientos industriales, empresas, profesionales y otros establecimientos. Entre sus tareas se incluyen: compilar listas de posibles clientes; conocer los bienes y servicios de la competencia y las condiciones de mercado; visitar a los clientes para establecer oportunidades de venta y actuar en consecuencia; valorar las necesidades y recursos de los clientes y recomendarles los bienes y servicios apropiados; contribuir al diseño de los bienes o servicios cuando deban ajustarse a las necesidades de los clientes; preparar informes y propuestas como elementos de la presentación de ventas para demostrar los beneficios del uso de los bienes o servicios; presupuestar el coste de la instalación y mantenimiento de los equipos o servicios; supervisar los cambios en las necesidades de los clientes y en las actividades de la competencia e informar sobre ello a la dirección de ventas; cotizar y negociar precios y condiciones de venta, y preparar y gestionar contratos de venta; organizar la entrega de los bienes, la instalación de los equipos y la prestación de los servicios; informar a la dirección de ventas sobre las ventas (hechas y posibles a realizar) de los bienes y servicios; consultar a los clientes después de la venta para garantizar su satisfacción, resolver los posibles problemas y prestar apoyo.</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

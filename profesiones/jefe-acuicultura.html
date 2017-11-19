@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Jefe de acuicultura | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Jefe de acuicultura">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Jefe de acuicultura</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [19368, 29328, 36300];
 var seriesSalJunior     = [21372, 32268, 39900];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">JEFE DE ACUICULTURA</h4>');$('#info').append('<p class="descripcion">Los directores de producción de explotaciones pesqueras y acuícolas planifican,dirigen y coordinan la producción en gran escala de piscicultura y operacionesde pesca de captura y de cosecha de peces y mariscos, y la cría de peces, mariscosu otras formas de vida acuática, tales como cultivos para fines alimenticios opara su posterior liberación en agua dulce o salada.Entre sus tareas se incluyen:- efectuar el seguimiento del mercado de piscicultura y pesca y planificar laproducción y la actividad pesquera para satisfacer los requerimientos contractualesy la demanda del mercado;- establecer y gestionar presupuestos, supervisar el rendimiento y costos de laproducción, registrar informaciones tales como prácticas de gestión pesquera,y preparar informes financieros y operativos;- acordar con los compradores los términos de venta de productos y capturas;- contratar con los patrones de pesca o los propietarios de los buques y de lasgranjas de piscicultura las operaciones de pesca y piscicultura, o para gestionarla producción;-<span class="excerpt"><span style="display:none;">realizar y organizar exámenes de existencias de piscicultura o de pesca con elfin de identificar enfermedades o parásitos;- elaborar y coordinar actividades para mejorar la incubación de peces y sustasas de crecimiento, y para prevenir enfermedades en salas de incubación;- efectuar el seguimiento de los entornos medioambientales para mantener omejorar las condiciones de la vida acuática;- dirigir y supervisar la captura y las zonas de desove de peces, la incubaciónde huevos y la cría de alevines, aplicando el conocimiento de gestión y técnicasde cultivo de peces;- coordinar la selección y mantenimiento de las existencias de crías;- dirigir y supervisar la transferencia de peces maduros a lagos, estanques,arroyos, o depósitos comerciales;- comprar maquinaria, equipamiento y suministros tales como barcos y redesde pesca;- organizar operaciones tales como el mantenimiento de los buques, embarcacionesy equipos;- supervisar</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">JEFE DE ACUICULTURA</h4>');$('#info').append('<p class="descripcion">Los directores de producción de explotaciones pesqueras y acuícolas planifican, dirigen y coordinan la producción en gran escala de<div class="excerpt"><div hidden><span>piscicultura y operaciones de pesca de captura y de cosecha de peces y mariscos, y la cría de peces, mariscos u otras formas de vida acuática, tales como cultivos para fines alimenticios o para su posterior liberación en agua dulce o salada. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> efectuar el seguimiento del mercado de piscicultura y pesca y planificar la producción y la actividad pesquera para satisfacer los requerimientos contractuales y la demanda del mercado</li><li class="list-group-item"> establecer y gestionar presupuestos, supervisar el rendimiento y costos de la producción, registrar informaciones tales como prácticas de gestión pesquera, y preparar informes financieros y operativos</li><li class="list-group-item"> acordar con los compradores los términos de venta de productos y capturas</li><li class="list-group-item"> contratar con los patrones de pesca o los propietarios de los buques y de las granjas de piscicultura las operaciones de pesca y piscicultura, o para gestionar la producción</li><li class="list-group-item"> realizar y organizar exámenes de existencias de piscicultura o de pesca con el fin de identificar enfermedades o parásitos</li><li class="list-group-item"> elaborar y coordinar actividades para mejorar la incubación de peces y sus tasas de crecimiento, y para prevenir enfermedades en salas de incubación</li><li class="list-group-item"> efectuar el seguimiento de los entornos medioambientales para mantener o mejorar las condiciones de la vida acuática</li><li class="list-group-item"> dirigir y supervisar la captura y las zonas de desove de peces, la incubación de huevos y la cría de alevines, aplicando el conocimiento de gestión y técnicas de cultivo de peces</li><li class="list-group-item"> coordinar la selección y mantenimiento de las existencias de crías</li><li class="list-group-item"> dirigir y supervisar la transferencia de peces maduros a lagos, estanques, arroyos, o depósitos comerciales</li><li class="list-group-item"> comprar maquinaria, equipamiento y suministros tales como barcos y redes de pesca</li><li class="list-group-item"> organizar operaciones tales como el mantenimiento de los buques, embarcaciones y equipos</li><li class="list-group-item"> supervisar</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

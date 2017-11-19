@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Herreros y forjadores | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Herreros y forjadores">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Herreros y forjadores</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12804, 17256, 20388];
 var seriesSalJunior     = [14700, 19716, 23208];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">HERREROS Y FORJADORES</h4>');$('#info').append('<p class="descripcion">Los herreros y forjadores forjan y curvan barras, varillas, lingotes y chapas dehierro, acero u otro metal, y trefilan alambre para fabricar y reparar diversas clasesde herramientas, objetos, piezas metálicas, aperos de labranza y otros artículos.Entre sus tareas se incluyen:- calentar el metal en la fragua y fabricar y reparar objetos estirando, curvandoy cortando el metal, golpeándolo sobre el yunque, taladrando, cortando ysoldando las piezas, y dándoles temple o recocido;- dar forma en la forja al metal caliente utilizando un martillo mecánico provistode estampas;- manejar un martillo pilón provisto de matrices o estampas para forjar piezasde metal;- manejar una prensa mecánica provista de matrices o estampas, para forjarpiezas de metal;- trefilar alambre;- interpretar los pedidos de trabajo o los planos para determinar las toleranciasespecificadas y las secuencias de operaciones para la preparación de losaparatos;- medir e inspeccionar las piezas para garantizar que cumplen las<span class="excerpt"><span style="display:none;">especificaciones.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">HERREROS Y FORJADORES</h4>');$('#info').append('<p class="descripcion">Los herreros y forjadores forjan y curvan barras, varillas, lingotes y chapas de hierro, acero u otro metal, y<div class="excerpt"><div hidden><span>trefilan alambre para fabricar y reparar diversas clases de herramientas, objetos, piezas metálicas, aperos de labranza y otros artículos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> calentar el metal en la fragua y fabricar y reparar objetos estirando, curvando y cortando el metal, golpeándolo sobre el yunque, taladrando, cortando y soldando las piezas, y dándoles temple o recocido</li><li class="list-group-item"> dar forma en la forja al metal caliente utilizando un martillo mecánico provisto de estampas</li><li class="list-group-item"> manejar un martillo pilón provisto de matrices o estampas para forjar piezas de metal</li><li class="list-group-item"> manejar una prensa mecánica provista de matrices o estampas, para forjar piezas de metal</li><li class="list-group-item"> trefilar alambre</li><li class="list-group-item"> interpretar los pedidos de trabajo o los planos para determinar las tolerancias especificadas y las secuencias de operaciones para la preparación de los aparatos</li><li class="list-group-item"> medir e inspeccionar las piezas para garantizar que cumplen las especificaciones.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

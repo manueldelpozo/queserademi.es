@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Teñidores de cueros y pieles, a mano | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Teñidores de cueros y pieles, a mano">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Teñidores de cueros y pieles, a mano</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [8544, 12468, 15216];
 var seriesSalJunior     = [9864, 14352, 17484];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TEÑIDORES DE CUEROS Y PIELES, A MANO</h4>');$('#info').append('<p class="descripcion">Los curtidores y preparadores de pieles recortan, raspan, limpian, curten, desflorany tiñen pellejos, pelos o pieles de animales para producir piezas de cuero ypiel con destino a la confección de prendas de vestir y otros productos.Entre sus tareas se incluyen:- escoger y clasificar los pellejos, pelos y pieles de acuerdo con el color, el tono,el tamaño y la densidad;- retirar de las pieles y pelos las partículas de carne, grasa o tejido protectorpara limpiarlos y suavizarlos;- quitar el pelo de las pieles o pellejos poniéndolos a remojo en agua de cal;- preparar los pellejos curándolos con sal;- eliminar el pelo largo y grueso de las pieles e igualar la longitud de la pelambre;- adobar y teñir los pelos para mejorar su lustre y belleza o restaurar su aspectonatural;- preparar corteza y licor de mirobálano para tratar las pieles y pellejos;- tratar las pieles y pellejos en soluciones especiales para<span class="excerpt"><span style="display:none;">curtirlas;- teñir las pieles para reforzar sus tonos naturales;- quitar las arrugas y mejorar la textura de los pellejos o pieles en húmedo;- adobar y teñir los cueros;- alisar, estirar y suavizar cueros y pieles ya curtidos;- adobar el cuero aplicándole una solución química o aceite por igual en la superficiecon un pincel y dejándole secarse al aire libre.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TEÑIDORES DE CUEROS Y PIELES, A MANO</h4>');$('#info').append('<p class="descripcion">Los curtidores y preparadores de pieles recortan, raspan, limpian, curten, desfloran y tiñen pellejos, pelos o pieles de animales<div class="excerpt"><div hidden><span>para producir piezas de cuero y piel con destino a la confección de prendas de vestir y otros productos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> escoger y clasificar los pellejos, pelos y pieles de acuerdo con el color, el tono, el tamaño y la densidad</li><li class="list-group-item"> retirar de las pieles y pelos las partículas de carne, grasa o tejido protector para limpiarlos y suavizarlos</li><li class="list-group-item"> quitar el pelo de las pieles o pellejos poniéndolos a remojo en agua de cal</li><li class="list-group-item"> preparar los pellejos curándolos con sal</li><li class="list-group-item"> eliminar el pelo largo y grueso de las pieles e igualar la longitud de la pelambre</li><li class="list-group-item"> adobar y teñir los pelos para mejorar su lustre y belleza o restaurar su aspecto natural</li><li class="list-group-item"> preparar corteza y licor de mirobálano para tratar las pieles y pellejos</li><li class="list-group-item"> tratar las pieles y pellejos en soluciones especiales para curtirlas</li><li class="list-group-item"> teñir las pieles para reforzar sus tonos naturales</li><li class="list-group-item"> quitar las arrugas y mejorar la textura de los pellejos o pieles en húmedo</li><li class="list-group-item"> adobar y teñir los cueros</li><li class="list-group-item"> alisar, estirar y suavizar cueros y pieles ya curtidos</li><li class="list-group-item"> adobar el cuero aplicándole una solución química o aceite por igual en la superficie con un pincel y dejándole secarse al aire libre.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

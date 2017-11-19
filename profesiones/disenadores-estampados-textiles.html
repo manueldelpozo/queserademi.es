@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Diseñadores de estampados textiles | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Diseñadores de estampados textiles">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Diseñadores de estampados textiles</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [15612, 19872, 22860];
 var seriesSalJunior     = [18120, 22428, 25440];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DISEÑADORES DE ESTAMPADOS TEXTILES</h4>');$('#info').append('<p class="descripcion">Los diseñadores de productos y de prendas diseñan y desarrollan productos parasu fabricación y preparan diseños y especificaciones de productos para suproducción masiva, por lotes o individual.Entre sus tareas se incluyen:- determinar los objetivos y restricciones de los resúmenes de diseño consultandoa los clientes y a las personas interesadas;- formular conceptos de diseño para prendas de vestir, textiles, productos industriales,comerciales y de consumo y artículos de joyería;- armonizar los aspectos estéticos con los requisitos técnicos, funcionales,ecológicos y de producción;- preparar bocetos, diagramas, ilustraciones, planos, muestras y modelos paracomunicar los conceptos de diseño;- negociar soluciones de diseño con los clientes, la dirección y el personal deventas y de fabricación;- seleccionar, especificar y recomendar materiales funcionales y estéticos, mé-todos de producción y acabados para los productos elaborados;- detallar y documentar el diseño seleccionado para la producción;- preparar y encargar prototipos y muestras;- supervisar la preparación de patrones, programas y utillaje, así<span class="excerpt"><span style="display:none;">como el procesode fabricación.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DISEÑADORES DE ESTAMPADOS TEXTILES</h4>');$('#info').append('<p class="descripcion">Los diseñadores de productos y de prendas diseñan y desarrollan productos para su fabricación y preparan diseños y especificaciones<div class="excerpt"><div hidden><span>de productos para su producción masiva, por lotes o individual. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> determinar los objetivos y restricciones de los resúmenes de diseño consultando a los clientes y a las personas interesadas</li><li class="list-group-item"> formular conceptos de diseño para prendas de vestir, textiles, productos industriales, comerciales y de consumo y artículos de joyería</li><li class="list-group-item"> armonizar los aspectos estéticos con los requisitos técnicos, funcionales, ecológicos y de producción</li><li class="list-group-item"> preparar bocetos, diagramas, ilustraciones, planos, muestras y modelos para comunicar los conceptos de diseño</li><li class="list-group-item"> negociar soluciones de diseño con los clientes, la dirección y el personal de ventas y de fabricación</li><li class="list-group-item"> seleccionar, especificar y recomendar materiales funcionales y estéticos, mé- todos de producción y acabados para los productos elaborados</li><li class="list-group-item"> detallar y documentar el diseño seleccionado para la producción</li><li class="list-group-item"> preparar y encargar prototipos y muestras</li><li class="list-group-item"> supervisar la preparación de patrones, programas y utillaje, así como el proceso de fabricación.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

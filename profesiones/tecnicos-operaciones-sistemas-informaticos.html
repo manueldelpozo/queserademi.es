@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en operaciones de sistemas informáticos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en operaciones de sistemas informáticos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en operaciones de sistemas informáticos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [15948, 22776, 27540];
 var seriesSalJunior     = [18432, 25620, 30636];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN OPERACIONES DE SISTEMAS INFORMÁTICOS</h4>');$('#info').append('<p class="descripcion">Los técnicos en operaciones de sistemas informáticos facilitan las tareas de proceso,operación y seguimiento de los sistemas de tecnología de la información ylas comunicaciones, incluidas las redes de área local y extendida (LAN y WAN), ylos equipos y software asociados, con el fin de garantizar un rendimiento óptimoy la identificación de los problemas existentes.Entre sus tareas se incluyen:- ocuparse de la operación y el control de equipos informáticos periféricos yafines;- introducir comandos, utilizando terminales informáticos, y activar controlesen equipos informáticos y periféricos para integrarlos y operarlos;- llevar a cabo el seguimiento de sistemas para detectar averías de los equiposy errores de desempeño;- notificar a supervisores y técnicos de mantenimiento los fallos de funcionamientode los equipos;- responder a los mensajes de error de los programas buscando y corrigiendolos problemas, remitiéndolos a un nivel jerárquico superior o terminando elprograma de que se trate;191- leer las instrucciones de configuración de los puestos<span class="excerpt"><span style="display:none;">de trabajo para determinarlos equipos que deben utilizarse, el orden de uso, los materiales comodiscos y papel que deben cargarse y los parámetros de configuración de control;- recuperar, separar y clasificar los resultados de los programas como resultenecesario, y enviar los datos a determinados usuarios;- cargar equipos periféricos, como las impresoras, con materiales seleccionadospara procesos de funcionamiento, o supervisar la carga de estos equipospor sus operadores.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN OPERACIONES DE SISTEMAS INFORMÁTICOS</h4>');$('#info').append('<p class="descripcion">Los técnicos en operaciones de sistemas informáticos facilitan las tareas de proceso, operación y seguimiento de los sistemas de<div class="excerpt"><div hidden><span>tecnología de la información y las comunicaciones, incluidas las redes de área local y extendida (LAN y WAN), y los equipos y software asociados, con el fin de garantizar un rendimiento óptimo y la identificación de los problemas existentes. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> ocuparse de la operación y el control de equipos informáticos periféricos y afines</li><li class="list-group-item"> introducir comandos, utilizando terminales informáticos, y activar controles en equipos informáticos y periféricos para integrarlos y operarlos</li><li class="list-group-item"> llevar a cabo el seguimiento de sistemas para detectar averías de los equipos y errores de desempeño</li><li class="list-group-item"> notificar a supervisores y técnicos de mantenimiento los fallos de funcionamiento de los equipos</li><li class="list-group-item"> responder a los mensajes de error de los programas buscando y corrigiendo los problemas, remitiéndolos a un nivel jerárquico superior o terminando el programa de que se trate; 191 - leer las instrucciones de configuración de los puestos de trabajo para determinar los equipos que deben utilizarse, el orden de uso, los materiales como discos y papel que deben cargarse y los parámetros de configuración de control</li><li class="list-group-item"> recuperar, separar y clasificar los resultados de los programas como resulte necesario, y enviar los datos a determinados usuarios</li><li class="list-group-item"> cargar equipos periféricos, como las impresoras, con materiales seleccionados para procesos de funcionamiento, o supervisar la carga de estos equipos por sus operadores.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

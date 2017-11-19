@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Ingenieros navales | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Ingenieros navales">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Ingenieros navales</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [24276, 27240, 29292];
 var seriesSalJunior     = [27948, 30540, 32748];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS NAVALES</h4>');$('#info').append('<p class="descripcion">Los ingenieros mecánicos proyectan y dirigen la producción, el funcionamiento, laconservación y la reparación de máquinas y maquinaria e instalaciones, equipos ysistemas de producción industrial e investigan y asesoran al respecto. Estos profesionalesestudian aspectos tecnológicos de determinados materiales, productos oprocesos y dan asesoramiento pertinente.Entre sus tareas se incluyen:- proyectar máquinas y máquinas herramientas para las industrias manufacturera,minera y de la construcción y otros fines industriales, así como para laagricultura, y asesorar al respecto;- proyectar máquinas de vapor, motores de combustión interna y otras má-quinas y motores no eléctricos, utilizados para propulsar locomotoras de ferrocarriles,vehículos de transporte por carretera y naves o para hacer funcionarinstalaciones industriales o de otro género, y dar asesoramiento pertinente;- proyectar los elementos siguientes y dar asesoramiento sobre ellos: cascos,superestructuras y sistemas de propulsión de embarcaciones;- proyectar los elementos siguientes y dar asesoramiento sobre ellos: instalacionesmecánicas y equipos para la liberación, control y utilización de energía;sistemas<span class="excerpt"><span style="display:none;">de calefacción, ventilación y refrigeración; transmisiones, bombasy otros equipos mecánicos;- proyectar sistemas de suspensión, frenos, carrocerías y otros componentesde vehículos de transporte por carretera, y dar asesoramiento pertinente;- proyectar partes o elementos no eléctricos de aparatos o productos ordenadores,instrumentos de precisión, cámaras y proyectores, entre otros, y darasesoramiento pertinente;- establecer normas y procedimientos de control para garantizar el eficaz funcionamientoy la seguridad de máquinas, mecanismos, herramientas, motores,dispositivos, instalaciones, equipos y sistemas industriales;- garantizar que los equipos y su funcionamiento y mantenimiento cumplenlas especificaciones de diseño y de las normas de seguridad.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS NAVALES</h4>');$('#info').append('<p class="descripcion">Los ingenieros mecánicos proyectan y dirigen la producción, el funcionamiento, la conservación y la reparación de máquinas y maquinaria<div class="excerpt"><div hidden><span>e instalaciones, equipos y sistemas de producción industrial e investigan y asesoran al respecto. Estos profesionales estudian aspectos tecnológicos de determinados materiales, productos o procesos y dan asesoramiento pertinente. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> proyectar máquinas y máquinas herramientas para las industrias manufacturera, minera y de la construcción y otros fines industriales, así como para la agricultura, y asesorar al respecto</li><li class="list-group-item"> proyectar máquinas de vapor, motores de combustión interna y otras má- quinas y motores no eléctricos, utilizados para propulsar locomotoras de ferrocarriles, vehículos de transporte por carretera y naves o para hacer funcionar instalaciones industriales o de otro género, y dar asesoramiento pertinente;  - proyectar los elementos siguientes y dar asesoramiento sobre ellos: cascos, superestructuras y sistemas de propulsión de embarcaciones</li><li class="list-group-item"> proyectar los elementos siguientes y dar asesoramiento sobre ellos: instalaciones mecánicas y equipos para la liberación, control y utilización de energía; sistemas de calefacción, ventilación y refrigeración; transmisiones, bombas y otros equipos mecánicos</li><li class="list-group-item"> proyectar sistemas de suspensión, frenos, carrocerías y otros componentes de vehículos de transporte por carretera, y dar asesoramiento pertinente</li><li class="list-group-item"> proyectar partes o elementos no eléctricos de aparatos o productos ordenadores, instrumentos de precisión, cámaras y proyectores, entre otros, y dar asesoramiento pertinente</li><li class="list-group-item"> establecer normas y procedimientos de control para garantizar el eficaz funcionamiento y la seguridad de máquinas, mecanismos, herramientas, motores, dispositivos, instalaciones, equipos y sistemas industriales</li><li class="list-group-item"> garantizar que los equipos y su funcionamiento y mantenimiento cumplen las especificaciones de diseño y de las normas de seguridad.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

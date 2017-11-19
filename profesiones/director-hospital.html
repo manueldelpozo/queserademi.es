@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Director de hospital | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Director de hospital">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Director de hospital</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [25704, 33240, 38520];
 var seriesSalJunior     = [28884, 37188, 42996];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTOR DE HOSPITAL</h4>');$('#info').append('<p class="descripcion">Los directores-gerentes de centros sanitarios planifican, organizan, dirigen, controlany coordinan servicios médicos y de salud en hospitales, clínicas, organismosde salud pública y organizaciones similares.Entre sus tareas se incluyen:- orientar y gestionar globalmente el servicio, instalación, organización o centro;- dirigir, supervisar y evaluar las actividades profesionales del personal médico,de enfermería, técnico, administrativo, de servicio, de mantenimiento yde otras áreas;- definir objetivos y criterios evaluativos u operativos para las unidades quegestionan;- dirigir o realizar la selección, contratación y formación del personal;- desarrollar procedimientos, políticas y normas de aplicación y supervisiónpara el personal médico, de enfermería, técnico y administrativo;- supervisar el uso de servicios de diagnóstico, camas para internos, instalacionesy personal con el fin de asegurar el uso efectivo de los recursos y evaluarla necesidad de aumentar el personal, el equipamiento o los servicios;- controlar operaciones administrativas como la planificación del presupuesto,la elaboración de informes y los gastos en suministros, equipos y<span class="excerpt"><span style="display:none;">servicios;- establecer relaciones con otros prestadores, juntas y órganos de financiaciónde servicios de sanidad y bienestar para coordinar la prestación de los mismos;- asesorar a organismos públicos sobre medidas de mejora de los servicios einstalaciones de salud y bienestar;19- representar a la organización en negociaciones y convenciones, seminarios,audiencias públicas y foros.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTOR DE HOSPITAL</h4>');$('#info').append('<p class="descripcion">Los directores-gerentes de centros sanitarios planifican, organizan, dirigen, controlan y coordinan servicios médicos y de salud en hospitales, clínicas,<div class="excerpt"><div hidden><span>organismos de salud pública y organizaciones similares. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> orientar y gestionar globalmente el servicio, instalación, organización o centro</li><li class="list-group-item"> dirigir, supervisar y evaluar las actividades profesionales del personal médico, de enfermería, técnico, administrativo, de servicio, de mantenimiento y de otras áreas</li><li class="list-group-item"> definir objetivos y criterios evaluativos u operativos para las unidades que gestionan</li><li class="list-group-item"> dirigir o realizar la selección, contratación y formación del personal</li><li class="list-group-item"> desarrollar procedimientos, políticas y normas de aplicación y supervisión para el personal médico, de enfermería, técnico y administrativo</li><li class="list-group-item"> supervisar el uso de servicios de diagnóstico, camas para internos, instalaciones y personal con el fin de asegurar el uso efectivo de los recursos y evaluar la necesidad de aumentar el personal, el equipamiento o los servicios</li><li class="list-group-item"> controlar operaciones administrativas como la planificación del presupuesto, la elaboración de informes y los gastos en suministros, equipos y servicios</li><li class="list-group-item"> establecer relaciones con otros prestadores, juntas y órganos de financiación de servicios de sanidad y bienestar para coordinar la prestación de los mismos</li><li class="list-group-item"> asesorar a organismos públicos sobre medidas de mejora de los servicios e instalaciones de salud y bienestar; 19 - representar a la organización en negociaciones y convenciones, seminarios, audiencias públicas y foros.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

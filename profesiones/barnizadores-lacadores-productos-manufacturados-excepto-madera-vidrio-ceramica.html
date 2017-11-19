@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Barnizadores-lacadores de productos manufacturados (excepto madera, vidrio y cerámica) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Barnizadores-lacadores de productos manufacturados (excepto madera, vidrio y cerámica)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Barnizadores-lacadores de productos manufacturados (excepto madera, vidrio y cerámica)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12132, 16164, 18984];
 var seriesSalJunior     = [13812, 18324, 21480];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">BARNIZADORES-LACADORES DE PRODUCTOS MANUFACTURADOS (EXCEPTO MADERA, VIDRIO Y CERÁMICA)</h4>');$('#info').append('<p class="descripcion">Los pintores en las industrias manufactureras preparan las superficies de productosmanufacturados para pintarlos y extienden sobre ellas capas de pintura,barnices y lacas con pistolas o aparatos similares para protegerlas o decorarlas.Entre sus tareas se incluyen:- aplicar pintura, barniz y capas protectoras de esmalte y laca, generalmentecon una pistola o aparato similar sobre productos manufacturados en seriede madera, metal u otros materiales;- extender o rociar capas de pintura, minio, emulsión bituminosa u otra sustanciaprotectora similar sobre automóviles, autobuses, camiones, y otrosvehículos y aplicar capas de laca y otros revestimientos protectores;- desempeñar tareas afines;- supervisar a otros trabajadores en este<span class="excerpt"><span style="display:none;">grupo.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">BARNIZADORES-LACADORES DE PRODUCTOS MANUFACTURADOS (EXCEPTO MADERA, VIDRIO Y CERÁMICA)</h4>');$('#info').append('<p class="descripcion">Los pintores en las industrias manufactureras preparan las superficies de productos manufacturados para pintarlos y extienden sobre ellas capas<div class="excerpt"><div hidden><span>de pintura, barnices y lacas con pistolas o aparatos similares para protegerlas o decorarlas. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> aplicar pintura, barniz y capas protectoras de esmalte y laca, generalmente con una pistola o aparato similar sobre productos manufacturados en serie de madera, metal u otros materiales</li><li class="list-group-item"> extender o rociar capas de pintura, minio, emulsión bituminosa u otra sustancia protectora similar sobre automóviles, autobuses, camiones, y otros vehículos y aplicar capas de laca y otros revestimientos protectores</li><li class="list-group-item"> desempeñar tareas afines</li><li class="list-group-item"> supervisar a otros trabajadores en este grupo.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

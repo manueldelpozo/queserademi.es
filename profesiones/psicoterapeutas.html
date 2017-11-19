@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Psicoterapeutas | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Psicoterapeutas">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Psicoterapeutas</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [15312, 19464, 22704];
 var seriesSalJunior     = [17940, 22128, 26280];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PSICOTERAPEUTAS</h4>');$('#info').append('<p class="descripcion">Los psicólogos investigan y estudian los procesos mentales y el comportamientode los seres humanos, individualmente o como miembros de grupos, y los aplicanpara promover la adaptación y desarrollo personal, social, educativo o profesional.Entre sus tareas se incluyen:- planificar y administrar pruebas para determinar las características mentales,físicas y de otro tipo de las personas, por ejemplo en lo que se refiere a la inteligencia,facultades, aptitudes y capacidades, interpretar y evaluar los resultadosy brindar asesoramiento al respecto;- analizar la influencia de los factores hereditarios, sociales, profesionales y deotro género sobre la manera de pensar y el comportamiento de cada persona;- realizar entrevistas de carácter terapéutico o de asesoramiento a personas ogrupos, y prestar servicios de seguimiento;- mantener los contactos necesarios con familiares, autoridades docentes oempleadores, y recomendar posibles soluciones para resolver o tratar losproblemas;- estudiar los factores psicológicos en el diagnóstico, tratamiento y prevenciónde enfermedades mentales y trastornos emocionales o de<span class="excerpt"><span style="display:none;">la personalidad, yconsultar con profesionales de ramas conexas;- preparar ponencias e informes de carácter académico;- preparar pruebas de rendimiento, diagnósticas y predictivas para su uso porlos profesores en la planificación de los métodos y el contenido de la enseñanza;- realizar encuestas y estudios de investigación sobre el diseño de puestos detrabajo, los grupos de trabajo, el estado de ánimo, la motivación, la supervisióny la dirección del personal;- elaborar teorías, modelos y métodos para interpretar y describir loscomportamientos humanos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PSICOTERAPEUTAS</h4>');$('#info').append('<p class="descripcion">Los psicólogos investigan y estudian los procesos mentales y el comportamiento de los seres humanos, individualmente o como miembros<div class="excerpt"><div hidden><span>de grupos, y los aplican para promover la adaptación y desarrollo personal, social, educativo o profesional. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> planificar y administrar pruebas para determinar las características mentales, físicas y de otro tipo de las personas, por ejemplo en lo que se refiere a la inteligencia, facultades, aptitudes y capacidades, interpretar y evaluar los resultados y brindar asesoramiento al respecto</li><li class="list-group-item"> analizar la influencia de los factores hereditarios, sociales, profesionales y de otro género sobre la manera de pensar y el comportamiento de cada persona</li><li class="list-group-item"> realizar entrevistas de carácter terapéutico o de asesoramiento a personas o grupos, y prestar servicios de seguimiento</li><li class="list-group-item"> mantener los contactos necesarios con familiares, autoridades docentes o empleadores, y recomendar posibles soluciones para resolver o tratar los problemas</li><li class="list-group-item"> estudiar los factores psicológicos en el diagnóstico, tratamiento y prevención de enfermedades mentales y trastornos emocionales o de la personalidad, y consultar con profesionales de ramas conexas</li><li class="list-group-item"> preparar ponencias e informes de carácter académico</li><li class="list-group-item"> preparar pruebas de rendimiento, diagnósticas y predictivas para su uso por los profesores en la planificación de los métodos y el contenido de la enseñanza</li><li class="list-group-item"> realizar encuestas y estudios de investigación sobre el diseño de puestos de trabajo, los grupos de trabajo, el estado de ánimo, la motivación, la supervisión y la dirección del personal</li><li class="list-group-item"> elaborar teorías, modelos y métodos para interpretar y describir los comportamientos humanos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

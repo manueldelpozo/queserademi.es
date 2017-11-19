@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en ciencias biológicas (excepto en áreas sanitarias) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en ciencias biológicas (excepto en áreas sanitarias)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en ciencias biológicas (excepto en áreas sanitarias)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13356, 15684, 17316];
 var seriesSalJunior     = [15972, 18120, 19644];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN CIENCIAS BIOLÓGICAS (EXCEPTO EN ÁREAS SANITARIAS)</h4>');$('#info').append('<p class="descripcion">Los técnicos en ciencias biológicas (excepto en áreas sanitarias)prestan apoyotécnico a los profesionales en ciencias biológicas en su trabajo de investigación,análisis y pruebas de organismos vivos, y de desarrollo y aplicación de productosy procesos resultantes de la investigación en campos como la agricultura,gestión de recursos naturales, protección del medio ambiente, biología vegetal yanimal, microbiología y biología celular y molecular.Entre sus tareas se incluyen:- ayudar en el diseño, preparación y realización de experimentos;- preparar, calibrar, manejar y mantener en buen estado los instrumentos yaparatos de laboratorio;- recoger especímenes y preparar muestras, soluciones químicas y placas ycultivos celulares para realizar experimentos;- realizar análisis de rutina sobre el terreno y de laboratorio;- vigilar los experimentos para asegurar que se cumplan los procedimientosadecuados de control de calidad de laboratorio y las directrices en materia desalud y seguridad;- observar la realización de pruebas, y analizar, calcular, registrar y dar a conocersus resultados utilizando los<span class="excerpt"><span style="display:none;">métodos científicos adecuados;- conservar, clasificar y catalogar especímenes y muestras;- mantener registros detallados del trabajo realizado;- utilizar ordenadores para desarrollar modelos y analizar datos;- utilizar aparatos complejos y de gran potencia para realizar el trabajo;- participar en la investigación, el desarrollo y la fabricación de productos y140procesos;- ocuparse de los pedidos y el inventario de los materiales de laboratorio;- mantener las bases de datos pertinentes.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN CIENCIAS BIOLÓGICAS (EXCEPTO EN ÁREAS SANITARIAS)</h4>');$('#info').append('<p class="descripcion">Los técnicos en ciencias biológicas (excepto en áreas sanitarias)prestan apoyo técnico a los profesionales en ciencias biológicas en su<div class="excerpt"><div hidden><span>trabajo de investigación, análisis y pruebas de organismos vivos, y de desarrollo y aplicación de productos y procesos resultantes de la investigación en campos como la agricultura, gestión de recursos naturales, protección del medio ambiente, biología vegetal y animal, microbiología y biología celular y molecular. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> ayudar en el diseño, preparación y realización de experimentos</li><li class="list-group-item"> preparar, calibrar, manejar y mantener en buen estado los instrumentos y aparatos de laboratorio</li><li class="list-group-item"> recoger especímenes y preparar muestras, soluciones químicas y placas y cultivos celulares para realizar experimentos</li><li class="list-group-item"> realizar análisis de rutina sobre el terreno y de laboratorio</li><li class="list-group-item"> vigilar los experimentos para asegurar que se cumplan los procedimientos adecuados de control de calidad de laboratorio y las directrices en materia de salud y seguridad</li><li class="list-group-item"> observar la realización de pruebas, y analizar, calcular, registrar y dar a conocer sus resultados utilizando los métodos científicos adecuados</li><li class="list-group-item"> conservar, clasificar y catalogar especímenes y muestras</li><li class="list-group-item"> mantener registros detallados del trabajo realizado</li><li class="list-group-item"> utilizar ordenadores para desarrollar modelos y analizar datos</li><li class="list-group-item"> utilizar aparatos complejos y de gran potencia para realizar el trabajo</li><li class="list-group-item"> participar en la investigación, el desarrollo y la fabricación de productos y 140 procesos</li><li class="list-group-item"> ocuparse de los pedidos y el inventario de los materiales de laboratorio</li><li class="list-group-item"> mantener las bases de datos pertinentes.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

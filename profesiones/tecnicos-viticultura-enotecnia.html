@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en viticultura y enotecnia | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en viticultura y enotecnia">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en viticultura y enotecnia</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [16932, 20616, 23196];
 var seriesSalJunior     = [19500, 23136, 25668];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN VITICULTURA Y ENOTECNIA</h4>');$('#info').append('<p class="descripcion">Los técnicos agropecuarios realizan ensayos y experimentos, y prestan asistenciatécnica y científica a los agrónomos, agricultores y directores de explotacionesagrarias.Entre sus tareas se incluyen:- preparar materiales y equipos para experimentos, ensayos y análisis;- recoger especímenes y preparar muestras de suelos, células, tejidos, partesde plantas o animales, o órganos de animales, para realizar experimentos,ensayos y análisis;- realizar y ayudar a la realización de experimentos, ensayos y análisis aplicandométodos y técnicas como la microscopía, la histoquímica, la cromatografía,la electroforesis y la espectroscopia;- identificar microorganismos patógenos e insectos, parásitos, hongos y malashierbas nocivos para las plantas y para el ganado, y ayudar a establecer métodosde control;- analizar los productos obtenidos, para establecer y mantener normas de calidad;- aplicar programas de trabajo referidos, por ejemplo, a criaderos de peces,cultivo en invernadero o producción ganadera, y supervisar su realización;- analizar muestras de distintas variedades de semillas para determinar su calidad,pureza y porcentaje de germinación;-<span class="excerpt"><span style="display:none;">recoger datos y calcular o estimar las cantidades y costes de los materiales ymano de obra necesarios para los proyectos;- organizar el mantenimiento y reparación de los aparatos de investigación.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN VITICULTURA Y ENOTECNIA</h4>');$('#info').append('<p class="descripcion">Los técnicos agropecuarios realizan ensayos y experimentos, y prestan asistencia técnica y científica a los agrónomos, agricultores y directores<div class="excerpt"><div hidden><span>de explotaciones agrarias. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> preparar materiales y equipos para experimentos, ensayos y análisis</li><li class="list-group-item"> recoger especímenes y preparar muestras de suelos, células, tejidos, partes de plantas o animales, o órganos de animales, para realizar experimentos, ensayos y análisis</li><li class="list-group-item"> realizar y ayudar a la realización de experimentos, ensayos y análisis aplicando métodos y técnicas como la microscopía, la histoquímica, la cromatografía, la electroforesis y la espectroscopia</li><li class="list-group-item"> identificar microorganismos patógenos e insectos, parásitos, hongos y malas hierbas nocivos para las plantas y para el ganado, y ayudar a establecer métodos de control</li><li class="list-group-item"> analizar los productos obtenidos, para establecer y mantener normas de calidad</li><li class="list-group-item"> aplicar programas de trabajo referidos, por ejemplo, a criaderos de peces, cultivo en invernadero o producción ganadera, y supervisar su realización</li><li class="list-group-item"> analizar muestras de distintas variedades de semillas para determinar su calidad, pureza y porcentaje de germinación</li><li class="list-group-item"> recoger datos y calcular o estimar las cantidades y costes de los materiales y mano de obra necesarios para los proyectos</li><li class="list-group-item"> organizar el mantenimiento y reparación de los aparatos de investigación.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

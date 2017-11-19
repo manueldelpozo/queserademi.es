@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Ingenieros ambientales | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Ingenieros ambientales">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Ingenieros ambientales</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [21552, 24264, 26160];
 var seriesSalJunior     = [25620, 27924, 29556];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS AMBIENTALES</h4>');$('#info').append('<p class="descripcion">Los ingenieros ambientales realizan investigaciones, asesoran, proyectan y dirigen la aplicación de soluciones para prevenir, controlar o remediar los impactos negativos de la actividad humana sobre el medio ambiente utilizando diversas técnicas de ingeniería. Realizan evaluaciones medioambientales de los proyectos de construcción e ingeniería civil y aplican principios de ingeniería al control de la contaminación, el reciclado y la eliminación de residuos. Entre sus tareas se incluyen: - realizar investigaciones e evaluaciones y emitir informes sobre el impacto medioambiental de las actividades de construcción, de ingeniería civil y otras, existentes o propuestas;- inspeccionar las instalaciones y programas industriales y municipales para evaluar la eficacia de su funcionamiento y garantizar el cumplimiento de la normativa medioambiental; - proyectar y supervisar el desarrollo de los sistemas, procesos y equipos de control, gestión o recuperación de la calidad del agua, el aire o el suelo; - prestar asistencia en materia de ingeniería<span class="excerpt"><span style="display:none;">ambiental en relación con tareas de análisis de redes, análisis del cumplimiento de la normativa y revisión de la elaboración de bases de datos; - obtener, actualizar y mantener los planes, autorizaciones y procedimientos normalizados de trabajo; - prestar asistencia técnica y de ingeniería en los proyectos de recuperación medioambiental y en los litigios sobre medio ambiente, incluidos el proyecto de sistemas de recuperación y la especificación de la aplicabilidad de la normativa; - supervisar la marcha de los programas de mejora medioambiental; - asesorar al sector privado y a la administración pública sobre los procedimientos que han de seguirse en la limpieza de los lugares contaminados para proteger a las personas y al medio ambiente;- colaborar con los científicos medioambientales, urbanistas, expertos en residuos peligrosos, ingenieros de otras disciplinas y expertos jurídicos y empresariales en el examen de los probl</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS AMBIENTALES</h4>');$('#info').append('<p class="descripcion">Los ingenieros ambientales realizan investigaciones, asesoran, proyectan y dirigen la aplicación de soluciones para prevenir, controlar o remediar los<div class="excerpt"><div hidden>impactos negativos de la actividad humana sobre el medio ambiente utilizando diversas técnicas de ingeniería. Realizan evaluaciones medioambientales de los proyectos de construcción e ingeniería civil y aplican principios de ingeniería al control de la contaminación, el reciclado y la eliminación de residuos.  Entre sus tareas se incluyen:  - realizar investigaciones e evaluaciones y emitir informes sobre el impacto medioambiental de las actividades de construcción, de ingeniería civil y otras, existentes o propuestas; - inspeccionar las instalaciones y programas industriales y municipales para evaluar la eficacia de su funcionamiento y garantizar el cumplimiento de la normativa medioambiental;  - proyectar y supervisar el desarrollo de los sistemas, procesos y equipos de control, gestión o recuperación de la calidad del agua, el aire o el suelo;  - prestar asistencia en materia de ingeniería ambiental en relación con tareas de análisis de redes, análisis del cumplimiento de la normativa y revisión de la elaboración de bases de datos;  - obtener, actualizar y mantener los planes, autorizaciones y procedimientos normalizados de trabajo;  - prestar asistencia técnica y de ingeniería en los proyectos de recuperación medioambiental y en los litigios sobre medio ambiente, incluidos el proyecto de sistemas de recuperación y la especificación de la aplicabilidad de la normativa;  - supervisar la marcha de los programas de mejora medioambiental;  - asesorar al sector privado y a la administración pública sobre los procedimientos que han de seguirse en la limpieza de los lugares contaminados para proteger a las personas y al medio ambiente; - colaborar con los científicos medioambientales, urbanistas, expertos en residuos peligrosos, ingenieros de otras disciplinas y expertos jurídicos y empresariales en el examen de los probl</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

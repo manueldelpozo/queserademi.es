@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de control de tren de laminación | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de control de tren de laminación">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de control de tren de laminación</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17868, 21216, 23544];
 var seriesSalJunior     = [21576, 24732, 26940];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE CONTROL DE TREN DE LAMINACIÓN</h4>');$('#info').append('<p class="descripcion">Los técnicos en control de procesos de producción de metales vigilan y manejanmáquinas y equipos multifunción para controlar el proceso de los hornos deconversión y refino, los trenes de laminación, las instalaciones de tratamientotérmico de los metales y las instalaciones de extrusión de metales.Entre sus tareas se incluyen:- coordinar y vigilar el funcionamiento de aspectos concretos del proceso delos metales a través de cuadros de control, terminales de ordenador y otrossistemas de control, habitualmente desde una sala a distancia;- manejar máquinas multifunción de control central de procesos para triturar,separar, filtrar, fundir, tratar, refinar o producir metales de otro modo;- observar los listados de ordenador, las pantallas de visualización y los calibrespara verificar que se cumplen las condiciones de proceso especificadase introducir los ajustes necesarios;- coordinar y supervisar al personal de producción, como los operadores demáquinas y procesos, sus asistentes y sus auxiliares;- arrancar y parar el sistema de producción<span class="excerpt"><span style="display:none;">en los casos de emergencia ocuando así lo exija el programa;- formar y organizar la formación del personal de producción;- mantener un registro de turnos de la producción y otros datos, y prepararinformes de producción y de otros tipos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE CONTROL DE TREN DE LAMINACIÓN</h4>');$('#info').append('<p class="descripcion">Los técnicos en control de procesos de producción de metales vigilan y manejan máquinas y equipos multifunción para controlar<div class="excerpt"><div hidden><span>el proceso de los hornos de conversión y refino, los trenes de laminación, las instalaciones de tratamiento térmico de los metales y las instalaciones de extrusión de metales. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> coordinar y vigilar el funcionamiento de aspectos concretos del proceso de los metales a través de cuadros de control, terminales de ordenador y otros sistemas de control, habitualmente desde una sala a distancia</li><li class="list-group-item"> manejar máquinas multifunción de control central de procesos para triturar, separar, filtrar, fundir, tratar, refinar o producir metales de otro modo</li><li class="list-group-item"> observar los listados de ordenador, las pantallas de visualización y los calibres para verificar que se cumplen las condiciones de proceso especificadas e introducir los ajustes necesarios</li><li class="list-group-item"> coordinar y supervisar al personal de producción, como los operadores de máquinas y procesos, sus asistentes y sus auxiliares</li><li class="list-group-item"> arrancar y parar el sistema de producción en los casos de emergencia o cuando así lo exija el programa</li><li class="list-group-item"> formar y organizar la formación del personal de producción</li><li class="list-group-item"> mantener un registro de turnos de la producción y otros datos, y preparar informes de producción y de otros tipos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

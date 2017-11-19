@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de procesos de laminación de metales | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de procesos de laminación de metales">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de procesos de laminación de metales</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14412, 17856, 20268];
 var seriesSalJunior     = [17076, 21036, 23808];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE PROCESOS DE LAMINACIÓN DE METALES</h4>');$('#info').append('<p class="descripcion">Los operadores de instalaciones para la obtención y transformación de metalesde metales accionan, vigilan, ajustan y mantienen máquinas y equipos de procesoúnico para tratar y convertir minerales y refinar, endurecer, laminar y extruirmetales.326Entre sus tareas se incluyen:- ajustar, preparar y regular máquinas de tratamiento de minerales y metalespara llevar a cabo alguna fase del proceso;- accionar máquinas monofuncionales de machaqueo, separación, filtrado,mezclado, trituración, fundición, laminado, refino o algún otro tratamiento delos metales y minerales;- observar los indicadores, contadores, listados de ordenador, monitores devideo y productos para garantizar el funcionamiento correcto de las máquinasy verificar que se dan las condiciones de tratamiento especificadas;- ajustar los equipos, válvulas, bombas, mandos y equipos;- controlar la preparación, medida y alimentación de materia prima y agentesde proceso a las máquinas;- controlar el arranque y parada de los procesos, comprobar las averías y controlarlos equipos de proceso externos;- verificar los equipos para detectar su mal<span class="excerpt"><span style="display:none;">funcionamiento, realizar pruebasrutinarias de funcionamiento y organizar su mantenimiento;- analizar muestras de los productos, realizar pruebas, registrar datos y llevarregistros de producción.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE PROCESOS DE LAMINACIÓN DE METALES</h4>');$('#info').append('<p class="descripcion">Los operadores de instalaciones para la obtención y transformación de metales de metales accionan, vigilan, ajustan y mantienen máquinas<div class="excerpt"><div hidden><span>y equipos de proceso único para tratar y convertir minerales y refinar, endurecer, laminar y extruir metales. 326 Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> ajustar, preparar y regular máquinas de tratamiento de minerales y metales para llevar a cabo alguna fase del proceso</li><li class="list-group-item"> accionar máquinas monofuncionales de machaqueo, separación, filtrado, mezclado, trituración, fundición, laminado, refino o algún otro tratamiento de los metales y minerales</li><li class="list-group-item"> observar los indicadores, contadores, listados de ordenador, monitores de video y productos para garantizar el funcionamiento correcto de las máquinas y verificar que se dan las condiciones de tratamiento especificadas</li><li class="list-group-item"> ajustar los equipos, válvulas, bombas, mandos y equipos</li><li class="list-group-item"> controlar la preparación, medida y alimentación de materia prima y agentes de proceso a las máquinas</li><li class="list-group-item"> controlar el arranque y parada de los procesos, comprobar las averías y controlar los equipos de proceso externos</li><li class="list-group-item"> verificar los equipos para detectar su mal funcionamiento, realizar pruebas rutinarias de funcionamiento y organizar su mantenimiento</li><li class="list-group-item"> analizar muestras de los productos, realizar pruebas, registrar datos y llevar registros de producción.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

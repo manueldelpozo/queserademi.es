@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Heladeros-elaboradores de helados | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Heladeros-elaboradores de helados">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Heladeros-elaboradores de helados</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [11412, 14544, 16740];
 var seriesSalJunior     = [12948, 16440, 18876];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">HELADEROS-ELABORADORES DE HELADOS</h4>');$('#info').append('<p class="descripcion">Los trabajadores del tratamiento de la leche y elaboración de productos lácteos(incluidos helados) fabrican mantequilla y diversos tipos de queso, crema u otrosproductos lácteos.Entre sus tareas se incluyen:- hervir o pasteurizar la leche para conseguir el contenido de materia grasaespecificado;- separar la nata de la leche y batirla para hacer mantequilla;- verter en la leche las cantidades medidas de fermento y de otros ingredientes;- cuajar la leche, calentar la cuajada hasta que tome la consistencia deseada,escurrir el agua y meter el queso en los moldes para formarlos por presión;- salar el queso y agujerearlo o untarlo con un baño de cultivo para favorecerel crecimiento del moho;- colocar los bloques de queso en estantes, y girarlos periódicamente, paraque se curen;- vigilar la calidad de los productos antes de su envasado, inspeccionándolos,tomando muestras y ajustando las condiciones de tratamiento en caso necesario;- registrar las cantidades de ingredientes empleados, los resultados de<span class="excerpt"><span style="display:none;">laspruebas y los ciclos temporales.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">HELADEROS-ELABORADORES DE HELADOS</h4>');$('#info').append('<p class="descripcion">Los trabajadores del tratamiento de la leche y elaboración de productos lácteos (incluidos helados) fabrican mantequilla y diversos tipos<div class="excerpt"><div hidden><span>de queso, crema u otros productos lácteos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> hervir o pasteurizar la leche para conseguir el contenido de materia grasa especificado</li><li class="list-group-item"> separar la nata de la leche y batirla para hacer mantequilla</li><li class="list-group-item"> verter en la leche las cantidades medidas de fermento y de otros ingredientes</li><li class="list-group-item"> cuajar la leche, calentar la cuajada hasta que tome la consistencia deseada, escurrir el agua y meter el queso en los moldes para formarlos por presión</li><li class="list-group-item"> salar el queso y agujerearlo o untarlo con un baño de cultivo para favorecer el crecimiento del moho</li><li class="list-group-item"> colocar los bloques de queso en estantes, y girarlos periódicamente, para que se curen</li><li class="list-group-item"> vigilar la calidad de los productos antes de su envasado, inspeccionándolos, tomando muestras y ajustando las condiciones de tratamiento en caso necesario</li><li class="list-group-item"> registrar las cantidades de ingredientes empleados, los resultados de las pruebas y los ciclos temporales.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

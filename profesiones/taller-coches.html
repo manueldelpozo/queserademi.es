@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Taller de coches | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Taller de coches">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Taller de coches</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [19680, 24432, 27756];
 var seriesSalJunior     = [23376, 28104, 31392];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TALLER DE COCHES</h4>');$('#info').append('<p class="descripcion">Los técnicos en mecánica ejecutan tareas técnicas relacionadas con la investigaciónen materia de ingeniería mecánica y con el proyecto, fabricación, construcción,montaje, funcionamiento, mantenimiento y reparación de máquinas, equipose instalaciones mecánicos.Entre sus tareas se incluyen:- efectuar trabajos técnicos relacionados con las labores de investigación y desarrollorelativas a máquinas, equipos, componentes e instalaciones mecánicos,y ensayar prototipos;- proyectar y preparar planos de máquinas, equipos, componentes e instala132ciones mecánicos, de conformidad con las especificaciones establecidas;- preparar cálculos y estimaciones detallados de cantidades y costes de losmateriales y mano de obra necesarios para la fabricación y el montaje de lasinstalaciones, de conformidad con las especificaciones establecidas;- efectuar el control técnico de la fabricación, utilización, mantenimiento y reparaciónde máquinas, equipos, componentes e instalaciones mecánicos paragarantizar su funcionamiento satisfactorio y el cumplimiento de las especificaciones,normas y reglamentos pertinentes;- desarrollar y vigilar el cumplimiento de las normas de seguridad y de losprocedimientos de inspección naval en lo<span class="excerpt"><span style="display:none;">que concierne a las estructuras(casco, etc.), máquinas, aparatos de carga y descarga y otro equipo mecánicode los buques;- montar e instalar conjuntos, componentes, útiles y mandos de máquinas ysistemas hidráulicos, tanto nuevos como modificados;- realizar ensayos de sistemas mecánicos, reunir y analizar datos, y montarinstalar conjuntos mecánicos para ayudar a los ingenieros mecánicos;- garantizar que los proyectos de ingeniería mecánica y los trabajos acabadoscumplen las especificaciones, reglamentos y cláusulas contractuales existentes.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TALLER DE COCHES</h4>');$('#info').append('<p class="descripcion">Los técnicos en mecánica ejecutan tareas técnicas relacionadas con la investigación en materia de ingeniería mecánica y con el<div class="excerpt"><div hidden><span>proyecto, fabricación, construcción, montaje, funcionamiento, mantenimiento y reparación de máquinas, equipos e instalaciones mecánicos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> efectuar trabajos técnicos relacionados con las labores de investigación y desarrollo relativas a máquinas, equipos, componentes e instalaciones mecánicos, y ensayar prototipos</li><li class="list-group-item"> proyectar y preparar planos de máquinas, equipos, componentes e instala132 ciones mecánicos, de conformidad con las especificaciones establecidas</li><li class="list-group-item"> preparar cálculos y estimaciones detallados de cantidades y costes de los materiales y mano de obra necesarios para la fabricación y el montaje de las instalaciones, de conformidad con las especificaciones establecidas</li><li class="list-group-item"> efectuar el control técnico de la fabricación, utilización, mantenimiento y reparación de máquinas, equipos, componentes e instalaciones mecánicos para garantizar su funcionamiento satisfactorio y el cumplimiento de las especificaciones, normas y reglamentos pertinentes</li><li class="list-group-item"> desarrollar y vigilar el cumplimiento de las normas de seguridad y de los procedimientos de inspección naval en lo que concierne a las estructuras (casco, etc.), máquinas, aparatos de carga y descarga y otro equipo mecánico de los buques</li><li class="list-group-item"> montar e instalar conjuntos, componentes, útiles y mandos de máquinas y sistemas hidráulicos, tanto nuevos como modificados</li><li class="list-group-item"> realizar ensayos de sistemas mecánicos, reunir y analizar datos, y montar instalar conjuntos mecánicos para ayudar a los ingenieros mecánicos</li><li class="list-group-item"> garantizar que los proyectos de ingeniería mecánica y los trabajos acabados cumplen las especificaciones, reglamentos y cláusulas contractuales existentes.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

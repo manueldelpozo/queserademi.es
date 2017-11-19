@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Subalternos de plaza de toros | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Subalternos de plaza de toros">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Subalternos de plaza de toros</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">SUBALTERNOS DE PLAZA DE TOROS</h4>');$('#info').append('<p class="descripcion">Este grupo primario abarca las ocupaciones elementales no clasificadas en ningúnotro epígrafe del gran grupo 9, Ocupaciones elementales. En él se incluyen,por ejemplo, quienes expiden y controlan los billetes de entrada a aparcamientosu otros lugares, recogen y entregan los artículos personales a los clientes enun guardarropa y ayudan a los clientes en los espectáculos.Entre sus tareas se incluyen:- vender y controlar los billetes de entrada y los pases de los clientes en losespectáculos o controlar su identidad;366- examinar los billetes y pases para verificar su autenticidad aplicando criterioscomo los relativos a su color o a la Fecha: de expedición;- guiar a los clientes a las salidas o facilitarles otras instrucciones y prestarlesayuda en caso preciso;- dirigir a los clientes a los espacios de descanso, puestos de venta y teléfonos;- dirigir a los conductores de vehículos a las zonas de aparcamiento;- patrullar por las zonas de aparcamiento para prevenir los<span class="excerpt"><span style="display:none;">daños a los vehículoso los robos en éstos;- calcular las tarifas de aparcamiento y cobrarlas a los clientes;- asignar vestuarios, cabinas o armarios a los clientes de gimnasios y establecimientosde baños y similares;- limpian, pintan y mantienen edificios, terrenos e instalaciones, y efectúanreparaciones sencillas;- sustituir elementos defectuosos como bombillas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">SUBALTERNOS DE PLAZA DE TOROS</h4>');$('#info').append('<p class="descripcion">Este grupo primario abarca las ocupaciones elementales no clasificadas en ningún otro epígrafe del gran grupo 9, Ocupaciones elementales.<div class="excerpt"><div hidden><span>En él se incluyen, por ejemplo, quienes expiden y controlan los billetes de entrada a aparcamientos u otros lugares, recogen y entregan los artículos personales a los clientes en un guardarropa y ayudan a los clientes en los espectáculos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> vender y controlar los billetes de entrada y los pases de los clientes en los espectáculos o controlar su identidad; 366 - examinar los billetes y pases para verificar su autenticidad aplicando criterios como los relativos a su color o a la Fecha: de expedición</li><li class="list-group-item"> guiar a los clientes a las salidas o facilitarles otras instrucciones y prestarles ayuda en caso preciso</li><li class="list-group-item"> dirigir a los clientes a los espacios de descanso, puestos de venta y teléfonos</li><li class="list-group-item"> dirigir a los conductores de vehículos a las zonas de aparcamiento</li><li class="list-group-item"> patrullar por las zonas de aparcamiento para prevenir los daños a los vehículos o los robos en éstos</li><li class="list-group-item"> calcular las tarifas de aparcamiento y cobrarlas a los clientes</li><li class="list-group-item"> asignar vestuarios, cabinas o armarios a los clientes de gimnasios y establecimientos de baños y similares</li><li class="list-group-item"> limpian, pintan y mantienen edificios, terrenos e instalaciones, y efectúan reparaciones sencillas</li><li class="list-group-item"> sustituir elementos defectuosos como bombillas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en prevención de riesgos laborales y salud ambiental | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en prevención de riesgos laborales y salud ambiental">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en prevención de riesgos laborales y salud ambiental</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [18888, 23484, 26712];
 var seriesSalJunior     = [21708, 26304, 29508];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN PREVENCIÓN DE RIESGOS LABORALES Y SALUD AMBIENTAL</h4>');$('#info').append('<p class="descripcion">Los técnicos de prevención de riesgos laborales y salud ambiental examinan la aplicación de normas y reglamentos relativos a aquellos factores ambientales que pueden afectar a la salud de las personas, la seguridad en el trabajo y la seguridad de los procesos de producción de bienes y servicios. Estos trabajadores pueden ejecutar y evaluar programas de recuperación o mejora de la seguridad y condiciones sanitarias bajo la supervisión de un profesional de la seguridad.Entre sus tareas se incluyen: asesorar a los representantes de los empleadores y los trabajadores sobre la aplicación de normas y reglamentos oficiales y de otro tipo relativos a la seguridad laboral y al medio ambiente de trabajo; inspeccionar los lugares de trabajo para garantizar que la maquinaria y el equipo se ajustan la normativa; prestar asesoramiento sobre problemas y técnicas de higiene del medio ambiente; mediante entrevistas, observaciones y otros medios, obtener información sobre prácticas<span class="excerpt"><span style="display:none;">y accidentes laborales; inspeccionar las zonas de producción, transformación, transporte, almacenamiento y venta de productos; asesorar a las empresas y al público en general sobre la aplicación de las reglas y los reglamentos oficiales y de otro tipo en materia de higiene, pureza y clasificación de materias primas, alimentos y artículos similares; inspeccionar establecimientos para comprobar si cumplen las reglas y los reglamentos oficiales y de otro tipo en materia de emisión de contaminantes y eliminación de residuos peligrosos; iniciar acciones para mejorar la higiene y evitar la contaminación del agua, la atmósfera, los alimentos o el suelo; promover medidas preventivas y correctivas como el control de los organismos vectores de enfermedades y de sustancias peligrosas en la atmósfera, la manipulación higiénica de los alimentos, la correcta eliminación de residuos y la limpieza de lugares públicos; y estimar cantidades y costes de materiales y mano de obra necesarios para proyectos de corrección de la</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN PREVENCIÓN DE RIESGOS LABORALES Y SALUD AMBIENTAL</h4>');$('#info').append('<p class="descripcion">Los técnicos de prevención de riesgos laborales y salud ambiental examinan la aplicación de normas y reglamentos relativos a<div class="excerpt"><div hidden>aquellos factores ambientales que pueden afectar a la salud de las personas, la seguridad en el trabajo y la seguridad de los procesos de producción de bienes y servicios. Estos trabajadores pueden ejecutar y evaluar programas de recuperación o mejora de la seguridad y condiciones sanitarias bajo la supervisión de un profesional de la seguridad. Entre sus tareas se incluyen: asesorar a los representantes de los empleadores y los trabajadores sobre la aplicación de normas y reglamentos oficiales y de otro tipo relativos a la seguridad laboral y al medio ambiente de trabajo; inspeccionar los lugares de trabajo para garantizar que la maquinaria y el equipo se ajustan la normativa; prestar asesoramiento sobre problemas y técnicas de higiene del medio ambiente; mediante entrevistas, observaciones y otros medios, obtener información sobre prácticas y accidentes laborales; inspeccionar las zonas de producción, transformación, transporte, almacenamiento y venta de productos; asesorar a las empresas y al público en general sobre la aplicación de las reglas y los reglamentos oficiales y de otro tipo en materia de higiene, pureza y clasificación de materias primas, alimentos y artículos similares; inspeccionar establecimientos para comprobar si cumplen las reglas y los reglamentos oficiales y de otro tipo en materia de emisión de contaminantes y eliminación de residuos peligrosos; iniciar acciones para mejorar la higiene y evitar la contaminación del agua, la atmósfera, los alimentos o el suelo; promover medidas preventivas y correctivas como el control de los organismos vectores de enfermedades y de sustancias peligrosas en la atmósfera, la manipulación higiénica de los alimentos, la correcta eliminación de residuos y la limpieza de lugares públicos; y estimar cantidades y costes de materiales y mano de obra necesarios para proyectos de corrección de la</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

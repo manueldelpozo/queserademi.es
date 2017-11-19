@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos comerciales en entidad financiera | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos comerciales en entidad financiera">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos comerciales en entidad financiera</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17724, 22968, 26652];
 var seriesSalJunior     = [20148, 25992, 30084];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS COMERCIALES EN ENTIDAD FINANCIERA</h4>');$('#info').append('<p class="descripcion">Los agentes de bolsa, cambio y otros servicios financieros adquieren y vendentítulos valores, acciones, obligaciones y otros instrumentos financieros, negociandivisas al contado o en mercados de futuros, en nombre de su empresa o paraclientes a comisión, y recomiendan transacciones a clientes o miembros de laalta dirección.163Entre sus tareas se incluyen:- obtener información sobre las circunstancias financieras de los clientes y lasempresas en que pueden hacerse las inversiones;- analizar las tendencias del mercado en materia de títulos valores, obligaciones,acciones y otros instrumentos financieros, incluidas las divisas;- informar a posibles clientes de las condiciones y las perspectivas del mercado;- asesorar y participar en la negociación de las condiciones y en la organizaciónde créditos y colocaciones de acciones y obligaciones en el mercado financierocon el fin de obtener capital para los clientes;- registrar y transmitir órdenes de adquisición y venta de órdenes de títulosvalores, acciones, obligaciones u otros instrumentos financieros, así como<span class="excerpt"><span style="display:none;">dedivisas para su entrega futura o inmediata.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS COMERCIALES EN ENTIDAD FINANCIERA</h4>');$('#info').append('<p class="descripcion">Los agentes de bolsa, cambio y otros servicios financieros adquieren y venden títulos valores, acciones, obligaciones y otros instrumentos<div class="excerpt"><div hidden><span>financieros, negocian divisas al contado o en mercados de futuros, en nombre de su empresa o para clientes a comisión, y recomiendan transacciones a clientes o miembros de la alta dirección. 163 Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> obtener información sobre las circunstancias financieras de los clientes y las empresas en que pueden hacerse las inversiones</li><li class="list-group-item"> analizar las tendencias del mercado en materia de títulos valores, obligaciones, acciones y otros instrumentos financieros, incluidas las divisas</li><li class="list-group-item"> informar a posibles clientes de las condiciones y las perspectivas del mercado</li><li class="list-group-item"> asesorar y participar en la negociación de las condiciones y en la organización de créditos y colocaciones de acciones y obligaciones en el mercado financiero con el fin de obtener capital para los clientes</li><li class="list-group-item"> registrar y transmitir órdenes de adquisición y venta de órdenes de títulos valores, acciones, obligaciones u otros instrumentos financieros, así como de divisas para su entrega futura o inmediata.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

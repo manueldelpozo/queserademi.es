@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Trabajadores de ganado ovino y caprino | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Trabajadores de ganado ovino y caprino">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Trabajadores de ganado ovino y caprino</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14640, 21000, 25428];
 var seriesSalJunior     = [16416, 23292, 28092];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TRABAJADORES DE GANADO OVINO Y CAPRINO</h4>');$('#info').append('<p class="descripcion">Estos trabajadores planifican, organizan y realizan operaciones de cría y cuidadode ganado ovino y caprino, para la producción de carne, leche y otros productoslácteos, las pieles y la lana. La producción se destina, principal o exclusivamente,a la comercialización a través de mayoristas, organizaciones comerciales o mercados.Entre sus tareas se incluyen:- efectuar el seguimiento de la actividad y las condiciones del mercado, determinarlos tipos y cantidades de existencias para ser producidas, planificary coordinación la producción consiguiente;- mantener los pastos y controlar el suministro de forraje y de agua para mantenerel ganado en estado y niveles de nutrición apropiados;- vigilar y examinar animales para detectar enfermedades, lesiones o dolencias,y comprobar su condición física, tal como la tasa de aumento de peso;- asear, marcar, recorte, adornar, empapar y / o castrar los animales y esquilarsu pelaje para recoger la lana;- sacar el ganado a pastar y conducirlo a establos, vehículos, u otros<span class="excerpt"><span style="display:none;">recintos;- ordeñar animales a mano o utilizando máquinas de ordeñe;- mezclar piensos, aditivos y medicamentos en porciones prescritas y distribuirlas,o alimentar a los animales a mano para su consumo;- desempeñar tareas relacionadas con la reproducción de ganado, tales comola procreación, la inseminación artificial, y ayuda en el nacimiento de losanimales;- mantener y limpiar las edificaciones de la explotación, la maquinaria, elequipamiento y estructuras;- sacrificar y desollar animales y prepararlos para el mercado;- almacenar y llevar a cabo algunos procesamientos de productos animales ylácteos;- promover y comercializar productos, organizar la compra, venta y transportede ganado, productos y suministros y mantener y evaluar registros de las actividadesy transacciones;- capacitar y supervisar a los trabajadores en los procedimientos de cuidadode los animales, en tareas de mantenimiento, y tomar precauciones de saludy seguridad y contra</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TRABAJADORES DE GANADO OVINO Y CAPRINO</h4>');$('#info').append('<p class="descripcion">Estos trabajadores planifican, organizan y realizan operaciones de cría y cuidado de ganado ovino y caprino, para la producción<div class="excerpt"><div hidden><span>de carne, leche y otros productos lácteos, las pieles y la lana. La producción se destina, principal o exclusivamente, a la comercialización a través de mayoristas, organizaciones comerciales o mercados. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> efectuar el seguimiento de la actividad y las condiciones del mercado, determinar los tipos y cantidades de existencias para ser producidas, planificar y coordinación la producción consiguiente</li><li class="list-group-item"> mantener los pastos y controlar el suministro de forraje y de agua para mantener el ganado en estado y niveles de nutrición apropiados</li><li class="list-group-item"> vigilar y examinar animales para detectar enfermedades, lesiones o dolencias, y comprobar su condición física, tal como la tasa de aumento de peso</li><li class="list-group-item"> asear, marcar, recorte, adornar, empapar y / o castrar los animales y esquilar su pelaje para recoger la lana</li><li class="list-group-item"> sacar el ganado a pastar y conducirlo a establos, vehículos, u otros recintos</li><li class="list-group-item"> ordeñar animales a mano o utilizando máquinas de ordeñe</li><li class="list-group-item"> mezclar piensos, aditivos y medicamentos en porciones prescritas y distribuirlas, o alimentar a los animales a mano para su consumo</li><li class="list-group-item"> desempeñar tareas relacionadas con la reproducción de ganado, tales como la procreación, la inseminación artificial, y ayuda en el nacimiento de los animales</li><li class="list-group-item"> mantener y limpiar las edificaciones de la explotación, la maquinaria, el equipamiento y estructuras</li><li class="list-group-item"> sacrificar y desollar animales y prepararlos para el mercado</li><li class="list-group-item"> almacenar y llevar a cabo algunos procesamientos de productos animales y lácteos</li><li class="list-group-item"> promover y comercializar productos, organizar la compra, venta y transporte de ganado, productos y suministros y mantener y evaluar registros de las actividades y transacciones</li><li class="list-group-item"> capacitar y supervisar a los trabajadores en los procedimientos de cuidado de los animales, en tareas de mantenimiento, y tomar precauciones de salud y seguridad y contra</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

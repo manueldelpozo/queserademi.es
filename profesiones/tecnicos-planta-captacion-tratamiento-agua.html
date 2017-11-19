@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos de planta de captación y/o tratamiento de agua | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos de planta de captación y/o tratamiento de agua">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos de planta de captación y/o tratamiento de agua</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17868, 21216, 23544];
 var seriesSalJunior     = [21576, 24732, 26940];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS DE PLANTA DE CAPTACIÓN Y/O TRATAMIENTO DE AGUA</h4>');$('#info').append('<p class="descripcion">Los técnicos en instalaciones de tratamiento de residuos, de aguas y otros operadoresen plantas similares vigilan y manejan los sistemas informatizados decontrol y los equipos afines de las instalaciones de tratamiento de residuos sólidosy líquidos para regular el tratamiento y eliminación de éstos, y de las instalacionesde filtración y tratamiento de agua para regular el tratamiento y la distribuciónde ésta.Entre sus tareas se incluyen:- manejar y vigilar los sistemas informatizados de control, la maquinaria y losequipos fines de las instalaciones de tratamiento de aguas residuales y deresiduos líquidos para regular el flujo, tratamiento y eliminación de éstos, yde las instalaciones de filtración y tratamiento del agua para regular el tratamientoy distribución de ésta para consumo humano y para su eliminaciónfinal en sistema acuáticos naturales;- controlar el funcionamiento de los hornos y equipos de las incineradoras enlas instalaciones de tratamiento de residuos sólidos;- inspeccionar los equipos y vigilar sus condiciones<span class="excerpt"><span style="display:none;">de funcionamiento, asícomo los contadores, filtros, dispositivos de cloración y calibres de la salacentral de control para determinar los requisitos de carga, verificar que loscaudales, presiones y temperaturas se mantienen dentro de las especificacionesde mal funcionamiento;- vigilar y ajustar los mandos de los equipos auxiliares, como los conductos deevacuación de emisiones, las torres de lavado y las unidades de recuperacióndel calor de la incineradora;- reunir muestras de agua y de residuos sólidos y someterlas a ensayo paradeterminar su contenido químico y bacteriano, usando equipos de ensayo ypatrones para análisis cromático;- analizar los resultados de los ensayos con objeto de introducir ajustes en losequipos y sistemas de la instalación para desinfectar los residuos y eliminarolores;- realizar comprobaciones de seguridad en las instalaciones y en el recinto;- cumplimentar y mantener registros e informes.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS DE PLANTA DE CAPTACIÓN Y/O TRATAMIENTO DE AGUA</h4>');$('#info').append('<p class="descripcion">Los técnicos en instalaciones de tratamiento de residuos, de aguas y otros operadores en plantas similares vigilan y manejan<div class="excerpt"><div hidden><span>los sistemas informatizados de control y los equipos afines de las instalaciones de tratamiento de residuos sólidos y líquidos para regular el tratamiento y eliminación de éstos, y de las instalaciones de filtración y tratamiento de agua para regular el tratamiento y la distribución de ésta. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> manejar y vigilar los sistemas informatizados de control, la maquinaria y los equipos fines de las instalaciones de tratamiento de aguas residuales y de residuos líquidos para regular el flujo, tratamiento y eliminación de éstos, y de las instalaciones de filtración y tratamiento del agua para regular el tratamiento y distribución de ésta para consumo humano y para su eliminación final en sistema acuáticos naturales</li><li class="list-group-item"> controlar el funcionamiento de los hornos y equipos de las incineradoras en las instalaciones de tratamiento de residuos sólidos</li><li class="list-group-item"> inspeccionar los equipos y vigilar sus condiciones de funcionamiento, así como los contadores, filtros, dispositivos de cloración y calibres de la sala central de control para determinar los requisitos de carga, verificar que los caudales, presiones y temperaturas se mantienen dentro de las especificaciones de mal funcionamiento</li><li class="list-group-item"> vigilar y ajustar los mandos de los equipos auxiliares, como los conductos de evacuación de emisiones, las torres de lavado y las unidades de recuperación del calor de la incineradora</li><li class="list-group-item"> reunir muestras de agua y de residuos sólidos y someterlas a ensayo para determinar su contenido químico y bacteriano, usando equipos de ensayo y patrones para análisis cromático</li><li class="list-group-item"> analizar los resultados de los ensayos con objeto de introducir ajustes en los equipos y sistemas de la instalación para desinfectar los residuos y eliminar olores</li><li class="list-group-item"> realizar comprobaciones de seguridad en las instalaciones y en el recinto</li><li class="list-group-item"> cumplimentar y mantener registros e informes.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

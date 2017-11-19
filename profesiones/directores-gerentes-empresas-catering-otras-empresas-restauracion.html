@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Directores y gerentes de empresas de catering y otras empresas de restauración | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Directores y gerentes de empresas de catering y otras empresas de restauración">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Directores y gerentes de empresas de catering y otras empresas de restauración</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES Y GERENTES DE EMPRESAS DE CATERING Y OTRAS EMPRESAS DE RESTAURACIÓN</h4>');$('#info').append('<p class="descripcion">Los directores y gerentes de empresas de catering y otras empresas de restauraciónplanifican, organizan y dirigen las actividades de prestación de servicios decomedor y de comidas preparadas de empresas de catering y empresas de restauraciónafines.Entre sus tareas se incluyen:- planificar los menús en consulta con los chefs y cocineros;- planificar y organizar reuniones especiales;- organizar la compra y el precio de los productos de acuerdo con el presupuesto;- mantener registros de los niveles de existencias y de las operaciones financieras;- velar por que los comedores, cocinas e instalaciones de conservación de alimentoscumplan los reglamentos sanitarios y estén limpios, sean funcionalesy presenten un aspecto adecuado;- mantener contactos con los clientes para evaluar su satisfacción con las comidasy con el servicio;- seleccionar a los camareros y al personal de cocina, fijar sus horarios detrabajo y ocuparse de su formación y supervisión;- hacer las reservas, recibir a los clientes y ayudarles a<span class="excerpt"><span style="display:none;">hacer los pedidos;- negociar acuerdos con los clientes y los proveedores;- velar por el cumplimiento de los reglamentos sobre salud y seguridad en eltrabajo.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES Y GERENTES DE EMPRESAS DE CATERING Y OTRAS EMPRESAS DE RESTAURACIÓN</h4>');$('#info').append('<p class="descripcion">Los directores y gerentes de empresas de catering y otras empresas de restauración planifican, organizan y dirigen las actividades<div class="excerpt"><div hidden><span>de prestación de servicios de comedor y de comidas preparadas de empresas de catering y empresas de restauración afines. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> planificar los menús en consulta con los chefs y cocineros</li><li class="list-group-item"> planificar y organizar reuniones especiales</li><li class="list-group-item"> organizar la compra y el precio de los productos de acuerdo con el presupuesto</li><li class="list-group-item"> mantener registros de los niveles de existencias y de las operaciones financieras</li><li class="list-group-item"> velar por que los comedores, cocinas e instalaciones de conservación de alimentos cumplan los reglamentos sanitarios y estén limpios, sean funcionales y presenten un aspecto adecuado</li><li class="list-group-item"> mantener contactos con los clientes para evaluar su satisfacción con las comidas y con el servicio</li><li class="list-group-item"> seleccionar a los camareros y al personal de cocina, fijar sus horarios de trabajo y ocuparse de su formación y supervisión</li><li class="list-group-item"> hacer las reservas, recibir a los clientes y ayudarles a hacer los pedidos</li><li class="list-group-item"> negociar acuerdos con los clientes y los proveedores</li><li class="list-group-item"> velar por el cumplimiento de los reglamentos sobre salud y seguridad en el trabajo.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Gerentes de centros deportivos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Gerentes de centros deportivos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Gerentes de centros deportivos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [19560, 21288, 22500];
 var seriesSalJunior     = [22980, 24240, 25164];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">GERENTES DE CENTROS DEPORTIVOS</h4>');$('#info').append('<p class="descripcion">Los directores y gerentes de empresas de actividades recreativas, culturales ydeportivas planifican, organizan y controlan las actividades de establecimientosque prestan servicios deportivos, artísticos, teatrales y otros recreativos y deocio.Entre sus tareas se incluyen:- planificar y organizar la variedad y combinación de los servicios de entretenimiento,de ocio y culturales y de los programas de gimnasia y de deportesque vaya a ofrecer el centro;- velar por que las instalaciones se mantengan limpias y en buen estado;- mantenerse al tanto de las nuevas tendencias y cambios en las artes creativasy organizar producciones teatrales y actuaciones de bandas y orquestas;- asesorar sobre las instalaciones disponibles y publicitar los actos, espectáculosy actividades;- comprobar y custodiar los recibos de caja y hacer comprobaciones regularesde las existencias;- establecer y gestionar presupuestos, controlar los gastos y asegurar la utilizacióneficiente de los recursos;- planificar y dirigir el trabajo diario;- controlar la selección, supervisión y rendimiento del personal;- velar<span class="excerpt"><span style="display:none;">por el cumplimiento de los reglamentos sobre salud y seguridad.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">GERENTES DE CENTROS DEPORTIVOS</h4>');$('#info').append('<p class="descripcion">Los directores y gerentes de empresas de actividades recreativas, culturales y deportivas planifican, organizan y controlan las actividades de<div class="excerpt"><div hidden><span>establecimientos que prestan servicios deportivos, artísticos, teatrales y otros recreativos y de ocio. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> planificar y organizar la variedad y combinación de los servicios de entretenimiento, de ocio y culturales y de los programas de gimnasia y de deportes que vaya a ofrecer el centro</li><li class="list-group-item"> velar por que las instalaciones se mantengan limpias y en buen estado</li><li class="list-group-item"> mantenerse al tanto de las nuevas tendencias y cambios en las artes creativas y organizar producciones teatrales y actuaciones de bandas y orquestas</li><li class="list-group-item"> asesorar sobre las instalaciones disponibles y publicitar los actos, espectáculos y actividades</li><li class="list-group-item"> comprobar y custodiar los recibos de caja y hacer comprobaciones regulares de las existencias</li><li class="list-group-item"> establecer y gestionar presupuestos, controlar los gastos y asegurar la utilización eficiente de los recursos</li><li class="list-group-item"> planificar y dirigir el trabajo diario</li><li class="list-group-item"> controlar la selección, supervisión y rendimiento del personal</li><li class="list-group-item"> velar por el cumplimiento de los reglamentos sobre salud y seguridad.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

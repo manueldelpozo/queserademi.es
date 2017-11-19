@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Dependientes propietarios de puestos de mercado permanente | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Dependientes propietarios de puestos de mercado permanente">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Dependientes propietarios de puestos de mercado permanente</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12420, 17268, 20628];
 var seriesSalJunior     = [14688, 19716, 23256];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DEPENDIENTES PROPIETARIOS DE PUESTOS DE MERCADO PERMANENTE</h4>');$('#info').append('<p class="descripcion">Los comerciantes propietarios de tiendas explotan tiendas de venta al por menorpor sí solos o con ayuda de un reducido número de personas.Nota: Únicamente deben clasificarse en el grupo primario 5300, Comerciantespropietarios de tiendas, quienes exploten pequeñas tiendas y no tengan la gestióndel establecimiento y la supervisión de personal como componentes significativasde su trabajo.Quienes exploten tiendas, aunque tengan la atención al público, si la gestión delestablecimiento y supervisión del personal es componente significativa y frecuentede su trabajo entonces deben clasificarse en el grupo primario 1432, Directoresy gerentes de empresas de comercio al por menor.El personal que controle y dirija las actividades de asistentes de ventas de tiendasy almacenes, operadores de caja y otros empleados, pero no tenga tareas degerencia debe clasificarse en el grupo primario 5210, Jefes de sección de tiendasy almacenes.218Entre sus tareas se incluyen:- determinar la combinación de productos que van a venderse, sus existenciasy los niveles<span class="excerpt"><span style="display:none;">de precios;- hacer pedidos de productos para la venta, y comprarlos, en mercados, a mayoristaso a otros proveedores;- hacer presupuestos y mantener registros de los niveles de existencias y delas operaciones financieras;- determinar los precios de los productos y exponerlos para su venta;- vender productos a los clientes y asesorarles sobre su uso;- examinar los productos devueltos y decidir sobre la actuación adecuada;- hacer inventario de los productos en existencias.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DEPENDIENTES PROPIETARIOS DE PUESTOS DE MERCADO PERMANENTE</h4>');$('#info').append('<p class="descripcion">Los comerciantes propietarios de tiendas explotan tiendas de venta al por menor por sí solos o con ayuda de<div class="excerpt"><div hidden><span>un reducido número de personas. Nota: Únicamente deben clasificarse en el grupo primario 5300, Comerciantes propietarios de tiendas, quienes exploten pequeñas tiendas y no tengan la gestión del establecimiento y la supervisión de personal como componentes significativas de su trabajo. Quienes exploten tiendas, aunque tengan la atención al público, si la gestión del establecimiento y supervisión del personal es componente significativa y frecuente de su trabajo entonces deben clasificarse en el grupo primario 1432, Directores y gerentes de empresas de comercio al por menor. El personal que controle y dirija las actividades de asistentes de ventas de tiendas y almacenes, operadores de caja y otros empleados, pero no tenga tareas de gerencia debe clasificarse en el grupo primario 5210, Jefes de sección de tiendas y almacenes. 218 Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> determinar la combinación de productos que van a venderse, sus existencias y los niveles de precios</li><li class="list-group-item"> hacer pedidos de productos para la venta, y comprarlos, en mercados, a mayoristas o a otros proveedores</li><li class="list-group-item"> hacer presupuestos y mantener registros de los niveles de existencias y de las operaciones financieras</li><li class="list-group-item"> determinar los precios de los productos y exponerlos para su venta</li><li class="list-group-item"> vender productos a los clientes y asesorarles sobre su uso</li><li class="list-group-item"> examinar los productos devueltos y decidir sobre la actuación adecuada</li><li class="list-group-item"> hacer inventario de los productos en existencias.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

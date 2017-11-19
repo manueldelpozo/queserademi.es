@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Agricultores olivareros | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Agricultores olivareros">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Agricultores olivareros</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13284, 20748, 25920];
 var seriesSalJunior     = [14808, 23004, 35220];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">AGRICULTORES OLIVAREROS</h4>');$('#info').append('<p class="descripcion">Estos agricultores planifican, organizan y realizan operaciones agrícolas paracultivar y cosechar diversos tipos de cultivos extensivos (como cereales, remolacha,caña de azúcar, cacahuetes, tabaco, patatas, coles o similares); árboles (frutales,olivo, vid) y arbustos o una combinación de éstos y cultivos hortícolas. Laproducción se destina, principal o exclusivamente, a la comercialización a travésde mayoristas, organizaciones comerciales o mercados.Los trabajadores del cultivo de hortalizas en producciones intensivas seclasifican como Trabajadores cualificados en huertas, invernaderos, viveros yjardines.Entre sus tareas se incluyen:- efectuar el seguimiento de la actividad y condiciones del mercado, determinarlos tipos y superficies de cultivos, planificar y coordinar la producción;- preparar el suelo a mano o con máquinas, esparcir fertilizantes y estiércol;- seleccionar y sembrar semillas, y plantar las plántulas y plantones;- realizar las labores de cultivo: laboreo de la tierra, trasplantes, podas, aclaradode plantas, árboles y arbustos, puesta en funcionamiento y operación deequipos de riego;- controlar malas hierbas, plagas y<span class="excerpt"><span style="display:none;">enfermedades, mediante la aplicación deherbicidas y plaguicidas;- cosechar cultivos y destruir cultivos enfermos o excedentes; cuidar árboles oarbustos, recolectar savia;- inspeccionar, limpiar, clasificar, envasar, almacenar y cargar los cultivos parala venta o entrega al mercado;- cuidar animales de labor y mantener las edificaciones de la explotación, susestructuras, equipamientos y sistemas de riego y abastecimiento de agua;- almacenar y llevar a cabo algunos procesamientos de los productos;- promocionar y comercializar productos, organizar la venta, comprar y transportarproductos y suministros;- mantener registros de las actividades y las transacciones agrícolas y valorar250las;- formar y supervisar a trabajadores en la producción de cultivos, en tareas demantenimiento y la seguridad en el trabajo;- c</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">AGRICULTORES OLIVAREROS</h4>');$('#info').append('<p class="descripcion">Estos agricultores planifican, organizan y realizan operaciones agrícolas para cultivar y cosechar diversos tipos de cultivos extensivos (como cereales,<div class="excerpt"><div hidden><span>remolacha, caña de azúcar, cacahuetes, tabaco, patatas, coles o similares); árboles (frutales, olivo, vid) y arbustos o una combinación de éstos y cultivos hortícolas. La producción se destina, principal o exclusivamente, a la comercialización a través de mayoristas, organizaciones comerciales o mercados. Los trabajadores del cultivo de hortalizas en producciones intensivas se clasifican como Trabajadores cualificados en huertas, invernaderos, viveros y jardines. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> efectuar el seguimiento de la actividad y condiciones del mercado, determinar los tipos y superficies de cultivos, planificar y coordinar la producción</li><li class="list-group-item"> preparar el suelo a mano o con máquinas, esparcir fertilizantes y estiércol</li><li class="list-group-item"> seleccionar y sembrar semillas, y plantar las plántulas y plantones</li><li class="list-group-item"> realizar las labores de cultivo: laboreo de la tierra, trasplantes, podas, aclarado de plantas, árboles y arbustos, puesta en funcionamiento y operación de equipos de riego</li><li class="list-group-item"> controlar malas hierbas, plagas y enfermedades, mediante la aplicación de herbicidas y plaguicidas</li><li class="list-group-item"> cosechar cultivos y destruir cultivos enfermos o excedentes; cuidar árboles o arbustos, recolectar savia</li><li class="list-group-item"> inspeccionar, limpiar, clasificar, envasar, almacenar y cargar los cultivos para la venta o entrega al mercado</li><li class="list-group-item"> cuidar animales de labor y mantener las edificaciones de la explotación, sus estructuras, equipamientos y sistemas de riego y abastecimiento de agua</li><li class="list-group-item"> almacenar y llevar a cabo algunos procesamientos de los productos</li><li class="list-group-item"> promocionar y comercializar productos, organizar la venta, comprar y transportar productos y suministros</li><li class="list-group-item"> mantener registros de las actividades y las transacciones agrícolas y valorar250 las</li><li class="list-group-item"> formar y supervisar a trabajadores en la producción de cultivos, en tareas de mantenimiento y la seguridad en el trabajo</li><li class="list-group-item"> c</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

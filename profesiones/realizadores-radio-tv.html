@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Realizadores de radio o tv | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Realizadores de radio o tv">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Realizadores de radio o tv</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [16224, 21864, 25824];
 var seriesSalJunior     = [19320, 25212, 29340];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">REALIZADORES DE RADIO O TV</h4>');$('#info').append('<p class="descripcion">Los directores de cine, de teatro y afines supervisan y controlan los aspectostécnicos y artísticos de las películas cinematográficas, las producciones de radioy televisión y las representaciones teatrales.Entre sus tareas se incluyen:- elegir a los guionistas, examinar los guiones para concretar su interpretaciónartística y dar instrucciones a los actores sobre los métodos de actuación;- dirigir todos los aspectos de las producciones de cine, teatro, radio o televisión,incluida la elección de los actores, y tomar las decisiones definitivas sobreel vestuario, la escenografía o los efectos de sonido y de luz;- planificar, organizar y controlar las diversas etapas implícitas en las representacionesteatrales, las producciones cinematográficas, los espectáculos de televisióny los programas de radio;- contratar y supervisar al personal técnico y determinar el planteamiento, alcancey calendario de la producción;- mantener archivos de la producción y negociar los cánones de propiedadintelectual;- crear, planificar y redactar guiones para programas de grabación sonora,grabación en video<span class="excerpt"><span style="display:none;">y edición de imagen;- supervisar la posición de los decorados, del atrezzo y de los equipos de luz yde sonido.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">REALIZADORES DE RADIO O TV</h4>');$('#info').append('<p class="descripcion">Los directores de cine, de teatro y afines supervisan y controlan los aspectos técnicos y artísticos de las películas<div class="excerpt"><div hidden><span>cinematográficas, las producciones de radio y televisión y las representaciones teatrales. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> elegir a los guionistas, examinar los guiones para concretar su interpretación artística y dar instrucciones a los actores sobre los métodos de actuación</li><li class="list-group-item"> dirigir todos los aspectos de las producciones de cine, teatro, radio o televisión, incluida la elección de los actores, y tomar las decisiones definitivas sobre el vestuario, la escenografía o los efectos de sonido y de luz</li><li class="list-group-item"> planificar, organizar y controlar las diversas etapas implícitas en las representaciones teatrales, las producciones cinematográficas, los espectáculos de televisión y los programas de radio</li><li class="list-group-item"> contratar y supervisar al personal técnico y determinar el planteamiento, alcance y calendario de la producción</li><li class="list-group-item"> mantener archivos de la producción y negociar los cánones de propiedad intelectual</li><li class="list-group-item"> crear, planificar y redactar guiones para programas de grabación sonora, grabación en video y edición de imagen</li><li class="list-group-item"> supervisar la posición de los decorados, del atrezzo y de los equipos de luz y de sonido.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

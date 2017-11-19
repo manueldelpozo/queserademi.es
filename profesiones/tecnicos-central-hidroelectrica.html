@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos de central hidroeléctrica | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos de central hidroeléctrica">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos de central hidroeléctrica</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17868, 21216, 23544];
 var seriesSalJunior     = [21576, 24732, 26940];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS DE CENTRAL HIDROELÉCTRICA</h4>');$('#info').append('<p class="descripcion">Los técnicos en instalaciones de producción de energía manejan, vigilan y supervisanlos cuadros de mando y los equipos eléctricos afines de los centros decontrol de la producción y distribución de energía eléctrica o de energía de otrotipo en las redes de transmisión. Entre esos equipos se incluyen los reactores,turbinas, generadores y otros equipos auxiliares de las centrales eléctricas.Entre sus tareas se incluyen:- manejar, vigilar e inspeccionar distintos tipos de instalaciones de producciónde energía;- manejar y controlar los sistemas y equipos de generación de energía, incluidaslas calderas, turbinas, generadores, condensadores y reactores de lascentrales hidráulicas, térmicas, nucleares o accionadas por carbón, por petróleoo por gas natural para la generación y distribución de energía eléctrica;- controlar el arranque y parada de los equipos de la central, controlar losmandos, regular los niveles de agua y comunicar a los operadores del sistemade necesidad de regular y coordinar las cargas, frecuencias y tensionesde línea;-<span class="excerpt"><span style="display:none;">tomar lecturas de los gráficos, contadores y calibres a los intervalos establecidos,localizar las averías y adoptar las medidas correctivas necesarias;- cumplimentar y mantener los registros e informes establecidos, y comunicarlosal personal restante para la evaluación del estado de funcionamiento delos equipos;- ocuparse de la limpieza y mantenimiento de equipos como las calderas, turbinas,bombas y compresores para impedir su avería o deterioro.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS DE CENTRAL HIDROELÉCTRICA</h4>');$('#info').append('<p class="descripcion">Los técnicos en instalaciones de producción de energía manejan, vigilan y supervisan los cuadros de mando y los equipos<div class="excerpt"><div hidden><span>eléctricos afines de los centros de control de la producción y distribución de energía eléctrica o de energía de otro tipo en las redes de transmisión. Entre esos equipos se incluyen los reactores, turbinas, generadores y otros equipos auxiliares de las centrales eléctricas. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> manejar, vigilar e inspeccionar distintos tipos de instalaciones de producción de energía</li><li class="list-group-item"> manejar y controlar los sistemas y equipos de generación de energía, incluidas las calderas, turbinas, generadores, condensadores y reactores de las centrales hidráulicas, térmicas, nucleares o accionadas por carbón, por petróleo o por gas natural para la generación y distribución de energía eléctrica</li><li class="list-group-item"> controlar el arranque y parada de los equipos de la central, controlar los mandos, regular los niveles de agua y comunicar a los operadores del sistema de necesidad de regular y coordinar las cargas, frecuencias y tensiones de línea</li><li class="list-group-item"> tomar lecturas de los gráficos, contadores y calibres a los intervalos establecidos, localizar las averías y adoptar las medidas correctivas necesarias</li><li class="list-group-item"> cumplimentar y mantener los registros e informes establecidos, y comunicarlos al personal restante para la evaluación del estado de funcionamiento de los equipos</li><li class="list-group-item"> ocuparse de la limpieza y mantenimiento de equipos como las calderas, turbinas, bombas y compresores para impedir su avería o deterioro.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

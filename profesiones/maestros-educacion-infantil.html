@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Maestros de educación infantil | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Maestros de educación infantil">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Maestros de educación infantil</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [10716, 16848, 21120];
 var seriesSalJunior     = [12636, 19248, 23868];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MAESTROS DE EDUCACIÓN INFANTIL</h4>');$('#info').append('<p class="descripcion">Los maestros educación infantil promueven el desarrollo social, físico e intelectual delos niños que no han cumplido aún la edad escolar mediante actividades educativas yde juego.Entre sus tareas se incluyen:- planificar y organizar actividades individuales y de grupo para facilitar el desarrollode las destrezas motoras, de cooperación y sociales de los niños, suconfianza en sí mismos y su comprensión;- promover la facilidad de expresión de los niños narrando cuentos y organizandosesiones de simulación de papeles o teatro infantil, recitación de poemaspara niños, danzas y canciones infantiles, conversación y discusión;- dirigir a los niños en actividades que favorezcan las oportunidades de expresióncreativa a través de las artes, la representación teatral, la música y labuena forma física;- observar a los niños para evaluar su progreso y detectar posibles signos deproblemas de desarrollo, emocionales o de salud;- observar y evaluar las necesidades nutricionales, de bienestar y de seguridadde los niños e identificar<span class="excerpt"><span style="display:none;">los factores que impidan su progreso;- supervisar a los niños durante sus actividades para garantizar su seguridad yresolver los conflictos que puedan acaecer;- orientar y ayudar a los niños a desarrollar hábitos adecuados de comida, vestidoy limpieza;- examinar los progresos o los problemas de los niños con los padres y conlos demás miembros del personal, y establecer actuaciones adecuadas y, ensu caso, remisiones a otros servicios;- establecer y mantener una relación de colaboración con otros prestadores deservicios que trabajen con niños pequeños.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MAESTROS DE EDUCACIÓN INFANTIL</h4>');$('#info').append('<p class="descripcion">Los maestros educación infantil promueven el desarrollo social, físico e intelectual de los niños que no han cumplido aún<div class="excerpt"><div hidden><span>la edad escolar mediante actividades educativas y de juego. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> planificar y organizar actividades individuales y de grupo para facilitar el desarrollo de las destrezas motoras, de cooperación y sociales de los niños, su confianza en sí mismos y su comprensión</li><li class="list-group-item"> promover la facilidad de expresión de los niños narrando cuentos y organizando sesiones de simulación de papeles o teatro infantil, recitación de poemas para niños, danzas y canciones infantiles, conversación y discusión</li><li class="list-group-item"> dirigir a los niños en actividades que favorezcan las oportunidades de expresión creativa a través de las artes, la representación teatral, la música y la buena forma física</li><li class="list-group-item"> observar a los niños para evaluar su progreso y detectar posibles signos de problemas de desarrollo, emocionales o de salud</li><li class="list-group-item"> observar y evaluar las necesidades nutricionales, de bienestar y de seguridad de los niños e identificar los factores que impidan su progreso</li><li class="list-group-item"> supervisar a los niños durante sus actividades para garantizar su seguridad y resolver los conflictos que puedan acaecer</li><li class="list-group-item"> orientar y ayudar a los niños a desarrollar hábitos adecuados de comida, vestido y limpieza</li><li class="list-group-item"> examinar los progresos o los problemas de los niños con los padres y con los demás miembros del personal, y establecer actuaciones adecuadas y, en su caso, remisiones a otros servicios</li><li class="list-group-item"> establecer y mantener una relación de colaboración con otros prestadores de servicios que trabajen con niños pequeños.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

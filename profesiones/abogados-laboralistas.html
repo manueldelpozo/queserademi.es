@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Abogados laboralistas | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Abogados laboralistas">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Abogados laboralistas</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [19980, 25644, 29616];
 var seriesSalJunior     = [23292, 29040, 33852];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ABOGADOS LABORALISTAS</h4>');$('#info').append('<p class="descripcion">Los abogados brindan asesoramiento jurídico a sus clientes sobre múltiples cuestiones de Derecho, redactan documentos jurídicos, representan a sus clientes ante órganos administrativos o jurisdiccionales o defienden asuntos o realizan acusaciones ante tribunales de justicia, o dan instrucciones a otros abogados para que actúen ante tribunales de orden superior.Entre sus tareas se incluyen: brindar asesoramiento sobre una amplia variedad de cuestiones de Derecho y realizar actuaciones jurídicas en nombre de sus clientes; investigar la posible aplicación de principios del Derecho, disposiciones legales y resoluciones judiciales a asuntos concretos; utilizar medios de prueba tales como el interrogatorio a los clientes o a testigos para determinar las circunstancias de un asunto, a fin de contestar a demandas; evaluar los resultados obtenidos y elaborar estrategias y argumentos para preparar la presentación de los asuntos; representar a sus clientes ante los órganos administrativos y jurisdiccionales y dar instrucciones a otros abogados para que<span class="excerpt"><span style="display:none;">les representen ante los tribunales de orden superior; aceptar instrucciones y representar a sus clientes ante los tribunales de orden superior; negociar acuerdos en casos de conflicto jurídico; redactar anteproyectos de leyes y reglamentos basados en la legislación en vigor; redactar documentos jurídicos tales como contratos, documentos de operaciones inmobiliarias y testamentos, y preparar dictámenes jurídicos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ABOGADOS LABORALISTAS</h4>');$('#info').append('<p class="descripcion">Los abogados brindan asesoramiento jurídico a sus clientes sobre múltiples cuestiones de Derecho, redactan documentos jurídicos, representan a sus<div class="excerpt"><div hidden>clientes ante órganos administrativos o jurisdiccionales o defienden asuntos o realizan acusaciones ante tribunales de justicia, o dan instrucciones a otros abogados para que actúen ante tribunales de orden superior. Entre sus tareas se incluyen: brindar asesoramiento sobre una amplia variedad de cuestiones de Derecho y realizar actuaciones jurídicas en nombre de sus clientes; investigar la posible aplicación de principios del Derecho, disposiciones legales y resoluciones judiciales a asuntos concretos; utilizar medios de prueba tales como el interrogatorio a los clientes o a testigos para determinar las circunstancias de un asunto, a fin de contestar a demandas; evaluar los resultados obtenidos y elaborar estrategias y argumentos para preparar la presentación de los asuntos; representar a sus clientes ante los órganos administrativos y jurisdiccionales y dar instrucciones a otros abogados para que les representen ante los tribunales de orden superior; aceptar instrucciones y representar a sus clientes ante los tribunales de orden superior; negociar acuerdos en casos de conflicto jurídico; redactar anteproyectos de leyes y reglamentos basados en la legislación en vigor; redactar documentos jurídicos tales como contratos, documentos de operaciones inmobiliarias y testamentos, y preparar dictámenes jurídicos.</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Directores de otros servicios sociales | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Directores de otros servicios sociales">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Directores de otros servicios sociales</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [25704, 33240, 38520];
 var seriesSalJunior     = [28884, 37188, 42996];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE OTROS SERVICIOS SOCIALES</h4>');$('#info').append('<p class="descripcion">Los directores de otros servicios sociales planifican, dirigen y coordinan la prestaciónde servicios sociales y comunitarios, como los de ayuda a las rentas, losde asistencia familiar, los de servicios para niños y los demás programas comunitarios.Entre sus tareas se incluyen:- establecer la orientación general de un servicio, organización o centro y atendera su gestión;- elaborar, aplicar y supervisar procedimientos, políticas y normas para el personal;- supervisar y evaluar los recursos asignados a la prestación de servicios debienestar, de vivienda y demás de carácter social;- controlar actividades administrativas tales como la planificación presupuestaria,la preparación de informes y la asunción de gastos por suministros,equipos y servicios;- mantener contactos con otros proveedores de servicios de bienestar y de salud,órganos directivos y entidades que aporten financiación, para examinarámbitos de cooperación y coordinación en relación con dichos servicios;- asesorar a los órganos de la administración pública sobre la adopción demedidas para mejorar los servicios<span class="excerpt"><span style="display:none;">y centros de bienestar;- representar a la organización en negociaciones y en convenciones, seminarios,audiencias públicas y foros;- establecer y gestionar presupuestos, controlar los gastos y asegurar la utilizacióneficiente de los recursos;- establecer y dirigir los procedimientos operativos y administrativos;- controlar la selección, formación y rendimiento del personal;- representar a la organización en convenciones, seminarios y conferencias.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE OTROS SERVICIOS SOCIALES</h4>');$('#info').append('<p class="descripcion">Los directores de otros servicios sociales planifican, dirigen y coordinan la prestación de servicios sociales y comunitarios, como los<div class="excerpt"><div hidden><span>de ayuda a las rentas, los de asistencia familiar, los de servicios para niños y los demás programas comunitarios. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> establecer la orientación general de un servicio, organización o centro y atender a su gestión</li><li class="list-group-item"> elaborar, aplicar y supervisar procedimientos, políticas y normas para el personal</li><li class="list-group-item"> supervisar y evaluar los recursos asignados a la prestación de servicios de bienestar, de vivienda y demás de carácter social</li><li class="list-group-item"> controlar actividades administrativas tales como la planificación presupuestaria, la preparación de informes y la asunción de gastos por suministros, equipos y servicios</li><li class="list-group-item"> mantener contactos con otros proveedores de servicios de bienestar y de salud, órganos directivos y entidades que aporten financiación, para examinar ámbitos de cooperación y coordinación en relación con dichos servicios</li><li class="list-group-item"> asesorar a los órganos de la administración pública sobre la adopción de medidas para mejorar los servicios y centros de bienestar</li><li class="list-group-item"> representar a la organización en negociaciones y en convenciones, seminarios, audiencias públicas y foros</li><li class="list-group-item"> establecer y gestionar presupuestos, controlar los gastos y asegurar la utilización eficiente de los recursos</li><li class="list-group-item"> establecer y dirigir los procedimientos operativos y administrativos</li><li class="list-group-item"> controlar la selección, formación y rendimiento del personal</li><li class="list-group-item"> representar a la organización en convenciones, seminarios y conferencias.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

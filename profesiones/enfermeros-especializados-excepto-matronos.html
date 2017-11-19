@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Enfermeros especializados (excepto matronos) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Enfermeros especializados (excepto matronos)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Enfermeros especializados (excepto matronos)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [20604, 23772, 25980];
 var seriesSalJunior     = [23988, 26892, 28920];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ENFERMEROS ESPECIALIZADOS (EXCEPTO MATRONOS)</h4>');$('#info').append('<p class="descripcion">Los enfermeros especializados tratan, ayudan y atienden a personas que necesitancuidados de enfermería en los ámbitos de la salud mental, geriatría, saludfamiliar y comunitaria, salud en el trabajo, pediatría y médico-quirúrgicos.Asumen la responsabilidad de planificar y gestionar el cuidado de los pacientes,incluida la supervisión de otros profesionales de la atención sanitaria, trabajandode manera independiente o en equipo con médicos y demás profesionales en laaplicación de medidas preventivas y curativas.Nota: Los enfermeros que además de ejercer como tales, participan en la formaciónde enfermeros o en la investigación en enfermería clínica se clasifican en este grupo. Los enfermeros que participan en investigación biomédica usandoorganismos vivos y no ejercen en como enfermeros clínicos se clasifican en elgrupo primario 2421, Biólogos, botánicos, zoólogos y afines.Entre sus tareas se incluyen:- planificación, provisión y evaluación de cuidados especializados en la atenciónclínica directa en el ámbito de cada especialidad;- gestión de los cuidados y servicios de<span class="excerpt"><span style="display:none;">atención con la finalidad de aplicarlossegún los principios de equidad, efectividad y eficiencia y desarrollando estrategiasde mejora de la calidad asistencial;- promoción de la salud y prevención de la enfermedad, fundamentalmentemediante estrategias de educación para la salud y participación de los ciudadanos;- colaboración con la salud pública en el diseño de programas de educaciónpara la salud, vigilancia epidemiológica y medioambiental, y situaciones deemergencia y catástrofe;- desarrollo de actividades docentes, dirigidas tanto a las personas y familiascomo a estudiantes y otros profesionales;- utilización de la mejor evidencia científica disponible, génesis de conocimientoy difusión del ya existente.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ENFERMEROS ESPECIALIZADOS (EXCEPTO MATRONOS)</h4>');$('#info').append('<p class="descripcion">Los enfermeros especializados tratan, ayudan y atienden a personas que necesitan cuidados de enfermería en los ámbitos de la<div class="excerpt"><div hidden><span>salud mental, geriatría, salud familiar y comunitaria, salud en el trabajo, pediatría y médico-quirúrgicos. Asumen la responsabilidad de planificar y gestionar el cuidado de los pacientes, incluida la supervisión de otros profesionales de la atención sanitaria, trabajando de manera independiente o en equipo con médicos y demás profesionales en la aplicación de medidas preventivas y curativas. Nota: Los enfermeros que además de ejercer como tales, participan en la formación de enfermeros o en la investigación en enfermería clínica se clasifican en este grupo. Los enfermeros que participan en investigación biomédica usando organismos vivos y no ejercen en como enfermeros clínicos se clasifican en el grupo primario 2421, Biólogos, botánicos, zoólogos y afines. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> planificación, provisión y evaluación de cuidados especializados en la atención clínica directa en el ámbito de cada especialidad</li><li class="list-group-item"> gestión de los cuidados y servicios de atención con la finalidad de aplicarlos según los principios de equidad, efectividad y eficiencia y desarrollando estrategias de mejora de la calidad asistencial</li><li class="list-group-item"> promoción de la salud y prevención de la enfermedad, fundamentalmente mediante estrategias de educación para la salud y participación de los ciudadanos</li><li class="list-group-item"> colaboración con la salud pública en el diseño de programas de educación para la salud, vigilancia epidemiológica y medioambiental, y situaciones de emergencia y catástrofe</li><li class="list-group-item"> desarrollo de actividades docentes, dirigidas tanto a las personas y familias como a estudiantes y otros profesionales</li><li class="list-group-item"> utilización de la mejor evidencia científica disponible, génesis de conocimiento y difusión del ya existente.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

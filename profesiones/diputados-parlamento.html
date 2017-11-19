@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Diputados al parlamento | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Diputados al parlamento">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Diputados al parlamento</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [21600, 27120, 30972];
 var seriesSalJunior     = [24480, 30588, 34860];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIPUTADOS AL PARLAMENTO</h4>');$('#info').append('<p class="descripcion">Los miembros del poder ejecutivo (nacional, autonómico y local) y del poder legislativodefinen, formulan y orientan la política del gobierno nacional, regional,provincial o municipal, así como de los organismos gubernamentales internacionales,y elaboran, ratifican, modifican o derogan leyes y reglamentos. Se incluyenen ellos miembros electos y no electos de parlamentos, concejos y gobiernos.Entre sus tareas se incluyen:- presidir los trabajos de los cuerpos legislativos y de los concejos deliberantesdel gobierno y de las asambleas legislativas de la nación, región, provincia omunicipio, y participar en dichos trabajos;- definir, formular y orientar la política del gobierno nacional, regional, provincialo municipal;- elaborar, ratificar, modificar o derogar leyes y reglamentos dentro de un marcolegislativo o constitucional;- integrar concejos deliberantes de la Administración Pública o comisiones oficiales;- examinar cuestiones de interés para el público y defender los intereses delelectorado al que representan;- asistir a actos y reuniones para prestar servicios a la comunidad, captar laopinión<span class="excerpt"><span style="display:none;">pública y facilitar información sobre los planes de la AdministraciónPública;- negociar con otros miembros del poder legislativo y representantes de gruposde interés social para conciliar intereses opuestos y establecer políticas yacuerdos;- dirigir, en su calidad de miembros del gobierno, a los administradores y a losfuncionarios de los departamentos ministeriales y de los órganos que deellos dependen en cuanto a la interpretación y aplicación de la política delgobierno.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIPUTADOS AL PARLAMENTO</h4>');$('#info').append('<p class="descripcion">Los miembros del poder ejecutivo (nacional, autonómico y local) y del poder legislativo definen, formulan y orientan la política<div class="excerpt"><div hidden><span>del gobierno nacional, regional, provincial o municipal, así como de los organismos gubernamentales internacionales, y elaboran, ratifican, modifican o derogan leyes y reglamentos. Se incluyen en ellos miembros electos y no electos de parlamentos, concejos y gobiernos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> presidir los trabajos de los cuerpos legislativos y de los concejos deliberantes del gobierno y de las asambleas legislativas de la nación, región, provincia o municipio, y participar en dichos trabajos</li><li class="list-group-item"> definir, formular y orientar la política del gobierno nacional, regional, provincial o municipal</li><li class="list-group-item"> elaborar, ratificar, modificar o derogar leyes y reglamentos dentro de un marco legislativo o constitucional</li><li class="list-group-item"> integrar concejos deliberantes de la Administración Pública o comisiones oficiales</li><li class="list-group-item"> examinar cuestiones de interés para el público y defender los intereses del electorado al que representan</li><li class="list-group-item"> asistir a actos y reuniones para prestar servicios a la comunidad, captar la opinión pública y facilitar información sobre los planes de la Administración Pública</li><li class="list-group-item"> negociar con otros miembros del poder legislativo y representantes de grupos de interés social para conciliar intereses opuestos y establecer políticas y acuerdos</li><li class="list-group-item"> dirigir, en su calidad de miembros del gobierno, a los administradores y a los funcionarios de los departamentos ministeriales y de los órganos que de ellos dependen en cuanto a la interpretación y aplicación de la política del gobierno.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Cuidadores de animales en parques zoológicos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Cuidadores de animales en parques zoológicos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Cuidadores de animales en parques zoológicos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14412, 18144, 20748];
 var seriesSalJunior     = [16464, 20628, 23544];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CUIDADORES DE ANIMALES EN PARQUES ZOOLÓGICOS</h4>');$('#info').append('<p class="descripcion">Los cuidadores de animales y adiestradores alimentan, manejan, entrenan yasean animales y prestan ayuda a veterinarios y técnicos en sanidad animal decentros veterinarios, refugios de animales, perreras, parques zoológicos, laboratorios,tiendas de animales de compañía, escuelas de equitación, centros deadiestramiento de perros y establecimientos de aseo de animales y similares.Entre sus tareas se incluyen:- bañar y alimentar animales;240- conducir o transportar a los animales hasta la sala de curas y retenerlos osujetarlos durante el tratamiento;- limpiar o esterilizar el instrumental quirúrgico utilizado en medicina veterinaria;- etiquetar medicamentos, sustancias y productos químicos y preparados farmacéuticos,y reponer y ordenar las existencias en los estantes;- esterilizar frascos, probetas y otros instrumentos;- limpiar, organizar y desinfectar alojamientos de animales como gallineros,establos, jaulas y corrales, y utensilios como monturas y bridas;- reunir y registrar información sobre los animales, como la relativa al peso,tamaño, estado físico, tratamientos aplicados, medicamentos administradose ingesta alimentaria;- entrenar animales para que<span class="excerpt"><span style="display:none;">desarrollen y sigan los comportamientos deseadosen actividades competitivas, recreativas, de obediencia, de seguridad, demonta y otras;- asear animales lavándolos, cepillándolos, esquilándolos, recortándoles elpelo, cortándoles las uñas y limpiándoles las orejas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CUIDADORES DE ANIMALES EN PARQUES ZOOLÓGICOS</h4>');$('#info').append('<p class="descripcion">Los cuidadores de animales y adiestradores alimentan, manejan, entrenan y asean animales y prestan ayuda a veterinarios y técnicos<div class="excerpt"><div hidden><span>en sanidad animal de centros veterinarios, refugios de animales, perreras, parques zoológicos, laboratorios, tiendas de animales de compañía, escuelas de equitación, centros de adiestramiento de perros y establecimientos de aseo de animales y similares. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> bañar y alimentar animales; 240 - conducir o transportar a los animales hasta la sala de curas y retenerlos o sujetarlos durante el tratamiento</li><li class="list-group-item"> limpiar o esterilizar el instrumental quirúrgico utilizado en medicina veterinaria</li><li class="list-group-item"> etiquetar medicamentos, sustancias y productos químicos y preparados farmacéuticos, y reponer y ordenar las existencias en los estantes</li><li class="list-group-item"> esterilizar frascos, probetas y otros instrumentos</li><li class="list-group-item"> limpiar, organizar y desinfectar alojamientos de animales como gallineros, establos, jaulas y corrales, y utensilios como monturas y bridas</li><li class="list-group-item"> reunir y registrar información sobre los animales, como la relativa al peso, tamaño, estado físico, tratamientos aplicados, medicamentos administrados e ingesta alimentaria</li><li class="list-group-item"> entrenar animales para que desarrollen y sigan los comportamientos deseados en actividades competitivas, recreativas, de obediencia, de seguridad, de monta y otras</li><li class="list-group-item"> asear animales lavándolos, cepillándolos, esquilándolos, recortándoles el pelo, cortándoles las uñas y limpiándoles las orejas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en procesos de fundición por microfusión de joyería y bisutería | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en procesos de fundición por microfusión de joyería y bisutería">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en procesos de fundición por microfusión de joyería y bisutería</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [15948, 18408, 20112];
 var seriesSalJunior     = [18420, 20676, 22272];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN PROCESOS DE FUNDICIÓN POR MICROFUSIÓN DE JOYERÍA Y BISUTERÍA</h4>');$('#info').append('<p class="descripcion">Los técnicos en metalurgia y minas ejecutan tareas técnicas relacionadas con lainvestigación y experimentación en materia de metalurgia, con el desarrollo demétodos perfeccionados de extracción de minerales sólidos, petróleo y gas, ycon el proyecto, construcción, funcionamiento, mantenimiento y reparación deminas e instalaciones mineras, sistemas para el transporte y almacenamiento depetróleo y gas natural e instalaciones de extracción de metales de sus mineralesrespectivos y su refino.Entre sus tareas se incluyen:- prestar asistencia técnica en la investigación y desarrollo de procesos paradeterminar las propiedades de los metales y de nuevas aleaciones;- prestar ayuda técnica en estudios geológicos y topográficos y en el proyectoy trazado de planos de sistemas de extracción y transporte de petróleo, gasnatural y otros minerales, y de instalaciones de tratamiento y refino de mineralesy metales;- preparar estimaciones y cálculos detallados de los materiales y costes necesariospara los proyectos de exploración, extracción, transformación y transportede minerales, petróleo y gas<span class="excerpt"><span style="display:none;">natural;- vigilar los aspectos técnicos, normativos y de seguridad de la construcción,instalación, funcionamiento, mantenimiento y reparación de las instalacionesde exploración, extracción, transporte y almacenamiento de minerales, petróleoy gas natural y de las instalaciones de transformación de minerales;- ayudar a planificar y proyectar minas, galerías, túneles y centros subterráneosde primeros auxilios;- reunir y preparar muestras de rocas, minerales y metales, realizar ensayos delaboratorio para determinar sus propiedades, analizar los resultados de esosensayos e informar de ellos, y mantener los equipos de laboratorio;- usar microscopios, máquinas de radiación electromagnética, espectrómetros,134espectrógrafos, densitómetros y máquinas de ensayos de tracción;- ayudar a los científicos a utilizar los instrumentos de medida eléctricos, sonoroso nucleares, tant</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN PROCESOS DE FUNDICIÓN POR MICROFUSIÓN DE JOYERÍA Y BISUTERÍA</h4>');$('#info').append('<p class="descripcion">Los técnicos en metalurgia y minas ejecutan tareas técnicas relacionadas con la investigación y experimentación en materia de metalurgia,<div class="excerpt"><div hidden><span>con el desarrollo de métodos perfeccionados de extracción de minerales sólidos, petróleo y gas, y con el proyecto, construcción, funcionamiento, mantenimiento y reparación de minas e instalaciones mineras, sistemas para el transporte y almacenamiento de petróleo y gas natural e instalaciones de extracción de metales de sus minerales respectivos y su refino. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> prestar asistencia técnica en la investigación y desarrollo de procesos para determinar las propiedades de los metales y de nuevas aleaciones</li><li class="list-group-item"> prestar ayuda técnica en estudios geológicos y topográficos y en el proyecto y trazado de planos de sistemas de extracción y transporte de petróleo, gas natural y otros minerales, y de instalaciones de tratamiento y refino de minerales y metales</li><li class="list-group-item"> preparar estimaciones y cálculos detallados de los materiales y costes necesarios para los proyectos de exploración, extracción, transformación y transporte de minerales, petróleo y gas natural</li><li class="list-group-item"> vigilar los aspectos técnicos, normativos y de seguridad de la construcción, instalación, funcionamiento, mantenimiento y reparación de las instalaciones de exploración, extracción, transporte y almacenamiento de minerales, petróleo y gas natural y de las instalaciones de transformación de minerales</li><li class="list-group-item"> ayudar a planificar y proyectar minas, galerías, túneles y centros subterráneos de primeros auxilios</li><li class="list-group-item"> reunir y preparar muestras de rocas, minerales y metales, realizar ensayos de laboratorio para determinar sus propiedades, analizar los resultados de esos ensayos e informar de ellos, y mantener los equipos de laboratorio</li><li class="list-group-item"> usar microscopios, máquinas de radiación electromagnética, espectrómetros, 134 espectrógrafos, densitómetros y máquinas de ensayos de tracción</li><li class="list-group-item"> ayudar a los científicos a utilizar los instrumentos de medida eléctricos, sonoros o nucleares, tant</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Encajeros, a mano | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Encajeros, a mano">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Encajeros, a mano</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [11484, 14136, 15984];
 var seriesSalJunior     = [13500, 16512, 18612];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ENCAJEROS, A MANO</h4>');$('#info').append('<p class="descripcion">Los artesanos de los tejidos, el cuero y materiales similares utilizan técnicas ypatrones tradicionales para fabricar telas, prendas tejidas, bordadas, hiladas yotros objetos para uso doméstico, así como calzado tradicional, bolsos, cinturonesy otros accesorios.Entre sus tareas se incluyen:- hilar y teñir con colorantes naturales lana, algodón y otras fibras;- tejer, bordar, hacer y aplicar puntilla en prendas y artículos de uso doméstico;- preparar y teñir pieles con colorantes naturales y fabricar calzado, bolsos,cinturones y otros accesorios tradicionales;- hilar y bobinar, a mano;- tender a mano en el telar los hilos de la urdimbre;- confeccionar con telares manuales telas, tapices, encajes, alfombras y otrostejidos lisos o con dibujos;- confeccionar alfombras de nudos;- confeccionar prendas de vestir y otros géneros de punto, a mano o utilizandomáquinas accionadas a mano;- confeccionar a mano artículos de punto de ganchillo o artículos de pasamanería;- tejer redes a mano;- determinar la calidad y clasificar fibras<span class="excerpt"><span style="display:none;">textiles naturales;- lavar fibras de lana;- limpiar y esponjar fibras textiles;- transformar las fibras en cintas, peinar napas de cinta, juntar varias cintas ennapas o cintas de carda, o transformar la cinta en ovillos, madejas o mechas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ENCAJEROS, A MANO</h4>');$('#info').append('<p class="descripcion">Los artesanos de los tejidos, el cuero y materiales similares utilizan técnicas y patrones tradicionales para fabricar telas, prendas<div class="excerpt"><div hidden><span>tejidas, bordadas, hiladas y otros objetos para uso doméstico, así como calzado tradicional, bolsos, cinturones y otros accesorios. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> hilar y teñir con colorantes naturales lana, algodón y otras fibras</li><li class="list-group-item"> tejer, bordar, hacer y aplicar puntilla en prendas y artículos de uso doméstico</li><li class="list-group-item"> preparar y teñir pieles con colorantes naturales y fabricar calzado, bolsos, cinturones y otros accesorios tradicionales</li><li class="list-group-item"> hilar y bobinar, a mano</li><li class="list-group-item"> tender a mano en el telar los hilos de la urdimbre</li><li class="list-group-item"> confeccionar con telares manuales telas, tapices, encajes, alfombras y otros tejidos lisos o con dibujos</li><li class="list-group-item"> confeccionar alfombras de nudos</li><li class="list-group-item"> confeccionar prendas de vestir y otros géneros de punto, a mano o utilizando máquinas accionadas a mano</li><li class="list-group-item"> confeccionar a mano artículos de punto de ganchillo o artículos de pasamanería</li><li class="list-group-item"> tejer redes a mano</li><li class="list-group-item"> determinar la calidad y clasificar fibras textiles naturales</li><li class="list-group-item"> lavar fibras de lana</li><li class="list-group-item"> limpiar y esponjar fibras textiles</li><li class="list-group-item"> transformar las fibras en cintas, peinar napas de cinta, juntar varias cintas en napas o cintas de carda, o transformar la cinta en ovillos, madejas o mechas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

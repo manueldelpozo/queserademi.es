@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Soldadores de tuberías y recipientes de alta presión | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Soldadores de tuberías y recipientes de alta presión">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Soldadores de tuberías y recipientes de alta presión</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12636, 14268, 15552];
 var seriesSalJunior     = [14760, 16212, 17976];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">SOLDADORES DE TUBERÍAS Y RECIPIENTES DE ALTA PRESIÓN</h4>');$('#info').append('<p class="descripcion">Los soldadores y oxicortadores sueldan y cortan piezas de metal soldándolo y cortándolo, o soldándolo y fundiéndolo con una llama de gas, un arco eléctrico u otra fuente de calor.Entre sus tareas se incluyen:−Soldar piezas de metal por medio de una llama de gas, un arco eléctrico, termita u otro procedimiento;−Manejar máquinas de soldadura por resistencia eléctrica;−Construir y reparar depósitos de plomo, revestimientos de depósitos, tuberías y otras piezas e instalaciones de plomo, utilizando una lámpara de soldar;− Soldar piezas de metal con soldadura de latón;− Cortar piezas de metal con una llama de gas o un arco eléctrico;− Soldar piezas de metal a mano con soldadura blanda;− Supervisar los procesos de ajuste, combustión y soldadura para evitar el sobrecalentamiento de las piezas o el alabeo, contracción, distorsión o expansión del material;− Examinar las piezas de trabajo para descubrir defectos y medirlas con o reglas plantillas para garantizar que<span class="excerpt"><span style="display:none;">cumplen las especificaciones.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">SOLDADORES DE TUBERÍAS Y RECIPIENTES DE ALTA PRESIÓN</h4>');$('#info').append('<p class="descripcion">Los soldadores y oxicortadores sueldan y cortan piezas de metal soldándolo y cortándolo, o soldándolo y fundiéndolo con una<div class="excerpt"><div hidden>llama de gas, un arco eléctrico u otra fuente de calor. Entre sus tareas se incluyen: − Soldar piezas de metal por medio de una llama de gas, un arco eléctrico, termita u otro procedimiento; − Manejar máquinas de soldadura por resistencia eléctrica; − Construir y reparar depósitos de plomo, revestimientos de depósitos, tuberías y otras piezas e instalaciones de plomo, utilizando una lámpara de soldar; − Soldar piezas de metal con soldadura de latón; − Cortar piezas de metal con una llama de gas o un arco eléctrico; − Soldar piezas de metal a mano con soldadura blanda; − Supervisar los procesos de ajuste, combustión y soldadura para evitar el sobrecalentamiento de las piezas o el alabeo, contracción, distorsión o expansión del material; − Examinar las piezas de trabajo para descubrir defectos y medirlas con o reglas plantillas para garantizar que cumplen las especificaciones.</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Electricistas de mantenimiento y reparación de electrodomésticos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Electricistas de mantenimiento y reparación de electrodomésticos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Electricistas de mantenimiento y reparación de electrodomésticos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [15180, 19272, 22152];
 var seriesSalJunior     = [16932, 21072, 23988];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ELECTRICISTAS DE MANTENIMIENTO Y REPARACIÓN DE ELECTRODOMÉSTICOS</h4>');$('#info').append('<p class="descripcion">Los mecánicos y reparadores de equipos eléctricos ajustan, regulan, instalan yreparan máquinas eléctricas y otros aparatos y equipos eléctricos en edificios,fábricas, talleres y otros lugares donde se utilizan. Entre sus tareas se incluyen:- ajustar, regular y reparar diversas clases de máquinas y motores eléctricos,generadores, dispositivos de distribución y control, instrumentos eléctricos opartes eléctricas de ascensores y equipos conexos;- ajustar, regular y reparar partes eléctricas de aparatos de uso doméstico y demáquinas industriales o de otro género;- revisar y probar los productos eléctricos fabricados;- instalar, probar, conectar, poner en servicio, mantener y modificar equiposeléctricos y sistemas de cableado y de control;- diseñar, instalar, mantener, atender y reparar ascensores y montacargaseléctricos e hidráulicos, escaleras mecánicas, aceras rodantes y otros equiposde elevación;- conectar sistemas eléctricos a la alimentación eléctrica;- sustituir y reparar piezas<span class="excerpt"><span style="display:none;">defectuosas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ELECTRICISTAS DE MANTENIMIENTO Y REPARACIÓN DE ELECTRODOMÉSTICOS</h4>');$('#info').append('<p class="descripcion">Los mecánicos y reparadores de equipos eléctricos ajustan, regulan, instalan y reparan máquinas eléctricas y otros aparatos y equipos<div class="excerpt"><div hidden><span>eléctricos en edificios, fábricas, talleres y otros lugares donde se utilizan. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> ajustar, regular y reparar diversas clases de máquinas y motores eléctricos, generadores, dispositivos de distribución y control, instrumentos eléctricos o partes eléctricas de ascensores y equipos conexos</li><li class="list-group-item"> ajustar, regular y reparar partes eléctricas de aparatos de uso doméstico y de máquinas industriales o de otro género</li><li class="list-group-item"> revisar y probar los productos eléctricos fabricados</li><li class="list-group-item"> instalar, probar, conectar, poner en servicio, mantener y modificar equipos eléctricos y sistemas de cableado y de control</li><li class="list-group-item"> diseñar, instalar, mantener, atender y reparar ascensores y montacargas eléctricos e hidráulicos, escaleras mecánicas, aceras rodantes y otros equipos de elevación</li><li class="list-group-item"> conectar sistemas eléctricos a la alimentación eléctrica</li><li class="list-group-item"> sustituir y reparar piezas defectuosas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

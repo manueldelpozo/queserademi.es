@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Empleados administrativos con tareas de atención al público no clasificados bajo otros epígrafes | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Empleados administrativos con tareas de atención al público no clasificados bajo otros epígrafes">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Empleados administrativos con tareas de atención al público no clasificados bajo otros epígrafes</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EMPLEADOS ADMINISTRATIVOS CON TAREAS DE ATENCIÓN AL PÚBLICO NO CLASIFICADOS BAJO OTROS EPÍGRAFES</h4>');$('#info').append('<p class="descripcion">Este grupo primario incluye los empleados administrativos que desarrollan tareasde atención al público y que no se han incluido en otros epígrafes de estegrupo principal (F). Estos empleados realizan diferentes tareas administrativas yde oficina de acuerdo con los procedimientos establecidos. Por ejemplo aquí seincluyen a los empleados que obtienen información directamente de las personas,para determinar su derecho a recibir determinados servicios, así como sutramitación.212Entre sus tareas se incluyen:- registrar, preparar, ordenar, clasificar y archivar información;- clasificar, abrir y enviar correo;- fotocopiar y enviar documentos por fax;- preparar informes y correspondencia de carácter ordinario;- registrar la entrega de equipos al personal;- responder a preguntas telefónicas o electrónicas o remitirlas a la personaadecuada;- comprobar cifras, preparar facturas anotar detalles de transaccciones financierasrealizadas;- transcribir información en ordenadores y revisarla y corregirla;- entrevistar a los pacientes para obtener y tramitar la información necesariapara la prestación de servicios hospitalarios;- entrevistar a los solicitantes de<span class="excerpt"><span style="display:none;">asistencia pública para recopilar la informaciónpertinente relacionada con su solicitud;- verificar la precisión de la información proporcionada;- iniciar procedimientos para conceder, modificar, negar o cesar la asistencia;- suministrar información y responder a preguntas relacionadas con las prestacionesy los procedimientos de reclamación;- remitir a los pacientes o solicitantes a otras organizaciones si no tienen derechoa recibir los servicios.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EMPLEADOS ADMINISTRATIVOS CON TAREAS DE ATENCIÓN AL PÚBLICO NO CLASIFICADOS BAJO OTROS EPÍGRAFES</h4>');$('#info').append('<p class="descripcion">Este grupo primario incluye los empleados administrativos que desarrollan tareas de atención al público y que no se han<div class="excerpt"><div hidden><span>incluido en otros epígrafes de este grupo principal (F). Estos empleados realizan diferentes tareas administrativas y de oficina de acuerdo con los procedimientos establecidos. Por ejemplo aquí se incluyen a los empleados que obtienen información directamente de las personas, para determinar su derecho a recibir determinados servicios, así como su tramitación. 212 Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> registrar, preparar, ordenar, clasificar y archivar información</li><li class="list-group-item"> clasificar, abrir y enviar correo</li><li class="list-group-item"> fotocopiar y enviar documentos por fax</li><li class="list-group-item"> preparar informes y correspondencia de carácter ordinario</li><li class="list-group-item"> registrar la entrega de equipos al personal</li><li class="list-group-item"> responder a preguntas telefónicas o electrónicas o remitirlas a la persona adecuada</li><li class="list-group-item"> comprobar cifras, preparar facturas anotar detalles de transaccciones financieras realizadas</li><li class="list-group-item"> transcribir información en ordenadores y revisarla y corregirla</li><li class="list-group-item"> entrevistar a los pacientes para obtener y tramitar la información necesaria para la prestación de servicios hospitalarios</li><li class="list-group-item"> entrevistar a los solicitantes de asistencia pública para recopilar la información pertinente relacionada con su solicitud</li><li class="list-group-item"> verificar la precisión de la información proporcionada</li><li class="list-group-item"> iniciar procedimientos para conceder, modificar, negar o cesar la asistencia</li><li class="list-group-item"> suministrar información y responder a preguntas relacionadas con las prestaciones y los procedimientos de reclamación</li><li class="list-group-item"> remitir a los pacientes o solicitantes a otras organizaciones si no tienen derecho a recibir los servicios.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

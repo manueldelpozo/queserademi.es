@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Directores de departamentos de presupuestos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Directores de departamentos de presupuestos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Directores de departamentos de presupuestos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [26832, 31164, 35712];
 var seriesSalJunior     = [30444, 34536, 40200];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE DEPARTAMENTOS DE PRESUPUESTOS</h4>');$('#info').append('<p class="descripcion">Los directores financieros planifican, dirigen y coordinan las operaciones financierasde una empresa u organización en consulta con el consejo de dirección ycon los directores de otros departamentos o de otras empresas que presten serviciosfinancieros a esta empresa u organización.Entre sus tareas se incluyen:- planificar, dirigir y coordinar las operaciones financieras de la empresa u organización;- evaluar la situación financiera de la empresa u organización, preparar lospresupuestos y controlar las operaciones financieras;- consultar con el gerente general y con los directores de otros departamentos;- establecer y gestionar presupuestos, controlar los gastos y asegurar la utilizacióneficiente de los recursos;- establecer y dirigir los procedimientos operativos y administrativos;- planificar y dirigir el trabajo diario;- controlar la selección, formación y rendimiento del personal;- representar a la empresa u organización en las relaciones con entidades<span class="excerpt"><span style="display:none;">externas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE DEPARTAMENTOS DE PRESUPUESTOS</h4>');$('#info').append('<p class="descripcion">Los directores financieros planifican, dirigen y coordinan las operaciones financieras de una empresa u organización en consulta con el<div class="excerpt"><div hidden><span>consejo de dirección y con los directores de otros departamentos o de otras empresas que presten servicios financieros a esta empresa u organización. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> planificar, dirigir y coordinar las operaciones financieras de la empresa u organización</li><li class="list-group-item"> evaluar la situación financiera de la empresa u organización, preparar los presupuestos y controlar las operaciones financieras</li><li class="list-group-item"> consultar con el gerente general y con los directores de otros departamentos</li><li class="list-group-item"> establecer y gestionar presupuestos, controlar los gastos y asegurar la utilización eficiente de los recursos</li><li class="list-group-item"> establecer y dirigir los procedimientos operativos y administrativos</li><li class="list-group-item"> planificar y dirigir el trabajo diario</li><li class="list-group-item"> controlar la selección, formación y rendimiento del personal</li><li class="list-group-item"> representar a la empresa u organización en las relaciones con entidades externas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Vendedor profesional de productos informáticos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Vendedor profesional de productos informáticos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Vendedor profesional de productos informáticos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [16812, 21492, 26436];
 var seriesSalJunior     = [19104, 23844, 29808];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">VENDEDOR PROFESIONAL DE PRODUCTOS INFORMÁTICOS</h4>');$('#info').append('<p class="descripcion">Los profesionales de ventas de tecnología de la información y las comunicaciones(TIC) venden, a escala mayorista, equipos, software y otros bienes y serviciosde TIC, incluidas instalaciones, y suministran información especializada segúnse requiera.Entre sus tareas se incluyen:- procurar pedidos y vender bienes a establecimientos minoristas, industriales,mayoristas y de otra índole;- vender equipos técnicos, suministros y servicios afines a establecimientosempresariales o individuos;- examinar las necesidades de clientes nuevos y existentes y suministrar informaciónespecializada sobre el modo en que determinados equipos,suministros y servicios satisfacen tales necesidades;- ofrecer y negociar precios y condiciones de crédito, celebrar contratos y registrarpedidos;- actualizar registros de clientes y preparar informes de ventas;- organizar la entrega de bienes, la instalación de equipos y la prestación deservicios;- informar a los fabricantes de las reacciones y los requisitos de los<span class="excerpt"><span style="display:none;">clientes.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">VENDEDOR PROFESIONAL DE PRODUCTOS INFORMÁTICOS</h4>');$('#info').append('<p class="descripcion">Los profesionales de ventas de tecnología de la información y las comunicaciones (TIC) venden, a escala mayorista, equipos, software<div class="excerpt"><div hidden><span>y otros bienes y servicios de TIC, incluidas instalaciones, y suministran información especializada según se requiera. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> procurar pedidos y vender bienes a establecimientos minoristas, industriales, mayoristas y de otra índole</li><li class="list-group-item"> vender equipos técnicos, suministros y servicios afines a establecimientos empresariales o individuos</li><li class="list-group-item"> examinar las necesidades de clientes nuevos y existentes y suministrar información especializada sobre el modo en que determinados equipos, suministros y servicios satisfacen tales necesidades</li><li class="list-group-item"> ofrecer y negociar precios y condiciones de crédito, celebrar contratos y registrar pedidos</li><li class="list-group-item"> actualizar registros de clientes y preparar informes de ventas</li><li class="list-group-item"> organizar la entrega de bienes, la instalación de equipos y la prestación de servicios</li><li class="list-group-item"> informar a los fabricantes de las reacciones y los requisitos de los clientes.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

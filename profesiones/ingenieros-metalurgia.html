@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Ingenieros en metalurgia | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Ingenieros en metalurgia">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Ingenieros en metalurgia</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [24024, 28440, 31944];
 var seriesSalJunior     = [27636, 31884, 36408];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS EN METALURGIA</h4>');$('#info').append('<p class="descripcion">Los ingenieros de minas, metalúrgicos y afines proyectan y dirigen los trabajosde prospecciones mineras y planean, organizan y dirigen la explotación minera yla preparación de minerales para su distribución y tratamiento, e investigan alrespecto.Entre sus tareas se incluyen:- realizar investigaciones y proyectar, desarrollar o perfeccionar métodos pararesolver problemas técnicos de la ingeniería de minas o de la extracción depetróleo, gas o agua;- determinar los métodos más eficaces de minería y extracción y el tipo demaquinaria que ha de utilizarse, y planificar la disposición y dirigir la construcciónde galerías y pozos;- determinar los lugares de perforación e idear métodos para controlar el flujode agua, petróleo o gas de los pozos;- planificar y dirigir el almacenamiento, tratamiento inicial y transporte deagua, petróleo o gas;- establecer procedimientos de seguridad y servicios de primeros auxilios, sobretodo bajo tierra;- realizar investigaciones, desarrollar métodos para la extracción de metalesde sus minerales y asesorar sobre su<span class="excerpt"><span style="display:none;">aplicación;- estudiar las propiedades de metales y aleaciones, crear nuevas aleaciones,supervisar aspectos técnicos de la fabricación y tratamiento de metales yaleaciones, y asesorar al respecto; 75- examinar depósitos o minas para evaluar su rentabilidad;- desempeñar tareas afines;- supervisar a otros trabajadores.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS EN METALURGIA</h4>');$('#info').append('<p class="descripcion">Los ingenieros de minas, metalúrgicos y afines proyectan y dirigen los trabajos de prospecciones mineras y planean, organizan y<div class="excerpt"><div hidden><span>dirigen la explotación minera y la preparación de minerales para su distribución y tratamiento, e investigan al respecto. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> realizar investigaciones y proyectar, desarrollar o perfeccionar métodos para resolver problemas técnicos de la ingeniería de minas o de la extracción de petróleo, gas o agua</li><li class="list-group-item"> determinar los métodos más eficaces de minería y extracción y el tipo de maquinaria que ha de utilizarse, y planificar la disposición y dirigir la construcción de galerías y pozos</li><li class="list-group-item"> determinar los lugares de perforación e idear métodos para controlar el flujo de agua, petróleo o gas de los pozos</li><li class="list-group-item"> planificar y dirigir el almacenamiento, tratamiento inicial y transporte de agua, petróleo o gas</li><li class="list-group-item"> establecer procedimientos de seguridad y servicios de primeros auxilios, sobre todo bajo tierra</li><li class="list-group-item"> realizar investigaciones, desarrollar métodos para la extracción de metales de sus minerales y asesorar sobre su aplicación</li><li class="list-group-item"> estudiar las propiedades de metales y aleaciones, crear nuevas aleaciones, supervisar aspectos técnicos de la fabricación y tratamiento de metales y aleaciones, y asesorar al respecto;  75 - examinar depósitos o minas para evaluar su rentabilidad</li><li class="list-group-item"> desempeñar tareas afines</li><li class="list-group-item"> supervisar a otros trabajadores.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

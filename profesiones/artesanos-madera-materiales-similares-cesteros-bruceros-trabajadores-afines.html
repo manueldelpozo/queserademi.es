@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Artesanos en madera y materiales similares; cesteros, bruceros y trabajadores afines | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Artesanos en madera y materiales similares; cesteros, bruceros y trabajadores afines">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Artesanos en madera y materiales similares; cesteros, bruceros y trabajadores afines</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [11484, 14136, 15984];
 var seriesSalJunior     = [13500, 16512, 18612];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ARTESANOS EN MADERA Y MATERIALES SIMILARES; CESTEROS, BRUCEROS Y TRABAJADORES AFINES</h4>');$('#info').append('<p class="descripcion">Los artesanos de la madera y materiales similares utilizan técnicas y modelostradicionales, como secado o impregnación, para preparar madera, paja, mimbre,juncos, cañas, arcilla, conchas u otros materiales, y tallan, moldean, montan,tejen, pintan y decoran diversos objetos para uso personal o doméstico, o parafines decorativos. Los tejedores de cestos, fabricantes de escobas y afines seleccionany preparan materiales como cerdas, nylon, fibra, esparto, filamentos yalambres para fabricar muebles de mimbre, cepillos y escobas, y para tejer distintostipos de cestos.Entre sus tareas se incluyen:- preparar madera, paja, mimbre, juncos, cañas, conchas y otros materialessimilares;- tallar motivos florales y artísticos en superficie de madera para fines decorativos;- tallar, montar, hilar, pintar y decorar diversos objetos decorativos de usopersonal y doméstico, como ensaladeras, cucharas de servir, tablas de picar,bandejas, floreros, jarras, cestos, sombreros y esteras de paja y otros artículossimilares;- tallar, montar, hilar y pintar diversos objetos decorativos como estatuas yotras esculturas, piezas de<span class="excerpt"><span style="display:none;">ajedrez, joyas y otros objetos similares;- fabricar muebles de mimbre a partir de juncos pelados y ablandados, cañas,mimbre, ramas de sauce y materiales similares;- fabricar distintos tipos de cestos entretejiendo mimbrera, juncos, cañas omateriales similares;- formar la base de los cestos entrelazando tiras de juncos, chapa de madera uotros materiales con una estructura de varillas de material como sauce;300- insertar varillas alrededor del borde de la base, entre secciones de madera, ycurvarlas hacia arriba para que formen la estructura de los laterales;- seleccionar y preparar materiales para cepillos, como cerdas, nylon, fibras yalambres, y fijarlos a la base de los cepillos;- seleccionar y preparar materiales como retama, esparto, filamentos y fibra, yfijarlos al mando de las escobas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ARTESANOS EN MADERA Y MATERIALES SIMILARES; CESTEROS, BRUCEROS Y TRABAJADORES AFINES</h4>');$('#info').append('<p class="descripcion">Los artesanos de la madera y materiales similares utilizan técnicas y modelos tradicionales, como secado o impregnación, para preparar<div class="excerpt"><div hidden><span>madera, paja, mimbre, juncos, cañas, arcilla, conchas u otros materiales, y tallan, moldean, montan, tejen, pintan y decoran diversos objetos para uso personal o doméstico, o para fines decorativos. Los tejedores de cestos, fabricantes de escobas y afines seleccionan y preparan materiales como cerdas, nylon, fibra, esparto, filamentos y alambres para fabricar muebles de mimbre, cepillos y escobas, y para tejer distintos tipos de cestos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> preparar madera, paja, mimbre, juncos, cañas, conchas y otros materiales similares</li><li class="list-group-item"> tallar motivos florales y artísticos en superficie de madera para fines decorativos</li><li class="list-group-item"> tallar, montar, hilar, pintar y decorar diversos objetos decorativos de uso personal y doméstico, como ensaladeras, cucharas de servir, tablas de picar, bandejas, floreros, jarras, cestos, sombreros y esteras de paja y otros artículos similares</li><li class="list-group-item"> tallar, montar, hilar y pintar diversos objetos decorativos como estatuas y otras esculturas, piezas de ajedrez, joyas y otros objetos similares</li><li class="list-group-item"> fabricar muebles de mimbre a partir de juncos pelados y ablandados, cañas, mimbre, ramas de sauce y materiales similares</li><li class="list-group-item"> fabricar distintos tipos de cestos entretejiendo mimbrera, juncos, cañas o materiales similares</li><li class="list-group-item"> formar la base de los cestos entrelazando tiras de juncos, chapa de madera u otros materiales con una estructura de varillas de material como sauce; 300 - insertar varillas alrededor del borde de la base, entre secciones de madera, y curvarlas hacia arriba para que formen la estructura de los laterales</li><li class="list-group-item"> seleccionar y preparar materiales para cepillos, como cerdas, nylon, fibras y alambres, y fijarlos a la base de los cepillos</li><li class="list-group-item"> seleccionar y preparar materiales como retama, esparto, filamentos y fibra, y fijarlos al mando de las escobas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Preparadores de pizza | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Preparadores de pizza">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Preparadores de pizza</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [10908, 13128, 14688];
 var seriesSalJunior     = [12612, 15108, 16860];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PREPARADORES DE PIZZA</h4>');$('#info').append('<p class="descripcion">Los preparadores de comidas rápidas preparan y cocinan una serie limitada dealimentos y bebidas caracterizados por procesos de preparación sencillos y porel empleo de un pequeño número de ingredientes Pueden tomar el pedido a losclientes y servirles en mostradores o mesas.Entre sus tareas se incluyen:- preparar alimentos y bebidas sencillos o ya preparados, como bocadillos,hamburguesas, pizzas, pescado con patatas fritas, ensaladas y café;- lavar, cortar, medir y mezclar alimentos para cocción;- manejar equipos de cocción en grandes cantidades y de proceso único, comoparrillas, freidoras y planchas;- recalentar los alimentos ya preparados;- limpiar las zonas de preparación de alimentos y las superficies y utensilios decocción;- tomar pedidos de alimentos y bebidas y servirlos en lugares especializadosen comidas rápidas y para llevar;- pedir los ingredientes para las comidas rápidas y recibirlos;360- cumplir las normas higiénicas, de salud y de seguridad en las zonas de trabajo;- verificar que las comidas preparadas cumplen<span class="excerpt"><span style="display:none;">los requisitos de calidad ycantidad.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PREPARADORES DE PIZZA</h4>');$('#info').append('<p class="descripcion">Los preparadores de comidas rápidas preparan y cocinan una serie limitada de alimentos y bebidas caracterizados por procesos de<div class="excerpt"><div hidden><span>preparación sencillos y por el empleo de un pequeño número de ingredientes Pueden tomar el pedido a los clientes y servirles en mostradores o mesas. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> preparar alimentos y bebidas sencillos o ya preparados, como bocadillos, hamburguesas, pizzas, pescado con patatas fritas, ensaladas y café</li><li class="list-group-item"> lavar, cortar, medir y mezclar alimentos para cocción</li><li class="list-group-item"> manejar equipos de cocción en grandes cantidades y de proceso único, como parrillas, freidoras y planchas</li><li class="list-group-item"> recalentar los alimentos ya preparados</li><li class="list-group-item"> limpiar las zonas de preparación de alimentos y las superficies y utensilios de cocción</li><li class="list-group-item"> tomar pedidos de alimentos y bebidas y servirlos en lugares especializados en comidas rápidas y para llevar</li><li class="list-group-item"> pedir los ingredientes para las comidas rápidas y recibirlos; 360 - cumplir las normas higiénicas, de salud y de seguridad en las zonas de trabajo</li><li class="list-group-item"> verificar que las comidas preparadas cumplen los requisitos de calidad y cantidad.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

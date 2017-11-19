@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en gestión de existencias y/o almacén | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en gestión de existencias y/o almacén">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en gestión de existencias y/o almacén</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [19740, 23340, 25860];
 var seriesSalJunior     = [22716, 26172, 28584];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN GESTIÓN DE EXISTENCIAS Y/O ALMACÉN</h4>');$('#info').append('<p class="descripcion">Los agentes de compras gestionan la compra de bienes y servicios para su uso opara la reventa en nombre de establecimientos industriales, comerciales o gubernamentaleso de otras organizaciones.Entre sus tareas se incluyen:- determinar o negociar los términos y las condiciones del contrato;- adjudicar los contratos a los proveedores o recomendar la adjudicación decontratos para la compra de equipo, materias primas y servicios y la comprade mercancías para su reventa;- obtener información acerca de las necesidades y existencias;- redactar especificaciones sobre la cantidad y la calidad de los bienes y serviciosque deben adquirirse así como su coste, fechas de entrega y demáscondiciones del contrato;- adquirir equipamiento de carácter general o especializado, materiales o serviciosempresariales ya sea para su uso o para un reprocesamiento posteriorpor parte de los establecimientos;- invitar a empresas licitadoras, consultar con proveedores y revisar precios;168- adquirir mercancías para su reventa al por menor o en establecimientos mayoristas;-<span class="excerpt"><span style="display:none;">estudiar informes de mercado, prensa comercial y demás materiales de promociónde ventas y visitar ferias, salas de exposiciones, fábricas de productosy eventos sobre diseño de productos;- seleccionar la mercancía o productos que mejor se adapten a las necesidadesdel establecimiento;- entrevistarse con los proveedores y negociar precios, descuentos, condicionesde crédito y la organización del transporte;- supervisar la distribución de mercancías a los puntos de venta y mantener eladecuado nivel de existencias;- establecer plazos de entrega, seguir su desarrollo y contactar clientes y proveedorespara resolver problemas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN GESTIÓN DE EXISTENCIAS Y/O ALMACÉN</h4>');$('#info').append('<p class="descripcion">Los agentes de compras gestionan la compra de bienes y servicios para su uso o para la reventa en<div class="excerpt"><div hidden><span>nombre de establecimientos industriales, comerciales o gubernamentales o de otras organizaciones. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> determinar o negociar los términos y las condiciones del contrato</li><li class="list-group-item"> adjudicar los contratos a los proveedores o recomendar la adjudicación de contratos para la compra de equipo, materias primas y servicios y la compra de mercancías para su reventa</li><li class="list-group-item"> obtener información acerca de las necesidades y existencias</li><li class="list-group-item"> redactar especificaciones sobre la cantidad y la calidad de los bienes y servicios que deben adquirirse así como su coste, fechas de entrega y demás condiciones del contrato</li><li class="list-group-item"> adquirir equipamiento de carácter general o especializado, materiales o servicios empresariales ya sea para su uso o para un reprocesamiento posterior por parte de los establecimientos</li><li class="list-group-item"> invitar a empresas licitadoras, consultar con proveedores y revisar precios; 168 - adquirir mercancías para su reventa al por menor o en establecimientos mayoristas</li><li class="list-group-item"> estudiar informes de mercado, prensa comercial y demás materiales de promoción de ventas y visitar ferias, salas de exposiciones, fábricas de productos y eventos sobre diseño de productos</li><li class="list-group-item"> seleccionar la mercancía o productos que mejor se adapten a las necesidades del establecimiento</li><li class="list-group-item"> entrevistarse con los proveedores y negociar precios, descuentos, condiciones de crédito y la organización del transporte</li><li class="list-group-item"> supervisar la distribución de mercancías a los puntos de venta y mantener el adecuado nivel de existencias</li><li class="list-group-item"> establecer plazos de entrega, seguir su desarrollo y contactar clientes y proveedores para resolver problemas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

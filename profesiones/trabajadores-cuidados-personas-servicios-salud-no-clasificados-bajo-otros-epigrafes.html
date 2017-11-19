@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Trabajadores de los cuidados a las personas en servicios de salud no clasificados bajo otros epígrafes | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Trabajadores de los cuidados a las personas en servicios de salud no clasificados bajo otros epígrafes">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Trabajadores de los cuidados a las personas en servicios de salud no clasificados bajo otros epígrafes</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12240, 14808, 16680];
 var seriesSalJunior     = [14364, 16884, 19404];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TRABAJADORES DE LOS CUIDADOS A LAS PERSONAS EN SERVICIOS DE SALUD NO CLASIFICADOS BAJO OTROS EPÍGRAFES</h4>');$('#info').append('<p class="descripcion">Este grupo primario abarca trabajadores que prestan servicios sanitarios rutinarioso de apoyo en el cuidado de las personas y que no se han clasificado bajootros epígrafes del subgrupo 561, Auxiliares de enfermería. Por ejemplo el grupoincluye ayudantes dental, ayudantes de esterilización, ordenanzas de centro médico,celadores y asistentes en imagen médica farmacia.Entre sus tareas se incluyen:- limpiar y esterilizar instrumentos quirúrgicos, instrumentos farmacéuticos,frascos, matraces y otros equipos;- etiquetar medicamentos, productos químicos y otros preparados farmacéuticosy reponer existencias en los estantes;- levantar, girar y mover a los pacientes y transportarlos en silla de ruedas oen camas movibles;- preparar a los pacientes para que los examinen o para los tratamientos;- preparar la bandeja de instrumentos y materiales;- ayudar a radiografistas durante su actuación;- exponer Rayos-X y<span class="excerpt"><span style="display:none;">diagnóstico.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TRABAJADORES DE LOS CUIDADOS A LAS PERSONAS EN SERVICIOS DE SALUD NO CLASIFICADOS BAJO OTROS EPÍGRAFES</h4>');$('#info').append('<p class="descripcion">Este grupo primario abarca trabajadores que prestan servicios sanitarios rutinarios o de apoyo en el cuidado de las personas<div class="excerpt"><div hidden><span>y que no se han clasificado bajo otros epígrafes del subgrupo 561, Auxiliares de enfermería. Por ejemplo el grupo incluye ayudantes dental, ayudantes de esterilización, ordenanzas de centro médico, celadores y asistentes en imagen médica farmacia. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> limpiar y esterilizar instrumentos quirúrgicos, instrumentos farmacéuticos, frascos, matraces y otros equipos</li><li class="list-group-item"> etiquetar medicamentos, productos químicos y otros preparados farmacéuticos y reponer existencias en los estantes</li><li class="list-group-item"> levantar, girar y mover a los pacientes y transportarlos en silla de ruedas o en camas movibles</li><li class="list-group-item"> preparar a los pacientes para que los examinen o para los tratamientos</li><li class="list-group-item"> preparar la bandeja de instrumentos y materiales</li><li class="list-group-item"> ayudar a radiografistas durante su actuación</li><li class="list-group-item"> exponer Rayos-X y diagnóstico.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

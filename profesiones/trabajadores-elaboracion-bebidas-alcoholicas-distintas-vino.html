@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Trabajadores de la elaboración de bebidas alcohólicas distintas del vino | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Trabajadores de la elaboración de bebidas alcohólicas distintas del vino">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Trabajadores de la elaboración de bebidas alcohólicas distintas del vino</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12312, 15096, 17052];
 var seriesSalJunior     = [14760, 17484, 19404];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TRABAJADORES DE LA ELABORACIÓN DE BEBIDAS ALCOHÓLICAS DISTINTAS DEL VINO</h4>');$('#info').append('<p class="descripcion">Los trabajadores de la elaboración de bebidas alcohólicas distintas del vino controlany preparan las materias primas y auxiliares, realizando las operaciones deelaboración, en las condiciones establecidas en los manuales de procedimiento ycalidad, así como manejando la maquinaria y equipos correspondientes y efectuandosu mantenimiento de primer nivel. Realizan las operaciones de malteadoy ejecutan y controlan las operaciones necesarias para obtener malta, mostos,cervezas, sidras y otras bebidas alcohólicas distintas del vino.Entre sus tareas se incluyen:- recepcionar la materia prima, efectuando su selección y almacenamiento parasu posterior tratamiento en el proceso de fabricación;- efectuar el secado y la tostación de los granos germinados, siguiendo losprocedimientos establecidos;- controlar la materia prima para la elaboración de cerveza y preparar los distintoscomponentes que intervienen en la preparación previa de la mezclasegún el tipo de mosto a elaborar;- ejecutar los procesos de maceración de la malta, filtración y ebullición delmosto comprobando las cantidades añadidas y las<span class="excerpt"><span style="display:none;">temperaturas;- controlar el proceso de fermentación del mosto según las normas establecidas;- realizar y controlar el proceso de maduración, acondicionamiento y guarda,según las especificaciones establecidas;- preparar y controlar las materias primas para iniciar el proceso de elaboración,siguiendo las pautas establecidas en el manual de procedimiento y enlas instrucciones de trabajo;- obtener los mostos en las condiciones y con las características de calidad ehigiene requeridas para su posterior fermentación, asegurando los niveles deproducción;- controlar que las fermentaciones de los mostos transcurren de acuerdo conlos requerimientos de cada elaboración, establecidos en los manuales deprocedimiento e instrucciones de trabajo;- aplicar los tratamientos físico-químicos establecidos en los manuales de procedimientopara estabilizar y conservar los product</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TRABAJADORES DE LA ELABORACIÓN DE BEBIDAS ALCOHÓLICAS DISTINTAS DEL VINO</h4>');$('#info').append('<p class="descripcion">Los trabajadores de la elaboración de bebidas alcohólicas distintas del vino controlan y preparan las materias primas y auxiliares,<div class="excerpt"><div hidden><span>realizando las operaciones de elaboración, en las condiciones establecidas en los manuales de procedimiento y calidad, así como manejando la maquinaria y equipos correspondientes y efectuando su mantenimiento de primer nivel. Realizan las operaciones de malteado y ejecutan y controlan las operaciones necesarias para obtener malta, mostos, cervezas, sidras y otras bebidas alcohólicas distintas del vino. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> recepcionar la materia prima, efectuando su selección y almacenamiento para su posterior tratamiento en el proceso de fabricación</li><li class="list-group-item"> efectuar el secado y la tostación de los granos germinados, siguiendo los procedimientos establecidos</li><li class="list-group-item"> controlar la materia prima para la elaboración de cerveza y preparar los distintos componentes que intervienen en la preparación previa de la mezcla según el tipo de mosto a elaborar</li><li class="list-group-item"> ejecutar los procesos de maceración de la malta, filtración y ebullición del mosto comprobando las cantidades añadidas y las temperaturas</li><li class="list-group-item"> controlar el proceso de fermentación del mosto según las normas establecidas</li><li class="list-group-item"> realizar y controlar el proceso de maduración, acondicionamiento y guarda, según las especificaciones establecidas</li><li class="list-group-item"> preparar y controlar las materias primas para iniciar el proceso de elaboración, siguiendo las pautas establecidas en el manual de procedimiento y en las instrucciones de trabajo</li><li class="list-group-item"> obtener los mostos en las condiciones y con las características de calidad e higiene requeridas para su posterior fermentación, asegurando los niveles de producción</li><li class="list-group-item"> controlar que las fermentaciones de los mostos transcurren de acuerdo con los requerimientos de cada elaboración, establecidos en los manuales de procedimiento e instrucciones de trabajo</li><li class="list-group-item"> aplicar los tratamientos físico-químicos establecidos en los manuales de procedimiento para estabilizar y conservar los product</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

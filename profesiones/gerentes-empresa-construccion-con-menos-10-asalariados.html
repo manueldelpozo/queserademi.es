@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Gerentes de empresa de construcción, con menos de 10 asalariados | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Gerentes de empresa de construcción, con menos de 10 asalariados">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Gerentes de empresa de construcción, con menos de 10 asalariados</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [24384, 26172, 27756];
 var seriesSalJunior     = [28224, 29484, 31824];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">GERENTES DE EMPRESA DE CONSTRUCCIÓN, CON MENOS DE 10 ASALARIADOS</h4>');$('#info').append('<p class="descripcion">Los directores de empresas de construcción planifican, dirigen y coordinan laconstrucción de obras públicas, edificios y viviendas. Se incluyen en este grupotanto directores de departamentos como directores generales de empresas queno cuentan con una jerarquía a nivel directivo.Entre sus tareas se incluyen:- interpretar planos y especificaciones de arquitectura;- coordinar los recursos de mano de obra y la compra y entrega de materiales,instalaciones y equipos;- negociar con los propietarios de los edificios, los urbanizadores y lossubcontratistas que intervienen en el proceso de construcción para garantizarque los proyectos se completan dentro de plazo y con arreglo al presupuesto;- preparar licitaciones y ofertas contractuales;- gestionar y aplicar programas de coordinación de los trabajos para las obrasde construcción;- velar por el cumplimiento de la legislación sobre construcción y de las normasen vigor en materia de rendimiento, calidad, costes y seguridad;- organizar la presentación de planes a las entidades locales;- construir bajo contrato o<span class="excerpt"><span style="display:none;">subcontratar los servicios de construcción especializados;- adoptar las medidas necesarias en relación con inspección de la construcciónpor las autoridades competentes;- establecer y gestionar presupuestos, controlar los gastos y asegurar la utilizacióneficiente de los recursos;- controlar la selección, formación y rendimiento del personal y de los subcontratistas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">GERENTES DE EMPRESA DE CONSTRUCCIÓN, CON MENOS DE 10 ASALARIADOS</h4>');$('#info').append('<p class="descripcion">Los directores de empresas de construcción planifican, dirigen y coordinan la construcción de obras públicas, edificios y viviendas. Se<div class="excerpt"><div hidden><span>incluyen en este grupo tanto directores de departamentos como directores generales de empresas que no cuentan con una jerarquía a nivel directivo. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> interpretar planos y especificaciones de arquitectura</li><li class="list-group-item"> coordinar los recursos de mano de obra y la compra y entrega de materiales, instalaciones y equipos</li><li class="list-group-item"> negociar con los propietarios de los edificios, los urbanizadores y los subcontratistas que intervienen en el proceso de construcción para garantizar que los proyectos se completan dentro de plazo y con arreglo al presupuesto</li><li class="list-group-item"> preparar licitaciones y ofertas contractuales</li><li class="list-group-item"> gestionar y aplicar programas de coordinación de los trabajos para las obras de construcción</li><li class="list-group-item"> velar por el cumplimiento de la legislación sobre construcción y de las normas en vigor en materia de rendimiento, calidad, costes y seguridad</li><li class="list-group-item"> organizar la presentación de planes a las entidades locales</li><li class="list-group-item"> construir bajo contrato o subcontratar los servicios de construcción especializados</li><li class="list-group-item"> adoptar las medidas necesarias en relación con inspección de la construcción por las autoridades competentes</li><li class="list-group-item"> establecer y gestionar presupuestos, controlar los gastos y asegurar la utilización eficiente de los recursos</li><li class="list-group-item"> controlar la selección, formación y rendimiento del personal y de los subcontratistas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

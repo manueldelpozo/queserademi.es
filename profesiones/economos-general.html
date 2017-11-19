@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Ecónomos, en general | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Ecónomos, en general">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Ecónomos, en general</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13068, 14856, 16104];
 var seriesSalJunior     = [14940, 16896, 18540];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ECÓNOMOS, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los mayordomos del servicio doméstico organizan, supervisan y realizan funcionesde mayordomía en hogares privados, con o sin el apoyo de personal subordinado.Entre sus tareas se incluyen:- supervisar a trabajadores empleados en hogares como personal doméstico;- comprar o controlar la compra de suministros;- controlar el almacenamiento y la distribución de suministros;- prestar ayuda en casos de lesiones o enfermedades de carácter leve, desempeñandotareas como las de tomar la temperatura, administrar medicamentoso aplicar vendajes;- barrer o limpiar con aspiradora, lavar y encerar suelos, muebles y otros enseres;- hacer camas, limpiar cuartos de baño y suministrar toallas, jabón y artículosafines;- cuidar de animales domésticos y plantas, recibir visitas, atender el teléfono,entregar mensajes y comprar en tiendas de alimentación;- preparar y cocinar alimentos, poner y recoger la mesa y servir alimentos ybebidas;- limpiar cocinas y ayudar en las faenas de cocina en general, incluido el fregadode<span class="excerpt"><span style="display:none;">cacharros.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ECÓNOMOS, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los mayordomos del servicio doméstico organizan, supervisan y realizan funciones de mayordomía en hogares privados, con o sin el<div class="excerpt"><div hidden><span>apoyo de personal subordinado. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> supervisar a trabajadores empleados en hogares como personal doméstico</li><li class="list-group-item"> comprar o controlar la compra de suministros</li><li class="list-group-item"> controlar el almacenamiento y la distribución de suministros</li><li class="list-group-item"> prestar ayuda en casos de lesiones o enfermedades de carácter leve, desempeñando tareas como las de tomar la temperatura, administrar medicamentos o aplicar vendajes</li><li class="list-group-item"> barrer o limpiar con aspiradora, lavar y encerar suelos, muebles y otros enseres</li><li class="list-group-item"> hacer camas, limpiar cuartos de baño y suministrar toallas, jabón y artículos afines</li><li class="list-group-item"> cuidar de animales domésticos y plantas, recibir visitas, atender el teléfono, entregar mensajes y comprar en tiendas de alimentación</li><li class="list-group-item"> preparar y cocinar alimentos, poner y recoger la mesa y servir alimentos y bebidas</li><li class="list-group-item"> limpiar cocinas y ayudar en las faenas de cocina en general, incluido el fregado de cacharros.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

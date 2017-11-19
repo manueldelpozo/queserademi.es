@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Maestros de educación primaria, en general | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Maestros de educación primaria, en general">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Maestros de educación primaria, en general</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [23832, 28716, 32292];
 var seriesSalJunior     = [27936, 32676, 37452];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MAESTROS DE EDUCACIÓN PRIMARIA, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los profesores de enseñanza primaria enseñan diversas asignaturas a los alumnosde las escuelas primarias.Entre sus tareas se incluyen:- preparar planes diarios y a más largo plazo para las clases, de conformidadcon las directrices sobre el plan de estudios;- enseñar a los niños individualmente y en grupos, empleando distintos métodosy materiales docentes (por ejemplo, ordenador, libros, juegos) adaptadosa las necesidades de los mismos;- mantener la disciplina y unos buenos hábitos de trabajo en el aula;- planificar y realizar con los niños actividades tales como actividades deportivas,conciertos y excursiones;- asignar a los niños trabajos para el aula y para casa, y calificarlos;- preparar y administrar pruebas y exámenes para evaluar el progreso de losniños, y calificarlos;- observar y evaluar el rendimiento y el comportamiento de los niños;- supervisar a los niños durante las clases y en los demás momentos de la jornadaescolar, incluidos los recreos;- participar en las reuniones y demás<span class="excerpt"><span style="display:none;">sesiones del personal y mantener contactoscon otros maestros sobre cuestiones educativas;- preparar reuniones con los padres para examinar los progresos y problemasde los niños, y asistir a ellas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MAESTROS DE EDUCACIÓN PRIMARIA, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los profesores de enseñanza primaria enseñan diversas asignaturas a los alumnos de las escuelas primarias. Entre sus tareas se<div class="excerpt"><div hidden><span>incluyen:</span><ul class="list-group"><li class="list-group-item"> preparar planes diarios y a más largo plazo para las clases, de conformidad con las directrices sobre el plan de estudios</li><li class="list-group-item"> enseñar a los niños individualmente y en grupos, empleando distintos métodos y materiales docentes (por ejemplo, ordenador, libros, juegos) adaptados a las necesidades de los mismos</li><li class="list-group-item"> mantener la disciplina y unos buenos hábitos de trabajo en el aula</li><li class="list-group-item"> planificar y realizar con los niños actividades tales como actividades deportivas, conciertos y excursiones</li><li class="list-group-item"> asignar a los niños trabajos para el aula y para casa, y calificarlos</li><li class="list-group-item"> preparar y administrar pruebas y exámenes para evaluar el progreso de los niños, y calificarlos</li><li class="list-group-item"> observar y evaluar el rendimiento y el comportamiento de los niños</li><li class="list-group-item"> supervisar a los niños durante las clases y en los demás momentos de la jornada escolar, incluidos los recreos</li><li class="list-group-item"> participar en las reuniones y demás sesiones del personal y mantener contactos con otros maestros sobre cuestiones educativas</li><li class="list-group-item"> preparar reuniones con los padres para examinar los progresos y problemas de los niños, y asistir a ellas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

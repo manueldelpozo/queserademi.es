@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Cultivadores de moluscos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Cultivadores de moluscos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Cultivadores de moluscos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13356, 19620, 24000];
 var seriesSalJunior     = [15804, 22068, 26436];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CULTIVADORES DE MOLUSCOS</h4>');$('#info').append('<p class="descripcion">Los trabajadores cualificados en la acuicultura crían y alimentan peces y cultivanmejillones, ostras y otras formas de vida acuática, para venta o entrega en formaperiódica a compradores mayoristas, organizaciones de comercialización o a losmercados.Entre sus tareas se incluyen:- criar alimentar y cultivar peces, mejillones, ostras y otras formas de vidaacuática como cultivo comercial o para la liberación en agua dulce o salada;- sembrar moluscos y llevar a cabo otras labores de cultivo aplicadas al marisqueo;- recopilar y registrar datos sobre crecimiento, producción y medio ambiente;- realizar y supervisar exámenes de existencias a fin de detectar enfermedadeso parásitos;- efectuar el seguimiento para asegurar el mantenimiento de condiciones óptimaspara la vida acuática;- dirigir y supervisar la captura y desove de peces, la incubación de huevos yla cría de pececillos, aplicando conocimientos de gestión y técnicas de cultivode peces;- limpiar, congelar, helar o salar la captura del mar o preparar pescado y<span class="excerpt"><span style="display:none;">otrosproductos para su transporte;- mantener las edificaciones, tanques, maquinaria, embarcaciones y otrosequipos;- entregar o comercializar los productos;- alquilar o invertir en edificaciones, equipamientos y maquinaria y compraralimentos y otros suministros;- supervisar y capacitar trabajadores de acuicultura y de apoyo en la cría depeces.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CULTIVADORES DE MOLUSCOS</h4>');$('#info').append('<p class="descripcion">Los trabajadores cualificados en la acuicultura crían y alimentan peces y cultivan mejillones, ostras y otras formas de vida<div class="excerpt"><div hidden><span>acuática, para venta o entrega en forma periódica a compradores mayoristas, organizaciones de comercialización o a los mercados. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> criar alimentar y cultivar peces, mejillones, ostras y otras formas de vida acuática como cultivo comercial o para la liberación en agua dulce o salada</li><li class="list-group-item"> sembrar moluscos y llevar a cabo otras labores de cultivo aplicadas al marisqueo</li><li class="list-group-item"> recopilar y registrar datos sobre crecimiento, producción y medio ambiente</li><li class="list-group-item"> realizar y supervisar exámenes de existencias a fin de detectar enfermedades o parásitos</li><li class="list-group-item"> efectuar el seguimiento para asegurar el mantenimiento de condiciones óptimas para la vida acuática</li><li class="list-group-item"> dirigir y supervisar la captura y desove de peces, la incubación de huevos y la cría de pececillos, aplicando conocimientos de gestión y técnicas de cultivo de peces</li><li class="list-group-item"> limpiar, congelar, helar o salar la captura del mar o preparar pescado y otros productos para su transporte</li><li class="list-group-item"> mantener las edificaciones, tanques, maquinaria, embarcaciones y otros equipos</li><li class="list-group-item"> entregar o comercializar los productos</li><li class="list-group-item"> alquilar o invertir en edificaciones, equipamientos y maquinaria y comprar alimentos y otros suministros</li><li class="list-group-item"> supervisar y capacitar trabajadores de acuicultura y de apoyo en la cría de peces.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

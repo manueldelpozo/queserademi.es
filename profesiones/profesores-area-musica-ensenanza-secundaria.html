@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Profesores del área de música (enseñanza secundaria) | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Profesores del área de música (enseñanza secundaria)">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Profesores del área de música (enseñanza secundaria)</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [23600, 28084, 30724];
 var seriesSalJunior     = [26828, 30976, 34444];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESORES DEL ÁREA DE MÚSICA (ENSEÑANZA SECUNDARIA)</h4>');$('#info').append('<p class="descripcion">Los profesores de enseñanza secundaria (excepto materias específicas de formaciónprofesional) enseñan una o más materias de enseñanza secundaria, excluidaslas materias dirigidas a preparar a los alumnos para el empleo en áreas deocupaciones específicas.Nota: Aquellos profesores que imparten materias específicas que tienen comofinalidad preparar a los estudiantes para un empleo específico se clasificarán enel grupo primario 2220, Profesores de formación profesional (materias específicas),tanto si trabajan en un instituto de enseñanza secundaria como si lo hacenen uno de formación profesional. Aquellos profesores que imparten a nivel desecundaria materias tales como matemáticas y que no preparan al alumno parael empleo en un área específica ocupacional se clasificarán en este grupo primarioindependientemente de si trabajan en un instituto de secundaria o en uno deformación profesional.Entre sus tareas se incluyen:- proyectar y modificar planes de estudio y preparar los cursos de conformidadcon las directrices establecidas al respecto;- establecer y aplicar normas de comportamiento y<span class="excerpt"><span style="display:none;">procedimientos para mantenerel orden entre los alumnos;- preparar y dar clases, dirigir debates y realizar demostraciones en una o másmaterias;- establecer objetivos claros para todas clases, unidades y proyectos, y comunicarlosa los alumnos;- preparar los materiales y las aulas para las actividades de la clase;- adaptar los métodos docentes y los materiales de enseñanza a las distintasnecesidades e intereses de los alumnos;- observar y evaluar el rendimiento y el comportamiento de los alumnos;- preparar y administrar pruebas y exámenes con objeto de evaluar los progresosde los alumnos, y dar las calificaciones correspondientes;- preparar informes sobre la labor de los alumnos y consultar a otros profesoresy a los padres;- participar en las reuniones relativas a las políticas educativas u organizativasdel centro;- planificar y organizar actividades escolares</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESORES DEL ÁREA DE MÚSICA (ENSEÑANZA SECUNDARIA)</h4>');$('#info').append('<p class="descripcion">Los profesores de enseñanza secundaria (excepto materias específicas de formación profesional) enseñan una o más materias de enseñanza secundaria,<div class="excerpt"><div hidden><span>excluidas las materias dirigidas a preparar a los alumnos para el empleo en áreas de ocupaciones específicas. Nota: Aquellos profesores que imparten materias específicas que tienen como finalidad preparar a los estudiantes para un empleo específico se clasificarán en el grupo primario 2220, Profesores de formación profesional (materias específicas), tanto si trabajan en un instituto de enseñanza secundaria como si lo hacen en uno de formación profesional. Aquellos profesores que imparten a nivel de secundaria materias tales como matemáticas y que no preparan al alumno para el empleo en un área específica ocupacional se clasificarán en este grupo primario independientemente de si trabajan en un instituto de secundaria o en uno de formación profesional. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> proyectar y modificar planes de estudio y preparar los cursos de conformidad con las directrices establecidas al respecto</li><li class="list-group-item"> establecer y aplicar normas de comportamiento y procedimientos para mantener el orden entre los alumnos</li><li class="list-group-item"> preparar y dar clases, dirigir debates y realizar demostraciones en una o más materias</li><li class="list-group-item"> establecer objetivos claros para todas clases, unidades y proyectos, y comunicarlos a los alumnos</li><li class="list-group-item"> preparar los materiales y las aulas para las actividades de la clase</li><li class="list-group-item"> adaptar los métodos docentes y los materiales de enseñanza a las distintas necesidades e intereses de los alumnos</li><li class="list-group-item"> observar y evaluar el rendimiento y el comportamiento de los alumnos</li><li class="list-group-item"> preparar y administrar pruebas y exámenes con objeto de evaluar los progresos de los alumnos, y dar las calificaciones correspondientes</li><li class="list-group-item"> preparar informes sobre la labor de los alumnos y consultar a otros profesores y a los padres</li><li class="list-group-item"> participar en las reuniones relativas a las políticas educativas u organizativas del centro</li><li class="list-group-item"> planificar y organizar actividades escolares</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

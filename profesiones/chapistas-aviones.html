@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Chapistas de aviones | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Chapistas de aviones">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Chapistas de aviones</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12180, 14700, 18120];
 var seriesSalJunior     = [13920, 16380, 20508];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CHAPISTAS DE AVIONES</h4>');$('#info').append('<p class="descripcion">Los chapistas y caldereros fabrican, instalan y reparan piezas y elementos diversosen chapas de acero, hierro galvanizado, aluminio, cobre, estaño, latón o cinc.Nota: Los instaladores de tejados metálicos se clasifican en el grupo primario7291, Montadores de cubiertas. Los instaladores de tuberías se clasifican en el7221, Fontaneros. Sin embargo, aquellos trabajadores que construyen productosa partir de planchas de metal para su posterior instalación y adaptación por partede los montadores de cubiertas y de los fontaneros serán clasificados en estegrupo primario junto con los chapistas y caldereros.Entre sus tareas se incluyen:- trazar en la chapa metálica las señales que servirán para cortarla y darle forma;- fabricar y reparar utensilios de uso doméstico y otros objetos de estaño, cobrey aleaciones ligeras, así como piezas y accesorios de decoración;- fabricar y reparar calderas, depósitos, cubas y otros recipientes semejantes;- montar y reparar las piezas de chapa metálica de vehículos y aeronaves;- convertir los<span class="excerpt"><span style="display:none;">planos en dibujos de taller que deban seguirse en la construccióny montaje de productos de chapa metálica;- determinar los requisitos de los proyectos, incluidos su alcance, secuenciasde montaje y métodos y materiales necesarios, a partir de planos, dibujos detaller e instrucciones orales o escritas;- inspeccionar la calidad de los productos y su instalación para garantizar quese cumplen las especificaciones.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CHAPISTAS DE AVIONES</h4>');$('#info').append('<p class="descripcion">Los chapistas y caldereros fabrican, instalan y reparan piezas y elementos diversos en chapas de acero, hierro galvanizado, aluminio,<div class="excerpt"><div hidden><span>cobre, estaño, latón o cinc. Nota: Los instaladores de tejados metálicos se clasifican en el grupo primario 7291, Montadores de cubiertas. Los instaladores de tuberías se clasifican en el 7221, Fontaneros. Sin embargo, aquellos trabajadores que construyen productos a partir de planchas de metal para su posterior instalación y adaptación por parte de los montadores de cubiertas y de los fontaneros serán clasificados en este grupo primario junto con los chapistas y caldereros. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> trazar en la chapa metálica las señales que servirán para cortarla y darle forma;  - fabricar y reparar utensilios de uso doméstico y otros objetos de estaño, cobre y aleaciones ligeras, así como piezas y accesorios de decoración</li><li class="list-group-item"> fabricar y reparar calderas, depósitos, cubas y otros recipientes semejantes</li><li class="list-group-item"> montar y reparar las piezas de chapa metálica de vehículos y aeronaves</li><li class="list-group-item"> convertir los planos en dibujos de taller que deban seguirse en la construcción y montaje de productos de chapa metálica</li><li class="list-group-item"> determinar los requisitos de los proyectos, incluidos su alcance, secuencias de montaje y métodos y materiales necesarios, a partir de planos, dibujos de taller e instrucciones orales o escritas</li><li class="list-group-item"> inspeccionar la calidad de los productos y su instalación para garantizar que se cumplen las especificaciones.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

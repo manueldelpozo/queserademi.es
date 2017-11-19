@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Montadores-instaladores de placas de energía solar | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Montadores-instaladores de placas de energía solar">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Montadores-instaladores de placas de energía solar</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MONTADORES-INSTALADORES DE PLACAS DE ENERGÍA SOLAR</h4>');$('#info').append('<p class="descripcion">Los montadores-instaladores de placas de energía solar realizan el montaje,puesta en servicio, operación y mantenimiento de instalaciones solares térmicasy fotovoltaicas, bien para la producción de agua caliente sanitaria, para el apoyoa sistemas de calefacción, o para la producción de energía eléctrica, en caso delas instalaciones solares fotovoltaicas.Entre sus tareas se incluyen:- replantear los captadores, circuitos hidráulicos y equipos eléctricos en instalacionessolares térmicas;- montar captadores solares térmicos, circuitos hidráulicos y equipos eléctricos;- realizar la puesta en servicio y comprobación de funcionamiento de las instalacionessolares térmicas;- realizar las maniobras de operación en el sistema de distribución de los circuitosprimarios y secundarios, accesorios y elementos de control y regulaciónde la instalación solar térmica;- realizar las operaciones de mantenimiento preventivo de las instalacionessolares térmicas;- realizar el mantenimiento correctivo y reparación de componentes de las instalacionessolares térmicas;- replantear paneles e instalaciones solares fotovoltaicas y sistema de apoyoenergético;- montar soportes, paneles y sistemas de almacenamiento/acumulación<span class="excerpt"><span style="display:none;">eninstalaciones solares fotovoltaicas;- montar los circuitos y equipos eléctricos, así como grupos electrógenos convencionales,sistemas eólicos de pequeña potencia y demás sistemas deapoyo en instalaciones solares fotovoltaicas;- realizar la puesta en servicio y comprobación de funcionamiento de las instalacionessolares fotovoltaicas;- realizar las operaciones de maniobra y el mantenimiento preventivo de lasinstalaciones solares fotovoltaicas;- realizar las operaciones de mantenimiento correctivo en las instalaciones solaresfotovoltaicas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MONTADORES-INSTALADORES DE PLACAS DE ENERGÍA SOLAR</h4>');$('#info').append('<p class="descripcion">Los montadores-instaladores de placas de energía solar realizan el montaje, puesta en servicio, operación y mantenimiento de instalaciones solares<div class="excerpt"><div hidden><span>térmicas y fotovoltaicas, bien para la producción de agua caliente sanitaria, para el apoyo a sistemas de calefacción, o para la producción de energía eléctrica, en caso de las instalaciones solares fotovoltaicas. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> replantear los captadores, circuitos hidráulicos y equipos eléctricos en instalaciones solares térmicas</li><li class="list-group-item"> montar captadores solares térmicos, circuitos hidráulicos y equipos eléctricos</li><li class="list-group-item"> realizar la puesta en servicio y comprobación de funcionamiento de las instalaciones solares térmicas</li><li class="list-group-item"> realizar las maniobras de operación en el sistema de distribución de los circuitos primarios y secundarios, accesorios y elementos de control y regulación de la instalación solar térmica</li><li class="list-group-item"> realizar las operaciones de mantenimiento preventivo de las instalaciones solares térmicas</li><li class="list-group-item"> realizar el mantenimiento correctivo y reparación de componentes de las instalaciones solares térmicas</li><li class="list-group-item"> replantear paneles e instalaciones solares fotovoltaicas y sistema de apoyo energético</li><li class="list-group-item"> montar soportes, paneles y sistemas de almacenamiento/acumulación en instalaciones solares fotovoltaicas</li><li class="list-group-item"> montar los circuitos y equipos eléctricos, así como grupos electrógenos convencionales, sistemas eólicos de pequeña potencia y demás sistemas de apoyo en instalaciones solares fotovoltaicas</li><li class="list-group-item"> realizar la puesta en servicio y comprobación de funcionamiento de las instalaciones solares fotovoltaicas</li><li class="list-group-item"> realizar las operaciones de maniobra y el mantenimiento preventivo de las instalaciones solares fotovoltaicas</li><li class="list-group-item"> realizar las operaciones de mantenimiento correctivo en las instalaciones solares fotovoltaicas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

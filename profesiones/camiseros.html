@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Camiseros | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Camiseros">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Camiseros</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [8544, 12468, 15216];
 var seriesSalJunior     = [9864, 14352, 17484];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CAMISEROS</h4>');$('#info').append('<p class="descripcion">Los sastres, modistos, peleteros y sombrereros confeccionan, ajustan, modificano arreglan prendas de vestir hechas a la medida o a mano. Confeccionan a medidaprendas como trajes, abrigos y vestidos con telas, cueros finos, pieles yotros materiales, o hacen sombreros según las especificaciones de los clientes yde los fabricantes de prendas de vestir.Entre sus tareas se incluyen:- confeccionar abrigos, trajes, faldas, camisas, blusas, prendas de lencería ycorsetería, sombreros, gorras y prendas similares, a menudo ajustándose alas exigencias de los clientes;- seleccionar telas, cueros o pieles que se adecuen al tamaño, color, textura ycalidad deseadas de la prenda, cortarlos para que se ajusten al patrón y disponerlossobre éste de acuerdo con el diseño de la prenda;- hacer cambios en el estilo de las prendas, por ejemplo acortando pantalones,estrechando solapas y añadiendo o quitando hombreras;- seleccionar y modificar patrones comerciales para ajustarlos a lasespecificaciones de los clientes y de los fabricantes de las<span class="excerpt"><span style="display:none;">prendas;- ajustar, modificar y arreglar vestidos, chaquetas y otras prendas a medida deacuerdo con los deseos de los clientes;- confeccionar y cuidar el vestuario utilizado en representaciones teatrales, en313televisión y en cinematografía;- disponer en pliegues y drapeados materiales como satín y seda, o coser cintaso tejidos en forma de flores artificiales o alrededor de la copa o las alaspara dar forma a sombreros y adornarlos;- coser y unir materiales y pelo para confeccionar pelucas;- combinar tiras de pelo para dar un aspecto natural a las pelucas, colocarlasen la posición especificada y coserlas para formar postizos;- confeccionar, transformar, renovar y reparar prendas de vestir y otros artículosde piel;- recoger los trozos de pieles que se conserven en buen estado de abrigos viejos,pegar una tela de refuerzo por el revés de los abrigos de piel y recortarlas orillas de las pieles una vez cosidas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CAMISEROS</h4>');$('#info').append('<p class="descripcion">Los sastres, modistos, peleteros y sombrereros confeccionan, ajustan, modifican o arreglan prendas de vestir hechas a la medida o<div class="excerpt"><div hidden><span>a mano. Confeccionan a medida prendas como trajes, abrigos y vestidos con telas, cueros finos, pieles y otros materiales, o hacen sombreros según las especificaciones de los clientes y de los fabricantes de prendas de vestir. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> confeccionar abrigos, trajes, faldas, camisas, blusas, prendas de lencería y corsetería, sombreros, gorras y prendas similares, a menudo ajustándose a las exigencias de los clientes</li><li class="list-group-item"> seleccionar telas, cueros o pieles que se adecuen al tamaño, color, textura y calidad deseadas de la prenda, cortarlos para que se ajusten al patrón y disponerlos sobre éste de acuerdo con el diseño de la prenda</li><li class="list-group-item"> hacer cambios en el estilo de las prendas, por ejemplo acortando pantalones, estrechando solapas y añadiendo o quitando hombreras</li><li class="list-group-item"> seleccionar y modificar patrones comerciales para ajustarlos a las especificaciones de los clientes y de los fabricantes de las prendas</li><li class="list-group-item"> ajustar, modificar y arreglar vestidos, chaquetas y otras prendas a medida de acuerdo con los deseos de los clientes</li><li class="list-group-item"> confeccionar y cuidar el vestuario utilizado en representaciones teatrales, en 313 televisión y en cinematografía</li><li class="list-group-item"> disponer en pliegues y drapeados materiales como satín y seda, o coser cintas o tejidos en forma de flores artificiales o alrededor de la copa o las alas para dar forma a sombreros y adornarlos</li><li class="list-group-item"> coser y unir materiales y pelo para confeccionar pelucas</li><li class="list-group-item"> combinar tiras de pelo para dar un aspecto natural a las pelucas, colocarlas en la posición especificada y coserlas para formar postizos</li><li class="list-group-item"> confeccionar, transformar, renovar y reparar prendas de vestir y otros artículos de piel</li><li class="list-group-item"> recoger los trozos de pieles que se conserven en buen estado de abrigos viejos, pegar una tela de refuerzo por el revés de los abrigos de piel y recortar las orillas de las pieles una vez cosidas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

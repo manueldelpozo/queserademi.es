@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Directores de informática | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Directores de informática">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Directores de informática</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [30240, 34500, 37644];
 var seriesSalJunior     = [34740, 38640, 42900];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE INFORMÁTICA</h4>');$('#info').append('<p class="descripcion">Los directores de servicios de tecnologías de la información y las comunicacionesplanifican, dirigen y coordinan la adquisición, desarrollo, mantenimiento yuso de los sistemas de ordenadores y telecomunicaciones. Se incluyen en estegrupo tanto directores de departamentos como directores generales de empresasque no cuentan con una jerarquía a nivel directivo.17Entre sus tareas se incluyen:- consultar a los usuarios, directivos, proveedores y técnicos para evaluar lasnecesidades informáticas y los requisitos del sistema y especificar la tecnologíapara satisfacer esas necesidades;- elaborar y dirigir estrategias, políticas y planes sobre tecnología de la informacióny las telecomunicaciones (TIC);- dirigir la selección e instalación de los recursos de TIC y la formación de losusuarios;- dirigir las operaciones de TIC, analizar los flujos de trabajo, establecer prioridades,elaborar normas y fijar plazos;- controlar la seguridad de los sistemas de TIC;- asignar, examinar, gestionar y dirigir el trabajo de los analistas de sistemas,programadores y demás empleados relacionados con la informática;-<span class="excerpt"><span style="display:none;">evaluar el uso de la tecnología de la organización y las necesidades al respecto,y recomendar mejoras tales como la actualización del hardware y el software;- establecer y gestionar presupuestos, controlar los gastos y asegurar la utilizacióneficiente de los recursos;- establecer y dirigir los procedimientos operativos y administrativos;- controlar la selección, formación y rendimiento del personal;- representar a la empresa u organización en las convenciones, seminarios yconferencias sobre TIC.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE INFORMÁTICA</h4>');$('#info').append('<p class="descripcion">Los directores de servicios de tecnologías de la información y las comunicaciones planifican, dirigen y coordinan la adquisición, desarrollo,<div class="excerpt"><div hidden><span>mantenimiento y uso de los sistemas de ordenadores y telecomunicaciones. Se incluyen en este grupo tanto directores de departamentos como directores generales de empresas que no cuentan con una jerarquía a nivel directivo. 17 Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> consultar a los usuarios, directivos, proveedores y técnicos para evaluar las necesidades informáticas y los requisitos del sistema y especificar la tecnología para satisfacer esas necesidades</li><li class="list-group-item"> elaborar y dirigir estrategias, políticas y planes sobre tecnología de la información y las telecomunicaciones (TIC)</li><li class="list-group-item"> dirigir la selección e instalación de los recursos de TIC y la formación de los usuarios</li><li class="list-group-item"> dirigir las operaciones de TIC, analizar los flujos de trabajo, establecer prioridades, elaborar normas y fijar plazos</li><li class="list-group-item"> controlar la seguridad de los sistemas de TIC</li><li class="list-group-item"> asignar, examinar, gestionar y dirigir el trabajo de los analistas de sistemas, programadores y demás empleados relacionados con la informática</li><li class="list-group-item"> evaluar el uso de la tecnología de la organización y las necesidades al respecto, y recomendar mejoras tales como la actualización del hardware y el software</li><li class="list-group-item"> establecer y gestionar presupuestos, controlar los gastos y asegurar la utilización eficiente de los recursos</li><li class="list-group-item"> establecer y dirigir los procedimientos operativos y administrativos</li><li class="list-group-item"> controlar la selección, formación y rendimiento del personal</li><li class="list-group-item"> representar a la empresa u organización en las convenciones, seminarios y conferencias sobre TIC.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

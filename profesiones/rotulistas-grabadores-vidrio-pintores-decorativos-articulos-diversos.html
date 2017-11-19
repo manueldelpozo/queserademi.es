@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Rotulistas, grabadores de vidrio, pintores decorativos de artículos diversos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Rotulistas, grabadores de vidrio, pintores decorativos de artículos diversos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Rotulistas, grabadores de vidrio, pintores decorativos de artículos diversos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [11484, 14136, 15984];
 var seriesSalJunior     = [13500, 16512, 18612];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ROTULISTAS, GRABADORES DE VIDRIO, PINTORES DECORATIVOS DE ARTÍCULOS DIVERSOS</h4>');$('#info').append('<p class="descripcion">Los redactores de carteles, pintores decorativos y grabadores decoran artículosde madera, metal, fibras textiles, vidrio, cerámica y otros materiales. Proyectan,trazan y pintan letras, figuras, monogramas y motivos decorativos para confeccionarrótulos y graban motivos ornamentales y florales en vidrio y otros artículos.Entre sus tareas se incluyen:- pintar con pincel o a pistola dibujos decorativos sobre objetos, como loza,vidrio, pitilleras, pantallas de lámpara;- estampar dibujos decorativos u ornamentales en objetos valiéndose de calcos;- integrar y desarrollar elementos visuales, como línea, espacio, masa, color yperspectiva, para obtener los efectos deseados, como la ilustración de ideas,emociones o sensaciones;- proyectar y pintar en uno o más idiomas letras, figuras, monogramas y motivosdecorativos para confeccionar rótulos;- trazar o esbozar dibujos decorativos o letras sobre piezas de trabajo o plantillaspara preparar estarcidores y calcos;- diseñar motivos decorativos o letras para pintar objetos, como rótulos, vidrio,loza o placas de zinc;- utilizar programas informáticos y máquinas de fresado<span class="excerpt"><span style="display:none;">con el fin de obtenerimágenes talladas en 3D para su aplicación a un rótulo de mayor dimensión,así como a rótulos con grabados o incrustaciones;- proyectar y fabricar rótulos normales de corte plano, rótulos ensombrecidoscon la aplicación de vinilo o rótulos ya cortados para su aplicación;- escribir, pintar o imprimir rótulos o carteles utilizados para fines informativoso de otro tipo;- recortar letras y signos para fines informativos a partir de tableros de fibraprensada o cartón, a mano o a máquina, como una sierra eléctrica de vaivéno de cinta;- examinar esquemas, diagramas, muestras, cianotipos o fotografías para decidirla forma de grabar o tallar los objetos;- medir y calcular dimensiones de rótulos, dibujos o motivos decorativos quese vayan a grabar;- grabar y estampar dibujos, motivos ornamentales, grabados al aguafuerte,marcas</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ROTULISTAS, GRABADORES DE VIDRIO, PINTORES DECORATIVOS DE ARTÍCULOS DIVERSOS</h4>');$('#info').append('<p class="descripcion">Los redactores de carteles, pintores decorativos y grabadores decoran artículos de madera, metal, fibras textiles, vidrio, cerámica y otros<div class="excerpt"><div hidden><span>materiales. Proyectan, trazan y pintan letras, figuras, monogramas y motivos decorativos para confeccionar rótulos y graban motivos ornamentales y florales en vidrio y otros artículos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> pintar con pincel o a pistola dibujos decorativos sobre objetos, como loza, vidrio, pitilleras, pantallas de lámpara</li><li class="list-group-item"> estampar dibujos decorativos u ornamentales en objetos valiéndose de calcos</li><li class="list-group-item"> integrar y desarrollar elementos visuales, como línea, espacio, masa, color y perspectiva, para obtener los efectos deseados, como la ilustración de ideas, emociones o sensaciones</li><li class="list-group-item"> proyectar y pintar en uno o más idiomas letras, figuras, monogramas y motivos decorativos para confeccionar rótulos</li><li class="list-group-item"> trazar o esbozar dibujos decorativos o letras sobre piezas de trabajo o plantillas para preparar estarcidores y calcos</li><li class="list-group-item"> diseñar motivos decorativos o letras para pintar objetos, como rótulos, vidrio, loza o placas de zinc</li><li class="list-group-item"> utilizar programas informáticos y máquinas de fresado con el fin de obtener imágenes talladas en 3D para su aplicación a un rótulo de mayor dimensión, así como a rótulos con grabados o incrustaciones</li><li class="list-group-item"> proyectar y fabricar rótulos normales de corte plano, rótulos ensombrecidos con la aplicación de vinilo o rótulos ya cortados para su aplicación</li><li class="list-group-item"> escribir, pintar o imprimir rótulos o carteles utilizados para fines informativos o de otro tipo</li><li class="list-group-item"> recortar letras y signos para fines informativos a partir de tableros de fibra prensada o cartón, a mano o a máquina, como una sierra eléctrica de vaivén o de cinta</li><li class="list-group-item"> examinar esquemas, diagramas, muestras, cianotipos o fotografías para decidir la forma de grabar o tallar los objetos</li><li class="list-group-item"> medir y calcular dimensiones de rótulos, dibujos o motivos decorativos que se vayan a grabar</li><li class="list-group-item"> grabar y estampar dibujos, motivos ornamentales, grabados al aguafuerte, marcas</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

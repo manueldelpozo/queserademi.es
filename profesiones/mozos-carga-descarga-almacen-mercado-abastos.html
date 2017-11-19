@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Mozos de carga y descarga, almacén y/o mercado de abastos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Mozos de carga y descarga, almacén y/o mercado de abastos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Mozos de carga y descarga, almacén y/o mercado de abastos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12528, 17088, 20268];
 var seriesSalJunior     = [14484, 19212, 22524];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MOZOS DE CARGA Y DESCARGA, ALMACÉN Y/O MERCADO DE ABASTOS</h4>');$('#info').append('<p class="descripcion">Estos peones realizan tareas como: embalar bultos, acarrear, cargar y descargarmuebles y otros enseres domésticos en las mudanzas; carga y descarga mercancíasy otros tipos de carga o equipaje transportados por barco o avión; transportary depositar mercancías en diversos almacenes. Para realizar su trabajo estospeones pueden conducir bicicletas, carretillas y otros vehículos accionados porel hombre, así como vehículos de tracción animal.Entre sus tareas se incluyen:- embalar muebles de oficina o enseres domésticos, máquinas, aparatos yotros objetos para transportarlos de un lugar a otro;- cargar y descargar mercancías y equipaje de camiones, furgones, vagones deferrocarril, buques o aeronaves;- cargar y descargar cereales, carbón, arena, equipajes y otros objetos similaresutilizando cintas transportadoras, tubos y otros sistemas de transporte;- conectar mangueras entre las tuberías de una estación terrestre principal y375los depósitos de barcazas, buques cisterna y otros barcos para cargar y descargarpetróleo, gases licuados y otros líquidos;- cargar y apilar mercancías en almacenes<span class="excerpt"><span style="display:none;">o depósitos similares;- clasificar la mercancía antes de su carga y descarga;- guiar a las bestias en la dirección deseada, prestando atención a otros vehículosy cumpliendo las normas de tránsito;- conducir a los animales que arrastran vehículos de tracción animal en minaso canteras;- conservar en buen estado las máquinas, realizar reparaciones de poca importanciae instalar piezas de recambio;- cuidar y alimentar a los animales;- cobrar el importe del trayecto realizado o del transporte.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MOZOS DE CARGA Y DESCARGA, ALMACÉN Y/O MERCADO DE ABASTOS</h4>');$('#info').append('<p class="descripcion">Estos peones realizan tareas como: embalar bultos, acarrear, cargar y descargar muebles y otros enseres domésticos en las mudanzas;<div class="excerpt"><div hidden><span>carga y descarga mercancías y otros tipos de carga o equipaje transportados por barco o avión; transportar y depositar mercancías en diversos almacenes. Para realizar su trabajo estos peones pueden conducir bicicletas, carretillas y otros vehículos accionados por el hombre, así como vehículos de tracción animal. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> embalar muebles de oficina o enseres domésticos, máquinas, aparatos y otros objetos para transportarlos de un lugar a otro</li><li class="list-group-item"> cargar y descargar mercancías y equipaje de camiones, furgones, vagones de ferrocarril, buques o aeronaves</li><li class="list-group-item"> cargar y descargar cereales, carbón, arena, equipajes y otros objetos similares utilizando cintas transportadoras, tubos y otros sistemas de transporte</li><li class="list-group-item"> conectar mangueras entre las tuberías de una estación terrestre principal y 375 los depósitos de barcazas, buques cisterna y otros barcos para cargar y descargar petróleo, gases licuados y otros líquidos</li><li class="list-group-item"> cargar y apilar mercancías en almacenes o depósitos similares</li><li class="list-group-item"> clasificar la mercancía antes de su carga y descarga</li><li class="list-group-item"> guiar a las bestias en la dirección deseada, prestando atención a otros vehículos y cumpliendo las normas de tránsito</li><li class="list-group-item"> conducir a los animales que arrastran vehículos de tracción animal en minas o canteras</li><li class="list-group-item"> conservar en buen estado las máquinas, realizar reparaciones de poca importancia e instalar piezas de recambio</li><li class="list-group-item"> cuidar y alimentar a los animales</li><li class="list-group-item"> cobrar el importe del trayecto realizado o del transporte.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

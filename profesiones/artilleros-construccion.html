@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Artilleros de la construcción | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Artilleros de la construcción">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Artilleros de la construcción</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [18180, 26400, 32160];
 var seriesSalJunior     = [20268, 29316, 35652];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ARTILLEROS DE LA CONSTRUCCIÓN</h4>');$('#info').append('<p class="descripcion">Los pegadores colocan, montan y detonan explosivos en minas, canteras y obrasde demolición.Entre sus tareas se incluyen:- garantizar que se cumplen los procedimientos y las normas de seguridad enel lugar de trabajo y de manejo, almacenamiento y transporte de explosivos;- planificar la disposición, profundidad y diámetro de las perforaciones parabarrenos y dar instrucciones al respecto;- comprobar la profundidad y limpieza de las perforaciones para barrenos;- determinar la cantidad y el tipo de los explosivos que han de usarse;- colocar los barrenos en las perforaciones;- montar cargas de cebo usando detonadores y cartuchos explosivos, o dirigira otros trabajadores para que las monten, y conectarles filamentos eléctricos,fusibles y cordones detonadores;- conectar filamentos eléctricos, fusibles y cordones detonadores en serie,comprobar los circuitos eléctricos y repararlos en caso de mal funcionamiento,y conectarlos en serie a máquinas de voladura;- cubrir las cargas, llenar las perforaciones para barrenos con polvo de roca,arena y otros materiales,<span class="excerpt"><span style="display:none;">y apisonar el material para compactar las cargas;- comprobar que han detonado todos los explosivos, informar sobre los fallosy ocuparse de ellos;- declarar la seguridad de las zonas de voladura antes y después de lasdetonaciones;- compilar y mantener registros del uso de explosivos de conformidad con lasleyes y reglamentos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ARTILLEROS DE LA CONSTRUCCIÓN</h4>');$('#info').append('<p class="descripcion">Los pegadores colocan, montan y detonan explosivos en minas, canteras y obras de demolición. Entre sus tareas se incluyen:<div class="excerpt"><div hidden>- garantizar que se cumplen los procedimientos y las normas de seguridad en el lugar de trabajo y de manejo, almacenamiento y transporte de explosivos; - planificar la disposición, profundidad y diámetro de las perforaciones para barrenos y dar instrucciones al respecto; - comprobar la profundidad y limpieza de las perforaciones para barrenos; - determinar la cantidad y el tipo de los explosivos que han de usarse; - colocar los barrenos en las perforaciones; - montar cargas de cebo usando detonadores y cartuchos explosivos, o dirigir a otros trabajadores para que las monten, y conectarles filamentos eléctricos, fusibles y cordones detonadores; - conectar filamentos eléctricos, fusibles y cordones detonadores en serie, comprobar los circuitos eléctricos y repararlos en caso de mal funcionamiento, y conectarlos en serie a máquinas de voladura; - cubrir las cargas, llenar las perforaciones para barrenos con polvo de roca, arena y otros materiales, y apisonar el material para compactar las cargas; - comprobar que han detonado todos los explosivos, informar sobre los fallos y ocuparse de ellos; - declarar la seguridad de las zonas de voladura antes y después de las detonaciones; - compilar y mantener registros del uso de explosivos de conformidad con las leyes y reglamentos.</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

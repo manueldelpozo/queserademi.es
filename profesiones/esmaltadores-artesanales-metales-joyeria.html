@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Esmaltadores artesanales de metales y/o joyería | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Esmaltadores artesanales de metales y/o joyería">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Esmaltadores artesanales de metales y/o joyería</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [11484, 14136, 15984];
 var seriesSalJunior     = [13500, 16512, 18612];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ESMALTADORES ARTESANALES DE METALES Y/O JOYERÍA</h4>');$('#info').append('<p class="descripcion">Los joyeros, orfebres y plateros diseñan, fabrican, ajustan, reparan o tasan objetosde joyería, ceremoniales o religiosos, oro, plata, otros metales preciosos ogemas. Cortan, tallan, pulen y engastan piedras preciosas y semipreciosas, incluidosgemas y diamantes, y graban inscripciones y motivos decorativos en joyasy objetos de metales preciosos. Tallan y pulen diamantes para usos industriales.Entre sus tareas se incluyen:- moldear, fundir o colar a mano objetos de joyería y otros productos de metalesno ferrosos;- confeccionar nuevos diseños de joyas y modificar diseños ya existentes, utilizandoordenadores en caso necesario;- cortar diseños en moldes u otros materiales que se utilizarán como modelosen la fabricación de productos de metal y joyería;- modificar monturas para ajustarlas o para reponer las joyas;- reparar, modificar de forma y modernizar joyas o productos de metales preciososantiguos siguiendo diseños o instrucciones;- confeccionar enteramente joyas como sortijas, collares, pulseras, broches ybrazaletes a partir de materiales como oro, plata, platino y<span class="excerpt"><span style="display:none;">piedras preciosaso semipreciosas;- examinar superficies y estructuras internas de gemas, utilizando polariscopios,refractómetros, microscopios y otros instrumentos ópticos, para diferenciarentre piedras, identificar especímenes raros o detectar fallos, defectoso peculiaridades que afecten al valor de la gema;- tallar y pulir gemas y engastarlas en objetos de joyería;- grabar inscripciones y motivos decorativos en joyas y objetos de metalespreciosos;- tallar, pulir y dar acabado a joyas destinadas a instrumentos de precisión296como compases y cronómetros;- inspeccionar productos montados o acabados para verificar el cumplimientode las especificaciones, utilizando lentes de aumento o instrumentos de medidade precisión.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ESMALTADORES ARTESANALES DE METALES Y/O JOYERÍA</h4>');$('#info').append('<p class="descripcion">Los joyeros, orfebres y plateros diseñan, fabrican, ajustan, reparan o tasan objetos de joyería, ceremoniales o religiosos, oro, plata,<div class="excerpt"><div hidden><span>otros metales preciosos o gemas. Cortan, tallan, pulen y engastan piedras preciosas y semipreciosas, incluidos gemas y diamantes, y graban inscripciones y motivos decorativos en joyas y objetos de metales preciosos. Tallan y pulen diamantes para usos industriales. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> moldear, fundir o colar a mano objetos de joyería y otros productos de metales no ferrosos</li><li class="list-group-item"> confeccionar nuevos diseños de joyas y modificar diseños ya existentes, utilizando ordenadores en caso necesario</li><li class="list-group-item"> cortar diseños en moldes u otros materiales que se utilizarán como modelos en la fabricación de productos de metal y joyería</li><li class="list-group-item"> modificar monturas para ajustarlas o para reponer las joyas</li><li class="list-group-item"> reparar, modificar de forma y modernizar joyas o productos de metales preciosos antiguos siguiendo diseños o instrucciones</li><li class="list-group-item"> confeccionar enteramente joyas como sortijas, collares, pulseras, broches y brazaletes a partir de materiales como oro, plata, platino y piedras preciosas o semipreciosas</li><li class="list-group-item"> examinar superficies y estructuras internas de gemas, utilizando polariscopios, refractómetros, microscopios y otros instrumentos ópticos, para diferenciar entre piedras, identificar especímenes raros o detectar fallos, defectos o peculiaridades que afecten al valor de la gema</li><li class="list-group-item"> tallar y pulir gemas y engastarlas en objetos de joyería</li><li class="list-group-item"> grabar inscripciones y motivos decorativos en joyas y objetos de metales preciosos</li><li class="list-group-item"> tallar, pulir y dar acabado a joyas destinadas a instrumentos de precisión 296 como compases y cronómetros</li><li class="list-group-item"> inspeccionar productos montados o acabados para verificar el cumplimiento de las especificaciones, utilizando lentes de aumento o instrumentos de medida de precisión.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

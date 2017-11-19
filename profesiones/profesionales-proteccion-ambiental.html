@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Profesionales de la protección ambiental | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Profesionales de la protección ambiental">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Profesionales de la protección ambiental</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [21060, 27228, 31548];
 var seriesSalJunior     = [24480, 30768, 35184];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESIONALES DE LA PROTECCIÓN AMBIENTAL</h4>');$('#info').append('<p class="descripcion">Los profesionales de la protección ambiental estudian y evalúan los efectos de la actividad humana sobre el medio ambiente, como la contaminación atmosférica, acuática y acústica, la contaminación del suelo, el cambio climático, los residuos tóxicos y el agotamiento y degradación de los recursos naturales. Elaboran planes y buscan soluciones para la protección, conservación, recuperación, minimización y prevención de daños en el medio ambiente. Entre sus tareas se incluyen: - llevar a cabo investigaciones, realizar pruebas, recoger muestras, realizar análisis sobre el terreno y en laboratorio para identificar fuentes de problemas medioambientales y recomendar formas de prevenir, controlar y remediar el impacto de estos problemas; - evaluar el probable impacto medioambiental de actividades, proyectos e iniciativas potenciales o propuestos y recomendar si debe seguirse adelante con ellos; - desarrollar y coordinar la implantación de sistemas de gestión medioambiental que permitan a las organizaciones identificar, vigilar y controlar el impacto<span class="excerpt"><span style="display:none;">medioambiental de sus actividades, productos y servicios; - realizar auditorías para evaluar el impacto medioambiental de actividades, procesos, residuos, ruidos y sustancias; - evaluar el cumplimiento por parte de las organizaciones de las disposiciones y directrices públicas e internas en materia de medio ambiente, identificando infracciones y determinando la acción correctora requerida; - prestar asesoramiento técnico y servicios de apoyo a las organizaciones sobre la mejor forma de abordar los problemas medioambientales para reducir el daño medioambiental y minimizar las pérdidas económicas; - elaborar planes de conservación.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESIONALES DE LA PROTECCIÓN AMBIENTAL</h4>');$('#info').append('<p class="descripcion">Los profesionales de la protección ambiental estudian y evalúan los efectos de la actividad humana sobre el medio ambiente,<div class="excerpt"><div hidden>como la contaminación atmosférica, acuática y acústica, la contaminación del suelo, el cambio climático, los residuos tóxicos y el agotamiento y degradación de los recursos naturales. Elaboran planes y buscan soluciones para la protección, conservación, recuperación, minimización y prevención de daños en el medio ambiente.  Entre sus tareas se incluyen:  - llevar a cabo investigaciones, realizar pruebas, recoger muestras, realizar análisis sobre el terreno y en laboratorio para identificar fuentes de problemas medioambientales y recomendar formas de prevenir, controlar y remediar el impacto de estos problemas;  - evaluar el probable impacto medioambiental de actividades, proyectos e iniciativas potenciales o propuestos y recomendar si debe seguirse adelante con ellos;  - desarrollar y coordinar la implantación de sistemas de gestión medioambiental que permitan a las organizaciones identificar, vigilar y controlar el impacto medioambiental de sus actividades, productos y servicios;  - realizar auditorías para evaluar el impacto medioambiental de actividades, procesos, residuos, ruidos y sustancias;  - evaluar el cumplimiento por parte de las organizaciones de las disposiciones y directrices públicas e internas en materia de medio ambiente, identificando infracciones y determinando la acción correctora requerida;  - prestar asesoramiento técnico y servicios de apoyo a las organizaciones sobre la mejor forma de abordar los problemas medioambientales para reducir el daño medioambiental y minimizar las pérdidas económicas;  - elaborar planes de conservación.</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

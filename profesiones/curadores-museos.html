@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Curadores de museos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Curadores de museos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Curadores de museos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [14580, 18720, 21612];
 var seriesSalJunior     = [16644, 21252, 24492];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CURADORES DE MUSEOS</h4>');$('#info').append('<p class="descripcion">Los archivistas y conservadores de museos reúnen, evalúan y conservan encondiciones de seguridad el contenido de archivos, objetos y registros de interéshistórico, cultural, administrativo o artístico y de objetos artísticos y de otros tipos.Planifican, diseñan y aplican sistemas para la conservación en condicionesde seguridad de registros y de documentos de valor histórico.Entre sus tareas se incluyen:- evaluar y conservar registros para fines administrativos, históricos, jurídicos,probatorios u otros;- dirigir o realizar la preparación de índices, bibliografías, copias en microfilmey otras referencias y medios de acceso al material reunido, y ponerlos a disposiciónde los usuarios;- investigar el origen, distribución y utilización de los materiales y objetos deinterés histórico y cultural;- organizar, ampliar y conservar colecciones de objetos de importancia artística,cultural, científica o histórica;- dirigir o efectuar la clasificación y catalogación de las colecciones existentesen museos y galerías de arte, y organizar exposiciones;- estudiar, evaluar, ampliar, organizar y conservar materiales valiosos y<span class="excerpt"><span style="display:none;">de importanciahistórica, como documentos oficiales y privados, fotografías, mapas,manuscritos y materiales audiovisuales;- preparar ponencias e informes de carácter académico;- planificar y aplicar la gestión informatizada de los archivos y los registroselectrónicos;- organizar exposiciones en museos y galerías de arte, hacer publicidad deellas y organizar exposiciones especiales de interés general, especializado oeducativo;- valorar y adquirir materiales de archivo para establecer y ampliar coleccionesde archivo para fines de investigación.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CURADORES DE MUSEOS</h4>');$('#info').append('<p class="descripcion">Los archivistas y conservadores de museos reúnen, evalúan y conservan en condiciones de seguridad el contenido de archivos, objetos<div class="excerpt"><div hidden><span>y registros de interés histórico, cultural, administrativo o artístico y de objetos artísticos y de otros tipos. Planifican, diseñan y aplican sistemas para la conservación en condiciones de seguridad de registros y de documentos de valor histórico. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> evaluar y conservar registros para fines administrativos, históricos, jurídicos, probatorios u otros</li><li class="list-group-item"> dirigir o realizar la preparación de índices, bibliografías, copias en microfilme y otras referencias y medios de acceso al material reunido, y ponerlos a disposición de los usuarios</li><li class="list-group-item"> investigar el origen, distribución y utilización de los materiales y objetos de interés histórico y cultural</li><li class="list-group-item"> organizar, ampliar y conservar colecciones de objetos de importancia artística, cultural, científica o histórica</li><li class="list-group-item"> dirigir o efectuar la clasificación y catalogación de las colecciones existentes en museos y galerías de arte, y organizar exposiciones</li><li class="list-group-item"> estudiar, evaluar, ampliar, organizar y conservar materiales valiosos y de importancia histórica, como documentos oficiales y privados, fotografías, mapas, manuscritos y materiales audiovisuales</li><li class="list-group-item"> preparar ponencias e informes de carácter académico</li><li class="list-group-item"> planificar y aplicar la gestión informatizada de los archivos y los registros electrónicos</li><li class="list-group-item"> organizar exposiciones en museos y galerías de arte, hacer publicidad de ellas y organizar exposiciones especiales de interés general, especializado o educativo</li><li class="list-group-item"> valorar y adquirir materiales de archivo para establecer y ampliar colecciones de archivo para fines de investigación.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

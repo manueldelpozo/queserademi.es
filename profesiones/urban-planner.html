@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Urban planner | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Urban planner">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Urban planner</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [16344, 20136, 22800];
 var seriesSalJunior     = [18540, 22728, 25668];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">URBAN PLANNER</h4>');$('#info').append('<p class="descripcion">Los urbanistas e ingenieros de tráfico elaboran y aplican planes y políticas parael uso controlado del suelo urbano y rústico y para la ordenación de sistemas detráfico. Realizan investigaciones sobre los factores económicos, medioambientalesy sociales que afectan al uso del suelo y a los flujos de tráfico, y prestan elasesoramiento pertinente.Entre sus tareas se incluyen:- planificar la disposición y coordinar la ordenación de las zonas urbanas;- reunir y analizar datos sobre los factores económicos, jurídicos, políticos,culturales, demográficos, sociológicos, físicos y medioambientales queafectan al uso del suelo;- mantener contactos con los órganos de la administración pública, lascomunidades y los especialistas en campos como la arquitectura, laplanificación, las ciencias sociales, el medio ambiente y el Derecho;- trazar y recomendar el uso y ordenación del suelo y conservar planes, programasy proyectos textuales y gráficos para grupos e individuos;- asesorar a los órganos de la administración pública, empresas y comunidadessobre cuestiones y propuestas<span class="excerpt"><span style="display:none;">de planeamiento urbano y ordenación territorial;- examinar y evaluar informes de impacto ambiental;- planificar la disposición y coordinar la ordenación de las zonas urbanas;- planificar y proyectar la ordenación de terrenos destinados a parques, centrosde enseñanza instituciones, aeropuertos, carreteras y proyectos afines,así como a zonas comerciales, industriales y residenciales;- planificar las rutas y el control de la circulación en carretera y de los sistemasde transporte público a fin de mejorar su eficacia y seguridad, y asesorar alrespecto.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">URBAN PLANNER</h4>');$('#info').append('<p class="descripcion">Los urbanistas e ingenieros de tráfico elaboran y aplican planes y políticas para el uso controlado del suelo urbano<div class="excerpt"><div hidden><span>y rústico y para la ordenación de sistemas de tráfico. Realizan investigaciones sobre los factores económicos, medioambientales y sociales que afectan al uso del suelo y a los flujos de tráfico, y prestan el asesoramiento pertinente. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> planificar la disposición y coordinar la ordenación de las zonas urbanas</li><li class="list-group-item"> reunir y analizar datos sobre los factores económicos, jurídicos, políticos, culturales, demográficos, sociológicos, físicos y medioambientales que afectan al uso del suelo</li><li class="list-group-item"> mantener contactos con los órganos de la administración pública, las comunidades y los especialistas en campos como la arquitectura, la planificación, las ciencias sociales, el medio ambiente y el Derecho</li><li class="list-group-item"> trazar y recomendar el uso y ordenación del suelo y conservar planes, programas y proyectos textuales y gráficos para grupos e individuos</li><li class="list-group-item"> asesorar a los órganos de la administración pública, empresas y comunidades sobre cuestiones y propuestas de planeamiento urbano y ordenación territorial;  - examinar y evaluar informes de impacto ambiental</li><li class="list-group-item"> planificar la disposición y coordinar la ordenación de las zonas urbanas</li><li class="list-group-item"> planificar y proyectar la ordenación de terrenos destinados a parques, centros de enseñanza instituciones, aeropuertos, carreteras y proyectos afines, así como a zonas comerciales, industriales y residenciales</li><li class="list-group-item"> planificar las rutas y el control de la circulación en carretera y de los sistemas de transporte público a fin de mejorar su eficacia y seguridad, y asesorar al respecto.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

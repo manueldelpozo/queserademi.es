@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Guías local de turismo | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Guías local de turismo">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Guías local de turismo</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [10968, 16164, 19800];
 var seriesSalJunior     = [12708, 18612, 22740];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">GUÍAS LOCAL DE TURISMO</h4>');$('#info').append('<p class="descripcion">Los guías de turismo acompañan a personas o grupos en viajes, rutas turísticaso excursiones y en visitas a puntos de interés como lugares históricos, estable235cimientos industriales y parques temáticos. Describen los aspectos de interés yfacilitan información general sobre características interesantes.Entre sus tareas se incluyen:- escoltar y guiar a turistas en cruceros y rutas turísticas;- escoltar a visitantes de lugares de interés como museos, exposiciones, parquestemáticos, fábricas y otros establecimientos industriales;- describir aspectos de interés, facilitar información sobre ellos y responder alas preguntas;- realizar actividades educativas para escolares;- vigilar las actividades de los visitantes para garantizar que se cumplen lasnormas aplicables a las visitas y las prácticas de seguridad;- recibir y registrar a los visitantes y los participantes en giras, y facilitarles losdistintivos de identificación o dispositivos de seguridad necesarios;- distribuir folletos, mostrar presentaciones audiovisuales y explicar los procedimientosy actividades que van a desarrollarse en los puntos visitados;- velar por<span class="excerpt"><span style="display:none;">la seguridad física de los grupos y realizar actividades como la prestaciónde primeros auxilios y la dirección de las evacuaciones de emergencia;- resolver los problemas que surjan con los itinerarios de las visitas, los serviciosprestados o el alojamiento.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">GUÍAS LOCAL DE TURISMO</h4>');$('#info').append('<p class="descripcion">Los guías de turismo acompañan a personas o grupos en viajes, rutas turísticas o excursiones y en visitas a<div class="excerpt"><div hidden><span>puntos de interés como lugares históricos, estable235 cimientos industriales y parques temáticos. Describen los aspectos de interés y facilitan información general sobre características interesantes. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> escoltar y guiar a turistas en cruceros y rutas turísticas</li><li class="list-group-item"> escoltar a visitantes de lugares de interés como museos, exposiciones, parques temáticos, fábricas y otros establecimientos industriales</li><li class="list-group-item"> describir aspectos de interés, facilitar información sobre ellos y responder a las preguntas</li><li class="list-group-item"> realizar actividades educativas para escolares</li><li class="list-group-item"> vigilar las actividades de los visitantes para garantizar que se cumplen las normas aplicables a las visitas y las prácticas de seguridad</li><li class="list-group-item"> recibir y registrar a los visitantes y los participantes en giras, y facilitarles los distintivos de identificación o dispositivos de seguridad necesarios</li><li class="list-group-item"> distribuir folletos, mostrar presentaciones audiovisuales y explicar los procedimientos y actividades que van a desarrollarse en los puntos visitados</li><li class="list-group-item"> velar por la seguridad física de los grupos y realizar actividades como la prestación de primeros auxilios y la dirección de las evacuaciones de emergencia</li><li class="list-group-item"> resolver los problemas que surjan con los itinerarios de las visitas, los servicios prestados o el alojamiento.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

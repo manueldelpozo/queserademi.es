@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos de montaje de instalaciones en la construcción | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos de montaje de instalaciones en la construcción">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos de montaje de instalaciones en la construcción</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17868, 21432, 23928];
 var seriesSalJunior     = [20820, 24276, 26688];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS DE MONTAJE DE INSTALACIONES EN LA CONSTRUCCIÓN</h4>');$('#info').append('<p class="descripcion">Los técnicos en construcción ejecutan tareas técnicas relacionadas con la investigaciónen materia de ingeniería civil y con la preparación de proyectos y laconstrucción, funcionamiento, mantenimiento y reparación de edificios y otrasobras y estructuras, como sistemas de abastecimiento de agua y de alcantarillado,puentes, carreteras, presas y aeropuertos.Entre sus tareas se incluyen:- realizar o participar en ensayos y experimentos sobre el terreno y en laboratoriode suelos y materiales de construcción;- proporcionar asistencia técnica relacionada con la construcción de edificios yotras obras de ingeniería civil, incluyendo el levantamiento topográfico y losinformes al respecto;- asegurar el cumplimiento de las especificaciones del proyecto, la legislaciónaplicable y las normas de calidad deseadas en lo que concierne a los materialesy al trabajo realizado;- aplicar conocimientos técnicos de los principios y prácticas de la ingenieríacivil para identificar y resolver los problemas que surjan;- ayudar a preparar estimaciones detalladas de cantidades y costes de materialesy mano de obra<span class="excerpt"><span style="display:none;">necesarios para las obras, de conformidad con las especificacionesestablecidas;- organizar el servicio de mantenimiento y las reparaciones</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS DE MONTAJE DE INSTALACIONES EN LA CONSTRUCCIÓN</h4>');$('#info').append('<p class="descripcion">Los técnicos en construcción ejecutan tareas técnicas relacionadas con la investigación en materia de ingeniería civil y con la<div class="excerpt"><div hidden><span>preparación de proyectos y la construcción, funcionamiento, mantenimiento y reparación de edificios y otras obras y estructuras, como sistemas de abastecimiento de agua y de alcantarillado, puentes, carreteras, presas y aeropuertos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> realizar o participar en ensayos y experimentos sobre el terreno y en laboratorio de suelos y materiales de construcción</li><li class="list-group-item"> proporcionar asistencia técnica relacionada con la construcción de edificios y otras obras de ingeniería civil, incluyendo el levantamiento topográfico y los informes al respecto</li><li class="list-group-item"> asegurar el cumplimiento de las especificaciones del proyecto, la legislación aplicable y las normas de calidad deseadas en lo que concierne a los materiales y al trabajo realizado</li><li class="list-group-item"> aplicar conocimientos técnicos de los principios y prácticas de la ingeniería civil para identificar y resolver los problemas que surjan</li><li class="list-group-item"> ayudar a preparar estimaciones detalladas de cantidades y costes de materiales y mano de obra necesarios para las obras, de conformidad con las especificaciones establecidas</li><li class="list-group-item"> organizar el servicio de mantenimiento y las reparaciones</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

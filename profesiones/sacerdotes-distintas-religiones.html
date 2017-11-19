@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Sacerdotes de las distintas religiones | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Sacerdotes de las distintas religiones">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Sacerdotes de las distintas religiones</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17508, 21624, 24492];
 var seriesSalJunior     = [20100, 24672, 27876];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">SACERDOTES DE LAS DISTINTAS RELIGIONES</h4>');$('#info').append('<p class="descripcion">Los sacerdotes de las distintas religiones perpetúan las creencias, tradiciones yprácticas sagradas. Ofician en servicios religiosos, celebran ceremonias y oficiosreligiosos, prestan orientación espiritual y moral y desempeñan otras funcionesvinculadas a la práctica de la religión.Nota: Los miembros de las órdenes religiosas cuya labor implique la realizaciónde tareas propias de otras ocupaciones, como las de profesor, enfermero o trabajadorsocial, deben clasificarse atendiendo a las tareas principales que lleven acabo.Entre sus tareas se incluyen:- perpetuar tradiciones, prácticas y creencias sagradas;- oficiar en servicios religiosos o celebrar ceremonias y oficios religiosos;- desempeñar diversas funciones administrativas y sociales, incluida laparticipación en comisiones y reuniones de organizaciones religiosas;- prestar orientación espiritual y moral de conformidad con la religión profesada;- propagar doctrinas religiosas en el propio país o en el extranjero;- preparar y dar sermones;- elaborar y dirigir cursos de estudio y programas de educación religiosa;- asesorar a las personas en relación con problemas de<span class="excerpt"><span style="display:none;">relación interpersonal,de salud, financieros y religiosos;- programar actos especiales, como campamentos, conferencias, seminarios yretiros, y participar en ellos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">SACERDOTES DE LAS DISTINTAS RELIGIONES</h4>');$('#info').append('<p class="descripcion">Los sacerdotes de las distintas religiones perpetúan las creencias, tradiciones y prácticas sagradas. Ofician en servicios religiosos, celebran ceremonias<div class="excerpt"><div hidden><span>y oficios religiosos, prestan orientación espiritual y moral y desempeñan otras funciones vinculadas a la práctica de la religión. Nota: Los miembros de las órdenes religiosas cuya labor implique la realización de tareas propias de otras ocupaciones, como las de profesor, enfermero o trabajador social, deben clasificarse atendiendo a las tareas principales que lleven a cabo. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> perpetuar tradiciones, prácticas y creencias sagradas</li><li class="list-group-item"> oficiar en servicios religiosos o celebrar ceremonias y oficios religiosos</li><li class="list-group-item"> desempeñar diversas funciones administrativas y sociales, incluida la participación en comisiones y reuniones de organizaciones religiosas</li><li class="list-group-item"> prestar orientación espiritual y moral de conformidad con la religión profesada</li><li class="list-group-item"> propagar doctrinas religiosas en el propio país o en el extranjero</li><li class="list-group-item"> preparar y dar sermones</li><li class="list-group-item"> elaborar y dirigir cursos de estudio y programas de educación religiosa</li><li class="list-group-item"> asesorar a las personas en relación con problemas de relación interpersonal, de salud, financieros y religiosos</li><li class="list-group-item"> programar actos especiales, como campamentos, conferencias, seminarios y retiros, y participar en ellos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

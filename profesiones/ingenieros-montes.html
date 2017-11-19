@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Ingenieros de montes | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Ingenieros de montes">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Ingenieros de montes</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [18096, 25860, 31308];
 var seriesSalJunior     = [21264, 29496, 35256];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS DE MONTES</h4>');$('#info').append('<p class="descripcion">Los ingenieros de montes estudian, proyectan y prestan asistencia y asesoramientoen la gestión de explotaciones forestales, del medio natural, de caza ypesca fluvial.Entre sus tareas se incluyen:- estudiar la producción y protección de espacios naturales, y dirigen su explotación,mejora y aprovechamiento;- elaborar técnicas para la medición de producciones forestales y para la organizaciónde los montes;- estudiar y organizar la repoblación y conservación de las áreas forestales, lalucha contra las plagas y enfermedades de las plantas, la prevención y extincióntécnica de incendios;- estudiar la mejora genética, los métodos para mejorar las técnicas de reproduccióny la mejora tecnológica de los productos forestales;- aplicar las técnicas de ordenación forestal y planificación del territorio, concriterios de sostenibilidad;- estudiar la protección, fomento y adecuado aprovechamiento de la fauna silvestreterrestre y acuícola;- proyectar y dirigir la potenciación y utilización de los espacios naturales asícomo de los bienes y servicios que el ámbito forestal puede proporcionar;-<span class="excerpt"><span style="display:none;">realizar investigaciones, estudios e inventarios;- realizar y dirigir proyectos, y hacer valoraciones e informes sobre medio ambiente,hidrología, ecología, conservación de la naturaleza y recursos naturalescontinentales (vegetación y fauna), y ordenación territorial.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INGENIEROS DE MONTES</h4>');$('#info').append('<p class="descripcion">Los ingenieros de montes estudian, proyectan y prestan asistencia y asesoramiento en la gestión de explotaciones forestales, del medio<div class="excerpt"><div hidden><span>natural, de caza y pesca fluvial. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> estudiar la producción y protección de espacios naturales, y dirigen su explotación, mejora y aprovechamiento</li><li class="list-group-item"> elaborar técnicas para la medición de producciones forestales y para la organización de los montes</li><li class="list-group-item"> estudiar y organizar la repoblación y conservación de las áreas forestales, la lucha contra las plagas y enfermedades de las plantas, la prevención y extinción técnica de incendios</li><li class="list-group-item"> estudiar la mejora genética, los métodos para mejorar las técnicas de reproducción y la mejora tecnológica de los productos forestales</li><li class="list-group-item"> aplicar las técnicas de ordenación forestal y planificación del territorio, con criterios de sostenibilidad</li><li class="list-group-item"> estudiar la protección, fomento y adecuado aprovechamiento de la fauna silvestre terrestre y acuícola</li><li class="list-group-item"> proyectar y dirigir la potenciación y utilización de los espacios naturales así como de los bienes y servicios que el ámbito forestal puede proporcionar</li><li class="list-group-item"> realizar investigaciones, estudios e inventarios</li><li class="list-group-item"> realizar y dirigir proyectos, y hacer valoraciones e informes sobre medio ambiente, hidrología, ecología, conservación de la naturaleza y recursos naturales continentales (vegetación y fauna), y ordenación territorial.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

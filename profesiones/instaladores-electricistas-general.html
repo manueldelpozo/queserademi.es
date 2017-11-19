@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Instaladores electricistas, en general | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Instaladores electricistas, en general">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Instaladores electricistas, en general</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13476, 16752, 19044];
 var seriesSalJunior     = [15648, 18912, 21204];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INSTALADORES ELECTRICISTAS, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los electricistas de la construcción y afines instalan, montan y reparan sistemasde cableado eléctrico y equipos y accesorios afines.Entre sus tareas se incluyen:- montar, mantener y reparar sistemas de cableado y equipo auxiliar en diversosedificios, como escuelas, hospitales, establecimientos comerciales, viviendasy otras estructuras;- examinar los planos, diagramas de circuito y especificaciones para determinarlas secuencias y métodos de actuación;- planificar el trazado y la instalación de sistemas de cableado, equipos y aparatoseléctricos basándose en las especificaciones de trabajo y en las normasaplicables;- inspeccionar sistemas, equipos y componentes eléctricos para descubrirriesgos o defectos y la necesidad de ajuste o reparación;- seleccionar, cortar y conectar alambres y cables a terminales y conectores;- medir y trazar puntos de referencia en las instalaciones;- colocar e instalar cuadros de distribución eléctricos;- comprobar la continuidad de los<span class="excerpt"><span style="display:none;">circuitos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">INSTALADORES ELECTRICISTAS, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los electricistas de la construcción y afines instalan, montan y reparan sistemas de cableado eléctrico y equipos y accesorios<div class="excerpt"><div hidden><span>afines. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> montar, mantener y reparar sistemas de cableado y equipo auxiliar en diversos edificios, como escuelas, hospitales, establecimientos comerciales, viviendas y otras estructuras</li><li class="list-group-item"> examinar los planos, diagramas de circuito y especificaciones para determinar las secuencias y métodos de actuación</li><li class="list-group-item"> planificar el trazado y la instalación de sistemas de cableado, equipos y aparatos eléctricos basándose en las especificaciones de trabajo y en las normas aplicables</li><li class="list-group-item"> inspeccionar sistemas, equipos y componentes eléctricos para descubrir riesgos o defectos y la necesidad de ajuste o reparación</li><li class="list-group-item"> seleccionar, cortar y conectar alambres y cables a terminales y conectores</li><li class="list-group-item"> medir y trazar puntos de referencia en las instalaciones</li><li class="list-group-item"> colocar e instalar cuadros de distribución eléctricos</li><li class="list-group-item"> comprobar la continuidad de los circuitos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

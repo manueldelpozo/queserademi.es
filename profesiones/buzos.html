@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Buzos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Buzos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Buzos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [18180, 26400, 32160];
 var seriesSalJunior     = [20268, 29316, 35652];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">BUZOS</h4>');$('#info').append('<p class="descripcion">Los buceadores trabajan bajo el agua, vayan provistos o no de un aparato derespiración submarina, para inspeccionar, reparar, montar y desmontar instalacionesy equipos, hacer pruebas o experimentos, preparar explosivos, fotografiarestructuras de la vida marina, recolectar diversas formas de vida marina con finescomerciales o de investigación, y buscar y salvar a personas y recuperar objetos.Entre sus tareas se incluyen:- tomar las debidas precauciones de seguridad, supervisando por ejemplo laduración y profundidad del buceo y registrándose ante las autoridades, antesde iniciar expediciones submarinas;- comprobar y mantener el equipo de buceo, como los cascos, mascarillas,depósitos de aire, trajes de inmersión, arneses e indicadores;- hacer la inmersión sirviéndose de ayudantes y utilizando escafandras autónomaso trajes de inmersión;- trabajar bajo el agua, colocando o reparando los cimientos de puentes, muelleso malecones;- inspeccionar cascos de embarcaciones e instalaciones bajo el agua para descubriren ellos posibles averías o deterioros y efectuar pequeñas reparaciones;- informar sobre el<span class="excerpt"><span style="display:none;">estado de embarcaciones hundidas;- apartar obstáculos que se encuentren bajo el agua;- abrir taladros en la roca para colocar barrenos bajo el agua;- realizar diferentes tareas bajo el agua relacionadas con trabajos de salvamentoo de rescate de cadáveres;- recoger moluscos, esponjas y otros organismos acuáticos;- comunicarse con los trabajadores de superficie mientras se permanece bajoel agua, empleando líneas de señales o teléfonos;- obtener información sobre las tareas de buceo y las condiciones ambientales.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">BUZOS</h4>');$('#info').append('<p class="descripcion">Los buceadores trabajan bajo el agua, vayan provistos o no de un aparato de respiración submarina, para inspeccionar, reparar,<div class="excerpt"><div hidden><span>montar y desmontar instalaciones y equipos, hacer pruebas o experimentos, preparar explosivos, fotografiar estructuras de la vida marina, recolectar diversas formas de vida marina con fines comerciales o de investigación, y buscar y salvar a personas y recuperar objetos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> tomar las debidas precauciones de seguridad, supervisando por ejemplo la duración y profundidad del buceo y registrándose ante las autoridades, antes de iniciar expediciones submarinas</li><li class="list-group-item"> comprobar y mantener el equipo de buceo, como los cascos, mascarillas, depósitos de aire, trajes de inmersión, arneses e indicadores</li><li class="list-group-item"> hacer la inmersión sirviéndose de ayudantes y utilizando escafandras autónomas o trajes de inmersión</li><li class="list-group-item"> trabajar bajo el agua, colocando o reparando los cimientos de puentes, muelles o malecones</li><li class="list-group-item"> inspeccionar cascos de embarcaciones e instalaciones bajo el agua para descubrir en ellos posibles averías o deterioros y efectuar pequeñas reparaciones</li><li class="list-group-item"> informar sobre el estado de embarcaciones hundidas</li><li class="list-group-item"> apartar obstáculos que se encuentren bajo el agua</li><li class="list-group-item"> abrir taladros en la roca para colocar barrenos bajo el agua</li><li class="list-group-item"> realizar diferentes tareas bajo el agua relacionadas con trabajos de salvamento o de rescate de cadáveres</li><li class="list-group-item"> recoger moluscos, esponjas y otros organismos acuáticos</li><li class="list-group-item"> comunicarse con los trabajadores de superficie mientras se permanece bajo el agua, empleando líneas de señales o teléfonos</li><li class="list-group-item"> obtener información sobre las tareas de buceo y las condiciones ambientales.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

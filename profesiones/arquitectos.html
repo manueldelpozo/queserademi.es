@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Arquitectos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Arquitectos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Arquitectos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [20016, 24036, 26868];
 var seriesSalJunior     = [22956, 26880, 29628];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ARQUITECTOS</h4>');$('#info').append('<p class="descripcion">Los arquitectos (excepto arquitectos paisajistas y urbanistas) proyectan edificioscomerciales, industriales, institucionales, residenciales y recreativos y planificany supervisan su construcción, mantenimiento y rehabilitación.Entre sus tareas se incluyen:- desarrollar nuevas teorías y métodos arquitectónicos o mejorar los existentes;- inspeccionar las obras y consultar a los clientes, a la dirección y a otros interesadospara determinar el tipo, estilo y dimensiones de los edificios propuestosy de las modificaciones de los existentes;- facilitar información sobre los proyectos, materiales y plazos de construcciónestimados;- preparar la documentación de proyecto, incluidos los bocetos y planos a escala,e integrar los elementos estructurales, mecánicos y estéticos en losproyectos definitivos;- redactar especificaciones y documentos contractuales para su uso por losresponsables de la construcción y publicar licitaciones en nombre de susclientes;- mantener los contactos necesarios para garantizar la viabilidad de los proyectosen lo que respecta al estilo, el coste, los plazos y el cumplimiento de lanormativa;- identificar los problemas que plantean<span class="excerpt"><span style="display:none;">las funciones asignadas y la calidadexigida de los interiores de edificios, encontrar las mejores soluciones yhacer los proyectos, dibujos y planos pertinentes;- supervisar los trabajos de construcción o rehabilitación para garantizar elcumplimiento de las normas de calidad;- mantener contactos técnicos y celebrar consultas con otros especialistas pertinentes</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ARQUITECTOS</h4>');$('#info').append('<p class="descripcion">Los arquitectos (excepto arquitectos paisajistas y urbanistas) proyectan edificios comerciales, industriales, institucionales, residenciales y recreativos y planifican y supervisan<div class="excerpt"><div hidden><span>su construcción, mantenimiento y rehabilitación. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> desarrollar nuevas teorías y métodos arquitectónicos o mejorar los existentes;  - inspeccionar las obras y consultar a los clientes, a la dirección y a otros interesados para determinar el tipo, estilo y dimensiones de los edificios propuestos y de las modificaciones de los existentes</li><li class="list-group-item"> facilitar información sobre los proyectos, materiales y plazos de construcción estimados</li><li class="list-group-item"> preparar la documentación de proyecto, incluidos los bocetos y planos a escala, e integrar los elementos estructurales, mecánicos y estéticos en los proyectos definitivos</li><li class="list-group-item"> redactar especificaciones y documentos contractuales para su uso por los responsables de la construcción y publicar licitaciones en nombre de sus clientes</li><li class="list-group-item"> mantener los contactos necesarios para garantizar la viabilidad de los proyectos en lo que respecta al estilo, el coste, los plazos y el cumplimiento de la normativa</li><li class="list-group-item"> identificar los problemas que plantean las funciones asignadas y la calidad exigida de los interiores de edificios, encontrar las mejores soluciones y hacer los proyectos, dibujos y planos pertinentes</li><li class="list-group-item"> supervisar los trabajos de construcción o rehabilitación para garantizar el cumplimiento de las normas de calidad</li><li class="list-group-item"> mantener contactos técnicos y celebrar consultas con otros especialistas pertinentes</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

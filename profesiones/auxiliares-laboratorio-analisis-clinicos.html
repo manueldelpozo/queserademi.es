@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Auxiliares de laboratorio de análisis clínicos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Auxiliares de laboratorio de análisis clínicos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Auxiliares de laboratorio de análisis clínicos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13956, 16392, 18672];
 var seriesSalJunior     = [16524, 156612, 21828];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">AUXILIARES DE LABORATORIO DE ANÁLISIS CLÍNICOS</h4>');$('#info').append('<p class="descripcion">Los técnicos en laboratorio de diagnóstico clínico realizan estudios de análisisclínicos en muestras biológicas humanas, siguiendo los protocolos normalizadosde trabajo, actuando bajo normas de calidad, seguridad y medioambientales,bajo la supervisión correspondiente, colaborando con el facultativo e interpretandoy valorando los resultados técnicos, para que sirvan de soporte a la prevención,al diagnóstico, al control de la evolución, al tratamiento y a la investigación.Entre sus tareas se incluyen:- realizar los procedimientos de las fases preanalítica y postanalítica en el laboratorioclínico;- realizar análisis de bioquímica clínica en muestras biológicas humanas;- realizar análisis microbiológicos e identificar parásitos en muestras biológicashumanas;- realizar análisis hematológicos y genéticos en muestras biológicas humanasy procedimientos para obtener hemoderivados;- realizar técnicas inmunológicas de aplicación en las distintas áreas del laboratoriode análisis<span class="excerpt"><span style="display:none;">clínicos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">AUXILIARES DE LABORATORIO DE ANÁLISIS CLÍNICOS</h4>');$('#info').append('<p class="descripcion">Los técnicos en laboratorio de diagnóstico clínico realizan estudios de análisis clínicos en muestras biológicas humanas, siguiendo los protocolos<div class="excerpt"><div hidden><span>normalizados de trabajo, actuando bajo normas de calidad, seguridad y medioambientales, bajo la supervisión correspondiente, colaborando con el facultativo e interpretando y valorando los resultados técnicos, para que sirvan de soporte a la prevención, al diagnóstico, al control de la evolución, al tratamiento y a la investigación. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> realizar los procedimientos de las fases preanalítica y postanalítica en el laboratorio clínico</li><li class="list-group-item"> realizar análisis de bioquímica clínica en muestras biológicas humanas</li><li class="list-group-item"> realizar análisis microbiológicos e identificar parásitos en muestras biológicas humanas</li><li class="list-group-item"> realizar análisis hematológicos y genéticos en muestras biológicas humanas y procedimientos para obtener hemoderivados</li><li class="list-group-item"> realizar técnicas inmunológicas de aplicación en las distintas áreas del laboratorio de análisis clínicos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

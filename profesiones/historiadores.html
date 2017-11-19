@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Historiadores | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Historiadores">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Historiadores</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17508, 21624, 24492];
 var seriesSalJunior     = [20100, 24672, 27876];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">HISTORIADORES</h4>');$('#info').append('<p class="descripcion">Los filósofos, historiadores y especialistas en ciencias políticas realizan investigacionessobre la naturaleza de la experiencia y la existencia humanas, las distintasfases o aspectos de la historia humana y las estructuras, movimientos ycomportamientos políticos. Documentan sus hallazgos y los difunden para queinspiren y orienten actuaciones políticas e individuales.Entre sus tareas se incluyen:- investigar, sobre todo mediante el razonamiento sistemático, las causas,principios y significados generales del mundo físico y de las acciones, la experienciay la existencia humanas, e interpretar o desarrollar teorías y conceptosfilosóficos;- consultar y comparar fuentes primarias, como los registros originales o contemporáneosde acontecimientos pretéritos, y fuentes secundarias, como losrestos y objetos arqueológicos o antropológicos;- extraer material pertinente, comprobar su autenticidad y reconstituir la historiade determinado período, país o región o de determinado aspecto (porejemplo, económico, social o político) de su historia;- realizar investigaciones en campos como la filosofía política y la teoría y lapráctica antiguas o contemporáneas de<span class="excerpt"><span style="display:none;">los sistemas, instituciones y comportamientospolíticos;- observar las instituciones y opiniones políticas contemporáneas y reunir informaciónsobre ellas partiendo de diversas fuentes, incluidas entrevistascon funcionarios públicos, miembros de partidos políticos y otras personalidades;- elaborar teorías, modelos y métodos para interpretar y describir la naturalezade la experiencia humana y de los sucesos y comportamientos históricos y113políticos;- presentar los resultados y conclusiones de sus estudios en la forma másadecuada para su publicación o su utilización por funcionarios públicos,miembros de partidos políticos o de otros organismos y demás personas interesadas;- preparar ponencias e informes de carácter académico.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">HISTORIADORES</h4>');$('#info').append('<p class="descripcion">Los filósofos, historiadores y especialistas en ciencias políticas realizan investigaciones sobre la naturaleza de la experiencia y la existencia<div class="excerpt"><div hidden><span>humanas, las distintas fases o aspectos de la historia humana y las estructuras, movimientos y comportamientos políticos. Documentan sus hallazgos y los difunden para que inspiren y orienten actuaciones políticas e individuales. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> investigar, sobre todo mediante el razonamiento sistemático, las causas, principios y significados generales del mundo físico y de las acciones, la experiencia y la existencia humanas, e interpretar o desarrollar teorías y conceptos filosóficos</li><li class="list-group-item"> consultar y comparar fuentes primarias, como los registros originales o contemporáneos de acontecimientos pretéritos, y fuentes secundarias, como los restos y objetos arqueológicos o antropológicos</li><li class="list-group-item"> extraer material pertinente, comprobar su autenticidad y reconstituir la historia de determinado período, país o región o de determinado aspecto (por ejemplo, económico, social o político) de su historia</li><li class="list-group-item"> realizar investigaciones en campos como la filosofía política y la teoría y la práctica antiguas o contemporáneas de los sistemas, instituciones y comportamientos políticos</li><li class="list-group-item"> observar las instituciones y opiniones políticas contemporáneas y reunir información sobre ellas partiendo de diversas fuentes, incluidas entrevistas con funcionarios públicos, miembros de partidos políticos y otras personalidades</li><li class="list-group-item"> elaborar teorías, modelos y métodos para interpretar y describir la naturaleza de la experiencia humana y de los sucesos y comportamientos históricos y 113 políticos</li><li class="list-group-item"> presentar los resultados y conclusiones de sus estudios en la forma más adecuada para su publicación o su utilización por funcionarios públicos, miembros de partidos políticos o de otros organismos y demás personas interesadas</li><li class="list-group-item"> preparar ponencias e informes de carácter académico.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

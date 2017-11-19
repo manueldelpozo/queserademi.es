@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Profesionales de apoyo de la administración pública de servicios de expedición de licencias | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Profesionales de apoyo de la administración pública de servicios de expedición de licencias">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Profesionales de apoyo de la administración pública de servicios de expedición de licencias</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17352, 20652, 22956];
 var seriesSalJunior     = [19800, 23448, 26100];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESIONALES DE APOYO DE LA ADMINISTRACIÓN PÚBLICA DE SERVICIOS DE EXPEDICIÓN DE LICENCIAS</h4>');$('#info').append('<p class="descripcion">Los profesionales de apoyo de la Administración Pública de servicios de expediciónde licencias examinan las solicitudes de licencias para exportar o importarmercaderías, crear una empresa, construir una casa u otras estructuras, u obtenerun pasaporte, determinan si se cumplen los requisitos establecidos para suexpedición e identifican las condiciones o limitaciones específicas consignadasen las licencias o permisos expedidos, remitiendo los casos excepcionales o importantesal personal directivo de la administración pública.Entre sus tareas se incluyen:- asesorar a particulares sobre la interpretación adecuada de las leyes, reglamentosy disposiciones relativos a los tipos de licencias o documentos necesariosy a las condiciones que los rigen y sobre los derechos y obligacionesdel público;- examinar solicitudes y los documentos pertinentes para determinar si puedenconcederse las licencias o permisos solicitados y las condiciones exigidas;- examinar solicitudes y aprobar la expedición de pasaportes;- realizar tareas administrativas afines para tramitar las solicitudes, documentarlas actividades, evaluaciones y resoluciones, y preparar la<span class="excerpt"><span style="display:none;">correspondenciapara informar a los solicitantes de las decisiones al respecto;- administrar a los solicitantes de licencias las pruebas establecidas y puntuarlas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">PROFESIONALES DE APOYO DE LA ADMINISTRACIÓN PÚBLICA DE SERVICIOS DE EXPEDICIÓN DE LICENCIAS</h4>');$('#info').append('<p class="descripcion">Los profesionales de apoyo de la Administración Pública de servicios de expedición de licencias examinan las solicitudes de licencias<div class="excerpt"><div hidden><span>para exportar o importar mercaderías, crear una empresa, construir una casa u otras estructuras, u obtener un pasaporte, determinan si se cumplen los requisitos establecidos para su expedición e identifican las condiciones o limitaciones específicas consignadas en las licencias o permisos expedidos, remitiendo los casos excepcionales o importantes al personal directivo de la administración pública. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> asesorar a particulares sobre la interpretación adecuada de las leyes, reglamentos y disposiciones relativos a los tipos de licencias o documentos necesarios y a las condiciones que los rigen y sobre los derechos y obligaciones del público</li><li class="list-group-item"> examinar solicitudes y los documentos pertinentes para determinar si pueden concederse las licencias o permisos solicitados y las condiciones exigidas</li><li class="list-group-item"> examinar solicitudes y aprobar la expedición de pasaportes</li><li class="list-group-item"> realizar tareas administrativas afines para tramitar las solicitudes, documentar las actividades, evaluaciones y resoluciones, y preparar la correspondencia para informar a los solicitantes de las decisiones al respecto</li><li class="list-group-item"> administrar a los solicitantes de licencias las pruebas establecidas y puntuarlas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

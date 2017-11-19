@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Econometrista | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Econometrista">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Econometrista</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [23292, 27780, 31008];
 var seriesSalJunior     = [27756, 32040, 36504];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ECONOMETRISTA</h4>');$('#info').append('<p class="descripcion">Los economistas realizan investigaciones, controlan datos, analizan informacióny preparan informes y planes para resolver problemas económicos y empresarialesy crean modelos para analizar, explicar y prever comportamientos y patroneseconómicos. Prestan asesoramiento a empresas, agrupaciones de interés yadministraciones públicas con objeto de formular soluciones para problemaseconómicos o empresariales actuales o previstos.Entre sus tareas se incluyen:- prever cambios en el entorno económico para la presupuestación a cortoplazo, la planificación a largo plazo y la evaluación de inversiones;- formular recomendaciones, políticas y planes para la economía y para lasestrategias e inversiones empresariales, y estudiar la viabilidad de proyectos;- supervisar los datos económicos para evaluar la eficacia de la política fiscal ymonetaria y prestar asesoramiento pertinente;- prever la producción y el consumo de productos y servicios concretos basándoseen registros históricos y en las condiciones generales de la economíay las específicas de determinados sectores;- elaborar previsiones en materia de renta y gasto, tipos de interés<span class="excerpt"><span style="display:none;">y tipos decambio;- analizar los factores que determinan la tasa de actividad, el empleo, los salarios,el desempleo y otros elementos del mercado de trabajo;111- aplicar fórmulas matemáticas y técnicas estadísticas para comprobar las teoríaseconómicas y diseñar soluciones para los problemas económicos;- reunir, analizar e interpretar información económica aplicando teoríaseconómicas y diversas técnicas estadísticas o de otra índole;- valorar los resultados de las decisiones políticas relativas a la economía y lasfinanzas públicas; asesorar sobre la política económica y las medidas quedebieran adoptarse como resultado de los análisis de factores y tendenciaseconómicos comprobados o previsibles;- preparar ponencias e informes de carácter académico;- examinar problemas relativos a las actividades económicas de empresasconcre</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">ECONOMETRISTA</h4>');$('#info').append('<p class="descripcion">Los economistas realizan investigaciones, controlan datos, analizan información y preparan informes y planes para resolver problemas económicos y empresariales<div class="excerpt"><div hidden><span>y crean modelos para analizar, explicar y prever comportamientos y patrones económicos. Prestan asesoramiento a empresas, agrupaciones de interés y administraciones públicas con objeto de formular soluciones para problemas económicos o empresariales actuales o previstos. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> prever cambios en el entorno económico para la presupuestación a corto plazo, la planificación a largo plazo y la evaluación de inversiones</li><li class="list-group-item"> formular recomendaciones, políticas y planes para la economía y para las estrategias e inversiones empresariales, y estudiar la viabilidad de proyectos</li><li class="list-group-item"> supervisar los datos económicos para evaluar la eficacia de la política fiscal y monetaria y prestar asesoramiento pertinente</li><li class="list-group-item"> prever la producción y el consumo de productos y servicios concretos basándose en registros históricos y en las condiciones generales de la economía y las específicas de determinados sectores</li><li class="list-group-item"> elaborar previsiones en materia de renta y gasto, tipos de interés y tipos de cambio</li><li class="list-group-item"> analizar los factores que determinan la tasa de actividad, el empleo, los salarios, el desempleo y otros elementos del mercado de trabajo; 111 - aplicar fórmulas matemáticas y técnicas estadísticas para comprobar las teorías económicas y diseñar soluciones para los problemas económicos</li><li class="list-group-item"> reunir, analizar e interpretar información económica aplicando teorías económicas y diversas técnicas estadísticas o de otra índole</li><li class="list-group-item"> valorar los resultados de las decisiones políticas relativas a la economía y las finanzas públicas; asesorar sobre la política económica y las medidas que debieran adoptarse como resultado de los análisis de factores y tendencias económicos comprobados o previsibles</li><li class="list-group-item"> preparar ponencias e informes de carácter académico</li><li class="list-group-item"> examinar problemas relativos a las actividades económicas de empresas concre</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Cuchilleros | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Cuchilleros">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Cuchilleros</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12312, 15360, 17484];
 var seriesSalJunior     = [14412, 17460, 19584];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CUCHILLEROS</h4>');$('#info').append('<p class="descripcion">Los herramentistas y afines fabrican y reparan herramientas a medidas y especiales,armas de uso deportivo, cerraduras, modelos, matrices y otras piezas demotores o máquinas, utilizando herramientas manuales y mecánicas para trabajarel metal con precisión.Entre sus tareas se incluyen:- leer e interpretar los dibujos de taller y especificaciones de herramientas, matrices,prototipos o modelos;- preparar plantillas y croquis y determinar los procesos de trabajo;- visualizar y calcular las dimensiones, tamaños, formas y tolerancias de losmontajes basándose en las especificaciones;- colocar, sujetar y medir los trozos de metal para disponer el mecanizado;- ajustar, manejar y mantener máquinas herramientas convencionales o decontrol numérico para cortar, tornear, aplanar, taladrar, perforar, pulir o darforma de cualquier otro modo a las piezas de trabajo a fin de conseguir lasdimensiones y el acabado establecidos;- ajustar y ensamblar las diferentes piezas para fabricar y reparar mandriles,accesorios y calibradores;- reparar y modificar armas de uso deportivo y otras armas<span class="excerpt"><span style="display:none;">ligeras;- fabricar, ajustar, montar, reparar e instalar piezas de cerraduras y cerraduras;- construir y reparar los patrones en metal que han de servir para la fabricaciónde moldes de fundición;- señalar en el trozo de metal las líneas y puntos de referencia que deben servirde guía a los trabajadores encargados de cortar, tornear, fresar, pulir ytrabajar en otras formas el metal;- verificar que las dimensiones, alineaciones y tolerancias de las piezas acabadascumplen las especificaciones, usando instrumentos de precisión, y ensayarlos productos terminados para garantizar su funcionamiento correcto.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CUCHILLEROS</h4>');$('#info').append('<p class="descripcion">Los herramentistas y afines fabrican y reparan herramientas a medidas y especiales, armas de uso deportivo, cerraduras, modelos, matrices<div class="excerpt"><div hidden><span>y otras piezas de motores o máquinas, utilizando herramientas manuales y mecánicas para trabajar el metal con precisión. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> leer e interpretar los dibujos de taller y especificaciones de herramientas, matrices, prototipos o modelos</li><li class="list-group-item"> preparar plantillas y croquis y determinar los procesos de trabajo</li><li class="list-group-item"> visualizar y calcular las dimensiones, tamaños, formas y tolerancias de los montajes basándose en las especificaciones</li><li class="list-group-item"> colocar, sujetar y medir los trozos de metal para disponer el mecanizado</li><li class="list-group-item"> ajustar, manejar y mantener máquinas herramientas convencionales o de control numérico para cortar, tornear, aplanar, taladrar, perforar, pulir o dar forma de cualquier otro modo a las piezas de trabajo a fin de conseguir las dimensiones y el acabado establecidos</li><li class="list-group-item"> ajustar y ensamblar las diferentes piezas para fabricar y reparar mandriles, accesorios y calibradores</li><li class="list-group-item"> reparar y modificar armas de uso deportivo y otras armas ligeras</li><li class="list-group-item"> fabricar, ajustar, montar, reparar e instalar piezas de cerraduras y cerraduras</li><li class="list-group-item"> construir y reparar los patrones en metal que han de servir para la fabricación de moldes de fundición</li><li class="list-group-item"> señalar en el trozo de metal las líneas y puntos de referencia que deben servir de guía a los trabajadores encargados de cortar, tornear, fresar, pulir y trabajar en otras formas el metal</li><li class="list-group-item"> verificar que las dimensiones, alineaciones y tolerancias de las piezas acabadas cumplen las especificaciones, usando instrumentos de precisión, y ensayar los productos terminados para garantizar su funcionamiento correcto.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de instalaciones de tratamiento químico térmico | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de instalaciones de tratamiento químico térmico">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de instalaciones de tratamiento químico térmico</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [17868, 21216, 23544];
 var seriesSalJunior     = [21576, 24732, 26940];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE INSTALACIONES DE TRATAMIENTO QUÍMICO TÉRMICO</h4>');$('#info').append('<p class="descripcion">Los técnicos en control de instalaciones de procesamiento de productos químicosaccionan y vigilan instalaciones químicas y ajustan y realizan el mantenimientode máquinas y equipos utilizados para el procesamiento de productosquímicos por destilación, filtración, separación, calentamiento o refinación.Entre sus tareas se incluyen:- manejar paneles de control electrónico o informatizado desde una sala decontrol central para vigilar y optimizar los procesos físicos y químicos paradiversas instalaciones de procesamiento;- ajustar equipos, válvulas, bombas, controles y equipos de procesamiento;- controlar la preparación, medir y suministrar las materias primas y los agentesde procesamiento, como catalizadores y medios de filtración, a la instalación;- controlar el inicio y el fin del proceso, resolver problemas y vigilar los equiposde procesos externos;- verificar el correcto funcionamiento de los equipos, realizar pruebas de funcionamientode rutina y ocuparse de su mantenimiento;- analizar productos de muestra, realizar pruebas, registrar datos y mantenerregistros de la<span class="excerpt"><span style="display:none;">producción.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE INSTALACIONES DE TRATAMIENTO QUÍMICO TÉRMICO</h4>');$('#info').append('<p class="descripcion">Los técnicos en control de instalaciones de procesamiento de productos químicos accionan y vigilan instalaciones químicas y ajustan y<div class="excerpt"><div hidden><span>realizan el mantenimiento de máquinas y equipos utilizados para el procesamiento de productos químicos por destilación, filtración, separación, calentamiento o refinación. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> manejar paneles de control electrónico o informatizado desde una sala de control central para vigilar y optimizar los procesos físicos y químicos para diversas instalaciones de procesamiento</li><li class="list-group-item"> ajustar equipos, válvulas, bombas, controles y equipos de procesamiento</li><li class="list-group-item"> controlar la preparación, medir y suministrar las materias primas y los agentes de procesamiento, como catalizadores y medios de filtración, a la instalación</li><li class="list-group-item"> controlar el inicio y el fin del proceso, resolver problemas y vigilar los equipos de procesos externos</li><li class="list-group-item"> verificar el correcto funcionamiento de los equipos, realizar pruebas de funcionamiento de rutina y ocuparse de su mantenimiento</li><li class="list-group-item"> analizar productos de muestra, realizar pruebas, registrar datos y mantener registros de la producción.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

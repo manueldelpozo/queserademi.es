@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Montadores de productos cerámicos | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Montadores de productos cerámicos">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Montadores de productos cerámicos</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [11484, 14136, 15984];
 var seriesSalJunior     = [13500, 16512, 18612];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MONTADORES DE PRODUCTOS CERÁMICOS</h4>');$('#info').append('<p class="descripcion">Los trabajadores de la cerámica, alfareros y afines fabrican objetos de barro, lozay porcelana, sanitarios, ladrillos, tejas y muelas abrasivas a mano o a máquina.Entre sus tareas se incluyen:- fabricar objetos de barro, loza y porcelana;- fabricar moldes de arcilla y yeso;- leer planos técnicos para conocer los requisitos del cliente;- fabricar objetos en un torno de alfarero presionando con los pulgares en elcentro del barro que gira para ahuecarlo, y presionando con las manos y losdedos en la parte interior y exterior de los cilindros de barro que se vayanformando para moldearlos gradualmente hasta obtener las formas y tamañosdeseados;- ajustar la velocidad del torno según el tacto de la arcilla a medida que laspiezas se vayan alargando y las paredes se adelgacen;- manejar un torno mecánico de alfarero para fabricar objetos de cerámica,como cuencos, copas, platos y salseras;- ajustar y manejar los controles de una amasadora que mezcla,<span class="excerpt"><span style="display:none;">comprime,corta y deposita cargas de arcilla en moldes según lo especificado;- pulir superficies de productos acabados, utilizando raspadores de caucho yesponjas húmedas;- fabricar muelas abrasivas vaciando y comprimiendo en moldes una mezclaabrasiva a mano o a máquina;- inspeccionar objetos acabados para detectar defectos y verificar la exactitudde las formas y tamaños de los objetos, utilizando calibres y plantillas;- preparar los objetos fabricados para su venta o exposición, y mantener relacionescon redes de minoristas, alfareros y otros recursos que puedan facilitarla venta o exposición de los trabajos.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">MONTADORES DE PRODUCTOS CERÁMICOS</h4>');$('#info').append('<p class="descripcion">Los trabajadores de la cerámica, alfareros y afines fabrican objetos de barro, loza y porcelana, sanitarios, ladrillos, tejas y<div class="excerpt"><div hidden><span>muelas abrasivas a mano o a máquina. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> fabricar objetos de barro, loza y porcelana</li><li class="list-group-item"> fabricar moldes de arcilla y yeso</li><li class="list-group-item"> leer planos técnicos para conocer los requisitos del cliente</li><li class="list-group-item"> fabricar objetos en un torno de alfarero presionando con los pulgares en el centro del barro que gira para ahuecarlo, y presionando con las manos y los dedos en la parte interior y exterior de los cilindros de barro que se vayan formando para moldearlos gradualmente hasta obtener las formas y tamaños deseados</li><li class="list-group-item"> ajustar la velocidad del torno según el tacto de la arcilla a medida que las piezas se vayan alargando y las paredes se adelgacen</li><li class="list-group-item"> manejar un torno mecánico de alfarero para fabricar objetos de cerámica, como cuencos, copas, platos y salseras</li><li class="list-group-item"> ajustar y manejar los controles de una amasadora que mezcla, comprime, corta y deposita cargas de arcilla en moldes según lo especificado</li><li class="list-group-item"> pulir superficies de productos acabados, utilizando raspadores de caucho y esponjas húmedas</li><li class="list-group-item"> fabricar muelas abrasivas vaciando y comprimiendo en moldes una mezcla abrasiva a mano o a máquina</li><li class="list-group-item"> inspeccionar objetos acabados para detectar defectos y verificar la exactitud de las formas y tamaños de los objetos, utilizando calibres y plantillas</li><li class="list-group-item"> preparar los objetos fabricados para su venta o exposición, y mantener relaciones con redes de minoristas, alfareros y otros recursos que puedan facilitar la venta o exposición de los trabajos.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

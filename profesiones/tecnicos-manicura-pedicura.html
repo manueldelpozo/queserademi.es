@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos de manicura/pedicura | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos de manicura/pedicura">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos de manicura/pedicura</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [9960, 1488, 15528];
 var seriesSalJunior     = [11232, 13548, 17388];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS DE MANICURA/PEDICURA</h4>');$('#info').append('<p class="descripcion">Los especialistas en tratamientos de estética, bienestar y afines aplican tratamientosde belleza, cosméticos y maquillaje y prestan otras clases de cuidadospara mejorar la apariencia personal.Entre sus tareas se incluyen:- limpiar la cara y otras partes del cuerpo y aplicarles crema, lociones y productossimilares;- dar masajes faciales y corporales;- maquillar a los clientes de salones de belleza o a los actores y otros artistas;- limpiar, cortar y pintar las uñas de manos y pies y tratar ligeras dolencias delos pies, como callos, durezas o deformaciones de las uñas;- atender a los clientes que toman baños y aplicarles masajes simples;- aplicar técnicas basadas en el empleo de cera o de azúcar y técnicas distintaspara la depilación del vello corporal;- asesorar a los clientes sobre dietas y ejercicio para ayudarles a perder peso yadelgazar;- dar citas y cobrar los<span class="excerpt"><span style="display:none;">servicios.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS DE MANICURA/PEDICURA</h4>');$('#info').append('<p class="descripcion">Los especialistas en tratamientos de estética, bienestar y afines aplican tratamientos de belleza, cosméticos y maquillaje y prestan otras<div class="excerpt"><div hidden><span>clases de cuidados para mejorar la apariencia personal. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> limpiar la cara y otras partes del cuerpo y aplicarles crema, lociones y productos similares</li><li class="list-group-item"> dar masajes faciales y corporales</li><li class="list-group-item"> maquillar a los clientes de salones de belleza o a los actores y otros artistas</li><li class="list-group-item"> limpiar, cortar y pintar las uñas de manos y pies y tratar ligeras dolencias de los pies, como callos, durezas o deformaciones de las uñas</li><li class="list-group-item"> atender a los clientes que toman baños y aplicarles masajes simples</li><li class="list-group-item"> aplicar técnicas basadas en el empleo de cera o de azúcar y técnicas distintas para la depilación del vello corporal</li><li class="list-group-item"> asesorar a los clientes sobre dietas y ejercicio para ayudarles a perder peso y adelgazar</li><li class="list-group-item"> dar citas y cobrar los servicios.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

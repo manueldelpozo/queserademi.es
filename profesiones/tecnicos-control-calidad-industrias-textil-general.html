@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Técnicos en control de calidad en industrias textil, en general | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Técnicos en control de calidad en industrias textil, en general">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Técnicos en control de calidad en industrias textil, en general</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [0, 0, 0];
 var seriesSalJunior     = [0, 0, 0];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -323,7 +323,7 @@ var chartSalarios = {
 
     capa_aviso += '</div></div>';
 
-    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN CONTROL DE CALIDAD EN INDUSTRIAS TEXTIL, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los Técnicos de control de calidad desempeñan las siguientes funciones principales:actúan en representación de autoridades públicas o de empresas industriales o de otra índole con objeto de asegurarla aplicación de los reglamentos y de las normas técnicas en la calidad de los artículos de consumo.Entre sus tareas se incluyen: inspeccionar centros de producción; transformación, transporte, manipulación,almacenamiento y venta de productos para asegurarse de que tales productos se ajustan a las reglamentaciones ynormas pertinentes; inspeccionar los productos terminados o las piezas fabricadas a fin de asegurarse de que seanconformes a las reglamentaciones vigentes y normas de calidad preestablecidas; asesorar a las empresas y alpúblico en general sobre la aplicación de las reglamentaciones y normas en materia de higiene, sanidad, etc.;asesorar a los fabricantes, conductores y personal encargado del mantenimiento y la reparación de automóviles yotros vehículos sobre la aplicación de normas técnicas y condiciones que deben satisfacer los vehículos;inspeccionar los<span class="excerpt"><span style="display:none;">vehículos para asegurarse de que sean conformes a las reglamentaciones pertinentes y normas decalidad preestablecidas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+    $('#container_salarios').append(capa_aviso);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">TÉCNICOS EN CONTROL DE CALIDAD EN INDUSTRIAS TEXTIL, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los Técnicos de control de calidad desempeñan las siguientes funciones principales: actúan en representación de autoridades públicas o de<div class="excerpt"><div hidden>empresas industriales o de otra índole con objeto de asegurar la aplicación de los reglamentos y de las normas técnicas en la calidad de los artículos de consumo. Entre sus tareas se incluyen: inspeccionar centros de producción; transformación, transporte, manipulación, almacenamiento y venta de productos para asegurarse de que tales productos se ajustan a las reglamentaciones y normas pertinentes; inspeccionar los productos terminados o las piezas fabricadas a fin de asegurarse de que sean conformes a las reglamentaciones vigentes y normas de calidad preestablecidas; asesorar a las empresas y al público en general sobre la aplicación de las reglamentaciones y normas en materia de higiene, sanidad, etc.; asesorar a los fabricantes, conductores y personal encargado del mantenimiento y la reparación de automóviles y otros vehículos sobre la aplicación de normas técnicas y condiciones que deben satisfacer los vehículos; inspeccionar los vehículos para asegurarse de que sean conformes a las reglamentaciones pertinentes y normas de calidad preestablecidas.</div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -511,16 +511,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -634,15 +631,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -656,14 +654,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -678,7 +677,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -686,7 +685,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -695,7 +694,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -831,7 +830,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

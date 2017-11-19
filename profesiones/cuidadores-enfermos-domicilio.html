@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Cuidadores de enfermos a domicilio | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Cuidadores de enfermos a domicilio">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Cuidadores de enfermos a domicilio</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [9792, 12876, 15036];
 var seriesSalJunior     = [11412, 14580, 16812];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CUIDADORES DE ENFERMOS A DOMICILIO</h4>');$('#info').append('<p class="descripcion">Los trabajadores de los cuidados personales a domicilio prestan cuidados personalesrutinarios y ayudan en actividades de la vida diaria a personas querequieren de este tipo de asistencia debido a la edad, enfermedad, lesiones uotro tipo de indisposición física o mental en casas particulares o en otrasunidades residenciales independientes.Nota: Los trabajadores que prestan cuidados personales a residentes en institucionesy centros que disponen de supervisión médica o de enfermería permanente(como hospitales y residencias asistidas) y que, por tanto, trabajan bajo lasupervisión directa de enfermeros o médicos, deben clasificarse en los gruposprimarios 5611, Auxiliares de enfermería hospitalaria y 5612, Auxiliares de enfermeríade atención primaria.Los asistentes en partos en domicilio que prestan apoyo emocional durante elembarazo y la vida activa pero no atención para reducir los riesgos para la salud,se incluyen aquí.Entre sus tareas se incluyen:- asistir a las personas que requieren cuidados personales o terapéuticos entareas como la limpieza, comer o vestirse,<span class="excerpt"><span style="display:none;">movilidad física y el ejercicio, lacomunicación, y la toma oral de medicamentos y cambios de vendajes, generalmentede acuerdo con planes de cuidados establecidos por profesionalesde la salud;- mantener el registro sobre cuidados personales, cambio en las condiciones yrespuesta a lo cuidados y tratamientos; informar o dar referencias a profesionalesde la salud los servicios sociales;- colocar y levantar a personas con dificultades de movilidad física, y ayudarlesa moverse en sillas de ruecas y vehículos de motor;- prestar a los pacientes y familiares apoyo emocional, información y consejoen aspectos como higiene, nutrición, ejercicio, cuidado de los niños o adaptacióna la incapacidad o a la enfermedad;- mantener la higiene en el entorno de los clientes como por ejemplo el cambiode sábanas o la limpieza de la ropa, los platos y la vivienda;- prestar ayuda psicológica del tipo de co</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">CUIDADORES DE ENFERMOS A DOMICILIO</h4>');$('#info').append('<p class="descripcion">Los trabajadores de los cuidados personales a domicilio prestan cuidados personales rutinarios y ayudan en actividades de la vida<div class="excerpt"><div hidden><span>diaria a personas que requieren de este tipo de asistencia debido a la edad, enfermedad, lesiones u otro tipo de indisposición física o mental en casas particulares o en otras unidades residenciales independientes. Nota: Los trabajadores que prestan cuidados personales a residentes en instituciones y centros que disponen de supervisión médica o de enfermería permanente (como hospitales y residencias asistidas) y que, por tanto, trabajan bajo la supervisión directa de enfermeros o médicos, deben clasificarse en los grupos primarios 5611, Auxiliares de enfermería hospitalaria y 5612, Auxiliares de enfermería de atención primaria. Los asistentes en partos en domicilio que prestan apoyo emocional durante el embarazo y la vida activa pero no atención para reducir los riesgos para la salud, se incluyen aquí. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> asistir a las personas que requieren cuidados personales o terapéuticos en tareas como la limpieza, comer o vestirse, movilidad física y el ejercicio, la comunicación, y la toma oral de medicamentos y cambios de vendajes, generalmente de acuerdo con planes de cuidados establecidos por profesionales de la salud</li><li class="list-group-item"> mantener el registro sobre cuidados personales, cambio en las condiciones y respuesta a lo cuidados y tratamientos; informar o dar referencias a profesionales de la salud los servicios sociales</li><li class="list-group-item"> colocar y levantar a personas con dificultades de movilidad física, y ayudarles a moverse en sillas de ruecas y vehículos de motor</li><li class="list-group-item"> prestar a los pacientes y familiares apoyo emocional, información y consejo en aspectos como higiene, nutrición, ejercicio, cuidado de los niños o adaptación a la incapacidad o a la enfermedad</li><li class="list-group-item"> mantener la higiene en el entorno de los clientes como por ejemplo el cambio de sábanas o la limpieza de la ropa, los platos y la vivienda</li><li class="list-group-item"> prestar ayuda psicológica del tipo de co</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

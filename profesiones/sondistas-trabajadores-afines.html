@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Sondistas y trabajadores afines | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Sondistas y trabajadores afines">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Sondistas y trabajadores afines</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12912, 16368, 18792];
 var seriesSalJunior     = [14976, 18744, 21396];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">SONDISTAS Y TRABAJADORES AFINES</h4>');$('#info').append('<p class="descripcion">Los sondistas y trabajadores afines colocan en posición, ensamblan y manejanmáquinas y equipos de sondeo para abrir pozos, extraer minerales, líquidos ogases y para otros diversos fines.Entre sus tareas se incluyen:- desmontar, desplazar y ensamblar plataformas de perforación y equiposauxiliares;- ensamblar y desmontar tubos de perforación, tuberías de revestimiento ytrépanos, y sustituir los equipos que no funcionan adecuadamente;- manejar los mandos para izar y elevar los tubos de perforación y tuberías derevestimiento en los pozos, regular la presión en éstos y controlar la velocidadde las herramientas;- preparar los fluidos de perforación y comprobar el funcionamiento de las324bombas para garantizar la circulación adecuada de los mismos al tubo deperforación y al pozo;- vigilar los indicadores y demás instrumentos y atender los equipos para detectarlos casos de mal funcionamiento y las condiciones inhabituales de lospozos, y determinar la necesidad de modificar la perforación o los equipos;- mantener, ajustar, reparar y limpiar<span class="excerpt"><span style="display:none;">las torres de perforación y la maquinariade elevación y de otro tipo;- mantener registros de las operaciones de perforación y de mantenimiento;- accionar máquinas y equipos para extraer de los pozos el polvo, los recortesy el material de los equipos de perforación que se haya soltado o se haya roto;- cerrar y sellar los pozos que ya no estén en servicio;- en su caso, supervisar y formar a los miembros del equipo.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">SONDISTAS Y TRABAJADORES AFINES</h4>');$('#info').append('<p class="descripcion">Los sondistas y trabajadores afines colocan en posición, ensamblan y manejan máquinas y equipos de sondeo para abrir pozos,<div class="excerpt"><div hidden><span>extraer minerales, líquidos o gases y para otros diversos fines. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> desmontar, desplazar y ensamblar plataformas de perforación y equipos auxiliares</li><li class="list-group-item"> ensamblar y desmontar tubos de perforación, tuberías de revestimiento y trépanos, y sustituir los equipos que no funcionan adecuadamente</li><li class="list-group-item"> manejar los mandos para izar y elevar los tubos de perforación y tuberías de revestimiento en los pozos, regular la presión en éstos y controlar la velocidad de las herramientas</li><li class="list-group-item"> preparar los fluidos de perforación y comprobar el funcionamiento de las 324 bombas para garantizar la circulación adecuada de los mismos al tubo de perforación y al pozo</li><li class="list-group-item"> vigilar los indicadores y demás instrumentos y atender los equipos para detectar los casos de mal funcionamiento y las condiciones inhabituales de los pozos, y determinar la necesidad de modificar la perforación o los equipos</li><li class="list-group-item"> mantener, ajustar, reparar y limpiar las torres de perforación y la maquinaria de elevación y de otro tipo</li><li class="list-group-item"> mantener registros de las operaciones de perforación y de mantenimiento</li><li class="list-group-item"> accionar máquinas y equipos para extraer de los pozos el polvo, los recortes y el material de los equipos de perforación que se haya soltado o se haya roto</li><li class="list-group-item"> cerrar y sellar los pozos que ya no estén en servicio</li><li class="list-group-item"> en su caso, supervisar y formar a los miembros del equipo.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

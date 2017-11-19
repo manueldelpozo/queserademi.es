@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Directores de organizaciones de interés social | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Directores de organizaciones de interés social">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Directores de organizaciones de interés social</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [25704, 33240, 38520];
 var seriesSalJunior     = [28884, 37188, 42996];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE ORGANIZACIONES DE INTERÉS SOCIAL</h4>');$('#info').append('<p class="descripcion">Los directores de organizaciones de interés social definen, formulan y orientan lapolítica de estas organizaciones, tales como partidos políticos, sindicatos, organizacionesde empleadores, asociaciones industriales, organizaciones humanitariaso de beneficencia y asociaciones deportivas, representan a las organizacionesy actúan en su nombre.Entre sus tareas se incluyen:- definir y formular la política, los estatutos y reglamentos de la organización;- planificar, dirigir y coordinar el funcionamiento general de la organización;- examinar las operaciones y resultados de la organización e informar al consejode dirección y a los órganos directivos, a los miembros de la organizacióny a las entidades que aporten financiación;- realizar negociaciones en nombre de la organización, de sus miembros y delos grupos relevantes de interés social;- defender los intereses de la organización y de sus miembros ante los órganoslegislativos, la administración pública o el público en general;- planificar, organizar y orientar las actividades de los órganos encargados deaplicar las políticas, estatutos y reglamentos<span class="excerpt"><span style="display:none;">de la organización;- velar por la elaboración y aplicación de sistemas y procedimientos adecuadospara la realización del control presupuestario;- supervisar y evaluar el funcionamiento de la organización o empresa a tenorde los objetivos y políticas establecidos;- representar a la organización en actos oficiales y reuniones de órganos directivos,en negociaciones y en convenciones, audiencias públicas y foros.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">DIRECTORES DE ORGANIZACIONES DE INTERÉS SOCIAL</h4>');$('#info').append('<p class="descripcion">Los directores de organizaciones de interés social definen, formulan y orientan la política de estas organizaciones, tales como partidos<div class="excerpt"><div hidden><span>políticos, sindicatos, organizaciones de empleadores, asociaciones industriales, organizaciones humanitarias o de beneficencia y asociaciones deportivas, representan a las organizaciones y actúan en su nombre. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> definir y formular la política, los estatutos y reglamentos de la organización</li><li class="list-group-item"> planificar, dirigir y coordinar el funcionamiento general de la organización</li><li class="list-group-item"> examinar las operaciones y resultados de la organización e informar al consejo de dirección y a los órganos directivos, a los miembros de la organización y a las entidades que aporten financiación</li><li class="list-group-item"> realizar negociaciones en nombre de la organización, de sus miembros y de los grupos relevantes de interés social</li><li class="list-group-item"> defender los intereses de la organización y de sus miembros ante los órganos legislativos, la administración pública o el público en general</li><li class="list-group-item"> planificar, organizar y orientar las actividades de los órganos encargados de aplicar las políticas, estatutos y reglamentos de la organización</li><li class="list-group-item"> velar por la elaboración y aplicación de sistemas y procedimientos adecuados para la realización del control presupuestario</li><li class="list-group-item"> supervisar y evaluar el funcionamiento de la organización o empresa a tenor de los objetivos y políticas establecidos</li><li class="list-group-item"> representar a la organización en actos oficiales y reuniones de órganos directivos, en negociaciones y en convenciones, audiencias públicas y foros.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

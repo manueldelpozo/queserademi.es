@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Empleados administrativos de contabilidad, en general | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Empleados administrativos de contabilidad, en general">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Empleados administrativos de contabilidad, en general</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [13800, 16920, 19128];
 var seriesSalJunior     = [15924, 19044, 21216];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EMPLEADOS ADMINISTRATIVOS DE CONTABILIDAD, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los empleados de contabilidad calculan, clasifican y registran datos numéricospara mantener registros financieros completos. Llevan a cabo diversas combinacionesde tareas de cálculo rutinario, asientos contables y comprobación deobligaciones con el fin de obtener datos financieros primarios para su uso en elmantenimiento de registros contables.Entre sus tareas se incluyen:- comprobar cifras, asientos y documentos para determinar la corrección delas anotaciones, la precisión matemática y la utilización de los códigos pertinentes;- utilizar ordenadores y software contable para registrar, almacenar y analizarinformación;- clasificar, registrar y resumir datos numéricos y financieros, con el fin decompilar y conservar registros financieros, utilizando libros diarios o mayoresu ordenadores;- calcular, preparar y publicar listas, facturas, estados de cuentas y otra documentaciónfinanciera con arreglo a los procedimientos establecidos;- compilar informes y tablas estadísticos, financieros, contables o de auditoríarelativos a diversos aspectos como los cobros de efectivo, los gastos, lascuentas por pagar y por cobrar, los beneficios y las<span class="excerpt"><span style="display:none;">pérdidas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">EMPLEADOS ADMINISTRATIVOS DE CONTABILIDAD, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los empleados de contabilidad calculan, clasifican y registran datos numéricos para mantener registros financieros completos. Llevan a cabo diversas<div class="excerpt"><div hidden><span>combinaciones de tareas de cálculo rutinario, asientos contables y comprobación de obligaciones con el fin de obtener datos financieros primarios para su uso en el mantenimiento de registros contables. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> comprobar cifras, asientos y documentos para determinar la corrección de las anotaciones, la precisión matemática y la utilización de los códigos pertinentes</li><li class="list-group-item"> utilizar ordenadores y software contable para registrar, almacenar y analizar información</li><li class="list-group-item"> clasificar, registrar y resumir datos numéricos y financieros, con el fin de compilar y conservar registros financieros, utilizando libros diarios o mayores u ordenadores</li><li class="list-group-item"> calcular, preparar y publicar listas, facturas, estados de cuentas y otra documentación financiera con arreglo a los procedimientos establecidos</li><li class="list-group-item"> compilar informes y tablas estadísticos, financieros, contables o de auditoría relativos a diversos aspectos como los cobros de efectivo, los gastos, las cuentas por pagar y por cobrar, los beneficios y las pérdidas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

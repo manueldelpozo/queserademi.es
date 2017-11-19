@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de máquinas para elaborar bebidas alcohólicas, en general | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de máquinas para elaborar bebidas alcohólicas, en general">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de máquinas para elaborar bebidas alcohólicas, en general</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [12312, 15096, 17052];
 var seriesSalJunior     = [14760, 17484, 19404];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MÁQUINAS PARA ELABORAR BEBIDAS ALCOHÓLICAS, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los operadores de máquinas para elaborar elaborar productos alimenticios, bebidasy tabaco ajustan, accionan y atienden máquinas usadas para sacrificar alos animales, para separar la carne de los huesos y espinas, y para hornear, congelar,calentar, triturar, mezclar y tratar por otros procedimientos productos dealimentación, bebidas y hojas de tabaco.Entre sus tareas se incluyen:- accionar y vigilar máquinas usadas para inmovilizar, aturdir y sacrificar a losanimales y para separar la carne de los huesos y espinas;- ajustar, accionar y atender máquinas y hornos para mezclar, hornear y prepararde otra forma pan y productos de confitería;- accionar máquinas para triturar, mezclar, salar, cocinar y fermentar cerealesy frutas para elaborar cerveza, vinos, licores de malta, vinagre, levadura yotros productos;- atender equipos para confeccionar mermelada, caramelos, queso, quesofundido, margarina, almíbar, hielo, pasta, helados, salchichas, chocolate, almidónde maíz, grasas comestibles y dextrina;- accionar equipos para enfriar, calentar, secar, tostar, escaldar, pasteurizar,ahumar, esterilizar, congelar, evaporar y<span class="excerpt"><span style="display:none;">concentrar productos alimenticios ylíquidos usados en el tratamiento de los mismos;- mezclar, reducir a pulpa, triturar, amasar y separar productos de alimentacióny líquidos empleando aparatos para batirlos, prensarlos, colarlos, triturarlosy filtrarlos;- elaborar cigarrillos, cigarros, tabaco de pipa y otros productos tratandomecánicamente las hojas de tabaco.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MÁQUINAS PARA ELABORAR BEBIDAS ALCOHÓLICAS, EN GENERAL</h4>');$('#info').append('<p class="descripcion">Los operadores de máquinas para elaborar elaborar productos alimenticios, bebidas y tabaco ajustan, accionan y atienden máquinas usadas para<div class="excerpt"><div hidden><span>sacrificar a los animales, para separar la carne de los huesos y espinas, y para hornear, congelar, calentar, triturar, mezclar y tratar por otros procedimientos productos de alimentación, bebidas y hojas de tabaco. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> accionar y vigilar máquinas usadas para inmovilizar, aturdir y sacrificar a los animales y para separar la carne de los huesos y espinas</li><li class="list-group-item"> ajustar, accionar y atender máquinas y hornos para mezclar, hornear y preparar de otra forma pan y productos de confitería</li><li class="list-group-item"> accionar máquinas para triturar, mezclar, salar, cocinar y fermentar cereales y frutas para elaborar cerveza, vinos, licores de malta, vinagre, levadura y otros productos</li><li class="list-group-item"> atender equipos para confeccionar mermelada, caramelos, queso, queso fundido, margarina, almíbar, hielo, pasta, helados, salchichas, chocolate, almidón de maíz, grasas comestibles y dextrina</li><li class="list-group-item"> accionar equipos para enfriar, calentar, secar, tostar, escaldar, pasteurizar, ahumar, esterilizar, congelar, evaporar y concentrar productos alimenticios y líquidos usados en el tratamiento de los mismos</li><li class="list-group-item"> mezclar, reducir a pulpa, triturar, amasar y separar productos de alimentación y líquidos empleando aparatos para batirlos, prensarlos, colarlos, triturarlos y filtrarlos</li><li class="list-group-item"> elaborar cigarrillos, cigarros, tabaco de pipa y otros productos tratando mecánicamente las hojas de tabaco.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },

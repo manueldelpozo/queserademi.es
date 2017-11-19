@@ -3,7 +3,7 @@
 <html>
   <head>
       <title>Operadores de máquinas de coser y bordar | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser Operadores de máquinas de coser y bordar">
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>Operadores de máquinas de coser y bordar</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -146,10 +146,10 @@
   <script type="text/javascript" src="../js/highcharts.js"></script>
   <script type="text/javascript" src="../js/highcharts-more.js"></script>
   <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" defer></script>
+  <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
   <script type="text/javascript" src="../js/graficas.js"></script>
-  <script type="text/javascript" async>
+  <script type="text/javascript">
     
 var seriesSalPrinc      = [10560, 12336, 13584];
 var seriesSalJunior     = [12276, 14268, 15672];
@@ -264,7 +264,7 @@ var chartSalarios = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -276,7 +276,7 @@ var chartSalarios = {
         series: {
             cursor: 'pointer',
             allowPointSelect: true,
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -285,7 +285,7 @@ var chartSalarios = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             } 
         }
@@ -312,7 +312,7 @@ var chartSalarios = {
             zIndex: 0
         }
     ]
-};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MÁQUINAS DE COSER Y BORDAR</h4>');$('#info').append('<p class="descripcion">Los operadores de máquinas de coser y bordar accionan y vigilan máquinas paraconfeccionar, arreglar, zurcir y renovar prendas de vestir hechas de tela, tejidos,pieles o cuero, o para añadirles diseños decorativos. Accionan máquinas dehacer ojales (para botones y para broches) para hacer los ojales, repasar su borde,coser los botones y fijar los broches a las prendas de vestir.Entre sus tareas se incluyen:- atender y accionar máquinas de coser para realizar operaciones de unión,refuerzo o adorno en prendas de vestir o en partes de las mismas;- pegar botones, corchetes, cremalleras, presillas u otros accesorios a telas otejidos;- atender máquinas de coser semiautomáticas con varios cabezales de costuracontroladas por una cadena de patrones que sigue varios diseños;- accionar máquinas como remalladoras de una o de dos agujas para unir, reforzaro adornar automáticamente materiales o artículos;- accionar máquinas de coser para unir trozos de piel hasta conseguir el tamañoy la forma deseados<span class="excerpt"><span style="display:none;">y aplicarlos a prendas de vestir;- accionar máquinas de coser para coser piezas de cuero y confeccionar prendasde vestir, bolsos, guantes y artículos similares de este material;- vigilar el funcionamiento de las máquinas para detectar problemas como uncosido defectuoso, la rotura del hilo o el mal funcionamiento;- realizar tareas de mantenimiento, como la sustitución de las agujas.</span><strong class="more"> [ + ]</strong></span></p>');// Excerpt
+};$('#container_salarios').highcharts(chartSalarios);$('#container_info').html('<h5 style="margin:15px; font-weight: bold;">+ INFORMACIÓN</h5><div id="info"></div>');$('#info').append('<h4 class="principal nombre">OPERADORES DE MÁQUINAS DE COSER Y BORDAR</h4>');$('#info').append('<p class="descripcion">Los operadores de máquinas de coser y bordar accionan y vigilan máquinas para confeccionar, arreglar, zurcir y renovar prendas<div class="excerpt"><div hidden><span>de vestir hechas de tela, tejidos, pieles o cuero, o para añadirles diseños decorativos. Accionan máquinas de hacer ojales (para botones y para broches) para hacer los ojales, repasar su borde, coser los botones y fijar los broches a las prendas de vestir. Entre sus tareas se incluyen:</span><ul class="list-group"><li class="list-group-item"> atender y accionar máquinas de coser para realizar operaciones de unión, refuerzo o adorno en prendas de vestir o en partes de las mismas</li><li class="list-group-item"> pegar botones, corchetes, cremalleras, presillas u otros accesorios a telas o tejidos</li><li class="list-group-item"> atender máquinas de coser semiautomáticas con varios cabezales de costura controladas por una cadena de patrones que sigue varios diseños</li><li class="list-group-item"> accionar máquinas como remalladoras de una o de dos agujas para unir, reforzar o adornar automáticamente materiales o artículos</li><li class="list-group-item"> accionar máquinas de coser para unir trozos de piel hasta conseguir el tamaño y la forma deseados y aplicarlos a prendas de vestir</li><li class="list-group-item"> accionar máquinas de coser para coser piezas de cuero y confeccionar prendas de vestir, bolsos, guantes y artículos similares de este material</li><li class="list-group-item"> vigilar el funcionamiento de las máquinas para detectar problemas como un cosido defectuoso, la rotura del hilo o el mal funcionamiento</li><li class="list-group-item"> realizar tareas de mantenimiento, como la sustitución de las agujas.</li></ul></div><strong class="more"> [ + ]</strong></div></p>');// Excerpt
 $('.more').click( function() {
     $(this).prev().fadeToggle();
     var text = $(this).text();
@@ -500,16 +500,13 @@ $('.more').click( function() {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
                 mouseOut: function() {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                        
             }          
         }
@@ -623,15 +620,16 @@ var chartEmpleabilidad = {
                 color: 'rgba(0, 0, 0, 0.3)',
                 label: {
                     align: 'right',
-                    verticalAlign: "top",
+                    verticalAlign: 'top',
                     textAlign: 'center',
-                    x: 10,
+                    x: 15,
                     y: 40,
                     text: '<i class="fa fa-frown-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }, { // Paro medio
@@ -645,14 +643,15 @@ var chartEmpleabilidad = {
                 label: {
                     align: 'right',
                     verticalAlign: 'top',
-                    x: 10,
+                    x: 15,
                     y: 20,
                     textAlign: 'center',
                     text: '<i class="fa fa-smile-o" aria-hidden="true"></i>',
                     useHTML: true,
                     style: {
                         color: '#999',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        zIndex: '-1'
                     }
                 }
             }
@@ -667,7 +666,7 @@ var chartEmpleabilidad = {
             width: '300px',
             whiteSpace: 'normal' 
         },
-        enabled: false
+        enabled: !isMobile
     },
     credits: {
         enabled: false
@@ -675,7 +674,7 @@ var chartEmpleabilidad = {
     plotOptions: {
         series: {
             cursor: 'pointer',
-            stickyTracking: false,
+            stickyTracking: !isMobile,
             events: {
                 click: function(evt) {
                     this.chart.myTooltip.refresh(evt.point, evt);
@@ -684,7 +683,7 @@ var chartEmpleabilidad = {
                     this.chart.myTooltip.hide();
                 },
                 legendItemClick: function() {
-                    return false; 
+                    return !isMobile; 
                 }                       
             }          
         }
@@ -820,7 +819,7 @@ showNews();
           series: {
               cursor: 'pointer',
               stacking: 'normal',
-              stickyTracking: false,
+              stickyTracking: !isMobile,
               pointWidth: 30 
           }
       },
