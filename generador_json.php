@@ -7,7 +7,7 @@ function getExtraTokens($nombre_userfriendly, $nombre_formal) {
 	$tokens = array($nombre_userfriendly, $nombre_formal);
 	$extraTokens = array_reverse(explode(' ', $nombre_userfriendly));
 	$diff = ['a', 'al', 'de', 'del', 'y', 'e', ',', '.', 'para', 'por', 'la', 'las', 'el', 'los', 'en', 'o', 'u'];
-	$extraTokens = array_diff($extraTokens, $diff);
+	//$extraTokens = array_diff($extraTokens, $diff);
 	return array_merge($extraTokens, $tokens);
 }
 
@@ -25,15 +25,17 @@ foreach ($tipos as &$tipo) {
 	if ($count > 0) {
 		$rows = $request->fetchAll();
 		foreach ($rows as $row) {
-			$nombre_ppal = array();
-			$nombre_ppal_formal = ucfirst(trim(mb_strtolower($row[$n_ppal], 'UTF-8'))); //primera mayusc
-			$nombre_ppal_userfriendly = getNombreLimpio($row[$n_ppal]);
-			$nombre_ppal['value'] = $nombre_ppal_formal;
-			$nombre_ppal['tokens'] = getExtraTokens($nombre_ppal_userfriendly, $nombre_ppal_formal);
+			if (!empty($row[$n_ppal]) && !is_null($row[$n_ppal])) {
+				$nombre_ppal = array();
+				$nombre_ppal_formal = ucfirst(trim(mb_strtolower($row[$n_ppal], 'UTF-8'))); //primera mayusc
+				$nombre_ppal_userfriendly = getNombreLimpio($row[$n_ppal]);
+				$nombre_ppal['value'] = $nombre_ppal_formal;
+				$nombre_ppal['tokens'] = getExtraTokens($nombre_ppal_userfriendly, $nombre_ppal_formal);
 
-			if (!array_key_exists($nombre_ppal_userfriendly, $lista)) {
-				$lista[$nombre_ppal_userfriendly] = $nombre_ppal;
-				echo '<p>El nombre principal <strong>' . $nombre_ppal_formal . '</strong> se añadio a la lista de <strong>' . $tipo . '</strong></p>';
+				if (!array_key_exists($nombre_ppal_userfriendly, $lista)) {
+					$lista[$nombre_ppal_userfriendly] = $nombre_ppal;
+					echo '<p>El nombre principal <strong>' . $nombre_ppal_formal . '</strong> se añadio a la lista de <strong>' . $tipo . '</strong></p>';
+				}
 			}
 
 			if (!empty($row[$n_alt]) && !is_null($row[$n_alt])) {

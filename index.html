@@ -101,11 +101,11 @@
         </div>
         <br>
         <div class="row body-index">
-            <div class="col-md-6 col-md-offset-3 col-xs-12 controlador-ux-mobile">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 controlador-ux-mobile">
                 <div class="dropdown clearfix">
                     <form id="formulario" class="form-index" role="form" method="post">
                         <div class="input-group ux-mobile-input-container" id="scrollable-dropdown-menu" style="width: 100%;">
-                            <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="busca una profesión (ej. Médicos)" autofocus required spellcheck="true" autocomplete="off" style="background: #FFFFFF">
+                            <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo='profesiones' placeholder="busca una profesión (ej. Ingenieros aeronáuticos)" autofocus required spellcheck="true" autocomplete="off" style="background: #FFFFFF">
                         </div>
                     </form>
                 </div>
@@ -117,10 +117,11 @@
             </div>
         </div>
     </div>
-    <div class="background-image">
-        <div class="col-md-3 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center" id="ver-video">
-            <div class="col-md-12 hidden-xs text-center">
-                
+    <div class="background-image display-table">
+        <section class="col-md-4 col-md-offset-1 col-sm-5 col-xs-12 text-center" id="ver-video">
+            <div class="col-md-12 text-center caja">
+                <h3 class="qsdm-color-red">Orientación laboral online para jóvenes estudiantes.</h3>
+                <h5><strong>queserademi.com</strong> es la herramienta digital que aporta a las futuras generaciones, orientadores, padres y profesores la información necesaria para afrontar esa decisión de un modo responsable y maduro.</h5>
             </div>
             <a class="btn btn-default btn-qsdm" role="button" href="#">VER VIDEO</a>
             <div class="embed-responsive-16by9" align="center" id="video">
@@ -130,20 +131,19 @@
                     <source src="video/videoQsdm.ogv" type="video/ogg"> Su navegador no soporta la etiqueta de vídeo.
                 </video>
             </div>
-            
             <div class="fb-like" 
                 data-href="https://www.facebook.com/queserademicom/" 
                 data-layout="box_count" 
                 data-action="like" 
                 data-size="large" 
-                data-show-faces="true" 
+                data-show-faces="false" 
                 data-share="true">
             </div>
-        </div>
-        <div class="col-md-4 col-md-offset-4 col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center" id="canal-novedades">
+        </section>
+
+        <section class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-12 text-center" id="canal-novedades">
             <div id="container_noticias" class="grafica"></div>
-        </div>
-        
+        </section>        
         <div class="col-xs-12 margen"></div>
     </div>
     <footer w3-include-html="footer.html"></footer>

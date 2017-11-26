@@ -8,16 +8,18 @@ function getUrl(dataTipo) {
 }
 
 $('.typeahead[data-tipo="profesiones"]').typeahead({
+    name: 'profesiones',
     prefetch: getUrl('profesiones'),
     hint: true,
     highlight: true,
     minLength: 0,
     items: 9999,
     order: "asc",
-    limit: Infinity
+    limit: Infinity,
 });
 
 $('.typeahead[data-tipo="formaciones"]').typeahead({
+    name: 'formaciones',
     prefetch: getUrl('formaciones'),
     hint: true,
     highlight: true,
@@ -29,44 +31,35 @@ $('.typeahead[data-tipo="formaciones"]').typeahead({
 
 // Validacion SUBMIT
 function submitar($input, item) {
-    var item = $input.val() || item;
+    var item = item || $input.val();
     if (item) {
         $.ajax({
             url: prefix + "ajax.php?query=" + item + "&tipo=profesiones&validar=true",
             success: function(result) {
                 var $form = $input.parents("#formulario");
-                if (result == '[]' || result == '[""]') {
-                    // incluir mensaje sobre la profesion no encontrada
-                    var mensaje = '<h3 class="aviso-error">Lo sentimos, no encontramos <strong>' + item + '</strong></h3>';
-                    if ($('#popUp').find('.aviso-error'))
-                    	$('#popUp .aviso-error').remove(); // para no acumular mensajes
-                    $(mensaje).insertBefore($('#popUp h2'));
-                    // mostrar POPUP aqui
-                    $('#popUp').show('slow');
-                    // proponer mejora de busqueda... por filtros con select
-                    return false;
-                } else {
-                    var urlEstatica, profesionLimpia, urlLimpia;
-                    // Comprobar que estamos en la homepage
-                    if ($input.hasClass('principal') && !isEstatica && $(location).attr('href').indexOf('comparador.php') < 0) {
-                        profesionLimpia = item.replace(/\'|\"|\,|\;|\(|\)|\/|\~|\+/g, '').latinize().toLowerCase().replace(/ /g, "-");
-                        var prepositions = ['-a-', '-e-', '-o-', '-u-', '-y-', '-en-', '-de-', '-del-', '-al-', '-el-', '-la-', '-los-', '-las-', '-para-', '-por-'];
-                        for (var i = 0; i < prepositions.length; i++) {
-                           profesionLimpia = profesionLimpia.replace(prepositions[i], '-');
-                        }                   
-                        urlLimpia = $(location).attr('href').replace(/index.html/g, '');
-                        urlEstatica = urlLimpia + 'profesiones/' + profesionLimpia + '.html';
-                        $form.attr('action', urlEstatica);
-                    }
-                    $form.submit();
+                // Comprobar que estamos en la homepage
+                if ($input.hasClass('principal') && !isEstatica && $(location).attr('href').indexOf('comparador.php') < 0) {
+                    var profesionLimpia = item.replace(/\'|\"|\,|\;|\(|\)|\/|\~|\+/g, '').latinize().toLowerCase().replace(/ /g, "-");
+                    var prepositions = ['-a-', '-e-', '-o-', '-u-', '-y-', '-en-', '-de-', '-del-', '-al-', '-el-', '-la-', '-los-', '-las-', '-para-', '-por-'];
+                    for (var i = 0; i < prepositions.length; i++) {
+                       profesionLimpia = profesionLimpia.replace(prepositions[i], '-');
+                    }                   
+                    var urlLimpia = $(location).attr('href').replace(/index.html/g, '');
+                    var urlEstatica = urlLimpia + 'profesiones/' + profesionLimpia + '.html';
+                    $form.attr('action', urlEstatica);
                 }
+                $form.submit();
             },
             error: function(xhr, textStatus, errorThrown) {
-                // y cambiar el redireccionamiento a la pagina estatica si es necesario (status 500)
-                /*if (xhr.status == 500) {
-                    window.location = 'http://www.queserademi.com/profesiones/' + $profesion.replace(/ /g, "-").latinize().toLowerCase() + '.html';
-                }*/
-                alert('Fallo en la consulta');
+                // incluir mensaje sobre la profesion no encontrada
+                var mensaje = '<h3 class="aviso-error">Lo sentimos, no encontramos <strong>' + item + '</strong></h3>';
+                if ($('#popUp').find('.aviso-error')) {
+                    $('#popUp .aviso-error').remove(); // para no acumular mensajes
+                }
+                $(mensaje).insertBefore($('#popUp h2'));
+                // mostrar POPUP aqui
+                $('#popUp').show('slow');
+                // TODO proponer mejora de busqueda... por filtros con select
                 return false;
             }
         });
@@ -79,51 +72,28 @@ $('.typeahead').keyup(function(event) {
 
     if (event.which === 13) {
         $lista = $(this).siblings('.tt-dropdown-menu');
-        // si input tiene focus 
         if (hasFocus) {
-            // si no hay lista paramos la funcion
             if ($lista.css('display') == 'none') {
-                submitar($(this)); // para guardar nombres desconocidos y mostrar popup
+                $(this).attr('placeholder', 'por favor, busca otra vez');
+                $(this).typeahead('setQuery', '');
                 return false;
             }
 
             $(this).siblings('.tt-hint').val('');
-            $(this).val($(this).siblings('.tt-dropdown-menu').find('.tt-suggestion:first-child').text());
+            $(this).typeahead('setQuery', $(this).siblings('.tt-dropdown-menu').find('.tt-suggestion:first-child').text());
             submitar($(this));
         }
     }
 });
 
-
-// Cuando clickamos boton submit
-$('.btn-submit').click(function(event) {
-    var $input_target = $(this).parents('#scrollable-dropdown-menu').find('.typeahead');
-    event.preventDefault();
-    submitar($input_target);
-});
-
 // DROPDOWN
 // Submit despues de seleccionar item de la lista
-$('.tt-dropdown-menu').click(function(event) {
-    var $textItem = $(event.target).text();
-    var $input = $(this).siblings('.typeahead');
-    var $consulta = $input.val();
-
-    if ($consulta === $textItem && $textItem !== 'Más...') {
-        submitar($input);
-    }
-    // No usar opcion Mas por el momento
-    /*else if ($textItem == 'Más...') {
-    	// no ocultar lista
-    	$(this).show();
-    	// no mostrar mas en input
-    	$input.val('');
-    	// eliminar mas
-    	$(e.target).parent('.tt-suggestion').remove();
-    	mostrarMasLista($input);
-    }*/
+$('.typeahead').bind('typeahead:selected', function(obj, datum) {
+    $(this).typeahead('setQuery', datum.value);
+    submitar($(this), datum.value);
 });
 
+// MAS LISTA
 function mostrarMasLista($input) {
     // consultar todos los elementos de la lista
     $.ajax({
@@ -142,6 +112,7 @@ function mostrarMasLista($input) {
     });
 }
 
+// COMPARADOR
 // mostrar input para comparar
 $('#btnAddComparador').click(function() {
     $(this).hide(100);
