@@ -136,26 +136,11 @@ div.body > div {
   z-index: 0;
 }
 
-.highcharts-xaxis-labels > span:nth-child(1) i:nth-child(1) {
-  display: inline;
-}
-
-.highcharts-xaxis-labels > span:nth-child(2) i:nth-child(2) {
-  display: inline;
-}
-
-.highcharts-xaxis-labels > span:nth-child(3) i:nth-child(3) {
-  display: inline;
-}
-
-.highcharts-xaxis-labels > span:nth-child(4) i:nth-child(4) {
-  display: inline;
-}
-
-.highcharts-xaxis-labels > span:nth-child(5) i:nth-child(5) {
-  display: inline;
-}
-
+.highcharts-xaxis-labels > span:nth-child(1) i:nth-child(1)
+.highcharts-xaxis-labels > span:nth-child(2) i:nth-child(2)
+.highcharts-xaxis-labels > span:nth-child(3) i:nth-child(3)
+.highcharts-xaxis-labels > span:nth-child(4) i:nth-child(4)
+.highcharts-xaxis-labels > span:nth-child(5) i:nth-child(5)
 .highcharts-xaxis-labels > span:nth-child(6) i:nth-child(6) {
   display: inline;
 }
@@ -181,8 +166,8 @@ div.body > div {
   margin: 20px;
 }
 
-#noticiasContainer .list-group {
-  text-align: left !important;
+#noticiasContainer .list-group .post-title {
+  font-size: 1.4em;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
@@ -222,6 +207,10 @@ div.body > div {
   .input-group {
     display: block !important;
   }
+
+  #noticiasContainer .list-group .post-title {
+    font-size: 1em;
+  }
 }
 
 @media only screen and (max-device-width: 768px) and (orientation:landscape) {
@@ -255,5 +244,9 @@ div.body > div {
 
   .input-group {
     display: block !important;
+  }
+
+  #noticiasContainer .list-group .post-title {
+    font-size: 1em;
   }
 }

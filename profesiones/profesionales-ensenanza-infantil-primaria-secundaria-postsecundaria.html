@@ -718,22 +718,39 @@ function showNews() {
   if(loaded) return;
 
   $.ajax({
-      url: 'https://queserademi.com/noticias/wp-json/wp/v2/posts',
+      url: 'https://queserademi.com/noticias/wp-json/wp/v2/posts?_embed',
       method: 'GET',
       success: function(result) {
-          console.log(result);
-          var title, content, src, i, posts = '';
+          var title, content, src, imageSrc, imageAlt, i, posts = '';
           for (i = 0; i < result.length; i++) {
               title = result[i].title.rendered;
               content = result[i].excerpt.rendered;
               src = result[i].link;
-              posts += '<a href="' + src + '" class="list-group-item list-group-item-action"><h4><strong>' + title + '</strong></h4><p>' + content + '</p></a>';
+              imageSrc = result[i]._embedded['wp:featuredmedia'][0].source_url;
+              imageAlt = result[i]._embedded['wp:featuredmedia'][0].title.rendered;
+              posts += '<div class="list-group-item col-xs-12">';
+              posts +=  '<div class="col-md-4 col-sm-4 col-xs-5">';
+              posts +=    '<a href="' + src + '">';
+              posts +=      '<img src="' + imageSrc + '" alt="' + imageAlt + '" class="img-thumbnail">';
+              posts +=    '</a>';
+              posts +=  '</div>';
+              posts +=  '<div class="col-md-8 col-sm-8 col-xs-7 text-left post-title">';
+              posts +=    '<a href="' + src + '">';
+              posts +=      '<strong>' + title + '</strong>';
+              posts +=    '</a>';
+              posts +=  '</div>';
+              posts +=  '<div class="col-md-12 col-xs-12 text-left post-content">';
+              posts +=    '<a href="' + src + '">';
+              posts +=      content;
+              posts +=    '</a>';
+              posts +=  '</div>';
+              posts += '</div>';
           }
           $('#noticiasContainer').append('<div class="list-group">' + posts + '</div>');
       },
       error: function(xhr, textStatus, errorThrown) {
           console.log(xhr, textStatus, errorThrown);
-          $('#noticiasContainer').append('<h2>No hay noticias!</h2>');
+          $('#noticiasContainer').append('<h2>Lo sentimos<br>No hay noticias</h2>');
       }
   });
 
