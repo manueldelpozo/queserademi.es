@@ -195,46 +195,14 @@ button, a {
 }
 
 /* TYPEAHEAD STYLES */
-.typeahead {
+input {
+	border-color: #000000;
+	margin-bottom: 10px;
+	/*correct iOS background color*/
 	-webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-
-	background-color: #FFFFFF;
-	border-color: #000000;
-	margin-bottom: 10px;
-}
-
-/*correct iOS styles*/
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-	transition: background-color 5000s ease-in-out 0s;
-
-	-webkit-box-shadow: 0 0 0 1000px white inset;
-	-webkit-text-fill-color: #333;
-	-webkit-opacity:1;
-  
-	/*border-color: #000000;
-	background-color: #FFFFFF !important;*/
-
-	-webkit-animation: autofill 0s forwards;
-	animation: autofill 0s forwards;
-}
-
-@keyframes autofill {
-    100% {
-        background: white;
-        color: inherit;
-    }
-}
-
-@-webkit-keyframes autofill {
-    100% {
-        background: white;
-        color: inherit;
-    }
+	background: #FFFFFF !important;
 }
 
 .typeahead.alert {
