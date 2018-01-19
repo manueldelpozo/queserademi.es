@@ -1,6 +1,6 @@
 //*************** Despliegue de lista  color de las graficas
 Highcharts.setOptions({
-	colors: ['#d62e46', '#337ab7'],
+	colors: [qsdmRed, qsdmBlue],
 	chart: {
 		style: {
 			fontFamily: 'Roboto'
