@@ -241,7 +241,7 @@ $('#container_formacion').highcharts(chartFormacion);
         capa_aviso += '<a href="https://queserademi.com/colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d62e46; color: #d62e46;">Colabora!</a>';
     <?php } ?>
 
-    <?php if($btn_colabora_f_2) { ?>
+    <?php if($btn_colabora_f_2 && isset($profesion_dos) && !empty($profesion_dos)) { ?>
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>formación</strong> de la profesión<br>';
         capa_aviso += '<strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
         capa_aviso += '<a href="https://queserademi.com/colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a>';
