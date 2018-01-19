@@ -170,6 +170,17 @@ div.body > div {
   font-size: 1.4em;
 }
 
+.iconos-competencias {
+  width: 30px;
+  height: auto;
+  margin-top: -7px;
+  margin-left: -2px;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (max-device-width: 400px) and (orientation:portrait) {
   div.header {
@@ -211,6 +222,11 @@ div.body > div {
   #noticiasContainer .list-group .post-title {
     font-size: 1em;
   }
+
+  .iconos-competencias {
+    width: 20px;
+    margin-left: 0;
+  }
 }
 
 @media only screen and (max-device-width: 768px) and (orientation:landscape) {
@@ -249,4 +265,8 @@ div.body > div {
   #noticiasContainer .list-group .post-title {
     font-size: 1em;
   }
+
+  .iconos-competencias {
+    margin-left: -3px;
+  }  
 }
