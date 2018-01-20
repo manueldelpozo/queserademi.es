@@ -1,0 +1,24 @@
+{
+  "name": "queserademi",
+  "description": "orientador laboral",
+  "main": "index.js",
+  "version": "1.0.0",
+  "authors": [
+    "Manuel del Pozo"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/manueldelpozo/queserademi.es",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "highcharts": "^6.0.4",
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1",
+    "typeahead.js": "0.9.3"
+  }
+}

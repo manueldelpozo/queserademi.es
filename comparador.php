@@ -8,7 +8,7 @@ set_time_limit(0);
   $tablas = array( 
     'salarios'            => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
     'empleabilidad'       => array('parados', 'contratados', 'mes', 'anyo'),
-    'capacidades'         => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
+    'competencias'        => array('c_iniciativa', 'c_resolucion', 'c_creatividad', 'c_planificacion', 'c_aprendizaje', 'c_comunicacion', 'c_negociacion', 'c_cliente', 'c_critica', 'c_analisis', 'c_calidad', 'c_espacialidad', 'c_coordinacion', 'c_descubrimiento', 'c_empatia', 'c_equipo', 'c_social', 'c_adaptabilidad', 'c_liderazgo', 'c_integridad', 'c_transmision', 'c_tecnologia', 'c_sensibilidad'),
     'formaciones'         => array('id', 'f_nombre_ppal','f_descripcion','duracion_academica','duracion_real'),
     'info'                => array('descripcion'),
     //'satisfaccion'      => array('experiencia','grado_satisfaccion'),
@@ -221,7 +221,7 @@ set_time_limit(0);
               <div id="container_salarios" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_capacidades" class="grafica"></div>
+              <div id="container_competencias" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_formacion" class="grafica"></div>
@@ -247,25 +247,29 @@ set_time_limit(0);
           w3.includeHTML();
       </script>
 
-      <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
+      <!-- librerías opcionales que activan el soporte de HTML5 para I
+      E8 -->
       <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
       <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
-      <!--script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script-->
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/typeahead.0.9.3.min.js"></script>
-      <script type="text/javascript" src="js/highcharts.js"></script>
-      <script type="text/javascript" src="js/highcharts-more.js"></script>
-      <script type="text/javascript" src="js/modules/exporting.js"></script>
+
+      <script type="text/javascript" src="bower_components/highcharts/highcharts.js"></script>
+      <script type="text/javascript" src="bower_components/highcharts/modules/heatmap.js"></script>
+      <script type="text/javascript" src="bower_components/highcharts/modules/tilemap.js"></script>
+      <script type="text/javascript" src="bower_components/highcharts/highcharts-more.js"></script>
+      <script type="text/javascript" src="bower_components/highcharts/modules/exporting.js"></script>
+
       <script type="text/javascript" src="js/scripts.js"></script> 
       <script type="text/javascript" src="js/scripts-combobox.js"></script>  
       <script type="text/javascript" src="js/graficas.js"></script>
 
       <script type="text/javascript" async><?php include('js/grafica_empleabilidad.js'); ?></script>
       <script type="text/javascript" async><?php include('js/grafica_salarios.js'); ?></script>
-      <script type="text/javascript" async><?php include('js/grafica_capacidades.js'); ?></script>
+      <script type="text/javascript" async><?php include('js/grafica_competencias.js'); ?></script>
       <script type="text/javascript" async><?php include('js/grafica_formacion.js'); ?></script>
       <script type="text/javascript" async><?php include('js/grafica_noticias.js'); ?></script>
       <script type="text/javascript" async><?php include('js/grafica_info.js'); ?></script>

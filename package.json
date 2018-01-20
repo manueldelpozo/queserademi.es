@@ -1,0 +1,22 @@
+{
+  "name": "queserademi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manueldelpozo/queserademi.es.git"
+  },
+  "keywords": [],
+  "author": "manuel del Pozo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manueldelpozo/queserademi.es/issues"
+  },
+  "homepage": "https://github.com/manueldelpozo/queserademi.es#readme",
+  "dependencies": {
+  }
+}
