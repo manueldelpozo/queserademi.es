@@ -34,31 +34,31 @@ $competencias = array(
                                         'name' => 'Comunicación',
                                         'description' => 'Capacidad de comunicación oral y escrita',
                                         'icon' => 'comunicacion',
-                                        'position' => array('x' => '1', 'y' => '0')
+                                        'position' => array('x' => '1', 'y' => '1')
                                     ),
     'c_negociacion'         => array(
                                         'name' => 'Negociación',
                                         'description' => 'Capacidad comercial, persuasión, asertividad',
                                         'icon' => 'negociacion',
-                                        'position' => array('x' => '1', 'y' => '1')
+                                        'position' => array('x' => '1', 'y' => '2')
                                     ),
     'c_cliente'             => array(
                                         'name' => 'Orientación al cliente',
                                         'description' => 'Atención al cliente, capacidad de proveer explicaciones más y menos técnicas',
                                         'icon' => 'cliente',
-                                        'position' => array('x' => '1', 'y' => '2')
+                                        'position' => array('x' => '1', 'y' => '3')
                                     ),
     'c_critica'             => array(
                                         'name' => 'Pensamiento crítico',
                                         'description' => 'Capacidad de argumentar, de sintetizar, de analizar lenguaje explícito e implícito',
                                         'icon' => 'critica',
-                                        'position' => array('x' => '1', 'y' => '3')
+                                        'position' => array('x' => '1', 'y' => '4')
                                     ),
     'c_analisis'            => array(
                                         'name' => 'Análisis numérico',
                                         'description' => 'Razonamiento numérico, comprensión y manejo de conceptos matemático',
                                         'icon' => 'analisis',
-                                        'position' => array('x' => '1', 'y' => '4')
+                                        'position' => array('x' => '1', 'y' => '5')
                                     ),
     'c_calidad'             => array(
                                         'name' => 'Orientación a la calidad',
@@ -144,7 +144,6 @@ function parseBooleanCompetencias($filas) {
     $competencias = array();
 
     foreach ($filas as $fila) { 
-        //var_dump($fila);
         array_push($competencias, boolval($fila));
     }
 
@@ -156,10 +155,16 @@ function getCompetenciasValues($competencias, $values, $values_dos) {
     foreach ($competencias as $key => $competencia) {
         $value = 0;
         if ($values[$key] && $values_dos[$key]) {
-            $value = 3;
-        } else if (!$values[$key] && $values_dos[$key]) {
+            if (is_numeric($values[$key]) && is_numeric($values_dos[$key])) {
+                $value = 3;
+            } else if (!is_numeric($values[$key]) && is_numeric($values_dos[$key])) {
+                $value = 2;
+            } else if (is_numeric($values[$key]) && !is_numeric($values_dos[$key])) {
+                $value = 1;
+            }
+        } else if (!$values[$key] && $values_dos[$key] && is_numeric($values_dos[$key])) {
             $value = 2;
-        } else if ($values[$key] && !$values_dos[$key]) {
+        } else if ($values[$key] && is_numeric($values[$key]) && !$values_dos[$key]) {
             $value = 1; 
         }
 
@@ -178,19 +183,19 @@ function getCompetenciasValues($competencias, $values, $values_dos) {
 $btn_colabora_c_1 = $btn_colabora_c_2 = 0;
 
 if (isset($profesion) && !empty($profesion)) {
-    //$filas_competencias = parseBooleanCompetencias($filas_competencias);
-    foreach ($filas_competencias as $fila_competencia) { 
-        if (is_null($fila_competencia)) {
+    foreach ($filas_competencias[0] as $fila_competencia) { 
+        if (!is_numeric($fila_competencia)) {
             $btn_colabora_c_1++;
+            break;
         }
     }
 }
 
 if (isset($profesion_dos) && !empty($profesion_dos)) {
-    //$filas_competencias_dos = parseBooleanCompetencias($filas_competencias_dos);
-    foreach ($filas_competencias_dos as $fila_competencia_dos) { 
-        if (is_null($fila_competencia_dos)) {
+    foreach ($filas_competencias_dos[0] as $fila_competencia_dos) { 
+        if (!is_numeric($fila_competencia_dos)) {
             $btn_colabora_c_2++;
+            break;
         }
     }
 }
@@ -402,20 +407,19 @@ $('#container_competencias').highcharts({
     }]
 });
 
-
-<?php if( $btn_colabora_c_1 || $btn_colabora_c_2 ) { ?>
+<?php if ($btn_colabora_c_1 || $btn_colabora_c_2) { ?>
     var capa_aviso = '<div class="capa-aviso">';
     capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="images/cross.svg"></img></a></div>';
     capa_aviso += '<div class="col-md-10 col-md-offset-1">';
     capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
 
-    <?php if( $btn_colabora_c_1 > 0 ) { ?>
+    <?php if ($btn_colabora_c_1 > 0) { ?>
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>competencias profesionales</strong> de la profesión<br>';
         capa_aviso += '<strong><?php echo mb_strtoupper($profesion,"UTF-8"); ?></strong></p>';
         capa_aviso += '<a href="https://queserademi.com/colabora.php?profesion=<?php echo $profesion; ?>" class="btn btn-aviso" style="border-color: #d62e46; color: #d62e46;">Colabora!</a>';
     <?php } ?>
 
-    <?php if( $btn_colabora_c_2 > 0 ) { ?>
+    <?php if ($btn_colabora_c_2 > 0) { ?>
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>competencias profesionales</strong> de la profesión<br>';
         capa_aviso += '<strong><?php echo mb_strtoupper($profesion_dos,"UTF-8"); ?></strong></p>';
         capa_aviso += '<a href="https://queserademi.com/colabora.php?profesion=<?php echo $profesion_dos; ?>" class="btn btn-aviso" style="border-color: #337ab7; color: #337ab7;">Colabora!</a>';
