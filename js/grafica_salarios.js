@@ -15,12 +15,12 @@ function val($s_valor) {
 }
 
 foreach( $tablas['salarios'] as $rango) { 
-    if( isset($profesion) && !empty($profesion) ){
+    if (isset($profesion) && !empty($profesion)) {
         $$rango = $filas_salarios[0][$rango]; 
         if( is_null($filas_salarios[0][$rango]) || $filas_salarios[0][$rango] == 0 ) // busqueda de nulos
             $btn_colabora_s_1++; 
     }
-    if( isset($profesion_dos) && !empty($profesion_dos) ){
+    if (isset($profesion_dos) && !empty($profesion_dos)) {
         $rango_dos = $rango . '_dos';
         $$rango_dos = $filas_salarios_dos[0][$rango];
         if( is_null($filas_salarios_dos[0][$rango]) || $filas_salarios_dos[0][$rango] == 0 ) // busqueda de nulos

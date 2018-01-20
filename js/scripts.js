@@ -57,9 +57,18 @@ $('#ver-video a').click(function(event) {
 // AVISOS Y POPUPS
 // ocultar avisos
 $('.cerrar-aviso').click(function(event) {
+    console.log(event)
     event.preventDefault ? event.preventDefault(event) : event.returnValue = false;
     $(this).parent().remove();
 });
+
+/*function closeWarningOVerlay(event) {
+    var event = event || $(window).event;
+    var $target = $(event.target) ||$(event.srcElement);
+    if ($target.parent().hasClass('capa-aviso')) {
+       $target.parent().remove();  
+    }
+}*/
 
 $('.cerrar-popup').click(function(event) {
     event.preventDefault ? event.preventDefault(event) : event.returnValue = false;
