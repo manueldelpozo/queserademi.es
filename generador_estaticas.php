@@ -15,7 +15,7 @@ try {
   $tablas = array( 
     'salarios'      => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
     'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
-    'capacidades'   => array('c_analisis', 'c_comunicacion', 'c_equipo', 'c_forma_fisica', 'c_objetivos', 'c_persuasion'),
+    'competencias'        => array('c_iniciativa', 'c_resolucion', 'c_creatividad', 'c_planificacion', 'c_aprendizaje', 'c_comunicacion', 'c_negociacion', 'c_cliente', 'c_critica', 'c_analisis', 'c_calidad', 'c_espacialidad', 'c_coordinacion', 'c_descubrimiento', 'c_empatia', 'c_equipo', 'c_social', 'c_adaptabilidad', 'c_liderazgo', 'c_integridad', 'c_transmision', 'c_tecnologia', 'c_sensibilidad'),
     'info'          => array('descripcion'),
     //'satisfaccion'  => array('experiencia','grado_satisfaccion'),
     'formaciones'   => array('id', 'f_nombre_ppal','f_descripcion','duracion_academica','duracion_real')
@@ -70,40 +70,63 @@ try {
     $text = str_replace('"','',$text); // remove "
     $text = preg_replace( '/^(Nota:.*\.?)$/', ' ', $text); // remove Nota
     return Encoding::toUTF8(ucfirst($text)); // primer letra en mayuscula forzando el UTF8
-}
+  }
 
-function parseToList($text, $first_symbol, $second_symbol) {
-    if (empty($text)) {
-        return $text;
-    }
-    $split_text = explode($first_symbol, $text);
-    if (count($split_text) <= 1) {
-        return $text;
-    }
-    $list = array_pop($split_text);
-    $initial_text = join(' ', $split_text);
-    $list_items = explode($second_symbol, $list);
-    return '<span>' . $initial_text . ':</span><ul class="list-group"><li class="list-group-item">' . join('</li><li class="list-group-item">', $list_items) . '</li></ul>';
-}
+  function parseToList($text, $first_symbol, $second_symbol) {
+      if (empty($text)) {
+          return $text;
+      }
+      $split_text = explode($first_symbol, $text);
+      if (count($split_text) <= 1) {
+          return $text;
+      }
+      $list = array_pop($split_text);
+      $initial_text = join(' ', $split_text);
+      $list_items = explode($second_symbol, $list);
+      return '<span>' . $initial_text . ':</span><ul class="list-group"><li class="list-group-item">' . join('</li><li class="list-group-item">', $list_items) . '</li></ul>';
+  }
 
-function createExcerpts($text, $length, $more_txt) { 
-    $split_text = explode(' ', $text, $length); // dividir el texto en dos
-    $excerpt = array_pop($split_text);
-    $content = join(' ', $split_text);
+  function createExcerpts($text, $length, $more_txt) { 
+      $split_text = explode(' ', $text, $length); // dividir el texto en dos
+      $excerpt = array_pop($split_text);
+      $content = join(' ', $split_text);
 
-    $excerpt = parseToList($excerpt, ': -', '; -');
-    $excerpt = parseToList($excerpt, ': a)', '; b)');
-    
-    return $content . '<div class="excerpt"><div hidden>' . $excerpt . '</div>' . '<strong class="more">' . $more_txt . '</strong></div>'; 
-}
+      $excerpt = parseToList($excerpt, ': -', '; -');
+      $excerpt = parseToList($excerpt, ': a)', '; b)');
+      
+      return $content . '<div class="excerpt"><div hidden>' . $excerpt . '</div>' . '<strong class="more">' . $more_txt . '</strong></div>'; 
+  }
 
-  function imprimirSeriesCap($filas, $tablas) {
-    $seriesCap = array();
-    foreach ($tablas['capacidades'] as $campo) {
-      //return (is_null($filas[$campo]) || $filas[$campo] == 0) ? "2," : round($filas[$campo]) . ",";
-      array_push($seriesCap, (is_null($filas[$campo]) || $filas[$campo] == 0) ? "2" : round($filas[$campo]));
-    }
-    return $seriesCap;
+  function getCompetenciasValues($competencias, $values) {
+      $output = '';
+      foreach ($competencias as $key => $competencia) {
+          $value = 0;
+          if ($values[$key] && is_numeric($values[$key])) {
+              $value = 1; 
+          }
+
+          $output .= '{';
+          $output .= 'name: "' . $competencia['name'] . '",';
+          $output .= 'description: "' . $competencia['description'] . '",';
+          $output .= 'icon: "' . $competencia['icon'] . '",';
+          $output .= 'x: ' . $competencia['position']['x'] . ',';
+          $output .= 'y: ' . $competencia['position']['y'] . ',';
+          $output .= 'value: ' . $value;
+          $output .= '},';
+      }
+      return $output;
+  }
+
+  function getDescriptionCompetencias($competencias) {
+    $output = array();
+    foreach($competencias as $competencia) { 
+      $obj = "'" . $competencia['name'] . "':" . "{"
+      ."'description':" . "'" . $competencia['description'] . "',"
+      ."'icon':" . "'" . $competencia['icon'] . "'"
+      ."}";
+      array_push($output, $obj);
+    }   
+    return join(', ', $output);
   }
 
   function coefMin($parados) {
@@ -213,6 +236,8 @@ function createExcerpts($text, $length, $more_txt) {
     $nombre_ppal = $nombre['nombre_ppal']; // por defecto no se da valor al nombre ppal
     $nombre_alt = $nombre['nombre_alt'];
     $id_profesion = $nombre['id_profesion'];
+
+    if (isLookingFor($nombre_ppal, $_IS_SEARCH_ALL)) { 
 
     while($repetir) { // mientras haya un nombre ppal se repetira este bucle
 
@@ -385,7 +410,7 @@ $html = '
               <div id="container_salarios" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_capacidades" class="grafica"></div>
+              <div id="container_competencias" class="grafica"></div>
             </div>
             <div class="col-md-6 col-xs-12 text-center">
               <div id="container_formacion" class="grafica"></div>
@@ -417,12 +442,16 @@ $html = '
   <script type="text/javascript" src="../js/jquery-2.1.3.js"></script>
   <script type="text/javascript" src="../js/bootstrap.min.js"></script>
   <script type="text/javascript" src="../js/typeahead.0.9.3.min.js"></script>
-  <script type="text/javascript" src="../js/highcharts.js"></script>
-  <script type="text/javascript" src="../js/highcharts-more.js"></script>
-  <script type="text/javascript" src="../js/modules/exporting.js"></script>
-  <script type="text/javascript" src="../js/scripts.js" async></script>
-  <script type="text/javascript" src="../js/scripts-combobox.js" async></script> 
-  <script type="text/javascript" src="../js/graficas.js" async></script>
+
+  <script type="text/javascript" src="../bower_components/highcharts/highcharts.js"></script>
+  <script type="text/javascript" src="../bower_components/highcharts/modules/heatmap.js"></script>
+  <script type="text/javascript" src="../bower_components/highcharts/modules/tilemap.js"></script>
+  <script type="text/javascript" src="../bower_components/highcharts/highcharts-more.js"></script>
+  <script type="text/javascript" src="../bower_components/highcharts/modules/exporting.js"></script>
+
+  <script type="text/javascript" src="../js/scripts.js"></script>
+  <script type="text/javascript" src="../js/scripts-combobox.js"></script> 
+  <script type="text/javascript" src="../js/graficas.js"></script>
   <script type="text/javascript" async>
     '; 
 
@@ -652,41 +681,199 @@ $('.more').click( function() {
     $(this).text(text == ' [ + ]' ? ' [ - ]' : ' [ + ]');
 });";
 
-/**CAPACIDADES**/
+/**COMPETENCIAS**/
 
-$descripciones = array(
-    'Análisis'                  => 'Razonamiento lógico, toma de decisiones, organización, gestión, etc.',
-    'Comunicación'              => 'Comunicación, hablar en público, escucha activa.',
-    'Destreza y físico'         => 'Destreza técnica, apariciencia física, etc.',
-    'Cooperación'               => 'Empatía, sensibilidad, colaboración, trabajo en equipo, escucha.',
-    'Logro de objetivos'        => 'Orientado a objetivos, resultados, etc.',
-    'Persuasión'                => 'Influencia, negociación, habilidades comerciales, etc.'
-);
-$iconos = array(
-    'Análisis'                  => 'line-chart',
-    'Comunicación'              => 'comments-o',
-    'Destreza y físico'         => 'wrench',
-    'Cooperación'               => 'users',
-    'Logro de objetivos'        => 'trophy',
-    'Persuasión'                => 'briefcase'
+$competencias = array(
+    'c_iniciativa'          => array(
+                                        'name'  => 'Iniciativa y compromiso',
+                                        'description' => 'Autonomía, constancia y tenacidad. Emprendimiento, automotivación y orientación al logro',
+                                        'icon' => 'iniciativa',
+                                        'grupo' => '',
+                                        'position' => array('x' => '0', 'y' => '0')
+                                    ),
+    'c_resolucion'          => array(
+                                        'name' => 'Resolución de problemas',
+                                        'description' => 'Análisis de problemas, toma de decisiones, pensamiento analítico',
+                                        'icon' => 'resolucion',
+                                        'grupo' => '',
+                                        'position' => array('x' => '0', 'y' => '1')
+                                    ),
+    'c_creatividad'         => array(
+                                        'name' => 'Creatividad e innovación',
+                                        'description' => 'Creatividad, innovación, originalidad',
+                                        'icon' => 'creatividad',
+                                        'grupo' => '',
+                                        'position' => array('x' => '0', 'y' => '2')
+                                    ),
+    'c_planificacion'       => array(
+                                        'name' => 'Planificación y estrategia',
+                                        'description' => 'Organización, orientación estratégica, orientación a resultados, priorización',
+                                        'icon' => 'planificacion',
+                                        'grupo' => '',
+                                        'position' => array('x' => '0', 'y' => '3')
+                                    ),
+    'c_aprendizaje'         => array(
+                                        'name' => 'Facilidad de aprendizaje',
+                                        'description' => 'Curiosidad, motivación autónoma, interés y rapidez para asimilar información nueva ',
+                                        'icon' => 'aprendizaje',
+                                        'grupo' => '',
+                                        'position' => array('x' => '0', 'y' => '4')
+                                    ),
+    'c_comunicacion'        => array(
+                                        'name' => 'Comunicación',
+                                        'description' => 'Capacidad de comunicación oral y escrita',
+                                        'icon' => 'comunicacion',
+                                        'grupo' => '',
+                                        'position' => array('x' => '1', 'y' => '1')
+                                    ),
+    'c_negociacion'         => array(
+                                        'name' => 'Negociación',
+                                        'description' => 'Capacidad comercial, persuasión, asertividad',
+                                        'icon' => 'negociacion',
+                                        'grupo' => '',
+                                        'position' => array('x' => '1', 'y' => '2')
+                                    ),
+    'c_cliente'             => array(
+                                        'name' => 'Orientación al cliente',
+                                        'description' => 'Atención al cliente, capacidad de proveer explicaciones más y menos técnicas',
+                                        'icon' => 'cliente',
+                                        'grupo' => '',
+                                        'position' => array('x' => '1', 'y' => '3')
+                                    ),
+    'c_critica'             => array(
+                                        'name' => 'Pensamiento crítico',
+                                        'description' => 'Capacidad de argumentar, de sintetizar, de analizar lenguaje explícito e implícito',
+                                        'icon' => 'critica',
+                                        'grupo' => '',
+                                        'position' => array('x' => '1', 'y' => '4')
+                                    ),
+    'c_analisis'            => array(
+                                        'name' => 'Análisis numérico',
+                                        'description' => 'Razonamiento numérico, comprensión y manejo de conceptos matemático',
+                                        'icon' => 'analisis',
+                                        'grupo' => '',
+                                        'position' => array('x' => '1', 'y' => '5')
+                                    ),
+    'c_calidad'             => array(
+                                        'name' => 'Orientación a la calidad',
+                                        'description' => 'Meticulosidad, exactitud, precisión, fiabilidad',
+                                        'icon' => 'calidad',
+                                        'grupo' => '',
+                                        'position' => array('x' => '2', 'y' => '0')
+                                    ),
+    'c_espacialidad'        => array(
+                                        'name' => 'Pensamiento espacial',
+                                        'description' => 'Comprensión de interpretación y visualización de espacios y lugares, capacidad de orientación',
+                                        'icon' => 'espacialidad',
+                                        'grupo' => '',
+                                        'position' => array('x' => '2', 'y' => '1')
+                                    ),
+    'c_coordinacion'        => array(
+                                        'name' => 'Coordinación motora',
+                                        'description' => 'Habilidad de movimiento y precisión corporal y manual',
+                                        'icon' => 'coordinacion',
+                                        'grupo' => '',
+                                        'position' => array('x' => '2', 'y' => '2')
+                                    ),
+    'c_descubrimiento'      => array(
+                                        'name' => 'Interés por el descubrimiento',
+                                        'description' => 'Capacidad de investigación, pensamiento científico',
+                                        'icon' => 'descubrimiento',
+                                        'grupo' => '',
+                                        'position' => array('x' => '2', 'y' => '3')
+                                    ),
+    'c_empatia'             => array(
+                                        'name' => 'Empatía',
+                                        'description' => 'Capacidad de tener una perspectiva distinta, de ponerse en el lugar del otro, de escucha activa',
+                                        'icon' => 'empatia',
+                                        'grupo' => '',
+                                        'position' => array('x' => '2', 'y' => '4')
+                                    ),
+    'c_equipo'              => array(
+                                        'name' => 'Trabajo en equipo',
+                                        'description' => 'Capacidad de coordinarse con otras personas, delegar, admitir los conocimientos de los miembros del equipo',
+                                        'icon' => 'equipo',
+                                        'grupo' => '',
+                                        'position' => array('x' => '2', 'y' => '5')
+                                    ),
+    'c_social'              => array(
+                                        'name' => 'Habilidades sociales',
+                                        'description' => 'Don de gentes, sociabilidad, networking, conocimientos interpersonales, inteligencia social',
+                                        'icon' => 'social',
+                                        'grupo' => '',
+                                        'position' => array('x' => '3', 'y' => '0')
+                                    ),
+    'c_adaptabilidad'       => array(
+                                        'name' => 'Adaptabilidad',
+                                        'description' => 'Orientación al cambio, flexibilidad, inteligencia emocional, autorregulación',
+                                        'icon' => 'adaptabilidad',
+                                        'grupo' => '',
+                                        'position' => array('x' => '3', 'y' => '1')
+                                    ),
+    'c_liderazgo'           => array(
+                                        'name' => 'Liderazgo',
+                                        'description' => 'Capacidad de mando y decisión, visión estratégica',
+                                        'icon' => 'liderazgo',
+                                        'grupo' => '',
+                                        'position' => array('x' => '3', 'y' => '2')
+                                    ),
+    'c_integridad'          => array(
+                                        'name' => 'Integridad',
+                                        'description' => 'Ética, conciencia y compromiso ético',
+                                        'icon' => 'integridad',
+                                        'grupo' => '',
+                                        'position' => array('x' => '3', 'y' => '3')
+                                    ),
+    'c_transmision'         => array(
+                                        'name' => 'Transmisión de conocimientos',
+                                        'description' => 'Capacidad e interés en formar a otros y divulgar información ',
+                                        'icon' => 'transmision',
+                                        'grupo' => '',
+                                        'position' => array('x' => '3', 'y' => '4')
+                                    ),
+    'c_tecnologia'          => array(
+                                        'name' => 'Habilidad Tecnológica',
+                                        'description' => 'Adaptabilidad a las tecnologías, habilidades informáticas y electrónicas',
+                                        'icon' => 'tecnologia',
+                                        'grupo' => '',
+                                        'position' => array('x' => '3', 'y' => '5')
+                                    ),
+    'c_sensibilidad'        => array(
+                                        'name' => 'Sensibilidad',
+                                        'description' => 'Habilidad para conectar con la naturaleza y otros seres vivos o capacidad para apreciar la expresión artística',
+                                        'icon' => 'sensibilidad',
+                                        'grupo' => '',
+                                        'position' => array('x' => '3', 'y' => '6')
+                                    )
 );
 
 $btn_colabora_c_1 = 0;
-$c_analisis = $c_comunicacion = $c_equipo = $c_forma_fisica = $c_objetivos = $c_persuasion = 0;
 
-// busqueda de nulos en capacidades
-foreach ($filas_capacidades as $fila_capacidad) { 
-  if( is_null($fila_capacidad) || $fila_capacidad == 0 )
+foreach ($filas_competencias[0] as $fila_competencia) { 
+  if (!is_numeric($fila_competencia)) {
     $btn_colabora_c_1++;
+    break;
+  }
 }
 
-$script_capacidades = 'var seriesCap = ['. join(', ', imprimirSeriesCap($filas_capacidades[0], $tablas)) .'];';
+$script_competencias = '
+var seriesCompetencias = [' . getCompetenciasValues($competencias, $filas_competencias[0]) . '];
+';
 
-$script_capacidades .= "$('#container_capacidades').highcharts({
+$script_competencias .= '
+qsdmRed = \'rgba(214, 46, 70, .75)\';
+qsdmBlue = \'rgba(51, 122, 183, .75)\';
+qsdmPurple = \'rgba(145, 51, 183, .75)\';
+qsdmGrey = \'rgba(187, 187, 187, .85)\';
+
+var descriptions = {' . getDescriptionCompetencias($competencias) . '};'; 
+
+$script_competencias .= '
+$(\'#container_competencias\').highcharts({
     chart: {
-        polar: true,
-        type: 'line',
-        backgroundColor:'rgba(255, 255, 255, 0)',
+        type: \'tilemap\',
+        inverted: true,
+        backgroundColor:\'rgba(255, 255, 255, 0)\',
         // Edit chart size
         spacingBottom: 20,
         spacingTop: 20,
@@ -698,174 +885,150 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
             load: function(){
                 this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
             }
-        } 
+        }
     },
     title: {
-        text: 'CUALIDADES PROFESIONALES',
-        align: 'center',
+        text: \'COMPETENCIAS PROFESIONALES\',
+        align: "center",
         style: { 
-            'color': '#555',
-            'fontSize': '14px',
-            'fontWeight': 'bold'
+            \'color\': \'#555\',
+            \'fontSize\': \'14px\',
+            \'fontWeight\': \'bold\'
         }
     },
     legend: { 
         enable: false,
         itemStyle: {
-            width: '300%'
+            width: \'300%\'
         },
         title: {
-            text: '<span>(Click para ver información)</span>',
+            text: \'<span>(Click para ver información)</span>\',
             style: {
-                fontStyle: 'italic',
-                fontSize: '9px',
-                color: '#888'
+                fontStyle: \'italic\',
+                fontSize: \'9px\',
+                color: \'#888\'
             }
         } 
-    },
-    pane: {
-        size: '80%'
     },
     xAxis: {
-        categories: [";
-        foreach($descripciones as $nombre => $descripcion) { 
-            $script_capacidades .= '"'.$nombre.'",'; 
-        } 
-        $script_capacidades .= "],
-        tickmarkPlacement: 'on',
-        lineWidth: 0,
-        gridLineColor: '#999999',
-        labels: {
-            style: {
-                fontSize: '12px',
-                zIndex: '-1'
-            },
-            useHTML: true,
-            formatter: function () {
-                return [
-                ";
-                $numItems = count($iconos);
-                $i = 0;
-                foreach($iconos as $nombre => $icono) { 
-                    $script_capacidades .= "'<i class=\"fa fa-".$icono." fa-lg\"></i>'";
-                    if(++$i !== $numItems)
-                        $script_capacidades .= "+";
-                } 
-                $script_capacidades .= "
-                ];
-            }
-        }
+        visible: false
     },
     yAxis: {
-        gridLineInterpolation: 'polygon',
-        lineWidth: 0,
-        min: 0,
-        minorTickInterval: 'auto',
-        gridLineColor: '#999999',
-        labels: {
-            style: {
-                fontSize: '0px'
-            }
-        }
+        visible: false
     },
-    tooltip: {
-        shared: true,
-        headerFormat: '<strong style=\"font-size:17px\">{point.key}</strong><br>',
-        formatter: function() {
-            var descripciones = {
-                Analisis:                   '". $descripciones['Análisis'] ."',
-                Comunicacion:               '". $descripciones['Comunicación'] ."',
-                Destreza_y_fisico:          '". $descripciones['Destreza y físico'] ."',
-                Cooperacion:                '". $descripciones['Cooperación'] ."',
-                Logro_de_objetivos:         '". $descripciones['Logro de objetivos'] ."',
-                Persuasion:                 '". $descripciones['Persuasión'] ."'
-            };
-            
-            return '<strong style=\"font-size:17px;color:rgb(0,0,0);\">'+ this.x +'</strong><br/>'+'<span>'+ descripciones[this.x.replace(/ /g,'_').latinize()] +'</span><br/>'+
-            '<span style=\"color:'+this.points[0].series.color+'\">'+this.points[0].series.name+': </span>(<strong>'+this.points[0].y+'</strong>/5)<br/>';
-        },
-        style: {
-            display: 'block', 
-            width: '300px',
-            whiteSpace: 'normal' 
-        }     
+    colorAxis: {
+        dataClasses: [{
+            from: 0,
+            to: 1,
+            color: qsdmGrey,
+            name: \'No asignado\'
+        }, {
+            from: 1,
+            to: 2,
+            color: qsdmRed,
+            name: \''. $profesion .'\'
+        }
+        ]
     },
     exporting: {
         buttons: {
-           anotherButton: {
-                text: '???',
+            contextButton: {
+                menuItems: [{
+                    text: \'<a><i class="fa fa-facebook-square fa-2x" style="padding:5px"></i>Compartir en Facebook</a>\',
+                    onclick: function(event) {
+                        if (event.target.href === \'\') {
+                            getUrlShare(\'facebook\', this, event.target);    
+                        }
+                    }
+                },{
+                    text: \'<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>\',
+                    onclick: function(event) {
+                        if (event.target.href === \'\') {
+                        getUrlShare(\'linkedin\', this, event.target);    
+                        }
+                    }
+                },{
+                    separator: true
+                },{
+                    text: \'<a href="#"><i class="glyphicon glyphicon-download-alt" style="padding:5px"></i>Descargar JPEG</a>\',
+                    onclick: function() {
+                        this.exportChart({
+                            type: \'image/jpeg\'
+                        });
+                    }
+                }]
+            },
+            anotherButton: {
+                text: \'???\',
                 y: 28,
                 x: 0,
                 width: 24,
                 onclick: function () {
-                    var capa_glosario = '<div class=\"capa-glosario\">';
-                    capa_glosario += '<div class=\"cerrar-glosario\"><img class=\"icon\" src=\"../images/cross.svg\"></img></div>';
-                    capa_glosario += '<div class=\"col-md-10 col-md-offset-1\">';
+                    // agregar capa de glosario semitransparente (con opcion a quitar)
+                    var capa_glosario = \'<div class="capa-glosario">\';
+                    capa_glosario += \'<div class="cerrar-glosario"><img class="icon" src="../images/cross.svg"></img></div>\';
+                    capa_glosario += \'<div class="col-md-10 col-md-offset-1">\';
                    
-                    capa_glosario += '<h3>No te preocupes, te lo aclaramos aquí</h3><br>';
-                    capa_glosario += '<dl class=\"dl-horizontal\">';";
-                    foreach ($descripciones as $nombre => $descripcion) { 
-                      $script_capacidades .= "capa_glosario += '<dt>';
-                      capa_glosario += '".$nombre.":';
-                      capa_glosario += '&nbsp;<i class=\"fa fa-".$iconos[$nombre]." fa-lg\"></i><br>';
-                      capa_glosario += '</dt><dd>&gt;&gt;".$descripcion."</dd>';";
+                    capa_glosario += \'<h3>Dudas? No te preocupes, te lo aclaramos aquí!</h3><br>\';
+                    capa_glosario += \'<dl>\';
+                    for (name in descriptions) {
+                        capa_glosario += \'<dt>\';
+                        capa_glosario += \'<img height="20px" width="auto" src="../images/iconos/\' + descriptions[name].icon + \'.png">\';
+                        capa_glosario += \'&nbsp;&nbsp;&nbsp;<strong>\' + name + \'</strong>\';
+                        capa_glosario += \'</dt>\';
+                        capa_glosario += \'<dd>\' + descriptions[name].description + \'</dd>\';
                     }
-                    $script_capacidades .= "capa_glosario += '</dl>';
+                    capa_glosario += \'</dl>\';
 
-                    capa_glosario += '</div>';
-                    capa_glosario += '</div>';
+                    capa_glosario += \'</div>\';
+                    capa_glosario += \'</div>\';
 
-                    $('#container_capacidades').append(capa_glosario);
+                    $(\'#container_competencias\').append(capa_glosario);
 
                     // cerrar glosario
-                    $('.cerrar-glosario').click( function() {
+                    $(\'.cerrar-glosario\').click( function() {
                         $(this).parent().remove();
                     });
                 }
-            },
-            contextButton: {
-                menuItems: [{
-                    text: '<a><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>',
-                      onclick: function(event) {
-                          if (event.target.href === '') {
-                              getUrlShare('facebook', this, event.target);    
-                          }
-                      }
-                    },{
-                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>',
-                      onclick: function(event) {
-                        if (event.target.href === '') {
-                              getUrlShare('linkedin', this, event.target);    
-                          }
-                      }
-                },{
-                    separator: true
-                },{
-                    text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
-                    onclick: function() {
-                        this.exportChart({
-                            type: 'image/jpeg'
-                        });
-                    }
-                }]
             }
         },
         chartOptions: {
             chart: {
                 events: {
                   load: function(event) {                
-                    this.renderer.image('https://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
+                    this.renderer.image(\'https://queserademi.com/images/logo.png\', 15, 15, 30, 30).add();
                   }
                 } 
             }
         }
+    },
+    tooltip: {
+        shared: true,
+        headerFormat: \'<strong style="font-size:17px">{point.key}</strong><br>\',
+        formatter: function() {          
+            return \'<strong style="font-size:17px;color:rgb(0,0,0);">\'+ this.key +\'</strong><br/>\'+\'<span>\'+ descriptions[this.key].description +\'</span>\';   
+        },
+        style: {
+            display: \'block\', 
+            width: \'300px\',
+            whiteSpace: \'normal\'
+        }    
     },
     credits: {
          enabled: false
     },
     plotOptions: {
         series: {
-            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                color: \'#FFFFFF\',
+                useHTML: true,
+                formatter: function() {
+                    return \'<img class="iconos-competencias" src="../images/iconos/\' + this.point.icon + \'.png">\';
+                }
+            },
+            tileShape: \'circle\',
+            cursor: \'pointer\',
             stickyTracking: !isMobile,
             events: {
                 mouseOut: function() {
@@ -873,32 +1036,31 @@ $script_capacidades .= "$('#container_capacidades').highcharts({
                 },
                 legendItemClick: function() {
                     return !isMobile; 
-                }                        
+                }               
             }          
         }
     },
-    series: [{  
-        name: '". $profesion ."',
-        data: seriesCap,
-        stack: '". $profesion ."'
+    series: [{
+        data: seriesCompetencias
     }]
-});";
+});';
 
-if( $btn_colabora_c_1 > 0 ) { 
+if ($btn_colabora_c_1 > 0) { 
     
-    $script_capacidades .= "var capa_aviso = '<div class=\"capa-aviso\">';
+    $script_competencias .= "
+    var capa_aviso = '<div class=\"capa-aviso\">';
     capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
     capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
 
-        capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>cualidades profesionales</strong> de la profesión<br>';
+        capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>competencias profesionales</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
         capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d62e46; color: #d62e46;\">Colabora!</a>';
 
     capa_aviso += '</div>';
     capa_aviso += '</div>';
 
-    $('#container_capacidades').append(capa_aviso);";
+    $('#container_competencias').append(capa_aviso);";
 }
 
 /** EMPLEABILIDAD **/
@@ -1524,7 +1686,7 @@ if( $btn_colabora_sat_1 > 0 ) {
 */
   // incluir scripts y cerrar html 
 
-    $html .= $script_salarios . $script_info . $script_capacidades . $script_empleabilidad . $script_noticias . $script_formacion; 
+    $html .= $script_salarios . $script_info . $script_competencias . $script_empleabilidad . $script_noticias . $script_formacion; 
     //$html .= $script_satisfaccion;
     $html .= '
   </script>
@@ -1536,6 +1698,10 @@ if( $btn_colabora_sat_1 > 0 ) {
     fclose($pagina_html);
 
     } // end while
+    if (!$_IS_SEARCH_ALL) {
+      break;
+    }
+    } // end if isLookingFor
 
     //TEST//
     //break;  

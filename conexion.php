@@ -1,7 +1,7 @@
 <?php
 
 function connect() {
-	$enLocal = true;
+	$enLocal = false;
 
 	$host = $enLocal ? "127.0.0.1" : "qxc430.queserademi.com";
 	$database = $enLocal ? "qsdm" : "qxc430";
@@ -22,7 +22,12 @@ function getNombreLimpio($string) {
 
 // CONFIG GENERADOR_ESTATICAS
 $_COUNT_FROM = 0;
-$_TOTAL_PROFESSION = 8254;
+$_TOTAL_PROFESSION = 10859;
+$_IS_SEARCH_ALL = false;
+function isLookingFor($name, $isSearchAll) {
+	$_SEARCH_NAME = 'Logopedas';
+	return $isSearchAll || mb_strtolower($name, 'UTF-8') === mb_strtolower($_SEARCH_NAME, 'UTF-8');
+}
 
 
 // CONFIG GENERADOR_SITEMAP
