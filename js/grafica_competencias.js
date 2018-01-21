@@ -1,154 +1,167 @@
 <?php 
 $competencias = array(
     'c_iniciativa'          => array(
-                                        'name' => 'Iniciativa y compromiso',
+                                        'name'  => 'Iniciativa y compromiso',
                                         'description' => 'Autonomía, constancia y tenacidad. Emprendimiento, automotivación y orientación al logro',
                                         'icon' => 'iniciativa',
+                                        'grupo' => '',
                                         'position' => array('x' => '0', 'y' => '0')
                                     ),
     'c_resolucion'          => array(
                                         'name' => 'Resolución de problemas',
                                         'description' => 'Análisis de problemas, toma de decisiones, pensamiento analítico',
                                         'icon' => 'resolucion',
+                                        'grupo' => '',
                                         'position' => array('x' => '0', 'y' => '1')
                                     ),
     'c_creatividad'         => array(
                                         'name' => 'Creatividad e innovación',
                                         'description' => 'Creatividad, innovación, originalidad',
                                         'icon' => 'creatividad',
+                                        'grupo' => '',
                                         'position' => array('x' => '0', 'y' => '2')
                                     ),
     'c_planificacion'       => array(
                                         'name' => 'Planificación y estrategia',
                                         'description' => 'Organización, orientación estratégica, orientación a resultados, priorización',
                                         'icon' => 'planificacion',
+                                        'grupo' => '',
                                         'position' => array('x' => '0', 'y' => '3')
                                     ),
     'c_aprendizaje'         => array(
                                         'name' => 'Facilidad de aprendizaje',
                                         'description' => 'Curiosidad, motivación autónoma, interés y rapidez para asimilar información nueva ',
                                         'icon' => 'aprendizaje',
+                                        'grupo' => '',
                                         'position' => array('x' => '0', 'y' => '4')
                                     ),
     'c_comunicacion'        => array(
                                         'name' => 'Comunicación',
                                         'description' => 'Capacidad de comunicación oral y escrita',
                                         'icon' => 'comunicacion',
+                                        'grupo' => '',
                                         'position' => array('x' => '1', 'y' => '1')
                                     ),
     'c_negociacion'         => array(
                                         'name' => 'Negociación',
                                         'description' => 'Capacidad comercial, persuasión, asertividad',
                                         'icon' => 'negociacion',
+                                        'grupo' => '',
                                         'position' => array('x' => '1', 'y' => '2')
                                     ),
     'c_cliente'             => array(
                                         'name' => 'Orientación al cliente',
                                         'description' => 'Atención al cliente, capacidad de proveer explicaciones más y menos técnicas',
                                         'icon' => 'cliente',
+                                        'grupo' => '',
                                         'position' => array('x' => '1', 'y' => '3')
                                     ),
     'c_critica'             => array(
                                         'name' => 'Pensamiento crítico',
                                         'description' => 'Capacidad de argumentar, de sintetizar, de analizar lenguaje explícito e implícito',
                                         'icon' => 'critica',
+                                        'grupo' => '',
                                         'position' => array('x' => '1', 'y' => '4')
                                     ),
     'c_analisis'            => array(
                                         'name' => 'Análisis numérico',
                                         'description' => 'Razonamiento numérico, comprensión y manejo de conceptos matemático',
                                         'icon' => 'analisis',
+                                        'grupo' => '',
                                         'position' => array('x' => '1', 'y' => '5')
                                     ),
     'c_calidad'             => array(
                                         'name' => 'Orientación a la calidad',
                                         'description' => 'Meticulosidad, exactitud, precisión, fiabilidad',
                                         'icon' => 'calidad',
+                                        'grupo' => '',
                                         'position' => array('x' => '2', 'y' => '0')
                                     ),
     'c_espacialidad'        => array(
                                         'name' => 'Pensamiento espacial',
                                         'description' => 'Comprensión de interpretación y visualización de espacios y lugares, capacidad de orientación',
                                         'icon' => 'espacialidad',
+                                        'grupo' => '',
                                         'position' => array('x' => '2', 'y' => '1')
                                     ),
     'c_coordinacion'        => array(
                                         'name' => 'Coordinación motora',
                                         'description' => 'Habilidad de movimiento y precisión corporal y manual',
                                         'icon' => 'coordinacion',
+                                        'grupo' => '',
                                         'position' => array('x' => '2', 'y' => '2')
                                     ),
     'c_descubrimiento'      => array(
                                         'name' => 'Interés por el descubrimiento',
                                         'description' => 'Capacidad de investigación, pensamiento científico',
                                         'icon' => 'descubrimiento',
+                                        'grupo' => '',
                                         'position' => array('x' => '2', 'y' => '3')
                                     ),
     'c_empatia'             => array(
                                         'name' => 'Empatía',
                                         'description' => 'Capacidad de tener una perspectiva distinta, de ponerse en el lugar del otro, de escucha activa',
                                         'icon' => 'empatia',
+                                        'grupo' => '',
                                         'position' => array('x' => '2', 'y' => '4')
                                     ),
     'c_equipo'              => array(
                                         'name' => 'Trabajo en equipo',
                                         'description' => 'Capacidad de coordinarse con otras personas, delegar, admitir los conocimientos de los miembros del equipo',
                                         'icon' => 'equipo',
+                                        'grupo' => '',
                                         'position' => array('x' => '2', 'y' => '5')
                                     ),
     'c_social'              => array(
                                         'name' => 'Habilidades sociales',
                                         'description' => 'Don de gentes, sociabilidad, networking, conocimientos interpersonales, inteligencia social',
                                         'icon' => 'social',
+                                        'grupo' => '',
                                         'position' => array('x' => '3', 'y' => '0')
                                     ),
     'c_adaptabilidad'       => array(
                                         'name' => 'Adaptabilidad',
                                         'description' => 'Orientación al cambio, flexibilidad, inteligencia emocional, autorregulación',
                                         'icon' => 'adaptabilidad',
+                                        'grupo' => '',
                                         'position' => array('x' => '3', 'y' => '1')
                                     ),
     'c_liderazgo'           => array(
                                         'name' => 'Liderazgo',
                                         'description' => 'Capacidad de mando y decisión, visión estratégica',
                                         'icon' => 'liderazgo',
+                                        'grupo' => '',
                                         'position' => array('x' => '3', 'y' => '2')
                                     ),
     'c_integridad'          => array(
                                         'name' => 'Integridad',
                                         'description' => 'Ética, conciencia y compromiso ético',
                                         'icon' => 'integridad',
+                                        'grupo' => '',
                                         'position' => array('x' => '3', 'y' => '3')
                                     ),
     'c_transmision'         => array(
                                         'name' => 'Transmisión de conocimientos',
                                         'description' => 'Capacidad e interés en formar a otros y divulgar información ',
                                         'icon' => 'transmision',
+                                        'grupo' => '',
                                         'position' => array('x' => '3', 'y' => '4')
                                     ),
     'c_tecnologia'          => array(
                                         'name' => 'Habilidad Tecnológica',
                                         'description' => 'Adaptabilidad a las tecnologías, habilidades informáticas y electrónicas',
                                         'icon' => 'tecnologia',
+                                        'grupo' => '',
                                         'position' => array('x' => '3', 'y' => '5')
                                     ),
     'c_sensibilidad'        => array(
                                         'name' => 'Sensibilidad',
                                         'description' => 'Habilidad para conectar con la naturaleza y otros seres vivos o capacidad para apreciar la expresión artística',
                                         'icon' => 'sensibilidad',
+                                        'grupo' => '',
                                         'position' => array('x' => '3', 'y' => '6')
                                     )
 );
-
-function parseBooleanCompetencias($filas) {
-    $competencias = array();
-
-    foreach ($filas as $fila) { 
-        array_push($competencias, boolval($fila));
-    }
-
-    return $competencias;
-}
 
 function getCompetenciasValues($competencias, $values, $values_dos) {
     $output = '';
@@ -200,6 +213,18 @@ if (isset($profesion_dos) && !empty($profesion_dos)) {
     }
 }
 
+function getDescriptionCompetencias($competencias) {
+  $output = array();
+  foreach($competencias as $competencia) { 
+    $obj = "'" . $competencia['name'] . "':" . "{"
+    ."'description':" . "'" . $competencia['description'] . "',"
+    ."'icon':" . "'" . $competencia['icon'] . "'"
+    ."}";
+    array_push($output, $obj);
+  }   
+  return join(', ', $output);
+}
+
 ?>
 
 qsdmRed = 'rgba(214, 46, 70, .75)';
@@ -208,12 +233,7 @@ qsdmPurple = 'rgba(145, 51, 183, .75)'
 qsdmGrey = 'rgba(187, 187, 187, .85)';
 
 var descriptions = {
-    <?php foreach($competencias as $competencia) { 
-        echo "'" . $competencia['name'] . "':" . "{";
-        echo "'description':" . "'" . $competencia['description'] . "',";
-        echo "'icon':" . "'" . $competencia['icon'] . "',";
-        echo "},";
-    } ?>
+    <?php echo getDescriptionCompetencias($competencias); ?>
 };
 
 $('#container_competencias').highcharts({
@@ -400,7 +420,6 @@ $('#container_competencias').highcharts({
         }
     },
     series: [{
-        name: '',
         data: [
             <?php echo getCompetenciasValues($competencias, $filas_competencias[0], $filas_competencias_dos[0]); ?> 
         ]
