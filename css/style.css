@@ -137,6 +137,12 @@ button, a {
     box-shadow: 0px 5px 20px #333;
 }
 
+.body-index {
+    box-sizing: border-box;
+    border: 5px solid #d62e46;
+    background-color: #d62e46;
+}
+
 .body-index.position-top {
 	position: fixed;
     top: 0;
