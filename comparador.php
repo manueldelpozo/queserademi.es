@@ -182,66 +182,63 @@ set_time_limit(0);
     </div>
   
       <form id="formulario" role="form" action="comparador.php">
+        <div class="row header">
 
-          <div class="row header">
-
-            <div class="col-md-4 ux-mobile-input-container">
-              <div class="dropdown clearfix">
-                <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="<?php echo @$profesion; ?>" spellcheck="true" autocomplete="off">
-                </div>
+          <div class="col-md-4 ux-mobile-input-container">
+            <div class="dropdown clearfix">
+              <div class="input-group" id="scrollable-dropdown-menu">
+                <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required value="<?php echo @$profesion; ?>" spellcheck="true" autocomplete="off">
               </div>
             </div>
+          </div>
 
-            <div class="col-md-4 hidden-sm hidden-xs text-center">
-              <a href="https://queserademi.com">
-                <h6 class="sublead qsdm-color-white">tu <strong>comparador</strong> de profesiones</h6>
-                <img class="img-responsive" src="images/logo-blanco.svg"> 
-              </a>
-            </div>
+          <div class="col-md-4 hidden-sm hidden-xs text-center">
+            <a href="https://queserademi.com">
+              <h6 class="sublead qsdm-color-white">tu <strong>comparador</strong> de profesiones</h6>
+              <img class="img-responsive" src="images/logo-blanco.svg"> 
+            </a>
+          </div>
 
-            <div class="col-md-4 ux-mobile-input-container">
-              <div class="dropdown clearfix">
-                <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required autofocus value="<?php echo @$profesion_dos; ?>" spellcheck="true" autocomplete="off" >
-                </div>
+          <div class="col-md-4 ux-mobile-input-container">
+            <div class="dropdown clearfix">
+              <div class="input-group" id="scrollable-dropdown-menu">
+                <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required value="<?php echo @$profesion_dos; ?>" spellcheck="true" autocomplete="off" >
               </div>
             </div>
+          </div>
 
-          </div> 
-
-          <div class="col-xs-12 margen"></div>
-          <div class="col-xs-12 margen"></div>
-
-          <div class="row body" style="margin-top:5px;height:120%;">
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_empleabilidad" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_salarios" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_competencias" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_formacion" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_noticias" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_info" class="grafica"></div>
-            </div>
-            <!--div class="col-md-6 col-xs-12 text-center">
-              <div id="container_satisfaccion" class="grafica"></div>
-            </div--> 
-          </div> 
-
+        </div> 
       </form>
 
       <div class="col-xs-12 margen"></div>
-  
+      <div class="col-xs-12 margen"></div>
 
+      <div class="row body" style="margin-top:5px;height:120%;">
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_empleabilidad" class="grafica"></div>
+        </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_salarios" class="grafica"></div>
+        </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_competencias" class="grafica"></div>
+        </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_formacion" class="grafica"></div>
+        </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_noticias" class="grafica"></div>
+        </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_info" class="grafica"></div>
+        </div>
+        <!--div class="col-md-6 col-xs-12 text-center">
+          <div id="container_satisfaccion" class="grafica"></div>
+        </div--> 
+      </div> 
+
+      <div class="col-xs-12 margen"></div>
+  
       <footer w3-include-html="footer.html"></footer>
       <script type="text/javascript">
           w3.includeHTML();

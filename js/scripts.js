@@ -54,13 +54,17 @@ $('#ver-video a').click(function(event) {
     });
 });
 
-// AVISOS Y POPUPS
+// GRAFICAS, AVISOS Y POPUPS
 // ocultar avisos
 $('.grafica').click(function(event) {
     var isCloseButton = $(event.target).parent().parent().hasClass('cerrar-aviso')
     if ($(event.target).hasClass('icon') && isCloseButton) {
         event.preventDefault ? event.preventDefault(event) : event.returnValue = false;
         $(event.target).parent().parent().parent().remove();
+    }
+    if (isMobile) {
+        event.preventDefault ? event.preventDefault(event) : event.returnValue = false;
+        $('input').trigger('blur'); // Hide mobile keyboard
     }
 });
 

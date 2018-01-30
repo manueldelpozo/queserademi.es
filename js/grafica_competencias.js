@@ -304,7 +304,7 @@ $('#container_competencias').highcharts({
         }, {
             from: 3,
             color: qsdmPurple,
-            name: '<?php echo $profesion . " y " . $profesion_dos; ?>'
+            name: 'Ambas profesiones'
         }
         <?php } ?>
         ]
@@ -416,7 +416,7 @@ $('#container_competencias').highcharts({
                 legendItemClick: function() {
                     return !isMobile; 
                 }               
-            }          
+            }       
         }
     },
     series: [{

@@ -373,7 +373,7 @@ $html = '
             <div class="col-md-4 ux-mobile-input-container">
               <div class="dropdown clearfix">
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" autofocus required value="'; $html .= $nombre_profesion . '" spellcheck="true" autocomplete="off">
+                  <input name="profesion" id="buscador" class="typeahead principal center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required value="'; $html .= $nombre_profesion . '" spellcheck="true" autocomplete="off">
                 </div>
               </div>
             </div>
@@ -392,40 +392,40 @@ $html = '
               </div>
               <div class="dropdown clearfix" hidden>
                 <div class="input-group" id="scrollable-dropdown-menu">
-                  <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required autofocus spellcheck="true" autocomplete="off" >
+                  <input name="profesion_dos" id="buscador_dos" class="typeahead secundaria center-block form-control input-lg" type="text" data-tipo="profesiones" placeholder="Busca otra profesión y compara" required spellcheck="true" autocomplete="off" >
                 </div>
               </div>
             </div>
 
           </div> 
-
-          <div class="col-xs-12 margen"></div>
-          <div class="col-xs-12 margen"></div>
-
-          <div class="row body" style="margin-top:5px;height:120%;">
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_empleabilidad" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_salarios" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_competencias" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_formacion" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_noticias" class="grafica"></div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-              <div id="container_info" class="grafica"></div>
-            </div>
-            <!--div class="col-md-6 col-xs-12 text-center">
-              <div id="container_satisfaccion" class="grafica"></div>
-            </div-->
-          </div>
       </form>
+
+      <div class="col-xs-12 margen"></div>
+      <div class="col-xs-12 margen"></div>
+
+      <div class="row body" style="margin-top:5px;height:120%;">
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_empleabilidad" class="grafica"></div>
+        </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_salarios" class="grafica"></div>
+        </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_competencias" class="grafica"></div>
+        </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_formacion" class="grafica"></div>
+        </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_noticias" class="grafica"></div>
+        </div>
+        <div class="col-md-6 col-xs-12 text-center">
+          <div id="container_info" class="grafica"></div>
+        </div>
+        <!--div class="col-md-6 col-xs-12 text-center">
+          <div id="container_satisfaccion" class="grafica"></div>
+        </div-->
+      </div>  
 
       <div class="col-xs-12 margen"></div>
 
@@ -590,8 +590,7 @@ var chartSalarios = {
             display: 'block', 
             width: '300px',
             whiteSpace: 'normal' 
-        },
-        enabled: !isMobile
+        }
     },
     credits: {
         enabled: false
@@ -605,12 +604,6 @@ var chartSalarios = {
             allowPointSelect: true,
             stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
-                mouseOut: function() {
-                    this.chart.myTooltip.hide();
-                },
                 legendItemClick: function() {
                     return !isMobile; 
                 }                        
@@ -1031,9 +1024,6 @@ $(\'#container_competencias\').highcharts({
             cursor: \'pointer\',
             stickyTracking: !isMobile,
             events: {
-                mouseOut: function() {
-                    this.chart.myTooltip.hide();
-                },
                 legendItemClick: function() {
                     return !isMobile; 
                 }               
@@ -1239,8 +1229,7 @@ var chartEmpleabilidad = {
             display: 'block', 
             width: '300px',
             whiteSpace: 'normal' 
-        },
-        enabled: !isMobile
+        }
     },
     credits: {
         enabled: false
@@ -1250,12 +1239,6 @@ var chartEmpleabilidad = {
             cursor: 'pointer',
             stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
-                mouseOut: function() {
-                    this.chart.myTooltip.hide();
-                },
                 legendItemClick: function() {
                     return !isMobile; 
                 }                       
@@ -1631,12 +1614,6 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
         series: {
             stickyTracking: false,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
-                mouseOut: function() {
-                    this.chart.myTooltip.hide();
-                },
                 legendItemClick: function() {
                     return false; 
                 }                        

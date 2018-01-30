@@ -237,8 +237,7 @@ var chartEmpleabilidad = {
             "display": "block", 
             "width": "300px",
             "whiteSpace": "normal" 
-        },
-        enabled: !isMobile
+        }
     },
     credits: {
         enabled: false
@@ -248,12 +247,6 @@ var chartEmpleabilidad = {
             cursor: 'pointer',
             stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
-                mouseOut: function() {
-                    this.chart.myTooltip.hide();
-                },
                 legendItemClick: function() {
                     return !isMobile; 
                 }                       

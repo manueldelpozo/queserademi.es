@@ -154,8 +154,7 @@ var chartSalarios = {
             display: 'block', 
             width: '300px',
             whiteSpace: 'normal' 
-        },
-        enabled: !isMobile
+        }
     },
     credits: {
         enabled: false
@@ -169,12 +168,6 @@ var chartSalarios = {
             allowPointSelect: true,
             stickyTracking: !isMobile,
             events: {
-                click: function(evt) {
-                    this.chart.myTooltip.refresh(evt.point, evt);
-                },
-                mouseOut: function() {
-                    this.chart.myTooltip.hide();
-                },
                 legendItemClick: function() {
                     return !isMobile; 
                 }                     
