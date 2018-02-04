@@ -83,8 +83,9 @@ $('.cerrar-popup').click(function(event) {
 
 function inputToTop() {
     if (!$('.body-index').hasClass('position-top')) {
+        var offset = 80;
         $('html, body').animate({
-            scrollTop: $(document.body).height()
+            scrollTop: $(document.body).height() - offset
         }, 500);
         setTimeout(function () {
             oldScroll = $(document.body).height();
