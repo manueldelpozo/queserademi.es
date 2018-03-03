@@ -213,7 +213,7 @@ var chartEmpleabilidad = {
                     text: '<a><i class="fa fa-linkedin-square fa-2x" style="padding:5px"></i>Compartir en LinkedIn</a>',
                     onclick: function(event) {
                         if (event.target.href === '') {
-                        getUrlShare('linkedin', this, event.target);    
+                            getUrlShare('linkedin', this, event.target);    
                         }
                     }
                 },{
@@ -221,8 +221,10 @@ var chartEmpleabilidad = {
                 },{
                     text: '<a href="#"><i class="glyphicon glyphicon-download-alt" style="padding:5px"></i>Descargar JPEG</a>',
                     onclick: function() {
+                        console.log(this)
                         this.exportChart({
-                            type: 'image/jpeg'
+                            type: 'image/jpeg',
+                            filename: 'queseradermi_comparacion_' + this.title.textStr + '_<?php echo $profesion; ?>_<?php echo $profesion_dos; ?>'
                         });
                     }
                 }]

@@ -75,7 +75,8 @@ $('#container_satisfaccion').highcharts({
                     text: '<a href="#"><i class="glyphicon glyphicon-download-alt" style="padding:5px"></i>Descargar JPEG</a>',
                     onclick: function() {
                         this.exportChart({
-                            type: 'image/jpeg'
+                            type: 'image/jpeg',
+                            filename: 'queseradermi_comparacion_' + this.title.textStr + '_<?php echo $profesion; ?>_<?php echo $profesion_dos; ?>'
                         });
                     }
                 }]
