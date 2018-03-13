@@ -23,6 +23,20 @@ div.body > div {
   height: 60px;
 }
 
+.img-gif {
+  border:  1.7px solid #aaaaaa;
+  height: auto;
+  width: 100%;
+}
+
+article {
+  margin-bottom: 16px;
+}
+
+.panel-group {
+  margin-bottom: 0 !important;
+}
+
 .grafica {
   border: 1.7px dotted #444; 
   border-radius: 16px;

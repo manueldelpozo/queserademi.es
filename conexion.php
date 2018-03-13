@@ -22,8 +22,8 @@ function getNombreLimpio($string) {
 
 // CONFIG GENERADOR_ESTATICAS
 $_COUNT_FROM = 0;
-$_TOTAL_PROFESSION = 10859;
-$_IS_SEARCH_ALL = false;
+$_TOTAL_PROFESSION = 4614;
+$_IS_SEARCH_ALL = true;
 function isLookingFor($name, $isSearchAll) {
 	$_SEARCH_NAME = 'Logopedas';
 	return $isSearchAll || mb_strtolower($name, 'UTF-8') === mb_strtolower($_SEARCH_NAME, 'UTF-8');

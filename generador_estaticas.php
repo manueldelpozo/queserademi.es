@@ -10,6 +10,33 @@ include 'vendor/autoload.php';
 use \ForceUTF8\Encoding;
 
 try { 
+  echo '<script>
+    funtion goToBottom() {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function onElementHeightChange(elm, callback){
+      var lastHeight = elm.clientHeight, newHeight;
+      (function run(){
+          newHeight = elm.clientHeight;
+          if (lastHeight != newHeight) {
+            callback();
+          }
+              
+          lastHeight = newHeight;
+
+          if (elm.onElementHeightChangeTimer) {
+            clearTimeout(elm.onElementHeightChangeTimer);
+          }
+              
+          elm.onElementHeightChangeTimer = setTimeout(run, 200);
+      })();
+    }
+
+    onElementHeightChange(document.body, function(){
+      goToBottom();
+    });
+  </script>'
   echo '<div style="background-color: lightgrey; position: fixed; top: 0; right: 0; left: 0; height: 30px; width: 100%; z-index: 1;"></div>';
 
   $tablas = array( 
@@ -301,8 +328,8 @@ $html = '
 <!DOCTYPE html>
 <html>
   <head>
-      <title>'; $html .= $nombre_profesion . ' | queserademi.com</title>
-      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser <em>'; $html .= $nombre_profesion . '</em>">
+      <title>' . $nombre_profesion . ' | queserademi.com</title>
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Tasa de empleo | Salario bruto | Sueldo mínimo | Cuanto gana | Competencias profesionales | Descargar información | Cuanto tiempo se tarda | Trabajo del futuro | Profesiones mejor pagadas | Cuales son las mejores carreras para estudiar | Qué carrera estudiar para ser <em>' . $nombre_profesion . '</em>">
       <!--Compatibilidad y móvil-->
       <meta http-equiv="Content-Language" content="es">
       <meta charset="UTF-8">
@@ -312,12 +339,12 @@ $html = '
       <meta name="apple-mobile-web-app-capable" content="yes">
       <meta name="theme-color" content="#d62e46">
       <!--OGs-->
-      <link rel="canonical" href="https://queserademi.com/'; $html .= $url_html . '">
+      <link rel="canonical" href="https://queserademi.com/' . $url_html . '">
       <meta property="og:locale" content="es_ES">
       <meta property="og:type" content="website">
-      <meta property="og:title" content="'; $html .= $nombre_profesion . ' | queserademi">
-      <meta property="og:description" content="&#10162; Comparador | Paro | Desempleo | Salario | Cuanto gana | Cualidades profesionales | Información | Que estudiar para ser '; $html .= $nombre_profesion . '">
-      <meta property="og:url" content="https://queserademi.com/'; $html .= $url_html . '">
+      <meta property="og:title" content="' . $nombre_profesion . ' | queserademi">
+      <meta property="og:description" content="&#10162; Comparador | Paro | Desempleo | Tasa de empleo | Salario bruto | Sueldo mínimo | Cuanto gana | Competencias profesionales | Descargar información | Cuanto tiempo se tarda | Trabajo del futuro | Profesiones mejor pagadas | Cuales son las mejores carreras para estudiar | Qué carrera estudiar para ser ' . $nombre_profesion . '">
+      <meta property="og:url" content="https://queserademi.com/' . $url_html . '">
       <meta property="og:site_name" content="queserademi">
       <meta property="og:image" content="https://queserademi.com/images/logo.png">
       <!--Links css-->
@@ -365,8 +392,6 @@ $html = '
     </script>
     <!-- End Facebook script -->
 
-    <div id="preloader"></div>
-
       <form id="formulario" role="form" action="../comparador.php">
           <div class="row header">
 
@@ -402,28 +427,111 @@ $html = '
 
       <div class="col-xs-12 margen"></div>
       <div class="col-xs-12 margen"></div>
+      <div class="col-xs-12 margen"></div>
 
-      <div class="row body" style="margin-top:5px;height:120%;">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+            <div class="panel-heading">
+              <h2 class="text-center panel-title">
+                  # Descubre las gráficas
+              </h2>
+            </div>
+          </a>
+          <div id="collapse1" class="panel-collapse collapse">
+            <section class="panel-body">
+              <article class="col-md-offset-2 col-md-5 col-sm-offset-1 col-sm-5 col-xs-12">
+                Simplemente desliza tu ratón ó el dedo sobre las gráficas y encontrarás información sobre evolución del paro respecto a la media de desempleo, sueldo mínimo, medio y máximo en relación a los años de experiencia, las principales competencias profesionales y qué carrera estudiar para ser <strong>'. $profesion .'</strong>.
+              </article>
+              <article class="col-md-offset-0 col-md-3 col-sm-offset-0 col-sm-5 col-xs-offset-1 col-xs-10 text-right">
+                <img class="img-gif" src="../video/gifts/desplegar_info.gif"/>
+              </article>
+            </section>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+            <div class="panel-heading">
+              <h2 class="text-center panel-title">
+                # Compara dos profesiones
+              </h2>
+            </div>
+          </a>
+          <div id="collapse2" class="panel-collapse collapse">
+            <section class="panel-body">
+              <article class="col-md-offset-2 col-md-4 col-sm-offset-1 col-sm-5 col-xs-12">
+                Haz click en "Compara otra profesión" e introduce la profesión que quieres comparar con <strong>'. $profesion .'</strong>. Visualizarás rapidamente las diferencias de tasa de empleo actual, el salario bruto anual, las capacidades que más se requieren y cuanto tiempo se tarda en tener una titulación de <strong>'. $profesion .'</strong> y la profesión comparada.    
+                <br><br>
+                <img class="img-gif" src="../video/gifts/compara_profesion.gif"/>   
+              </article>
+              <article class="col-md-offset-0 col-md-4 col-sm-offset-0 col-sm-5 col-xs-12 text-right">
+                Además podrás descargar imagenes de las gráficas comparativas y compartir los resultados en tus redes sociales. Sólo tienes que abrir el menu de la esquina izquierda y seleccionar <a href="https://www.facebook.com/queserademicom" target="_blank" title="queserademi Facebook" onclick="window.open(\'https://www.facebook.com/queserademicom\'); return false;">facebook</a> ó <a href="https://www.linkedin.com/company/queserademi" target="_blank" title="queserademi LinkedIn" onclick="window.open(\'http://www.linkedin.com/company/queserademi\'); return false;">LinkedIn</a>. 
+                <br><br>
+                <img class="img-gif" src="../video/gifts/menu_compartir_rss.gif"/>
+              </article>
+            </section>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+            <div class="panel-heading">
+             <h2 class="text-center panel-title">             
+                # Obtén conclusiones
+             </h2>
+            </div>
+          </a>
+          <div id="collapse3" class="panel-collapse collapse">
+            <section class="panel-body">
+              <article class="col-md-offset-2 col-md-4 col-sm-offset-1 col-sm-5 col-xs-12">
+                La finalidad de esta herramienta es poder obtener una valoración rápida y objetiva de profesiones que puedan interesarte como trabajo del futuro ó profesiones a las que ya te dedicas. De esta forma podrás saber si <strong>'. $profesion .'</strong> está entre las profesiones mejor pagadas, qué salidas tiene y cuales son las mejores carreras para estudiar.
+                <br><br>
+                  <img class="img-gif" src="../video/gifts/conclusiones.gif"/> 
+              </article>
+              <article class="col-md-offset-0 col-md-4 col-sm-offset-0 col-sm-5 col-xs-12 text-right">
+                También te invitamos a enviarnos todas tus sugerencias en 
+                <br><br>
+                <a class="col-xs-offset-2 col-xs-10 col-md-offset-6 btn col-md-6" style="border-color: #337ab7; color: #337ab7;" href="../quenossugieres">qué nos sugieres</a>
+              </article>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="row body" style="height:120%;">
         <div class="col-md-6 col-xs-12 text-center">
-          <div id="container_empleabilidad" class="grafica"></div>
+          <div id="container_empleabilidad" class="grafica">
+            <div class="preloader"></div>
+          </div>
         </div>
         <div class="col-md-6 col-xs-12 text-center">
-          <div id="container_salarios" class="grafica"></div>
+          <div id="container_salarios" class="grafica">
+            <div class="preloader"></div>
+          </div>
         </div>
         <div class="col-md-6 col-xs-12 text-center">
-          <div id="container_competencias" class="grafica"></div>
+          <div id="container_competencias" class="grafica">
+            <div class="preloader"></div>
+          </div>
         </div>
         <div class="col-md-6 col-xs-12 text-center">
-          <div id="container_formacion" class="grafica"></div>
+          <div id="container_formacion" class="grafica">
+            <div class="preloader"></div>
+          </div>
         </div>
         <div class="col-md-6 col-xs-12 text-center">
-          <div id="container_noticias" class="grafica"></div>
+          <div id="container_noticias" class="grafica">
+            <div class="preloader"></div>
+          </div>
         </div>
         <div class="col-md-6 col-xs-12 text-center">
-          <div id="container_info" class="grafica"></div>
+          <div id="container_info" class="grafica">
+            <div class="preloader"></div>
+          </div>
         </div>
         <!--div class="col-md-6 col-xs-12 text-center">
-          <div id="container_satisfaccion" class="grafica"></div>
+          <div id="container_satisfaccion" class="grafica">
+            <div class="preloader"></div>
+          </div>
         </div-->
       </div>  
 
@@ -540,7 +648,8 @@ var chartSalarios = {
                     text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
                     onclick: function() {
                         this.exportChart({
-                            type: 'image/jpeg'
+                            type: 'image/jpeg',
+                            filename: 'queseradermi_' + this.title.textStr + '_" . $profesion . "'
                         });
                     }
                 }]
@@ -833,7 +942,7 @@ $competencias = array(
                                     ),
     'c_sensibilidad'        => array(
                                         'name' => 'Sensibilidad',
-                                        'description' => 'Habilidad para conectar con la naturaleza y otros seres vivos o capacidad para apreciar la expresión artística',
+                                        'description' => 'Habilidad para conectar con la naturaleza y otros seres vivos ó capacidad para apreciar la expresión artística',
                                         'icon' => 'sensibilidad',
                                         'grupo' => '',
                                         'position' => array('x' => '3', 'y' => '6')
@@ -946,7 +1055,8 @@ $(\'#container_competencias\').highcharts({
                     text: \'<a href="#"><i class="glyphicon glyphicon-download-alt" style="padding:5px"></i>Descargar JPEG</a>\',
                     onclick: function() {
                         this.exportChart({
-                            type: \'image/jpeg\'
+                            type: \'image/jpeg\',
+                            filename: \'queseradermi_\' + this.title.textStr + \'_' . $profesion . '\'
                         });
                     }
                 }]
@@ -1127,7 +1237,8 @@ var chartEmpleabilidad = {
                   text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
                   onclick: function() {
                       this.exportChart({
-                          type: 'image/jpeg'
+                          type: 'image/jpeg',
+                          filename: 'queseradermi_' + this.title.textStr + '_" . $profesion . "'
                       });
                   }
               }]
@@ -1472,7 +1583,8 @@ $arbol_formaciones = array();
                       text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
                       onclick: function() {
                           this.exportChart({
-                              type: 'image/jpeg'
+                              type: 'image/jpeg',
+                              filename: 'queseradermi_' + this.title.textStr + '_" . $profesion . "'
                           });
                       }
                   }]
@@ -1561,7 +1673,8 @@ $script_satisfaccion = "$('#container_satisfaccion').highcharts({
                     text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
                     onclick: function() {
                         this.exportChart({
-                            type: 'image/jpeg'
+                            type: 'image/jpeg',
+                            filename: 'queseradermi_' + this.title.textStr + '_" . $profesion . "'
                         });
                     }
                 }]

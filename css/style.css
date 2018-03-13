@@ -1,3 +1,10 @@
+:root {
+	--qsdm-red: #d62e46;
+	--qsdm-blue: #337ab7;
+	--qsdm-purple: #9133b7;
+	--qsdm-grey: #BBBBBB;
+}
+
 @font-face {
 	font-family: 'Roboto';
 	src: url('../fonts/Roboto-Light-webfont.eot');
@@ -49,7 +56,7 @@ button, a {
     -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
 }
 
-#preloader {
+/*#preloader {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -58,6 +65,17 @@ button, a {
 	height: 100%;
 	overflow: visible;
 	background: #FFF url(../images/preloader.gif) no-repeat center center;
+}*/
+
+.preloader {
+	border-radius: 16px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	background: #FFF url(../images/preloader.gif)  no-repeat center center;
 }
 
 .background-image { /*PARALAX*/
@@ -198,6 +216,15 @@ button, a {
 .form-horizontal .form-group {
 	margin-left: 0 !important;
 	margin-right: 0 !important;
+}
+
+.glyphicon-search {
+	position: absolute;
+    right: 16px;
+    top: 16px;
+    z-index: 2;
+    font-size: 1.5em;
+    color: var(--qsdm-grey);
 }
 
 /* TYPEAHEAD STYLES */
