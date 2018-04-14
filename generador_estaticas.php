@@ -749,7 +749,7 @@ if( $btn_colabora_s_1 > 0 ) {
     $script_salarios .= "var capa_aviso = '<div class=\"capa-aviso\">';
     capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
+    capa_aviso += '<h3>Aún no tenemos información suficiente!</h3>';
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
@@ -1151,7 +1151,7 @@ if ($btn_colabora_c_1 > 0) {
     var capa_aviso = '<div class=\"capa-aviso\">';
     capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
+    capa_aviso += '<h3>Aún no tenemos información suficiente!</h3>';
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>competencias profesionales</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
@@ -1383,7 +1383,7 @@ if( $btn_colabora_e_1 > 0 ) {
     $script_empleabilidad .= "var capa_aviso = '<div class=\"capa-aviso\">';
     capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
+    capa_aviso += '<h3>Aún no tenemos información suficiente!</h3>';
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>desempleo</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
@@ -1611,7 +1611,7 @@ if($btn_colabora_f_1) {
     var capa_aviso = '<div class=\"capa-aviso\">';
     capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
+    capa_aviso += '<h3>Aún no tenemos información suficiente!</h3>';
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>formación</strong> de la profesión<br>';
         capa_aviso += '<strong>" . mb_strtoupper($profesion,"UTF-8") . "</strong></p>';
@@ -1762,7 +1762,7 @@ if( $btn_colabora_sat_1 > 0 ) {
     $script_satisfaccion .= "var capa_aviso = '<div class=\"capa-aviso\">';
     capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
     capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
+    capa_aviso += '<h3>Aún no tenemos información suficiente!</h3>';
 
         capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>satisfaccion</strong> de la profesión<br>';
         capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';

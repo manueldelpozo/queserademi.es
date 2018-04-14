@@ -260,7 +260,7 @@ if (chartSalarios.series.length == 4 && JSON.stringify(chartSalarios.series[0].d
     var capa_aviso = '<div class="capa-aviso">';
     capa_aviso += '<div class="cerrar-aviso"><a href="#"><img class="icon" src="images/cross.svg"></img></a></div>';
     capa_aviso += '<div class="col-md-10 col-md-offset-1">';
-    capa_aviso += '<h3>Aún no tenemos imformación suficiente!</h3>';
+    capa_aviso += '<h3>Aún no tenemos información suficiente!</h3>';
 
     <?php if( $btn_colabora_s_1 > 0 ) { ?>
         capa_aviso += '<p class="text-center">Ayúdanos a completar información sobre <strong>salario</strong> de la profesión<br>';
