@@ -69,6 +69,7 @@ function submitar($input, item) {
 // Cuando presionamos ENTER coger el primero si no hemos seleccionado ninguno
 $('.typeahead').keyup(function(event) {
     var hasFocus = $(this).is(":focus");
+    $('#filterDropdown').hide();
 
     if (event.which === 13) {
         $lista = $(this).siblings('.tt-dropdown-menu');
@@ -119,4 +120,90 @@ $('#btnAddComparador').click(function() {
     $(this).next().show(200, function() {
         $(this).find('input').focus();
     });
+});
+
+$('.dropdown-menu li').click(function() {
+    var content = $(this).text();
+    $(this).parent().prev().text(content);
+    $.ajax({
+        url: 'ajax.php?query=%&tipo=profesiones',
+        success: function(result) {
+            $input.typeahead({
+                source: result,
+            });
+            // remplazar nueva lista
+            return false;
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            alert('request failed');
+            return false;
+        }
+    });
+});
+
+
+
+// FILTROS
+$('.output.s_principiante_min').text($('#s_principiante_min').val());
+$('.output.s_principiante_max').text($('#s_principiante_max').val());
+
+$('.slider').change(function() {
+    var salario_from = $('#s_principiante_min').val();
+    var salario_to = $('#s_principiante_max').val();
+
+    $('.output.s_principiante_min').text($('#s_principiante_min').val());
+    $('.output.s_principiante_max').text($('#s_principiante_max').val());
+    $.ajax({
+        url: 'filter.php?salario_from=' + salario_from + '&salario_to=' + salario_to,
+        success: function(result) {
+            var professions = JSON.parse(result);
+            var list = document.createElement('DIV');
+            list.classList.add('tt-dataset-profesiones');
+            var suggestions = document.createElement('SPAN');
+            suggestions.classList.add('tt-suggestions');
+            suggestions.style.cssText = 'display: block;';
+            for (var i = 0; i < professions.length; i++) {
+                //console.log(professions[i])
+                var suggestion = document.createElement('DIV');
+                suggestion.classList.add('tt-suggestion');
+                suggestion.style.cssText = 'white-space: nowrap; cursor: pointer;';
+                var content = document.createElement('P');
+                content.innerText = professions[i];
+                content.style.cssText = 'white-space: normal;';
+                suggestion.appendChild(content);
+                suggestions.appendChild(suggestion);
+            }
+            list.appendChild(suggestions);
+            $('#filterDropdown').html(list);
+            $('#filterDropdown').show();
+            if ($('#filterDropdown .tt-suggestion').first().position()) {
+               $('#filterDropdown').scrollTop($('#filterDropdown .tt-suggestion').first().position().top); 
+            }
+            
+
+            $('#filterDropdown .tt-suggestion').mouseover(function() {
+                $(this).addClass('tt-is-under-cursor');
+            });
+
+            $('#filterDropdown .tt-suggestion').mouseout(function() {
+                $(this).removeClass('tt-is-under-cursor');
+            });
+
+            $('#filterDropdown .tt-suggestion').click(function(event) {
+                var selection = event.target.innerText;
+                $('.typeahead').typeahead('setQuery', selection);
+                submitar($('.typeahead'), selection);
+            });
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            console.log(errorThrown)
+            //alert('request failed');
+            return false;
+        }
+    });
+});
+
+// Keep the dropdown opened
+$(document).on('click', '.dropdown-menu', function (e) {
+  e.stopPropagation();
 });
