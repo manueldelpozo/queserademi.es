@@ -1,3 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Generador de estaticas | queserademi.com</title>
+    <style type="text/css">
+
+      .load-bar {
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        height: 30px; 
+      }
+
+      .load-bar-bg {
+        background-color: lightgrey; 
+        right: 0;
+        width: 100%; 
+        z-index: 1;
+      }
+
+      .load-bar-complete {
+        background-color: green; 
+      }
+
+      .load-bar-text {
+        background-color: lightgrey; 
+        font-family: Arial; 
+        color: green; 
+        position: fixed; 
+        top: 0; 
+        right: 0; 
+        height: 30px; 
+        width: 60px;
+        text-align: center; 
+        display: flex; 
+        align-items: center;
+      }
+
+    </style>
+    <script>
+      function goToBottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+      }
+
+      function onElementHeightChange(elm, callback){
+        var lastHeight = elm.clientHeight, newHeight;
+        (function run(){
+            newHeight = elm.clientHeight;
+            if (lastHeight != newHeight) {
+              callback();
+            }
+                
+            lastHeight = newHeight;
+
+            if (elm.onElementHeightChangeTimer) {
+              clearTimeout(elm.onElementHeightChangeTimer);
+            }
+                
+            elm.onElementHeightChangeTimer = setTimeout(run, 200);
+        })();
+      }
+
+      onElementHeightChange(document.body, function(){
+        goToBottom();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="load-bar load-bar-bg"></div>
+
 <?php 
 //eliminar el limite de ejecucion
 set_time_limit(0);
@@ -10,35 +80,6 @@ include 'vendor/autoload.php';
 use \ForceUTF8\Encoding;
 
 try { 
-  echo '<script>
-    funtion goToBottom() {
-      window.scrollTo(0, document.body.scrollHeight);
-    }
-
-    function onElementHeightChange(elm, callback){
-      var lastHeight = elm.clientHeight, newHeight;
-      (function run(){
-          newHeight = elm.clientHeight;
-          if (lastHeight != newHeight) {
-            callback();
-          }
-              
-          lastHeight = newHeight;
-
-          if (elm.onElementHeightChangeTimer) {
-            clearTimeout(elm.onElementHeightChangeTimer);
-          }
-              
-          elm.onElementHeightChangeTimer = setTimeout(run, 200);
-      })();
-    }
-
-    onElementHeightChange(document.body, function(){
-      goToBottom();
-    });
-  </script>'
-  echo '<div style="background-color: lightgrey; position: fixed; top: 0; right: 0; left: 0; height: 30px; width: 100%; z-index: 1;"></div>';
-
   $tablas = array( 
     'salarios'      => array('s_princ_min', 's_princ_med', 's_princ_max', 's_junior_min', 's_junior_med', 's_junior_max', 's_intermedio_min', 's_intermedio_med', 's_intermedio_max', 's_senior_min', 's_senior_med', 's_senior_max'),
     'empleabilidad' => array('parados', 'contratados', 'mes', 'anyo'),
@@ -79,6 +120,103 @@ try {
   $nombres = $rs_nombres->fetchAll();
   $nombres_usados = array();
   $nombres_usados_alt = array();
+  
+
+  try {
+    $pagina_index = fopen('profesiones/index.html', "w+");
+  } catch( Exception $e ) {
+    //echo 'No se puede crear este documento: ' . e
+  }
+
+  $index = '
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Lista de profesiones | queserademi.com</title>
+      <meta name="description" content="&#10162; Comparador | Paro | Desempleo | Tasa de empleo | Salario bruto | Sueldo mínimo | Cuanto gana | Competencias profesionales | Descargar información | Cuanto tiempo se tarda | Trabajo del futuro | Profesiones mejor pagadas | Cuales son las mejores carreras para estudiar | Qué carrera estudiar</em>">
+      <!--Compatibilidad y móvil-->
+      <meta http-equiv="Content-Language" content="es">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="robots" content="noodp">
+      <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="theme-color" content="#d62e46">
+      <!--OGs-->
+      <link rel="canonical" href="https://queserademi.com/profesiones">
+      <meta property="og:locale" content="es_ES">
+      <meta property="og:type" content="website">
+      <meta property="og:title" content="Lista de profesiones | queserademi">
+      <meta property="og:description" content="&#10162; Comparador | Paro | Desempleo | Tasa de empleo | Salario bruto | Sueldo mínimo | Cuanto gana | Competencias profesionales | Descargar información | Cuanto tiempo se tarda | Trabajo del futuro | Profesiones mejor pagadas | Cuales son las mejores carreras para estudiar | Qué carrera estudiar">
+      <meta property="og:url" content="https://queserademi.com/profesiones">
+      <meta property="og:site_name" content="queserademi">
+      <meta property="og:image" content="https://queserademi.com/images/logo.png">
+      <!--Links css-->
+      <link rel="icon" type="image/x-icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../css/bootstrap.min.css">
+      <link rel="stylesheet" href="../css/font-awesome.css">
+      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../css/style-comparador.css">
+      <script src="../js/w3.js"></script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');
+
+      ga(\'create\', \'UA-64706657-1\', \'auto\');
+      ga(\'send\', \'pageview\');
+
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({\'gtm.start\':
+      new Date().getTime(),event:\'gtm.js\'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!=\'dataLayer\'?\'&l=\'+l:\'\';j.async=true;j.src=
+      \'https://www.googletagmanager.com/gtm.js?id=\'+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,\'script\',\'dataLayer\',\'GTM-KSJZX5B\');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSJZX5B"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Facebook script -->
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = \'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.10\';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, \'script\', \'facebook-jssdk\'));
+    </script>
+    <!-- End Facebook script -->
+
+    <div class="row header qsdm-bgcolor-blue">
+
+      <div class="col-md-1 col-sm-1 col-xs-2">
+        <a href="https://queserademi.com">
+          <img class="img-responsive" src="../images/logo-blanco.svg">
+        </a>
+      </div>
+
+      <div class="col-md-4 col-sm-11 col-xs-10">  
+        <h1 class="qsdm-color-white"><strong>Lista</strong> de profesiones</h1> 
+      </div>
+
+    </div>
+
+    <div class="col-xs-12 margen"></div>
+    <div class="col-xs-12 margen"></div>
+    <div class="col-xs-12 margen"></div>
+
+    <ul id="listaProfesiones" class="list-group list-group-flush">
+
+    ';
 
   //funciones para scripts
 
@@ -121,7 +259,7 @@ try {
       $excerpt = parseToList($excerpt, ': -', '; -');
       $excerpt = parseToList($excerpt, ': a)', '; b)');
       
-      return $content . '<div class="excerpt"><div hidden>' . $excerpt . '</div>' . '<strong class="more">' . $more_txt . '</strong></div>'; 
+      return $content . '<div class="excerpt"><span hidden>' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></div>'; 
   }
 
   function getCompetenciasValues($competencias, $values) {
@@ -263,6 +401,7 @@ try {
     $nombre_ppal = $nombre['nombre_ppal']; // por defecto no se da valor al nombre ppal
     $nombre_alt = $nombre['nombre_alt'];
     $id_profesion = $nombre['id_profesion'];
+    $nombres_alt = array();
 
     if (isLookingFor($nombre_ppal, $_IS_SEARCH_ALL)) { 
 
@@ -287,6 +426,7 @@ try {
           $profesion = $nombre_alt; // profesion pasa a ser el nombre alternativo
           array_push($nombres_usados_alt, $profesion); // y lo incluimos en nombres alternativos usados
           echo '<span>Hay nombre alternativo: <strong>'.$nombre_alt.'</strong></span><br>';
+          $nombres_alt[] = $nombre_alt;
         }
       }
       // incluir id_profesion en nombres usados
@@ -305,25 +445,35 @@ try {
         $profesion_dashed = str_replace(' ', '-', $profesion_nosignos); // remplazar espacios en blanco por underscore
         $monosilabes = array('-a-', '-e-', '-o-', '-u-', '-y-', '-en-', '-de-', '-del-', '-al-', '-el-', '-la-', '-los-', '-las-', '-para-', '-por-');
         $profesion_dashed = str_replace($monosilabes, '-', $profesion_dashed); // clean monosilabes
-        $url_html = "profesiones/" . $profesion_dashed . ".html"; // agregar path y extension 
-        // generar carpeta si no existe
-        /*if (!file_exists("profesiones/" . $profesion_dashed)) {
-          mkdir("profesiones/" . $profesion_dashed, 0777, true);
-        }*/ 
+        $url_html = "profesiones/" . $profesion_dashed . ".html"; // agregar path y extension  
         // crear html estatico o reescribirlo si ya existe!!
-        try {
+        /*try {
           $pagina_html = fopen($url_html, "w+");
         } catch( Exception $e ) {
           //echo 'No se puede crear este documento: ' . e
-        }
-        echo '<div style="background-color: green; position: fixed; top: 0; left: 0; height: 30px; width: ' . $percentage_complete . '%; z-index: ' .$_COUNT_FROM . ';"></div>';
-        echo '<div style="background-color: lightgrey; font-family: Arial; color: green; position: fixed; top: 0; right: 0; height: 30px; width: 60px; text-align: center; z-index: ' .$_COUNT_FROM . ';display: flex; align-items: center;">' . $percentage_complete . '%</div>';
+        }*/
+        echo '<div class="load-bar load-bar-complete" style="width: ' . $percentage_complete . '%; z-index: ' .$_COUNT_FROM . ';"></div>';
+        echo '<div class="load-bar-text" style="z-index: ' .$_COUNT_FROM . ';">' . $percentage_complete . '%</div>';
         echo '<div><strong style="color: green;">' . $percentage_complete . ' % </strong> - pagina creada '. $_COUNT_FROM .': <strong style="color: green;">'.$url_html.'</strong></div>';
       }
 
       $nombre_profesion = ucfirst(mb_strtolower($profesion, 'UTF-8'));
+      $description_info = prepareText($filas_info[0]["descripcion"]);
+      $is_hidden = ($_COUNT_FROM > 10); // Hide when is more than 8
+
+      $index .= '
+      <li class="list-group-item list-group-item-action flex-column align-items-start ' . ($is_hidden ? 'hidden' : 'show') . '">
+        <div class="d-flex w-100 justify-content-between">
+          <h2 class="mb-1"><a href="' . $profesion_dashed . '.html">' . $nombre_profesion . '</a></h2>
+          <!--small class="font-italic">
+              <a href="' . $profesion_dashed . '.html">' . join('</a>, <a href="' . $profesion_dashed . '.html">', $nombres_alt) . '</a>
+          </small-->
+        </div>
+        <h5 class="mb-1 descripcion">' . (!empty($description_info) ? createExcerpts($description_info, 100, ' [ + ]') : '<em>Sin descripción</em>') . '</h5>
+      </li>
+      ';
       
-// comenzamos a generar el html como string
+// TEMPLATE FOR STATIC PAGES
 $html = '
 <!DOCTYPE html>
 <html>
@@ -563,7 +713,7 @@ $html = '
   <script type="text/javascript" async>
     '; 
 
-/**SALARIOS**/ 
+/// SALARIOS
 
 $btn_colabora_s_1 = 0;
 $s_princ_min = $s_princ_med = $s_princ_max = $s_junior_min = $s_junior_med = $s_junior_max = $s_intermedio_min = $s_intermedio_med = $s_intermedio_max = $s_senior_min = $s_senior_med = $s_senior_max = 0;
@@ -760,30 +910,21 @@ if( $btn_colabora_s_1 > 0 ) {
     $('#container_salarios').append(capa_aviso);";
 } 
 
-/** INFO **/
-$description_info = prepareText($filas_info[0]["descripcion"]);
-$description_info = createExcerpts($description_info, 20, ' [ + ]');
+/// INFO
 
 $script_info = "$('#container_info').html('<h5 style=\"margin:15px; font-weight: bold;\">+ INFORMACIÓN</h5><div id=\"info\"></div>');";
 
 if( isset( $profesion ) ) {  
     $script_info .= "$('#info').append('<h4 class=\"principal nombre\">". mb_strtoupper($profesion,"UTF-8" ) ."</h4>');";
-    if( empty( $filas_info[0]['descripcion'] ) ) { 
+    if( empty($description_info) { 
         $script_info .= "$('#info').append('<p class=\"descripcion\" id=\"desc1\">Falta información! Ayúdanos a conseguirla.</p>');
         $('#info').append('<div class=\"col-md-8 col-md-offset-2\"><a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d62e46; color: #d62e46;\">Colabora!</a></div>');";
     } else { 
-        $script_info .= "$('#info').append('<p class=\"descripcion\">". $description_info . "</p>');";
+        $script_info .= "$('#info').append('<p class=\"descripcion\">". createExcerpts($description_info, 20, ' [ + ]') . "</p>');";
     } 
-} 
+}
 
-$script_info .= "// Excerpt
-$('.more').click( function() {
-    $(this).prev().fadeToggle();
-    var text = $(this).text();
-    $(this).text(text == ' [ + ]' ? ' [ - ]' : ' [ + ]');
-});";
-
-/**COMPETENCIAS**/
+/// COMPETENCIAS
 
 $competencias = array(
     'c_iniciativa'          => array(
@@ -1163,7 +1304,7 @@ if ($btn_colabora_c_1 > 0) {
     $('#container_competencias').append(capa_aviso);";
 }
 
-/** EMPLEABILIDAD **/
+/// EMPLEABILIDAD 
 
 $btn_colabora_e_1 = 0;
 $meses = ['enero', 'abril', 'julio', 'octubre'];
@@ -1395,7 +1536,7 @@ if( $btn_colabora_e_1 > 0 ) {
     $('#container_empleabilidad').append(capa_aviso);";
 } 
 
-/** NOTICIAS **/
+/// NOTICIAS
 
 $script_noticias = "
 
@@ -1450,7 +1591,7 @@ showNews();
 
 ";
 
-/** FORMACION **/
+/// FORMACION
 
 $btn_colabora_f_1 = false; 
 $arbol_formaciones = array();
@@ -1624,182 +1765,58 @@ if($btn_colabora_f_1) {
     $('#container_formacion').append(capa_aviso);";
 }
 
-/*
-
-/** SATISFACCION **/
-/*$btn_colabora_sat_1 = 0;
-$script_satisfaccion = "$('#container_satisfaccion').highcharts({
-    chart: {
-        type: 'scatter',
-        zoomType: 'xy',
-        backgroundColor:'rgba(255, 255, 255, 0)',
-        // Edit chart size
-        spacingBottom: 20,
-        spacingTop: 20,
-        spacingLeft: 20,
-        spacingRight: 20,
-        width: null,
-        height: 380,
-        events: {
-            load: function(){
-                this.myTooltip = new Highcharts.Tooltip(this, this.options.tooltip);                    
-            }
-        }
-    },
-    exporting: {
-        chartOptions: {
-            chart: {
-                events: {
-                  load: function(event) {                
-                    this.renderer.image('https://queserademi.com/images/logo.png', 15, 15, 30, 30).add();
-                  }
-                } 
-            }
-        },
-        buttons: {
-            contextButton: {
-                menuItems: [{
-                    text: '<a><i class=\"fa fa-facebook-square fa-2x\" style=\"padding:5px\"></i>Compartir en Facebook</a>',
-                      onclick: function(event) {
-                          if (event.target.href === '') {
-                              getUrlShare('facebook', this, event.target);    
-                          }
-                      }
-                    },{
-                      text: '<a><i class=\"fa fa-linkedin-square fa-2x\" style=\"padding:5px\"></i>Compartir en LinkedIn</a>'
-                },{
-                    separator: true
-                },{
-                    text: '<a href=\"#\"><i class=\"glyphicon glyphicon-download-alt\" style=\"padding:5px\"></i>Descargar JPEG</a>',
-                    onclick: function() {
-                        this.exportChart({
-                            type: 'image/jpeg',
-                            filename: 'queseradermi_' + this.title.textStr + '_" . $profesion . "'
-                        });
-                    }
-                }]
-            }
-        }
-    },
-    title: {
-        text: 'GRADO DE SATISFACCIÓN'
-    },
-    xAxis: {
-        title: {
-            text: 'EXPERIENCIA ' + '(años)'.toUpperCase()
-        }
-    },
-    yAxis: {
-        title: {
-            text: 'SATISFACCIÓN'
-        }
-    },
-    legend: { enable: false },
-    credits: {
-        enabled: false
-    },
-    tooltip: {
-        enabled: false
-    },
-    plotOptions: {
-        scatter: {
-            marker: {
-                radius: 5,
-                states: {
-                    hover: {
-                        enabled: true,
-                        lineColor: 'rgb(100,100,100)'
-                    }
-                }
-            },
-            states: {
-                hover: {
-                    marker: {
-                        enabled: false
-                    }
-                }
-            },
-            tooltip: {
-                headerFormat: '<b>{series.name}</b><br>',
-                pointFormat: '{point.x} años de experiencia'
-            }
-        },
-        series: {
-            stickyTracking: false,
-            events: {
-                legendItemClick: function() {
-                    return false; 
-                }                        
-            }          
-        }
-    },
-    series: [{
-        name: '". mb_strtoupper($profesion,"UTF-8" ) ."',
-        data: [";
-        foreach ($filas_satisfaccion as $fila_sat) { 
-            $script_satisfaccion .= "["; 
-            if( is_null($fila_sat['experiencia']) || $fila_sat['experiencia'] == 0 ) {
-              $script_satisfaccion .=  0;
-              $btn_colabora_sat_1+=1;
-            } else {
-              $script_satisfaccion .=  $fila_sat['experiencia'];
-            } 
-            $script_satisfaccion .= ",";
-            if( is_null($fila_sat['grado_satisfaccion']) || $fila_sat['grado_satisfaccion'] == 0 ) {
-              $script_satisfaccion .=  0;
-              $btn_colabora_sat_1+=1;
-            } else {
-              $script_satisfaccion .=  $fila_sat['grado_satisfaccion'];
-            } 
-            $script_satisfaccion .= "],";
-        } 
-        $script_satisfaccion .= "],
-        stack: '". $profesion ."'
-    }]
-});";
-
-if( $btn_colabora_sat_1 > 0 ) { 
-    $script_satisfaccion .= "var capa_aviso = '<div class=\"capa-aviso\">';
-    capa_aviso += '<div class=\"cerrar-aviso\"><a href=\"#\"><img class=\"icon\" src=\"../images/cross.svg\"></img></a></div>';
-    capa_aviso += '<div class=\"col-md-10 col-md-offset-1\">';
-    capa_aviso += '<h3>Aún no tenemos información suficiente!</h3>';
-
-        capa_aviso += '<p class=\"text-center\">Ayúdanos a completar información sobre <strong>satisfaccion</strong> de la profesión<br>';
-        capa_aviso += '<strong>". mb_strtoupper($profesion,"UTF-8") ."</strong></p>';
-        capa_aviso += '<a href=\"../colabora.php?profesion=". $profesion ."\" class=\"btn btn-aviso\" style=\"border-color: #d62e46; color: #d62e46;\">Colabora!</a>';
-
-    capa_aviso += '</div>';
-    capa_aviso += '</div>';
-
-    $('#container_satisfaccion').append(capa_aviso);";
-  }
-*/
   // incluir scripts y cerrar html 
 
     $html .= $script_salarios . $script_info . $script_competencias . $script_empleabilidad . $script_noticias . $script_formacion; 
-    //$html .= $script_satisfaccion;
+    
     $html .= '
   </script>
   </body>
-</html>';
+</html>'; // end static page
     
-    // guardar html
-    fwrite($pagina_html, $html);
-    fclose($pagina_html);
+        // save static page
+        fwrite($pagina_html, $html);
+        fclose($pagina_html);
 
-    } // end while
-    if (!$_IS_SEARCH_ALL) {
-      break;
-    }
-    } // end if isLookingFor
-
-    //TEST//
-    //break;  
-  } // end if
+        } // end while
+        if (!$_IS_SEARCH_ALL) {
+          break;
+        }
+      } // end if isLookingFor 
+    } // end if
   } // end foreach
+
+  $index .= '
+    </ul>
+
+    <div class="col-xs-12 margen"></div>
+
+    <footer w3-include-html="../footer.html"></footer>
+    <script type="text/javascript">
+        w3.includeHTML();
+    </script>
+
+    <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../js/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../js/scripts.js"></script>
+    
+  </body>
+</html>'; // end index list page
+
+  // guardar index
+    fwrite($pagina_index, $index);
+    fclose($pagina_index);
 
 } catch( Exception $e ) {
   die('Error: '.$e->GetMessage());
 }
 ?>
 
+  </body>
+</html>

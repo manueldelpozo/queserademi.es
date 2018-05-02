@@ -33,7 +33,7 @@ function createExcerpts($text, $length, $more_txt) {
     $excerpt = parseToList($excerpt, ': -', '; -');
     $excerpt = parseToList($excerpt, ': a)', '; b)');
     
-    return $content . '<div class="excerpt"><div hidden>' . $excerpt . '</div>' . '<strong class="more">' . $more_txt . '</strong></div>'; 
+    return $content . '<div class="excerpt"><span hidden>' . $excerpt . '</span>' . '<strong class="more">' . $more_txt . '</strong></div>'; 
 }
 
 $description_info = prepareText($filas_info[0]["descripcion"]);
@@ -68,15 +68,6 @@ $('#container_info').html('<h5 style="margin: 15px; font-weight: bold;">+ INFORM
         $('#info').append('<div class="descripcion"><?php echo $description_info_dos; ?></div>');
     <?php } ?>
 <?php } ?>
-
-// Excerpt
-$('.more').click(showMore);
-
-function showMore() {
-    $(this).prev().fadeToggle();
-    var text = $(this).text();
-    $(this).text(text == ' [ + ]' ? ' [ - ]' : ' [ + ]');
-}
 
 //// SLIDER
 function iniciarSlider( nImages ) { 

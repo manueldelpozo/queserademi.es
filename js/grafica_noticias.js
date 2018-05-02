@@ -16,7 +16,7 @@ function showNews() {
           for (i = 0; i < result.length; i++) {
               title = result[i].title.rendered;
               content = result[i].excerpt.rendered;
-              src = result[i].link;
+              src = result[i].link; // TODO: check retrieved link from wp
               imageSrc = result[i]._embedded['wp:featuredmedia'][0].source_url;
               imageAlt = result[i]._embedded['wp:featuredmedia'][0].title.rendered;
               posts += '<div class="list-group-item col-xs-12">';

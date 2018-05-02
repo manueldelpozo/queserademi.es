@@ -56,8 +56,12 @@ article {
 .descripcion, .estudios {
   overflow: auto;
   border-top: 1px dotted grey;
-  margin: 0px 15px; 
+  margin: 0 15px; 
   padding-top: 10px;
+}
+
+.excerpt {
+  margin: 0 15px;
 }
 
 .descripcion ul {

@@ -141,7 +141,20 @@ if (isMobile) {
     }); 
 }
 
+var countShowListItems = 8;
+
 $('body').on('scroll', function() {
+    var scrollHeight = $(document).height();
+    var scrollPosition = $(this).height() + $(this).scrollTop();
+    var isBottom = ((scrollHeight - scrollPosition) / scrollHeight === 0)
+    if (isBottom) {
+        if ($('#listaProfesiones')) {
+            countShowListItems += 8;
+            $('#listaProfesiones').children('li:nth-child(-n+'+countShowListItems+')').each(function (item) {
+                $(this).addClass('show').removeClass('hidden');
+            })
+        }
+    }  
     if (!isMobile) {
         var isInputTop = $('.header').height() < $(this).scrollTop();
         $('.body-index').toggleClass('position-top', isInputTop);  
@@ -155,3 +168,11 @@ $('body').on('scroll', function() {
 /*setInterval(function() {
     $('#popUp').show('slow');
 }, 10000);*/
+
+// Excerpt
+$('.more').click( function() {
+    $(this).prev().fadeToggle('fast');
+    $(this).prev().toggleClass('show-excerpt');
+    var text = $(this).text();
+    $(this).text(text == ' [ + ]' ? ' [ - ]' : ' [ + ]');
+});

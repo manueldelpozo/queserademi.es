@@ -180,6 +180,10 @@ button, a {
     max-height: 60px;
 }
 
+.header h1 {
+    font-size: 25px;
+}
+
 #titulo {
 	margin-bottom: 0;
 	font-family: 'Roboto', arial;
@@ -636,6 +640,34 @@ ul.share-buttons li {
 
 .qsdm-color-blue-dark {
 	color: #001F3F !important;
+}
+
+.qsdm-bgcolor-white {
+	background-color: #ffffff !important;
+}
+
+.qsdm-bgcolor-red {
+	background-color: #d62e46 !important;
+}
+
+.qsdm-bgcolor-blue {
+	background-color: #337ab7 !important;
+}
+
+.qsdm-bgcolor-blue-dark {
+	background-color: #001F3F !important;
+}
+
+#listaProfesiones h2 {
+	font-size: 20px;
+}
+
+#listaProfesiones .descripcion {
+	max-height: 150px;
+}
+
+#listaProfesiones .descripcion .excerpt, #listaProfesiones .descripcion .excerpt > div.show-excerpt {
+	display: inline !important;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
