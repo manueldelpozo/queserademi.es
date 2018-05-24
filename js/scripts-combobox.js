@@ -1,7 +1,20 @@
 // COMBOBOX
 // Declaracion de typeahead
 var isEstatica = $(location).attr('href').indexOf('/profesiones') > -1;
-var prefix = isEstatica ? '../' : '';
+var isTest = $(location).attr('href').indexOf('/test') > -1;
+var prefix = (isEstatica || isTest) ? '../' : '';
+
+if (isTest) {
+    var password
+    var pass1 = 'qsdmtest';
+    password = prompt('Introduce la contraseña',' ');
+    if (password === pass1) {
+        alert('Contraseña correcta');
+    } else {
+        alert('Contraseña incorrecta');
+        window.location = "http://queserademi.com";
+    }
+}
 
 function getUrl(dataTipo) {
     return prefix + 'data/' + dataTipo + '.json';
@@ -44,8 +57,8 @@ function submitar($input, item) {
                     for (var i = 0; i < prepositions.length; i++) {
                        profesionLimpia = profesionLimpia.replace(prepositions[i], '-');
                     }                   
-                    var urlLimpia = $(location).attr('href').replace(/index.html/g, '');
-                    var urlEstatica = urlLimpia + 'profesiones/' + profesionLimpia + '.html';
+                    var urlPrefixClean = $(location).attr('href').replace('/test/', '/').replace('/#', '/').replace(/index.html/g, '');
+                    var urlEstatica = urlPrefixClean + 'profesiones/' + profesionLimpia + '.html';
                     $form.attr('action', urlEstatica);
                 }
                 $form.submit();
@@ -141,20 +154,17 @@ $('.dropdown-menu li').click(function() {
     });
 });
 
+// FILTER
+$(document).ready(function() {
 
-
-// FILTROS
-$('.output.s_principiante_min').text($('#s_principiante_min').val());
-$('.output.s_principiante_max').text($('#s_principiante_max').val());
-
-$('.slider').change(function() {
+$('.slider.filter').bind('change', function(e) {
     var salario_from = $('#s_principiante_min').val();
     var salario_to = $('#s_principiante_max').val();
+    var empleabilidad_from = $('#empleabilidad_min').val();
+    var empleabilidad_to = $('#empleabilidad_max').val();
 
-    $('.output.s_principiante_min').text($('#s_principiante_min').val());
-    $('.output.s_principiante_max').text($('#s_principiante_max').val());
     $.ajax({
-        url: 'filter.php?salario_from=' + salario_from + '&salario_to=' + salario_to,
+        url: '../filter.php?salario_from=' + salario_from + '&salario_to=' + salario_to + '&empleabilidad_from=' + empleabilidad_from + '&empleabilidad_to=' + empleabilidad_to,
         success: function(result) {
             var professions = JSON.parse(result);
             var list = document.createElement('DIV');
@@ -162,8 +172,8 @@ $('.slider').change(function() {
             var suggestions = document.createElement('SPAN');
             suggestions.classList.add('tt-suggestions');
             suggestions.style.cssText = 'display: block;';
+
             for (var i = 0; i < professions.length; i++) {
-                //console.log(professions[i])
                 var suggestion = document.createElement('DIV');
                 suggestion.classList.add('tt-suggestion');
                 suggestion.style.cssText = 'white-space: nowrap; cursor: pointer;';
@@ -173,13 +183,26 @@ $('.slider').change(function() {
                 suggestion.appendChild(content);
                 suggestions.appendChild(suggestion);
             }
+
+            if (!suggestions.hasChildNodes()) {
+                var warning = document.createElement('DIV');
+                warning.classList.add('tt-suggestion');
+                warning.classList.add('qsdm-color-red');
+                warning.style.cssText = 'white-space: nowrap;';
+                var warningContent = document.createElement('P');
+                warningContent.innerText = 'Ouups, no hay profesiones. Intentalo de nuevo';
+                warningContent.style.cssText = 'white-space: normal;';
+                warning.appendChild(warningContent);
+                suggestions.appendChild(warning);
+            }
+
             list.appendChild(suggestions);
             $('#filterDropdown').html(list);
             $('#filterDropdown').show();
-            if ($('#filterDropdown .tt-suggestion').first().position()) {
+
+            /*if ($('#filterDropdown .tt-suggestion').first().position()) {
                $('#filterDropdown').scrollTop($('#filterDropdown .tt-suggestion').first().position().top); 
-            }
-            
+            }*/
 
             $('#filterDropdown .tt-suggestion').mouseover(function() {
                 $(this).addClass('tt-is-under-cursor');
@@ -203,7 +226,4 @@ $('.slider').change(function() {
     });
 });
 
-// Keep the dropdown opened
-$(document).on('click', '.dropdown-menu', function (e) {
-  e.stopPropagation();
 });
