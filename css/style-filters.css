@@ -1,0 +1,61 @@
+#filterDropdown .tt-dropdown-menu {
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    z-index: 100;
+    display: block;
+    right: auto;
+}
+
+#filterDropdown .tt-suggestion {
+    padding: 7.5px 20px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+
+#filterDropdown .tt-suggestion.tt-is-under-cursor {
+    color: #ffffff;
+    background-color: #337ab7;
+}
+
+#collapseFilter {
+    margin-bottom: 70px;
+    background-color: transparent;
+}
+
+.panel-default {
+    border-color: transparent !important;
+    background-color: transparent !important;
+}
+
+.panel-default button {
+    width: 30% !important;
+    background-color: transparent !important;
+    color: white !important;
+    text-shadow: none !important;
+}
+
+.ui-mobile label, .ui-controlgroup-label {
+    margin: 0;
+}
+
+.header {
+    margin-bottom: 0 !important;
+}
