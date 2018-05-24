@@ -56,7 +56,7 @@ $('#ver-video a').click(function(event) {
 
 // GRAFICAS, AVISOS Y POPUPS
 // ocultar avisos
-$('.grafica').click(function(event) {
+$('.grafica:not(#container_noticias)').click(function(event) {
     var isCloseButton = $(event.target).parent().parent().hasClass('cerrar-aviso')
     if ($(event.target).hasClass('icon') && isCloseButton) {
         event.preventDefault ? event.preventDefault(event) : event.returnValue = false;
